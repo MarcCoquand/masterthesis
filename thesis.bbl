@@ -1,3 +1,15 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{1}
+
+\bibitem{bergklaas}
+K.~Berg.
+\newblock Software measurement and functional programming.
+\newblock {\em Current Sociology - CURR SOCIOL}, 01 1995.
+
+\bibitem{McCabe}
+T.~J. McCabe.
+\newblock A complexity measure.
+\newblock In {\em Proceedings of the 2Nd International Conference on Software
+  Engineering}, ICSE '76, pages 407--, Los Alamitos, CA, USA, 1976. IEEE
+  Computer Society Press.
 
 \end{thebibliography}
