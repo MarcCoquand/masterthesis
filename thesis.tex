@@ -54,14 +54,28 @@
 
     This study's goal is to compare approaches to functional programs and
     object-oriented programs to find how it affects maintainability and code
-    quality.  By looking at 3 cases, we analyze, how does a functional approach
+    quality. By looking at 3 cases, we analyze, how does a functional approach
     to software architecture compare to an OOP (Object-oriented programming)
-    approach when it comes to maintainability and code quality?
+    approach when it comes to maintainability and code quality? TO BE REPLACED
+    WITH CONCLUSION
 
 \end{abstract}
 
 \section{Introduction}
 This is time for all good men to come to the aid of their party!
+
+\section{Objective}
+
+Different schools of thoughts have different approaches when it comes to
+building applications. There is one that is the traditional, object oriented,
+procedural way of doing it. Then there is a contender, a functional approach, as
+an alternative way to build applications. When building applications testability
+is of high concern to ensure that the application functions properly. By looking
+at cyclomatic complexity, described in Section~\ref{cyclomaticcomplexity}, we
+can find out how the different approaches affect the amount of tests we need to
+write to get full branch coverage. By looking at the cognitive dimensions,
+described in Section~\ref{cognitivedimensions}, we can find how the two
+approaches affect the mental complexity for the developer. 
 
 
 \section{Theory}\label{theory}
@@ -98,59 +112,45 @@ maximum number of linearly independent circuits.~\cite{McCabe}
 Informally, we can think of cyclomatic complexity as a way to measure the amount
 tests a program needs to reach full branch coverage. We construct a graph that
 branches out based on when the control flow in our source code branches out. For
-example given \texttt{f(bool) = if bool then 1; else 2}. To test
-\texttt{f} we would need two tests, one where the if statement is false and one
-where true, so the cyclomatic complexity is 2. We represent that as two
-different edges in the graph. In summary the nodes of the graph represents
-processing tasks and edges represent control flow between the nodes. 
+example, given \texttt{f(bool) = if bool then 1; else 2}, the function
+\texttt{f} will either be 1 or 2. The function \texttt{f} will need two tests in
+order to have full code coverage. The cyclomatic complexity in this case is 2.
+The nodes of the graph represents processing tasks and edges represent control
+flow between the nodes. 
 
 \begin{figure}[H]
     \begin{lstlisting}
-i = 0;
-n=4; //N-Number of nodes present in the graph
-
-while (i<n-1) do
-j = i + 1;
-
-while (j<n) do
-
-if A[i]<A[j] then
-swap(A[i], A[j]);
-
-end do;
-i=i+1;
-
-end do; 
+void foo(void)
+{
+  if (a)
+    if (b) 
+      x=1;
+  else
+      x=2;
+ }
     \end{lstlisting}
     \caption{Example for cyclomatic complexity.}\label{c1excode}
 \end{figure}
 
 If we have the code found in example figure~\ref{c1excode}. To calculate the
 complexity of this function we first construct a graph as seen in
-figure~\ref{fig:c1exgraph}. From the graph we find $n=9, e=7, p=2\Rightarrow
-v(G)=e-n+p=9-7+2=4$ is the cyclomatic number.
+figure~\ref{fig:c1exgraph}. From the graph we find $n=4, e=5, p=2\Rightarrow
+v(G)=e-n+p=5-4+2=3$ is the cyclomatic number.
 
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
         \tikzset{vertex/.style = {shape=circle,draw,minimum size=2.5em}};
         \tikzset{edge/.style = {->,> = latex'}};
-        \node[vertex] (a) at (3,6) {1};
-        \node[vertex] (b) at (3,4.5) {2};
-        \node[vertex] (c) at (3,3) {3};
-        \node[vertex] (d) at (6,1.5) {4};
-        \node[vertex] (e) at (0, 1.5) {5};
-        \node[vertex] (f) at (3,0) {6};
-        \node[vertex] (g) at (6,4.5) {7};
-        \draw[edge] (a)  to  (b);
-        \draw[edge] (a)  to[bend left]  (g);
+        \node[vertex] (a) at (2,8) {\texttt{if (a)}};
+        \node[vertex] (b) at (0,6) {\texttt{if (b)}};
+        \node[vertex] (c) at (4,6) {};
+        \node[vertex] (d) at (2,4) {end};
+        \draw[edge] (a)  to (b);
+        \draw[edge] (a)  to (c);
         \draw[edge] (b)  to (c);
-        \draw[edge] (b)  to[bend right] (f);
+        \draw[edge] (b)  to (d);
         \draw[edge] (c)  to (d);
-        \draw[edge] (c)  to (e);
-        \draw[edge] (d)  to (e);
-        \draw[edge] (e)  to[bend left] (b);
-        \draw[edge] (f)  to[bend right] (a);
     \end{tikzpicture}
     \caption{Cyclomatic complexity graph for figure~\ref{c1excode}}\label{fig:c1exgraph}
 \end{figure}
@@ -161,8 +161,8 @@ The definition of cyclomatic complexity in Section~\ref{cyclomaticcomplexity} is
 not ideal for functional programming. Cyclomatic complexity is calculated by
 creating graphs based on control flow operations such as while loops and if
 statements. In functional programming everything is a function, thus the
-cyclomatic complexity will always tend to 0 using this definition. So we define a
-different method of calculating the cyclomatic complexity for functional
+cyclomatic complexity will always tend to 0 using this definition. So we define
+a different method of calculating the cyclomatic complexity for functional
 programs. 
 
 \theoremstyle{definition}
@@ -171,14 +171,30 @@ programs.
     is equal to 1 plus the sum of the left hand side, called LHS, plus the sum
     of the right hand side, called RHS. RHS is the sum of the number of guards,
     logical operators, filters in a list comprehension and the pattern
-    complexity in a list comprehension. LHS is equal to the pattern complexity
-    of LHS. The pattern complexity is equal to the number of identifiers in the
-    pattern, minus the number of unique identifiers in the pattern plus the
-    number of arguments that are not identifiers. 
+    complexity in a list comprehension. LHS is equal to the pattern complexity.
+    The pattern complexity is equal to the number of identifiers in the pattern,
+    minus the number of unique identifiers in the pattern plus the number of
+    arguments that are not identifiers. In summary:
+
+    \begin{lstlisting}
+    Cyclomatic complexity = 1 + LHS + RHS
+
+    LHS = Pattern complexity 
+
+    Pattern complexity   
+        = Pattern identifiers 
+        - Unique pattern identifiers 
+        + Number of arguments that are non identifiers
+
+    RHS = Number of guards 
+        + Number of Logical operators 
+        + Number of filters in list comprehension 
+        + Pattern complexity in list comprehension
+    \end{lstlisting}
 \end{definition}
 
 Instead of cyclomatic graphs we instead construct flowgraphs, such as the one
-seen in Figure~\ref{fig:cyclomaticfunctional} to model the function.
+seen in Figure~\ref{fig:cyclomaticfunctional} to model our function.
 
 \begin{figure}[H]
     \begin{lstlisting}
@@ -198,19 +214,23 @@ seen in Figure~\ref{fig:cyclomaticfunctional} to model the function.
     ([4,5],[1,2,3])}.}\label{fig:split}
 \end{figure}
 
-For example, given the Haskell code in Figure~\ref{fig:split}. To calculate LHS
-we find three pattern identifiers which are $onCondition$, $x$ and $xs$, there
-are two unique pattern identifiers which are $x$ and $xs$, and there are two non
-identifiers which are $[]$ and $(:)$.
+In Haskell $(x:xs)$ denotes an item $x$ at head of a list of items $xs$. Given
+the Haskell code in Figure~\ref{fig:split}. To calculate LHS we find two
+pattern identifiers which are $onCondition$ and $(x:xs)$. there is one unique
+pattern identifiers which is $(x:xs)$. There is also one non identifier
+which is $[]$. We also find one guard, an if statement, and no
+list comprehensions on RHS. Thus the cyclomatic complexity is $1+(2-1+1)+1=4$.
+<-- NEEDS VERIFICATION FROM SOMEONE, THE SOURCE IS VERY VAGUE HERE\ldots
 
-We do not count the $otherwise$ clause, similar to how we do not count the
-$else$ statement in normal procedural cyclomatic complexity.~\cite{bergklaas}
+We do not count the $otherwise$ and $else$ clauses as a guard, just as how we
+do not count the $else$ statement in normal procedural cyclomatic
+complexity.~\cite{bergklaas}
 
 
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
-        \tikzset{vertex/.style = {shape=circle,fill=black,draw,minimum size=0.01em}};
+        \tikzset{vertex/.style = {shape=circle,fill=black,scale=0.5}};
         \draw[dashed] (0,0) -- (0,-5) (2,0) -- (2,-5) (4, 0) -- (4, -5) (6, 0)
         -- (6, -5);
         \node at (0,.3) {\small{Patterns}};
@@ -218,28 +238,63 @@ $else$ statement in normal procedural cyclomatic complexity.~\cite{bergklaas}
         \node at (4,.3) {\small{Expressions}};
         \node at (6,.3) {\small{Stop}};
         \node[vertex] (a) at (0,-0.3) {};
-        \node at (-2,-0.3) {\texttt{[]}};
+        \node[align=right, text width=3cm] at (-2,-0.3) {\texttt{[]}};
         \node[vertex] (b) at (4,-1.2) {};
         \draw[->, very thick] (a) to node [above] (TextNode) {T} (b) ;
         \node[vertex] (c) at (0,-1.5) {};
-        \node at (-2,-1.5) {\texttt{(x:xs)}};
+        \node[align=right, text width=3cm] at (-2,-1.5) {\texttt{(x:xs)}};
         \draw[->, very thick] (a) to node [left] (TextNode) {F} (c) ;
         \node[align=left, text width=3cm] at (8,-1.2) {\texttt{e1=([],[])}};
         \node[vertex] (d) at (2,-2.1) {};
         \draw[->, very thick] (c) to node [above] (TextNode) {T} (d) ;
-        \node[align=left, text width=3cm] at (-2,-2.1) {\texttt{onCondition x}};
+        \node[align=right, text width=3cm] at (-2,-2.1) {\texttt{onCondition x}};
         \node[vertex] (e) at (4,-2.8) {};
         \draw[->, very thick] (d) to node [above] (TextNode) {T} (e) ;
         \node[align=left, text width=3cm] at (8,-2.8) {\texttt{e2=(x:yz, zs)}};
+        \node[vertex] (f) at (4,-3.8) {};
+        \draw[->, very thick] (d) to node [below] (TextNode) {F} (f) ;
+        \node[align=left, text width=3cm] at (8,-3.8) {\texttt{e3=(yz, x:zs)}};
         \node[vertex] (g) at (6,-4.8) {};
         \draw[->, very thick] (e) to (g) ;
         \draw[->, very thick] (b) to (g) ;
+        \draw[->, very thick] (f) to (g) ;
+        \draw[very thick] (c) to (2, -4.0) to (g) ;
     \end{tikzpicture}
     \label{fig:cyclomaticfunctional}
     \caption{Flowgraph for split.}
 \end{figure}
 
-\subsection{Cognitive Dimensions}
+\subsection{Mental complexity: Cognitive Dimensions}\label{cognitivedimensions}
+
+Cognitive Dimensions is a framework for evaluating the usability of programming
+languages and to find areas of improvements. Used as an approach to analyse the
+quality of a design, it also allows to explore what future designs could be
+possible. As part of the Cognitive Dimensions, 14 different Cognitive Dimensions
+of Notation exist. A notation depends on the specific context, in this case will
+be the languages themselves and their architecture.~\cite{GREEN1996131}
+
+\subsubsection{Viscosity}
+
+The amount of work the user has to put in to effect a small change.
+
+\subsubsection{Visibility}
+
+The system does not bury or encapsulate elements. The search trail to find
+something should be as short as possible.
+
+\subsubsection{Premature Commitment}
+
+
+\subsubsection{Hidden Dependencies}
+\subsubsection{Role-Expressiveness}
+\subsubsection{Abstraction}
+\subsubsection{Secondary Notation}
+\subsubsection{Closeness of Mapping}
+\subsubsection{Consistency}
+\subsubsection{Diffuseness}
+\subsubsection{Hard Mental Operations}
+\subsubsection{Provisionality}
+\subsubsection{Progressive Evaluation}
 
 \subsection{Case studies}
 
