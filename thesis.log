@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.12.30)  29 JAN 2019 14:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.12.30)  29 JAN 2019 17:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -706,88 +706,99 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 52.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 52.
-LaTeX Font Info:    Font shape `T1/yrd/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/yrd/b/n' tried instead on input line 54.
-LaTeX Font Info:    Font shape `T1/yrd/b/n' in size <10.95> not available
-(Font)              Font shape `T1/yrd/db/n' tried instead on input line 54.
-LaTeX Font Info:    Font shape `T1/yrd/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/yrd/b/n' tried instead on input line 65.
-LaTeX Font Info:    Font shape `T1/yrd/b/n' in size <17.28> not available
-(Font)              Font shape `T1/yrd/db/n' tried instead on input line 65.
+[1
 
-Overfull \hbox (0.44353pt too wide) in paragraph at lines 70--80
+{/usr/share/texlive/texmf-dist/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    Font shape `T1/yrd/bx/n' in size <10.95> not available
+(Font)              Font shape `T1/yrd/b/n' tried instead on input line 81.
+LaTeX Font Info:    Font shape `T1/yrd/b/n' in size <10.95> not available
+(Font)              Font shape `T1/yrd/db/n' tried instead on input line 81.
+ [1
+
+
+]
+LaTeX Font Info:    Font shape `T1/yrd/bx/n' in size <17.28> not available
+(Font)              Font shape `T1/yrd/b/n' tried instead on input line 95.
+LaTeX Font Info:    Font shape `T1/yrd/b/n' in size <17.28> not available
+(Font)              Font shape `T1/yrd/db/n' tried instead on input line 95.
+
+[2
+
+] (./thesis.toc
+LaTeX Font Info:    Font shape `T1/yrd/bx/n' in size <12> not available
+(Font)              Font shape `T1/yrd/b/n' tried instead on input line 2.
+LaTeX Font Info:    Font shape `T1/yrd/b/n' in size <12> not available
+(Font)              Font shape `T1/yrd/db/n' tried instead on input line 2.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 5.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 5.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 5.
+)
+\tf@toc=\write4
+\openout4 = `thesis.toc'.
+
+ [3
+
+]
+Overfull \hbox (0.44353pt too wide) in paragraph at lines 110--120
 \T1/yrd/m/n/12 Different schools of thoughts have dif-fer-ent ap-proaches when 
 it comes
  []
 
-[1
-
-{/usr/share/texlive/texmf-dist/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `T1/yrd/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/yrd/b/n' tried instead on input line 84.
+(Font)              Font shape `T1/yrd/b/n' tried instead on input line 124.
 LaTeX Font Info:    Font shape `T1/yrd/b/n' in size <14.4> not available
-(Font)              Font shape `T1/yrd/db/n' tried instead on input line 84.
-LaTeX Font Info:    Font shape `T1/yrd/bx/n' in size <12> not available
-(Font)              Font shape `T1/yrd/b/n' tried instead on input line 87.
-LaTeX Font Info:    Font shape `T1/yrd/b/n' in size <12> not available
-(Font)              Font shape `T1/yrd/db/n' tried instead on input line 87.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 104.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 104.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 104.
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 116.
+(Font)              Font shape `T1/yrd/db/n' tried instead on input line 124.
+[4]
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 157.
 
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-) [2]
+)
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 124.
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 165.
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
- [3] [4]
+ [5] [6]
 Missing character: There is no ; in font nullfont!
 
-Underfull \hbox (badness 2809) in paragraph at lines 242--242
+Underfull \hbox (badness 2809) in paragraph at lines 283--283
  [][][][]\T1/cmtt/m/n/12 []
  []
 
-[5] [6] [7]
-LaTeX Font Info:    Try loading font information for TS1+yrd on input line 348.
+[7] [8] [9] [10]
+LaTeX Font Info:    Try loading font information for TS1+yrd on input line 401.
 
  (/usr/share/texlive/texmf-dist/tex/latex/romande/ts1yrd.fd
 File: ts1yrd.fd 2010/07/10 Fontinst v1.933 font definitions for TS1/yrd.
 )
-[8] (./thesis.bbl [9]) [10] (./thesis.aux) ) 
+[11] (./thesis.bbl [12]) [13] (./thesis.aux) ) 
 Here is how much of TeX's memory you used:
- 15824 strings out of 492701
- 298036 string characters out of 6134503
- 397728 words of memory out of 5000000
- 19379 multiletter control sequences out of 15000+600000
- 71640 words of font info for 52 fonts, out of 8000000 for 9000
+ 15825 strings out of 492701
+ 298011 string characters out of 6134503
+ 395725 words of memory out of 5000000
+ 19376 multiletter control sequences out of 15000+600000
+ 71023 words of font info for 50 fonts, out of 8000000 for 9000
  1137 hyphenation exceptions out of 8191
- 55i,8n,95p,410b,1239s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/font
-s/enc/dvips/romande/ts1-euro-yrd.enc}{/usr/share/texlive/texmf-dist/fonts/enc/d
-vips/cm-super/cm-super-t1.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/ro
-mande/t1-romandeadf.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/arkandis/romande/yrdd8a.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/arkandis/romande/yrdr8a.pfb></usr/share/texlive/texmf
--dist/fonts/type1/arkandis/romande/yrdri8a.pfb>
-Output written on thesis.pdf (10 pages, 180179 bytes).
+ 55i,8n,95p,410b,1688s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fo
+nts/enc/dvips/romande/ts1-euro-yrd.enc}{/usr/share/texlive/texmf-dist/fonts/enc
+/dvips/cm-super/cm-super-t1.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/
+romande/t1-romandeadf.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/arkandis/romande/yrdd8a.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/arkandis/romande/yrdr8a.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/arkandis/romande/yrdrc8a.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/arkandis/romande/yrdri8a.pfb>
+Output written on thesis.pdf (14 pages, 201990 bytes).
 PDF statistics:
- 77 PDF objects out of 1000 (max. 8388607)
- 56 compressed objects within 1 object stream
+ 94 PDF objects out of 1000 (max. 8388607)
+ 68 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

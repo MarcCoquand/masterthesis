@@ -1,4 +1,4 @@
-\title{Comparing Testability and Code Quality in Software Paradigms}
+\title{Comparing Testability and Usability in Software Paradigms}
 \author{
         Marc Coquand\\
         Department of Computer Science\\
@@ -49,7 +49,34 @@
 \lstset{escapechar=@,style=customc}
 
 \begin{document}
-\maketitle
+\begin{titlepage}
+	\centering
+    \null
+    \vfill
+    {\Large\itshape Comparing Testability and Usability in Software Paradigms
+    \par}
+    \vspace{1.5cm}
+	{\scshape 
+    A thesis presented \par 
+    by\par
+	Marc Coquand\par
+	to\par
+    The Department of Computer Science\par
+    \vspace{1.5cm}
+	for a degree of\par
+    Master of Science in Engineering\par
+    in the subject of\par
+    Interaction Technology and Design\par}
+    \vfill
+    Umeå University\par
+    Supervised by Anders Broberg\par
+	\today\par
+\end{titlepage}
+\clearpage
+\thispagestyle{empty}
+
+\clearpage\newpage
+\thispagestyle{empty}
 
 \begin{abstract} 
 
@@ -61,6 +88,19 @@
     WITH CONCLUSION
 
 \end{abstract}
+
+\clearpage\newpage
+\thispagestyle{empty}
+
+\section*{Acknowledgements}
+
+I want to thank myself for my amazing work.
+
+\clearpage\newpage
+\thispagestyle{empty}
+
+\tableofcontents
+\newpage
 
 \section{Introduction}
 This is time for all good men to come to the aid of their party!
@@ -96,8 +136,9 @@ Uses variables, commands and procedures
 \subsection{Measuring testability: Cyclomatic Complexity}\label{cyclomaticcomplexity}
 
 Cyclomatic complexity is a complexity measure that allows us to measure the
-amount of paths through a program. The Cyclomatic complexity is an upper bound
-for the number of test cases required for full branch coverage of the code. 
+amount of paths through a program. The Cyclomatic complexity number is an upper
+bound for the number of test cases required for full branch coverage of the
+code. 
 
 \theoremstyle{definition}
 \begin{definition}
@@ -130,7 +171,7 @@ flow between the nodes.
               x=2;
          }
     \end{lstlisting}
-    \caption{Example for cyclomatic complexity.}\label{c1excode}
+    \caption{Multi if function foo.}\label{c1excode}
 \end{figure}
 
 If we have the code found in example figure~\ref{c1excode}. To calculate the
@@ -153,7 +194,7 @@ v(G)=e-n+p=5-4+2=3$ is the cyclomatic number.
         \draw[edge] (b)  to (d);
         \draw[edge] (c)  to (d);
     \end{tikzpicture}
-    \caption{Cyclomatic complexity graph for figure~\ref{c1excode}}\label{fig:c1exgraph}
+    \caption{Cyclomatic complexity graph for Figure~\ref{c1excode}}\label{fig:c1exgraph}
 \end{figure}
 
 \subsubsection{Cyclomatic Complexity in Functional Programming}
@@ -272,12 +313,14 @@ languages and to find areas of improvements. Used as an approach to analyse the
 quality of a design, it also allows to explore what future designs could be
 possible. As part of the Cognitive Dimensions, 14 different Cognitive Dimensions
 of Notation exist. A notation depends on the specific context, in this case will
-be the languages themselves and their architecture.~\cite{GREEN1996131}
+be the languages themselves and their architecture.
 
 \subsubsection{Viscosity}
 
 How much work does it take to make small changes? How easy is the code to
-refactor?
+refactor? If small changes requires consequent adjustments then that is a
+problem. As a viscous system cause a lot more work for the user and break the
+line of thought.
 
 \subsubsection{Visibility}
 
@@ -287,14 +330,21 @@ How easy is it to navigate the source code to find the parts that you want?
 
 Are there any architectural decisions that must be made before all the necessary
 decisions have been made? Can we correct those decisions later, how safe is the
-refactoring and how much is needed?
+refactoring and how much is needed? If you imagine a word processor which
+required exactly how many pages of text would be used before being written then
+that would be premature commitment.
 
 \subsubsection{Hidden Dependencies}
 
 Are there hidden dependencies in the source code. Does a change in one part of
 the source code lead to unexpected consequences in another part of the code.
+Every dependency that matters to the user should be accessible in both
+directions. 
 
 \subsubsection{Role-Expressiveness}
+
+How obvious is each sub-component of the source code to the solution as a whole?
+
 \subsubsection{Abstraction}
 
 What are the levels of abstraction in the source code? Can the details be
@@ -302,7 +352,7 @@ encapsulated?
 
 \subsubsection{Secondary Notation}
 
-
+Are there any extra information being conveyed to the user in the source code?
 
 \subsubsection{Closeness of Mapping}
 
@@ -327,10 +377,13 @@ sometimes need to resort to pen and paper to keep track of what is happening?
 
 \subsubsection{Provisionality}
 
+How easy is it to get feedback of something before you have completed the entire
+system?
+
 \subsubsection{Progressive Evaluation}
 
 How obvious the role of each component of the source code in the solution as a
-whole?
+whole?~\cite{GREEN1996131}
 
 \subsection{Case studies}
 
@@ -393,9 +446,13 @@ items that can be used to remember what to do later. The user should be able to:
 \begin{itemize}
     \item Create a new item in the to-do list.
     \item Remove an item from the to-do list.
+    \item Mark an item from the to-do list as done.
     \item See all items in the to-do list.
-    \item Update an item from the to-do list.
 \end{itemize}
+
+The interface to this program will be a text interface, displaying each item in
+the todo list. To navigate and mark an item in the list the user presses up and
+down and presses \texttt{x} to mark it.
 
 \subsubsection{Chatbot engine}
 
