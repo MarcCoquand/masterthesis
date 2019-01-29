@@ -27,14 +27,15 @@
 \lstdefinestyle{customc}{
 	belowcaptionskip=1\baselineskip,
 	breaklines=true,
-	frame=L,
 	xleftmargin=\parindent,
-	language=C,
+    numbers=left,
+    numberstyle=\ttfamily\color{gray},
+	language=Java,
 	showstringspaces=false,
 	basicstyle=\footnotesize\ttfamily,
 	keywordstyle=\bfseries\color{green!40!black},
 	commentstyle=\itshape\color{purple!40!black},
-	identifierstyle=\color{blue},
+	identifierstyle=\color{black},
 	stringstyle=\color{orange},
 }
 \lstdefinestyle{customasm}{
@@ -94,9 +95,9 @@ Uses variables, commands and procedures
 
 \subsection{Measuring testability: Cyclomatic Complexity}\label{cyclomaticcomplexity}
 
-Cyclomatic complexity is a complexity measure that looks to measure the amount
-of paths through a program. The Cyclomatic complexity is an upper bound for the
-number of test cases required for branch coverage of the code. 
+Cyclomatic complexity is a complexity measure that allows us to measure the
+amount of paths through a program. The Cyclomatic complexity is an upper bound
+for the number of test cases required for full branch coverage of the code. 
 
 \theoremstyle{definition}
 \begin{definition}
@@ -120,14 +121,14 @@ flow between the nodes.
 
 \begin{figure}[H]
     \begin{lstlisting}
-void foo(void)
-{
-  if (a)
-    if (b) 
-      x=1;
-  else
-      x=2;
- }
+        void foo(void)
+        {
+          if (a)
+            if (b) 
+              x=1;
+          else
+              x=2;
+         }
     \end{lstlisting}
     \caption{Example for cyclomatic complexity.}\label{c1excode}
 \end{figure}
@@ -275,28 +276,67 @@ be the languages themselves and their architecture.~\cite{GREEN1996131}
 
 \subsubsection{Viscosity}
 
-The amount of work the user has to put in to effect a small change.
+How much work does it take to make small changes? How easy is the code to
+refactor?
 
 \subsubsection{Visibility}
 
-The system does not bury or encapsulate elements. The search trail to find
-something should be as short as possible.
+How easy is it to navigate the source code to find the parts that you want?
 
 \subsubsection{Premature Commitment}
 
+Are there any architectural decisions that must be made before all the necessary
+decisions have been made? Can we correct those decisions later, how safe is the
+refactoring and how much is needed?
 
 \subsubsection{Hidden Dependencies}
+
+Are there hidden dependencies in the source code. Does a change in one part of
+the source code lead to unexpected consequences in another part of the code.
+
 \subsubsection{Role-Expressiveness}
 \subsubsection{Abstraction}
+
+What are the levels of abstraction in the source code? Can the details be
+encapsulated?
+
 \subsubsection{Secondary Notation}
+
+
+
 \subsubsection{Closeness of Mapping}
+
+By looking at the source code, how close do we find it to be to the case
+we are solving?
+
 \subsubsection{Consistency}
-\subsubsection{Diffuseness}
+
+Once Object-oriented procedural programming and Functional programming has been
+learned. How much of the rest can the user guess successfully? 
+
+\subsubsection{Diffuseness or terseness}
+
+How much space and symbols does the source code need to produce a certain result
+or express a meaning?
+
 \subsubsection{Hard Mental Operations}
+
+Where does the hard mental processing lie? Is it more when writing the source
+code itself rather than solving the case, I.E. the semantic level? Do you
+sometimes need to resort to pen and paper to keep track of what is happening?
+
 \subsubsection{Provisionality}
+
 \subsubsection{Progressive Evaluation}
 
+How obvious the role of each component of the source code in the solution as a
+whole?
+
 \subsection{Case studies}
+
+To compare the different paradigms using Cognitive dimensions and measuring
+Cyclocmatic complexity we will look at three different cases. The cases were
+chosen based on how they are often subproblems in bigger applications.
 
 \subsubsection{Simplified chess game}
 
@@ -318,6 +358,31 @@ The player should be able to do the following:
     \item Get an overview of the board
     \item Get an error when making invalid moves
 \end{itemize}
+
+To interact with the game, a user types commands through a command line prompt.
+An example of basic interaction with the game is displayed in
+Figure~\ref{chessexample}.
+
+\begin{figure}[H]
+    \centering
+    \begin{lstlisting}
+        > list (a,2)
+        White pawn at (a,2)
+        > move (a,2) (a,3)
+        White pawn moved to (a,3)
+        > listall
+        White pawn at (a,3)
+        White pawn at (b,2)
+        ...
+        White Horse at (a,1)
+        ...
+        Black pawn at (a,8)
+        ...
+    \end{lstlisting}
+    \label{chessexample}
+    \caption{An example of the interaction in the chess game.}
+\end{figure}
+
 
 \subsubsection{to-do List}
 
