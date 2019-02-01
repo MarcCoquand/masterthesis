@@ -1,22 +1,21 @@
 \begin{thebibliography}{1}
 
-\bibitem{bergklaas}
-K.~Berg.
-\newblock Software measurement and functional programming.
-\newblock {\em Current Sociology - CURR SOCIOL}, 01 1995.
-
-\bibitem{GREEN1996131}
-T.~Green and M.~Petre.
-\newblock Usability analysis of visual programming environments: A 'cognitive
-  dimensions' framework.
-\newblock {\em Journal of Visual Languages \& Computing}, 7(2):131 -- 174,
-  1996.
+\bibitem{wikipedia_pure}
+``Pure function,'' Aug 2018.
+\newblock \url{https://en.wikipedia.org/wiki/Pure_function}, accessed Feb 2019.
 
 \bibitem{McCabe}
-T.~J. McCabe.
-\newblock A complexity measure.
-\newblock In {\em Proceedings of the 2Nd International Conference on Software
-  Engineering}, ICSE '76, pages 407--, Los Alamitos, CA, USA, 1976. IEEE
-  Computer Society Press.
+T.~J. McCabe, ``A complexity measure,'' in {\em Proceedings of the 2Nd
+  International Conference on Software Engineering}, ICSE '76, (Los Alamitos,
+  CA, USA), pp.~407--, IEEE Computer Society Press, 1976.
+
+\bibitem{bergklaas}
+K.~Berg, ``Software measurement and functional programming,'' {\em Current
+  Sociology - CURR SOCIOL}, 01 1995.
+
+\bibitem{GREEN1996131}
+T.~Green and M.~Petre, ``Usability analysis of visual programming environments:
+  A 'cognitive dimensions' framework,'' {\em Journal of Visual Languages \&
+  Computing}, vol.~7, no.~2, pp.~131 -- 174, 1996.
 
 \end{thebibliography}
