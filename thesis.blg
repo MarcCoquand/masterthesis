@@ -3,44 +3,50 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: thesis.aux
 The style file: ieeetr.bst
 Database file #1: thesis.bib
-You've used 4 entries,
+I was expecting a `,' or a `}'---line 64 of file thesis.bib
+ : @misc{commentarycompiler 
+ :                          – ghc,
+I'm skipping whatever remains of this entry
+Warning--all relevant fields are empty in commentarycompiler
+You've used 8 entries,
             1876 wiz_defined-function locations,
-            507 strings with 4074 characters,
-and the built_in function-call counts, 939 in all, are:
-= -- 98
-> -- 17
+            530 strings with 4677 characters,
+and the built_in function-call counts, 1641 in all, are:
+= -- 164
+> -- 40
 < -- 0
-+ -- 8
-- -- 4
-* -- 60
-:= -- 127
-add.period$ -- 5
-call.type$ -- 4
-change.case$ -- 4
++ -- 18
+- -- 10
+* -- 101
+:= -- 218
+add.period$ -- 11
+call.type$ -- 8
+change.case$ -- 6
 chr.to.int$ -- 0
-cite$ -- 4
-duplicate$ -- 52
-empty$ -- 101
-format.name$ -- 4
-if$ -- 236
+cite$ -- 9
+duplicate$ -- 85
+empty$ -- 182
+format.name$ -- 10
+if$ -- 410
 int.to.chr$ -- 0
-int.to.str$ -- 4
-missing$ -- 3
-newline$ -- 16
-num.names$ -- 3
-pop$ -- 15
+int.to.str$ -- 8
+missing$ -- 6
+newline$ -- 30
+num.names$ -- 6
+pop$ -- 33
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 39
+skip$ -- 66
 stack$ -- 0
-substring$ -- 59
-swap$ -- 21
+substring$ -- 91
+swap$ -- 31
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 0
-while$ -- 8
-width$ -- 5
-write$ -- 41
+warning$ -- 1
+while$ -- 14
+width$ -- 9
+write$ -- 73
+(There was 1 error message)

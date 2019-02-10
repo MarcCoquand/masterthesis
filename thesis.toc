@@ -1,32 +1,35 @@
 \babel@toc {english}{}
-\contentsline {section}{\numberline {1}Introduction}{4}
-\contentsline {section}{\numberline {2}Objective}{4}
-\contentsline {section}{\numberline {3}Theory}{4}
-\contentsline {subsection}{\numberline {3.1}Characteristics of Functional Programming}{4}
-\contentsline {subsubsection}{\numberline {3.1.1}Iterator pattern}{5}
-\contentsline {subsection}{\numberline {3.2}Object Oriented Programming}{5}
-\contentsline {subsubsection}{\numberline {3.2.1}SOLID principles}{5}
-\contentsline {section}{\numberline {4}Methods}{5}
-\contentsline {subsection}{\numberline {4.1}Measuring testability: Cyclomatic Complexity}{5}
-\contentsline {subsubsection}{\numberline {4.1.1}Cyclomatic Complexity in Functional Programming}{6}
-\contentsline {subsection}{\numberline {4.2}Mental complexity: Cognitive Dimensions}{9}
-\contentsline {subsubsection}{\numberline {4.2.1}Viscosity}{9}
-\contentsline {subsubsection}{\numberline {4.2.2}Visibility}{9}
-\contentsline {subsubsection}{\numberline {4.2.3}Premature Commitment}{9}
-\contentsline {subsubsection}{\numberline {4.2.4}Hidden Dependencies}{9}
-\contentsline {subsubsection}{\numberline {4.2.5}Role-Expressiveness}{10}
-\contentsline {subsubsection}{\numberline {4.2.6}Abstraction}{10}
-\contentsline {subsubsection}{\numberline {4.2.7}Secondary Notation}{10}
-\contentsline {subsubsection}{\numberline {4.2.8}Closeness of Mapping}{10}
-\contentsline {subsubsection}{\numberline {4.2.9}Consistency}{10}
-\contentsline {subsubsection}{\numberline {4.2.10}Diffuseness or terseness}{10}
-\contentsline {subsubsection}{\numberline {4.2.11}Hard Mental Operations}{10}
-\contentsline {subsubsection}{\numberline {4.2.12}Provisionality}{11}
-\contentsline {subsubsection}{\numberline {4.2.13}Progressive Evaluation}{11}
-\contentsline {subsection}{\numberline {4.3}Case studies}{11}
-\contentsline {subsubsection}{\numberline {4.3.1}Simplified chess game}{11}
-\contentsline {subsubsection}{\numberline {4.3.2}to-do List}{12}
-\contentsline {subsubsection}{\numberline {4.3.3}Chatbot engine}{13}
-\contentsline {section}{\numberline {5}Results}{13}
-\contentsline {section}{\numberline {6}Limitations}{13}
-\contentsline {subsection}{\numberline {6.1}Improvements to implementation}{13}
+\contentsline {section}{\numberline {1}Introduction}{5}
+\contentsline {section}{\numberline {2}Objective}{5}
+\contentsline {section}{\numberline {3}Theory}{5}
+\contentsline {subsection}{\numberline {3.1}Characteristics of Functional Programming}{5}
+\contentsline {subsubsection}{\numberline {3.1.1}Interpreter pattern}{6}
+\contentsline {subsection}{\numberline {3.2}Free Monads}{6}
+\contentsline {subsection}{\numberline {3.3}Object Oriented Programming}{7}
+\contentsline {subsubsection}{\numberline {3.3.1}SOLID principles}{7}
+\contentsline {section}{\numberline {4}Methods}{9}
+\contentsline {subsection}{\numberline {4.1}Measuring testability: Cyclomatic Complexity}{9}
+\contentsline {subsubsection}{\numberline {4.1.1}Cyclomatic Complexity in Functional Programming}{10}
+\contentsline {subsection}{\numberline {4.2}Mental complexity: Cognitive Dimensions}{12}
+\contentsline {subsubsection}{\numberline {4.2.1}Viscosity}{12}
+\contentsline {subsubsection}{\numberline {4.2.2}Visibility}{12}
+\contentsline {subsubsection}{\numberline {4.2.3}Premature Commitment}{12}
+\contentsline {subsubsection}{\numberline {4.2.4}Hidden Dependencies}{13}
+\contentsline {subsubsection}{\numberline {4.2.5}Role-Expressiveness}{13}
+\contentsline {subsubsection}{\numberline {4.2.6}Abstraction}{13}
+\contentsline {subsubsection}{\numberline {4.2.7}Secondary Notation}{13}
+\contentsline {subsubsection}{\numberline {4.2.8}Closeness of Mapping}{13}
+\contentsline {subsubsection}{\numberline {4.2.9}Consistency}{13}
+\contentsline {subsubsection}{\numberline {4.2.10}Diffuseness or terseness}{14}
+\contentsline {subsubsection}{\numberline {4.2.11}Hard Mental Operations}{14}
+\contentsline {subsubsection}{\numberline {4.2.12}Provisionality}{14}
+\contentsline {subsubsection}{\numberline {4.2.13}Progressive Evaluation}{14}
+\contentsline {subsection}{\numberline {4.3}Case studies}{14}
+\contentsline {subsubsection}{\numberline {4.3.1}Simplified chess game}{14}
+\contentsline {subsubsection}{\numberline {4.3.2}to-do List}{15}
+\contentsline {subsubsection}{\numberline {4.3.3}Chatbot engine}{16}
+\contentsline {section}{\numberline {5}Results}{16}
+\contentsline {section}{\numberline {6}Limitations}{16}
+\contentsline {subsection}{\numberline {6.1}Improvements to implementation}{16}
+\contentsline {section}{\numberline {7}future work}{16}
+\contentsline {subsection}{\numberline {7.1}Relations to cardinality}{16}

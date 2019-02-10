@@ -1,12 +1,3 @@
-\title{Comparing Testability and Usability in Software Paradigms}
-\author{
-        Marc Coquand\\
-        Department of Computer Science\\
-        Umeå University\\
-}
-\date{\today}
-
-
 \documentclass[12pt]{article}
 \usepackage{listings}
 \usepackage{amsthm}
@@ -18,12 +9,12 @@
 \usepackage[T1]{fontenc}
 \usepackage{float}
 \usepackage{url}
-
-\theoremstyle{definition}
+\usepackage{geometry}
+\usepackage{marginnote}
 \newtheorem*{definition}{Definition}
-
-\theoremstyle{theorem}
+\theoremstyle{definition}
 \newtheorem*{theorem}{Theorem}
+\theoremstyle{theorem}
 
 \lstdefinestyle{customc}{
 	belowcaptionskip=1\baselineskip,
@@ -95,7 +86,7 @@
 
 \section*{Acknowledgements}
 
-I want to thank myself for my amazing work.
+I want to thank myself for my amazing work. TODO
 
 \clearpage\newpage
 \thispagestyle{empty}
@@ -104,7 +95,7 @@ I want to thank myself for my amazing work.
 \newpage
 
 \section{Introduction}
-This is time for all good men to come to the aid of their party!
+This is time for all good men to come to the aid of their party! TODO
 
 \section{Objective}
 
@@ -117,15 +108,17 @@ at cyclomatic complexity, described in Section~\ref{cyclomaticcomplexity}, we
 can find out how the different approaches affect the amount of tests we need to
 write to get full branch coverage. By looking at the cognitive dimensions,
 described in Section~\ref{cognitivedimensions}, we can find how the two
-approaches affect the mental complexity for the developer. 
-
+approaches affect the mental complexity for the developer. So by looking at
+different case studies this study aims to find if the different software
+paradigms affect the cyclomatic complexity and if there are any cognitive
+benefits to one approach over the other.
 
 \section{Theory}\label{theory}
 
 \subsection{Characteristics of Functional Programming}
 
 Functional programming is a software paradigm. While different definitions exist
-of what it means, in this thesis we define functional programming as:
+of what it means, we define functional programming as:
 
 \begin{itemize}
     \item Removing state to the outwards of the program
@@ -137,21 +130,144 @@ When a function is pure it means that calling a function with the same arguments
 will always return the same value and that it does not mutate any value. For
 example if you have $f(x) = 2\cdot x$, then $f(2)$ will always return $4$. It
 follows then that an impure functions is either dependant on some state or
-mutates state in some way. For example, given $g(x) = currenttime() \cdot x$,
+mutates state in some way. For example, given $g(x) = currenttime \cdot x$,
 $g(5)$ will yield a different value depending on what time it is called. This
-makes it dependant on some state of the world. Or given the function $x=0, h() =
-x+1$. Then $h()$ will yield $x=1$, $(h \circ h)()$ will yield $x=2$, making it
+makes it dependant on some state of the world. Or given $x=0$, $h()=x+1$. Then
+$h()$ will yield $x=1$ and $(h \circ h)()$ will yield $x=2$, making it
 impure.~\cite{wikipedia_pure}
 
-Functional programming is declarative, meaning that it focuses on expressing
-what the program is, rather than how the program works in a series of steps. 
+\subsubsection{Interpreter pattern}
 
-\subsubsection{Iterator pattern}
+When structuring large functional applications there is no official way to do
+it. A design pattern that we will use for this study is the Interpreter pattern.
+Informally, we can think of it as a way to create smaller composable compilers
+that when added together make one big application. A compiler is a program that
+takes some input, interprets the input and then does some output. A server, for
+example, would take some request, interpret that request and then turn it into a
+response.
+
+\marginnote{{\footnotesize\textbf{Note:} \textit{This part assumes familiarity
+with Haskell and uninitiated can ignore it.}}}
+
+To do this in Haskell we create an Abstract Syntax Tree (AST), using a union
+type, of our program that contains all the available commands that this program
+is capable of doing. Afterwards we create an interpretor of that AST that then
+outputs the program. This allows us to separate effectful code (like output a
+string or send a http request) with the logical instructions. This simplifies
+our testing, since we can make sure that the right instructions is returned when
+testing a function without calling effectful code, like database access. 
+
+\subsection{Free Monads}
+
+Free Monads To give an example, say we want to create an application, a To-do-list. In this
+To-do-list the user should be able to add an item, remove an item and mark an
+item as complete. We then define the union type in
+Figure~\ref{freeunion}.~\cite{Swierstra}
+
+\begin{figure}[H]
+    \begin{lstlisting}
+       data TodoList next
+            = Add Item (Item -> next)
+            | Mark Item next
+            | Remove Item next
+            | End --^ Terminates the program
+    \end{lstlisting}
+    \label{freeunion}
+    \caption{AST for a to-do-list. We can derive a functor instances
+    from ASTs for deriving Free instances.~\cite{commentarycompiler}}
+\end{figure}
+
+This allows us to create a ``domain specific language'' (DSL) for our program.
+So now we can create instructions, for example \texttt{addAndMark item = Add
+item \$ \textbackslash item -> Mark item End}. Then from that we can create an
+interpreter for that DSL. To do so we create a Free Monad instance of our AST.
+In order to instance a Monad we first need a Functor instance, seen in
+Figure~\ref{freefunctor}.
+
+\begin{figure}[H]
+    \begin{lstlisting}
+        instance Functor TodoList where
+          fmap f (Add item k) = 
+            Add item (f . k)
+          fmap f (Mark item next) = 
+            Set item (f next)
+          fmap f End = 
+            End
+    \end{lstlisting}
+    \label{freefunctor}
+    \caption{An Functor instance for Figure~\ref{freeunion}. This can
+    automatically be derived using DeriveFunctor.}
+\end{figure}
+
+
+
 
 \subsection{Object Oriented Programming}\label{oop}
-Uses variables, commands and procedures
+
+Object-oriented programming (OOP) is a programming paradigm based around the
+idea of objects that contain attributes and methods. The general idea is that
+you model the world through objects, where the programming objects represent the
+objects in the real world. A shopping cart might have an object ``Customer'' and
+an object ``Shopping list'', for example. Inheritance is also an important
+concept in OOP, where one object can inherent methods and attributes of another
+object.  For example, given an object Animal with the attributes health and the
+method attack, another object Alligator could inherit those
+properties.~\cite{Gamma:1995:DPE:186897}
 
 \subsubsection{SOLID principles}
+
+If the design of a system is done wrongly, it can lead to rotten design. Martin
+Robert, a software engineer, claims that there are four big indicators of rotten
+design.
+
+First one is rigidity. Rigidity is the tendency for software to be difficult to
+change. This makes it difficult to change non-critical parts of the software and
+what can seem like a quick change takes a long time.
+
+Second is fragility. Fragility is when the software tends to break when doing
+simple changes. It makes the software difficult to maintain, with each fix
+introducing new errors.
+
+Third is immobility. Immobility is when it is impossible to reuse software from
+other projects in the new project. So engineers discover that, even though they
+need the same module that was in another project, too much work is required to
+decouple and separate the desirable parts.
+
+Last is viscosity. Viscosity comes in two forms: the viscosity of the
+environment and the viscosity of the design. When the engineer makes changes
+they are often met with multiple solutions. Some that preserve the design and
+some that are ``hacks''. So the engineer can easily do the wrong thing.
+
+When the compile times are long the engineers will attempt to make changes that
+do not cause long compile times. This leads to viscosity in the environment.
+
+To avoid creating rotten designs, Martin Robert proposes the SOLID guidelines.
+SOLID mnemonic for five design principles to make software more maintainable,
+flexible and understandable. The SOLID guidelines are
+
+\begin{itemize}
+    \item Single responsibility principle. Here, responsibility means ``reason
+        to change''. Modules and classes should have one reason to change and no
+        more.
+    \item Open/Closed principle. States we should write our modules to be
+        extended without modification of the original source code.
+    \item Liskov substitution principle. Given a base class and an derived
+        class derive, the user of a base class should be able to use the derived
+        class and the program should function properly.
+    \item Interface segregation principle. No client should be forced to depend
+        on methods it does not use. The general idea is that you want to split
+        big interfaces to smaller, specific ones.
+    \item Dependency inversion principle. A strategy to avoid making our source
+        code dependent on specific implementations is by using this principle.
+        This allows us, if we depend on one third-party module, to swap that
+        module for another one should we need to. This can be done by creating
+        an abstract interface and then instance that interface with a class that
+        calls the third-party operations.~\cite{martinrobert}
+\end{itemize}
+
+When we compare our solutions we want to test them after principles used in the
+industry, as then we can use the results when making technical decisions for our
+softwares.
 
 \section{Methods}\label{methods}
 
@@ -229,16 +345,17 @@ cyclomatic complexity will always tend to 0 using this definition. So we define
 a different method of calculating the cyclomatic complexity for functional
 programs. 
 
-\theoremstyle{definition}
-\begin{definition}
-    The cyclomatic complexity number, in functional programming, for a function
-    is equal to 1 plus the sum of the left hand side, called LHS, plus the sum
-    of the right hand side, called RHS. RHS is the sum of the number of guards,
+\theoremstyle{definition} 
+    \begin{definition} 
+    The cyclomatic complexity number, in functional programming, is equal to
+    1 plus the sum of the left hand side, called LHS, plus the sum of the
+    right hand side, called RHS. RHS is the sum of the number of guards,
     logical operators, filters in a list comprehension and the pattern
-    complexity in a list comprehension. LHS is equal to the pattern complexity.
-    The pattern complexity is equal to the number of identifiers in the pattern,
-    minus the number of unique identifiers in the pattern plus the number of
-    arguments that are not identifiers. In summary:
+    complexity in a list comprehension. LHS is equal to the pattern
+    complexity.  The pattern complexity is equal to the number of
+    identifiers in the pattern, minus the number of unique identifiers in
+    the pattern plus the number of arguments that are not identifiers. In
+    summary:
 
     \begin{lstlisting}
     Cyclomatic complexity = 1 + LHS + RHS
@@ -273,13 +390,14 @@ seen in Figure~\ref{fig:cyclomaticfunctional} to model our function.
             else 
                 (ys, x:zs)
     \end{lstlisting}
+    \label{split}
     \caption{Recursively split a list into two based on a given condition in
     Haskell. For example \texttt{split (>3) [1,2,3,4,5] =
-    ([4,5],[1,2,3])}.}\label{fig:split}
+    ([4,5],[1,2,3])}.}
 \end{figure}
 
 In Haskell $(x:xs)$ denotes an item $x$ at head of a list of items $xs$. Given
-the Haskell code in Figure~\ref{fig:split}. To calculate LHS we find two
+the Haskell code in Figure~\ref{split}. To calculate LHS we find two
 pattern identifiers which are $onCondition$ and $(x:xs)$. there is one unique
 pattern identifiers which is $(x:xs)$. There is also one non identifier
 which is $[]$. We also find one guard, an if statement, and no
@@ -325,7 +443,7 @@ complexity.~\cite{bergklaas}
         \draw[very thick] (c) to (2, -4.0) to (g) ;
     \end{tikzpicture}
     \label{fig:cyclomaticfunctional}
-    \caption{Flowgraph for split.}
+    \caption{Flowgraph for split function, defined in Figure~\ref{split}.}
 \end{figure}
 
 \subsection{Mental complexity: Cognitive Dimensions}\label{cognitivedimensions}
@@ -353,7 +471,7 @@ How easy is it to navigate the source code to find the parts that you want?
 Are there any architectural decisions that must be made before all the necessary
 decisions have been made? Can we correct those decisions later, how safe is the
 refactoring and how much is needed? If you imagine a word processor which
-required exactly how many pages of text would be used before being written then
+required how many pages of text would be used before being written then
 that would be premature commitment.
 
 \subsubsection{Hidden Dependencies}
@@ -489,11 +607,18 @@ application we will implement the following:
 \end{itemize}    
 
 \section{Results}\label{results}
-We worked so hard, yet achieved very little.
+We worked so hard, yet achieved very little. TODO
 
 \section{Limitations}\label{limitations}
 
+TODO
+
 \subsection{Improvements to implementation}
+TODO
+
+\section{future work}
+\subsection{Relations to cardinality}
+TODO
 
 \bibliographystyle{ieeetr}
 \bibliography{thesis}
