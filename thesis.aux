@@ -6,72 +6,77 @@
 \@writefile{toc}{\contentsline {section}{\numberline {3}Theory}{5}}
 \newlabel{theory}{{3}{5}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Characteristics of Functional Programming}{5}}
-\citation{Swierstra}
-\citation{commentarycompiler}
-\citation{commentarycompiler}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Interpreter pattern}{6}}
-\newmarginnote{note.8.1}{{8}{6038827sp}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Free Monads}{6}}
-\newlabel{freeunion}{{3.2}{6}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces AST for a to-do-list. We can derive a functor instances from ASTs for deriving Free instances.~\cite  {commentarycompiler}}}{6}}
 \citation{Gamma:1995:DPE:186897}
-\newlabel{freefunctor}{{3.2}{7}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces An Functor instance for Figure~\ref  {freeunion}. This can automatically be derived using DeriveFunctor.}}{7}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Object Oriented Programming}{7}}
-\newlabel{oop}{{3.3}{7}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1}SOLID principles}{7}}
+\citation{interpreterpattern}
+\citation{commentarycompiler}
+\citation{commentarycompiler}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Structuring applications: interpreter pattern}{6}}
+\citation{commentarycompiler}
+\newlabel{freeunion}{{3.1.1}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces AST for a to-do-list. We can derive a functor instances from ASTs for deriving Free instances.~\cite  {commentarycompiler}}}{7}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}Free Monads for interpreter pattern}{7}}
+\newmarginnote{note.9.1}{{9}{6038827sp}}
+\citation{freeprogram}
+\newlabel{freefunctor}{{3.1.2}{8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces A Functor instance for Figure~\ref  {freeunion}. This can automatically be derived using DeriveFunctor.}}{8}}
+\citation{Gamma:1995:DPE:186897}
+\newlabel{freeprogram}{{3.1.2}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces An example implementation for our To-do list data type defined in Figure~\ref  {freeunion}.}}{9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Object Oriented Programming}{9}}
+\newlabel{oop}{{3.2}{9}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}SOLID principles}{10}}
 \citation{martinrobert}
 \citation{McCabe}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Methods}{9}}
-\newlabel{methods}{{4}{9}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Measuring testability: Cyclomatic Complexity}{9}}
-\newlabel{cyclomaticcomplexity}{{4.1}{9}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Multi if function foo.}}{9}}
-\newlabel{c1excode}{{3}{9}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Cyclomatic complexity graph for Figure~\ref  {c1excode}}}{10}}
-\newlabel{fig:c1exgraph}{{4}{10}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.1}Cyclomatic Complexity in Functional Programming}{10}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Methods}{11}}
+\newlabel{methods}{{4}{11}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Measuring testability: Cyclomatic Complexity}{11}}
+\newlabel{cyclomaticcomplexity}{{4.1}{11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Multi if function foo.}}{12}}
+\newlabel{c1excode}{{4}{12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Cyclomatic complexity graph for Figure~\ref  {c1excode}}}{12}}
+\newlabel{fig:c1exgraph}{{5}{12}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.1}Cyclomatic Complexity in Functional Programming}{12}}
+\newlabel{split}{{4.1.1}{13}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Recursively split a list into two based on a given condition in Haskell. For example \texttt  {split (>3) [1,2,3,4,5] = ([4,5],[1,2,3])}.}}{13}}
 \citation{bergklaas}
-\newlabel{split}{{4.1.1}{11}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Recursively split a list into two based on a given condition in Haskell. For example \texttt  {split (>3) [1,2,3,4,5] = ([4,5],[1,2,3])}.}}{11}}
-\newlabel{fig:cyclomaticfunctional}{{4.1.1}{12}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Flowgraph for split function, defined in Figure~\ref  {split}.}}{12}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Mental complexity: Cognitive Dimensions}{12}}
-\newlabel{cognitivedimensions}{{4.2}{12}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1}Viscosity}{12}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.2}Visibility}{12}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.3}Premature Commitment}{12}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.4}Hidden Dependencies}{13}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.5}Role-Expressiveness}{13}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.6}Abstraction}{13}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.7}Secondary Notation}{13}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.8}Closeness of Mapping}{13}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.9}Consistency}{13}}
+\newlabel{fig:cyclomaticfunctional}{{4.1.1}{14}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Flowgraph for split function, defined in Figure~\ref  {split}.}}{14}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Mental complexity: Cognitive Dimensions}{14}}
+\newlabel{cognitivedimensions}{{4.2}{14}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1}Viscosity}{14}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.2}Visibility}{15}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.3}Premature Commitment}{15}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.4}Hidden Dependencies}{15}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.5}Role-Expressiveness}{15}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.6}Abstraction}{15}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.7}Secondary Notation}{15}}
 \citation{GREEN1996131}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.10}Diffuseness or terseness}{14}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.11}Hard Mental Operations}{14}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.12}Provisionality}{14}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.13}Progressive Evaluation}{14}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Case studies}{14}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.1}Simplified chess game}{14}}
-\newlabel{chessexample}{{4.3.1}{15}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces An example of the interaction in the chess game.}}{15}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.2}to-do List}{15}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.8}Closeness of Mapping}{16}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.9}Consistency}{16}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.10}Diffuseness or terseness}{16}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.11}Hard Mental Operations}{16}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.12}Provisionality}{16}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.13}Progressive Evaluation}{16}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Case studies}{16}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.1}Simplified chess game}{17}}
+\newlabel{chessexample}{{4.3.1}{17}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces An example of the interaction in the chess game.}}{17}}
 \bibstyle{ieeetr}
 \bibdata{thesis}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.2}to-do List}{18}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.3}Chatbot engine}{18}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Results}{18}}
+\newlabel{results}{{5}{18}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Limitations}{18}}
+\newlabel{limitations}{{6}{18}}
 \bibcite{wikipedia_pure}{1}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.3}Chatbot engine}{16}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Results}{16}}
-\newlabel{results}{{5}{16}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Limitations}{16}}
-\newlabel{limitations}{{6}{16}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Improvements to implementation}{16}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}future work}{16}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Relations to cardinality}{16}}
-\bibcite{Swierstra}{2}
-\bibcite{commentarycompiler}{3}
-\bibcite{Gamma:1995:DPE:186897}{4}
+\bibcite{Gamma:1995:DPE:186897}{2}
+\bibcite{interpreterpattern}{3}
+\bibcite{commentarycompiler}{4}
 \bibcite{martinrobert}{5}
 \bibcite{McCabe}{6}
 \bibcite{bergklaas}{7}
 \bibcite{GREEN1996131}{8}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Improvements to implementation}{19}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}future work}{19}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Relations to cardinality}{19}}

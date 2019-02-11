@@ -11,6 +11,7 @@
 \usepackage{url}
 \usepackage{geometry}
 \usepackage{marginnote}
+\usepackage[autostyle]{csquotes}
 \newtheorem*{definition}{Definition}
 \theoremstyle{definition}
 \newtheorem*{theorem}{Theorem}
@@ -110,8 +111,8 @@ write to get full branch coverage. By looking at the cognitive dimensions,
 described in Section~\ref{cognitivedimensions}, we can find how the two
 approaches affect the mental complexity for the developer. So by looking at
 different case studies this study aims to find if the different software
-paradigms affect the cyclomatic complexity and if there are any cognitive
-benefits to one approach over the other.
+paradigms affect the testability and if there are any cognitive benefits to one
+approach over the other. 
 
 \section{Theory}\label{theory}
 
@@ -136,33 +137,40 @@ makes it dependant on some state of the world. Or given $x=0$, $h()=x+1$. Then
 $h()$ will yield $x=1$ and $(h \circ h)()$ will yield $x=2$, making it
 impure.~\cite{wikipedia_pure}
 
-\subsubsection{Interpreter pattern}
+In OOP we inherit classes that contain methods and
+attributes.~\cite{Gamma:1995:DPE:186897} For functional programs, we instead
+define classes that describe the actions that are possible. For example, a class
+\texttt{Equality} could contain a function \texttt{isEqual} that checks if two
+data classes are equal. Then any data type that implements the interface
+Equality, for example lists or binary trees, would be able to use the function
+isEqual. This is known as type-classes in Haskell, mixins in Javascript or
+Traits in Scala.
+
+So while no exact definition of Functional programming exist, we here define it
+as making functions pure and inheritance being based around functionality rather
+then attributes.
+
+\subsubsection{Structuring applications: interpreter pattern}
 
 When structuring large functional applications there is no official way to do
-it. A design pattern that we will use for this study is the Interpreter pattern.
+it. For this study we will use a design pattern called the Interpreter pattern.
 Informally, we can think of it as a way to create smaller composable compilers
 that when added together make one big application. A compiler is a program that
 takes some input, interprets the input and then does some output. A server, for
 example, would take some request, interpret that request and then turn it into a
-response.
+response. The server could integrate itself with the database, which would take
+some query, interpret that query and then return an
+object.~\cite{interpreterpattern}
 
-\marginnote{{\footnotesize\textbf{Note:} \textit{This part assumes familiarity
-with Haskell and uninitiated can ignore it.}}}
-
-To do this in Haskell we create an Abstract Syntax Tree (AST), using a union
-type, of our program that contains all the available commands that this program
-is capable of doing. Afterwards we create an interpretor of that AST that then
-outputs the program. This allows us to separate effectful code (like output a
-string or send a http request) with the logical instructions. This simplifies
-our testing, since we can make sure that the right instructions is returned when
-testing a function without calling effectful code, like database access. 
-
-\subsection{Free Monads}
-
-Free Monads To give an example, say we want to create an application, a To-do-list. In this
-To-do-list the user should be able to add an item, remove an item and mark an
-item as complete. We then define the union type in
-Figure~\ref{freeunion}.~\cite{Swierstra}
+To implement this pattern in Haskell we create an Abstract Syntax Tree (AST),
+using a union type, of the program that contains all the available commands that
+the program is capable of doing. See Figure~\ref{freeunion} for an example of a
+to-do list AST. Once we have the AST we can encode the logic of the program as
+instructions. Then the final step is to implement an interpreter for the program
+that evaluates those commands. So if we have the commands in
+Figure~\ref{freeunion}, we implement a function \texttt{eval} that takes a
+command and computes some effectful code. The command \texttt{Add Item (Item ->
+next)} could, for example, be executed as add an Item to the database.
 
 \begin{figure}[H]
     \begin{lstlisting}
@@ -177,12 +185,36 @@ Figure~\ref{freeunion}.~\cite{Swierstra}
     from ASTs for deriving Free instances.~\cite{commentarycompiler}}
 \end{figure}
 
-This allows us to create a ``domain specific language'' (DSL) for our program.
-So now we can create instructions, for example \texttt{addAndMark item = Add
-item \$ \textbackslash item -> Mark item End}. Then from that we can create an
-interpreter for that DSL. To do so we create a Free Monad instance of our AST.
-In order to instance a Monad we first need a Functor instance, seen in
-Figure~\ref{freefunctor}.
+
+This allows us to separate effectful code (like output a string or send a http
+request) with the logical instructions. This simplifies our testing, since we
+can hide the environment (for example database) behind an interface that we can
+swap out for testing. So we can implement two interpreter functions, one for our
+real environment and one for testing. 
+
+\subsubsection{Free Monads for interpreter pattern}
+
+\marginnote{{\footnotesize\textbf{Note:} \textit{This part assumes familiarity
+with Haskell and uninitiated can ignore it.}}}
+
+If we implement an interpreter for an AST we will run into the Expression
+problem. The expression problem states:
+
+\blockquote{The goal is to define a data type by cases, where one can add new
+cases to the data type and new functions over the data type, without recompiling
+existing code, and while retaining static type safety.}
+
+This means, if we try to add another operation to our AST we would have to add
+new cases to every function using that data type. For small programs this is not
+a problem but as this scales it could mean adding cases to thousands of
+functions. 
+
+To resolve this we will instance our to-do list as a Free Monad. A Free Monad is
+a Monad that we get ``for free'' if we instance an AST as a Functor. With the
+do-notation a Free Monad gives an interface we can use to write our program. So
+we start off by instancing it as a Functor (example in
+Figure~\ref{freefunctor}). This can also be derived automatically using the
+DeriveFunctor extension.~\cite{commentarycompiler}.
 
 \begin{figure}[H]
     \begin{lstlisting}
@@ -195,12 +227,53 @@ Figure~\ref{freefunctor}.
             End
     \end{lstlisting}
     \label{freefunctor}
-    \caption{An Functor instance for Figure~\ref{freeunion}. This can
+    \caption{A Functor instance for Figure~\ref{freeunion}. This can
     automatically be derived using DeriveFunctor.}
 \end{figure}
 
+From this we can define \texttt{type FreeAST = Free FunctorAst}. Lastly we lift
+all the members of the union type as operations and create an interpreter. See
+Figure~\cite{freeprogram} for a full example.
 
+\begin{figure}[H]
+    \begin{lstlisting}
+        type TodoListF = Free TodoList
 
+        add :: Item -> TodoListF Item
+        add item = 
+            liftF $ Add item id
+        mark :: Item -> TodoListF ()
+        mark item = 
+            liftF $ Mark item ()
+        end :: TodoListF r
+        end = 
+            liftF $ End
+
+        eval :: TodoListF r -> IO r
+        eval (Pure r) = return r
+        eval (Free (Add item next)) = addItemToDb item >>= eval next
+        eval (Free (Mark item next)) = markItem item >> eval next
+        eval (Free End) = exitSuccess
+
+        fakeItem :: Item
+
+        exampleProgram :: TodoListF ()
+        exampleProgram = 
+            do  item <- add fakeItem 
+                mark item 
+                end
+
+        main = 
+            eval exampleProgram
+    \end{lstlisting}
+    \label{freeprogram}
+    \caption{An example implementation for our To-do list data type defined in
+    Figure~\ref{freeunion}.}
+\end{figure}
+
+So to summarize, if we just implement an evaluate function for our AST we run
+into the expression problem. To mitigate this we use Free Monads to define our
+ASTs and to get an interface that we can use with the do-notation. 
 
 \subsection{Object Oriented Programming}\label{oop}
 

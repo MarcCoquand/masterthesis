@@ -4,17 +4,21 @@
 ``Pure function,'' Aug 2018.
 \newblock \url{https://en.wikipedia.org/wiki/Pure_function}, accessed Feb 2019.
 
-\bibitem{Swierstra}
-W.~Swierstra, ``Data types \`{a} la carte,'' {\em J. Funct. Program.}, vol.~18,
-  pp.~423--436, July 2008.
-
-\bibitem{commentarycompiler}
-
-
 \bibitem{Gamma:1995:DPE:186897}
 E.~Gamma, R.~Helm, R.~Johnson, and J.~Vlissides, {\em Design Patterns: Elements
   of Reusable Object-oriented Software}.
 \newblock Boston, MA, USA: Addison-Wesley Longman Publishing Co., Inc., 1995.
+
+\bibitem{interpreterpattern}
+{Source Making}, ``Interpreter design pattern.''
+\newblock \url{https://sourcemaking.com/design_patterns/interpreter}, accessed
+  Feb 2019.
+
+\bibitem{commentarycompiler}
+``Support for deriving functor, foldable, and traversable instances.''
+\newblock
+  \url{https://ghc.haskell.org/trac/ghc/wiki/Commentary/Compiler/DeriveFunctor},
+  accessed Feb 2019.
 
 \bibitem{martinrobert}
 M.~C. Robert, ``Design principles and design patterns,'' September 2015.
