@@ -96,7 +96,8 @@ I want to thank myself for my amazing work. TODO
 \tableofcontents
 \newpage
 
-\chapter{Introduction}
+% Introduction
+\chapter{Software paradigms and complexity}
 This is time for all good men to come to the aid of their party! TODO
 
 \section{Objective}
@@ -115,7 +116,24 @@ different case studies this study aims to find if the different software
 paradigms affect the testability and if there are any cognitive benefits to one
 approach over the other. 
 
-\chapter{Theory}\label{theory}
+% Theory
+\chapter{Definitions}\label{theory}
+
+Software paradigms are ways to construct software. The two we will look at are
+functional programming and object-oriented programming. Historically and today
+OOP has been the most popular language for the commercial software industry.
+Java is an OOP language that is, in February 2019, the most popular language in
+the software industry. Languages that are entirely functional, like Haskell and
+F\#, are less used.~\cite{tiobe} However functional concepts have become more
+popular in multi-paradigm languages like Javascript. For example React, based on
+Functional Reactive Programming~\cite{reactisfrp}, has gained a lot of
+popularity.~\cite{popularityreact} However what are the different paradigms?
+Exact definitions exist of OOP but for functional programming the definition is
+a bit blurry. Both emphasise creating bug free programs but OOP emphasises
+encapsulating state into \textit{objects} and message passing. Functional
+programs emphasise moving state to the edges of the program and using immutable
+data. Immutable data is data whose state can not change once initialized. We
+will define more in detail what both paradigms mean.
 
 \section{Characteristics of Functional Programming}
 
@@ -126,6 +144,7 @@ of what it means, we define functional programming as:
     \item Removing state to the outwards of the program
     \item Make functions pure, produce no side effects
     \item Using trait-based polymorphism rather than class-based
+    \item Make data immutable
 \end{itemize}
 
 When a function is pure it means that calling a function with the same arguments
@@ -194,7 +213,7 @@ database) behind an interface that we can swap out for testing. So we can
 implement two interpreter functions, one for our real environment and one for
 testing. 
 
-\subsection{Free Monads for interpreter pattern}
+\subsection{Extending applications with Free Monads}
 
 \marginnote{{\footnotesize\textbf{Note:} \textit{This part assumes familiarity
 with Haskell and uninitiated can ignore it.}}}
@@ -275,10 +294,11 @@ Figure~\ref{freeprogram} for a full example.
 \end{figure}
 
 So to summarize, if we just implement an evaluate function for our AST we run
-into the expression problem. To mitigate this we use Free Monads to define our
-ASTs and to get an interface that we can use with the do-notation. By using the
-interpreter pattern, our program becomes independent from the environment that
-it runs on. This allows us to easier test all parts of the program.
+into the expression problem. To mitigate this we create Free monads from our
+ASTs and to get an extendable interface that we can use with the do-notation. By
+using the interpreter pattern, our program becomes independent from the
+environment that it runs on. This allows us to easier test all parts of the
+program.
 
 \section{Object Oriented Programming}\label{oop}
 
@@ -352,6 +372,7 @@ testability, it is important that we look at programs that are written in such a
 way that all parts are easy to test. Thus choosing a SOLID architecture for our
 OOP based programs will allow us to make more testable software.
 
+%Method
 \chapter{Measuring testability and complexity}\label{methods}
 
 \section{Measuring testability: Cyclomatic Complexity}\label{cyclomaticcomplexity}
@@ -531,14 +552,14 @@ complexity.~\cite{bergklaas}
 \end{figure}
 
 Cyclomatic complexity allows us to look at programs in a quantitative way to
-look at how many tests we need to write for our programs. A low complexity for a
-program means that less tests have to be written to have full branch coverage.
-It is worth noting that simply because a program has a low cyclomatic complexity
-it does not mean that the program is easier to test. If a program is written in
+find how many tests we need to write for our programs to get full branch
+coverage. A low complexity for a program means that less tests have to be
+written.  Note that simply because a program has a low cyclomatic complexity it
+does not imply that the program is easier to test. If a program is written in
 such a way that it depends heavily on the environment it can also lead to
-difficulty testing. We mitigate this difficulty by choosing a SOLID
-architecture for OOP based programs and the interpreter pattern for functional
-based programs.
+difficulty testing. We mitigate this difficulty by choosing a SOLID architecture
+for OOP based programs and the interpreter pattern for functional based
+programs.
 
 \section{Mental complexity: Cognitive Dimensions}\label{cognitivedimensions}
 
@@ -632,15 +653,17 @@ errors?~\cite{GREEN1996131}\\
     \item Error-proneness 
 \end{itemize}
 
-\noindent We omit the other dimensions as they will not bring much weight.
+\noindent We omit the other dimensions as related work concluded that the other
+dimensions did not bring much weight when evaluating the different
+paradigms.~\cite{euguenkiss}
 
 In summary, cognitive dimensions allow us to look at different aspects of a
-programming language to evaluate how complex they are cognitively.
+programming language to evaluate how complex they are cognitively. 
 
 \section{Case studies}
 
 To compare the different paradigms using Cognitive dimensions and measuring
-Cyclocmatic complexity we will look at three different cases. The cases were
+Cyclomatic complexity we will look at three different cases. The cases were
 chosen based on how they are often subproblems in bigger applications.
 
 \subsubsection*{Simplified chess game}
