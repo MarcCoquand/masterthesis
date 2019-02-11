@@ -3,17 +3,17 @@
 \contentsline {section}{\numberline {1.1}Objective}{3}
 \contentsline {chapter}{\numberline {2}Definitions}{4}
 \contentsline {section}{\numberline {2.1}Characteristics of Functional Programming}{5}
-\contentsline {subsection}{\numberline {2.1.1}Structuring applications: interpreter pattern}{5}
+\contentsline {subsection}{\numberline {2.1.1}Interpreter pattern for testability}{5}
 \contentsline {subsection}{\numberline {2.1.2}Extending applications with Free Monads}{6}
 \contentsline {section}{\numberline {2.2}Object Oriented Programming}{9}
 \contentsline {subsection}{\numberline {2.2.1}SOLID principles}{9}
-\contentsline {chapter}{\numberline {3}Measuring testability and complexity}{11}
-\contentsline {section}{\numberline {3.1}Measuring testability: Cyclomatic Complexity}{11}
-\contentsline {section}{\numberline {3.2}Cyclomatic Complexity in Functional Programming}{12}
-\contentsline {section}{\numberline {3.3}Mental complexity: Cognitive Dimensions}{14}
-\contentsline {section}{\numberline {3.4}Case studies}{17}
-\contentsline {chapter}{\numberline {4}Results}{20}
-\contentsline {section}{\numberline {4.1}Limitations}{20}
-\contentsline {subsection}{\numberline {4.1.1}Improvements to implementation}{20}
-\contentsline {section}{\numberline {4.2}future work}{20}
-\contentsline {subsection}{\numberline {4.2.1}Relations to cardinality}{20}
+\contentsline {chapter}{\numberline {3}Measuring testability and complexity}{12}
+\contentsline {section}{\numberline {3.1}Measuring testability: Cyclomatic Complexity}{13}
+\contentsline {section}{\numberline {3.2}Cyclomatic Complexity in Functional Programming}{14}
+\contentsline {section}{\numberline {3.3}Mental complexity: Cognitive Dimensions}{16}
+\contentsline {section}{\numberline {3.4}Case studies}{19}
+\contentsline {chapter}{\numberline {4}Results}{22}
+\contentsline {section}{\numberline {4.1}Limitations}{22}
+\contentsline {subsection}{\numberline {4.1.1}Improvements to implementation}{22}
+\contentsline {section}{\numberline {4.2}future work}{22}
+\contentsline {subsection}{\numberline {4.2.1}Relations to cardinality}{22}

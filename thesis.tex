@@ -47,7 +47,7 @@
 	\centering
     \null
     \vfill
-    {\Large\itshape Comparing Testability and Usability in Software Paradigms
+    {\Large\itshape Comparing Maintainability in Software Paradigms
     \par}
     \vspace{3.0cm}
 	{\scshape 
@@ -138,14 +138,13 @@ will define more in detail what both paradigms mean.
 
 While paradigms define how we build our applications, we still need design
 patterns for structuring the source code. For instance, without design patterns
-it is possible to couple dependencies with logic. This study will create
-applications specifically for the study itself, which means that maintainability
-is not of high concern. But since the design patterns might affect the metrics
-we will be looking at, we still employ them in this study.  This causes problems
-if we later want to change the dependency since that means we also have to
-change the logic. To increase maintainability, we want to use a design patterns.
-This study will present the patterns for OOP and functional programming in their
-respective section. 
+it is possible to couple dependencies with logic. This causes problems if we
+later want to change the dependency since that means we also have to change the
+logic. To increase maintainability, we want to use design patterns.  This
+study will present the patterns for OOP and functional programming in their
+respective section. When you create applications that you use once then
+maintainability is not of high concern. However since the design patterns might
+affect the metrics we will be looking at, we still employ them in this study.  
 
 \section{Characteristics of Functional Programming}
 
@@ -182,7 +181,7 @@ So while no exact definition of Functional programming exist, we here define it
 as making functions pure and inheritance being based around functionality rather
 then attributes.
 
-\subsection{Structuring applications: interpreter pattern}
+\subsection{Interpreter pattern for testability}
 
 When structuring large functional applications there is no official way to do
 it. For this study we will use a design pattern called the Interpreter pattern.
@@ -330,20 +329,20 @@ If the design of a system is done poorly, it can lead to rotten design. Martin
 Robert, a software engineer, claims that there are four big indicators of rotten
 design.
 
-First one is rigidity. Rigidity is the tendency for software to be difficult to
+\subsubsection*{Rigidity} Rigidity is the tendency for software to be difficult to
 change. This makes it difficult to change non-critical parts of the software and
 what can seem like a quick change takes a long time.
 
-Second is fragility. Fragility is when the software tends to break when doing
+\subsubsection*{Fragility} Fragility is when the software tends to break when doing
 simple changes. It makes the software difficult to maintain, with each fix
 introducing new errors.
 
-Third is immobility. Immobility is when it is impossible to reuse software from
+\subsubsection*{Immobility} Immobility is when it is impossible to reuse software from
 other projects in the new project. So engineers discover that, even though they
 need the same module that was in another project, too much work is required to
 decouple and separate the desirable parts.
 
-Last is viscosity. Viscosity comes in two forms: the viscosity of the
+\subsubsection*{Viscosity} Viscosity comes in two forms: the viscosity of the
 environment and the viscosity of the design. When the engineer makes changes
 they are often met with multiple solutions. Some that preserve the design and
 some that are ``hacks''. So the engineer can easily do the wrong thing.
@@ -386,6 +385,31 @@ OOP based programs will allow us to make more testable software.
 
 %Method
 \chapter{Measuring testability and complexity}\label{methods}
+
+Now that we have the definitions of the software paradigms, we can now look at
+how we can evaluate them in regards of testability and complexity. Since we want
+to find which of the two paradigms allows us to write the most maintainable
+software, it is important that we have testable software so that finding defects
+is easier. While we can not measure testability, by looking at the
+\textit{Cyclomatic complexity} of our software we can find out how many tests
+would be needed to test every possible outcome of the software. It follows then
+that if one of the paradigms have a lower complexity, it would require less
+tests. If less tests need to be written, it is logically sound to assume that
+the amount of lines of code (LOC) for our software would be lower. Lower LOC
+correlates with less defects in software.~\cite{defectloc} 
+
+Looking at the testability of code for maintenance is not enough. While
+testability is an important metric, it can also be important to look at other
+factors like how cognitive complexity affects the maintenance. For instance, a
+program written in the language Whitespace, an esoteric language consisting only
+of whitespace\footnote{Description of Whitespace:
+\url{https://en.wikipedia.org/wiki/Whitespace_(programming_language)}}, could
+have a low LOC and cyclomatic complexity. But for humans knowing only the
+English language, a text consisting of whitespace would be illegible. While
+measuring cognitive complexity is hard, we can use a framework called Cognitive
+dimensions to do a qualitative evaluation of software. We describe this further
+in Section~\ref{cognitivedimensions}.
+
 
 \section{Measuring testability: Cyclomatic Complexity}\label{cyclomaticcomplexity}
 
@@ -452,7 +476,8 @@ v(G)=e-n+p=5-4+2=3$ is the cyclomatic number.
     \caption{Cyclomatic complexity graph for Figure~\ref{c1excode}}\label{fig:c1exgraph}
 \end{figure}
 
-\section{Cyclomatic Complexity in Functional Programming}
+\section{Cyclomatic Complexity in Functional
+Programming}
 
 The definition of cyclomatic complexity in Section~\ref{cyclomaticcomplexity} is
 not ideal for functional programming. Cyclomatic complexity is calculated by

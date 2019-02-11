@@ -43,6 +43,10 @@ M.~C. Robert, ``Design principles and design patterns,'' September 2015.
   \url{https://fi.ort.edu.uy/innovaportal/file/2032/1/design_principles.pdf},
   accessed Feb 2018.
 
+\bibitem{defectloc}
+H.~Zhang, ``An investigation of the relationships between lines of code and
+  defects,'' pp.~274--283, 10 2009.
+
 \bibitem{McCabe}
 T.~J. McCabe, ``A complexity measure,'' in {\em Proceedings of the 2Nd
   International Conference on Software Engineering}, ICSE '76, (Los Alamitos,
