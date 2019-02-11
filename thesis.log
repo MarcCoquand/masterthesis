@@ -1,23 +1,24 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.2.2)  11 FEB 2019 13:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.2.2)  11 FEB 2019 15:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **thesis.tex
 (./thesis.tex
 LaTeX2e <2018-04-01> patch level 5
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
 File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count80
-\c@section=\count81
-\c@subsection=\count82
-\c@subsubsection=\count83
-\c@paragraph=\count84
-\c@subparagraph=\count85
-\c@figure=\count86
-\c@table=\count87
+\c@chapter=\count81
+\c@section=\count82
+\c@subsection=\count83
+\c@subsubsection=\count84
+\c@paragraph=\count85
+\c@subparagraph=\count86
+\c@figure=\count87
+\c@table=\count88
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
@@ -27,23 +28,23 @@ File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-\lst@mode=\count88
+\lst@mode=\count89
 \lst@gtempboxa=\box26
 \lst@token=\toks15
-\lst@length=\count89
+\lst@length=\count90
 \lst@currlwidth=\dimen103
-\lst@column=\count90
-\lst@pos=\count91
+\lst@column=\count91
+\lst@pos=\count92
 \lst@lostspace=\dimen104
 \lst@width=\dimen105
-\lst@newlines=\count92
-\lst@lineno=\count93
+\lst@newlines=\count93
+\lst@lineno=\count94
 \lst@maxwidth=\dimen106
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-\c@lstnumber=\count94
-\lst@skipnumbers=\count95
+\c@lstnumber=\count95
+\lst@skipnumbers=\count96
 \lst@framebox=\box27
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
@@ -79,11 +80,11 @@ Language: english 2017/06/06 v3.3r English support from the babel system
 
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
 File: babel.def 2018/06/05 3.22 Babel common definitions
-\babel@savecnt=\count96
+\babel@savecnt=\count97
 \U@D=\dimen107
 
 (/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
-\bbl@dirlevel=\count97
+\bbl@dirlevel=\count98
 )
 \l@canadian = a dialect from \language\l@american 
 \l@australian = a dialect from \language\l@british 
@@ -151,10 +152,10 @@ ex
 \pgf@yc=\dimen119
 \w@pgf@writea=\write3
 \r@pgf@reada=\read1
-\c@pgf@counta=\count98
-\c@pgf@countb=\count99
-\c@pgf@countc=\count100
-\c@pgf@countd=\count101
+\c@pgf@counta=\count99
+\c@pgf@countb=\count100
+\c@pgf@countc=\count101
+\c@pgf@countd=\count102
 \t@pgf@toka=\toks28
 \t@pgf@tokb=\toks29
 \t@pgf@tokc=\toks30
@@ -173,8 +174,8 @@ File: pgfsys-common-pdf.def 2013/10/10  (rcs-revision 1.13)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
 tex
 File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
-\pgfsyssoftpath@smallbuffer@items=\count102
-\pgfsyssoftpath@bigbuffer@items=\count103
+\pgfsyssoftpath@smallbuffer@items=\count103
+\pgfsyssoftpath@bigbuffer@items=\count104
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
 tex
@@ -204,7 +205,7 @@ Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
 \pgfmath@dimen=\dimen120
-\pgfmath@count=\count104
+\pgfmath@count=\count105
 \pgfmath@box=\box29
 \pgfmath@toks=\toks31
 \pgfmath@stack@operand=\toks32
@@ -228,7 +229,7 @@ tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
 thmetics.code.tex)))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count105
+\c@pgfmathroundto@lastzeros=\count106
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
 x
@@ -266,7 +267,7 @@ File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
 \pgfpic=\box30
 \pgf@hbox=\box31
 \pgf@layerbox@main=\box32
-\pgf@picture@serial@count=\count106
+\pgf@picture@serial@count=\count107
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
 ode.tex
@@ -299,7 +300,7 @@ File: pgfcorearrows.code.tex 2015/05/14  (rcs-revision 1.43)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
 \pgf@max=\dimen144
-\pgf@sys@shading@range@num=\count107
+\pgf@sys@shading@range@num=\count108
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2013/07/15  (rcs-revision 1.18)
@@ -356,7 +357,7 @@ Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
 .code.tex
 File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
-\pgf@plot@mark@count=\count108
+\pgf@plot@mark@count=\count109
 \pgfplotmarksize=\dimen149
 )
 \tikz@lastx=\dimen150
@@ -369,18 +370,18 @@ File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
 \tikz@figbox@bg=\box36
 \tikz@tempbox=\box37
 \tikz@tempbox@bg=\box38
-\tikztreelevel=\count109
-\tikznumberofchildren=\count110
-\tikznumberofcurrentchild=\count111
-\tikz@fig@count=\count112
+\tikztreelevel=\count110
+\tikznumberofchildren=\count111
+\tikznumberofcurrentchild=\count112
+\tikz@fig@count=\count113
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
-\pgfmatrixcurrentrow=\count113
-\pgfmatrixcurrentcolumn=\count114
-\pgf@matrix@numberofcolumns=\count115
+\pgfmatrixcurrentrow=\count114
+\pgfmatrixcurrentcolumn=\count115
+\pgf@matrix@numberofcolumns=\count116
 )
-\tikz@expandcount=\count116
+\tikz@expandcount=\count117
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrarytopaths.code.tex
@@ -405,7 +406,7 @@ Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
 \XKV@toks=\toks36
 \XKV@tempa@toks=\toks37
 )
-\XKV@depth=\count117
+\XKV@depth=\count118
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
@@ -582,7 +583,7 @@ ed on 2003/03/14 v1.2 Experimental NFSS Extensions
 (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-\c@taken=\count118
+\c@taken=\count119
 LaTeX Info: Redefining \itshape on input line 515.
 LaTeX Info: Redefining \scshape on input line 523.
 LaTeX Info: Redefining \upshape on input line 537.
@@ -596,7 +597,7 @@ LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count119
+\c@float@type=\count120
 \float@exts=\toks38
 \float@box=\box39
 \@float@everytoks=\toks39
@@ -619,9 +620,9 @@ Package ifvtex Info: VTeX not detected.
 (/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-\Gm@cnth=\count120
-\Gm@cntv=\count121
-\c@Gm@tempcnt=\count122
+\Gm@cnth=\count121
+\Gm@cntv=\count122
+\c@Gm@tempcnt=\count123
 \Gm@bindingoffset=\dimen157
 \Gm@wd@mp=\dimen158
 \Gm@odd@mp=\dimen159
@@ -634,21 +635,21 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 (/usr/share/texlive/texmf-dist/tex/latex/marginnote/marginnote.sty
 Package: marginnote 2018/08/09 v1.4b non floating margin notes for LaTeX
-\c@mn@abspage=\count123
+\c@mn@abspage=\count124
 )
 (/usr/share/texlive/texmf-dist/tex/latex/csquotes/csquotes.sty
 Package: csquotes 2018/04/13 v5.2d context-sensitive quotations (JAW)
 
 (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2018/02/11 v2.5e e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count124
+\etb@tempcnta=\count125
 )
-\csq@reset=\count125
-\csq@gtype=\count126
-\csq@glevel=\count127
-\csq@qlevel=\count128
-\csq@maxlvl=\count129
-\csq@tshold=\count130
+\csq@reset=\count126
+\csq@gtype=\count127
+\csq@glevel=\count128
+\csq@qlevel=\count129
+\csq@maxlvl=\count130
+\csq@tshold=\count131
 \csq@ltx@everypar=\toks41
 
 (/usr/share/texlive/texmf-dist/tex/latex/csquotes/csquotes.def
@@ -663,7 +664,7 @@ File: csquotes.cfg
 Package csquotes Info: Enabling multilingual quotes.
 )
 
-Package amsthm Warning: Unknown theoremstyle `theorem' on input line 18.
+Package amsthm Warning: Unknown theoremstyle `theorem' on input line 19.
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
@@ -673,45 +674,45 @@ Package csquotes Info: ... found 'babel' package.
  (./thesis.aux)
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 44.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 44.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 45.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 45.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Try loading font information for T1+yrd on input line 44.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Try loading font information for T1+yrd on input line 45.
 
 (/usr/share/texlive/texmf-dist/tex/latex/romande/t1yrd.fd
 File: t1yrd.fd 2010/07/10 Fontinst v1.933 font definitions for T1/yrd.
 )
-\c@lstlisting=\count131
+\c@lstlisting=\count132
 
 ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count132
+\scratchcounter=\count133
 \scratchdimen=\dimen165
 \scratchbox=\box41
-\nofMPsegments=\count133
-\nofMParguments=\count134
+\nofMPsegments=\count134
+\nofMParguments=\count135
 \everyMPshowfont=\toks42
-\MPscratchCnt=\count135
+\MPscratchCnt=\count136
 \MPscratchDim=\dimen166
-\MPnumerator=\count136
-\makeMPintoPDFobject=\count137
+\MPnumerator=\count137
+\makeMPintoPDFobject=\count138
 \everyMPtoPDFconversion=\toks43
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -802,134 +803,153 @@ e
 [1
 
 {/usr/share/texlive/texmf-dist/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Font shape `T1/yrd/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/yrd/b/n' tried instead on input line 74.
-LaTeX Font Info:    Font shape `T1/yrd/b/n' in size <10.95> not available
-(Font)              Font shape `T1/yrd/db/n' tried instead on input line 74.
+LaTeX Font Info:    Font shape `T1/yrd/bx/n' in size <12> not available
+(Font)              Font shape `T1/yrd/b/n' tried instead on input line 75.
+LaTeX Font Info:    Font shape `T1/yrd/b/n' in size <12> not available
+(Font)              Font shape `T1/yrd/db/n' tried instead on input line 75.
  [1
 
 
 ]
 Package marginnote Info: Using workaround for absolute page number on input lin
-e 85.
+e 84.
 LaTeX Font Info:    Font shape `T1/yrd/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/yrd/b/n' tried instead on input line 88.
+(Font)              Font shape `T1/yrd/b/n' tried instead on input line 89.
 LaTeX Font Info:    Font shape `T1/yrd/b/n' in size <17.28> not available
-(Font)              Font shape `T1/yrd/db/n' tried instead on input line 88.
+(Font)              Font shape `T1/yrd/db/n' tried instead on input line 89.
 
-[2
+[1
 
-] (./thesis.toc
-LaTeX Font Info:    Font shape `T1/yrd/bx/n' in size <12> not available
-(Font)              Font shape `T1/yrd/b/n' tried instead on input line 2.
-LaTeX Font Info:    Font shape `T1/yrd/b/n' in size <12> not available
-(Font)              Font shape `T1/yrd/db/n' tried instead on input line 2.
+]
+Package marginnote Info: Using workaround for absolute page number on input lin
+e 93.
+LaTeX Font Info:    Font shape `T1/yrd/bx/n' in size <24.88> not available
+(Font)              Font shape `T1/yrd/b/n' tried instead on input line 96.
+LaTeX Font Info:    Font shape `T1/yrd/b/n' in size <24.88> not available
+(Font)              Font shape `T1/yrd/db/n' tried instead on input line 96.
+ (./thesis.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 5.
+(Font)              <12> on input line 3.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 5.
+(Font)              <8> on input line 3.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 5.
+(Font)              <6> on input line 3.
 )
 \tf@toc=\write4
 \openout4 = `thesis.toc'.
 
- [3
+ [2
+
 
 ]
-LaTeX Font Info:    Font shape `T1/yrd/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/yrd/b/n' tried instead on input line 119.
-LaTeX Font Info:    Font shape `T1/yrd/b/n' in size <14.4> not available
-(Font)              Font shape `T1/yrd/db/n' tried instead on input line 119.
-LaTeX Font Info:    Try loading font information for TS1+yrd on input line 125.
+Chapter 1.
+[3
 
+]
+Chapter 2.
+LaTeX Font Info:    Try loading font information for TS1+yrd on input line 126.
 
 (/usr/share/texlive/texmf-dist/tex/latex/romande/ts1yrd.fd
 File: ts1yrd.fd 2010/07/10 Fontinst v1.933 font definitions for TS1/yrd.
-) [4]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 143.
+)
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 144.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-) [5]
-Package marginnote Info: Margin note 8.1 is on absolute page 8 on input line 20
-0.
-Package marginnote Info: right page because not two side mode on input line 200
+) [4
+
+] [5]
+Package marginnote Info: Margin note 10.1 is on absolute page 10 on input line 
+201.
+Package marginnote Info: right page because not two side mode on input line 201
 .
-Package marginnote Info: xpos seems to be 92.14519pt on input line 200.
+Package marginnote Info: xpos seems to be 92.14519pt on input line 201.
 LaTeX Font Info:    Font shape `T1/yrd/bx/n' in size <10> not available
-(Font)              Font shape `T1/yrd/b/n' tried instead on input line 200.
+(Font)              Font shape `T1/yrd/b/n' tried instead on input line 201.
 LaTeX Font Info:    Font shape `T1/yrd/b/n' in size <10> not available
-(Font)              Font shape `T1/yrd/db/n' tried instead on input line 200.
- [6]
-
-LaTeX Warning: Citation `freeprogram' on page 7 undefined on input line 237.
-
+(Font)              Font shape `T1/yrd/db/n' tried instead on input line 201.
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 254.
-[7]
-Overfull \hbox (8.82184pt too wide) in paragraph at lines 283--292
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 255.
+ [6]
+Overfull \hbox (8.82184pt too wide) in paragraph at lines 285--294
 \T1/yrd/m/n/12 Object-oriented pro-gram-ming (OOP) is a pro-gram-ming paradigm 
 based around
  []
 
-[8] [9] [10]
+[7]
+LaTeX Font Info:    Font shape `T1/yrd/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/yrd/b/n' tried instead on input line 295.
+LaTeX Font Info:    Font shape `T1/yrd/b/n' in size <14.4> not available
+(Font)              Font shape `T1/yrd/db/n' tried instead on input line 295.
+ [8] [9]
+Chapter 3.
+[10
+
+]
 Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
- [11] [12]
 Missing character: There is no ; in font nullfont!
 
-Underfull \hbox (badness 2809) in paragraph at lines 504--504
+Overfull \hbox (7.47284pt too wide) in paragraph at lines 422--422
+[]\T1/yrd/db/n/17.28 Cyclomatic Com-plex-ity in Func-tional Pro-gram-
+ []
+
+[11] [12]
+Missing character: There is no ; in font nullfont!
+
+Underfull \hbox (badness 2809) in paragraph at lines 507--507
  [][][][]\T1/cmtt/m/n/12 []
  []
 
-[13] [14] [15]
-Underfull \hbox (badness 10000) in paragraph at lines 615--618
+[13] [14]
+Underfull \hbox (badness 10000) in paragraph at lines 618--621
 
  []
 
-[16] [17] [18] (./thesis.bbl
+[15] [16] [17] [18]
+Chapter 4.
+(./thesis.bbl [19
+
+]
 Underfull \hbox (badness 2253) in paragraph at lines 4--6
 []\T1/yrd/m/n/12 ``Pure func-tion,'' Aug 2018.  $\T1/cmtt/m/n/12 https : / / en
  . wikipedia . org / wiki / Pure _
  []
 
-[19]
+
 Underfull \hbox (badness 7326) in paragraph at lines 18--22
 []\T1/yrd/m/n/12 ``Support for de-riv-ing func-tor, fold-able, and traversable 
 in-
  []
 
-) [20] (./thesis.aux)
+) [20
 
-LaTeX Warning: There were undefined references.
-
- ) 
+] (./thesis.aux) ) 
 Here is how much of TeX's memory you used:
- 17350 strings out of 492701
- 320023 string characters out of 6134505
- 456766 words of memory out of 5000000
- 20868 multiletter control sequences out of 15000+600000
- 82678 words of font info for 55 fonts, out of 8000000 for 9000
+ 17365 strings out of 492701
+ 320192 string characters out of 6134505
+ 459111 words of memory out of 5000000
+ 20883 multiletter control sequences out of 15000+600000
+ 87990 words of font info for 56 fonts, out of 8000000 for 9000
  1137 hyphenation exceptions out of 8191
- 55i,8n,95p,831b,1695s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr
-/share/texlive/texmf-dist/fonts/enc/dvips/romande/ts1-euro-yrd.enc}{/usr/share/
-texlive/texmf-dist/fonts/enc/dvips/romande/t1-romandeadf.enc}</usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/cm-super/sfit1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/cm-super/sftt1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/c
-m-super/sftt1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/arkandis/romand
-e/yrdd8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/arkandis/romande/yrdr8a
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/arkandis/romande/yrdrc8a.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/arkandis/romande/yrdri8a.pfb>
-Output written on thesis.pdf (21 pages, 248554 bytes).
+ 55i,8n,95p,831b,1228s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-su
+per-t1.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/romande/ts1-euro-yrd.
+enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/romande/t1-romandeadf.enc}</
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/cm-super/sfit1000.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/cm-super/sftt1200.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/arkandis/romande/yrdd8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/arkandi
+s/romande/yrdr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/arkandis/romand
+e/yrdrc8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/arkandis/romande/yrdri
+8a.pfb>
+Output written on thesis.pdf (22 pages, 249239 bytes).
 PDF statistics:
- 120 PDF objects out of 1000 (max. 8388607)
- 86 compressed objects within 1 object stream
+ 123 PDF objects out of 1000 (max. 8388607)
+ 88 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

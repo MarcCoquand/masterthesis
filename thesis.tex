@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+\documentclass[12pt]{report}
 \usepackage{listings}
 \usepackage{amsthm}
 \usepackage[utf8]{inputenc}
@@ -11,6 +11,7 @@
 \usepackage{url}
 \usepackage{geometry}
 \usepackage{marginnote}
+\usepackage{url}
 \usepackage[autostyle]{csquotes}
 \newtheorem*{definition}{Definition}
 \theoremstyle{definition}
@@ -95,7 +96,7 @@ I want to thank myself for my amazing work. TODO
 \tableofcontents
 \newpage
 
-\section{Introduction}
+\chapter{Introduction}
 This is time for all good men to come to the aid of their party! TODO
 
 \section{Objective}
@@ -114,9 +115,9 @@ different case studies this study aims to find if the different software
 paradigms affect the testability and if there are any cognitive benefits to one
 approach over the other. 
 
-\section{Theory}\label{theory}
+\chapter{Theory}\label{theory}
 
-\subsection{Characteristics of Functional Programming}
+\section{Characteristics of Functional Programming}
 
 Functional programming is a software paradigm. While different definitions exist
 of what it means, we define functional programming as:
@@ -150,7 +151,7 @@ So while no exact definition of Functional programming exist, we here define it
 as making functions pure and inheritance being based around functionality rather
 then attributes.
 
-\subsubsection{Structuring applications: interpreter pattern}
+\subsection{Structuring applications: interpreter pattern}
 
 When structuring large functional applications there is no official way to do
 it. For this study we will use a design pattern called the Interpreter pattern.
@@ -193,7 +194,7 @@ database) behind an interface that we can swap out for testing. So we can
 implement two interpreter functions, one for our real environment and one for
 testing. 
 
-\subsubsection{Free Monads for interpreter pattern}
+\subsection{Free Monads for interpreter pattern}
 
 \marginnote{{\footnotesize\textbf{Note:} \textit{This part assumes familiarity
 with Haskell and uninitiated can ignore it.}}}
@@ -210,12 +211,12 @@ new cases to every function using that data type. For small programs this is not
 a problem but as this scales it could mean adding cases to thousands of
 functions. 
 
-To resolve this we will instance our to-do list as a Free Monad. A Free Monad is
-a Monad that we get ``for free'' if we instance an AST as a Functor. With the
+To resolve this we will create a Free Monad for our AST. A Free Monad is a Monad
+that we get ``for free'' if we instance an AST as a Functor. With the
 do-notation a Free Monad gives an interface we can use to write our program. So
 we start off by instancing it as a Functor (example in
-Figure~\ref{freefunctor}). This can also be derived automatically using the
-DeriveFunctor extension.~\cite{commentarycompiler}.
+Figure~\ref{freefunctor}). Functors for ASTs can automatically be derived using
+the DeriveFunctor extension.~\cite{commentarycompiler}
 
 \begin{figure}[H]
     \begin{lstlisting}
@@ -234,7 +235,7 @@ DeriveFunctor extension.~\cite{commentarycompiler}.
 
 From this we can define \texttt{type FreeAST = Free FunctorAst}. Lastly we lift
 all the members of the union type as operations and create an interpreter. See
-Figure~\cite{freeprogram} for a full example.
+Figure~\ref{freeprogram} for a full example.
 
 \begin{figure}[H]
     \begin{lstlisting}
@@ -267,9 +268,10 @@ Figure~\cite{freeprogram} for a full example.
         main = 
             eval exampleProgram
     \end{lstlisting}
-    \label{freeprogram}
     \caption{An example implementation for our To-do list data type defined in
-    Figure~\ref{freeunion}.}
+    Figure~\ref{freeunion}. Requires the haskell package ``free''
+    (\protect\url{hackage.haskell.org/package/free-5.1})}
+    \label{freeprogram}
 \end{figure}
 
 So to summarize, if we just implement an evaluate function for our AST we run
@@ -278,7 +280,7 @@ ASTs and to get an interface that we can use with the do-notation. By using the
 interpreter pattern, our program becomes independent from the environment that
 it runs on. This allows us to easier test all parts of the program.
 
-\subsection{Object Oriented Programming}\label{oop}
+\section{Object Oriented Programming}\label{oop}
 
 Object-oriented programming (OOP) is a programming paradigm based around the
 idea of objects that contain attributes and methods. The general idea is that
@@ -290,9 +292,9 @@ object.  For example, given an object Animal with the attributes health and the
 method attack, another object Alligator could inherit those
 properties.~\cite{Gamma:1995:DPE:186897}
 
-\subsubsection{SOLID principles}
+\subsection{SOLID principles}
 
-If the design of a system is done wrongly, it can lead to rotten design. Martin
+If the design of a system is done poorly, it can lead to rotten design. Martin
 Robert, a software engineer, claims that there are four big indicators of rotten
 design.
 
@@ -350,9 +352,9 @@ testability, it is important that we look at programs that are written in such a
 way that all parts are easy to test. Thus choosing a SOLID architecture for our
 OOP based programs will allow us to make more testable software.
 
-\section{Methods}\label{methods}
+\chapter{Measuring testability and complexity}\label{methods}
 
-\subsection{Measuring testability: Cyclomatic Complexity}\label{cyclomaticcomplexity}
+\section{Measuring testability: Cyclomatic Complexity}\label{cyclomaticcomplexity}
 
 Cyclomatic complexity is a complexity measure that allows us to measure the
 amount of paths through a program. The Cyclomatic complexity number is an upper
@@ -373,11 +375,12 @@ maximum number of linearly independent circuits.~\cite{McCabe}
 Informally, we can think of cyclomatic complexity as a way to measure the amount
 tests a program needs to reach full branch coverage. We construct a graph that
 branches out based on when the control flow in our source code branches out. For
-example, given \texttt{f(bool) = if bool then 1; else 2}, the function
-\texttt{f} will either be 1 or 2. The function \texttt{f} will need two tests in
-order to have full code coverage. The cyclomatic complexity in this case is 2.
-The nodes of the graph represents processing tasks and edges represent control
-flow between the nodes. 
+example, given \texttt{f(bool) = if bool then ``hello''; else ``hola''} the
+function \texttt{f} will either evaluate to ``hello'' or ``hola''. To get full
+branch coverage for \texttt{f} we will therefore need two tests. The cyclomatic
+complexity then becomes 2. If we construct a graph for the control flow of our
+program, the nodes of the graph would represent processing tasks and edges
+represent control flow between the nodes. 
 
 \begin{figure}[H]
     \begin{lstlisting}
@@ -416,7 +419,7 @@ v(G)=e-n+p=5-4+2=3$ is the cyclomatic number.
     \caption{Cyclomatic complexity graph for Figure~\ref{c1excode}}\label{fig:c1exgraph}
 \end{figure}
 
-\subsubsection{Cyclomatic Complexity in Functional Programming}
+\section{Cyclomatic Complexity in Functional Programming}
 
 The definition of cyclomatic complexity in Section~\ref{cyclomaticcomplexity} is
 not ideal for functional programming. Cyclomatic complexity is calculated by
@@ -537,7 +540,7 @@ difficulty testing. We mitigate this difficulty by choosing a SOLID
 architecture for OOP based programs and the interpreter pattern for functional
 based programs.
 
-\subsection{Mental complexity: Cognitive Dimensions}\label{cognitivedimensions}
+\section{Mental complexity: Cognitive Dimensions}\label{cognitivedimensions}
 
 Cognitive Dimensions is a framework for evaluating the usability of programming
 languages and to find areas of improvements. Used as an approach to analyse the
@@ -634,13 +637,13 @@ errors?~\cite{GREEN1996131}\\
 In summary, cognitive dimensions allow us to look at different aspects of a
 programming language to evaluate how complex they are cognitively.
 
-\subsection{Case studies}
+\section{Case studies}
 
 To compare the different paradigms using Cognitive dimensions and measuring
 Cyclocmatic complexity we will look at three different cases. The cases were
 chosen based on how they are often subproblems in bigger applications.
 
-\subsubsection{Simplified chess game}
+\subsubsection*{Simplified chess game}
 
 Chess is a famous game and assumed that the reader know how it works. Aim
 is to implement a simplified variant of it. This is not ordinary chess but a
@@ -686,7 +689,7 @@ Figure~\ref{chessexample}.
 \end{figure}
 
 
-\subsubsection{to-do List}
+\subsubsection*{to-do List}
 
 A common task in programming is to create some kind of data store with
 information. A to-do list is a minimal example of that. It consists of a list of
@@ -703,7 +706,7 @@ The interface to this program will be a text interface, displaying each item in
 the todo list. To navigate and mark an item in the list the user presses up and
 down and presses \texttt{x} to mark it.
 
-\subsubsection{Chatbot engine}
+\subsubsection*{Chatbot engine}
 
 Oftentimes when developing applications we have to deal with complex information
 input. One of those cases is when we have chat bots. Chat bots are interactive
@@ -713,10 +716,16 @@ application we will implement the following:
 \begin{itemize}
     \item Interpretor that can handle semi-complex inputs and deal with errors.
     \item Give answers to those inputs in form of text messages.
-\end{itemize}    
+\end{itemize}
 
+\noindent Once these programs have been constructed we can evaluate the
+cyclomatic complexity by summing the cyclomatic complexity of each function. We
+can also evaluate the cognitive complexity using the cognitive dimensions
+framework. Thus we get can see if smaller subproblems in big applications
+require more tests and have a bigger mental complexity depending on the different
+paradigms.
 
-\section{Results}\label{results}
+\chapter{Results}\label{results}
 We worked so hard, yet achieved very little. TODO
 
 \section{Limitations}\label{limitations}

@@ -1,22 +1,19 @@
 \babel@toc {english}{}
-\contentsline {section}{\numberline {1}Introduction}{4}
-\contentsline {section}{\numberline {2}Objective}{4}
-\contentsline {section}{\numberline {3}Theory}{4}
-\contentsline {subsection}{\numberline {3.1}Characteristics of Functional Programming}{4}
-\contentsline {subsubsection}{\numberline {3.1.1}Structuring applications: interpreter pattern}{5}
-\contentsline {subsubsection}{\numberline {3.1.2}Free Monads for interpreter pattern}{6}
-\contentsline {subsection}{\numberline {3.2}Object Oriented Programming}{9}
-\contentsline {subsubsection}{\numberline {3.2.1}SOLID principles}{9}
-\contentsline {section}{\numberline {4}Methods}{10}
-\contentsline {subsection}{\numberline {4.1}Measuring testability: Cyclomatic Complexity}{10}
-\contentsline {subsubsection}{\numberline {4.1.1}Cyclomatic Complexity in Functional Programming}{12}
-\contentsline {subsection}{\numberline {4.2}Mental complexity: Cognitive Dimensions}{14}
-\contentsline {subsection}{\numberline {4.3}Case studies}{17}
-\contentsline {subsubsection}{\numberline {4.3.1}Simplified chess game}{17}
-\contentsline {subsubsection}{\numberline {4.3.2}to-do List}{18}
-\contentsline {subsubsection}{\numberline {4.3.3}Chatbot engine}{19}
-\contentsline {section}{\numberline {5}Results}{19}
-\contentsline {section}{\numberline {6}Limitations}{19}
-\contentsline {subsection}{\numberline {6.1}Improvements to implementation}{19}
-\contentsline {section}{\numberline {7}future work}{19}
-\contentsline {subsection}{\numberline {7.1}Relations to cardinality}{19}
+\contentsline {chapter}{\numberline {1}Introduction}{3}
+\contentsline {section}{\numberline {1.1}Objective}{3}
+\contentsline {chapter}{\numberline {2}Theory}{4}
+\contentsline {section}{\numberline {2.1}Characteristics of Functional Programming}{4}
+\contentsline {subsubsection}{Structuring applications: interpreter pattern}{5}
+\contentsline {subsubsection}{Free Monads for interpreter pattern}{6}
+\contentsline {section}{\numberline {2.2}Object Oriented Programming}{8}
+\contentsline {subsection}{\numberline {2.2.1}SOLID principles}{8}
+\contentsline {chapter}{\numberline {3}Measuring testability and complexity}{10}
+\contentsline {section}{\numberline {3.1}Measuring testability: Cyclomatic Complexity}{10}
+\contentsline {section}{\numberline {3.2}Cyclomatic Complexity in Functional Programming}{11}
+\contentsline {section}{\numberline {3.3}Mental complexity: Cognitive Dimensions}{13}
+\contentsline {section}{\numberline {3.4}Case studies}{16}
+\contentsline {chapter}{\numberline {4}Results}{19}
+\contentsline {section}{\numberline {4.1}Limitations}{19}
+\contentsline {subsection}{\numberline {4.1.1}Improvements to implementation}{19}
+\contentsline {section}{\numberline {4.2}future work}{19}
+\contentsline {subsection}{\numberline {4.2.1}Relations to cardinality}{19}
