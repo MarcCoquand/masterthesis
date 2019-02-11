@@ -1,35 +1,22 @@
 \babel@toc {english}{}
-\contentsline {section}{\numberline {1}Introduction}{5}
-\contentsline {section}{\numberline {2}Objective}{5}
-\contentsline {section}{\numberline {3}Theory}{5}
-\contentsline {subsection}{\numberline {3.1}Characteristics of Functional Programming}{5}
-\contentsline {subsubsection}{\numberline {3.1.1}Structuring applications: interpreter pattern}{6}
-\contentsline {subsubsection}{\numberline {3.1.2}Free Monads for interpreter pattern}{7}
+\contentsline {section}{\numberline {1}Introduction}{4}
+\contentsline {section}{\numberline {2}Objective}{4}
+\contentsline {section}{\numberline {3}Theory}{4}
+\contentsline {subsection}{\numberline {3.1}Characteristics of Functional Programming}{4}
+\contentsline {subsubsection}{\numberline {3.1.1}Structuring applications: interpreter pattern}{5}
+\contentsline {subsubsection}{\numberline {3.1.2}Free Monads for interpreter pattern}{6}
 \contentsline {subsection}{\numberline {3.2}Object Oriented Programming}{9}
-\contentsline {subsubsection}{\numberline {3.2.1}SOLID principles}{10}
-\contentsline {section}{\numberline {4}Methods}{11}
-\contentsline {subsection}{\numberline {4.1}Measuring testability: Cyclomatic Complexity}{11}
+\contentsline {subsubsection}{\numberline {3.2.1}SOLID principles}{9}
+\contentsline {section}{\numberline {4}Methods}{10}
+\contentsline {subsection}{\numberline {4.1}Measuring testability: Cyclomatic Complexity}{10}
 \contentsline {subsubsection}{\numberline {4.1.1}Cyclomatic Complexity in Functional Programming}{12}
 \contentsline {subsection}{\numberline {4.2}Mental complexity: Cognitive Dimensions}{14}
-\contentsline {subsubsection}{\numberline {4.2.1}Viscosity}{14}
-\contentsline {subsubsection}{\numberline {4.2.2}Visibility}{15}
-\contentsline {subsubsection}{\numberline {4.2.3}Premature Commitment}{15}
-\contentsline {subsubsection}{\numberline {4.2.4}Hidden Dependencies}{15}
-\contentsline {subsubsection}{\numberline {4.2.5}Role-Expressiveness}{15}
-\contentsline {subsubsection}{\numberline {4.2.6}Abstraction}{15}
-\contentsline {subsubsection}{\numberline {4.2.7}Secondary Notation}{15}
-\contentsline {subsubsection}{\numberline {4.2.8}Closeness of Mapping}{16}
-\contentsline {subsubsection}{\numberline {4.2.9}Consistency}{16}
-\contentsline {subsubsection}{\numberline {4.2.10}Diffuseness or terseness}{16}
-\contentsline {subsubsection}{\numberline {4.2.11}Hard Mental Operations}{16}
-\contentsline {subsubsection}{\numberline {4.2.12}Provisionality}{16}
-\contentsline {subsubsection}{\numberline {4.2.13}Progressive Evaluation}{16}
-\contentsline {subsection}{\numberline {4.3}Case studies}{16}
+\contentsline {subsection}{\numberline {4.3}Case studies}{17}
 \contentsline {subsubsection}{\numberline {4.3.1}Simplified chess game}{17}
 \contentsline {subsubsection}{\numberline {4.3.2}to-do List}{18}
-\contentsline {subsubsection}{\numberline {4.3.3}Chatbot engine}{18}
-\contentsline {section}{\numberline {5}Results}{18}
-\contentsline {section}{\numberline {6}Limitations}{18}
+\contentsline {subsubsection}{\numberline {4.3.3}Chatbot engine}{19}
+\contentsline {section}{\numberline {5}Results}{19}
+\contentsline {section}{\numberline {6}Limitations}{19}
 \contentsline {subsection}{\numberline {6.1}Improvements to implementation}{19}
 \contentsline {section}{\numberline {7}future work}{19}
 \contentsline {subsection}{\numberline {7.1}Relations to cardinality}{19}

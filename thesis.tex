@@ -186,11 +186,12 @@ next)} could, for example, be executed as add an Item to the database.
 \end{figure}
 
 
-This allows us to separate effectful code (like output a string or send a http
-request) with the logical instructions. This simplifies our testing, since we
-can hide the environment (for example database) behind an interface that we can
-swap out for testing. So we can implement two interpreter functions, one for our
-real environment and one for testing. 
+Hiding the implementation behind an AST allows us to separate effectful code
+(like output a string or send a http request) with the logical instructions.
+This simplifies our testing, since we can hide the environment (for example
+database) behind an interface that we can swap out for testing. So we can
+implement two interpreter functions, one for our real environment and one for
+testing. 
 
 \subsubsection{Free Monads for interpreter pattern}
 
@@ -273,7 +274,9 @@ Figure~\cite{freeprogram} for a full example.
 
 So to summarize, if we just implement an evaluate function for our AST we run
 into the expression problem. To mitigate this we use Free Monads to define our
-ASTs and to get an interface that we can use with the do-notation. 
+ASTs and to get an interface that we can use with the do-notation. By using the
+interpreter pattern, our program becomes independent from the environment that
+it runs on. This allows us to easier test all parts of the program.
 
 \subsection{Object Oriented Programming}\label{oop}
 
@@ -340,7 +343,12 @@ flexible and understandable. The SOLID guidelines are
 
 When we compare our solutions we want to test them after principles used in the
 industry, as then we can use the results when making technical decisions for our
-softwares.
+softwares. Using a SOLID architecture also helps us make programs that are not
+as dependent on the environments, making them easier to test (as we can swap the
+production environment to a test environment). When we investigate the
+testability, it is important that we look at programs that are written in such a
+way that all parts are easy to test. Thus choosing a SOLID architecture for our
+OOP based programs will allow us to make more testable software.
 
 \section{Methods}\label{methods}
 
@@ -519,84 +527,112 @@ complexity.~\cite{bergklaas}
     \caption{Flowgraph for split function, defined in Figure~\ref{split}.}
 \end{figure}
 
+Cyclomatic complexity allows us to look at programs in a quantitative way to
+look at how many tests we need to write for our programs. A low complexity for a
+program means that less tests have to be written to have full branch coverage.
+It is worth noting that simply because a program has a low cyclomatic complexity
+it does not mean that the program is easier to test. If a program is written in
+such a way that it depends heavily on the environment it can also lead to
+difficulty testing. We mitigate this difficulty by choosing a SOLID
+architecture for OOP based programs and the interpreter pattern for functional
+based programs.
+
 \subsection{Mental complexity: Cognitive Dimensions}\label{cognitivedimensions}
 
 Cognitive Dimensions is a framework for evaluating the usability of programming
 languages and to find areas of improvements. Used as an approach to analyse the
 quality of a design, it also allows to explore what future designs could be
 possible. As part of the Cognitive Dimensions, 14 different Cognitive Dimensions
-of Notation exist. A notation depends on the specific context, in this case will
-be the languages themselves and their architecture.
+of Notation exist. A notation depends on the specific context, in this case the
+notation is the languages themselves and their architecture. The author of the
+framework recommends omitting the dimensions that are not applicable to the
+notation. We give a brief description of the dimensions.
 
-\subsubsection{Viscosity}
+\subsubsection*{Viscosity}
 
 How much work does it take to make small changes? How easy is the code to
 refactor? If small changes requires consequent adjustments then that is a
 problem. As a viscous system cause a lot more work for the user and break the
 line of thought.
 
-\subsubsection{Visibility}
+\subsubsection*{Visibility}
 
 How easy is it to navigate the source code to find the parts that you want?
 
-\subsubsection{Premature Commitment}
-
-Are there any architectural decisions that must be made before all the necessary
-decisions have been made? Can we correct those decisions later, how safe is the
-refactoring and how much is needed? If you imagine a word processor which
-required how many pages of text would be used before being written then
-that would be premature commitment.
-
-\subsubsection{Hidden Dependencies}
+\subsubsection*{Hidden dependencies}
 
 Are there hidden dependencies in the source code. Does a change in one part of
 the source code lead to unexpected consequences in another part of the code.
 Every dependency that matters to the user should be accessible in both
 directions. 
 
-\subsubsection{Role-Expressiveness}
+\subsubsection*{Role-expressiveness}
 
 How obvious is each sub-component of the source code to the solution as a whole?
 
-\subsubsection{Abstraction}
+\subsubsection*{Abstraction}
 
 What are the levels of abstraction in the source code? Can the details be
 encapsulated?
 
-\subsubsection{Secondary Notation}
+\subsubsection*{Secondary notation}
 
 Are there any extra information being conveyed to the user in the source code?
 
-\subsubsection{Closeness of Mapping}
+\subsubsection*{Closeness of mapping}
 
 By looking at the source code, how close do we find it to be to the case
 we are solving?
 
-\subsubsection{Consistency}
+\subsubsection*{Consistency}
 
 Once Object-oriented procedural programming and Functional programming has been
 learned. How much of the rest can the user guess successfully? 
 
-\subsubsection{Diffuseness or terseness}
+\subsubsection*{Diffuseness or terseness}
 
 How much space and symbols does the source code need to produce a certain result
 or express a meaning?
 
-\subsubsection{Hard Mental Operations}
+\subsubsection*{Hard mental operations}
 
 Where does the hard mental processing lie? Is it more when writing the source
 code itself rather than solving the case, I.E. the semantic level? Do you
 sometimes need to resort to pen and paper to keep track of what is happening?
 
-\subsubsection{Provisionality}
+\subsubsection*{Provisionality}
 
 How easy is it to get feedback of something before you have completed the entire
 system?
 
-\subsubsection{Progressive Evaluation}
+\subsubsection*{Progressive evaluation}
 
 How obvious the role of each component of the source code in the solution as a
-whole?~\cite{GREEN1996131}
+whole?
+
+\subsubsection*{Error proneness}
+
+To what extent does the software paradigm and language help minimise errors? Are
+there any structures or complexities that lead to it being easier to make
+errors?~\cite{GREEN1996131}\\
+
+\noindent For this study we will investigate the following dimensions: 
+
+\begin{itemize}
+    \item Diffuseness or terseness
+    \item Progressive evaluation
+    \item Closeness of mapping
+    \item Hard Mental Operations
+    \item Visibility
+    \item Hidden dependencies
+    \item Abstraction
+    \item Error-proneness 
+\end{itemize}
+
+\noindent We omit the other dimensions as they will not bring much weight.
+
+In summary, cognitive dimensions allow us to look at different aspects of a
+programming language to evaluate how complex they are cognitively.
 
 \subsection{Case studies}
 
@@ -678,6 +714,7 @@ application we will implement the following:
     \item Interpretor that can handle semi-complex inputs and deal with errors.
     \item Give answers to those inputs in form of text messages.
 \end{itemize}    
+
 
 \section{Results}\label{results}
 We worked so hard, yet achieved very little. TODO
