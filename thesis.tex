@@ -127,13 +127,25 @@ the software industry. Languages that are entirely functional, like Haskell and
 F\#, are less used.~\cite{tiobe} However functional concepts have become more
 popular in multi-paradigm languages like Javascript. For example React, based on
 Functional Reactive Programming~\cite{reactisfrp}, has gained a lot of
-popularity.~\cite{popularityreact} However what are the different paradigms?
-Exact definitions exist of OOP but for functional programming the definition is
-a bit blurry. Both emphasise creating bug free programs but OOP emphasises
+popularity.~\cite{popularityreact} 
+
+While exact definitions exist of OOP, the definition for functional programming
+is not exact. Both emphasise creating bug free programs but OOP emphasises
 encapsulating state into \textit{objects} and message passing. Functional
 programs emphasise moving state to the edges of the program and using immutable
 data. Immutable data is data whose state can not change once initialized. We
 will define more in detail what both paradigms mean.
+
+While paradigms define how we build our applications, we still need design
+patterns for structuring the source code. For instance, without design patterns
+it is possible to couple dependencies with logic. This study will create
+applications specifically for the study itself, which means that maintainability
+is not of high concern. But since the design patterns might affect the metrics
+we will be looking at, we still employ them in this study.  This causes problems
+if we later want to change the dependency since that means we also have to
+change the logic. To increase maintainability, we want to use a design patterns.
+This study will present the patterns for OOP and functional programming in their
+respective section. 
 
 \section{Characteristics of Functional Programming}
 
