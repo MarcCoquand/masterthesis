@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.2.2)  12 FEB 2019 14:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.2.2)  12 FEB 2019 17:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -476,38 +476,56 @@ Package amsthm Warning: Unknown theoremstyle `theorem' on input line 18.
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2018/05/01 v3.3-147 Customizing captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2018/05/27 v1.8a caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 64.
+\captionmargin=\dimen165
+\captionmargin@=\dimen166
+\captionwidth=\dimen167
+\caption@tempdima=\dimen168
+\caption@indent=\dimen169
+\caption@parindent=\dimen170
+\caption@hangindent=\dimen171
+)
+\c@ContinuedFloat=\count130
+Package caption Info: float package is loaded.
+Package caption Info: listings package is loaded.
+)
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
  (./thesis.aux)
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-\c@lstlisting=\count130
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+\c@lstlisting=\count131
 
 ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count131
-\scratchdimen=\dimen165
+\scratchcounter=\count132
+\scratchdimen=\dimen172
 \scratchbox=\box41
-\nofMPsegments=\count132
-\nofMParguments=\count133
+\nofMPsegments=\count133
+\nofMParguments=\count134
 \everyMPshowfont=\toks40
-\MPscratchCnt=\count134
-\MPscratchDim=\dimen166
-\MPnumerator=\count135
-\makeMPintoPDFobject=\count136
+\MPscratchCnt=\count135
+\MPscratchDim=\dimen173
+\MPnumerator=\count136
+\makeMPintoPDFobject=\count137
 \everyMPtoPDFconversion=\toks41
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -595,6 +613,8 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
 [1
 
 {/usr/share/texlive/texmf-dist/fonts/map/pdftex/updmap/pdftex.map}] [1
@@ -602,13 +622,13 @@ e
 
 ]
 Package marginnote Info: Using workaround for absolute page number on input lin
-e 83.
+e 84.
 
 [1
 
 ]
 Package marginnote Info: Using workaround for absolute page number on input lin
-e 92.
+e 93.
  (./thesis.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 4.
@@ -632,59 +652,155 @@ Chapter 2.
 [4
 
 ]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 171.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 180.
 
  (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 188.
+(Font)              <7> on input line 184.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 188.
+(Font)              <5> on input line 184.
 
-Overfull \hbox (4.86406pt too wide) in paragraph at lines 183--198
+Overfull \hbox (4.86406pt too wide) in paragraph at lines 198--214
 []\T1/cmr/m/n/12 Even if func-tional pro-grams em-
  []
 
-[5] [6]
+[5]
+
+Package caption Warning: \label without proper reference on input line 259.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `freeunion' on page 6 undefined on input line 243.
+
+
+Package caption Warning: \label without proper reference on input line 259.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `freeunion' on page 6 undefined on input line 247.
+
+[6]
 Package marginnote Info: Margin note 11.1 is on absolute page 11 on input line 
-259.
-Package marginnote Info: right page because not two side mode on input line 259
+276.
+Package marginnote Info: right page because not two side mode on input line 276
 .
-Package marginnote Info: xpos seems to be 92.14519pt on input line 259.
+Package marginnote Info: xpos seems to be 92.14519pt on input line 276.
+
+
+Package caption Warning: \label without proper reference on input line 304.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `freefunctor' on page 7 undefined on input line 291.
+
+
+Package caption Warning: \label without proper reference on input line 259.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `freeunion' on page 7 undefined on input line 306.
+
+
+Package caption Warning: \label without proper reference on input line 259.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `freeunion' on page 7 undefined on input line 306.
+
+[7]
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 311.
- [7] [8]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 387.
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 328.
+
+
+Package caption Warning: \label without proper reference on input line 259.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `freeunion' on page 8 undefined on input line 346.
+
+
+Package caption Warning: \label without proper reference on input line 259.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `freeunion' on page 8 undefined on input line 346.
+
+[8] [9]
+Overfull \hbox (12.71443pt too wide) in paragraph at lines 404--407
+[]\T1/cmr/m/n/12 Here, re-spon-si-bil-ity means ``rea-son to change''. Mod-
+ []
+
+[10] [11] [12]
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+ [13]
+
+Package caption Warning: \label without proper reference on input line 633.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `fig:cyclomaticfunctional' on page 14 undefined on inp
+ut line 566.
+
+
+Package caption Warning: \label without proper reference on input line 581.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `split' on page 14 undefined on input line 588.
+
+[14]
+Missing character: There is no ; in font nullfont!
+
+Underfull \hbox (badness 2990) in paragraph at lines 611--611
+ [][][][]\T1/cmtt/m/n/12 []
+ []
+
+
+Package caption Warning: \label without proper reference on input line 581.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `split' on page 15 undefined on input line 634.
+
+
+Package caption Warning: \label without proper reference on input line 581.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `split' on page 15 undefined on input line 634.
+
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 724--727
+
+ []
+
+[16]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 732.
 
  (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 387.
-
-[9] [10] [11]
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
- [12] [13]
-Missing character: There is no ; in font nullfont!
-
-Underfull \hbox (badness 2990) in paragraph at lines 594--594
- [][][][]\T1/cmtt/m/n/12 []
- []
-
-[14]
-Underfull \hbox (badness 10000) in paragraph at lines 707--710
-
- []
-
-[15] [16]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 732.
+ [17]
 Chapter 3.
-[17
+[18
 
-] [18] [19]
+]
+
+Package caption Warning: \label without proper reference on input line 820.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `chessexample' on page 19 undefined on input line 802.
+
+
+[19] [20]
 Chapter 4.
-(./thesis.bbl [20
+(./thesis.bbl [21
 
 ]
 Overfull \hbox (90.61258pt too wide) in paragraph at lines 8--13
@@ -710,41 +826,45 @@ Underfull \hbox (badness 6396) in paragraph at lines 41--45
 Septem-ber
  []
 
-[21
+[22
 
-]) [22] (./thesis.aux) ) 
+]) [23] (./thesis.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 16169 strings out of 492701
- 304184 string characters out of 6134505
- 444815 words of memory out of 5000000
- 19732 multiletter control sequences out of 15000+600000
+ 17233 strings out of 492701
+ 323696 string characters out of 6134505
+ 449191 words of memory out of 5000000
+ 20790 multiletter control sequences out of 15000+600000
  20063 words of font info for 43 fonts, out of 8000000 for 9000
  1137 hyphenation exceptions out of 8191
- 55i,8n,60p,831b,1226s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super
-/cm-super-t1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/cm-super/sfcc1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/cm-super/sfit1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/c
-m-super/sfrm0700.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super
-/sfrm0800.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm10
-00.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/cm-super/sfti1728.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/cm-super/sftt1200.pfb>
-Output written on thesis.pdf (24 pages, 416870 bytes).
+ 55i,8n,60p,831b,1249s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/cm-super/sfbx1440.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/cm-super/sfbx1728.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm
+-super/sfbx2488.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/
+sfcc1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfit100
+0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/cm-super/sfti1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/cm-super/sfti1728.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+cm-super/sftt1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-supe
+r/sftt1200.pfb>
+Output written on thesis.pdf (25 pages, 420413 bytes).
 PDF statistics:
- 166 PDF objects out of 1000 (max. 8388607)
- 118 compressed objects within 2 object streams
+ 170 PDF objects out of 1000 (max. 8388607)
+ 121 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

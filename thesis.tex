@@ -16,7 +16,6 @@
 \theoremstyle{definition}
 \newtheorem*{theorem}{Theorem}
 \theoremstyle{theorem}
-
 \lstdefinestyle{customc}{
 	belowcaptionskip=1\baselineskip,
 	breaklines=true,
@@ -40,6 +39,8 @@
 	commentstyle=\itshape\color{purple!40!black},
 }
 \lstset{escapechar=@,style=customc}
+\usepackage{caption}
+\captionsetup{belowskip=15pt,aboveskip=4pt}
 
 \begin{document}
 \begin{titlepage}
@@ -115,37 +116,45 @@ approach over the other.
 % Theory
 \chapter{Theory}\label{theory}
 
-Software paradigms are ways to construct software. There exists many but the two
-we will look at are functional programming and object-oriented programming.
-Historically and today OOP has been the most popular language for the commercial
-software industry. Java is an OOP language that is, in February 2019, the most
-popular language in the software industry. Languages that are functional, like
-Haskell and F\#, are less used.~\cite{tiobe} However functional concepts have
-become more popular in multi-paradigm languages like Javascript.  For example
-React, based on Functional Reactive Programming~\cite{reactisfrp}, has gained a
-lot of popularity.~\cite{popularityreact} 
+A maintainable program is one where which prevent unexpected behavior, can meet
+new requirements, correct defects, cope with changing environments. As a way to
+build and structure software we created programming paradigms. There exists many
+but the two we will look at are functional programming and object-oriented
+programming.  Historically and today OOP has been the most popular language for
+the commercial software industry. Java is an OOP language that is, in February
+2019, the most popular language in the software industry. It is also a
+multi-paradigm language, since it combines OOP with procedural programming. In
+this study, when we say OOP it is implied that it is also a procedural.
+Languages that are functional, like Haskell and F\#, are less used.~\cite{tiobe}
+However functional concepts have become more popular in multi-paradigm languages
+like Javascript.  For example React, based on Functional Reactive
+Programming~\cite{reactisfrp}, has gained a lot of
+popularity.~\cite{popularityreact} 
 
 Exact definitions exist of OOP but not for Functional programming. Both
-emphasise creating bug free programs. OOP emphasises encapsulating state into
-\textit{objects} and message passing. Functional programs emphasise moving state
-to the edges of the program, making the core logic of the program pure (defined
-in Section~\ref{functionalprogramming}) and using immutable data.  Immutable
-data is data whose state can not change once initialized. This is explained
-further in Section~\ref{functionalprogramming} and Section~\ref{oop}.
+emphasise creating maintainable programs.  The way OOP makes maintainable software is by
+emphasising encapsulation of state into \textit{objects} and message passing.
+Functional programs emphasise moving state to the edges of the program, making
+the core logic of the program pure (defined in
+Section~\ref{functionalprogramming}) and using immutable data.  Immutable data
+is data whose state can not change once initialized. This is explained further
+in Section~\ref{functionalprogramming} and Section~\ref{oop}. To prevent
+defects, tests need to be written to check that the behavior works as expected,
+thus testability is of concern when creating maintainable software.
 
 While paradigms define how we build our applications, we still need design
 patterns for structuring the source code. For instance, without design patterns
 it is possible to couple dependencies with logic. This causes problems if we
 later want to change the dependency since that means we also have to change the
-logic. To increase maintainability, we want to use design patterns.  This
+logic. To increase maintainability, we want to use design patterns. This
 study will present the patterns for OOP and functional programming in their
 respective section. When you create applications that you use once then
 maintainability is not of high concern. However since the design patterns might
-affect the metrics we will be looking at, we still employ them in this study.  
+affect the metrics we will be looking at, we still employ them in this study. 
 
 \section{Characteristics of Functional Programming}\label{functionalprogramming}
 
-Functional programming is a software paradigm. While different definitions exist
+Functional programming is a programming paradigm. While different definitions exist
 of what it means, we define functional programming by the use of pure functions,
 moving state to the outwards of the program, using trait-based polymorphism and
 immutable data.
@@ -154,55 +163,63 @@ immutable data.
 \item[ Purity ]
 
 When a function is pure it means that calling a function with the same arguments
-will always return the same value and that it does not mutate any value. For
-example if you have $f(x) = 2\cdot x$, then $f(2)$ will always return $4$. It
-follows then that an impure functions is either dependant on some state or
-mutates state in some way. For example, given $g(x) = currenttime \cdot x$,
-$g(5)$ will yield a different value depending on what time it is called. This
-makes it dependant on some state of the world. Or given $x=0$, $h()=x+1$. Then
-$h()$ will yield $x=1$ and $(h \circ h)()$ will yield $x=2$, making it
-impure.~\cite{wikipedia_pure}
+        will always return the same value and that it does not mutate any value.
+        For example if you have $f(x) = 2\cdot x$, then $f(2)$ will always
+        return $4$. It follows then that an impure functions is either dependant
+        on some state or mutates state in some way. For example, given $g(x) =
+        currenttime \cdot x$, $g(5)$ will yield a different value depending on
+        what time it is called. This makes it dependant on some state of the
+        world. Or given $x=0$, $h()=x+1$. Then $h()$ will yield $x=1$ and $(h
+        \circ h)()$ will yield $x=2$, making it impure.~\cite{wikipedia_pure}
 
-\item[ Trait-based polymorphism ]
+	\item[ Trait-based polymorphism ]
 
-In OOP we inherit classes that contain methods and
+		In OOP we inherit classes that contain methods and
 attributes.~\cite{Gamma:1995:DPE:186897} For functional programs, we instead
-define classes that describe the actions that are possible. For example, a class
-\texttt{Equality} could contain a function \texttt{isEqual} that checks if two
-data types are equal. Then any data type that implements the interface Equality,
-for example lists or binary trees, would be able to use the function isEqual.
-This is known as type-classes in Haskell, mixins in Javascript or traits in
-Scala.
+define classes that describe the actions that are possible. For example, a
+class \texttt{Equality} could contain a function \texttt{isEqual} that checks
+if two data types are equal. Then any data type that implements the interface
+Equality, for example lists or binary trees, would be able to use the function
+isEqual.  This is known as type-classes in
+Haskell\footnote{\url{www.learnyouahaskell.com/types-and-typeclasses}}, mixins
+in Javascript\footnote{\url{www.typescriptlang.org/docs/handbook/mixins.html}}
+or traits in Scala\footnote{\url{https://docs.scala-lang.org/tour/traits.html}}.
 
-\item[ Immutable data ]
+\item[ Immutable data by deafult ]
 
-Immutable data is that that upon being initialized can not be changed. 
+Immutable data is that upon when initialized can not change. This means if we
+        initialize a record, \texttt{abc = \{a: 1, b: 2, c: 3\}} then
+        \texttt{abc.a = 4} is an illegal operation. Immutable data, along with
+        purity, ensures that no data can be mutated unless it is specifically
+        created as mutable data.
 
 \item[Moving state to the outwards of the program]
 
 Even if functional programs emphasise purity certain applications still need to
-deal with state somehow. For example a server would need to interact with a
-database. Functional programs solve this by separating pure functions and
-effectful functions. While various strategies exist, like Functional Reactive
-Programming\footnote{Read more:
-\url{en.wikipedia.org/wiki/Functional_reactive_programming}},
-Dialogs\footnote{Read more:
-\url{stackoverflow.com/questions/17002119/haskell-pre-monadic-i-o}} or
-uniqueness types\footnote{Read more:
-\url{https://en.wikipedia.org/wiki/Clean_(programming_language)}}, the one used
-in Haskell, the language used in this thesis to construct the programs, is the
-IO monad. For the uninitiated, one can think of Monads as a way to note which
-functions are pure and which are effectful and managing the way they
-intermingle. It also allows us to handle errors and state.\footnote{This is
-simplified as Monads are notoriously difficult to explain.}. 
+        deal with state somehow. For example a server would need to interact
+        with a database. Functional programs solve this by separating pure
+        functions and effectful functions. While various strategies exist, like
+        Functional Reactive Programming\footnote{Read more:
+        \url{en.wikipedia.org/wiki/Functional_reactive_programming}},
+        Dialogs\footnote{Read more:
+        \url{stackoverflow.com/questions/17002119/haskell-pre-monadic-i-o}} or
+        uniqueness types\footnote{Read more:
+        \url{https://en.wikipedia.org/wiki/Clean_(programming_language)}}, the
+        one used in Haskell, the language used in this thesis to construct the
+        programs, is the IO monad. For the uninitiated, one can think of Monads
+        as a way to note which functions are pure and which are effectful and
+        managing the way they intermingle. It also allows us to handle errors
+        and state.\footnote{This is simplified as Monads are notoriously
+        difficult to explain.}. 
 
 A strategy to further separate state and logic, one can construct a
-three-layered architecture, called the three layer Haskell cake. Here, the
-strategy is that one implements simple effectful functions, containing no logic
-as a base layer. Then on a second layer one implements an interface that
-implements a pure solution and one effectful solution. Then on the third layer
-one implements the logic of the program in pure code. The way the second layer
-is implemented is explained further in Section~\ref{interpreterpattern}. 
+        three-layered architecture, called the three layer Haskell cake. Here,
+        the strategy is that one implements simple effectful functions,
+        containing no logic as a base layer. Then on a second layer one
+        implements an interface that implements a pure solution and one
+        effectful solution. Then on the third layer one implements the logic of
+        the program in pure code. The way the second layer is implemented is
+        explained further in Section~\ref{interpreterpattern}. 
 \end{description}
 
 So while no exact definition of Functional programming exist, we here define it
@@ -383,25 +400,25 @@ To avoid creating rotten designs, Martin Robert proposes the SOLID guideline.
 SOLID mnemonic for five design principles to make software more maintainable,
 flexible and understandable. The SOLID guideline is
 
-\begin{itemize}
-    \item Single responsibility principle. Here, responsibility means ``reason
+\begin{description}
+    \item [Single responsibility principle] Here, responsibility means ``reason
         to change''. Modules and classes should have one reason to change and no
         more.
-    \item Open/Closed principle. States we should write our modules to be
+    \item [Open/Closed principle] States we should write our modules to be
         extended without modification of the original source code.
-    \item Liskov substitution principle. Given a base class and an derived
+    \item [Liskov substitution principle] Given a base class and an derived
         class derive, the user of a base class should be able to use the derived
         class and the program should function properly.
-    \item Interface segregation principle. No client should be forced to depend
+    \item [Interface segregation principle] No client should be forced to depend
         on methods it does not use. The general idea is that you want to split
         big interfaces to smaller, specific ones.
-    \item Dependency inversion principle. A strategy to avoid making our source
+    \item [Dependency inversion principle] A strategy to avoid making our source
         code dependent on specific implementations is by using this principle.
         This allows us, if we depend on one third-party module, to swap that
         module for another one should we need to. This can be done by creating
         an abstract interface and then instance that interface with a class that
         calls the third-party operations.~\cite{martinrobert}
-\end{itemize}
+\end{description}
 
 When we compare our solutions we want to test them after principles used in the
 industry, as then we can use the results when making technical decisions for our
@@ -415,7 +432,7 @@ OOP based programs will allow us to make more testable software.
 %Method
 \section{Measuring testability and complexity}\label{measuretestability}
 
-With the definitions of the software paradigms, we can now look at how we can
+With the definitions of the programming paradigms, we can now look at how we can
 evaluate them in regards of testability and complexity. Since we want to find
 which of the two paradigms allows us to write the most maintainable software, it
 is important that we have testable software so that finding defects is easier.
@@ -704,7 +721,7 @@ whole?
 
 \item[ Error proneness ]
 
-To what extent does the software paradigm and language help minimise errors? Are
+To what extent does the programming paradigm and language help minimise errors? Are
 there any structures or complexities that lead to it being easier to make
 errors?~\cite{GREEN1996131}\\
 \end{description}
@@ -731,7 +748,7 @@ programming language to evaluate how complex they are cognitively.
 
 \chapter{Method: Case studies}
 
-In the Chapter~\ref{theory} we defined what software paradigms are and how we
+In the Chapter~\ref{theory} we defined what programming paradigms are and how we
 can evaluate their testability and their cognitive complexity using Cyclomatic
 complexity and Cognitive dimensions. In Section~\ref{measuretestability} we also
 explained how Cyclomatic complexity and Cognitive dimensions is tied to the
