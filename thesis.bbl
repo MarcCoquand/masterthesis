@@ -65,4 +65,14 @@ T.~Green and M.~Petre, ``Usability analysis of visual programming environments:
 E.~Kiss, ``Comparison of object-oriented and functional programming for gui
   development,'' master's thesis, Leibniz Universität Hannover, August 2014.
 
+\bibitem{java}
+G.~S. G. B. A.~B. James~Gosling, Bill~Joy, ``The java language specification,''
+  Febuary 2015.
+\newblock \url{https://docs.oracle.com/javase/specs/jls/se8/jls8.pdf}, accessed
+  Feb 2018.
+
+\bibitem{haskell}
+``Haskell.''
+\newblock \url{https://www.haskell.org/}, accessed Feb 2018.
+
 \end{thebibliography}

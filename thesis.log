@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.2.2)  11 FEB 2019 17:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.2.2)  12 FEB 2019 14:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -395,200 +395,7 @@ File: tikzlibraryarrows.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
 tex
 File: pgflibraryarrows.code.tex 2013/09/23 v3.0.1a (rcs-revision 1.16)
 \arrowsize=\dimen156
-)) (/usr/share/texlive/texmf-dist/tex/latex/romande/romande.sty
-Package: romande 2010/06/27 v2.1 romande
-
-(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
-Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
-
-(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
-(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-\XKV@toks=\toks36
-\XKV@tempa@toks=\toks37
-)
-\XKV@depth=\count118
-File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
-))
-(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
-Package: fontenc 2017/04/05 v2.0i Standard LaTeX package
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def
-File: t1enc.def 2017/04/05 v2.0i Standard LaTeX file
-LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
-))
-(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
-Package: textcomp 2017/04/05 v2.0i Standard LaTeX package
-Package textcomp Info: Sub-encoding information:
-(textcomp)               5 = only ISO-Adobe without \textcurrency
-(textcomp)               4 = 5 + \texteuro
-(textcomp)               3 = 4 + \textohm
-(textcomp)               2 = 3 + \textestimated + \textcurrency
-(textcomp)               1 = TS1 - \textcircled - \t
-(textcomp)               0 = TS1 (full)
-(textcomp)             Font families with sub-encoding setting implement
-(textcomp)             only a restricted character set as indicated.
-(textcomp)             Family '?' is the default used for unknown fonts.
-(textcomp)             See the documentation for details.
-Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 79.
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def
-File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
-Now handling font encoding TS1 ...
-... processing UTF-8 mapping file for font encoding TS1
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.dfu
-File: ts1enc.dfu 2018/04/05 v1.2c UTF-8 support for inputenc
-   defining Unicode char U+00A2 (decimal 162)
-   defining Unicode char U+00A3 (decimal 163)
-   defining Unicode char U+00A4 (decimal 164)
-   defining Unicode char U+00A5 (decimal 165)
-   defining Unicode char U+00A6 (decimal 166)
-   defining Unicode char U+00A7 (decimal 167)
-   defining Unicode char U+00A8 (decimal 168)
-   defining Unicode char U+00A9 (decimal 169)
-   defining Unicode char U+00AA (decimal 170)
-   defining Unicode char U+00AC (decimal 172)
-   defining Unicode char U+00AE (decimal 174)
-   defining Unicode char U+00AF (decimal 175)
-   defining Unicode char U+00B0 (decimal 176)
-   defining Unicode char U+00B1 (decimal 177)
-   defining Unicode char U+00B2 (decimal 178)
-   defining Unicode char U+00B3 (decimal 179)
-   defining Unicode char U+00B4 (decimal 180)
-   defining Unicode char U+00B5 (decimal 181)
-   defining Unicode char U+00B6 (decimal 182)
-   defining Unicode char U+00B7 (decimal 183)
-   defining Unicode char U+00B9 (decimal 185)
-   defining Unicode char U+00BA (decimal 186)
-   defining Unicode char U+00BC (decimal 188)
-   defining Unicode char U+00BD (decimal 189)
-   defining Unicode char U+00BE (decimal 190)
-   defining Unicode char U+00D7 (decimal 215)
-   defining Unicode char U+00F7 (decimal 247)
-   defining Unicode char U+0192 (decimal 402)
-   defining Unicode char U+02C7 (decimal 711)
-   defining Unicode char U+02D8 (decimal 728)
-   defining Unicode char U+02DD (decimal 733)
-   defining Unicode char U+0E3F (decimal 3647)
-   defining Unicode char U+2016 (decimal 8214)
-   defining Unicode char U+2020 (decimal 8224)
-   defining Unicode char U+2021 (decimal 8225)
-   defining Unicode char U+2022 (decimal 8226)
-   defining Unicode char U+2030 (decimal 8240)
-   defining Unicode char U+2031 (decimal 8241)
-   defining Unicode char U+203B (decimal 8251)
-   defining Unicode char U+203D (decimal 8253)
-   defining Unicode char U+2044 (decimal 8260)
-   defining Unicode char U+204E (decimal 8270)
-   defining Unicode char U+2052 (decimal 8274)
-   defining Unicode char U+20A1 (decimal 8353)
-   defining Unicode char U+20A4 (decimal 8356)
-   defining Unicode char U+20A6 (decimal 8358)
-   defining Unicode char U+20A9 (decimal 8361)
-   defining Unicode char U+20AB (decimal 8363)
-   defining Unicode char U+20AC (decimal 8364)
-   defining Unicode char U+20B1 (decimal 8369)
-   defining Unicode char U+2103 (decimal 8451)
-   defining Unicode char U+2116 (decimal 8470)
-   defining Unicode char U+2117 (decimal 8471)
-   defining Unicode char U+211E (decimal 8478)
-   defining Unicode char U+2120 (decimal 8480)
-   defining Unicode char U+2122 (decimal 8482)
-   defining Unicode char U+2126 (decimal 8486)
-   defining Unicode char U+2127 (decimal 8487)
-   defining Unicode char U+212E (decimal 8494)
-   defining Unicode char U+2190 (decimal 8592)
-   defining Unicode char U+2191 (decimal 8593)
-   defining Unicode char U+2192 (decimal 8594)
-   defining Unicode char U+2193 (decimal 8595)
-   defining Unicode char U+2329 (decimal 9001)
-   defining Unicode char U+232A (decimal 9002)
-   defining Unicode char U+2422 (decimal 9250)
-   defining Unicode char U+25E6 (decimal 9702)
-   defining Unicode char U+25EF (decimal 9711)
-   defining Unicode char U+266A (decimal 9834)
-   defining Unicode char U+FEFF (decimal 65279)
-))
-LaTeX Info: Redefining \oldstylenums on input line 334.
-Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 349.
-Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 350.
-Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 351.
-Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 352.
-Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 353.
-Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 354.
-Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 355.
-Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 356.
-Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 357.
-Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 358.
-Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 359.
-Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 360.
-Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 361.
-Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 362.
-Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 363.
-Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 364.
-Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 365.
-Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 366.
-Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 367.
-Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 368.
-Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 369.
-Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 370.
-Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 371.
-Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 372.
-
-Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 373.
-Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 374.
-Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 375.
-Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 376.
-Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 377.
-Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 378.
-Package textcomp Info: Setting lmr sub-encoding to TS1/0 on input line 379.
-Package textcomp Info: Setting lmdh sub-encoding to TS1/0 on input line 380.
-Package textcomp Info: Setting lmss sub-encoding to TS1/0 on input line 381.
-Package textcomp Info: Setting lmssq sub-encoding to TS1/0 on input line 382.
-Package textcomp Info: Setting lmvtt sub-encoding to TS1/0 on input line 383.
-Package textcomp Info: Setting lmtt sub-encoding to TS1/0 on input line 384.
-Package textcomp Info: Setting qhv sub-encoding to TS1/0 on input line 385.
-Package textcomp Info: Setting qag sub-encoding to TS1/0 on input line 386.
-Package textcomp Info: Setting qbk sub-encoding to TS1/0 on input line 387.
-Package textcomp Info: Setting qcr sub-encoding to TS1/0 on input line 388.
-Package textcomp Info: Setting qcs sub-encoding to TS1/0 on input line 389.
-Package textcomp Info: Setting qpl sub-encoding to TS1/0 on input line 390.
-Package textcomp Info: Setting qtm sub-encoding to TS1/0 on input line 391.
-Package textcomp Info: Setting qzc sub-encoding to TS1/0 on input line 392.
-Package textcomp Info: Setting qhvc sub-encoding to TS1/0 on input line 393.
-Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 394.
-Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 395.
-Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 396.
-Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 397.
-Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 398.
-Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 399.
-Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 400.
-Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 401.
-Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 402.
-Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 403.
-Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 404.
-Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 405.
-Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 406.
-Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
-Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
-Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
-)
-(/usr/share/texlive/texmf-dist/tex/latex/nfssext-cfr/nfssext-cfr.sty
-(/usr/share/texlive/texmf-dist/tex/latex/svn-prov/svn-prov.sty
-Package: svn-prov 2010/04/24 v3.1862 Package Date/Version from SVN Keywords
-)
-Package: nfssext-cfr 2017/03/28 (SVN Rev: 6140){} specially mangled by cfr; bas
-ed on 2003/03/14 v1.2 Experimental NFSS Extensions
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
-Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
-)
-\c@taken=\count119
-LaTeX Info: Redefining \itshape on input line 515.
-LaTeX Info: Redefining \scshape on input line 523.
-LaTeX Info: Redefining \upshape on input line 537.
-))
-(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+)) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2017/04/05 v2.0i Standard LaTeX package
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def
@@ -597,10 +404,10 @@ LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count120
-\float@exts=\toks38
+\c@float@type=\count118
+\float@exts=\toks36
 \float@box=\box39
-\@float@everytoks=\toks39
+\@float@everytoks=\toks37
 \@floatcapt=\box40
 )
 (/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
@@ -620,9 +427,9 @@ Package ifvtex Info: VTeX not detected.
 (/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-\Gm@cnth=\count121
-\Gm@cntv=\count122
-\c@Gm@tempcnt=\count123
+\Gm@cnth=\count119
+\Gm@cntv=\count120
+\c@Gm@tempcnt=\count121
 \Gm@bindingoffset=\dimen157
 \Gm@wd@mp=\dimen158
 \Gm@odd@mp=\dimen159
@@ -631,26 +438,26 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutheight=\dimen162
 \Gm@layouthoffset=\dimen163
 \Gm@layoutvoffset=\dimen164
-\Gm@dimlist=\toks40
+\Gm@dimlist=\toks38
 )
 (/usr/share/texlive/texmf-dist/tex/latex/marginnote/marginnote.sty
 Package: marginnote 2018/08/09 v1.4b non floating margin notes for LaTeX
-\c@mn@abspage=\count124
+\c@mn@abspage=\count122
 )
 (/usr/share/texlive/texmf-dist/tex/latex/csquotes/csquotes.sty
 Package: csquotes 2018/04/13 v5.2d context-sensitive quotations (JAW)
 
 (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2018/02/11 v2.5e e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count125
+\etb@tempcnta=\count123
 )
-\csq@reset=\count126
-\csq@gtype=\count127
-\csq@glevel=\count128
-\csq@qlevel=\count129
-\csq@maxlvl=\count130
-\csq@tshold=\count131
-\csq@ltx@everypar=\toks41
+\csq@reset=\count124
+\csq@gtype=\count125
+\csq@glevel=\count126
+\csq@qlevel=\count127
+\csq@maxlvl=\count128
+\csq@tshold=\count129
+\csq@ltx@everypar=\toks39
 
 (/usr/share/texlive/texmf-dist/tex/latex/csquotes/csquotes.def
 File: csquotes.def 2018/04/13 v5.2d csquotes generic definitions (JAW)
@@ -664,7 +471,7 @@ File: csquotes.cfg
 Package csquotes Info: Enabling multilingual quotes.
 )
 
-Package amsthm Warning: Unknown theoremstyle `theorem' on input line 19.
+Package amsthm Warning: Unknown theoremstyle `theorem' on input line 18.
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
@@ -674,46 +481,34 @@ Package csquotes Info: ... found 'babel' package.
  (./thesis.aux)
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 45.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 45.
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
-File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Try loading font information for T1+yrd on input line 45.
-
-(/usr/share/texlive/texmf-dist/tex/latex/romande/t1yrd.fd
-File: t1yrd.fd 2010/07/10 Fontinst v1.933 font definitions for T1/yrd.
-)
-\c@lstlisting=\count132
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+\c@lstlisting=\count130
 
 ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count133
+\scratchcounter=\count131
 \scratchdimen=\dimen165
 \scratchbox=\box41
-\nofMPsegments=\count134
-\nofMParguments=\count135
-\everyMPshowfont=\toks42
-\MPscratchCnt=\count136
+\nofMPsegments=\count132
+\nofMParguments=\count133
+\everyMPshowfont=\toks40
+\MPscratchCnt=\count134
 \MPscratchDim=\dimen166
-\MPnumerator=\count137
-\makeMPintoPDFobject=\count138
-\everyMPtoPDFconversion=\toks43
+\MPnumerator=\count135
+\makeMPintoPDFobject=\count136
+\everyMPtoPDFconversion=\toks41
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -802,38 +597,25 @@ e
 
 [1
 
-{/usr/share/texlive/texmf-dist/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Font shape `T1/yrd/bx/n' in size <12> not available
-(Font)              Font shape `T1/yrd/b/n' tried instead on input line 75.
-LaTeX Font Info:    Font shape `T1/yrd/b/n' in size <12> not available
-(Font)              Font shape `T1/yrd/db/n' tried instead on input line 75.
- [1
+{/usr/share/texlive/texmf-dist/fonts/map/pdftex/updmap/pdftex.map}] [1
 
 
 ]
 Package marginnote Info: Using workaround for absolute page number on input lin
-e 84.
-LaTeX Font Info:    Font shape `T1/yrd/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/yrd/b/n' tried instead on input line 89.
-LaTeX Font Info:    Font shape `T1/yrd/b/n' in size <17.28> not available
-(Font)              Font shape `T1/yrd/db/n' tried instead on input line 89.
+e 83.
 
 [1
 
 ]
 Package marginnote Info: Using workaround for absolute page number on input lin
-e 93.
-LaTeX Font Info:    Font shape `T1/yrd/bx/n' in size <24.88> not available
-(Font)              Font shape `T1/yrd/b/n' tried instead on input line 96.
-LaTeX Font Info:    Font shape `T1/yrd/b/n' in size <24.88> not available
-(Font)              Font shape `T1/yrd/db/n' tried instead on input line 96.
+e 92.
  (./thesis.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 3.
+(Font)              <12> on input line 4.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 3.
+(Font)              <8> on input line 4.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 3.
+(Font)              <6> on input line 4.
 )
 \tf@toc=\write4
 \openout4 = `thesis.toc'.
@@ -850,146 +632,116 @@ Chapter 2.
 [4
 
 ]
-LaTeX Font Info:    Try loading font information for TS1+yrd on input line 155.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 170.
 
- (/usr/share/texlive/texmf-dist/tex/latex/romande/ts1yrd.fd
-File: ts1yrd.fd 2010/07/10 Fontinst v1.933 font definitions for TS1/yrd.
-)
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 174.
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    Font shape `T1/yrd/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/yrd/b/n' tried instead on input line 184.
-LaTeX Font Info:    Font shape `T1/yrd/b/n' in size <14.4> not available
-(Font)              Font shape `T1/yrd/db/n' tried instead on input line 184.
- [5]
-Package marginnote Info: Margin note 10.1 is on absolute page 10 on input line 
-231.
-Package marginnote Info: right page because not two side mode on input line 231
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 187.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 187.
+ [5] [6]
+Package marginnote Info: Margin note 11.1 is on absolute page 11 on input line 
+257.
+Package marginnote Info: right page because not two side mode on input line 257
 .
-Package marginnote Info: xpos seems to be 92.14519pt on input line 231.
-LaTeX Font Info:    Font shape `T1/yrd/bx/n' in size <10> not available
-(Font)              Font shape `T1/yrd/b/n' tried instead on input line 231.
-LaTeX Font Info:    Font shape `T1/yrd/b/n' in size <10> not available
-(Font)              Font shape `T1/yrd/db/n' tried instead on input line 231.
- [6]
-LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 285.
+Package marginnote Info: xpos seems to be 92.14519pt on input line 257.
  [7]
-Overfull \hbox (8.82184pt too wide) in paragraph at lines 316--325
-\T1/yrd/m/n/12 Object-oriented pro-gram-ming (OOP) is a pro-gram-ming paradigm 
-based around
- []
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 309.
 
-[8] [9] [10] [11]
-Chapter 3.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 406.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 406.
+[8] [9] [10]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 383.
 
-Underfull \hbox (badness 10000) in paragraph at lines 406--406
-[][]\T1/yrd/m/n/10 Description of Whites-pace: $\T1/cmtt/m/n/10 https : / / en 
-. wikipedia . org / wiki / Whitespace _
- []
-
-[12
-
-]
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 383.
+ [11]
+[12]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
- [13]
-Overfull \hbox (7.47284pt too wide) in paragraph at lines 480--480
-[]\T1/yrd/db/n/17.28 Cyclomatic Com-plex-ity in Func-tional Pro-gram-
- []
-
-[14]
+ [13] [14]
 Missing character: There is no ; in font nullfont!
 
-Underfull \hbox (badness 2809) in paragraph at lines 565--565
+Underfull \hbox (badness 2990) in paragraph at lines 590--590
  [][][][]\T1/cmtt/m/n/12 []
  []
 
-[15] [16] [17]
-Underfull \hbox (badness 10000) in paragraph at lines 676--679
+[15] [16]
+Underfull \hbox (badness 10000) in paragraph at lines 701--704
 
  []
 
-[18]
-Overfull \hbox (18.91478pt too wide) in paragraph at lines 693--696
-\T1/yrd/m/n/12 men-sions did not bring much weight when eval-u-at-ing the dif-f
-er-ent paradigms. [[]] 
- []
+[17] [18]
+Chapter 3.
+[19
 
-[19] [20] [21]
+] [20] [21]
 Chapter 4.
 (./thesis.bbl [22
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 8--13
-[]\T1/yrd/m/n/12 Code Mag-a-zine, ``How func-tional re-ac-tive pro-gram-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 8--13
-\T1/yrd/m/n/12 ming (frp) is chang-ing the face of web de-vel-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 8--13
-\T1/yrd/m/n/12 op-ment.''  $\T1/cmtt/m/n/12 https : / / www . codemag . com / a
-rticle / 1601071 /
- []
-
-
-Overfull \hbox (91.24019pt too wide) in paragraph at lines 8--13
+Overfull \hbox (90.61258pt too wide) in paragraph at lines 8--13
 \T1/cmtt/m/n/12 How-[]Functional-[]Reactive-[]Programming-[]FRP-[]is-[]Changing
--[]the-[]Face-[]of-[]Web-[]Development$\T1/yrd/m/n/12 ,
+-[]the-[]Face-[]of-[]Web-[]Development$\T1/cmr/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 1264) in paragraph at lines 21--23
-[]\T1/yrd/m/n/12 ``Pure func-tion,'' Aug 2018.  $\T1/cmtt/m/n/12 https : / / en
+Underfull \hbox (badness 5490) in paragraph at lines 21--23
+[]\T1/cmr/m/n/12 ``Pure func-tion,'' Aug 2018.  $\T1/cmtt/m/n/12 https : / / en
  . wikipedia . org / wiki / Pure _
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 35--39
-\T1/cmtt/m/n/12 https : / / ghc . haskell . org / trac / ghc / wiki / Commentar
-y / Compiler /
+\T1/cmtt/m/n/12 / / ghc . haskell . org / trac / ghc / wiki / Commentary / Comp
+iler / DeriveFunctor$\T1/cmr/m/n/12 ,
+ []
+
+
+Underfull \hbox (badness 6396) in paragraph at lines 41--45
+[]\T1/cmr/m/n/12 M. C. Robert, ``De-sign prin-ci-ples and de-sign pat-terns,'' 
+Septem-ber
  []
 
 [23
 
 ]) [24] (./thesis.aux) ) 
 Here is how much of TeX's memory you used:
- 17377 strings out of 492701
- 320357 string characters out of 6134505
- 458111 words of memory out of 5000000
- 20892 multiletter control sequences out of 15000+600000
- 99886 words of font info for 61 fonts, out of 8000000 for 9000
+ 16169 strings out of 492701
+ 304184 string characters out of 6134505
+ 442815 words of memory out of 5000000
+ 19732 multiletter control sequences out of 15000+600000
+ 20063 words of font info for 43 fonts, out of 8000000 for 9000
  1137 hyphenation exceptions out of 8191
- 55i,8n,95p,831b,1695s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,8n,60p,831b,1226s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super
-/cm-super-t1.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/romande/ts1-eur
-o-yrd.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/romande/t1-romandeadf.
-enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/cm-super/sfit1000.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/cm-super/sftt1200.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/arkandis/romande/yrdd8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/a
-rkandis/romande/yrdr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/arkandis/
-romande/yrdrc8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/arkandis/romande
-/yrdri8a.pfb>
-Output written on thesis.pdf (26 pages, 256495 bytes).
+/cm-super-t1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/cm-super/sfcc1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/cm-super/sfit1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/c
+m-super/sfrm0700.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super
+/sfrm0800.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm10
+00.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/cm-super/sfti1728.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/cm-super/sftt1200.pfb>
+Output written on thesis.pdf (26 pages, 416930 bytes).
 PDF statistics:
- 136 PDF objects out of 1000 (max. 8388607)
- 97 compressed objects within 1 object stream
+ 173 PDF objects out of 1000 (max. 8388607)
+ 123 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

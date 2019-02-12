@@ -1,17 +1,16 @@
 \babel@toc {english}{}
-\contentsline {chapter}{\numberline {1}Software paradigms and complexity}{3}
-\contentsline {section}{\numberline {1.1}Objective}{3}
-\contentsline {chapter}{\numberline {2}Definitions}{4}
+\contentsline {chapter}{\numberline {1}Introduction: Software paradigms and complexity}{3}
+\contentsline {chapter}{\numberline {2}Theory}{4}
 \contentsline {section}{\numberline {2.1}Characteristics of Functional Programming}{5}
-\contentsline {subsection}{\numberline {2.1.1}Interpreter pattern for testability}{5}
-\contentsline {subsection}{\numberline {2.1.2}Extending applications with Free Monads}{6}
-\contentsline {section}{\numberline {2.2}Object Oriented Programming}{9}
-\contentsline {subsection}{\numberline {2.2.1}SOLID principles}{9}
-\contentsline {chapter}{\numberline {3}Measuring testability and complexity}{12}
-\contentsline {section}{\numberline {3.1}Measuring testability: Cyclomatic Complexity}{13}
-\contentsline {section}{\numberline {3.2}Cyclomatic Complexity in Functional Programming}{14}
-\contentsline {section}{\numberline {3.3}Mental complexity: Cognitive Dimensions}{16}
-\contentsline {section}{\numberline {3.4}Case studies}{19}
+\contentsline {subsection}{\numberline {2.1.1}Interpreter pattern for testability}{6}
+\contentsline {subsection}{\numberline {2.1.2}Extending applications with Free Monads}{7}
+\contentsline {section}{\numberline {2.2}Object Oriented Programming}{10}
+\contentsline {subsection}{\numberline {2.2.1}SOLID principles}{10}
+\contentsline {section}{\numberline {2.3}Measuring testability and complexity}{11}
+\contentsline {subsection}{\numberline {2.3.1}Measuring testability: Cyclomatic Complexity}{12}
+\contentsline {subsection}{\numberline {2.3.2}Cyclomatic Complexity in Functional Programming}{13}
+\contentsline {subsection}{\numberline {2.3.3}Mental complexity: Cognitive Dimensions}{15}
+\contentsline {chapter}{\numberline {3}Method: Case studies}{19}
 \contentsline {chapter}{\numberline {4}Results}{22}
 \contentsline {section}{\numberline {4.1}Limitations}{22}
 \contentsline {subsection}{\numberline {4.1.1}Improvements to implementation}{22}

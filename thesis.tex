@@ -5,7 +5,6 @@
 \usepackage[english]{babel}
 \usepackage{tikz}
 \usetikzlibrary{arrows}
-\usepackage{romande}
 \usepackage[T1]{fontenc}
 \usepackage{float}
 \usepackage{url}
@@ -97,10 +96,7 @@ I want to thank myself for my amazing work. TODO
 \newpage
 
 % Introduction
-\chapter{Software paradigms and complexity}
-This is time for all good men to come to the aid of their party! TODO
-
-\section{Objective}
+\chapter{Introduction: Software paradigms and complexity}
 
 Different schools of thoughts have different approaches when it comes to
 building applications. There is one that is the traditional, object oriented,
@@ -117,24 +113,25 @@ paradigms affect the testability and if there are any cognitive benefits to one
 approach over the other. 
 
 % Theory
-\chapter{Definitions}\label{theory}
+\chapter{Theory}\label{theory}
 
-Software paradigms are ways to construct software. The two we will look at are
-functional programming and object-oriented programming. Historically and today
-OOP has been the most popular language for the commercial software industry.
-Java is an OOP language that is, in February 2019, the most popular language in
-the software industry. Languages that are entirely functional, like Haskell and
-F\#, are less used.~\cite{tiobe} However functional concepts have become more
-popular in multi-paradigm languages like Javascript. For example React, based on
-Functional Reactive Programming~\cite{reactisfrp}, has gained a lot of
-popularity.~\cite{popularityreact} 
+Software paradigms are ways to construct software. There exists many but the two
+we will look at are functional programming and object-oriented programming.
+Historically and today OOP has been the most popular language for the commercial
+software industry. Java is an OOP language that is, in February 2019, the most
+popular language in the software industry. Languages that are functional, like
+Haskell and F\#, are less used.~\cite{tiobe} However functional concepts have
+become more popular in multi-paradigm languages like Javascript.  For example
+React, based on Functional Reactive Programming~\cite{reactisfrp}, has gained a
+lot of popularity.~\cite{popularityreact} 
 
-While exact definitions exist of OOP, the definition for functional programming
-is not exact. Both emphasise creating bug free programs but OOP emphasises
-encapsulating state into \textit{objects} and message passing. Functional
-programs emphasise moving state to the edges of the program and using immutable
-data. Immutable data is data whose state can not change once initialized. We
-will define more in detail what both paradigms mean.
+Exact definitions exist of OOP but not for Functional programming. Both
+emphasise creating bug free programs. OOP emphasises encapsulating state into
+\textit{objects} and message passing. Functional programs emphasise moving state
+to the edges of the program, making the core logic of the program pure (defined
+in Section~\ref{functionalprogramming}) and using immutable data.  Immutable
+data is data whose state can not change once initialized. This is explained
+further in Section~\ref{functionalprogramming} and Section~\ref{oop}.
 
 While paradigms define how we build our applications, we still need design
 patterns for structuring the source code. For instance, without design patterns
@@ -146,17 +143,14 @@ respective section. When you create applications that you use once then
 maintainability is not of high concern. However since the design patterns might
 affect the metrics we will be looking at, we still employ them in this study.  
 
-\section{Characteristics of Functional Programming}
+\section{Characteristics of Functional Programming}\label{functionalprogramming}
 
 Functional programming is a software paradigm. While different definitions exist
-of what it means, we define functional programming as:
+of what it means, we define functional programming by the use of pure functions,
+moving state to the outwards of the program, using trait-based polymorphism and
+immutable data.
 
-\begin{itemize}
-    \item Removing state to the outwards of the program
-    \item Make functions pure, produce no side effects
-    \item Using trait-based polymorphism rather than class-based
-    \item Make data immutable
-\end{itemize}
+\subsubsection*{Purity}
 
 When a function is pure it means that calling a function with the same arguments
 will always return the same value and that it does not mutate any value. For
@@ -168,20 +162,52 @@ makes it dependant on some state of the world. Or given $x=0$, $h()=x+1$. Then
 $h()$ will yield $x=1$ and $(h \circ h)()$ will yield $x=2$, making it
 impure.~\cite{wikipedia_pure}
 
+\subsubsection*{Trait-based polymorphism}
+
 In OOP we inherit classes that contain methods and
 attributes.~\cite{Gamma:1995:DPE:186897} For functional programs, we instead
 define classes that describe the actions that are possible. For example, a class
 \texttt{Equality} could contain a function \texttt{isEqual} that checks if two
-data classes are equal. Then any data type that implements the interface
-Equality, for example lists or binary trees, would be able to use the function
-isEqual. This is known as type-classes in Haskell, mixins in Javascript or
-Traits in Scala.
+data types are equal. Then any data type that implements the interface Equality,
+for example lists or binary trees, would be able to use the function isEqual.
+This is known as type-classes in Haskell, mixins in Javascript or traits in
+Scala.
+
+\subsubsection*{Immutable data}
+
+Immutable data is that that upon being initialized can not be changed. 
+
+\subsubsection*{Moving state to the outwards of the program}
+
+Even if functional programs emphasise purity certain applications still need to
+deal with state somehow. For example a server would need to interact with a
+database. Functional programs solve this by separating pure functions and
+effectful functions. While various strategies exist, like Functional Reactive
+Programming\footnote{Read more:
+\url{en.wikipedia.org/wiki/Functional_reactive_programming}},
+Dialogs\footnote{Read more:
+\url{stackoverflow.com/questions/17002119/haskell-pre-monadic-i-o}} or
+uniqueness types\footnote{Read more:
+\url{https://en.wikipedia.org/wiki/Clean_(programming_language)}}, the one used
+in Haskell, the language used in this thesis to construct the programs, is the
+IO monad. For the uninitiated, one can think of Monads as a way to note which
+functions are pure and which are effectful and managing the way they
+intermingle. It also allows us to handle errors and state.\footnote{This is
+simplified as Monads are notoriously difficult to explain.}. 
+
+A strategy to further separate state and logic, one can construct a
+three-layered architecture, called the three layer Haskell cake. Here, the
+strategy is that one implements simple effectful functions, containing no logic
+as a base layer. Then on a second layer one implements an interface that
+implements a pure solution and one effectful solution. Then on the third layer
+one implements the logic of the program in pure code. The way the second layer
+is implemented is explained further in Section~\ref{interpreterpattern}. 
 
 So while no exact definition of Functional programming exist, we here define it
 as making functions pure and inheritance being based around functionality rather
-then attributes.
+than attributes.
 
-\subsection{Interpreter pattern for testability}
+\subsection{Interpreter pattern for testability}\label{interpreterpattern}
 
 When structuring large functional applications there is no official way to do
 it. For this study we will use a design pattern called the Interpreter pattern.
@@ -201,7 +227,7 @@ instructions. Then the final step is to implement an interpreter for the program
 that evaluates those commands. So if we have the commands in
 Figure~\ref{freeunion}, we implement a function \texttt{eval} that takes a
 command and computes some effectful code. The command \texttt{Add Item (Item ->
-next)} could, for example, be executed as add an Item to the database.
+next)} could, for example, be executed as add an Item to a database.
 
 \begin{figure}[H]
     \begin{lstlisting}
@@ -239,12 +265,10 @@ existing code, and while retaining static type safety.}
 This means, if we try to add another operation to our AST we would have to add
 new cases to every function using that data type. For small programs this is not
 a problem but as this scales it could mean adding cases to thousands of
-functions. 
-
-To resolve this we will create a Free Monad for our AST. A Free Monad is a Monad
-that we get ``for free'' if we instance an AST as a Functor. With the
-do-notation a Free Monad gives an interface we can use to write our program. So
-we start off by instancing it as a Functor (example in
+functions.  To resolve this we will create a Free Monad for our AST. A Free
+Monad is a Monad that we get ``for free'' if we instance an AST as a Functor.
+With the do-notation a Free Monad gives an interface we can use to write our
+program. So we start off by instancing it as a Functor (example in
 Figure~\ref{freefunctor}). Functors for ASTs can automatically be derived using
 the DeriveFunctor extension.~\cite{commentarycompiler}
 
@@ -319,7 +343,7 @@ you model the world through objects, where the programming objects represent the
 objects in the real world. A shopping cart might have an object ``Customer'' and
 an object ``Shopping list'', for example. Inheritance is also an important
 concept in OOP, where one object can inherent methods and attributes of another
-object.  For example, given an object Animal with the attributes health and the
+object.  For example, given an object Animal with the attribute health and the
 method attack, another object Alligator could inherit those
 properties.~\cite{Gamma:1995:DPE:186897}
 
@@ -342,17 +366,18 @@ other projects in the new project. So engineers discover that, even though they
 need the same module that was in another project, too much work is required to
 decouple and separate the desirable parts.
 
-\subsubsection*{Viscosity} Viscosity comes in two forms: the viscosity of the
-environment and the viscosity of the design. When the engineer makes changes
-they are often met with multiple solutions. Some that preserve the design and
-some that are ``hacks''. So the engineer can easily do the wrong thing.
+\subsubsection*{Viscosity} 
 
-When the compile times are long the engineers will attempt to make changes that
-do not cause long compile times. This leads to viscosity in the environment.
+Viscosity comes in two forms: the viscosity of the environment and the viscosity
+of the design. When the engineer makes changes they are often met with multiple
+solutions. Some that preserve the design and some that are ``hacks''. So the
+engineer can easily do the wrong thing. When the compile times are long the
+engineers will attempt to make changes that do not cause long compile times.
+This leads to viscosity in the environment.
 
-To avoid creating rotten designs, Martin Robert proposes the SOLID guidelines.
+To avoid creating rotten designs, Martin Robert proposes the SOLID guideline.
 SOLID mnemonic for five design principles to make software more maintainable,
-flexible and understandable. The SOLID guidelines are
+flexible and understandable. The SOLID guideline is
 
 \begin{itemize}
     \item Single responsibility principle. Here, responsibility means ``reason
@@ -384,19 +409,19 @@ way that all parts are easy to test. Thus choosing a SOLID architecture for our
 OOP based programs will allow us to make more testable software.
 
 %Method
-\chapter{Measuring testability and complexity}\label{methods}
+\section{Measuring testability and complexity}\label{measuretestability}
 
-Now that we have the definitions of the software paradigms, we can now look at
-how we can evaluate them in regards of testability and complexity. Since we want
-to find which of the two paradigms allows us to write the most maintainable
-software, it is important that we have testable software so that finding defects
-is easier. While we can not measure testability, by looking at the
-\textit{Cyclomatic complexity} of our software we can find out how many tests
-would be needed to test every possible outcome of the software. It follows then
-that if one of the paradigms have a lower complexity, it would require less
-tests. If less tests need to be written, it is logically sound to assume that
-the amount of lines of code (LOC) for our software would be lower. Lower LOC
-correlates with less defects in software.~\cite{defectloc} 
+With the definitions of the software paradigms, we can now look at how we can
+evaluate them in regards of testability and complexity. Since we want to find
+which of the two paradigms allows us to write the most maintainable software, it
+is important that we have testable software so that finding defects is easier.
+While we can not measure testability, by looking at the \textit{Cyclomatic
+complexity} of our software we can find out how many tests would be needed to
+test every possible outcome of the software. It follows then that if one of the
+paradigms have a lower complexity, it would require less tests. If less tests
+need to be written, it is logically sound to assume that the amount of lines of
+code (LOC) for our software would be lower. Lower LOC correlates with less
+defects in software.~\cite{defectloc} 
 
 Looking at the testability of code for maintenance is not enough. While
 testability is an important metric, it can also be important to look at other
@@ -411,7 +436,7 @@ dimensions to do a qualitative evaluation of software. We describe this further
 in Section~\ref{cognitivedimensions}.
 
 
-\section{Measuring testability: Cyclomatic Complexity}\label{cyclomaticcomplexity}
+\subsection{Measuring testability: Cyclomatic Complexity}\label{cyclomaticcomplexity}
 
 Cyclomatic complexity is a complexity measure that allows us to measure the
 amount of paths through a program. The Cyclomatic complexity number is an upper
@@ -465,8 +490,8 @@ v(G)=e-n+p=5-4+2=3$ is the cyclomatic number.
         \tikzset{edge/.style = {->,> = latex'}};
         \node[vertex] (a) at (2,8) {\texttt{if (a)}};
         \node[vertex] (b) at (0,6) {\texttt{if (b)}};
-        \node[vertex] (c) at (4,6) {};
-        \node[vertex] (d) at (2,4) {end};
+        \node[vertex] (c) at (4,6) {\texttt{x=2}};
+        \node[vertex] (d) at (2,4) {\texttt{end}};
         \draw[edge] (a)  to (b);
         \draw[edge] (a)  to (c);
         \draw[edge] (b)  to (c);
@@ -476,7 +501,7 @@ v(G)=e-n+p=5-4+2=3$ is the cyclomatic number.
     \caption{Cyclomatic complexity graph for Figure~\ref{c1excode}}\label{fig:c1exgraph}
 \end{figure}
 
-\section{Cyclomatic Complexity in Functional
+\subsection{Cyclomatic Complexity in Functional
 Programming}
 
 The definition of cyclomatic complexity in Section~\ref{cyclomaticcomplexity} is
@@ -598,16 +623,16 @@ difficulty testing. We mitigate this difficulty by choosing a SOLID architecture
 for OOP based programs and the interpreter pattern for functional based
 programs.
 
-\section{Mental complexity: Cognitive Dimensions}\label{cognitivedimensions}
+\subsection{Mental complexity: Cognitive Dimensions}\label{cognitivedimensions}
 
 Cognitive Dimensions is a framework for evaluating the usability of programming
-languages and to find areas of improvements. Used as an approach to analyse the
-quality of a design, it also allows to explore what future designs could be
-possible. As part of the Cognitive Dimensions, 14 different Cognitive Dimensions
-of Notation exist. A notation depends on the specific context, in this case the
-notation is the languages themselves and their architecture. The author of the
-framework recommends omitting the dimensions that are not applicable to the
-notation. We give a brief description of the dimensions.
+languages and to find areas of improvements. It allows us to evaluate the
+quality of a design and explore what future improvements could be made. As part
+of the Cognitive Dimensions, 14 different Cognitive Dimensions of Notation
+exist. A notation depends on the specific context, in this case the notation is
+the languages themselves and their architecture. The author of the framework
+recommends omitting the dimensions that are not applicable to the notation. We
+give a brief description of the dimensions.
 
 \subsubsection*{Viscosity}
 
@@ -658,7 +683,7 @@ or express a meaning?
 \subsubsection*{Hard mental operations}
 
 Where does the hard mental processing lie? Is it more when writing the source
-code itself rather than solving the case, I.E. the semantic level? Do you
+code itself rather than solving the case, I.E. the semantic level? Does one
 sometimes need to resort to pen and paper to keep track of what is happening?
 
 \subsubsection*{Provisionality}
@@ -697,16 +722,40 @@ paradigms.~\cite{euguenkiss}
 In summary, cognitive dimensions allow us to look at different aspects of a
 programming language to evaluate how complex they are cognitively. 
 
-\section{Case studies}
+\chapter{Method: Case studies}
 
-To compare the different paradigms using Cognitive dimensions and measuring
-Cyclomatic complexity we will look at three different cases. The cases were
-chosen based on how they are often subproblems in bigger applications.
+In the Chapter~\ref{theory} we defined what software paradigms are and how we
+can evaluate their testability and their cognitive complexity using Cyclomatic
+complexity and Cognitive dimensions. In Section~\ref{measuretestability} we also
+explained how Cyclomatic complexity and Cognitive dimensions is tied to the
+maintainability and testability of software. The aim of this study is to find if
+the functional paradigm or the OOP paradigm is more maintainable than the other
+and in which situations. This study will compare the cyclomatic complexity and
+cognitive complexity by looking at three different cases. If we find that the
+Cyclomatic complexity is lower in one of the paradigms or the other, we can
+conclude that the amount of tests write for full branch coverage will be lower
+for that paradigm than the other. By evaluating the paradigms using cognitive
+dimensions we can find if one paradigm is easier to maintain for the developer.
+The cases were chosen based on how they are often subproblems in bigger
+applications. The solutions for functional programming will be implemented using
+Haskell and for OOP we will use Java. 
+
+Java is a programming language that is class-based and object-oriented. The aim
+of the language is that you should be able to write the code and run it
+anywhere.~\cite{java} Haskell is a purely functional programming language, it
+also features lazy evaluation which allows you to compose functions easier. For
+example, the function $three = take\; 3 \, \circ \, cycle\; 5$, where cycle is a
+function that generates an infinitely long list consisting of a number, would
+only compute the first three values, I.E. $[5,5,5]$, of the infinite list.  In a
+non-lazy program it would never evaluate as $cycle$ would run
+forever.~\cite{haskell} The reason these languages where chosen is because of
+the authors familiarity with those languages.
 
 \subsubsection*{Simplified chess game}
 
-Chess is a famous game and assumed that the reader know how it works. Aim
-is to implement a simplified variant of it. This is not ordinary chess but a
+Chess is a famous game and in this report it is assumed that the reader know how
+it works.\footnote{Rules of chess: \url{en.wikipedia.org/wiki/Rules_of_chess}}
+Aim is to implement a simplified variant of it. This is not ordinary chess but a
 simplified version:
 
 \begin{itemize} 
@@ -749,7 +798,7 @@ Figure~\ref{chessexample}.
 \end{figure}
 
 
-\subsubsection*{to-do List}
+\subsubsection*{To-do List}
 
 A common task in programming is to create some kind of data store with
 information. A to-do list is a minimal example of that. It consists of a list of
@@ -766,10 +815,10 @@ The interface to this program will be a text interface, displaying each item in
 the todo list. To navigate and mark an item in the list the user presses up and
 down and presses \texttt{x} to mark it.
 
-\subsubsection*{Chatbot engine}
+\subsubsection*{Chat-bot engine}
 
 Oftentimes when developing applications we have to deal with complex information
-input. One of those cases is when we have chat bots. Chat bots are interactive
+input. One of those cases is when we have chat-bots. Chat-bots are interactive
 programs that respond with a text answer to the users input. For this
 application we will implement the following:
 
@@ -778,12 +827,11 @@ application we will implement the following:
     \item Give answers to those inputs in form of text messages.
 \end{itemize}
 
-\noindent Once these programs have been constructed we can evaluate the
-cyclomatic complexity by summing the cyclomatic complexity of each function. We
-can also evaluate the cognitive complexity using the cognitive dimensions
-framework. Thus we get can see if smaller subproblems in big applications
-require more tests and have a bigger mental complexity depending on the different
-paradigms.
+\noindent Once these programs have been constructed then cyclomatic complexity
+can be evaluated by summing the cyclomatic complexity of each function. We can
+also evaluate the cognitive complexity using the cognitive dimensions framework.
+Thus we get can see if smaller subproblems in big applications require more
+tests and have a bigger mental complexity depending on the different paradigms.
 
 \chapter{Results}\label{results}
 We worked so hard, yet achieved very little. TODO
