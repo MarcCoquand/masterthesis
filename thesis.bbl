@@ -1,5 +1,11 @@
 \begin{thebibliography}{10}
 
+\bibitem{7965364}
+C.~{Chen}, R.~{Alfayez}, K.~{Srisopha}, B.~{Boehm}, and L.~{Shi}, ``Why is it
+  important to measure maintainability and what are the best ways to do it?,''
+  in {\em 2017 IEEE/ACM 39th International Conference on Software Engineering
+  Companion (ICSE-C)}, pp.~377--378, May 2017.
+
 \bibitem{tiobe}
 {TIOBE}, ``Tiobe index.''
 \newblock \url{https://www.tiobe.com/tiobe-index/}, accessed Feb 2019.

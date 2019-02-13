@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.2.2)  12 FEB 2019 17:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.2.2)  13 FEB 2019 13:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -643,92 +643,88 @@ LaTeX Font Info:    External font `cmex10' loaded for size
  [2
 
 
-]
+] (./introduction.tex
 Chapter 1.
-[3
+) (./theory.tex [3
 
 ]
 Chapter 2.
 [4
 
 ]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 180.
-
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 68.
  (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 184.
+(Font)              <7> on input line 72.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 184.
-
-Overfull \hbox (4.86406pt too wide) in paragraph at lines 198--214
+(Font)              <5> on input line 72.
+ [5]
+Overfull \hbox (4.86406pt too wide) in paragraph at lines 85--101
 []\T1/cmr/m/n/12 Even if func-tional pro-grams em-
  []
 
-[5]
-
-Package caption Warning: \label without proper reference on input line 259.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `freeunion' on page 6 undefined on input line 243.
-
-
-Package caption Warning: \label without proper reference on input line 259.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `freeunion' on page 6 undefined on input line 247.
-
 [6]
+
+Package caption Warning: \label without proper reference on input line 147.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `freeunion' on page 7 undefined on input line 131.
+
+
+Package caption Warning: \label without proper reference on input line 147.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `freeunion' on page 7 undefined on input line 135.
+
 Package marginnote Info: Margin note 11.1 is on absolute page 11 on input line 
-276.
-Package marginnote Info: right page because not two side mode on input line 276
+164.
+Package marginnote Info: right page because not two side mode on input line 164
 .
-Package marginnote Info: xpos seems to be 92.14519pt on input line 276.
+Package marginnote Info: xpos seems to be 92.14519pt on input line 164.
 
-
-Package caption Warning: \label without proper reference on input line 304.
+Package caption Warning: \label without proper reference on input line 192.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `freefunctor' on page 7 undefined on input line 291.
-
-
-Package caption Warning: \label without proper reference on input line 259.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `freeunion' on page 7 undefined on input line 306.
-
-
-Package caption Warning: \label without proper reference on input line 259.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `freeunion' on page 7 undefined on input line 306.
+LaTeX Warning: Reference `freefunctor' on page 7 undefined on input line 179.
 
 [7]
+
+Package caption Warning: \label without proper reference on input line 147.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `freeunion' on page 8 undefined on input line 194.
+
+
+Package caption Warning: \label without proper reference on input line 147.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `freeunion' on page 8 undefined on input line 194.
+
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 328.
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 216.
 
-
-Package caption Warning: \label without proper reference on input line 259.
+Package caption Warning: \label without proper reference on input line 147.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `freeunion' on page 8 undefined on input line 346.
+LaTeX Warning: Reference `freeunion' on page 8 undefined on input line 234.
 
 
-Package caption Warning: \label without proper reference on input line 259.
+Package caption Warning: \label without proper reference on input line 147.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `freeunion' on page 8 undefined on input line 346.
+LaTeX Warning: Reference `freeunion' on page 8 undefined on input line 234.
 
 [8] [9]
-Overfull \hbox (12.71443pt too wide) in paragraph at lines 404--407
+Overfull \hbox (12.71443pt too wide) in paragraph at lines 292--295
 []\T1/cmr/m/n/12 Here, re-spon-si-bil-ity means ``rea-son to change''. Mod-
  []
 
@@ -737,91 +733,91 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
  [13]
 
-Package caption Warning: \label without proper reference on input line 633.
+Package caption Warning: \label without proper reference on input line 521.
 See the caption package documentation for explanation.
 
 
 LaTeX Warning: Reference `fig:cyclomaticfunctional' on page 14 undefined on inp
-ut line 566.
+ut line 454.
 
 
-Package caption Warning: \label without proper reference on input line 581.
+Package caption Warning: \label without proper reference on input line 469.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `split' on page 14 undefined on input line 588.
+LaTeX Warning: Reference `split' on page 14 undefined on input line 476.
 
 [14]
 Missing character: There is no ; in font nullfont!
 
-Underfull \hbox (badness 2990) in paragraph at lines 611--611
+Underfull \hbox (badness 2990) in paragraph at lines 499--499
  [][][][]\T1/cmtt/m/n/12 []
  []
 
 
-Package caption Warning: \label without proper reference on input line 581.
+Package caption Warning: \label without proper reference on input line 469.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `split' on page 15 undefined on input line 634.
+LaTeX Warning: Reference `split' on page 15 undefined on input line 522.
 
 
-Package caption Warning: \label without proper reference on input line 581.
+Package caption Warning: \label without proper reference on input line 469.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `split' on page 15 undefined on input line 634.
+LaTeX Warning: Reference `split' on page 15 undefined on input line 522.
 
 [15]
-Underfull \hbox (badness 10000) in paragraph at lines 724--727
+Underfull \hbox (badness 10000) in paragraph at lines 612--615
 
  []
 
 [16]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 732.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 620.
 
  (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 732.
- [17]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 620.
+) (./method.tex
+[17]
 Chapter 3.
 [18
 
 ]
 
-Package caption Warning: \label without proper reference on input line 820.
+Package caption Warning: \label without proper reference on input line 72.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `chessexample' on page 19 undefined on input line 802.
+LaTeX Warning: Reference `chessexample' on page 19 undefined on input line 54.
 
-
-[19] [20]
+[19]) [20]
 Chapter 4.
 (./thesis.bbl [21
 
 ]
-Overfull \hbox (90.61258pt too wide) in paragraph at lines 8--13
+Overfull \hbox (90.61258pt too wide) in paragraph at lines 14--19
 \T1/cmtt/m/n/12 How-[]Functional-[]Reactive-[]Programming-[]FRP-[]is-[]Changing
 -[]the-[]Face-[]of-[]Web-[]Development$\T1/cmr/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 5490) in paragraph at lines 21--23
+Underfull \hbox (badness 5490) in paragraph at lines 27--29
 []\T1/cmr/m/n/12 ``Pure func-tion,'' Aug 2018.  $\T1/cmtt/m/n/12 https : / / en
  . wikipedia . org / wiki / Pure _
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 35--39
+Underfull \hbox (badness 10000) in paragraph at lines 41--45
 \T1/cmtt/m/n/12 / / ghc . haskell . org / trac / ghc / wiki / Commentary / Comp
 iler / DeriveFunctor$\T1/cmr/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 6396) in paragraph at lines 41--45
+Underfull \hbox (badness 6396) in paragraph at lines 47--51
 []\T1/cmr/m/n/12 M. C. Robert, ``De-sign prin-ci-ples and de-sign pat-terns,'' 
 Septem-ber
  []
@@ -834,10 +830,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 17233 strings out of 492701
- 323696 string characters out of 6134505
- 449191 words of memory out of 5000000
- 20790 multiletter control sequences out of 15000+600000
+ 17243 strings out of 492701
+ 323807 string characters out of 6134505
+ 449195 words of memory out of 5000000
+ 20791 multiletter control sequences out of 15000+600000
  20063 words of font info for 43 fonts, out of 8000000 for 9000
  1137 hyphenation exceptions out of 8191
  55i,8n,60p,831b,1249s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -861,7 +857,7 @@ t/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texlive/texmf-dist/fonts
 public/cm-super/sfti1728.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
 cm-super/sftt1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-supe
 r/sftt1200.pfb>
-Output written on thesis.pdf (25 pages, 420413 bytes).
+Output written on thesis.pdf (25 pages, 423069 bytes).
 PDF statistics:
  170 PDF objects out of 1000 (max. 8388607)
  121 compressed objects within 2 object streams
