@@ -373,6 +373,11 @@ complexity then becomes 2. If we construct a graph for the control flow of our
 program, the nodes of the graph would represent processing tasks and edges
 represent control flow between the nodes. 
 
+If we have the code found in example figure~\ref{c1excode}. To calculate the
+complexity of this function we first construct a graph as seen in
+figure~\ref{fig:c1exgraph}. From the graph we find $n=4, e=5, p=2\Rightarrow
+v(G)=e-n+p=5-4+2=3$ is the cyclomatic number.
+
 \begin{figure}[H]
     \begin{lstlisting}
         void foo(void)
@@ -387,10 +392,6 @@ represent control flow between the nodes.
     \caption{Multi if function foo.}\label{c1excode}
 \end{figure}
 
-If we have the code found in example figure~\ref{c1excode}. To calculate the
-complexity of this function we first construct a graph as seen in
-figure~\ref{fig:c1exgraph}. From the graph we find $n=4, e=5, p=2\Rightarrow
-v(G)=e-n+p=5-4+2=3$ is the cyclomatic number.
 
 \begin{figure}[H]
     \centering
