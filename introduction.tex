@@ -1,21 +1,28 @@
-\chapter{Introduction: Software paradigms and complexity}
+\chapter{Introduction: Software paradigms and complexity}\label{introduction}
 
 Different schools of thoughts have different approaches when it comes to
 building applications. There is one that is the traditional, object oriented,
 procedural way of doing it. Then there is a contender, a functional approach, as
-an alternative way to build applications. Object-oriented programming arose 
-
-
+an alternative way to build applications.  Early programming languages were
+based around procedure calls. Procedures are the series of steps the computer
+needs to perform the computations desired.~\cite{proceduralprogramming} These
+programming languages were turing complete. A programming language is Turing
+complete if is able to simulate a turing machine. A Turing machine is an
+abstract machine, which given any computer algorithm can simulate that logic and
+construct it.~\cite{turingmachine}  To create more reusable and structured code
+from normal procedural code we use Object-oriented programming.  Java is popular
+language that is turing complete, object-oriented and imperative.~\cite{java} 
 
 Functional programming originates from 1936 from Lambda calculus. Lambda
 calculus is a theory for functions and evolved from Church and Curry to create
 an alternative foundation for mathematics.~\cite{Turner} Even though Turing
 machines and Lambda calculus developed separately, the church-turing thesis
-proves that any computational problem that is solvable with Lambda Calculus
-is also solveable for Turing machines and vice versa.~\cite{sep-church-turing}
-What this means in practice is that we can write any program in both functional
-programs and procedural, object-oriented programs. However one solution might be
-way more complex in one language than the other. 
+proves that any computational problem that is solvable with Lambda Calculus is
+also solveable for Turing machines and vice versa.~\cite{sep-church-turing} What
+this means in practice is any program written in the functional paradigm can be
+written in the procedural, object-oriented paradigm. However it does not mean
+that the paradigms are the same as one solution might be very complex in a
+procedural language and simple in a functional language and vice versa. 
 
 As software engineers, one factor of concern is software quality. Software
 quality reflects how well our system conforms to given functional requirements
@@ -27,15 +34,14 @@ have to write more tests to get more correct code in one paradigm it affects
 software quality. By looking at cyclomatic complexity, described in
 Section~\ref{cyclomaticcomplexity}, we can find out how the different approaches
 affect the amount of tests we need to write to get full branch
-coverage\footnote{Informally, Full branch coverage can be thought of all
-possible outcomes of our program}. 
+coverage. Informally, Full branch coverage can be thought of all
+possible outcomes of our program.
 
 Software quality also refers to how maintainable and robust the software
 is.~\cite{Pressman:2004:SEP:994110} Some of the maintainability aspects, such as
 usability, is hard to measure quantitatively. By looking at the cognitive
 dimensions, described in Section~\ref{cognitivedimensions}, an expert analysis
-can be made to find how the two approaches affect the mental complexity for the
+can be made to find how the two approaches affect the usability for the
 developer. So by looking at different case studies this study aims to find if
-the different software paradigms affect the testability and if there are any
-cognitive benefits to one approach over the other. 
+the different software paradigms affect software quality. 
 

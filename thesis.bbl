@@ -1,5 +1,22 @@
 \begin{thebibliography}{10}
 
+\bibitem{proceduralprogramming}
+T.~{Ishida}, Y.~{Sasaki}, and Y.~{Fukuhara}, ``Use of procedural programming
+  languages for controlling production systems,'' in {\em [1991] Proceedings.
+  The Seventh IEEE Conference on Artificial Intelligence Application}, vol.~i,
+  pp.~71--75, Feb 1991.
+
+\bibitem{turingmachine}
+A.~M. Turing, ``On computable numbers, with an application to the
+  entscheidungsproblem,'' {\em Proceedings of the London Mathematical Society},
+  vol.~s2-42, no.~1, pp.~230--265, 1937.
+
+\bibitem{java}
+G.~S. G. B. A.~B. James~Gosling, Bill~Joy, ``The java language specification,''
+  Febuary 2015.
+\newblock \url{https://docs.oracle.com/javase/specs/jls/se8/jls8.pdf}, accessed
+  Feb 2018.
+
 \bibitem{Turner}
 D.~A. Turner, ``Some history of functional programming languages,'' in {\em
   Proceedings of the 2012 Conference on Trends in Functional Programming -
@@ -14,12 +31,6 @@ B.~J. Copeland, ``The church-turing thesis,'' in {\em The Stanford Encyclopedia
 \bibitem{Pressman:2004:SEP:994110}
 R.~S. Pressman, {\em Software Engineering: A Practitioner's Approach}.
 \newblock New York, NY, USA: McGraw-Hill, Inc., 6~ed., 2005.
-
-\bibitem{7965364}
-C.~{Chen}, R.~{Alfayez}, K.~{Srisopha}, B.~{Boehm}, and L.~{Shi}, ``Why is it
-  important to measure maintainability and what are the best ways to do it?,''
-  in {\em 2017 IEEE/ACM 39th International Conference on Software Engineering
-  Companion (ICSE-C)}, pp.~377--378, May 2017.
 
 \bibitem{tiobe}
 {TIOBE}, ``Tiobe index.''
@@ -85,12 +96,6 @@ T.~Green and M.~Petre, ``Usability analysis of visual programming environments:
 \bibitem{euguenkiss}
 E.~Kiss, ``Comparison of object-oriented and functional programming for gui
   development,'' master's thesis, Leibniz Universität Hannover, August 2014.
-
-\bibitem{java}
-G.~S. G. B. A.~B. James~Gosling, Bill~Joy, ``The java language specification,''
-  Febuary 2015.
-\newblock \url{https://docs.oracle.com/javase/specs/jls/se8/jls8.pdf}, accessed
-  Feb 2018.
 
 \bibitem{haskell}
 ``Haskell.''

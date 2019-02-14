@@ -3,50 +3,50 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: thesis.aux
 The style file: ieeetr.bst
 Database file #1: thesis.bib
+Too many commas in name 1 of "James Gosling, Bill Joy, Guy Steele, Gilad Bracha, Alex Buckley" for entry java
+while executing---line 969 of file ieeetr.bst
+Too many commas in name 1 of "James Gosling, Bill Joy, Guy Steele, Gilad Bracha, Alex Buckley" for entry java
+while executing---line 969 of file ieeetr.bst
 Warning--empty booktitle in defectloc
-Too many commas in name 1 of "James Gosling, Bill Joy, Guy Steele, Gilad Bracha, Alex Buckley" for entry java
-while executing---line 969 of file ieeetr.bst
-Too many commas in name 1 of "James Gosling, Bill Joy, Guy Steele, Gilad Bracha, Alex Buckley" for entry java
-while executing---line 969 of file ieeetr.bst
-You've used 19 entries,
+You've used 20 entries,
             1876 wiz_defined-function locations,
-            592 strings with 6775 characters,
-and the built_in function-call counts, 3557 in all, are:
-= -- 349
-> -- 98
+            601 strings with 6916 characters,
+and the built_in function-call counts, 3802 in all, are:
+= -- 379
+> -- 96
 < -- 0
 + -- 44
-- -- 25
-* -- 199
-:= -- 481
-add.period$ -- 24
-call.type$ -- 19
-change.case$ -- 20
+- -- 24
+* -- 215
+:= -- 512
+add.period$ -- 25
+call.type$ -- 20
+change.case$ -- 21
 chr.to.int$ -- 0
-cite$ -- 20
-duplicate$ -- 178
-empty$ -- 427
-format.name$ -- 25
-if$ -- 904
+cite$ -- 21
+duplicate$ -- 192
+empty$ -- 454
+format.name$ -- 24
+if$ -- 970
 int.to.chr$ -- 0
-int.to.str$ -- 19
-missing$ -- 11
-newline$ -- 71
-num.names$ -- 18
+int.to.str$ -- 20
+missing$ -- 12
+newline$ -- 74
+num.names$ -- 19
 pop$ -- 116
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 105
+skip$ -- 117
 stack$ -- 0
-substring$ -- 134
-swap$ -- 46
+substring$ -- 154
+swap$ -- 53
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 1
-while$ -- 29
-width$ -- 21
-write$ -- 172
+while$ -- 32
+width$ -- 22
+write$ -- 184
 (There were 2 error messages)

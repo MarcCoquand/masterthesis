@@ -1,44 +1,37 @@
 \chapter{Theory}\label{theory} 
 
-Maintainable software is defined as 
-
-\blockquote{The ease with which a software system or component can be modified
-to correct faults, improve performance or other attributes, or adapt to a
-changed environment}~\cite{7965364} 
-
-As a way to build and structure software we created programming paradigms.
-There exists many but the two we will look at are functional programming and
-object-oriented programming.  Historically and today OOP has been the most
-popular language for the commercial software industry. Java is an OOP language
-that is, in February 2019, the most popular language in the software industry.
-It is also a multi-paradigm language, since it combines OOP with procedural
-programming. In this study, when we say OOP it is implied that it is also a
-procedural.  Languages that are functional, like Haskell and F\#, are less
-used.~\cite{tiobe} However functional concepts have become more popular in
-multi-paradigm languages like Javascript.  For example React, based on
-Functional Reactive Programming~\cite{reactisfrp}, has gained a lot of
+Chapter~\ref{introduction} introduced the concept of software paradigms, how the
+arose and how, while they can calculate the same things, might lead to different
+software quality. Historically and today OOP has been the most popular language
+for the commercial software industry. Java is an OOP language that is, in
+February 2019, the most popular language in the software industry. It is also a
+multi-paradigm language, since it combines OOP with procedural programming. In
+this study, when we say OOP we also imply that it is procedural from now on.
+Languages that are functional, like Haskell and F\#, are less used.~\cite{tiobe}
+However functional concepts have become more popular in multi-paradigm languages
+like Javascript. For example React, based on Functional Reactive
+Programming~\cite{reactisfrp}, has gained a lot of
 popularity.~\cite{popularityreact} 
 
 Exact definitions exist of OOP but not for Functional programming. Both
-emphasise creating maintainable programs.  The way OOP makes maintainable software is by
-emphasising encapsulation of state into \textit{objects} and message passing.
-Functional programs emphasise moving state to the edges of the program, making
-the core logic of the program pure (defined in
-Section~\ref{functionalprogramming}) and using immutable data.  Immutable data
-is data whose state can not change once initialized. This is explained further
-in Section~\ref{functionalprogramming} and Section~\ref{oop}. To prevent
-defects, tests need to be written to check that the behavior works as expected,
-thus testability is of concern when creating maintainable software.
+emphasise creating maintainable programs.  The way OOP makes maintainable
+software is by emphasising encapsulation of state into \textit{objects} and
+message passing. Functional programs emphasise moving state to the edges of the
+program, making the core logic of the program pure and using immutable data
+(defined in Section~\ref{functionalprogramming}). Immutable data is data whose
+state can not change once initialized. This is explained further in
+Section~\ref{functionalprogramming} and Section~\ref{oop}. To prevent defects,
+tests need to be written to check that the behavior works as expected, thus
+testability is of concern when creating maintainable software.
 
 While paradigms define how we build our applications, we still need design
-patterns for structuring the source code. For instance, without design patterns
-it is possible to couple dependencies with logic. This causes problems if we
-later want to change the dependency since that means we also have to change the
-logic. To increase maintainability, we want to use design patterns. This
-study will present the patterns for OOP and functional programming in their
-respective section. When you create applications that you use once then
-maintainability is not of high concern. However since the design patterns might
-affect the metrics we will be looking at, we still employ them in this study. 
+patterns for structuring the source code. A design pattern is a template for the
+developer when structuring their code to solve certain problems. For instance,
+without design patterns, one can couple dependencies with logic which affects
+maintainability. This causes problems if we later want to change the dependency
+since that means we also have to change the logic. So using design patterns lead
+to more maintainable code. This study will present the patterns for OOP and
+functional programming in their respective section. 
 
 \section{Characteristics of Functional Programming}\label{functionalprogramming}
 
@@ -85,8 +78,10 @@ no data can be mutated unless it is specifically created as mutable data.
 Even if functional programs emphasise purity certain applications still need to
         deal with state somehow. For example a server would need to interact
         with a database. Functional programs solve this by separating pure
-        functions and effectful functions. While various strategies exist, like
-        Functional Reactive Programming\footnote{Read more:
+        functions and effectful functions. Effects are observable interactions
+        with the environment, such as database access or printing a message.
+        While various strategies exist, like Functional Reactive
+        Programming\footnote{Read more:
         \url{en.wikipedia.org/wiki/Functional_reactive_programming}},
         Dialogs\footnote{Read more:
         \url{stackoverflow.com/questions/17002119/haskell-pre-monadic-i-o}} or
@@ -144,9 +139,9 @@ next)} could, for example, be executed as add an Item to a database.
             | Remove Item next
             | End --^ Terminates the program
     \end{lstlisting}
-    \label{freeunion}
     \caption{AST for a to-do-list. We can derive a functor instances
     from ASTs for deriving Free instances.~\cite{commentarycompiler}}
+    \label{freeunion}
 \end{figure}
 
 
@@ -189,9 +184,9 @@ the DeriveFunctor extension.~\cite{commentarycompiler}
           fmap f End = 
             End
     \end{lstlisting}
-    \label{freefunctor}
     \caption{A Functor instance for Figure~\ref{freeunion}. This can
     automatically be derived using DeriveFunctor.}
+    \label{freefunctor}
 \end{figure}
 
 From this we can define \texttt{type FreeAST = Free FunctorAst}. Lastly we lift
@@ -389,7 +384,8 @@ v(G)=e-n+p=5-4+2=3$ is the cyclomatic number.
               x=2;
          }
     \end{lstlisting}
-    \caption{Multi if function foo.}\label{c1excode}
+    \caption{Multi if function foo.}
+    \label{c1excode}
 \end{figure}
 
 
@@ -408,7 +404,8 @@ v(G)=e-n+p=5-4+2=3$ is the cyclomatic number.
         \draw[edge] (b)  to (d);
         \draw[edge] (c)  to (d);
     \end{tikzpicture}
-    \caption{Cyclomatic complexity graph for Figure~\ref{c1excode}}\label{fig:c1exgraph}
+    \caption{Cyclomatic complexity graph for Figure~\ref{c1excode}}
+    \label{fig:c1exgraph}
 \end{figure}
 
 \subsection{Cyclomatic Complexity in Functional
@@ -467,10 +464,10 @@ seen in Figure~\ref{fig:cyclomaticfunctional} to model our function.
             else 
                 (ys, x:zs)
     \end{lstlisting}
-    \label{split}
     \caption{Recursively split a list into two based on a given condition in
     Haskell. For example \texttt{split (>3) [1,2,3,4,5] =
     ([4,5],[1,2,3])}.}
+    \label{split}
 \end{figure}
 
 In Haskell $(x:xs)$ denotes an item $x$ at head of a list of items $xs$. Given
@@ -519,8 +516,8 @@ complexity.~\cite{bergklaas}
         \draw[->, very thick] (f) to (g) ;
         \draw[very thick] (c) to (2, -4.0) to (g) ;
     \end{tikzpicture}
-    \label{fig:cyclomaticfunctional}
     \caption{Flowgraph for split function, defined in Figure~\ref{split}.}
+    \label{fig:cyclomaticfunctional}
 \end{figure}
 
 Cyclomatic complexity allows us to look at programs in a quantitative way to
