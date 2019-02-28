@@ -7,11 +7,11 @@ an alternative way to build applications.  Early programming languages were
 based around procedure calls. Procedures are the series of steps the computer
 needs to perform the computations desired.~\cite{proceduralprogramming} These
 programming languages were turing complete. A programming language is Turing
-complete if is able to simulate a turing machine. A Turing machine is an
-abstract machine, which given any computer algorithm can simulate that logic and
-construct it.~\cite{turingmachine}  To create more reusable and structured code
-from normal procedural code we use Object-oriented programming.  Java is popular
-language that is turing complete, object-oriented and imperative.~\cite{java} 
+complete if is able to calculate everything that is
+calculatable.~\cite{turingmachine}  To create more reusable and structured code
+from normal procedural code we use Object-oriented programming.  Java is a
+popular language that is turing complete, object-oriented and
+imperative.~\cite{java} 
 
 Functional programming originates from 1936 from Lambda calculus. Lambda
 calculus is a theory for functions and evolved from Church and Curry to create
@@ -22,26 +22,26 @@ also solveable for Turing machines and vice versa.~\cite{sep-church-turing} What
 this means in practice is any program written in the functional paradigm can be
 written in the procedural, object-oriented paradigm. However it does not mean
 that the paradigms are the same as one solution might be very complex in a
-procedural language and simple in a functional language and vice versa. 
+procedural language and simple in a functional language and vice versa as long
+as they are turing-complete.
 
 As software engineers, one factor of concern is software quality. Software
-quality reflects how well our system conforms to given functional requirements
-or specification, the degree of which we produce correct software. To ensure
-that the software is correct, software engineers create
-tests.~\cite{Pressman:2004:SEP:994110} While both paradigms can solve any
-computational problem, they may still be different in software quality. If we
-have to write more tests to get more correct code in one paradigm it affects
-software quality. By looking at cyclomatic complexity, described in
-Section~\ref{cyclomaticcomplexity}, we can find out how the different approaches
-affect the amount of tests we need to write to get full branch
-coverage. Informally, Full branch coverage can be thought of all
-possible outcomes of our program.
+quality can be divided into two different subparts: software functional quality
+and software structural quality. Software functional quality reflects how well
+our system conforms to given functional requirements or specification and the
+degree of which we produce correct software.  To check that the software is
+correct, software engineers create tests.~\cite{Pressman:2004:SEP:994110} If a
+software engineer has to write more tests it could potentially lead to affecting
+software quality.  By looking at cyclomatic complexity, described in
+Section~\ref{cyclomaticcomplexity}, one can find out how the different software
+paradigms affect the amount of tests we need to write.  
 
-Software quality also refers to how maintainable and robust the software
-is.~\cite{Pressman:2004:SEP:994110} Some of the maintainability aspects, such as
-usability, is hard to measure quantitatively. By looking at the cognitive
-dimensions, described in Section~\ref{cognitivedimensions}, an expert analysis
-can be made to find how the two approaches affect the usability for the
-developer. So by looking at different case studies this study aims to find if
-the different software paradigms affect software quality. 
+Software structural quality refers to how well the software adheres to
+non-functional requirements such as robustness and
+maintainability.~\cite{Pressman:2004:SEP:994110} Some of the maintainability
+aspects, such as usability, is hard to measure quantitatively. By looking at the
+cognitive dimensions, described in Section~\ref{cognitivedimensions}, one can
+use an expert analysis to find how the two approaches affect the usability for
+the developer. So by looking at different case studies this study aims to find
+if the different software paradigms affect software quality. 
 

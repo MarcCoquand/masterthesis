@@ -3,8 +3,8 @@
 \contentsline {chapter}{\numberline {2}Theory}{5}
 \contentsline {section}{\numberline {2.1}Characteristics of Functional Programming}{6}
 \contentsline {subsection}{\numberline {2.1.1}Interpreter pattern for testability}{7}
-\contentsline {subsection}{\numberline {2.1.2}Extending applications with Free Monads}{8}
-\contentsline {section}{\numberline {2.2}Object Oriented Programming}{11}
+\contentsline {subsection}{\numberline {2.1.2}Using MTL to handle dependencies}{8}
+\contentsline {section}{\numberline {2.2}Object Oriented Programming}{10}
 \contentsline {subsection}{\numberline {2.2.1}SOLID principles}{11}
 \contentsline {section}{\numberline {2.3}Measuring testability and complexity}{12}
 \contentsline {subsection}{\numberline {2.3.1}Measuring testability: Cyclomatic Complexity}{13}

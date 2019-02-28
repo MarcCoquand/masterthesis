@@ -1,20 +1,20 @@
 \chapter{Theory}\label{theory} 
 
-Chapter~\ref{introduction} introduced the concept of software paradigms, how the
-arose and how, while they can calculate the same things, might lead to different
-software quality. Historically and today OOP has been the most popular language
-for the commercial software industry. Java is an OOP language that is, in
-February 2019, the most popular language in the software industry. It is also a
-multi-paradigm language, since it combines OOP with procedural programming. In
+Chapter~\ref{introduction} introduced the concept of software paradigms, how
+they arose and how, while they can calculate the same things, might lead to
+different software quality. Historically and today OOP is been the most popular
+language for the commercial software industry. Java is an OOP language that is,
+in February 2019, the most popular language in the software industry. It is also
+a multi-paradigm language, since it combines OOP with procedural programming. In
 this study, when we say OOP we also imply that it is procedural from now on.
-Languages that are functional, like Haskell and F\#, are less used.~\cite{tiobe}
-However functional concepts have become more popular in multi-paradigm languages
-like Javascript. For example React, based on Functional Reactive
-Programming~\cite{reactisfrp}, has gained a lot of
+Languages that are functional, like Haskell and F\#, are used less
+frequently.~\cite{tiobe} However functional concepts have become more popular in
+multi-paradigm languages like Javascript. For example React, based on Functional
+Reactive Programming~\cite{reactisfrp}, has gained a lot of
 popularity.~\cite{popularityreact} 
 
-Exact definitions exist of OOP but not for Functional programming. Both
-emphasise creating maintainable programs.  The way OOP makes maintainable
+Exact definitions exist of OOP but not for Functional programming. Both stated
+goal is creating maintainable programs.  The way OOP makes maintainable
 software is by emphasising encapsulation of state into \textit{objects} and
 message passing. Functional programs emphasise moving state to the edges of the
 program, making the core logic of the program pure and using immutable data
@@ -28,17 +28,17 @@ While paradigms define how we build our applications, we still need design
 patterns for structuring the source code. A design pattern is a template for the
 developer when structuring their code to solve certain problems. For instance,
 without design patterns, one can couple dependencies with logic which affects
-maintainability. This causes problems if we later want to change the dependency
-since that means we also have to change the logic. So using design patterns lead
-to more maintainable code. This study will present the patterns for OOP and
-functional programming in their respective section. 
+maintainability. Coupling logic and dependencies causes problems if we later
+want to change the dependency since that means we also have to change the logic.
+This study will present the patterns for OOP and functional programming in their
+respective section. 
 
 \section{Characteristics of Functional Programming}\label{functionalprogramming}
 
-Functional programming is a programming paradigm. While different definitions exist
-of what it means, we define functional programming by the use of pure functions,
-moving state to the outwards of the program, using trait-based polymorphism and
-immutable data.
+ While different definitions exist of what Functional programming means, we
+ define functional programming as a paradigm that uses of pure functions,
+ decoupling state from logic, using trait-based polymorphism and
+ immutable data.
 
 \begin{description}
 \item[ Purity ]
@@ -73,14 +73,14 @@ we initialize a record, \texttt{abc = \{a: 1, b: 2, c: 3\}} then \texttt{abc.a
 = 4} is an illegal operation. Immutable data, along with purity, ensures that
 no data can be mutated unless it is specifically created as mutable data.
 
-\item[Moving state to the outwards of the program]
+\item[Decoupling state from logic]
 
-Even if functional programs emphasise purity certain applications still need to
-        deal with state somehow. For example a server would need to interact
-        with a database. Functional programs solve this by separating pure
-        functions and effectful functions. Effects are observable interactions
-        with the environment, such as database access or printing a message.
-        While various strategies exist, like Functional Reactive
+Even if functional programs emphasise purity applications still need to deal
+        with state somehow. For example a server would need to interact with a
+        database. Functional programs solve this by separating pure functions
+        and effectful functions. Effects are observable interactions with the
+        environment, such as database access or printing a message.  While
+        various strategies exist, like Functional Reactive
         Programming\footnote{Read more:
         \url{en.wikipedia.org/wiki/Functional_reactive_programming}},
         Dialogs\footnote{Read more:
@@ -152,90 +152,86 @@ database) behind an interface that we can swap out for testing. So we can
 implement two interpreter functions, one for our real environment and one for
 testing. 
 
-\subsection{Extending applications with Free Monads}
+\subsection{Using MTL to handle dependencies}\label{mtl}
 
-\marginnote{{\footnotesize\textbf{Note:} \textit{This part assumes familiarity
-with Haskell and uninitiated can ignore it.}}}
+An alternative way to implement the interpreter pattern described in
+Section~\ref{interpreterpattern} is by using a technique called MTL. Using MTL 
+means that we can substitute our dependencies by using a type class so that we
+have one pure and one effectful instance. Then afterwards the pure instance can
+be used for testing. 
 
-If we implement an interpreter for an AST we will run into the Expression
-problem. The expression problem states:
-
-\blockquote{The goal is to define a data type by cases, where one can add new
-cases to the data type and new functions over the data type, without recompiling
-existing code, and while retaining static type safety.}
-
-This means, if we try to add another operation to our AST we would have to add
-new cases to every function using that data type. For small programs this is not
-a problem but as this scales it could mean adding cases to thousands of
-functions.  To resolve this we will create a Free Monad for our AST. A Free
-Monad is a Monad that we get ``for free'' if we instance an AST as a Functor.
-With the do-notation a Free Monad gives an interface we can use to write our
-program. So we start off by instancing it as a Functor (example in
-Figure~\ref{freefunctor}). Functors for ASTs can automatically be derived using
-the DeriveFunctor extension.~\cite{commentarycompiler}
+For example, a software engineer is tasked with implementing an authentication
+system for a server using web tokens to identify users that should expire within
+one week. An effectful implementation could be done like Figure~\ref{tokennaive}
 
 \begin{figure}[H]
     \begin{lstlisting}
-        instance Functor TodoList where
-          fmap f (Add item k) = 
-            Add item (f . k)
-          fmap f (Mark item next) = 
-            Set item (f next)
-          fmap f End = 
-            End
+
+    addWeek :: POSIXTime -> POSIXTime
+    addWeek currentTime =
+        currentTime + oneWeek
+        where
+            oneWeek = 604800000
+
+    token :: Key User -> IO (Maybe WebToken)
+    token user =
+        do  currentTime <- Time.Posix.getPOSIXTime
+            let expirationDate = addWeek currentTime
+            let maybeToken = encode $ Token user expirationDate
+            return maybeToken
     \end{lstlisting}
-    \caption{A Functor instance for Figure~\ref{freeunion}. This can
-    automatically be derived using DeriveFunctor.}
-    \label{freefunctor}
+    \caption{Example of a function that, given the ID of a user, generates a
+    unique token that can be used for authentication.}
+    \label{tokennaive}
 \end{figure}
 
-From this we can define \texttt{type FreeAST = Free FunctorAst}. Lastly we lift
-all the members of the union type as operations and create an interpreter. See
-Figure~\ref{freeprogram} for a full example.
+Figure~\ref{tokennaive} is hard to test as it couples effectful code with pure
+code. The function \texttt{token} depends on the current time which constantly
+fluctuates and that makes unit testing more difficult.
+
+Instead by using the MTL technique one decouples the effectful code from it's
+dependencies. In Figure~\ref{tokennaive} the effectful code is the function
+\texttt{Time.Posix.getPOSIXTime}, which fetches the current time. So the type
+class will be a class \texttt{MonadTime} that contains one method
+\texttt{getTime}. By abstracting away the effectful code it becomes trivial to
+implement a pure and effectful instance. This is done in
+Figure~\ref{tokencorrect}. 
 
 \begin{figure}[H]
     \begin{lstlisting}
-        type TodoListF = Free TodoList
+    class MonadTime m where
+        getTime :: m POSIXTime
 
-        add :: Item -> TodoListF Item
-        add item = 
-            liftF $ Add item id
-        mark :: Item -> TodoListF ()
-        mark item = 
-            liftF $ Mark item ()
-        end :: TodoListF r
-        end = 
-            liftF $ End
+    instance MonadTime IO where
+        getTime = Time.Posix.getPOSIXTime
 
-        eval :: TodoListF r -> IO r
-        eval (Pure r) = return r
-        eval (Free (Add item next)) = addItemToDb item >>= eval next
-        eval (Free (Mark item next)) = markItem item >> eval next
-        eval (Free End) = exitSuccess
+    instance MonadTime ((->) POSIXTime) where
+        -- Allows us to call functions with the constraint MonadTime
+        -- with an extra argument containing a mock value.
+        getTime = id
 
-        fakeItem :: Item
+    addWeek :: POSIXTime -> POSIXTime
+    addWeek currentTime =
+        currentTime + oneWeek
+        where
+            oneWeek = 604800000
 
-        exampleProgram :: TodoListF ()
-        exampleProgram = 
-            do  item <- add fakeItem 
-                mark item 
-                end
-
-        main = 
-            eval exampleProgram
+    token :: MonadTime m => Key User -> m (Maybe WebToken)
+    token user =
+        do  currentTime <- getTime
+            let expirationDate = addWeek currentTime
+            let maybeToken = encode $ Token user expirationDate
+            return maybeToken
     \end{lstlisting}
-    \caption{An example implementation for our To-do list data type defined in
-    Figure~\ref{freeunion}. Requires the haskell package ``free''
-    (\protect\url{hackage.haskell.org/package/free-5.1})}
-    \label{freeprogram}
+    \caption{An implementation of the token generation following MTL and
+    interpreter pattern.}
+    \label{tokencorrect}
 \end{figure}
 
-So to summarize, if we just implement an evaluate function for our AST we run
-into the expression problem. To mitigate this we create Free monads from our
-ASTs and to get an extendable interface that we can use with the do-notation. By
-using the interpreter pattern, our program becomes independent from the
-environment that it runs on. This allows us to easier test all parts of the
-program.
+With the implementation in Figure~\ref{tokencorrect}, testing the function
+\texttt{token} becomes trivial with the instance \texttt{MonadTime ((->)
+POSIXTime)} as it allows one to substitute \texttt{getTime} with any value. Thus
+we separate effectful code from logic and mocking becomes trivial.
 
 \section{Object Oriented Programming}\label{oop}
 
