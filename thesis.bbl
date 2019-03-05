@@ -32,6 +32,23 @@ B.~J. Copeland, ``The church-turing thesis,'' in {\em The Stanford Encyclopedia
 R.~S. Pressman, {\em Software Engineering: A Practitioner's Approach}.
 \newblock New York, NY, USA: McGraw-Hill, Inc., 6~ed., 2005.
 
+\bibitem{defectloc}
+H.~Zhang, ``An investigation of the relationships between lines of code and
+  defects,'' pp.~274--283, 10 2009.
+
+\bibitem{bergklaas}
+K.~Berg, ``Software measurement and functional programming,'' {\em Current
+  Sociology - CURR SOCIOL}, 01 1995.
+
+\bibitem{chidamber}
+S.~R. {Chidamber} and C.~F. {Kemerer}, ``A metrics suite for object oriented
+  design,'' {\em IEEE Transactions on Software Engineering}, vol.~20,
+  pp.~476--493, June 1994.
+
+\bibitem{euguenkiss}
+E.~Kiss, ``Comparison of object-oriented and functional programming for gui
+  development,'' master's thesis, Leibniz Universität Hannover, August 2014.
+
 \bibitem{tiobe}
 {TIOBE}, ``Tiobe index.''
 \newblock \url{https://www.tiobe.com/tiobe-index/}, accessed Feb 2019.
@@ -75,27 +92,15 @@ M.~C. Robert, ``Design principles and design patterns,'' September 2015.
   \url{https://fi.ort.edu.uy/innovaportal/file/2032/1/design_principles.pdf},
   accessed Feb 2018.
 
-\bibitem{defectloc}
-H.~Zhang, ``An investigation of the relationships between lines of code and
-  defects,'' pp.~274--283, 10 2009.
-
 \bibitem{McCabe}
 T.~J. McCabe, ``A complexity measure,'' in {\em Proceedings of the 2Nd
   International Conference on Software Engineering}, ICSE '76, (Los Alamitos,
   CA, USA), pp.~407--, IEEE Computer Society Press, 1976.
 
-\bibitem{bergklaas}
-K.~Berg, ``Software measurement and functional programming,'' {\em Current
-  Sociology - CURR SOCIOL}, 01 1995.
-
 \bibitem{GREEN1996131}
 T.~Green and M.~Petre, ``Usability analysis of visual programming environments:
   A 'cognitive dimensions' framework,'' {\em Journal of Visual Languages \&
   Computing}, vol.~7, no.~2, pp.~131 -- 174, 1996.
-
-\bibitem{euguenkiss}
-E.~Kiss, ``Comparison of object-oriented and functional programming for gui
-  development,'' master's thesis, Leibniz Universität Hannover, August 2014.
 
 \bibitem{haskell}
 ``Haskell.''

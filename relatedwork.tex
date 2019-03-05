@@ -3,15 +3,36 @@
 In the previous chapters we introduced software quality and established why it
 is important for software engineers. There exists different metrics for
 measuring software quality. One of them is measuring the Lines of Code (LOC) in
-the software as a measure of defects.~\cite{} As this study will measure
-different programming languages and software paradigms where syntax is vastly
-different, it follows that using LOC to measure if one paradigm is potentially
-flawed.~\cite{defectloc} Thus another metric to look at is cyclomatic
-complexity.
+the software as a measure of defects.~\cite{defectloc} As this study will
+measure different programming languages and software paradigms where syntax is
+vastly different, it follows that using LOC to measure if one paradigm is
+potentially flawed. Thus another metric to look at is cyclomatic complexity. To
+measure software complexity the following metrics were identified:
 
-Research conducted on the effect of programming languages found a slightly lower
-cyclomatic complexity for functional programs over imperative
-programs.\cite{bergklaas} The research did not answer however how the choice of
-architecture and design patterns affect this number.
+\begin{description}
 
+    \item [Cyclomatic Complexity] Described further in Chapter~\ref{theory}
 
+    \item [Halsteads metric] A metric that relates to the difficulty of writing
+    or understanding code related to operators and operands.~\cite{bergklaas}
+
+    \item [Chidamber and Kemerer Metrics~\cite{chidamber}] A complexity measure
+    for Object-oriented programs. Since this study compares functional to
+    object-oriented progams this metric is ill suited as it does not allow for
+    comparative analysis.
+
+\end{description}
+
+Berg Van Der Klaas explored Halsteads metric and compared OOP and functional
+programming. The study notes that the psychological complexity needs to be taken
+into account and noted that the use higher order functions may affect results
+for functional programs for the Halstead metric. To measure complexity of
+software, a program could instead be measured at a lexical level. No
+quantitative measure was found for measuring the linguistic structures of the
+program and the comprehension. However a qualitative measure called Cognitive
+Dimensions was found that could work instead. There has been a thesis done that
+looks at Functional programming and OOP when it comes to programming Graphical
+User interfaces.~\cite{euguenkiss} Cognitive Dimensions inspects
+fourteen different aspects and they are not always applicable for all projects.
+The master thesis suggests omitting some which has been taken into account and
+is explained further in chapter~\ref{theory}.

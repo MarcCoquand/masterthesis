@@ -1,18 +1,20 @@
 \babel@toc {english}{}
 \contentsline {chapter}{\numberline {1}Introduction: Software paradigms and complexity}{3}
-\contentsline {chapter}{\numberline {2}Theory}{5}
-\contentsline {section}{\numberline {2.1}Characteristics of Functional Programming}{6}
-\contentsline {subsection}{\numberline {2.1.1}Interpreter pattern for testability}{7}
-\contentsline {subsection}{\numberline {2.1.2}Using MTL to handle dependencies}{8}
-\contentsline {section}{\numberline {2.2}Object Oriented Programming}{10}
-\contentsline {subsection}{\numberline {2.2.1}SOLID principles}{11}
-\contentsline {section}{\numberline {2.3}Measuring testability and complexity}{12}
-\contentsline {subsection}{\numberline {2.3.1}Measuring testability: Cyclomatic Complexity}{13}
-\contentsline {subsection}{\numberline {2.3.2}Cyclomatic Complexity in Functional Programming}{14}
-\contentsline {subsection}{\numberline {2.3.3}Mental complexity: Cognitive Dimensions}{16}
-\contentsline {chapter}{\numberline {3}Method: Case studies}{19}
-\contentsline {chapter}{\numberline {4}Results}{22}
-\contentsline {section}{\numberline {4.1}Limitations}{22}
-\contentsline {subsection}{\numberline {4.1.1}Improvements to implementation}{22}
-\contentsline {section}{\numberline {4.2}future work}{22}
-\contentsline {subsection}{\numberline {4.2.1}Relations to cardinality}{22}
+\contentsline {chapter}{\numberline {2}Related Work}{5}
+\contentsline {chapter}{\numberline {3}Theory}{7}
+\contentsline {section}{\numberline {3.1}Characteristics of Functional Programming}{8}
+\contentsline {subsection}{\numberline {3.1.1}Sum types and product types}{9}
+\contentsline {subsection}{\numberline {3.1.2}Brief introduction to Monads for side effects}{10}
+\contentsline {subsection}{\numberline {3.1.3}Interpreter pattern for testability}{10}
+\contentsline {subsection}{\numberline {3.1.4}Using MTL for the interpreter pattern}{11}
+\contentsline {section}{\numberline {3.2}SOLID principles}{13}
+\contentsline {section}{\numberline {3.3}Measuring testability and complexity}{15}
+\contentsline {subsection}{\numberline {3.3.1}Measuring testability: Cyclomatic Complexity}{15}
+\contentsline {subsection}{\numberline {3.3.2}Cyclomatic Complexity in Functional Programming}{17}
+\contentsline {subsection}{\numberline {3.3.3}Mental complexity: Cognitive Dimensions}{19}
+\contentsline {chapter}{\numberline {4}Method: Case studies}{21}
+\contentsline {chapter}{\numberline {5}Results}{24}
+\contentsline {section}{\numberline {5.1}Limitations}{24}
+\contentsline {subsection}{\numberline {5.1.1}Improvements to implementation}{24}
+\contentsline {section}{\numberline {5.2}future work}{24}
+\contentsline {subsection}{\numberline {5.2.1}Relations to cardinality}{24}

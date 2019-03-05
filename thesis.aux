@@ -11,91 +11,105 @@
 \@writefile{lot}{\addvspace {10\p@ }}
 \newlabel{introduction}{{1}{3}}
 \citation{Pressman:2004:SEP:994110}
+\citation{defectloc}
+\citation{bergklaas}
+\citation{chidamber}
+\citation{euguenkiss}
+\@writefile{toc}{\contentsline {chapter}{\numberline {2}Related Work}{5}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{relatedwork}{{2}{5}}
 \citation{tiobe}
 \citation{reactisfrp}
 \citation{popularityreact}
-\@writefile{toc}{\contentsline {chapter}{\numberline {2}Theory}{5}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}Theory}{7}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{theory}{{2}{5}}
+\newlabel{theory}{{3}{7}}
 \citation{wikipedia_pure}
 \citation{Gamma:1995:DPE:186897}
-\@writefile{toc}{\contentsline {section}{\numberline {2.1}Characteristics of Functional Programming}{6}}
-\newlabel{functionalprogramming}{{2.1}{6}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Characteristics of Functional Programming}{8}}
+\newlabel{functionalprogramming}{{3.1}{8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.1}Sum types and product types}{9}}
+\newlabel{types}{{3.1.1}{9}}
 \citation{interpreterpattern}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.1}Interpreter pattern for testability}{7}}
-\newlabel{interpreterpattern}{{2.1.1}{7}}
-\citation{commentarycompiler}
-\citation{commentarycompiler}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces AST for a to-do-list. We can derive a functor instances from ASTs for deriving Free instances.~\cite  {commentarycompiler}\relax }}{8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.2}Brief introduction to Monads for side effects}{10}}
+\newlabel{monads}{{3.1.2}{10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Monad type class in Haskell.\relax }}{10}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{freeunion}{{2.1}{8}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.2}Using MTL to handle dependencies}{8}}
-\newlabel{mtl}{{2.1.2}{8}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces Example of a function that, given the ID of a user, generates a unique token that can be used for authentication.\relax }}{9}}
-\newlabel{tokennaive}{{2.2}{9}}
-\citation{Gamma:1995:DPE:186897}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces An implementation of the token generation following MTL and interpreter pattern.\relax }}{10}}
-\newlabel{tokencorrect}{{2.3}{10}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.2}Object Oriented Programming}{10}}
-\newlabel{oop}{{2.2}{10}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.1}SOLID principles}{11}}
+\newlabel{monadclass}{{3.1}{10}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.3}Interpreter pattern for testability}{10}}
+\newlabel{interpreterpattern}{{3.1.3}{10}}
+\citation{commentarycompiler}
+\citation{commentarycompiler}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces AST for a to-do-list. We can derive a functor instances from ASTs for deriving Free instances.~\cite  {commentarycompiler}\relax }}{11}}
+\newlabel{freeunion}{{3.2}{11}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.4}Using MTL for the interpreter pattern}{11}}
+\newlabel{mtl}{{3.1.4}{11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Example of a function that, given the ID of a user, generates a unique token that can be used for authentication.\relax }}{12}}
+\newlabel{tokennaive}{{3.3}{12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces An implementation of the token generation following MTL and interpreter pattern.\relax }}{13}}
+\newlabel{tokencorrect}{{3.4}{13}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}SOLID principles}{13}}
+\newlabel{oop}{{3.2}{13}}
+\newlabel{introduction}{{3.2}{13}}
 \citation{martinrobert}
 \citation{defectloc}
-\@writefile{toc}{\contentsline {section}{\numberline {2.3}Measuring testability and complexity}{12}}
-\newlabel{measuretestability}{{2.3}{12}}
 \citation{McCabe}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.1}Measuring testability: Cyclomatic Complexity}{13}}
-\newlabel{cyclomaticcomplexity}{{2.3.1}{13}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.4}{\ignorespaces Multi if function foo.\relax }}{13}}
-\newlabel{c1excode}{{2.4}{13}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.5}{\ignorespaces Cyclomatic complexity graph for Figure~\ref  {c1excode}\relax }}{14}}
-\newlabel{fig:c1exgraph}{{2.5}{14}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.2}Cyclomatic Complexity in Functional Programming}{14}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}Measuring testability and complexity}{15}}
+\newlabel{measuretestability}{{3.3}{15}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Measuring testability: Cyclomatic Complexity}{15}}
+\newlabel{cyclomaticcomplexity}{{3.3.1}{15}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces Multi if function foo.\relax }}{16}}
+\newlabel{c1excode}{{3.5}{16}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces Cyclomatic complexity graph for Figure~\ref  {c1excode}\relax }}{16}}
+\newlabel{fig:c1exgraph}{{3.6}{16}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Cyclomatic Complexity in Functional Programming}{17}}
 \citation{bergklaas}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.6}{\ignorespaces Recursively split a list into two based on a given condition in Haskell. For example \texttt  {split (>3) [1,2,3,4,5] = ([4,5],[1,2,3])}.\relax }}{15}}
-\newlabel{split}{{2.6}{15}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.7}{\ignorespaces Flowgraph for split function, defined in Figure~\ref  {split}.\relax }}{16}}
-\newlabel{fig:cyclomaticfunctional}{{2.7}{16}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.3}Mental complexity: Cognitive Dimensions}{16}}
-\newlabel{cognitivedimensions}{{2.3.3}{16}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces Recursively split a list into two based on a given condition in Haskell. For example \texttt  {split (>3) [1,2,3,4,5] = ([4,5],[1,2,3])}.\relax }}{18}}
+\newlabel{split}{{3.7}{18}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces Flowgraph for split function, defined in Figure~\ref  {split}.\relax }}{18}}
+\newlabel{fig:cyclomaticfunctional}{{3.8}{18}}
 \citation{GREEN1996131}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.3}Mental complexity: Cognitive Dimensions}{19}}
+\newlabel{cognitivedimensions}{{3.3.3}{19}}
 \citation{euguenkiss}
 \citation{java}
 \citation{haskell}
-\@writefile{toc}{\contentsline {chapter}{\numberline {3}Method: Case studies}{19}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Method: Case studies}{21}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces An example of the interaction in the chess game.\relax }}{20}}
-\newlabel{chessexample}{{3.1}{20}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces An example of the interaction in the chess game.\relax }}{22}}
+\newlabel{chessexample}{{4.1}{22}}
 \bibstyle{ieeetr}
 \bibdata{thesis}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Results}{22}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Results}{24}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{results}{{4}{22}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}Limitations}{22}}
-\newlabel{limitations}{{4.1}{22}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}Improvements to implementation}{22}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}future work}{22}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Relations to cardinality}{22}}
+\newlabel{results}{{5}{24}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Limitations}{24}}
+\newlabel{limitations}{{5.1}{24}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.1}Improvements to implementation}{24}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}future work}{24}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}Relations to cardinality}{24}}
 \bibcite{proceduralprogramming}{1}
 \bibcite{turingmachine}{2}
 \bibcite{java}{3}
 \bibcite{Turner}{4}
 \bibcite{sep-church-turing}{5}
 \bibcite{Pressman:2004:SEP:994110}{6}
-\bibcite{tiobe}{7}
-\bibcite{reactisfrp}{8}
-\bibcite{popularityreact}{9}
-\bibcite{wikipedia_pure}{10}
-\bibcite{Gamma:1995:DPE:186897}{11}
-\bibcite{interpreterpattern}{12}
-\bibcite{commentarycompiler}{13}
-\bibcite{martinrobert}{14}
-\bibcite{defectloc}{15}
-\bibcite{McCabe}{16}
-\bibcite{bergklaas}{17}
-\bibcite{GREEN1996131}{18}
-\bibcite{euguenkiss}{19}
-\bibcite{haskell}{20}
+\bibcite{defectloc}{7}
+\bibcite{bergklaas}{8}
+\bibcite{chidamber}{9}
+\bibcite{euguenkiss}{10}
+\bibcite{tiobe}{11}
+\bibcite{reactisfrp}{12}
+\bibcite{popularityreact}{13}
+\bibcite{wikipedia_pure}{14}
+\bibcite{Gamma:1995:DPE:186897}{15}
+\bibcite{interpreterpattern}{16}
+\bibcite{commentarycompiler}{17}
+\bibcite{martinrobert}{18}
+\bibcite{McCabe}{19}
+\bibcite{GREEN1996131}{20}
+\bibcite{haskell}{21}

@@ -108,28 +108,85 @@ So while no exact definition of Functional programming exist, we here define it
 as making functions pure and inheritance being based around functionality rather
 than attributes.
 
+\subsection{Sum types and product types}\label{types}
+
+A type is in Haskell a \textit{set} of possible values that a given data can
+have. This can be $int$, $char$ and custom defined types. A \textit{sum type} or
+\textit{union type} is a type which is the sum of types, meaning that it can be
+one of those it's given types. For example the type \texttt{type IntChar = Int |
+Char} is either an Int or a Char. It can also be used to create enums such as
+\texttt{type Color = Red | Green | Blue}, meaning that a value of type Color is
+either red, green or blue. A product type is a type which is the product of
+types, for example \texttt{type User = User Name Email}.  Informally, a product
+type can be likened to a record in Javascript. A sum type can be used to model
+data which may or may not have a value, by introducing the Maybe type:
+\texttt{type Maybe value = Just value | Nothing}. This allows us to model
+computations that might fail. For example given $sqrt(x) = \sqrt{x},\,
+x\in \mathbb{Z}$ then $sqrt(-1)$ is undefined and would cause Haskell to crash.
+Instead by introducing a function \texttt{safeSqrt x = if x > 0 then Just (sqrt
+x) else Nothing} the program can force the developer to handle the special case
+of negative numbers. 
+
+\subsection{Brief introduction to Monads for side effects}\label{monads}
+
+Monads\footnote{\url{en.wikipedia.org/wiki/Monad_(functional_programming)}} are
+a way to sequence computations that might fail while automating away boilerplate
+code. Figure~\ref{monadclass} shows how Monads are implemented as a typeclass in
+Haskell. It implements the function \texttt{return}, the function bind
+\texttt{(>>=)}, the function sequence \texttt{(>>)} which is bind whilst
+ignoring the prior argument and \texttt{fail} which handles crashes.
+
+\begin{figure}[H]
+    \begin{lstlisting}
+        class Monad m where  
+            return :: a -> m a  
+            (>>=) :: m a -> (a -> m b) -> m b  
+            (>>) :: m a -> m b -> m b  
+            fail :: String -> m a  
+            fail msg = error msg 
+    \end{lstlisting}
+    \caption{Monad type class in Haskell.}
+    \label{monadclass}
+\end{figure}
+
+Informally if this does not make sense, think of Monads as a design pattern that
+allows us to sequence different computations. Without them the developer would
+have to explicitly check if a computation has failed. For example, given the
+function $unsafeSqrtLog = sqrt\,\circ\,log$, then $unsafeSqrtLog(-1)$ would throw an
+error since $log$ and $sqrt$ are undefined for $-1$.  Section~\ref{types} showed
+how the \texttt{Maybe value} type could be used to create a safe computation
+\texttt{safeSqrt}. However to sequence that computation with a function
+\texttt{safeLog}, the user would have to manually check that \texttt{safeSqrt}
+returned a value \texttt{Just result} and not \texttt{Nothing}. Monads allows 
+sequencing these computations without explicitly writing this check, so
+composing \texttt{safeSqrt} and \texttt{safeLog} using bind becomes
+\texttt{safeSqrtLog n = safeSqrt n >>= safeLog}. The same idea applies for
+effectful computations such as fetching data from a database.
+
 \subsection{Interpreter pattern for testability}\label{interpreterpattern}
 
 The beginning of this chapter briefly mentioned that design patterns are
-important to create maintainable software.  For this study we will use a design
-pattern called the Interpreter pattern to structure the applications.
-Informally, we can think of it as a way to create smaller composable compilers
-that when added together make one big application. A compiler is a program that
-takes some input, interprets the input and then does some output. A server, for
-example, would take some request, interpret that request and then turn it into
-a response. The server could integrate itself with the database, which would
-take some query, interpret that query and then return an
-object.~\cite{interpreterpattern}
+important to create maintainable software.  In this study a design pattern
+called the Interpreter pattern will be used to structure functional programs. An
+interpreter is something which interprets input of some format, modifies it and
+transforms it into some output.  Informally, we can think of interpreter pattern
+as a way to create smaller composable compilers that when added together make
+one big application. A compiler is a program that takes some input, interprets
+the input and then does some output. A server, for example, would take some
+request, interpret that request and then turn it into a response. The server
+could integrate itself with the database, which would take some query, interpret
+that query and then return an object.~\cite{interpreterpattern}
 
 To implement this pattern in Haskell we create an Abstract Syntax Tree (AST),
-using a union type, of the program that contains all the available commands that
-the program is capable of doing. See Figure~\ref{freeunion} for an example of a
-to-do list AST. Once we have the AST we can encode the logic of the program as
-instructions. Then the final step is to implement an interpreter for the program
-that evaluates those commands. So if we have the commands in
-Figure~\ref{freeunion}, we implement a function \texttt{eval} that takes a
-command and computes some effectful code. The command \texttt{Add Item (Item ->
-next)} could, for example, be executed as add an Item to a database.
+using a union type\footnote{\url{https://en.wikipedia.org/wiki/Union_type}}, of
+the program that contains all the available commands that the program is capable
+of doing. See Figure~\ref{freeunion} for an example of a to-do list AST. Once we
+have the AST we can encode the logic of the program as instructions. Then the
+final step is to implement an interpreter for the program that evaluates those
+commands. So if we have the commands in Figure~\ref{freeunion}, we implement a
+function \texttt{eval} that takes a command and computes some effectful code.
+The command \texttt{Add Item (Item -> next)} could, for example, be executed as
+add an Item to a database.
 
 \begin{figure}[H]
     \begin{lstlisting}
@@ -152,17 +209,19 @@ database) behind an interface that we can swap out for testing. So we can
 implement two interpreter functions, one for our real environment and one for
 testing. 
 
-\subsection{Using MTL to handle dependencies}\label{mtl}
+\subsection{Using MTL for the interpreter pattern}\label{mtl}
 
-An alternative way to implement the interpreter pattern described in
-Section~\ref{interpreterpattern} is by using a technique called MTL. Using MTL 
-means that we can substitute our dependencies by using a type class so that we
-have one pure and one effectful instance. Then afterwards the pure instance can
-be used for testing. 
+To implement the interpreter pattern described in
+Section~\ref{interpreterpattern} one can use MTL. Using MTL means that we can
+substitute our dependencies by using a type class so that we have one pure and
+one effectful instance. Then afterwards the pure instance can be used for
+testing. 
 
-For example, a software engineer is tasked with implementing an authentication
-system for a server using web tokens to identify users that should expire within
-one week. An effectful implementation could be done like Figure~\ref{tokennaive}
+For example, if one wants to implement an authentication system for a server
+where the tokens expire within one week then one could do it as shown in
+Figure~\ref{tokennaive}. Figure~\ref{tokennaive} is hard to test as it couples
+effectful code with pure code. The function \texttt{token} depends on the
+current time and that makes unit testing more difficult.
 
 \begin{figure}[H]
     \begin{lstlisting}
@@ -185,11 +244,7 @@ one week. An effectful implementation could be done like Figure~\ref{tokennaive}
     \label{tokennaive}
 \end{figure}
 
-Figure~\ref{tokennaive} is hard to test as it couples effectful code with pure
-code. The function \texttt{token} depends on the current time which constantly
-fluctuates and that makes unit testing more difficult.
-
-Instead by using the MTL technique one decouples the effectful code from it's
+Instead, by using the MTL technique, one decouples the effectful code from it's
 dependencies. In Figure~\ref{tokennaive} the effectful code is the function
 \texttt{Time.Posix.getPOSIXTime}, which fetches the current time. So the type
 class will be a class \texttt{MonadTime} that contains one method
@@ -233,23 +288,16 @@ With the implementation in Figure~\ref{tokencorrect}, testing the function
 POSIXTime)} as it allows one to substitute \texttt{getTime} with any value. Thus
 we separate effectful code from logic and mocking becomes trivial.
 
-\section{Object Oriented Programming}\label{oop}
 
-Object-oriented programming (OOP) is a programming paradigm based around the
-idea of objects that contain attributes and methods. The general idea is that
-you model the world through objects, where the programming objects represent the
-objects in the real world. A shopping cart might have an object ``Customer'' and
-an object ``Shopping list'', for example. Inheritance is also an important
-concept in OOP, where one object can inherent methods and attributes of another
-object.  For example, given an object Animal with the attribute health and the
-method attack, another object Alligator could inherit those
-properties.~\cite{Gamma:1995:DPE:186897}
+\section{SOLID principles}\label{oop}
 
-\subsection{SOLID principles}
 
-If the design of a system is done poorly, it can lead to rotten design. Martin
-Robert, a software engineer, claims that there are four big indicators of rotten
-design.
+In Chapter\label{introduction} and earlier in this chapter we established the
+basics of OOP. The way to design a OOP system is left to it's user. If the
+design of a system is done poorly, it can lead to rotten design. Martin Robert,
+a software engineer, claims that there are four big indicators of rotten design.
+
+
 \begin{description}
 
 \item[ Rigidity ] Rigidity is the tendency for software to be difficult to
@@ -299,29 +347,25 @@ flexible and understandable. The SOLID guideline is
         calls the third-party operations.~\cite{martinrobert}
 \end{description}
 
-When we compare our solutions we want to test them after principles used in the
-industry, as then we can use the results when making technical decisions for our
-softwares. Using a SOLID architecture also helps us make programs that are not
-as dependent on the environments, making them easier to test (as we can swap the
-production environment to a test environment). When we investigate the
-testability, it is important that we look at programs that are written in such a
-way that all parts are easy to test. Thus choosing a SOLID architecture for our
-OOP based programs will allow us to make more testable software.
+Using a SOLID architecture helps make programs that are not as dependent on the
+environments, making them easier to test (as we can swap the production
+environment to a test environment). When investigating the testability, it is
+important that to look at programs that are written in such a way that all parts
+are easy to test. Thus choosing a SOLID architecture for OOP based programs will
+allow making more testable software.
 
-%Method
 \section{Measuring testability and complexity}\label{measuretestability}
 
-With the definitions of the programming paradigms, we can now look at how we can
-evaluate them in regards of testability and complexity. Since we want to find
-which of the two paradigms allows us to write the most maintainable software, it
-is important that we have testable software so that finding defects is easier.
-While we can not measure testability, by looking at the \textit{Cyclomatic
-complexity} of our software we can find out how many tests would be needed to
-test every possible outcome of the software. It follows then that if one of the
-paradigms have a lower complexity, it would require less tests. If less tests
-need to be written, it is logically sound to assume that the amount of lines of
-code (LOC) for our software would be lower. Lower LOC correlates with less
-defects in software.~\cite{defectloc} 
+The previous sections defined the programming paradigms and how to write
+software in a testable and maintainable manner. Since the aim of the study is to
+find which of the two paradigms allows us to write the most maintainable
+software. looking at the \textit{Cyclomatic complexity} of software it is
+possible to find out the amount of tests needed to test every possible outcome
+of the software. It follows then that if one of the paradigms have a lower
+complexity, it would require less tests. If less tests need to be written, it is
+sound to assume that the amount of lines of code (LOC) needed for the software
+would be lower. Lower LOC correlates with less defects in
+software.~\cite{defectloc} 
 
 Looking at the testability of code for maintenance is not enough. While
 testability is an important metric, it can also be important to look at other
@@ -330,10 +374,10 @@ program written in the language Whitespace, an esoteric language consisting only
 of whitespace\footnote{Description of Whitespace:
 \url{https://en.wikipedia.org/wiki/Whitespace_(programming_language)}}, could
 have a low LOC and cyclomatic complexity. But for humans knowing only the
-English language, a text consisting of whitespace would be illegible. While
-measuring cognitive complexity is hard, we can use a framework called Cognitive
-dimensions to do a qualitative evaluation of software. We describe this further
-in Section~\ref{cognitivedimensions}.
+English language, a text consisting of whitespace would be illegible. By using a
+framework called Cognitive dimensions to do a qualitative evaluation of
+software one can qualitatively the structural software quality. This is described
+further in Section~\ref{cognitivedimensions}.
 
 
 \subsection{Measuring testability: Cyclomatic Complexity}\label{cyclomaticcomplexity}
@@ -354,18 +398,17 @@ In a strongly connected graph $G$, the cyclomatic number is equal to the
 maximum number of linearly independent circuits.~\cite{McCabe}
 \end{theorem}
 
-Informally, we can think of cyclomatic complexity as a way to measure the amount
-tests a program needs to reach full branch coverage. We construct a graph that
-branches out based on when the control flow in our source code branches out. For
-example, given \texttt{f(bool) = if bool then ``hello''; else ``hola''} the
-function \texttt{f} will either evaluate to ``hello'' or ``hola''. To get full
-branch coverage for \texttt{f} we will therefore need two tests. The cyclomatic
-complexity then becomes 2. If we construct a graph for the control flow of our
-program, the nodes of the graph would represent processing tasks and edges
-represent control flow between the nodes. 
+Informally, cyclomatic complexity is a way to measure the amount tests a program
+needs to reach full branch coverage by constructing a graph that branches out
+based on the control flow. For example, given \texttt{f(bool) = if bool then
+``hello''; else ``hola''} the function \texttt{f} will either evaluate to
+``hello'' or ``hola''. To get full branch coverage for \texttt{f} two tests are
+needed. The cyclomatic complexity therefore becomes 2. The nodes of a cyclomatic
+graph represents processing tasks and edges represent control flow between
+the nodes. 
 
-If we have the code found in example figure~\ref{c1excode}. To calculate the
-complexity of this function we first construct a graph as seen in
+Given the code found in example figure~\ref{c1excode}. To calculate the
+complexity of this function, first construct a graph as seen in
 figure~\ref{fig:c1exgraph}. From the graph we find $n=4, e=5, p=2\Rightarrow
 v(G)=e-n+p=5-4+2=3$ is the cyclomatic number.
 
@@ -444,8 +487,9 @@ programs.
     \end{lstlisting}
 \end{definition}
 
-Instead of cyclomatic graphs we instead construct flowgraphs, such as the one
-seen in Figure~\ref{fig:cyclomaticfunctional} to model our function.
+Instead of cyclomatic graphs in functional programs one constructs flowgraphs,
+such as the one seen in Figure~\ref{fig:cyclomaticfunctional}, to model the
+functions.
 
 \begin{figure}[H]
     \begin{lstlisting}
@@ -470,13 +514,11 @@ In Haskell $(x:xs)$ denotes an item $x$ at head of a list of items $xs$. Given
 the Haskell code in Figure~\ref{split}. To calculate LHS we find two
 pattern identifiers which are $onCondition$ and $(x:xs)$. there is one unique
 pattern identifiers which is $(x:xs)$. There is also one non identifier
-which is $[]$. We also find one guard, an if statement, and no
+which is $[]$. There is also one guard, an if statement, and no
 list comprehensions on RHS. Thus the cyclomatic complexity is $1+(2-1+1)+1=4$.
-<-- NEEDS VERIFICATION FROM SOMEONE, THE SOURCE IS VERY VAGUE HERE\ldots
 
-We do not count the $otherwise$ and $else$ clauses as a guard, just as how we
-do not count the $else$ statement in normal procedural cyclomatic
-complexity.~\cite{bergklaas}
+In this method to calculate cyclomatic complexity, do not count the $otherwise$
+and $else$ clauses.~\cite{bergklaas}
 
 
 \begin{figure}[H]
@@ -516,26 +558,24 @@ complexity.~\cite{bergklaas}
     \label{fig:cyclomaticfunctional}
 \end{figure}
 
-Cyclomatic complexity allows us to look at programs in a quantitative way to
-find how many tests we need to write for our programs to get full branch
-coverage. A low complexity for a program means that less tests have to be
-written.  Note that simply because a program has a low cyclomatic complexity it
+Cyclomatic complexity finds how many tests are needed to get full branch
+coverage of source code. A low complexity for a program means that less tests
+have to be written.  Note that if a program has a low cyclomatic complexity it
 does not imply that the program is easier to test. If a program is written in
 such a way that it depends heavily on the environment it can also lead to
-difficulty testing. We mitigate this difficulty by choosing a SOLID architecture
-for OOP based programs and the interpreter pattern for functional based
-programs.
+difficulty testing. So to make cyclomatic complexity a better metric this study
+will use design patterns to make testable code.
 
 \subsection{Mental complexity: Cognitive Dimensions}\label{cognitivedimensions}
 
 Cognitive Dimensions is a framework for evaluating the usability of programming
-languages and to find areas of improvements. It allows us to evaluate the
-quality of a design and explore what future improvements could be made. As part
-of the Cognitive Dimensions, 14 different Cognitive Dimensions of Notation
-exist. A notation depends on the specific context, in this case the notation is
-the languages themselves and their architecture. The author of the framework
-recommends omitting the dimensions that are not applicable to the notation. We
-give a brief description of the dimensions.
+languages and to find areas of improvements.~\cite{GREEN1996131} It allows us to
+evaluate the quality of a design and explore what future improvements could be
+made. As part of the Cognitive Dimensions, 14 different Cognitive Dimensions of
+Notation exist. A notation depends on the specific context, in this case the
+notation is the languages themselves and their architecture. The author of the
+framework recommends omitting the dimensions that are not applicable to the
+notation. We give a brief description of the dimensions.
 
 \begin{description}
 
@@ -605,7 +645,7 @@ whole?
 
 To what extent does the programming paradigm and language help minimise errors? Are
 there any structures or complexities that lead to it being easier to make
-errors?~\cite{GREEN1996131}\\
+errors?
 \end{description}
 
 \noindent For this study we will investigate the following dimensions: 
