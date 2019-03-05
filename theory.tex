@@ -114,18 +114,60 @@ A type is in Haskell a \textit{set} of possible values that a given data can
 have. This can be $int$, $char$ and custom defined types. A \textit{sum type} or
 \textit{union type} is a type which is the sum of types, meaning that it can be
 one of those it's given types. For example the type \texttt{type IntChar = Int |
-Char} is either an Int or a Char. It can also be used to create enums such as
-\texttt{type Color = Red | Green | Blue}, meaning that a value of type Color is
-either red, green or blue. A product type is a type which is the product of
-types, for example \texttt{type User = User Name Email}.  Informally, a product
-type can be likened to a record in Javascript. A sum type can be used to model
-data which may or may not have a value, by introducing the Maybe type:
+Char} is either an Int or a Char. A useful application for sum types is enums
+such as \texttt{type Color = Red | Green | Blue}, meaning that a value of type
+Color is either red, green or blue. A product type is a type which is the
+product of types, for example \texttt{type User = User Name Email}.  Informally,
+a product type can be likened to a record in Javascript. A sum type can be used
+to model data which may or may not have a value, by introducing the Maybe type:
 \texttt{type Maybe value = Just value | Nothing}. This allows us to model
-computations that might fail. For example given $sqrt(x) = \sqrt{x},\,
-x\in \mathbb{Z}$ then $sqrt(-1)$ is undefined and would cause Haskell to crash.
+computations that might fail. For example given $sqrt(x) = \sqrt{x},\, x\in
+\mathbb{Z}$ then $sqrt(-1)$ is undefined and would cause Haskell to crash.
 Instead by introducing a function \texttt{safeSqrt x = if x > 0 then Just (sqrt
 x) else Nothing} the program can force the developer to handle the special case
-of negative numbers. 
+of negative numbers. Sum types are useful for implementing the Interpreter
+pattern, explained in Section~\ref{interpreterpattern}.
+
+\subsection{Type classes}\label{typeclass}
+
+A type class is a construct that allows for ad hoc polymorphism. This allows to
+create constraints to type variables in parametrically polymorphic types. In
+English, that means that it allows creating interfaces that must be implemented
+for the types. For example the equality type class, defined in
+Figure~\ref{equalitytypeclass}
+
+\begin{figure}[H]
+    \begin{lstlisting}
+        class Eq a where
+          (==) :: a -> a -> Bool
+          (/=) :: a -> a -> Bool
+    \end{lstlisting}
+    \caption{Equality type class in Haskell.}
+    \label{equalitytypeclass}
+\end{figure}
+
+By defining an Equality type class one can create general functions that can be
+used for anything that is ``equalable''. For example Figure~\ref{printifequal}
+is a function that prints a text if two items are equal. This function can be
+used for floats, ints, tuples and everything else that implements the
+\texttt{Eq} type class. Other uses for type classes is Num which implements
+numeric operations for floats and integers. This is useful for implementing the
+MTL technique which will allow us to implement the Interpreter pattern which
+will be described in the following sections.
+
+\begin{figure}[H]
+    \begin{lstlisting}
+        printIfEqual :: Eq a => a -> a -> IO ()
+        printIfEqual a b =
+            if a == b then
+                putStrLn "They are equal"
+            else
+                putStrLn "They are not equal"
+    \end{lstlisting}
+    \caption{A function that prints a text if the two items are equal.}
+    \label{printifequal}
+\end{figure}
+
 
 \subsection{Brief introduction to Monads for side effects}\label{monads}
 
@@ -178,7 +220,7 @@ could integrate itself with the database, which would take some query, interpret
 that query and then return an object.~\cite{interpreterpattern}
 
 To implement this pattern in Haskell we create an Abstract Syntax Tree (AST),
-using a union type\footnote{\url{https://en.wikipedia.org/wiki/Union_type}}, of
+using a sum type\footnote{\url{https://en.wikipedia.org/wiki/Union_type}}, of
 the program that contains all the available commands that the program is capable
 of doing. See Figure~\ref{freeunion} for an example of a to-do list AST. Once we
 have the AST we can encode the logic of the program as instructions. Then the
@@ -211,17 +253,17 @@ testing.
 
 \subsection{Using MTL for the interpreter pattern}\label{mtl}
 
-To implement the interpreter pattern described in
-Section~\ref{interpreterpattern} one can use MTL. Using MTL means that we can
-substitute our dependencies by using a type class so that we have one pure and
-one effectful instance. Then afterwards the pure instance can be used for
-testing. 
+Implementing interpreter pattern can either be done using sum types or a design
+pattern called MTL. The idea of MTL is to substitute dependencies by using a
+type class for one pure and one effectful instance. This allows for a pure
+instance that can be used for testing.
 
 For example, if one wants to implement an authentication system for a server
 where the tokens expire within one week then one could do it as shown in
 Figure~\ref{tokennaive}. Figure~\ref{tokennaive} is hard to test as it couples
-effectful code with pure code. The function \texttt{token} depends on the
-current time and that makes unit testing more difficult.
+effectful code with pure code. The function \texttt{token} calls
+\texttt{Time.Posix.getPOSIXTime} which depends on the current time,
+making unit testing more difficult.
 
 \begin{figure}[H]
     \begin{lstlisting}
