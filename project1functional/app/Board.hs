@@ -9,6 +9,7 @@ module Board
     , construct
     , knightMoves
     , extractCoord
+    , maybeGet
     ) where
 
 
@@ -71,6 +72,12 @@ isWithinRange (c1,c2) (c3,c4) =
 get :: Board square -> Coord -> square
 get pos@(Board arr) coord =
     arr ! coord
+
+
+maybeGet :: Board square -> (Int,Int) -> Maybe square
+maybeGet board =
+    fmap (get board) . makeCoord board 
+    
 
 
 update :: Board square -> [(Coord, square)] -> Board square 

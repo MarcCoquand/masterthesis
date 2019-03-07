@@ -37,8 +37,10 @@ attackablePawnRule (x,y) =
     let 
         attackRange = 
             Set.fromList [(x+1, y+1), (x+1, y-1), (x-1, y-1), (x-1,y-1)]
+        isNotAttackable coord =
+            fmap not (isAttackable coord)
     in 
-        do  filtered <- Set.filterM isAttackable attackRange
+        do  filtered <- Set.filterM isNotAttackable attackRange
             return filtered
             
 
@@ -62,9 +64,12 @@ northRule (x,y) =
     Set.fromList [(x+1,y+1),(x+1,y-1),(x+2,y),(x+1,y)]
 
 
-doubleMoveRule :: Coord -> Set Coord
-doubleMoveRule (x,y) = 
-    Set.fromList [(x+2,y),(x-2,y)]
+doubleMoveRule :: Bool -> Coord -> Set Coord
+doubleMoveRule hasMoved (x,y) = 
+    if hasMoved then 
+        Set.fromList [(x+2,y),(x-2,y)]
+    else
+        Set.empty
 
 
 
@@ -73,9 +78,7 @@ doubleMoveRule (x,y) =
 
 pawnRuleSet :: HasCheck m => Bool -> Direction -> Coord -> m (Set Coord)
 pawnRuleSet hasMoved direction pos = 
-    do  let move =
-                if hasMoved then doubleMoveRule pos else Set.empty
-        let dir =
+    do  let dir =
                 case direction of 
                     North ->
                         southRule pos
@@ -83,7 +86,7 @@ pawnRuleSet hasMoved direction pos =
                         northRule pos
         attack <- attackablePawnRule pos
         collision <- collisionPawnRule pos
-        return . Set.unions $ [move,dir,attack,collision]
+        return $ doubleMoveRule hasMoved pos <> dir <> attack <> collision
 
 
 pawnMovesSet :: Coord -> Set Coord
