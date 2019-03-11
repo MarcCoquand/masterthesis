@@ -1,13 +1,13 @@
 module Board 
     ( Coord
     , Board
+    , update
     , boardSize
     , upperBound
     , makeCoord
     , get
     , coordSet
     , construct
-    , knightMoves
     , extractCoord
     , maybeGet
     ) where
@@ -19,6 +19,7 @@ import Data.Maybe (catMaybes)
 import Data.Set (Set)
 import qualified Data.Set as Set
 import qualified Data.Set.Extra as Set
+import Data.List (unfoldr, foldl')
 
 
 -- | By hiding the constructor all coords must be created through the makeCoord
@@ -28,13 +29,48 @@ newtype Coord = UnCoord (Int,Int)
     deriving (Ord, Eq, Show, Array.Ix)
 
 
-newtype Board e = Board (Array Coord e)
-    deriving (Show, Eq, Ord)
+newtype Board element = Board (Array Coord element)
+    deriving (Eq, Ord)
 
 
--- | For safety reasons and since the requirements are only one board we 
--- introduce a variable for the board size that is fixed. This way it is
--- impossible to create a coordinate that is outside of index.
+addNumberToString :: Int -> String -> String 
+addNumberToString n string = 
+    show n ++ ". " ++ string
+
+
+toString :: Show e => Board e -> [String]
+toString (Board arr) =
+    [unwords 
+        [show 
+            (arr ! (UnCoord (y, x))) 
+            | x <- [1..boardSize]] 
+            | y <- [1..boardSize]
+            ] 
+
+
+makeNumberList :: Int -> Int -> String
+makeNumberList amount init =
+    unwords . take amount . unfoldr (\i -> Just ((show i ++ "."), i+1)) $ init
+
+
+withIndex :: [String] -> [String]
+withIndex boardString = 
+    ["   " ++ makeNumberList (length boardString) 1] ++
+    foldl' 
+        (\board next -> 
+            board ++ [addNumberToString ((length board)+1) next])
+        []
+        boardString
+
+
+instance Show e => Show (Board e) where 
+    show board = 
+        unlines . withIndex . toString $ board
+            
+            
+-- | For safety reasons and since a chess game requires only one board we 
+-- introduce a variable for the board size that is fixed. This simplifies the
+-- API to make it impossible to create a coordinate that is outside of index.
 boardSize :: Int
 boardSize = 8
 
@@ -56,7 +92,7 @@ extractCoord (UnCoord pos) =
 makeCoord :: Board e -> (Int, Int) -> Maybe Coord
 makeCoord board coord =
     if (coord `isWithinRange` (upperBound board)) then
-        return (UnCoord coord)
+        return . UnCoord $ coord
     else 
         Nothing
 
@@ -70,8 +106,13 @@ isWithinRange (c1,c2) (c3,c4) =
 
 
 get :: Board square -> Coord -> square
-get pos@(Board arr) coord =
-    arr ! coord
+get pos@(Board arr) =
+    getFromArray arr 
+    where 
+        -- getFromArray is unsafe but since Coords can only be created if 
+        -- they're in the bounds of the array we have made it safe and the array 
+        -- is unexposed the operation becomes safe.
+        getFromArray = (!)
 
 
 maybeGet :: Board square -> (Int,Int) -> Maybe square
@@ -79,10 +120,13 @@ maybeGet board =
     fmap (get board) . makeCoord board 
     
 
-
 update :: Board square -> [(Coord, square)] -> Board square 
-update (Board arr) newVals = 
-    Board (arr // newVals)
+update (Board arr) = 
+    Board . updateArray arr 
+    where
+        -- When libraries introduce unclear operators I replace them with a
+        -- documenting name
+        updateArray = (//)
     
 
 -- | Eliminates all out of bounds coordinates 
@@ -91,30 +135,18 @@ coordSet board =
     Set.catMaybes . Set.map (makeCoord board) 
     
 
-
--- COORD HELPERS
-
-knightMoves :: (Int,Int) -> [(Int,Int)]
-knightMoves (x,y) = 
-        [(x+2,y-1),(x+2,y+1),(x-2,y-1),(x-2,y+1)  
-        ,(x+1,y-2),(x+1,y+2),(x-1,y-2),(x-1,y+2)  
-        ]  
-
-
 -- | Takes a list of squares that needs to have a 
 -- (boardSize) * (boardSize) amount of elements.
 construct :: [square] -> Maybe (Board square) 
-construct squares =
-    let 
+construct squares 
+    | squareAmount == availableSlots =
+        return 
+            . Board 
+            $ Array.listArray 
+                (UnCoord (1,1), UnCoord (boardSize, boardSize)) squares
+    | otherwise = Nothing
+    where 
         squareAmount = 
             length squares
         availableSlots = 
             (boardSize) * (boardSize)
-    in 
-        if squareAmount == availableSlots then
-            return 
-                . Board 
-                $ Array.listArray 
-                    (UnCoord (1,1), UnCoord (boardSize, boardSize)) squares
-        else
-            Nothing

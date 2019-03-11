@@ -1,28 +1,25 @@
 \chapter{Theory}\label{theory} 
 
 Chapter~\ref{introduction} introduced the concept of software paradigms, how
-they arose and how, while they can calculate the same things, might lead to
-different software quality. Historically and today OOP is been the most popular
-language for the commercial software industry. Java is an OOP language that is,
-in February 2019, the most popular language in the software industry. It is also
-a multi-paradigm language, since it combines OOP with procedural programming. In
-this study, when we say OOP we also imply that it is procedural from now on.
-Languages that are functional, like Haskell and F\#, are used less
-frequently.~\cite{tiobe} However functional concepts have become more popular in
-multi-paradigm languages like Javascript. For example React, based on Functional
-Reactive Programming~\cite{reactisfrp}, has gained a lot of
-popularity.~\cite{popularityreact} 
+they arose and established that they both can compute the same things. It also
+established what software quality is and that there are two aspects to look at.
+Chapter~\ref{background} established how software engineers architecture
+software based on requirements and testing. This chapter will cover how the
+system architectures are implemented in practice for Object-oriented systems and
+functional systems . This chapter also aims to introduce different ways we can
+compare these software paradigms on complexity, both in testability and mental
+complexity. This way 
 
-Exact definitions exist of OOP but not for Functional programming. Both stated
-goal is creating maintainable programs.  The way OOP makes maintainable
-software is by emphasising encapsulation of state into \textit{objects} and
-message passing. Functional programs emphasise moving state to the edges of the
-program, making the core logic of the program pure and using immutable data
-(defined in Section~\ref{functionalprogramming}). Immutable data is data whose
-state can not change once initialized. This is explained further in
-Section~\ref{functionalprogramming} and Section~\ref{oop}. To prevent defects,
-tests need to be written to check that the behavior works as expected, thus
-testability is of concern when creating maintainable software.
+Exact definitions exist of OOP but not for Functional programming. However
+both's stated goal is creating maintainable programs.  The way OOP makes
+maintainable software is by emphasising encapsulation of state into
+\textit{objects} and message passing. Functional programs emphasise moving state
+to the edges of the program, making the core logic of the program pure and using
+immutable data (defined in Section~\ref{functionalprogramming}). Immutable data
+is data whose state can not change once initialized. This is explained further
+in Section~\ref{functionalprogramming} and Section~\ref{oop}. To prevent
+defects, tests need to be written to check that the behavior works as expected,
+thus testability is of concern when creating maintainable software.
 
 While paradigms define how we build our applications, we still need design
 patterns for structuring the source code. A design pattern is a template for the
@@ -334,7 +331,7 @@ we separate effectful code from logic and mocking becomes trivial.
 \section{SOLID principles}\label{oop}
 
 
-In Chapter\label{introduction} and earlier in this chapter we established the
+In Chapter\ref{introduction} and earlier in this chapter we established the
 basics of OOP. The way to design a OOP system is left to it's user. If the
 design of a system is done poorly, it can lead to rotten design. Martin Robert,
 a software engineer, claims that there are four big indicators of rotten design.

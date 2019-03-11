@@ -49,23 +49,6 @@ S.~R. {Chidamber} and C.~F. {Kemerer}, ``A metrics suite for object oriented
 E.~Kiss, ``Comparison of object-oriented and functional programming for gui
   development,'' master's thesis, Leibniz Universität Hannover, August 2014.
 
-\bibitem{tiobe}
-{TIOBE}, ``Tiobe index.''
-\newblock \url{https://www.tiobe.com/tiobe-index/}, accessed Feb 2019.
-
-\bibitem{reactisfrp}
-{Code Magazine}, ``How functional reactive programming (frp) is changing the
-  face of web development.''
-\newblock
-  \url{https://www.codemag.com/article/1601071/How-Functional-Reactive-Programming-FRP-is-Changing-the-Face-of-Web-Development},
-  accessed Feb 2019.
-
-\bibitem{popularityreact}
-J.~Hannah, ``The ultimate guide to javascript frameworks.''
-\newblock
-  \url{https://jsreport.io/the-ultimate-guide-to-javascript-frameworks/},
-  accessed Feb 2019.
-
 \bibitem{wikipedia_pure}
 ``Pure function,'' Aug 2018.
 \newblock \url{https://en.wikipedia.org/wiki/Pure_function}, accessed Feb 2019.

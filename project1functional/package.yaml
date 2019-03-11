@@ -38,6 +38,7 @@ executables:
     - containers
     - mtl
     - array
+    - QuickCheck
 
 
 tests:
