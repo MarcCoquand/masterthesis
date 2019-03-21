@@ -1,13 +1,11 @@
 \chapter{Background}\label{background}
 
-Chapter~\ref{introduction} introduced software quality and established why it
-is important for software engineers. It also established the importance of
-maintainability and testability. This chapter will look at how concerns and
-requirements made impact the maintainability and testability. It aims to
-establish what are the current methods of developing applications and how
-software engineers today approach testing. 
+This chapter will look at how concerns and requirements made impact the
+maintainability and testability. It aims to establish what are the current
+methods of developing applications and how software engineers today approach
+testing. 
 
-\section{Striving for better code} 
+\section{Architecture} 
 
 When developing large scale applications, often the requirements are as follows:
 
@@ -20,18 +18,18 @@ When developing large scale applications, often the requirements are as follows:
     \item System must be able to adapt to new and emerging frameworks
 \end{itemize}
 
-There are two different approaches two developing these large scale
-applications: microservice and monolithic systems. The monolithic system
-comprises of one big ``top-down'' architecture that dictates what the program
-should do. This is simple to develop using some IDE and deploying simply requires
-deploying some file to the runtime. 
+Two different approaches to developing these large scale applications are
+microservice and monolithic systems. The monolithic system comprises of one big
+``top-down'' architecture that dictates what the program should do. This is
+simple to develop using some IDE and deploying simply requires deploying some
+files to the runtime. 
 
 As the system starts to grow the large monolithic system becomes harder to
-understand as the size becomes bigger. As a result, development typically slows
-down. Since there are no boundaries, modularity tends to break down over time
-making it harder to replace parts as needed. IDE become slower over time and
-deploying requires redeploying the entire application combined with slower
-testing; the developer becomes less productive as a result. Since all code is
+understand as the size doubles. As a result, development typically slows down.
+Since there are no boundaries, modularity tends to break down and the IDE
+becomes slower over time, making it harder to replace parts as needed. Since
+redeploying requires the entire application to be replaced and tests becomes
+slower; the developer becomes less productive as a result. Since all code is
 written in the same environment introducing new technology becomes harder.
 
 Enter microservices, in a microservice architecture the program comprises of
@@ -45,9 +43,18 @@ introduce a new stack.
 
 The issue with microservices is that when scaling the complexity becomes harder
 to predict. While testing one system in isolation is easier testing the entire
-system with all parts together becomes harder.
+system with all parts together becomes harder. 
 
-\section{Strategies for testing microservices}
+A strategy to test systems is to divide testing into a pyramid with 10\% being
+E2E-tests, 30\% being integration tests and the rest being unit tests. E2E-tests
+take longer to run due to them making calls to system components like databases
+and HTTP requests, integration tests run a bit faster and unit tests run very
+quick as they simply test a unit in isolation. 
+
+However, Spotify~\cite{spotifyMicroservice} argue that unit tests provide little
+benefit and that systems should mostly consist of integration tests. Thus the
+amount of tests should be closer to 10\% E2E-tests, 70\% integration tests and
+the rest unit tests.
 
 \subsection{Unit testing}
 
@@ -60,45 +67,52 @@ ensure that the individual parts are correct. It also allows for easier
 refactoring since it ensures that the individual parts still satisfy their part
 of the application.
 
+To create effective unit tests it's important that it's easy to mock examples.
+This is usually hindered if the code is dependant on some state since previous
+states might affect future states.
+
 \subsection{Property-based testing}
 
 Property-based testing tests the properties that a function should fulfill. A
 property is some logical condition that a specification defines the function
-should fulfill. For example a function $reverse\, : \; [a]\, \rightarrow\, [a]$,
+should fulfill.  Compared to unit testing where the programmer creates the mock
+values; property based testing generates values automatically to find a
+contradiction. For example a function $reverse\, : \; [a]\, \rightarrow\, [a]$,
 which takes a list and reverses it's items, should have the property
-$reverse\circ reverse\; x = x$. Compared to unit testing where the programmer
-creates the mock values; property based testing generates values automatically
-to find a contradiction. A unit test would check that $reverse [1,2,3] =
-[3,2,1]$; a property-based test would instead generate a list of values
-randomly and check it's properties hold.
+$reverse\circ reverse\; x = x$. A unit test would check that $reverse [1,2,3] =
+[3,2,1]$; a property-based test would instead generate a list of values randomly
+and check it's properties hold.
 
 \subsection{Integration testing}
 
 Whereas unit testing validates that the individual parts work in isolation;
 integration tests make sure that the modules work when combined. The purpose is
-to expose faults when the modules interact with each other.
+to expose faults that occurs when the modules interact with each other.
 
 \subsection{Challenges}
 
-\subsubsection{Testing and microservices}
+\subsubsection{Flakiness}
 
-Since units of code have 
-
-\section{Architecture}
-
-\subsubsection{Microservice and monolithic design}
+Tests that result in both passing and failing at the same time are defined as
+flaky tests.~\cite{googletests} Google reported that 16\% of their tests have
+some sort of flakiness in them and that the rate in which they fix flakiness in
+tests is the same as rate of increase in flakiness.
 
 \subsubsection{Readability}
 
+The hypothesis of this thesis is that after designing the system following these
+guidelines and writing the code in a testable manner that the code becomes much
+harder to understand and more complex. The thesis investigates if the different
+language paradigms then end up having vastly different complexity when creating
+testable systems.
+
 \section{Complexity and relation to testability}
 
-There exists different metrics for
-measuring software quality. One of them is measuring the Lines of Code (LOC) in
-the software as a measure of defects.~\cite{defectloc} As this study will
-measure different programming languages and software paradigms where syntax is
-vastly different, it follows that using LOC to measure if one paradigm is
-potentially flawed. Thus another metric to look at is cyclomatic complexity. To
-measure software complexity the following metrics were identified:
+There exists different metrics for measuring software quality. Lines of Code
+(LOC) can be used as a measure in the software to find defects.~\cite{defectloc}
+As this study will measure different programming languages and software
+paradigms where syntax is vastly different, it follows that using LOC to measure
+fault is flawed. Thus, here are some other ways to measure complexity:
 
 \begin{description}
 
@@ -121,10 +135,8 @@ for functional programs for the Halstead metric. To measure complexity of
 software, a program could instead be measured at a lexical level. No
 quantitative measure was found for measuring the linguistic structures of the
 program and the comprehension. However a qualitative measure called Cognitive
-Dimensions was found that could work instead. There has been a thesis done that
-looks at Functional programming and OOP when it comes to programming Graphical
-User interfaces.~\cite{euguenkiss} Cognitive Dimensions inspects
+Dimensions was found will be used instead.  Cognitive Dimensions inspects
 fourteen different aspects and they are not always applicable for all projects.
-The master thesis suggests omitting some which has been taken into account and
-is explained further in Chapter~\ref{theory}.
+Prior research suggests omitting some which has been taken into account and is
+explained further in Chapter~\ref{theory}.~\cite{euguenkiss}
 

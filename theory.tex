@@ -10,23 +10,23 @@ functional systems . This chapter also aims to introduce different ways we can
 compare these software paradigms on complexity, both in testability and mental
 complexity. This way 
 
-Exact definitions exist of OOP but not for Functional programming. However
-both's stated goal is creating maintainable programs.  The way OOP makes
+Exact definitions exist of OOP but not for Functional programming, however
+both's stated goal is creating maintainable programs.  The way OOP aims to make
 maintainable software is by emphasising encapsulation of state into
 \textit{objects} and message passing. Functional programs emphasise moving state
 to the edges of the program, making the core logic of the program pure and using
-immutable data (defined in Section~\ref{functionalprogramming}). Immutable data
-is data whose state can not change once initialized. This is explained further
-in Section~\ref{functionalprogramming} and Section~\ref{oop}. To prevent
-defects, tests need to be written to check that the behavior works as expected,
-thus testability is of concern when creating maintainable software.
+immutable data (defined in Section~\ref{functionalprogramming}). Data that is
+immutable can not be changed after initialization. This is explained further in
+Section~\ref{functionalprogramming} and Section~\ref{oop}. To prevent defects,
+tests need to be written to check that the behavior works as expected, thus
+testability is of concern when creating maintainable software.
 
 While paradigms define how we build our applications, we still need design
 patterns for structuring the source code. A design pattern is a template for the
 developer when structuring their code to solve certain problems. For instance,
-without design patterns, one can couple dependencies with logic which affects
-maintainability. Coupling logic and dependencies causes problems if we later
-want to change the dependency since that means we also have to change the logic.
+without design patterns, one could couple dependencies with logic which affects
+maintainability. Coupling logic and dependencies causes problems later when
+changing the dependency since that means that logic needs to be changed as well.
 This study will present the patterns for OOP and functional programming in their
 respective section. 
 
@@ -42,7 +42,7 @@ respective section.
 
 When a function is pure it means that calling a function with the same arguments
         will always return the same value and that it does not mutate any value.
-        For example if you have $f(x) = 2\cdot x$, then $f(2)$ will always
+        For example, given $f(x) = 2\cdot x$, then $f(2)$ will always
         return $4$. It follows then that an impure functions is either dependant
         on some state or mutates state in some way. For example, given $g(x) =
         currenttime \cdot x$, $g(5)$ will yield a different value depending on
@@ -52,8 +52,8 @@ When a function is pure it means that calling a function with the same arguments
 
 	\item[ Trait-based polymorphism ]
 
-		In OOP we inherit classes that contain methods and
-attributes.~\cite{Gamma:1995:DPE:186897} For functional programs, we instead
+		OOP inherits classes that contain methods and
+attributes.~\cite{Gamma:1995:DPE:186897} Functional programs instead
 define classes that describe the actions that are possible. For example, a
 class \texttt{Equality} could contain a function \texttt{isEqual} that checks
 if two data types are equal. Then any data type that implements the interface
@@ -84,14 +84,14 @@ Even if functional programs emphasise purity applications still need to deal
         \url{stackoverflow.com/questions/17002119/haskell-pre-monadic-i-o}} or
         uniqueness types\footnote{Read more:
         \url{https://en.wikipedia.org/wiki/Clean_(programming_language)}}, the
-        one used in Haskell, the language used in this thesis to construct the
-        programs, is the IO monad. For the uninitiated, one can think of Monads
+        one used in Haskell (the language used in this thesis to construct the
+        programs) is the IO monad. For the uninitiated, one can think of Monads
         as a way to note which functions are pure and which are effectful and
-        managing the way they intermingle. It also allows us to handle errors
+        managing the way they intermingle. It enables handling errors
         and state.\footnote{This is simplified as Monads are notoriously
         difficult to explain.}. 
 
-A strategy to further separate state and logic, one can construct a
+As a strategy to further separate state and logic, one can construct a
         three-layered architecture, called the three layer Haskell cake. Here,
         the strategy is that one implements simple effectful functions,
         containing no logic as a base layer. Then on a second layer one
@@ -101,9 +101,9 @@ A strategy to further separate state and logic, one can construct a
         explained further in Section~\ref{interpreterpattern}. 
 \end{description}
 
-So while no exact definition of Functional programming exist, we here define it
-as making functions pure and inheritance being based around functionality rather
-than attributes.
+So while no exact definition of Functional programming exist, this thesis
+defines it as making functions pure and inheritance being based around
+functionality rather than attributes.
 
 \subsection{Sum types and product types}\label{types}
 
@@ -111,19 +111,20 @@ A type is in Haskell a \textit{set} of possible values that a given data can
 have. This can be $int$, $char$ and custom defined types. A \textit{sum type} or
 \textit{union type} is a type which is the sum of types, meaning that it can be
 one of those it's given types. For example the type \texttt{type IntChar = Int |
-Char} is either an Int or a Char. A useful application for sum types is enums
+Char} is either an Int or a Char. A useful application for sum types are enums
 such as \texttt{type Color = Red | Green | Blue}, meaning that a value of type
-Color is either red, green or blue. A product type is a type which is the
-product of types, for example \texttt{type User = User Name Email}.  Informally,
-a product type can be likened to a record in Javascript. A sum type can be used
-to model data which may or may not have a value, by introducing the Maybe type:
-\texttt{type Maybe value = Just value | Nothing}. This allows us to model
+Color is either red, green or blue. A sum type can be used to model data which
+may or may not have a value, by introducing the Maybe type: \texttt{type Maybe
+value = Just value | Nothing}.A product type is a type which is the product of
+types, for example \texttt{type User = User Name Email}.  Informally, a product
+type can be likened to a record in Javascript.  This allows us to model
 computations that might fail. For example given $sqrt(x) = \sqrt{x},\, x\in
 \mathbb{Z}$ then $sqrt(-1)$ is undefined and would cause Haskell to crash.
-Instead by introducing a function \texttt{safeSqrt x = if x > 0 then Just (sqrt
-x) else Nothing} the program can force the developer to handle the special case
-of negative numbers. Sum types are useful for implementing the Interpreter
-pattern, explained in Section~\ref{interpreterpattern}.
+Instead by introducing a function \texttt{safeSqrt}, where \texttt{safeSqrt x =
+if x > 0 then Just (sqrt x) else Nothing}, the program can force the developer to
+handle the special case of negative numbers. Sum types are useful for
+implementing the Interpreter pattern, explained in
+Section~\ref{interpreterpattern}.
 
 \subsection{Type classes}\label{typeclass}
 
@@ -188,19 +189,19 @@ ignoring the prior argument and \texttt{fail} which handles crashes.
     \label{monadclass}
 \end{figure}
 
-Informally if this does not make sense, think of Monads as a design pattern that
-allows us to sequence different computations. Without them the developer would
-have to explicitly check if a computation has failed. For example, given the
-function $unsafeSqrtLog = sqrt\,\circ\,log$, then $unsafeSqrtLog(-1)$ would throw an
-error since $log$ and $sqrt$ are undefined for $-1$.  Section~\ref{types} showed
-how the \texttt{Maybe value} type could be used to create a safe computation
-\texttt{safeSqrt}. However to sequence that computation with a function
-\texttt{safeLog}, the user would have to manually check that \texttt{safeSqrt}
-returned a value \texttt{Just result} and not \texttt{Nothing}. Monads allows 
-sequencing these computations without explicitly writing this check, so
-composing \texttt{safeSqrt} and \texttt{safeLog} using bind becomes
-\texttt{safeSqrtLog n = safeSqrt n >>= safeLog}. The same idea applies for
-effectful computations such as fetching data from a database.
+Informally, Monads are as a design pattern that allows us to sequence different
+computations. Without them the developer would have to explicitly check if a
+computation has failed. For example, given the function $unsafeSqrtLog =
+sqrt\,\circ\,log$, then $unsafeSqrtLog(-1)$ would throw an error since $log$ and
+$sqrt$ are undefined for $-1$.  Section~\ref{types} showed how the \texttt{Maybe
+value} type could be used to create a safe computation \texttt{safeSqrt}.  To
+sequence that computation with a function \texttt{safeLog}, the user would have
+to manually check that \texttt{safeSqrt} returned a value \texttt{Just result}
+and not \texttt{Nothing}. Monads allows sequencing these computations without
+explicitly writing this check, so composing \texttt{safeSqrt} and
+\texttt{safeLog} using bind becomes \texttt{safeSqrtLog n = safeSqrt n >>=
+safeLog}. The same idea applies for effectful computations such as fetching data
+from a database.
 
 \subsection{Interpreter pattern for testability}\label{interpreterpattern}
 
@@ -208,24 +209,23 @@ The beginning of this chapter briefly mentioned that design patterns are
 important to create maintainable software.  In this study a design pattern
 called the Interpreter pattern will be used to structure functional programs. An
 interpreter is something which interprets input of some format, modifies it and
-transforms it into some output.  Informally, we can think of interpreter pattern
-as a way to create smaller composable compilers that when added together make
-one big application. A compiler is a program that takes some input, interprets
-the input and then does some output. A server, for example, would take some
-request, interpret that request and then turn it into a response. The server
-could integrate itself with the database, which would take some query, interpret
-that query and then return an object.~\cite{interpreterpattern}
+transforms it into some output.  Informally, the interpreter pattern is a way to
+create smaller composable compilers that when added together make one big
+application. A compiler is a program that takes some input, interprets the input
+and then does some output. A server, for example, would take some request,
+interpret that request and then turn it into a response. The server could
+integrate itself with the database, which would take some query, interpret that
+query and then return an object.~\cite{interpreterpattern}
 
-To implement this pattern in Haskell we create an Abstract Syntax Tree (AST),
-using a sum type\footnote{\url{https://en.wikipedia.org/wiki/Union_type}}, of
-the program that contains all the available commands that the program is capable
-of doing. See Figure~\ref{freeunion} for an example of a to-do list AST. Once we
-have the AST we can encode the logic of the program as instructions. Then the
-final step is to implement an interpreter for the program that evaluates those
-commands. So if we have the commands in Figure~\ref{freeunion}, we implement a
-function \texttt{eval} that takes a command and computes some effectful code.
-The command \texttt{Add Item (Item -> next)} could, for example, be executed as
-add an Item to a database.
+To implement this pattern in Haskell, create an Abstract Syntax Tree (AST) using
+a sum type, of the program that contains all the available commands that the
+program is capable of doing. See Figure~\ref{freeunion} for an example of a
+to-do list AST. Once we have the AST we can encode the logic of the program as
+instructions. Then the final step is to implement an interpreter for the program
+that evaluates those commands. So if we have the commands in
+Figure~\ref{freeunion}, we implement a function \texttt{eval} that takes a
+command and computes some effectful code.  The command \texttt{Add Item (Item ->
+next)} could, for example, be executed as add an Item to a database.
 
 \begin{figure}[H]
     \begin{lstlisting}
@@ -339,32 +339,32 @@ a software engineer, claims that there are four big indicators of rotten design.
 
 \begin{description}
 
-\item[ Rigidity ] Rigidity is the tendency for software to be difficult to
+\item[ Rigidity ] is the tendency for software to be difficult to
 change. This makes it difficult to change non-critical parts of the software and
 what can seem like a quick change takes a long time.
 
-\item[ Fragility ] Fragility is when the software tends to break when doing
+\item[ Fragility ] is when the software tends to break when doing
 simple changes. It makes the software difficult to maintain, with each fix
 introducing new errors.
 
-\item[ Immobility ] Immobility is when it is impossible to reuse software from
+\item[ Immobility ] is when it is impossible to reuse software from
 other projects in the new project. So engineers discover that, even though they
 need the same module that was in another project, too much work is required to
 decouple and separate the desirable parts.
 
-\item[ Viscosity ] 
+\item[ Viscosity ] comes in two forms: the viscosity of the environment and the
+    viscosity of the design. When making changes to code there are often
+        multiple solutions. Some solutions preserve the design of the system and
+        some are ``hacks''. The engineer can therefore easily implement an
+        unmaintainable solution. The long compile times affect engineers and
+        makes them attempt to make changes that do not cause long compile times.
+        This leads to viscosity in the environment.
 
-Viscosity comes in two forms: the viscosity of the environment and the viscosity
-of the design. When the engineer makes changes they are often met with multiple
-solutions. Some that preserve the design and some that are ``hacks''. So the
-engineer can easily do the wrong thing. When the compile times are long the
-engineers will attempt to make changes that do not cause long compile times.
-This leads to viscosity in the environment.
 \end{description}
 
 To avoid creating rotten designs, Martin Robert proposes the SOLID guideline.
 SOLID mnemonic for five design principles to make software more maintainable,
-flexible and understandable. The SOLID guideline is
+flexible and understandable. The SOLID guidelines are:
 
 \begin{description}
     \item [Single responsibility principle] Here, responsibility means ``reason
@@ -387,9 +387,9 @@ flexible and understandable. The SOLID guideline is
 \end{description}
 
 Using a SOLID architecture helps make programs that are not as dependent on the
-environments, making them easier to test (as we can swap the production
-environment to a test environment). When investigating the testability, it is
-important that to look at programs that are written in such a way that all parts
+environments, making them easier to test (swapping the production environment to
+a test environment becomes trivial). When investigating the testability, it is
+important to look at programs that are written in such a way that all parts
 are easy to test. Thus choosing a SOLID architecture for OOP based programs will
 allow making more testable software.
 
@@ -398,13 +398,15 @@ allow making more testable software.
 The previous sections defined the programming paradigms and how to write
 software in a testable and maintainable manner. Since the aim of the study is to
 find which of the two paradigms allows us to write the most maintainable
-software. looking at the \textit{Cyclomatic complexity} of software it is
-possible to find out the amount of tests needed to test every possible outcome
-of the software. It follows then that if one of the paradigms have a lower
-complexity, it would require less tests. If less tests need to be written, it is
-sound to assume that the amount of lines of code (LOC) needed for the software
-would be lower. Lower LOC correlates with less defects in
-software.~\cite{defectloc} 
+software, looking at the \textit{Cyclomatic complexity} of software aloows
+finding the amount of tests needed to test every possible outcome of the
+software. It follows then that if one of the paradigms have a lower complexity,
+it would require less tests. If less tests need to be written, the amount of
+lines of code (LOC) needed for the software should be lower. Although further
+research would be needed to prove this, lower LOC correlates with less defects
+in software.~\cite{defectloc} Note that LOC is a bad measurment for comparing
+two languages it is a good measure for comparing source code written in the same
+language.
 
 Looking at the testability of code for maintenance is not enough. While
 testability is an important metric, it can also be important to look at other
@@ -421,10 +423,9 @@ further in Section~\ref{cognitivedimensions}.
 
 \subsection{Measuring testability: Cyclomatic Complexity}\label{cyclomaticcomplexity}
 
-Cyclomatic complexity is a complexity measure that allows us to measure the
-amount of paths through a program. The Cyclomatic complexity number is an upper
-bound for the number of test cases required for full branch coverage of the
-code. 
+Cyclomatic complexity is a complexity measure to measure the amount of paths
+through a program. The Cyclomatic complexity number is an upper bound for the
+number of test cases required for full branch coverage of the code. 
 
 \theoremstyle{definition}
 \begin{definition}

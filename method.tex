@@ -18,20 +18,19 @@ programming will be implemented using Haskell and for OOP Java will be used.
 Java is a programming language that is class-based and object-oriented. The aim
 of the language is that you should be able to write the code and run it
 anywhere.~\cite{java} Haskell is a purely functional programming language, it
-also features lazy evaluation which allows you to compose functions easier. For
-example, the function $three = take\; 3 \, \circ \, cycle\; 5$, where cycle is a
-function that generates an infinitely long list consisting of a number, would
-only compute the first three values, I.E. $[5,5,5]$, of the infinite list.  In a
-non-lazy program it would never evaluate as $cycle$ would run
-forever.~\cite{haskell} The reason these languages where chosen is because of
-the authors familiarity with those languages.
+also features lazy evaluation which allows composing functions easier. For
+example, given the function $three$ where $three = take\; 3 \, \circ \, cycle\;
+5$, where cycle is a function that generates an infinitely long list consisting
+of a number. $three$ only compute the first three values, I.E. $[5,5,5]$, of the
+infinite list.  In a non-lazy program the function would never terminate as
+$cycle$ would run forever.~\cite{haskell} The reason these languages where
+chosen is because of the authors familiarity with those languages.
 
 \subsubsection*{Simplified chess game}
 
 Chess is a famous game and in this report it is assumed that the reader know how
 it works.\footnote{Rules of chess: \url{en.wikipedia.org/wiki/Rules_of_chess}}
-Aim is to implement a simplified variant of it. This is not ordinary chess but a
-simplified version:
+The aim is to implement a simplified variant of it. 
 
 \begin{itemize} 
     \item Only pawns and horses exist.

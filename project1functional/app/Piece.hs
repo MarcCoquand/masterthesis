@@ -1,21 +1,21 @@
-{-# LANGUAGE ConstraintKinds #-}
+{-# LANGUAGE ConstraintKinds   #-}
 {-# LANGUAGE FlexibleInstances #-}
-module Piece where 
+module Piece where
 
 
-import Data.Set (Set)
-import qualified Data.Set as Set
-import qualified Data.Set.Extra as Set
-import Test.QuickCheck.Gen (Gen)
+import           Data.Set            (Set)
+import qualified Data.Set            as Set
+import qualified Data.Set.Extra      as Set
+import qualified Test.QuickCheck     as Quickcheck
+import           Test.QuickCheck.Gen (Gen)
 import qualified Test.QuickCheck.Gen as Quickcheck
-import qualified Test.QuickCheck as Quickcheck
 
 
 
 -- * TYPES
 
 
-data Direction 
+data Direction
     = North
     | South
 
@@ -33,13 +33,15 @@ class Monad m => HasCheck m where
 -- * INSTANCES
 
 
--- | Enables dependency injection as a last argument, For instance
+-- | Enable dependency injection as a last argument, For instance calling
 -- > pawnMoves True South (0,0) (True,True)
-instance HasCheck ((->) (Bool,Bool)) where 
+-- would evaluate isCollision = True and isIndomitable = True
+instance HasCheck ((->) (Bool,Bool)) where
     isCollision _ (collision,_) = collision
     isIndomitable _ (_, indomitable) = indomitable
 
 
+-- | Allow to be tested with Quickcheck
 instance HasCheck Gen where
     isCollision _ =
          Quickcheck.arbitrary
@@ -53,7 +55,7 @@ instance HasCheck Gen where
 
 southRule :: Coord -> Set Coord
 southRule (x,y) =
-    Set.fromList [(x-1,y+1),(x-1,y-1),(x-2,y),(x-1,y)] 
+    Set.fromList [(x-1,y+1),(x-1,y-1),(x-2,y),(x-1,y)]
 
 
 northRule :: Coord -> Set Coord
@@ -62,52 +64,52 @@ northRule (x,y) =
 
 
 doubleMoveRule :: Bool -> Coord -> Set Coord
-doubleMoveRule hasMoved (x,y) = 
-    if hasMoved then 
+doubleMoveRule hasMoved (x,y) =
+    if hasMoved then
         Set.fromList [(x+2,y),(x-2,y)]
     else
         Set.empty
 
 
 directionRule :: Direction -> Coord -> Set Coord
-directionRule direction position = 
-    case direction of 
+directionRule direction position =
+    case direction of
         North ->
             southRule position
-        South -> 
+        South ->
             northRule position
 
 
 
--- * PAWN 
+-- * PAWN
 
 
 attackablePawnRule :: HasCheck m => Coord -> m (Set Coord)
 attackablePawnRule (x,y) =
-    let 
-        attackRange = 
+    let
+        attackRange =
             Set.fromList [(x+1, y+1), (x+1, y-1), (x-1, y+1), (x-1,y-1)]
-    in 
+    in
          Set.filterM isIndomitable attackRange
-            
+
 
 collisionPawnRule :: HasCheck m => Coord -> m (Set Coord)
 collisionPawnRule (x,y) =
-    let 
-        set = 
+    let
+        set =
             Set.fromList [(x+1, y), (x+2, y), (x-1, y), (x-2,y)]
-    in 
+    in
         Set.filterM isCollision set
-            
+
 
 -- | Set of illegal moves
 pawnRuleSet :: HasCheck m => Bool -> Direction -> Coord -> m (Set Coord)
-pawnRuleSet hasMoved direction pos = 
+pawnRuleSet hasMoved direction pos =
     do  attackRule <- attackablePawnRule pos
         collisionRule <- collisionPawnRule pos
         return . Set.unions $
-            [ doubleMoveRule hasMoved pos 
-            , directionRule direction pos 
+            [ doubleMoveRule hasMoved pos
+            , directionRule direction pos
             , attackRule
             , collisionRule
             ]
@@ -116,7 +118,7 @@ pawnRuleSet hasMoved direction pos =
 -- | Set of all moves, legal or illegal
 pawnMoveSet :: Coord -> Set Coord
 pawnMoveSet (x,y) =
-    Set.fromList 
+    Set.fromList
         [ (x+1,y+1)
         , (x+1,y-1)
         , (x+2,y)
@@ -130,8 +132,8 @@ pawnMoveSet (x,y) =
 
 pawnMoves :: HasCheck m => Bool -> Direction -> Coord -> m (Set Coord)
 pawnMoves hasMoved direction pos =
-    let 
-        moveSet =  
+    let
+        moveSet =
             pawnMoveSet pos
 
     in  do  invalidMoves <- pawnRuleSet hasMoved direction pos
@@ -145,22 +147,22 @@ pawnMoves hasMoved direction pos =
 collisionKnightRule :: HasCheck m => Coord -> m (Set Coord)
 collisionKnightRule =
     Set.filterM isCollision . knightMoveSet
-            
+
 
 -- | Set of all moves, legal or not
 knightMoveSet :: Coord -> Set Coord
 knightMoveSet (x,y) =
-    Set.fromList 
-        [ (x+2,y-1),(x+2,y+1),(x-2,y-1),(x-2,y+1)  
-        , (x+1,y-2),(x+1,y+2),(x-1,y-2),(x-1,y+2)  
-        ]  
+    Set.fromList
+        [ (x+2,y-1),(x+2,y+1),(x-2,y-1),(x-2,y+1)
+        , (x+1,y-2),(x+1,y+2),(x-1,y-2),(x-1,y+2)
+        ]
 
 
 -- | Set of illegal moves
 knightRuleSet :: HasCheck m => Coord -> m (Set Coord)
 knightRuleSet =
-    collisionKnightRule 
-    
+    collisionKnightRule
+
 
 knightMoves :: HasCheck m => Coord -> m (Set Coord)
 knightMoves pos =
