@@ -6,6 +6,7 @@ module Piece where
 import           Data.Set            (Set)
 import qualified Data.Set            as Set
 import qualified Data.Set.Extra      as Set
+import           Test.QuickCheck     (Arbitrary)
 import qualified Test.QuickCheck     as Quickcheck
 import           Test.QuickCheck.Gen (Gen)
 import qualified Test.QuickCheck.Gen as Quickcheck
@@ -18,6 +19,7 @@ import qualified Test.QuickCheck.Gen as Quickcheck
 data Direction
     = North
     | South
+    deriving Show
 
 
 type Coord = (Int,Int)
@@ -34,11 +36,21 @@ class Monad m => HasCheck m where
 
 
 -- | Enable dependency injection as a last argument, For instance calling
--- > pawnMoves True South (0,0) (True,True)
--- would evaluate isCollision = True and isIndomitable = True
+-- > pawnMoves True South (0,0) (True,False)
+-- would evaluate isCollision = True and isIndomitable = False
 instance HasCheck ((->) (Bool,Bool)) where
     isCollision _ (collision,_) = collision
     isIndomitable _ (_, indomitable) = indomitable
+
+
+instance Arbitrary Direction where
+    arbitrary =
+        do  rand <- Quickcheck.choose (True, False)
+            if rand
+                then return North
+                else return South
+    shrink North = [South]
+    shrink South = []
 
 
 -- | Allow to be tested with Quickcheck
@@ -47,6 +59,7 @@ instance HasCheck Gen where
          Quickcheck.arbitrary
     isIndomitable _ =
          Quickcheck.arbitrary
+
 
 
 

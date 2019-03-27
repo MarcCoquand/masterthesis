@@ -45,17 +45,6 @@ The issue with microservices is that when scaling the complexity becomes harder
 to predict. While testing one system in isolation is easier testing the entire
 system with all parts together becomes harder. 
 
-A strategy to test systems is to divide testing into a pyramid with 10\% being
-E2E-tests, 30\% being integration tests and the rest being unit tests. E2E-tests
-take longer to run due to them making calls to system components like databases
-and HTTP requests, integration tests run a bit faster and unit tests run very
-quick as they simply test a unit in isolation. 
-
-However, Spotify~\cite{spotifyMicroservice} argue that unit tests provide little
-benefit and that systems should mostly consist of integration tests. Thus the
-amount of tests should be closer to 10\% E2E-tests, 70\% integration tests and
-the rest unit tests.
-
 \subsection{Unit testing}
 
 Unit testing is a testing method where the individual units of code and
@@ -89,30 +78,53 @@ Whereas unit testing validates that the individual parts work in isolation;
 integration tests make sure that the modules work when combined. The purpose is
 to expose faults that occurs when the modules interact with each other.
 
+\subsection{End-2-End Tests}
+
+An End-2-End test (also known as E2E test) is a test that tests an entire
+passage through the program, testing multiple components on the way. This
+sometimes requires setting up an emulated environment mock environment with fake
+variables.
+
 \subsection{Challenges}
 
-\subsubsection{Flakiness}
+No clear guidelines exists on how many tests should be written. Google
+advocates for a 10\% E2E-tests, 20\% integration tests and the rest to be unit
+tests.~\cite{googleontests} Spotify advocates instead to have a low amount of
+unit tests and instead focus on integration tests and having 80\% integration
+tests, 10\% E2E-tests, 10\% unit tests.~\cite{spotifyontests}
 
-Tests that result in both passing and failing at the same time are defined as
-flaky tests.~\cite{googletests} Google reported that 16\% of their tests have
-some sort of flakiness in them and that the rate in which they fix flakiness in
-tests is the same as rate of increase in flakiness.
+When writing unit tests that depend on some environment, for example fetching a
+user from some database, it can be difficult to test without simulating the
+environment itself. In such cases one can use dependency injections and mock the
+environment with fake data. Dependency injection is a method that substitutes
+environment calls and returns data instead. The issue with unit tests is that
+even if a feature works well in isolation it does not imply that it will work
+well when composed with other functions.
+
+The challenge in integration and E2E-tests comes with simulating the entire
+environments. Given a server connected to some file storage and a database it
+requires setting up a local simulation of that environment to run the tests.
+This results in slower execution time for tests and also requires work setting
+up the environment. Thus it ends up being costly. Also the bigger the space
+that is being tested the less close the test is to actually finding the error,
+thus the test ends up finding some error but it can be hard to track it down.
 
 \subsubsection{Readability}
 
-The hypothesis of this thesis is that after designing the system following these
-guidelines and writing the code in a testable manner that the code becomes much
-harder to understand and more complex. The thesis investigates if the different
-language paradigms then end up having vastly different complexity when creating
-testable systems.
+The hypothesis of this thesis is that after designing a system to be testable
+the code becomes much harder to understand and more complex. The thesis
+investigates if the different language paradigms then end up having vastly
+different complexity and being much less readable after creating testable
+systems and if paradigms factor into that complexity. 
 
 \section{Complexity and relation to testability}
 
-There exists different metrics for measuring software quality. Lines of Code
-(LOC) can be used as a measure in the software to find defects.~\cite{defectloc}
-As this study will measure different programming languages and software
-paradigms where syntax is vastly different, it follows that using LOC to measure
-fault is flawed. Thus, here are some other ways to measure complexity:
+To establish how to look at complexity and readability, there exists different
+metrics for measuring software quality. Lines of Code (LOC) can be used as a
+measure in the software to find defects.~\cite{defectloc} As this study will
+measure different programming languages and software paradigms where syntax is
+vastly different, it follows that using LOC to measure fault is flawed. Thus,
+here are some other ways to measure complexity:
 
 \begin{description}
 

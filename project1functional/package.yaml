@@ -21,9 +21,15 @@ description:         Please see the README on GitHub at <https://github.com/gith
 
 dependencies:
 - base >= 4.7 && < 5
+- QuickCheck
+- containers
+- mtl
+- array
+- QuickCheck
+- containers
 
 library:
-  source-dirs: src
+  source-dirs: app
 
 executables:
   project1functional-exe:
@@ -35,10 +41,6 @@ executables:
     - -with-rtsopts=-N
     dependencies:
     - project1functional
-    - containers
-    - mtl
-    - array
-    - QuickCheck
 
 
 tests:
@@ -51,3 +53,4 @@ tests:
     - -with-rtsopts=-N
     dependencies:
     - project1functional
+    - hspec

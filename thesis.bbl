@@ -32,6 +32,17 @@ B.~J. Copeland, ``The church-turing thesis,'' in {\em The Stanford Encyclopedia
 R.~S. Pressman, {\em Software Engineering: A Practitioner's Approach}.
 \newblock New York, NY, USA: McGraw-Hill, Inc., 6~ed., 2005.
 
+\bibitem{googleontests}
+M.~Wacker, ``Just say no to more end-to-end tests,'' 2015.
+\newblock
+  \url{https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html},
+  accessed Mar 2019.
+
+\bibitem{spotifyontests}
+A.~Schaffer, ``Testing of microservices,'' 2018.
+\newblock \url{https://labs.spotify.com/2018/01/11/testing-of-microservices/},
+  accessed Mar 2019.
+
 \bibitem{defectloc}
 H.~Zhang, ``An investigation of the relationships between lines of code and
   defects,'' pp.~274--283, 10 2009.

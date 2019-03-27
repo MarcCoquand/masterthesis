@@ -1,17 +1,14 @@
 \babel@toc {english}{}
 \contentsline {chapter}{\numberline {1}Introduction: Software paradigms and complexity}{4}
 \contentsline {chapter}{\numberline {2}Background}{6}
-\contentsline {section}{\numberline {2.1}Striving for better code}{6}
-\contentsline {section}{\numberline {2.2}Strategies for testing microservices}{7}
-\contentsline {subsection}{\numberline {2.2.1}Unit testing}{7}
-\contentsline {subsection}{\numberline {2.2.2}Property-based testing}{7}
-\contentsline {subsection}{\numberline {2.2.3}Integration testing}{8}
-\contentsline {subsection}{\numberline {2.2.4}Challenges}{8}
-\contentsline {subsubsection}{Testing and microservices}{8}
-\contentsline {section}{\numberline {2.3}Architecture}{8}
-\contentsline {subsubsection}{Microservice and monolithic design}{8}
+\contentsline {section}{\numberline {2.1}Architecture}{6}
+\contentsline {subsection}{\numberline {2.1.1}Unit testing}{7}
+\contentsline {subsection}{\numberline {2.1.2}Property-based testing}{7}
+\contentsline {subsection}{\numberline {2.1.3}Integration testing}{8}
+\contentsline {subsection}{\numberline {2.1.4}End-2-End Tests}{8}
+\contentsline {subsection}{\numberline {2.1.5}Challenges}{8}
 \contentsline {subsubsection}{Readability}{8}
-\contentsline {section}{\numberline {2.4}Complexity and relation to testability}{8}
+\contentsline {section}{\numberline {2.2}Complexity and relation to testability}{9}
 \contentsline {chapter}{\numberline {3}Theory}{10}
 \contentsline {section}{\numberline {3.1}Characteristics of Functional Programming}{11}
 \contentsline {subsection}{\numberline {3.1.1}Sum types and product types}{12}
@@ -24,9 +21,9 @@
 \contentsline {subsection}{\numberline {3.3.1}Measuring testability: Cyclomatic Complexity}{19}
 \contentsline {subsection}{\numberline {3.3.2}Cyclomatic Complexity in Functional Programming}{21}
 \contentsline {subsection}{\numberline {3.3.3}Mental complexity: Cognitive Dimensions}{23}
-\contentsline {chapter}{\numberline {4}Method: Case studies}{25}
-\contentsline {chapter}{\numberline {5}Results}{28}
-\contentsline {section}{\numberline {5.1}Limitations}{28}
-\contentsline {subsection}{\numberline {5.1.1}Improvements to implementation}{28}
-\contentsline {section}{\numberline {5.2}future work}{28}
-\contentsline {subsection}{\numberline {5.2.1}Relations to cardinality}{28}
+\contentsline {chapter}{\numberline {4}Method: Case studies}{26}
+\contentsline {chapter}{\numberline {5}Results}{29}
+\contentsline {section}{\numberline {5.1}Limitations}{29}
+\contentsline {subsection}{\numberline {5.1.1}Improvements to implementation}{29}
+\contentsline {section}{\numberline {5.2}future work}{29}
+\contentsline {subsection}{\numberline {5.2.1}Relations to cardinality}{29}

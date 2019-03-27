@@ -1,14 +1,10 @@
 \chapter{Theory}\label{theory} 
 
-Chapter~\ref{introduction} introduced the concept of software paradigms, how
-they arose and established that they both can compute the same things. It also
-established what software quality is and that there are two aspects to look at.
-Chapter~\ref{background} established how software engineers architecture
-software based on requirements and testing. This chapter will cover how the
-system architectures are implemented in practice for Object-oriented systems and
-functional systems . This chapter also aims to introduce different ways we can
-compare these software paradigms on complexity, both in testability and mental
-complexity. This way 
+This chapter will cover how the system architectures are implemented in practice
+for Object-oriented systems and functional systems to address the concerns
+established in Chapter~\ref{background}. This chapter also aims to
+introduce different ways we can compare these software paradigms on complexity,
+both in testability and mental complexity. This way 
 
 Exact definitions exist of OOP but not for Functional programming, however
 both's stated goal is creating maintainable programs.  The way OOP aims to make
@@ -331,10 +327,11 @@ we separate effectful code from logic and mocking becomes trivial.
 \section{SOLID principles}\label{oop}
 
 
-In Chapter\ref{introduction} and earlier in this chapter we established the
-basics of OOP. The way to design a OOP system is left to it's user. If the
-design of a system is done poorly, it can lead to rotten design. Martin Robert,
-a software engineer, claims that there are four big indicators of rotten design.
+A poorly written Object-oriented system can lead to rotten design. Martin
+Robert, a software engineer, claims that there are four big indicators of rotten
+design. Rotten design also leads to problems that were established in
+Chapter~\ref{background}, such as making easy unit tests. Thus the
+Object-oriented system should follow the following indicators.
 
 
 \begin{description}

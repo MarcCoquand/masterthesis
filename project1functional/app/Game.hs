@@ -141,7 +141,11 @@ makeMoveSet pos (Pawn hasMoved) =
     do  (player, board) <- State.get
         case player of
             Black ->
-                do  moves <- Piece.pawnMoves hasMoved Piece.South (Board.extractCoord pos)
+                do  moves <-
+                        Piece.pawnMoves
+                            hasMoved
+                            Piece.South
+                            (Board.extractCoord pos)
                     return . Board.coordSet board $ moves
 
             White ->
@@ -166,7 +170,7 @@ movePieceIfAllowed
 movePieceIfAllowed moveSet player piece start destination =
   if Set.member destination moveSet
     then
-      [(start, Blank), destination, IsPiece player (updatePieceInfo piece)]
+      [(start, Blank), (destination, IsPiece player (updatePieceInfo piece))]
     else []
 
 
@@ -261,16 +265,16 @@ initialize =
   in
       -- fromJust is ok here as we want the program to crash if the board is
       -- not constructed correctly.
-      fromJust . Board.construct
-      $ [ wP, wP, wK, wP, wP, wK, wP, wP
-        , wP, wP, wP, wP, wP, wP, wP, wP
-        , bl, bl, bl, bl, bl, bl, bl, bl
-        , bl, bl, bl, bl, bl, bl, bl, bl
-        , bl, bl, bl, bl, bl, bl, bl, bl
-        , bl, bl, bl, bl, bl, bl, bl, bl
-        , bP, bP, bP, bP, bP, bP, bP, bP
-        , bP, bP, bK, bP, bP, bK, bP, bP
-        ]
+      fromJust . Board.construct $
+      [ wP, wP, wK, wP, wP, wK, wP, wP
+      , wP, wP, wP, wP, wP, wP, wP, wP
+      , bl, bl, bl, bl, bl, bl, bl, bl
+      , bl, bl, bl, bl, bl, bl, bl, bl
+      , bl, bl, bl, bl, bl, bl, bl, bl
+      , bl, bl, bl, bl, bl, bl, bl, bl
+      , bP, bP, bP, bP, bP, bP, bP, bP
+      , bP, bP, bK, bP, bP, bK, bP, bP
+      ]
 
 
 

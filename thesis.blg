@@ -8,36 +8,36 @@ while executing---line 969 of file ieeetr.bst
 Too many commas in name 1 of "James Gosling, Bill Joy, Guy Steele, Gilad Bracha, Alex Buckley" for entry java
 while executing---line 969 of file ieeetr.bst
 Warning--empty booktitle in defectloc
-You've used 18 entries,
+You've used 20 entries,
             1876 wiz_defined-function locations,
-            596 strings with 6568 characters,
-and the built_in function-call counts, 3732 in all, are:
-= -- 374
-> -- 92
+            604 strings with 6871 characters,
+and the built_in function-call counts, 3996 in all, are:
+= -- 400
+> -- 100
 < -- 0
-+ -- 41
-- -- 23
-* -- 228
-:= -- 502
-add.period$ -- 23
-call.type$ -- 18
-change.case$ -- 19
++ -- 45
+- -- 25
+* -- 236
+:= -- 540
+add.period$ -- 27
+call.type$ -- 20
+change.case$ -- 21
 chr.to.int$ -- 0
-cite$ -- 19
-duplicate$ -- 196
-empty$ -- 428
-format.name$ -- 23
-if$ -- 948
+cite$ -- 21
+duplicate$ -- 204
+empty$ -- 464
+format.name$ -- 25
+if$ -- 1016
 int.to.chr$ -- 0
-int.to.str$ -- 18
+int.to.str$ -- 20
 missing$ -- 13
-newline$ -- 65
-num.names$ -- 17
-pop$ -- 93
+newline$ -- 73
+num.names$ -- 19
+pop$ -- 107
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 124
+skip$ -- 130
 stack$ -- 0
 substring$ -- 182
 swap$ -- 62
@@ -46,7 +46,7 @@ text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 1
-while$ -- 32
-width$ -- 20
-write$ -- 170
+while$ -- 34
+width$ -- 22
+write$ -- 188
 (There were 2 error messages)

@@ -15,21 +15,20 @@
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \newlabel{background}{{2}{6}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.1}Striving for better code}{6}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.2}Strategies for testing microservices}{7}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.1}Unit testing}{7}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.2}Property-based testing}{7}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.1}Architecture}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.1}Unit testing}{7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.2}Property-based testing}{7}}
+\citation{googleontests}
+\citation{spotifyontests}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.3}Integration testing}{8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.4}End-2-End Tests}{8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.5}Challenges}{8}}
+\@writefile{toc}{\contentsline {subsubsection}{Readability}{8}}
 \citation{defectloc}
 \citation{bergklaas}
 \citation{chidamber}
 \citation{euguenkiss}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.3}Integration testing}{8}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.4}Challenges}{8}}
-\@writefile{toc}{\contentsline {subsubsection}{Testing and microservices}{8}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.3}Architecture}{8}}
-\@writefile{toc}{\contentsline {subsubsection}{Microservice and monolithic design}{8}}
-\@writefile{toc}{\contentsline {subsubsection}{Readability}{8}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.4}Complexity and relation to testability}{8}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.2}Complexity and relation to testability}{9}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {3}Theory}{10}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
@@ -68,58 +67,60 @@
 \newlabel{oop}{{3.2}{17}}
 \citation{martinrobert}
 \citation{defectloc}
-\citation{McCabe}
 \@writefile{toc}{\contentsline {section}{\numberline {3.3}Measuring testability and complexity}{19}}
 \newlabel{measuretestability}{{3.3}{19}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Measuring testability: Cyclomatic Complexity}{19}}
 \newlabel{cyclomaticcomplexity}{{3.3.1}{19}}
+\citation{McCabe}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces Multi if function foo.\relax }}{20}}
 \newlabel{c1excode}{{3.7}{20}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces Cyclomatic complexity graph for Figure~\ref  {c1excode}\relax }}{20}}
-\newlabel{fig:c1exgraph}{{3.8}{20}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces Cyclomatic complexity graph for Figure~\ref  {c1excode}\relax }}{21}}
+\newlabel{fig:c1exgraph}{{3.8}{21}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Cyclomatic Complexity in Functional Programming}{21}}
 \citation{bergklaas}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.9}{\ignorespaces Recursively split a list into two based on a given condition in Haskell. For example \texttt  {split (>3) [1,2,3,4,5] = ([4,5],[1,2,3])}.\relax }}{22}}
 \newlabel{split}{{3.9}{22}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.10}{\ignorespaces Flowgraph for split function, defined in Figure~\ref  {split}.\relax }}{22}}
-\newlabel{fig:cyclomaticfunctional}{{3.10}{22}}
 \citation{GREEN1996131}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.10}{\ignorespaces Flowgraph for split function, defined in Figure~\ref  {split}.\relax }}{23}}
+\newlabel{fig:cyclomaticfunctional}{{3.10}{23}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.3}Mental complexity: Cognitive Dimensions}{23}}
 \newlabel{cognitivedimensions}{{3.3.3}{23}}
 \citation{euguenkiss}
 \citation{java}
 \citation{haskell}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Method: Case studies}{25}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Method: Case studies}{26}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces An example of the interaction in the chess game.\relax }}{26}}
-\newlabel{chessexample}{{4.1}{26}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces An example of the interaction in the chess game.\relax }}{27}}
+\newlabel{chessexample}{{4.1}{27}}
 \bibstyle{ieeetr}
 \bibdata{thesis}
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Results}{28}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Results}{29}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{results}{{5}{28}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.1}Limitations}{28}}
-\newlabel{limitations}{{5.1}{28}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.1}Improvements to implementation}{28}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.2}future work}{28}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}Relations to cardinality}{28}}
+\newlabel{results}{{5}{29}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Limitations}{29}}
+\newlabel{limitations}{{5.1}{29}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.1}Improvements to implementation}{29}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}future work}{29}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}Relations to cardinality}{29}}
 \bibcite{proceduralprogramming}{1}
 \bibcite{turingmachine}{2}
 \bibcite{java}{3}
 \bibcite{Turner}{4}
 \bibcite{sep-church-turing}{5}
 \bibcite{Pressman:2004:SEP:994110}{6}
-\bibcite{defectloc}{7}
-\bibcite{bergklaas}{8}
-\bibcite{chidamber}{9}
-\bibcite{euguenkiss}{10}
-\bibcite{wikipedia_pure}{11}
-\bibcite{Gamma:1995:DPE:186897}{12}
-\bibcite{interpreterpattern}{13}
-\bibcite{commentarycompiler}{14}
-\bibcite{martinrobert}{15}
-\bibcite{McCabe}{16}
-\bibcite{GREEN1996131}{17}
-\bibcite{haskell}{18}
+\bibcite{googleontests}{7}
+\bibcite{spotifyontests}{8}
+\bibcite{defectloc}{9}
+\bibcite{bergklaas}{10}
+\bibcite{chidamber}{11}
+\bibcite{euguenkiss}{12}
+\bibcite{wikipedia_pure}{13}
+\bibcite{Gamma:1995:DPE:186897}{14}
+\bibcite{interpreterpattern}{15}
+\bibcite{commentarycompiler}{16}
+\bibcite{martinrobert}{17}
+\bibcite{McCabe}{18}
+\bibcite{GREEN1996131}{19}
+\bibcite{haskell}{20}

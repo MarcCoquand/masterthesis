@@ -52,13 +52,14 @@ makeNumberList amount =
 
 
 withIndex :: [String] -> [String]
-withIndex =
+withIndex boardString=
     ["   " ++ makeNumberList (length boardString) 1] <>
     -- Prefer foldl' over foldl for efficiency
     foldl'
         (\board next ->
             board <> [addNumberToString (length board + 1) next])
         []
+        boardString
 
 
 instance Show e => Show (Board e) where
