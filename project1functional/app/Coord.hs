@@ -1,6 +1,4 @@
-{-# LANGUAGE ConstraintKinds   #-}
-{-# LANGUAGE FlexibleInstances #-}
-module Piece where
+module Coord where
 
 
 import           Data.Set            (Set)
@@ -25,22 +23,15 @@ data Direction
 type Coord = (Int,Int)
 
 
-class Monad m => HasCheck m where
-    isCollision :: Coord -> m Bool
+data Handle = MakeHandle
+    { isCollision   :: Coord -> Bool
     -- | Coords that can not be attacked
-    isIndomitable :: Coord -> m Bool
+    , isIndomitable :: Coord -> Bool
+    }
 
 
 
 -- * INSTANCES
-
-
--- | Enable dependency injection as a last argument, For instance calling
--- > pawnMoves True South (0,0) (True,False)
--- would evaluate isCollision = True and isIndomitable = False
-instance HasCheck ((->) (Bool,Bool)) where
-    isCollision _ (collision,_) = collision
-    isIndomitable _ (_, indomitable) = indomitable
 
 
 instance Arbitrary Direction where
@@ -51,15 +42,6 @@ instance Arbitrary Direction where
                 else return South
     shrink North = [South]
     shrink South = []
-
-
--- | Allow to be tested with Quickcheck
-instance HasCheck Gen where
-    isCollision _ =
-         Quickcheck.arbitrary
-    isIndomitable _ =
-         Quickcheck.arbitrary
-
 
 
 
@@ -97,35 +79,33 @@ directionRule direction position =
 -- * PAWN
 
 
-attackablePawnRule :: HasCheck m => Coord -> m (Set Coord)
-attackablePawnRule (x,y) =
+attackablePawnRule :: Handle -> Coord -> Set Coord
+attackablePawnRule handle (x,y) =
     let
         attackRange =
             Set.fromList [(x+1, y+1), (x+1, y-1), (x-1, y+1), (x-1,y-1)]
     in
-         Set.filterM isIndomitable attackRange
+         Set.filter (isIndomitable handle) attackRange
 
 
-collisionPawnRule :: HasCheck m => Coord -> m (Set Coord)
-collisionPawnRule (x,y) =
+collisionPawnRule :: Handle -> Coord -> (Set Coord)
+collisionPawnRule handle (x,y) =
     let
         set =
             Set.fromList [(x+1, y), (x+2, y), (x-1, y), (x-2,y)]
     in
-        Set.filterM isCollision set
+        Set.filter (isCollision handle) set
 
 
 -- | Set of illegal moves
-pawnRuleSet :: HasCheck m => Bool -> Direction -> Coord -> m (Set Coord)
-pawnRuleSet hasMoved direction pos =
-    do  attackRule <- attackablePawnRule pos
-        collisionRule <- collisionPawnRule pos
-        return . Set.unions $
-            [ doubleMoveRule hasMoved pos
-            , directionRule direction pos
-            , attackRule
-            , collisionRule
-            ]
+pawnRuleSet :: Handle -> Bool -> Direction -> Coord -> (Set Coord)
+pawnRuleSet handle hasMoved direction pos =
+    Set.unions $
+        [ doubleMoveRule hasMoved pos
+        , directionRule direction pos
+        , attackablePawnRule handle pos
+        , collisionPawnRule handle pos
+        ]
 
 
 -- | Set of all moves, legal or illegal
@@ -143,23 +123,26 @@ pawnMoveSet (x,y) =
         ]
 
 
-pawnMoves :: HasCheck m => Bool -> Direction -> Coord -> m (Set Coord)
-pawnMoves hasMoved direction pos =
+pawnMoves :: Handle -> Bool -> Direction -> Coord -> Set Coord
+pawnMoves handle hasMoved direction pos =
     let
         moveSet =
             pawnMoveSet pos
 
-    in  do  invalidMoves <- pawnRuleSet hasMoved direction pos
-            return $ Set.difference moveSet invalidMoves
+        invalidMoves =
+            pawnRuleSet handle hasMoved direction pos
+
+    in
+        Set.difference moveSet invalidMoves
 
 
 
 -- * KNIGHT
 
 
-collisionKnightRule :: HasCheck m => Coord -> m (Set Coord)
-collisionKnightRule =
-    Set.filterM isCollision . knightMoveSet
+collisionKnightRule :: Handle -> Coord -> (Set Coord)
+collisionKnightRule handle =
+    Set.filter (isCollision handle) . knightMoveSet
 
 
 -- | Set of all moves, legal or not
@@ -172,14 +155,18 @@ knightMoveSet (x,y) =
 
 
 -- | Set of illegal moves
-knightRuleSet :: HasCheck m => Coord -> m (Set Coord)
+knightRuleSet :: Handle -> Coord -> (Set Coord)
 knightRuleSet =
     collisionKnightRule
 
 
-knightMoves :: HasCheck m => Coord -> m (Set Coord)
-knightMoves pos =
-    do  let moveSet =
-                knightMoveSet pos
-        invalidMoves <- knightRuleSet pos
-        return $ Set.difference moveSet invalidMoves
+knightMoves :: Handle -> Coord -> (Set Coord)
+knightMoves handle pos =
+    let
+        moveSet =
+            knightMoveSet pos
+
+        invalidMoves =
+            knightRuleSet handle pos
+    in
+        Set.difference moveSet invalidMoves

@@ -13,14 +13,15 @@ module Board
     ) where
 
 
-import           Data.Array     (Array, (!), (//))
-import qualified Data.Array     as Array
-import           Data.List      (foldl', unfoldr)
-import           Data.Maybe     (catMaybes)
-import           Data.Set       (Set)
-import qualified Data.Set       as Set
-import qualified Data.Set.Extra as Set
-
+import           Data.Array      (Array, (!), (//))
+import qualified Data.Array      as Array
+import           Data.List       (foldl', unfoldr)
+import           Data.Maybe      (catMaybes, fromJust)
+import           Data.Set        (Set)
+import qualified Data.Set        as Set
+import qualified Data.Set.Extra  as Set
+import           Test.QuickCheck (Arbitrary)
+import qualified Test.QuickCheck as Quickcheck
 
 -- | By hiding the constructor all coords must be created through the makeCoord
 -- and catCoords functions which check that the Coordinate is a valid one. Thus
@@ -31,6 +32,15 @@ newtype Coord = UnCoord (Int,Int)
 
 newtype Board element = Board (Array Coord element)
     deriving (Eq, Ord)
+
+
+instance Arbitrary e => Arbitrary (Board e) where
+    arbitrary =
+        do  pieces <- Quickcheck.vector (boardSize * boardSize)
+            -- fromJust is discouraged but in this case
+            -- we save a lot of complexity and construct will always return Just
+            -- in this case
+            return . fromJust $ construct pieces
 
 
 addNumberToString :: Int -> String -> String

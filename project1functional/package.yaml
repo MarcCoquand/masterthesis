@@ -27,6 +27,7 @@ dependencies:
 - array
 - QuickCheck
 - containers
+- monad-extras
 
 library:
   source-dirs: app

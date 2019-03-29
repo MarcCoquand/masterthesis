@@ -1,4 +1,5 @@
 module Main where
+import qualified Game
 
 main :: IO ()
-main = putStrLn "Hello world"
+main = Game.loop >> putStrLn "Game exit"
