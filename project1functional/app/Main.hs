@@ -2,4 +2,4 @@ module Main where
 import qualified Game
 
 main :: IO ()
-main = Game.loop >> putStrLn "Game exit"
+main = Game.run >> putStrLn "Game exit"

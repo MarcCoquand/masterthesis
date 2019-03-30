@@ -140,7 +140,7 @@ pawnMoves handle hasMoved direction pos =
 -- * KNIGHT
 
 
-collisionKnightRule :: Handle -> Coord -> (Set Coord)
+collisionKnightRule :: Handle -> Coord -> Set Coord
 collisionKnightRule handle =
     Set.filter (isCollision handle) . knightMoveSet
 
@@ -155,12 +155,12 @@ knightMoveSet (x,y) =
 
 
 -- | Set of illegal moves
-knightRuleSet :: Handle -> Coord -> (Set Coord)
+knightRuleSet :: Handle -> Coord -> Set Coord
 knightRuleSet =
     collisionKnightRule
 
 
-knightMoves :: Handle -> Coord -> (Set Coord)
+knightMoves :: Handle -> Coord -> Set Coord
 knightMoves handle pos =
     let
         moveSet =
