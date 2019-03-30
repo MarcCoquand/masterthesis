@@ -15,6 +15,7 @@ module Board
 
 import           Data.Array      (Array, (!), (//))
 import qualified Data.Array      as Array
+import           Data.Function   ((&))
 import           Data.List       (foldl', unfoldr)
 import           Data.Maybe      (catMaybes, fromJust)
 import           Data.Set        (Set)
@@ -30,7 +31,7 @@ newtype Coord = UnCoord (Int,Int)
     deriving (Ord, Eq, Show, Array.Ix)
 
 
-newtype Board element = Board (Array Coord element)
+newtype Board element = CreateBoard (Array Coord element)
     deriving (Eq, Ord)
 
 
@@ -40,7 +41,10 @@ instance Arbitrary e => Arbitrary (Board e) where
             -- fromJust is discouraged but in this case
             -- we save a lot of complexity and construct will always return Just
             -- in this case
-            return . fromJust $ construct pieces
+            pieces
+                & construct
+                & fromJust
+                & return
 
 
 addNumberToString :: Int -> String -> String
@@ -49,7 +53,7 @@ addNumberToString n string =
 
 
 toString :: Show e => Board e -> [String]
-toString (Board arr) =
+toString (CreateBoard arr) =
     [unwords
         [show (arr ! UnCoord (y, x)) | x <- [1..boardSize]]
         | y <- [1..boardSize]
@@ -57,12 +61,22 @@ toString (Board arr) =
 
 
 makeNumberList :: Int -> Int -> String
-makeNumberList amount =
-    unwords . take amount . unfoldr (\i -> Just (show i ++ ".", i+1))
+makeNumberList amount startNumber =
+    let
+        generateListOfNumbers =
+            unfoldr (\i -> Just (format i, i+1))
+
+        format i =
+            show i ++ "."
+    in
+        startNumber
+            & generateListOfNumbers
+            & take amount
+            & unwords -- ["aa","bb","cc","dd","ee"] -> "aa bb cc dd ee"
 
 
-withIndex :: [String] -> [String]
-withIndex boardString=
+makeIndex :: [String] -> [String]
+makeIndex boardString =
     ["   " ++ makeNumberList (length boardString) 1] <>
     -- Prefer foldl' over foldl for efficiency
     foldl'
@@ -73,8 +87,11 @@ withIndex boardString=
 
 
 instance Show e => Show (Board e) where
-    show =
-        unlines . withIndex . toString
+    show board =
+        board
+            & toString
+            & makeIndex
+            & unlines
 
 
 -- | For safety reasons and since a chess game requires only one board we
@@ -85,7 +102,7 @@ boardSize = 8
 
 
 upperBound :: Board e -> (Int, Int)
-upperBound (Board arr) =
+upperBound (CreateBoard arr) =
     let
         (lower, UnCoord upper) =
             Array.bounds arr
@@ -112,7 +129,7 @@ isWithinRange (c1,c2) (c3,c4) =
 
 
 get :: Board square -> Coord -> square
-get pos@(Board arr) =
+get pos@(CreateBoard arr) =
     getFromArray arr
     where
         -- getFromArray is unsafe but since Coords can only be created if
@@ -122,13 +139,17 @@ get pos@(Board arr) =
 
 
 maybeGet :: Board square -> (Int,Int) -> Maybe square
-maybeGet board =
-    fmap (get board) . makeCoord board
+maybeGet board maybeCoord =
+    maybeCoord
+        & makeCoord board
+        & fmap (get board)
 
 
 update :: Board square -> [(Coord, square)] -> Board square
-update (Board arr) =
-    Board . updateArray arr
+update (CreateBoard arr) changeList =
+    changeList
+        & updateArray arr
+        & CreateBoard
     where
         -- When libraries introduce unclear operators I replace them with a
         -- documenting name
@@ -137,8 +158,10 @@ update (Board arr) =
 
 -- | Eliminates all out of bounds coordinates
 coordSet ::  Board e -> Set (Int,Int) -> Set Coord
-coordSet board =
-    Set.catMaybes . Set.map (makeCoord board)
+coordSet board set =
+    set
+        & Set.map (makeCoord board)
+        & Set.catMaybes
 
 
 -- | Takes a list of squares that needs to have a
@@ -152,9 +175,9 @@ construct squares =
             boardSize * boardSize
     in
         if squareAmount == availableSlots then
-            return
-                . Board
-                $ Array.listArray
+           Array.listArray
                     (UnCoord (1,1), UnCoord (boardSize, boardSize)) squares
+                & CreateBoard
+                & return
         else
             Nothing

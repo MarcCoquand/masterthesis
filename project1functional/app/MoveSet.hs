@@ -1,6 +1,7 @@
-module Coord where
+ module MoveSet where
 
 
+import           Data.Function       ((&))
 import           Data.Set            (Set)
 import qualified Data.Set            as Set
 import qualified Data.Set.Extra      as Set
@@ -11,9 +12,6 @@ import qualified Test.QuickCheck.Gen as Quickcheck
 
 
 
--- * TYPES
-
-
 data Direction
     = North
     | South
@@ -21,6 +19,9 @@ data Direction
 
 
 type Coord = (Int,Int)
+
+
+type MoveSet = Set Coord
 
 
 data Handle = MakeHandle
@@ -48,17 +49,17 @@ instance Arbitrary Direction where
 -- * RULES
 
 
-southRule :: Coord -> Set Coord
+southRule :: Coord -> MoveSet
 southRule (x,y) =
     Set.fromList [(x-1,y+1),(x-1,y-1),(x-2,y),(x-1,y)]
 
 
-northRule :: Coord -> Set Coord
+northRule :: Coord -> MoveSet
 northRule (x,y) =
     Set.fromList [(x+1,y+1),(x+1,y-1),(x+2,y),(x+1,y)]
 
 
-doubleMoveRule :: Bool -> Coord -> Set Coord
+doubleMoveRule :: Bool -> Coord -> MoveSet
 doubleMoveRule hasMoved (x,y) =
     if hasMoved then
         Set.fromList [(x+2,y),(x-2,y)]
@@ -66,7 +67,7 @@ doubleMoveRule hasMoved (x,y) =
         Set.empty
 
 
-directionRule :: Direction -> Coord -> Set Coord
+directionRule :: Direction -> Coord -> MoveSet
 directionRule direction position =
     case direction of
         North ->
@@ -79,7 +80,7 @@ directionRule direction position =
 -- * PAWN
 
 
-attackablePawnRule :: Handle -> Coord -> Set Coord
+attackablePawnRule :: Handle -> Coord -> MoveSet
 attackablePawnRule handle (x,y) =
     let
         attackRange =
@@ -88,7 +89,7 @@ attackablePawnRule handle (x,y) =
          Set.filter (isIndomitable handle) attackRange
 
 
-collisionPawnRule :: Handle -> Coord -> (Set Coord)
+collisionPawnRule :: Handle -> Coord -> (MoveSet)
 collisionPawnRule handle (x,y) =
     let
         set =
@@ -98,7 +99,7 @@ collisionPawnRule handle (x,y) =
 
 
 -- | Set of illegal moves
-pawnRuleSet :: Handle -> Bool -> Direction -> Coord -> (Set Coord)
+pawnRuleSet :: Handle -> Bool -> Direction -> Coord -> (MoveSet)
 pawnRuleSet handle hasMoved direction pos =
     Set.unions $
         [ doubleMoveRule hasMoved pos
@@ -109,8 +110,8 @@ pawnRuleSet handle hasMoved direction pos =
 
 
 -- | Set of all moves, legal or illegal
-pawnMoveSet :: Coord -> Set Coord
-pawnMoveSet (x,y) =
+pawnAll :: Coord -> MoveSet
+pawnAll (x,y) =
     Set.fromList
         [ (x+1,y+1)
         , (x+1,y-1)
@@ -123,11 +124,11 @@ pawnMoveSet (x,y) =
         ]
 
 
-pawnMoves :: Handle -> Bool -> Direction -> Coord -> Set Coord
-pawnMoves handle hasMoved direction pos =
+pawn :: Handle -> Bool -> Direction -> Coord -> MoveSet
+pawn handle hasMoved direction pos =
     let
         moveSet =
-            pawnMoveSet pos
+            pawnAll pos
 
         invalidMoves =
             pawnRuleSet handle hasMoved direction pos
@@ -140,14 +141,16 @@ pawnMoves handle hasMoved direction pos =
 -- * KNIGHT
 
 
-collisionKnightRule :: Handle -> Coord -> Set Coord
-collisionKnightRule handle =
-    Set.filter (isCollision handle) . knightMoveSet
+collisionKnightRule :: Handle -> Coord -> MoveSet
+collisionKnightRule handle coord =
+    coord
+        & knightAll
+        & Set.filter (isCollision handle)
 
 
 -- | Set of all moves, legal or not
-knightMoveSet :: Coord -> Set Coord
-knightMoveSet (x,y) =
+knightAll :: Coord -> MoveSet
+knightAll (x,y) =
     Set.fromList
         [ (x+2,y-1),(x+2,y+1),(x-2,y-1),(x-2,y+1)
         , (x+1,y-2),(x+1,y+2),(x-1,y-2),(x-1,y+2)
@@ -155,16 +158,16 @@ knightMoveSet (x,y) =
 
 
 -- | Set of illegal moves
-knightRuleSet :: Handle -> Coord -> Set Coord
+knightRuleSet :: Handle -> Coord -> MoveSet
 knightRuleSet =
     collisionKnightRule
 
 
-knightMoves :: Handle -> Coord -> Set Coord
-knightMoves handle pos =
+knight :: Handle -> Coord -> MoveSet
+knight handle pos =
     let
         moveSet =
-            knightMoveSet pos
+            knightAll pos
 
         invalidMoves =
             knightRuleSet handle pos

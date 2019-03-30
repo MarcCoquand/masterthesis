@@ -2,11 +2,11 @@ module Square where
 
 import           Board      (Board)
 import qualified Board
-import           Coord      (Coord)
-import qualified Coord
 import           Data.Maybe (fromJust)
 import           Data.Set   (Set)
 import qualified Data.Set   as Set
+import           MoveSet    (Coord)
+import qualified MoveSet
 import           Piece      (Piece)
 import qualified Piece
 import           Player     (Player)
@@ -26,17 +26,17 @@ instance Show Square where
         "b" ++ show piece
 
 
-collisionCheck :: Square -> Bool
-collisionCheck Blank =
+isCollision :: Square -> Bool
+isCollision Blank =
     False
-collisionCheck (IsPiece _ _) =
+isCollision (IsPiece _ _) =
     True
 
 
-attackCheck :: Player -> Square -> Bool
-attackCheck player Blank =
+isIndomitable :: Player -> Square -> Bool
+isIndomitable player Blank =
     True
-attackCheck player (IsPiece pieceOwner _) =
+isIndomitable player (IsPiece pieceOwner _) =
     player == pieceOwner
 
 
@@ -54,40 +54,32 @@ check board checkSquare coord =
             True
 
 
-getPiece :: Square -> Maybe (Player, Piece)
-getPiece square =
-    case square of
-        Blank ->
-            Nothing
-
+move :: Board Square -> Board.Coord -> Board.Coord -> [(Board.Coord, Square)]
+move board start destination =
+    case Board.get board start of
         IsPiece player piece ->
-            Just (player, piece)
+            [(start, Blank), (destination, IsPiece player (Piece.update piece))]
+        Blank ->
+            []
+
+isLegalMove
+    :: Set Board.Coord
+    -> Board.Coord
+    -> Bool
+isLegalMove moveSet destination =
+    Set.member destination moveSet
 
 
-moveIfAllowed
-  :: Set Board.Coord
-  -> Player
-  -> Piece
-  -> Board.Coord
-  -> Board.Coord
-  -> [(Board.Coord, Square)]
-moveIfAllowed moveSet player piece start destination =
-  if Set.member destination moveSet
-    then
-      [(start, Blank), (destination, IsPiece player (Piece.update piece))]
-    else []
-
-
-handler :: Player -> Board Square -> Coord.Handle
+handler :: Player -> Board Square -> MoveSet.Handle
 handler player board =
-        Coord.MakeHandle
-            { Coord.isCollision = \coord ->
+        MoveSet.MakeHandle
+            { MoveSet.isCollision = \coord ->
                 -- move as much logic out as possible from effectful
                 -- computations for simple unit tests
-                check board collisionCheck coord
+                check board isCollision coord
 
-            , Coord.isIndomitable = \coord ->
-                check board (attackCheck player) coord
+            , MoveSet.isIndomitable = \coord ->
+                check board (isIndomitable player) coord
             }
 
 
