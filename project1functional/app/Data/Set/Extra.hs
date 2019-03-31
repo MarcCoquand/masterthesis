@@ -8,6 +8,7 @@ filterM :: (Ord a, Monad m) => (a -> m Bool) -> Set a -> m (Set a)
 filterM p s =
     List.filterM p (Set.toList s) >>= return . Set.fromList
 
+catMaybes :: Ord a => Set (Maybe a) -> Set a
 catMaybes sm =
     Set.fold (\ mx s -> maybe s (`Set.insert` s) mx) Set.empty sm
 

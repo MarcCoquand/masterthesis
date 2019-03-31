@@ -5,25 +5,14 @@
 module Game where
 
 
-import           Board               (Board)
 import qualified Board
-import           Control.Monad.Extra (iterateM)
-import           Data.Function       ((&))
-import           Data.Map.Lazy       (Map)
-import qualified Data.Map.Lazy       as Map
-import           Data.Maybe          (fromJust, maybe)
-import           Data.Set            (Set)
-import qualified Data.Set            as Set
-import           Environment         (Environment)
+import           Data.Function ((&))
+import           Environment   (Environment)
 import qualified Environment
-import qualified MoveSet
-import           Piece               (Piece)
 import qualified Piece
-import           Player              (Player)
-import qualified Player
-import           Square              (Square)
+import           Square        (Square)
 import qualified Square
-import           Text.Read           (readMaybe)
+import           Text.Read     (readMaybe)
 
 
 
@@ -46,7 +35,7 @@ instance Show Error where
     show NotOwnedByPlayer =
         "Piece is not owned by you."
     show IllegalMove =
-        "Move is not allowed, could be a collision"
+        "Move is not allowed."
     show BlankSpace =
         "Position is a blank space."
 
@@ -60,75 +49,48 @@ type State = (String, Environment)
 getOwnedPiece
     :: Environment
     -> Board.Coord
-    -> Either Error (Player, Piece)
+    -> Either Error Square
 getOwnedPiece env coord =
     case Board.get (Environment.board env) coord of
         Square.IsPiece pieceOwner piece ->
             if (pieceOwner == Environment.currentPlayer env) then
-                return (pieceOwner, piece)
+                Right (Square.IsPiece pieceOwner piece)
             else
                 Left NotOwnedByPlayer
-        _ ->
-            Left NotOwnedByPlayer
+
+        Square.Blank ->
+            Left BlankSpace
 
 
 boardChanges
     :: Environment
-    -> (Player, Piece)
+    -> Square
     -> Board.Coord
     -> Board.Coord
     -> Either Error [(Board.Coord, Square)]
-boardChanges env (player,piece) start destination =
+boardChanges env (Square.IsPiece player piece) startCoord destination =
     let
         moveSet =
-            Environment.moveSet env start piece
-
-        isLegal =
-            Square.isLegalMove moveSet destination
+            Environment.moveSet env startCoord piece
     in
-        if isLegal then
+        if Square.isLegalMove moveSet destination then
             Right
-                [ (start, Square.Blank)
+                [ (startCoord, Square.Blank)
                 , (destination, Square.IsPiece player (Piece.update piece))
                 ]
         else
             Left IllegalMove
+boardChanges _ Square.Blank _ _ =
+    Left BlankSpace
 
 
-getStart :: Environment -> (Int,Int) -> Either Error Board.Coord
-getStart env start =
-    case Board.makeCoord (Environment.board env) start of
+getWithError :: Environment -> (Int,Int) -> Error -> Either Error Board.Coord
+getWithError env maybeCoord throwError =
+    case Board.makeCoord (Environment.board env) maybeCoord of
         Just coord ->
             Right coord
         Nothing ->
-            Left InvalidStart
-
-
-getDestination :: Environment -> (Int,Int) -> Either Error Board.Coord
-getDestination env destination =
-    case Board.makeCoord (Environment.board env) destination of
-        Just coord ->
-            Right coord
-        Nothing ->
-            Left InvalidDestination
-
-
-applyChanges :: Environment -> [(Board.Coord, Square)] -> (Player, Board Square)
-applyChanges env changes =
-    ( Player.next (Environment.currentPlayer env)
-    , Board.update (Environment.board env) changes
-    )
-
-
-move :: Environment -> Move -> Either Error (Player, Board Square)
-move env (inputStart, inputDestination) =
-    do  start <- getStart env inputStart
-        destination <- getDestination env inputDestination
-        piece <- getOwnedPiece env start
-        changes <- boardChanges env piece start destination
-        changes
-            & applyChanges env
-            & return
+            Left throwError
 
 
 parseInput :: String -> Either Error Move
@@ -138,16 +100,28 @@ parseInput str =
             readMaybe str
     in
         case input of
-            Just input ->
-                Right input
+            Just correctInput ->
+                Right correctInput
+
             Nothing ->
                 Left BadParse
 
 
-newState :: Environment -> String -> Either Error (Player, Board Square)
-newState env command =
-    do  moves <- parseInput command
-        move env moves
+step :: State -> Either Error Environment
+step (command, env) =
+    do  (inputStart, inputDestination) <-
+            parseInput command
+        startCoord <-
+            getWithError env inputStart InvalidStart
+        destination <-
+            getWithError env inputDestination InvalidDestination
+        piece <-
+            getOwnedPiece env startCoord
+        changes <-
+            boardChanges env piece startCoord destination
+        changes
+            & Environment.applyChanges env
+            & return
 
 
 data Result
@@ -157,30 +131,36 @@ data Result
 
 -- | Returns Nothing if game has ended
 runMove :: State -> Result
-runMove (command, oldEnv) =
-    case newState oldEnv command of
-        -- TODO: Add win condition that returns result
-        Right (player, board) ->
-            Next ("Move successful", Environment.make player board)
+runMove state@(_, oldEnv) =
+    case step state of
+        -- TODO: Add win condition
+        Right newEnv ->
+            Next ("Move successful", newEnv)
 
-        Left error ->
-            Next (show error, oldEnv)
+        Left invalid ->
+            Next (show invalid, oldEnv)
 
 
+prompt :: State -> String
+prompt (message, env) =
+    show (Environment.board env)
+        ++ "\n"
+        ++ message
+        ++ "\n"
+        ++ "Current player is: "
+        ++ show (Environment.currentPlayer env)
 
-step :: State -> IO Result
-step (message, env) =
-    do  putStrLn . show $ Environment.board env
-        putStrLn $ "\n" ++ message ++ "\n"
-        putStrLn $ "Current player is: "
-            ++ (show . Environment.currentPlayer $ env)
+
+interact :: State -> IO Result
+interact state@(_, env) =
+    do  putStrLn (prompt state)
         input <- getLine
-        return . runMove $ (input, env)
+        return (runMove (input, env))
 
 
 loop :: State -> IO ()
 loop current =
-    do  result <- step current
+    do  result <- Game.interact current
         case result of
             Next state ->
                 loop state
@@ -189,7 +169,10 @@ loop current =
                 putStrLn "Game ended"
 
 
-run :: IO ()
-run =
-    loop ("Welcome to chess!", Environment.init)
+start :: IO ()
+start =
+    loop
+        ( "Welcome to chess! Make a move by typing\n"
+            ++ "> \"((startX, startY),(endX,endY))\""
+        , Environment.init)
 

@@ -6,25 +6,24 @@ module Environment
     , board
     , make
     , Environment.init
+    , applyChanges
     ) where
 
-import           Board      (Board)
+import           Board    (Board)
 import qualified Board
-import           Data.Maybe (fromJust)
-import           Data.Set   (Set)
-import           MoveSet    (Coord)
+import           Data.Set (Set)
 import qualified MoveSet
-import           Piece      (Piece)
+import           Piece    (Piece)
 import qualified Piece
-import           Player     (Player)
+import           Player   (Player)
 import qualified Player
-import           Square     (Square)
+import           Square   (Square)
 import qualified Square
 
 
--- | The constructor is unsafe because it can be feeded a handler that does not
+-- The constructor is unsafe because it can be feeded a handler that does not
 -- match the player and board. Thus by hiding it from the export list we are
--- sure people can not use it wrong.
+-- sure people have to create the environment via the safe *make* function.
 data Environment = UnsafeMakeEnvironment
     { currentPlayer :: Player
     , board         :: Board Square
@@ -33,17 +32,28 @@ data Environment = UnsafeMakeEnvironment
 
 
 make :: Player -> Board Square -> Environment
-make player board =
+make player newBoard =
     UnsafeMakeEnvironment
         { currentPlayer = player
-        , board = board
-        , handler = Square.handler player board
+        , board = newBoard
+        , handler = Square.handler player newBoard
         }
 
 
 init :: Environment
 init =
     make Player.White Square.initialBoard
+
+
+applyChanges :: Environment -> [(Board.Coord, Square)] -> Environment
+applyChanges env changes =
+    let
+        player =
+            Player.next (currentPlayer env)
+        nextBoard =
+            Board.update (board env) changes
+    in
+        make player nextBoard
 
 
 moveSet
@@ -58,7 +68,7 @@ moveSet env pos Piece.Knight =
     in
         Board.coordSet (Environment.board env) moves
 moveSet env pos (Piece.Pawn hasMoved) =
-        case (Environment.currentPlayer env) of
+        case Environment.currentPlayer env of
             Player.Black ->
                 let
                     moves =

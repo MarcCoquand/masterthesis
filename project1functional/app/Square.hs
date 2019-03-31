@@ -5,7 +5,6 @@ import qualified Board
 import           Data.Maybe (fromJust)
 import           Data.Set   (Set)
 import qualified Data.Set   as Set
-import           MoveSet    (Coord)
 import qualified MoveSet
 import           Piece      (Piece)
 import qualified Piece
@@ -34,7 +33,7 @@ isCollision (IsPiece _ _) =
 
 
 isIndomitable :: Player -> Square -> Bool
-isIndomitable player Blank =
+isIndomitable _ Blank =
     True
 isIndomitable player (IsPiece pieceOwner _) =
     player == pieceOwner
@@ -47,20 +46,12 @@ check board checkSquare coord =
           Board.makeCoord board coord
   in
       case maybeCoord of
-        Just coord ->
-            checkSquare $ Board.get board coord
+        Just success ->
+            checkSquare $ Board.get board success
 
         Nothing ->
             True
 
-
-move :: Board Square -> Board.Coord -> Board.Coord -> [(Board.Coord, Square)]
-move board start destination =
-    case Board.get board start of
-        IsPiece player piece ->
-            [(start, Blank), (destination, IsPiece player (Piece.update piece))]
-        Blank ->
-            []
 
 isLegalMove
     :: Set Board.Coord
@@ -74,10 +65,7 @@ handler :: Player -> Board Square -> MoveSet.Handle
 handler player board =
         MoveSet.MakeHandle
             { MoveSet.isCollision = \coord ->
-                -- move as much logic out as possible from effectful
-                -- computations for simple unit tests
                 check board isCollision coord
-
             , MoveSet.isIndomitable = \coord ->
                 check board (isIndomitable player) coord
             }

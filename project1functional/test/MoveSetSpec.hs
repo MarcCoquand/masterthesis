@@ -1,7 +1,5 @@
 module MoveSetSpec where
 
-import           Control.Exception        (evaluate)
-import           Data.Set                 (Set)
 import qualified Data.Set                 as Set
 import qualified MoveSet
 import           Test.Hspec

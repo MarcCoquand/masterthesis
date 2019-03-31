@@ -17,7 +17,7 @@ import           Data.Array      (Array, (!), (//))
 import qualified Data.Array      as Array
 import           Data.Function   ((&))
 import           Data.List       (foldl', unfoldr)
-import           Data.Maybe      (catMaybes, fromJust)
+import           Data.Maybe      (fromJust)
 import           Data.Set        (Set)
 import qualified Data.Set        as Set
 import qualified Data.Set.Extra  as Set
@@ -55,33 +55,32 @@ addNumberToString n string =
 toString :: Show e => Board e -> [String]
 toString (CreateBoard arr) =
     [unwords
-        [show (arr ! UnCoord (y, x)) | x <- [1..boardSize]]
+        [show (arr ! UnCoord (y, x))  | x <- [1..boardSize]]
         | y <- [1..boardSize]
-            ]
+        ]
 
 
 makeNumberList :: Int -> Int -> String
 makeNumberList amount startNumber =
     let
-        generateListOfNumbers =
-            unfoldr (\i -> Just (format i, i+1))
+        formattedNumberList =
+            unfoldr (\i -> Just (format i, i+1)) startNumber
 
         format i =
             show i ++ "."
     in
-        startNumber
-            & generateListOfNumbers
+        formattedNumberList
             & take amount
-            & unwords -- ["aa","bb","cc","dd","ee"] -> "aa bb cc dd ee"
+            & unwords -- ["1.","2.","3."] -> "1. 2. 3."
 
 
 makeIndex :: [String] -> [String]
 makeIndex boardString =
-    ["   " ++ makeNumberList (length boardString) 1] <>
+    ["   " ++ makeNumberList (length boardString) 1] ++
     -- Prefer foldl' over foldl for efficiency
     foldl'
         (\board next ->
-            board <> [addNumberToString (length board + 1) next])
+            board ++ [addNumberToString (length board + 1) next])
         []
         boardString
 
@@ -104,7 +103,7 @@ boardSize = 8
 upperBound :: Board e -> (Int, Int)
 upperBound (CreateBoard arr) =
     let
-        (lower, UnCoord upper) =
+        (_, UnCoord upper) =
             Array.bounds arr
     in
         upper
@@ -129,13 +128,11 @@ isWithinRange (c1,c2) (c3,c4) =
 
 
 get :: Board square -> Coord -> square
-get pos@(CreateBoard arr) =
-    getFromArray arr
-    where
-        -- getFromArray is unsafe but since Coords can only be created if
-        -- they're in the bounds of the array we have made it safe and the array
-        -- is unexposed the operation becomes safe.
-        getFromArray = (!)
+get (CreateBoard arr) coord =
+    -- (!) is unsafe but since Coords can only be created if
+    -- they're in the bounds of the array and the array
+    -- is unexposed the operation becomes safe.
+    arr ! coord
 
 
 maybeGet :: Board square -> (Int,Int) -> Maybe square

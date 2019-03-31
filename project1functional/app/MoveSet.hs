@@ -1,14 +1,11 @@
  module MoveSet where
 
 
-import           Data.Function       ((&))
-import           Data.Set            (Set)
-import qualified Data.Set            as Set
-import qualified Data.Set.Extra      as Set
-import           Test.QuickCheck     (Arbitrary)
-import qualified Test.QuickCheck     as Quickcheck
-import           Test.QuickCheck.Gen (Gen)
-import qualified Test.QuickCheck.Gen as Quickcheck
+import           Data.Function   ((&))
+import           Data.Set        (Set)
+import qualified Data.Set        as Set
+import           Test.QuickCheck (Arbitrary)
+import qualified Test.QuickCheck as Quickcheck
 
 
 
@@ -29,10 +26,6 @@ data Handle = MakeHandle
     -- | Coords that can not be attacked
     , isIndomitable :: Coord -> Bool
     }
-
-
-
--- * INSTANCES
 
 
 instance Arbitrary Direction where
@@ -89,7 +82,7 @@ attackablePawnRule handle (x,y) =
          Set.filter (isIndomitable handle) attackRange
 
 
-collisionPawnRule :: Handle -> Coord -> (MoveSet)
+collisionPawnRule :: Handle -> Coord -> MoveSet
 collisionPawnRule handle (x,y) =
     let
         set =
@@ -99,7 +92,7 @@ collisionPawnRule handle (x,y) =
 
 
 -- | Set of illegal moves
-pawnRuleSet :: Handle -> Bool -> Direction -> Coord -> (MoveSet)
+pawnRuleSet :: Handle -> Bool -> Direction -> Coord -> MoveSet
 pawnRuleSet handle hasMoved direction pos =
     Set.unions $
         [ doubleMoveRule hasMoved pos
