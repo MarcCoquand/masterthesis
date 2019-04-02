@@ -53,14 +53,6 @@ check board checkSquare coord =
             True
 
 
-isLegalMove
-    :: Set Board.Coord
-    -> Board.Coord
-    -> Bool
-isLegalMove moveSet destination =
-    Set.member destination moveSet
-
-
 handler :: Player -> Board Square -> MoveSet.Handle
 handler player board =
         MoveSet.MakeHandle

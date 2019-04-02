@@ -10,6 +10,7 @@ module Board
     , construct
     , extractCoord
     , maybeGet
+    , isLegalMove
     ) where
 
 
@@ -24,8 +25,8 @@ import qualified Data.Set.Extra  as Set
 import           Test.QuickCheck (Arbitrary)
 import qualified Test.QuickCheck as Quickcheck
 
--- | By hiding the constructor all coords must be created through the makeCoord
--- and catCoords functions which check that the Coordinate is a valid one. Thus
+-- | By hiding the constructor all coords must be created through makeCoord
+-- and catCoords, both check that the Coordinate is a valid one. Thus
 -- no unsafe coordinates can be introduced.
 newtype Coord = UnCoord (Int,Int)
     deriving (Ord, Eq, Show, Array.Ix)
@@ -58,6 +59,14 @@ toString (CreateBoard arr) =
         [show (arr ! UnCoord (y, x))  | x <- [1..boardSize]]
         | y <- [1..boardSize]
         ]
+
+
+isLegalMove
+    :: Set Board.Coord
+    -> Board.Coord
+    -> Bool
+isLegalMove moveSet destination =
+    Set.member destination moveSet
 
 
 makeNumberList :: Int -> Int -> String
@@ -130,8 +139,7 @@ isWithinRange (c1,c2) (c3,c4) =
 get :: Board square -> Coord -> square
 get (CreateBoard arr) coord =
     -- (!) is unsafe but since Coords can only be created if
-    -- they're in the bounds of the array and the array
-    -- is unexposed the operation becomes safe.
+    -- they're in the bounds of the unexposed array it becomes safe.
     arr ! coord
 
 
@@ -148,8 +156,9 @@ update (CreateBoard arr) changeList =
         & updateArray arr
         & CreateBoard
     where
-        -- When libraries introduce unclear operators I replace them with a
-        -- documenting name
+        -- When libraries introduce unclear operators, replace them with a
+        -- documenting name. More maintainable than comments which might go out
+        -- of date.
         updateArray = (//)
 
 

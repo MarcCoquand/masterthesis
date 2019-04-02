@@ -1,0 +1,58 @@
+
+==================== FINAL INTERFACE ====================
+2019-04-02 08:51:56.486103216 UTC
+
+interface todo-0.1.0.0-FGDfGDeuRHa9QPWhs9TDgf:Main 8064
+  interface hash: 68225d1d01b1ff717279655706f73679
+  ABI hash: a38791e5f1ce01dff34f1820c707cf0e
+  export-list hash: 742bf99be6502f1cebdb722b152229cd
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: 17e849b8ed928bf1e75e56c23bfbf609
+  opt_hash: d0a78e7b344f95c7406be35c9b75e196
+  hpc_hash: 93b885adfe0da089cdf634904fd59f71
+  plugin_hash: ad164012d6b1e14942349d58b1132007
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Main.main
+module dependencies: App Navigator Todo
+package dependencies: array-0.5.3.0 base-4.12.0.0* binary-0.8.6.0
+                      bytestring-0.10.8.2 containers-0.6.0.1 deepseq-1.4.4.0
+                      ghc-prim-0.5.3 integer-gmp-1.0.2.0 pretty-terminal-0.1.0.0
+                      text-1.2.3.1
+orphans: text-1.2.3.1:Data.Text binary-0.8.6.0:Data.Binary.Generic
+         bytestring-0.10.8.2:Data.ByteString.Builder
+         text-1.2.3.1:Data.Text.Show base-4.12.0.0:GHC.Float
+         base-4.12.0.0:GHC.Base
+family instance modules: base-4.12.0.0:Control.Applicative
+                         base-4.12.0.0:Data.Complex base-4.12.0.0:Data.Functor.Compose
+                         base-4.12.0.0:Data.Functor.Const
+                         base-4.12.0.0:Data.Functor.Identity
+                         base-4.12.0.0:Data.Functor.Product base-4.12.0.0:Data.Functor.Sum
+                         base-4.12.0.0:Data.Monoid base-4.12.0.0:Data.Semigroup
+                         base-4.12.0.0:Data.Semigroup.Internal base-4.12.0.0:Data.Version
+                         base-4.12.0.0:Data.Void base-4.12.0.0:GHC.Exts
+                         base-4.12.0.0:GHC.Generics base-4.12.0.0:GHC.IO.Exception
+                         containers-0.6.0.1:Data.IntMap.Internal
+                         containers-0.6.0.1:Data.IntSet.Internal
+                         containers-0.6.0.1:Data.Map.Internal
+                         containers-0.6.0.1:Data.Sequence.Internal
+                         containers-0.6.0.1:Data.Set.Internal containers-0.6.0.1:Data.Tree
+                         text-1.2.3.1:Data.Text
+import  -/  base-4.12.0.0:Prelude 3c779dfd6448bdd8e234c336802c2acb
+import  -/  ghc-prim-0.5.3:GHC.Types 57064c9f957b09bc2e360061ad5cae0b
+import  -/  App b64a48772fde5ef4dc71ecb7b4b12ebd
+  exports: 88014fc709973187c8ab4f4a4d6417c4
+  start 6cad72870733975f9457b6731958b08a
+37eb45f8f5dfff40666038b73885cf63
+  $trModule :: GHC.Types.Module
+4e07b6d0cf095a572d612d4182295a05
+  main :: GHC.Types.IO ()
+trusted: safe
+require own pkg trusted: False
+module header:
+  Nothing
+declaration docs:
+arg docs:
+

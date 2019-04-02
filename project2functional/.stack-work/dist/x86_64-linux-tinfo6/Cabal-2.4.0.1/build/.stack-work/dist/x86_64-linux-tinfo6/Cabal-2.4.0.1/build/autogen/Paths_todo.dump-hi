@@ -1,0 +1,70 @@
+
+==================== FINAL INTERFACE ====================
+2019-04-02 08:29:00.465361691 UTC
+
+interface todo-0.1.0.0-FGDfGDeuRHa9QPWhs9TDgf:Paths_todo 8064
+  interface hash: e9a5ae1ddd587f67fa9df86a97f3be2a
+  ABI hash: 8a20e9b583bdb411fb8638eafda85061
+  export-list hash: dc495c0037de203cb16639bb5ba5a3dc
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: 1df48ecb4d8b3074aa4fc0868fc29aef
+  opt_hash: d0a78e7b344f95c7406be35c9b75e196
+  hpc_hash: 93b885adfe0da089cdf634904fd59f71
+  plugin_hash: ad164012d6b1e14942349d58b1132007
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Paths_todo.getBinDir
+  Paths_todo.getDataDir
+  Paths_todo.getDataFileName
+  Paths_todo.getDynLibDir
+  Paths_todo.getLibDir
+  Paths_todo.getLibexecDir
+  Paths_todo.getSysconfDir
+  Paths_todo.version
+module dependencies:
+package dependencies: base-4.12.0.0* ghc-prim-0.5.3
+                      integer-gmp-1.0.2.0
+orphans: base-4.12.0.0:GHC.Float base-4.12.0.0:GHC.Base
+family instance modules: base-4.12.0.0:Control.Applicative
+                         base-4.12.0.0:Data.Functor.Const
+                         base-4.12.0.0:Data.Functor.Identity base-4.12.0.0:Data.Monoid
+                         base-4.12.0.0:Data.Semigroup.Internal base-4.12.0.0:Data.Version
+                         base-4.12.0.0:GHC.Generics base-4.12.0.0:GHC.IO.Exception
+import  -/  base-4.12.0.0:Control.Exception 041da5b6267cf6b639ff5716d5b299a9
+import  -/  base-4.12.0.0:Data.Version cc00ee64eb7c4a47da3643a9fa19a88c
+import  -/  base-4.12.0.0:GHC.Base c00b75f0b052d05c55ba6a4dd1c63b26
+import  -/  base-4.12.0.0:GHC.IO 898d4ddbf00eb4732e5f462760aa42ae
+import  -/  base-4.12.0.0:GHC.IO.Exception 450806ae9fed7fcace0a23ab62a9d604
+import  -/  base-4.12.0.0:Prelude 3c779dfd6448bdd8e234c336802c2acb
+import  -/  base-4.12.0.0:System.Environment c54e0d0308e729fdace6bc37aa74bb52
+import  -/  ghc-prim-0.5.3:GHC.Types 57064c9f957b09bc2e360061ad5cae0b
+addDependentFile "/home/marccoquand/.stack/programs/x86_64-linux/ghc-tinfo6-8.6.4/lib/ghc-8.6.4/include/ghcversion.h" a0ce8aeb7f525f4d70decd6c1d3ca2dd
+addDependentFile ".stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/autogen/cabal_macros.h" d1a53039f777dcbec7db52646b136741
+addDependentFile "/usr/include/stdc-predef.h" 6b894370e916ba2f6079d6d62453af6b
+8c5d0589e4fceb7f0e18034b740cd218
+  $trModule :: GHC.Types.Module
+acf3cca4174ce8af031832a920c6c008
+  getBinDir :: GHC.Types.IO GHC.IO.FilePath
+95461280537ad4820ac8af3786b89891
+  getDataDir :: GHC.Types.IO GHC.IO.FilePath
+afea4eebeb711f7679d4900ab7b13b3b
+  getDataFileName :: GHC.IO.FilePath -> GHC.Types.IO GHC.IO.FilePath
+b4a2d812764f0f55c31ea02a8c5a0686
+  getDynLibDir :: GHC.Types.IO GHC.IO.FilePath
+989b1acc26a2725ac54c643ddc41f955
+  getLibDir :: GHC.Types.IO GHC.IO.FilePath
+52687daa506652c0af92d344776617f3
+  getLibexecDir :: GHC.Types.IO GHC.IO.FilePath
+4a71057a3b3625787f1a65d2c86ee668
+  getSysconfDir :: GHC.Types.IO GHC.IO.FilePath
+636666132b664fc09971804c69bdacbd
+  version :: Data.Version.Version
+trusted: safe
+require own pkg trusted: False
+module header:
+  Nothing
+declaration docs:
+arg docs:
+

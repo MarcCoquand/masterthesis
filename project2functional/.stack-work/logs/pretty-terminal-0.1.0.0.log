@@ -1,0 +1,13 @@
+Configuring pretty-terminal-0.1.0.0...
+Preprocessing library for pretty-terminal-0.1.0.0..
+Building library for pretty-terminal-0.1.0.0..
+[1 of 2] Compiling Paths_pretty_terminal ( .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/autogen/Paths_pretty_terminal.hs, .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/Paths_pretty_terminal.o )
+[2 of 2] Compiling System.Console.Pretty ( src/System/Console/Pretty.hs, .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/System/Console/Pretty.o )
+Preprocessing executable 'example' for pretty-terminal-0.1.0.0..
+Building executable 'example' for pretty-terminal-0.1.0.0..
+[1 of 2] Compiling Main             ( examples/Main.hs, .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/example/example-tmp/Main.o )
+[2 of 2] Compiling Paths_pretty_terminal ( .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/example/autogen/Paths_pretty_terminal.hs, .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/example/example-tmp/Paths_pretty_terminal.o )
+Linking .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/example/example ...
+Installing library in /home/marccoquand/School/thesis/project2functional/.stack-work/install/x86_64-linux-tinfo6/lts-13.14/8.6.4/lib/x86_64-linux-ghc-8.6.4/pretty-terminal-0.1.0.0-5h8HGBvScbYFgk2HEq8jrW
+Installing executable example in /home/marccoquand/School/thesis/project2functional/.stack-work/install/x86_64-linux-tinfo6/lts-13.14/8.6.4/bin
+Registering library for pretty-terminal-0.1.0.0..

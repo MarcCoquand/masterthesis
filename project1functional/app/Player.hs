@@ -4,15 +4,9 @@ module Player where
 data Player
     = Black
     | White
-    deriving (Eq)
+    deriving (Eq, Show)
 
 
 next :: Player -> Player
 next Black = White
 next White = Black
-
-
-instance Show Player where
-    show Black = "Black"
-    show White = "White"
-

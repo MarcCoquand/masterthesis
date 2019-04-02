@@ -1,0 +1,143 @@
+
+==================== FINAL INTERFACE ====================
+2019-04-02 08:56:27.692083154 UTC
+
+interface todo-0.1.0.0-FGDfGDeuRHa9QPWhs9TDgf:App 8064
+  interface hash: 7aa583c5bb631a2baeba707e24a7506b
+  ABI hash: b64a48772fde5ef4dc71ecb7b4b12ebd
+  export-list hash: 88014fc709973187c8ab4f4a4d6417c4
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: 17e849b8ed928bf1e75e56c23bfbf609
+  opt_hash: d0a78e7b344f95c7406be35c9b75e196
+  hpc_hash: 93b885adfe0da089cdf634904fd59f71
+  plugin_hash: ad164012d6b1e14942349d58b1132007
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  App.init
+  App.makeTodo
+  App.prompt
+  App.repl
+  App.start
+  App.update
+  App.Model{App.Empty App.Is}
+  App.Msg{App.Add App.Delete App.GotData App.GotEmpty App.MoveDown App.MoveUp App.Toggle App.Update}
+  App.OutputMessage
+  App.TodoList
+module dependencies: Navigator Todo
+package dependencies: array-0.5.3.0 base-4.12.0.0* binary-0.8.6.0
+                      bytestring-0.10.8.2 containers-0.6.0.1 deepseq-1.4.4.0
+                      ghc-prim-0.5.3 integer-gmp-1.0.2.0 pretty-terminal-0.1.0.0
+                      text-1.2.3.1
+orphans: text-1.2.3.1:Data.Text binary-0.8.6.0:Data.Binary.Generic
+         bytestring-0.10.8.2:Data.ByteString.Builder
+         text-1.2.3.1:Data.Text.Show base-4.12.0.0:GHC.Float
+         base-4.12.0.0:GHC.Base
+family instance modules: base-4.12.0.0:Control.Applicative
+                         base-4.12.0.0:Data.Complex base-4.12.0.0:Data.Functor.Compose
+                         base-4.12.0.0:Data.Functor.Const
+                         base-4.12.0.0:Data.Functor.Identity
+                         base-4.12.0.0:Data.Functor.Product base-4.12.0.0:Data.Functor.Sum
+                         base-4.12.0.0:Data.Monoid base-4.12.0.0:Data.Semigroup
+                         base-4.12.0.0:Data.Semigroup.Internal base-4.12.0.0:Data.Version
+                         base-4.12.0.0:Data.Void base-4.12.0.0:GHC.Exts
+                         base-4.12.0.0:GHC.Generics base-4.12.0.0:GHC.IO.Exception
+                         containers-0.6.0.1:Data.IntMap.Internal
+                         containers-0.6.0.1:Data.IntSet.Internal
+                         containers-0.6.0.1:Data.Map.Internal
+                         containers-0.6.0.1:Data.Sequence.Internal
+                         containers-0.6.0.1:Data.Set.Internal containers-0.6.0.1:Data.Tree
+                         text-1.2.3.1:Data.Text
+import  -/  base-4.12.0.0:Data.Maybe 9b76a39e833465c3c5b3c078b431417f
+import  -/  base-4.12.0.0:Data.OldList e931cf456dc87f11ee6e6fb153bca23e
+import  -/  base-4.12.0.0:GHC.Base c00b75f0b052d05c55ba6a4dd1c63b26
+import  -/  base-4.12.0.0:GHC.Err ea5e313ef4146b40b5d8b27aa168e736
+import  -/  base-4.12.0.0:GHC.IO.Handle fe51659cf05ea3ecd36fe5e2d515d89a
+import  -/  base-4.12.0.0:GHC.IO.Handle.FD 57dd508e0260edfe7dfb9592eb9a6e63
+import  -/  base-4.12.0.0:GHC.IO.Handle.Types 8909e00409cd23d4e66395a7e93f216d
+import  -/  base-4.12.0.0:GHC.Show 838a5d039379d82d9626aae53dfce276
+import  -/  base-4.12.0.0:Prelude 3c779dfd6448bdd8e234c336802c2acb
+import  -/  base-4.12.0.0:System.IO dd4f3cfe73b94b7cae46a4ca98a3f09f
+import  -/  ghc-prim-0.5.3:GHC.Types 57064c9f957b09bc2e360061ad5cae0b
+import  -/  pretty-terminal-0.1.0.0:System.Console.Pretty 04276507104bdc59ab192d41f833b178
+import  -/  Navigator 20397c024a967e8907735dd681c3f778
+  exports: a1dc8bb0425bc41b34b8a04db200ca95
+  Navigator 78146eff30cc3eeaa88d5ec697005450
+  above 2184a1450e7df6a0a431c1ed88ed2459
+  add 280332d1ea2a9e2deb9a6dcb15100300
+  below bde56486ad9a8f74d5cd29f88626cd18
+  delete 5317caf596885ecb562a419566f9c4d3
+  down efb37a6c43d9e3727988f5a70ca322d6
+  get 965683005cb21ccbce5e2263ddc9e97e
+  init d94e1dc0fe5e5463afcaebfc42277c07
+  up 85f412e2944291e632917bc824203bd5
+  update ee42fd136acf7c89e41618d4a2714cfd
+import  -/  Todo c5bc36e2b46f586c091d312efa35b208
+  exports: ad43c5f85d9ba09b44da427a66a096b2
+  Todo 0c57cfc6699d2e51c8029e3adca60077
+  new cde7ccf919693723ac21d38542a6f187
+  toggle 04aa609811f0dc158f616ab80ed6fa70
+  update 739b85fda62e90f0fcabc1d441cdfeee
+9f89e33735acc131e70a04c542d385bd
+  $tc'Add :: GHC.Types.TyCon
+09eb07df9b1968c0dc24243d76c7e934
+  $tc'Delete :: GHC.Types.TyCon
+2b54bca1be6f43a17371caa318f8c4ef
+  $tc'Empty :: GHC.Types.TyCon
+2c1e85d4d66b0350dfc2ea10fbd43948
+  $tc'GotData :: GHC.Types.TyCon
+1083d6ff12d4577579f4f852beb7afc3
+  $tc'GotEmpty :: GHC.Types.TyCon
+acbc71b1721f6a352b162eecc30d8cde
+  $tc'Is :: GHC.Types.TyCon
+7ba54046a5a241596330b207aac06264
+  $tc'MoveDown :: GHC.Types.TyCon
+3c03843017c58d17cd7745e58eb75f4e
+  $tc'MoveUp :: GHC.Types.TyCon
+2ef9c9a9b5c1fd138b3eeaf3ffebe677
+  $tc'Toggle :: GHC.Types.TyCon
+6eebd2218eadaeeaa99d0e631f22c55e
+  $tc'Update :: GHC.Types.TyCon
+32ba46da7d34900c67d7451e15837c3f
+  $tcModel :: GHC.Types.TyCon
+63588b35e9217531a0baa629c425e174
+  $tcMsg :: GHC.Types.TyCon
+83e42ed4ad9d0666883b0833ca3ac361
+  $trModule :: GHC.Types.Module
+ba01a216617eb8eef0e2f0c4d57a64a5
+  data Model
+    = Is App.OutputMessage App.TodoList | Empty App.OutputMessage
+6462c66ab5cecde6e7cf8871e53579af
+  data Msg
+    = GotData App.TodoList
+    | GotEmpty
+    | Add Todo.Todo
+    | MoveUp
+    | MoveDown
+    | Delete
+    | Update GHC.Base.String
+    | Toggle
+ba7be299259127126edadfb1162eda35
+  type OutputMessage = GHC.Maybe.Maybe GHC.Base.String
+0543322d7bf0df95e94614994922bc4a
+  type TodoList = Navigator.Navigator Todo.Todo
+22129a3801a4c29bc2c74701b630d949
+  init :: App.Model
+6f3d4e155c68b54d1de57ee1db78fc61
+  makeTodo :: GHC.Types.IO Todo.Todo
+d369ee81085f19d5e5d7675e7129d65d
+  prompt :: App.Model -> GHC.Types.Bool -> GHC.Base.String
+a95757d18208295abb9c1e1a1a4d837d
+  repl :: GHC.Types.Bool -> App.Model -> GHC.Types.IO ()
+6cad72870733975f9457b6731958b08a
+  start :: GHC.Types.IO ()
+1a968620d60d5b603be5b6fccdb943c5
+  update :: App.Msg -> App.Model -> App.Model
+trusted: safe
+require own pkg trusted: False
+module header:
+  Nothing
+declaration docs:
+arg docs:
+

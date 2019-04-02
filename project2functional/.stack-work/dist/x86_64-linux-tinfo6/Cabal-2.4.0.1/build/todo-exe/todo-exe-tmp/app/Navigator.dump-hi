@@ -1,0 +1,75 @@
+
+==================== FINAL INTERFACE ====================
+2019-04-02 08:42:24.121239415 UTC
+
+interface main:Navigator 8064
+  interface hash: 869e04adbf6c3d2592b8e8198810b5e1
+  ABI hash: fef7b96fbb63e6f1bdb0eb1fc1eb89cd
+  export-list hash: 00c430d08d5a694023fb14d6b6878202
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: 35329018480d0374a1e8004a139a6e4e
+  opt_hash: d0a78e7b344f95c7406be35c9b75e196
+  hpc_hash: 93b885adfe0da089cdf634904fd59f71
+  plugin_hash: ad164012d6b1e14942349d58b1132007
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Navigator.above
+  Navigator.add
+  Navigator.below
+  Navigator.delete
+  Navigator.down
+  Navigator.fromList
+  Navigator.get
+  Navigator.init
+  Navigator.up
+  Navigator.update
+  Navigator.Navigator{Navigator.Nav}
+module dependencies:
+package dependencies: base-4.12.0.0* ghc-prim-0.5.3
+                      integer-gmp-1.0.2.0
+orphans: base-4.12.0.0:GHC.Float base-4.12.0.0:GHC.Base
+family instance modules: base-4.12.0.0:Control.Applicative
+                         base-4.12.0.0:Data.Functor.Const
+                         base-4.12.0.0:Data.Functor.Identity base-4.12.0.0:Data.Monoid
+                         base-4.12.0.0:Data.Semigroup.Internal base-4.12.0.0:GHC.Generics
+                         base-4.12.0.0:GHC.IO.Exception
+import  -/  base-4.12.0.0:GHC.List 4014a3c8a3b7c31c8325f6bcf1feea4a
+import  -/  base-4.12.0.0:Prelude 3c779dfd6448bdd8e234c336802c2acb
+bdf480d5ae2c9c632ba381d5e5ef287c
+  $tc'Nav :: GHC.Types.TyCon
+4ece5cd6d99a5dfd079c30162de5c34f
+  $tcNavigator :: GHC.Types.TyCon
+e804502593cdc6dd88167acb7624236a
+  $trModule :: GHC.Types.Module
+0c6f9a89002e0e20f10689f541057c48
+  data Navigator a = Nav [a] a [a]
+797fc934b0f2d4b8c4d11e14649a2468
+  above :: Navigator.Navigator a -> [a]
+5b76c421465336d00d707d6ebcf0935e
+  add :: Navigator.Navigator a -> a -> Navigator.Navigator a
+31aab47909e3f164da9fbb179b97372b
+  below :: Navigator.Navigator a -> [a]
+3176050dc95b496cfb813e0dec91e856
+  delete ::
+    Navigator.Navigator a -> GHC.Maybe.Maybe (Navigator.Navigator a)
+95513a2e6f79664c68f5ce4f9d33392f
+  down :: Navigator.Navigator a -> Navigator.Navigator a
+c7a343916e8d0659bf9ecd3026d572bf
+  fromList :: [a] -> GHC.Maybe.Maybe (Navigator.Navigator a)
+ef328388a60a4323f7672fce6b289fa5
+  get :: Navigator.Navigator a -> a
+d8d6b3517de03d35abe689226a288da3
+  init :: a -> Navigator.Navigator a
+f5f2834e52bf8b6bdd7a5d3b255f7608
+  up :: Navigator.Navigator a -> Navigator.Navigator a
+5f06eb117223234eac1cb9a5f029e059
+  update :: Navigator.Navigator a -> a -> Navigator.Navigator a
+trusted: safe
+require own pkg trusted: False
+module header:
+  Nothing
+declaration docs:
+arg docs:
+

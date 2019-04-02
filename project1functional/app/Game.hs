@@ -6,14 +6,12 @@ module Game where
 
 
 import qualified Board
-import           Data.Function ((&))
-import           Environment   (Environment)
-import qualified Environment
+import           Model     (Model)
+import qualified Model
 import qualified Piece
-import           Square        (Square)
+import           Square    (Square)
 import qualified Square
-import           Text.Read     (readMaybe)
-
+import           Text.Read (readMaybe)
 
 
 data Error
@@ -40,20 +38,24 @@ instance Show Error where
         "Position is a blank space."
 
 
+-- Start -> Destination
 type Move = ((Int,Int),(Int,Int))
 
 
-type State = (String, Environment)
+type Message = String
 
 
-getOwnedPiece
-    :: Environment
+type State = (Message, Model)
+
+
+getPiece
+    :: Model
     -> Board.Coord
     -> Either Error Square
-getOwnedPiece env coord =
-    case Board.get (Environment.board env) coord of
+getPiece mdl coord =
+    case Board.get (Model.board mdl) coord of
         Square.IsPiece pieceOwner piece ->
-            if (pieceOwner == Environment.currentPlayer env) then
+            if (pieceOwner == Model.currentPlayer mdl) then
                 Right (Square.IsPiece pieceOwner piece)
             else
                 Left NotOwnedByPlayer
@@ -62,35 +64,40 @@ getOwnedPiece env coord =
             Left BlankSpace
 
 
-boardChanges
-    :: Environment
-    -> Square
+move
+    :: Model
     -> Board.Coord
     -> Board.Coord
     -> Either Error [(Board.Coord, Square)]
-boardChanges env (Square.IsPiece player piece) startCoord destination =
-    let
-        moveSet =
-            Environment.moveSet env startCoord piece
-    in
-        if Square.isLegalMove moveSet destination then
+move mdl start destination =
+    do  (Square.IsPiece player piece) <- getPiece mdl start
+
+        if Model.isLegalMove moveSet destination then
             Right
                 [ (startCoord, Square.Blank)
                 , (destination, Square.IsPiece player (Piece.update piece))
                 ]
         else
             Left IllegalMove
-boardChanges _ Square.Blank _ _ =
-    Left BlankSpace
 
 
-getWithError :: Environment -> (Int,Int) -> Error -> Either Error Board.Coord
-getWithError env maybeCoord throwError =
-    case Board.makeCoord (Environment.board env) maybeCoord of
+getAt :: Model -> Error -> (Int,Int) -> Either Error Board.Coord
+getAt mdl throwError maybeCoord =
+    case Board.makeCoord (Model.board mdl) maybeCoord of
         Just coord ->
             Right coord
         Nothing ->
             Left throwError
+
+
+getStart :: Model -> (Int,Int) -> Either Error Board.Coord
+getStart mdl maybeCoord =
+    getAt mdl InvalidStart maybeCoord
+
+
+getDestination :: Model -> (Int,Int) -> Either Error Board.Coord
+getDestination mdl maybeCoord =
+    getAt mdl InvalidDestination maybeCoord
 
 
 parseInput :: String -> Either Error Move
@@ -107,21 +114,17 @@ parseInput str =
                 Left BadParse
 
 
-step :: State -> Either Error Environment
-step (command, env) =
-    do  (inputStart, inputDestination) <-
+update :: State -> Either Error Model
+update (command, mdl) =
+    do  (requestedStart, requestedDestination) <-
             parseInput command
-        startCoord <-
-            getWithError env inputStart InvalidStart
+        start <-
+            getStart mdl requestedStart
         destination <-
-            getWithError env inputDestination InvalidDestination
-        piece <-
-            getOwnedPiece env startCoord
-        changes <-
-            boardChanges env piece startCoord destination
-        changes
-            & Environment.applyChanges env
-            & return
+            getDestination mdl requestedDestination
+        updatedCoordinates <-
+            move mdl start destination
+        return (Model.update mdl updatedCoordinates)
 
 
 data Result
@@ -129,50 +132,64 @@ data Result
     | Next State
 
 
--- | Returns Nothing if game has ended
-runMove :: State -> Result
-runMove state@(_, oldEnv) =
-    case step state of
+step :: State -> Result
+step state@(_, mdl) =
+    case update state of
         -- TODO: Add win condition
-        Right newEnv ->
-            Next ("Move successful", newEnv)
+        Right newMdl ->
+            Next ("Move successful", newMdl)
 
         Left invalid ->
-            Next (show invalid, oldEnv)
+            Next (show invalid, mdl)
+
+
+-- | Evaluate the result of interact.
+--  [@(State -> m ()@] A monadic loop with the new state
+--  [@m ()@]           Function to run when game ends
+evaluate :: Result -> (State -> m ()) -> m () -> m ()
+evaluate result next end =
+    case result of
+        Next state ->
+            next state
+
+        Finished ->
+            end
 
 
 prompt :: State -> String
-prompt (message, env) =
-    show (Environment.board env)
-        ++ "\n"
-        ++ message
-        ++ "\n"
-        ++ "Current player is: "
-        ++ show (Environment.currentPlayer env)
+prompt (message, mdl) =
+    unlines
+        [ show (Model.board mdl)
+        , ""
+        , message
+        , ""
+        , "Current player is: " ++ show (Model.currentPlayer mdl)
+        ]
 
 
 interact :: State -> IO Result
-interact state@(_, env) =
+interact state@(_, mdl) =
     do  putStrLn (prompt state)
         input <- getLine
-        return (runMove (input, env))
+        return (step (input, mdl))
 
 
 loop :: State -> IO ()
 loop current =
-    do  result <- Game.interact current
-        case result of
-            Next state ->
-                loop state
+    let
+        end =
+            putStrLn "Game ended"
+    in
+        do  result <- Game.interact current
+            evaluate result loop end
 
-            Finished ->
-                putStrLn "Game ended"
 
-
-start :: IO ()
-start =
-    loop
-        ( "Welcome to chess! Make a move by typing\n"
-            ++ "> \"((startX, startY),(endX,endY))\""
-        , Environment.init)
+run :: IO ()
+run =
+    let
+        welcome =
+            "Welcome to chess! Make a move by typing \
+            \\"((startX, startY),(endX,endY))\""
+    in
+        loop (welcome, Model.init)
 

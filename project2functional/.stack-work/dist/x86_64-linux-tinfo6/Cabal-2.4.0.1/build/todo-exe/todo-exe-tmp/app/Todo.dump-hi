@@ -1,0 +1,70 @@
+
+==================== FINAL INTERFACE ====================
+2019-04-02 08:29:01.138267823 UTC
+
+interface main:Todo 8064
+  interface hash: af73ad0acb5b6af6f8bb0e2fcbb0bcf0
+  ABI hash: 7818b5e6663d7698832bc6cb66eb467f
+  export-list hash: 5eedeff7b53e3cf466f7f88c2598610e
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: 35329018480d0374a1e8004a139a6e4e
+  opt_hash: d0a78e7b344f95c7406be35c9b75e196
+  hpc_hash: 93b885adfe0da089cdf634904fd59f71
+  plugin_hash: ad164012d6b1e14942349d58b1132007
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Todo.formatDone
+  Todo.new
+  Todo.toggle
+  Todo.update
+  Todo.Todo{Todo.MakeTodo description done}
+module dependencies:
+package dependencies: base-4.12.0.0* ghc-prim-0.5.3
+                      integer-gmp-1.0.2.0
+orphans: base-4.12.0.0:GHC.Float base-4.12.0.0:GHC.Base
+family instance modules: base-4.12.0.0:Control.Applicative
+                         base-4.12.0.0:Data.Functor.Const
+                         base-4.12.0.0:Data.Functor.Identity base-4.12.0.0:Data.Monoid
+                         base-4.12.0.0:Data.Semigroup.Internal base-4.12.0.0:GHC.Generics
+                         base-4.12.0.0:GHC.IO.Exception
+import  -/  base-4.12.0.0:Data.OldList e931cf456dc87f11ee6e6fb153bca23e
+import  -/  base-4.12.0.0:GHC.Base c00b75f0b052d05c55ba6a4dd1c63b26
+import  -/  base-4.12.0.0:GHC.Show 838a5d039379d82d9626aae53dfce276
+import  -/  base-4.12.0.0:Prelude 3c779dfd6448bdd8e234c336802c2acb
+import  -/  ghc-prim-0.5.3:GHC.Classes 0f6fd7d7db53fc48f6e1f01803cc6c9d
+a2459f1d07e766927f2ffbb055a61b41
+  $fShowTodo :: GHC.Show.Show Todo.Todo
+  DFunId
+d908d87fbbe1b73bd4beb39a447d6674
+  $tc'MakeTodo :: GHC.Types.TyCon
+83cd08d079ea30058b35399ab0b495e2
+  $tcTodo :: GHC.Types.TyCon
+648192c1d2c5d70e010dfdbd6a89012b
+  $trModule :: GHC.Types.Module
+a2459f1d07e766927f2ffbb055a61b41
+  data Todo
+    = MakeTodo {description :: GHC.Base.String, done :: GHC.Types.Bool}
+a2459f1d07e766927f2ffbb055a61b41
+  description :: Todo.Todo -> GHC.Base.String
+  RecSel Left Todo.Todo
+a2459f1d07e766927f2ffbb055a61b41
+  done :: Todo.Todo -> GHC.Types.Bool
+  RecSel Left Todo.Todo
+a0684f523d7b5f84b75cf12cc2c25140
+  formatDone :: Todo.Todo -> GHC.Base.String
+3e38c29d33d7d8b6ade18b23a3246318
+  new :: GHC.Base.String -> Todo.Todo
+fec126d3a6361ece09777fea15758e04
+  toggle :: Todo.Todo -> Todo.Todo
+a8ce4f097e1be4f2f30e0442f7b2598c
+  update :: Todo.Todo -> GHC.Base.String -> Todo.Todo
+instance [safe] GHC.Show.Show [Todo.Todo] = Todo.$fShowTodo
+trusted: safe
+require own pkg trusted: False
+module header:
+  Nothing
+declaration docs:
+arg docs:
+
