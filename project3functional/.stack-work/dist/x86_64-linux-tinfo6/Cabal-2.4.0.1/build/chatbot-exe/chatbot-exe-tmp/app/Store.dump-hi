@@ -1,11 +1,11 @@
 
 ==================== FINAL INTERFACE ====================
-2019-04-15 11:07:28.088542074 UTC
+2019-04-16 08:52:05.438230657 UTC
 
 interface main:Store 8064
-  interface hash: 0d72f5d73ee9461cccf0ba7730aabc57
-  ABI hash: 3863f81ba0664df925a4f8ff405c4ac3
-  export-list hash: 5af4143d4faee54da839b744021ffa35
+  interface hash: 4694382bab26f927ea9c3eb778dadeb6
+  ABI hash: ddcf31b9bce6aa89557722a3ebda93bb
+  export-list hash: c1ba713feb7f4aa37f80da15dd6e1bc6
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: c1635af5af472d90c2bcddddbea2e9d4
   opt_hash: d0a78e7b344f95c7406be35c9b75e196
@@ -16,7 +16,7 @@ interface main:Store 8064
   where
 exports:
   Store.mock
-  Store.Store{Store.MakeStore add find getTenLatest}
+  Store.Store{Store.MakeStore add count find getTenLatest}
 module dependencies:
 package dependencies: array-0.5.3.0 base-4.12.0.0 binary-0.8.6.0
                       bytestring-0.10.8.2 containers-0.6.0.1 deepseq-1.4.4.0
@@ -57,25 +57,30 @@ import  -/  vault-0.3.1.2:Data.Vault.Lazy b0c106aadea21686802bc66031e25121
   $tcStore :: GHC.Types.TyCon
 4672b164ce417bae34a0bc74cf29db1c
   $trModule :: GHC.Types.Module
-a4ff06c6c268d05599983c6a9c26ae38
+a581750c5fdf5ba291b05cd6bc90e33e
   type role Store representational representational nominal
   data Store (m :: * -> *) userId kudos
     = MakeStore {add :: kudos -> m (),
                  getTenLatest :: m [kudos],
-                 find :: userId -> m [kudos]}
-a4ff06c6c268d05599983c6a9c26ae38
+                 find :: userId -> m [kudos],
+                 count :: userId -> m GHC.Types.Int}
+a581750c5fdf5ba291b05cd6bc90e33e
   add :: Store.Store m userId kudos -> kudos -> m ()
   RecSel Left Store.Store
-a4ff06c6c268d05599983c6a9c26ae38
+a581750c5fdf5ba291b05cd6bc90e33e
+  count :: Store.Store m userId kudos -> userId -> m GHC.Types.Int
+  RecSel Left Store.Store
+a581750c5fdf5ba291b05cd6bc90e33e
   find :: Store.Store m userId kudos -> userId -> m [kudos]
   RecSel Left Store.Store
-a4ff06c6c268d05599983c6a9c26ae38
+a581750c5fdf5ba291b05cd6bc90e33e
   getTenLatest :: Store.Store m userId kudos -> m [kudos]
   RecSel Left Store.Store
-ffccd3c5719bd5c59ef4878d3a5f125f
+86bb4ea75c0995c05ed77e1db81cf7eb
   mock ::
     [kudos]
     -> (userId -> [kudos] -> [kudos])
+    -> (userId -> [kudos] -> GHC.Types.Int)
     -> GHC.Types.IO (Store.Store GHC.Types.IO userId kudos)
 trusted: none
 require own pkg trusted: False

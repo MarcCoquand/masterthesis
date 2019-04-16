@@ -110,6 +110,17 @@
   (major1) == 1 && (major2) == 2 && (minor) <= 3)
 #endif /* MIN_VERSION_text */
 
+/* package time-1.8.0.2 */
+#ifndef VERSION_time
+#define VERSION_time "1.8.0.2"
+#endif /* VERSION_time */
+#ifndef MIN_VERSION_time
+#define MIN_VERSION_time(major1,major2,minor) (\
+  (major1) <  1 || \
+  (major1) == 1 && (major2) <  8 || \
+  (major1) == 1 && (major2) == 8 && (minor) <= 0)
+#endif /* MIN_VERSION_time */
+
 /* package unordered-containers-0.2.9.0 */
 #ifndef VERSION_unordered_containers
 #define VERSION_unordered_containers "0.2.9.0"
@@ -232,7 +243,7 @@
 #endif /* MIN_TOOL_VERSION_strip */
 
 #ifndef CURRENT_COMPONENT_ID
-#define CURRENT_COMPONENT_ID "chatbot-0.1.0.0-3mzA3cKRS8bCG9flnlpgiP-chatbot-exe"
+#define CURRENT_COMPONENT_ID "chatbot-0.1.0.0-6d3nPwEnuwqCnU7kogrCuq-chatbot-exe"
 #endif /* CURRENT_COMPONENT_ID */
 #ifndef CURRENT_PACKAGE_VERSION
 #define CURRENT_PACKAGE_VERSION "0.1.0.0"

@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 23de59a8edaa0427449ad5ae087340583a4ce2713508c23f17604e78092db46e
+-- hash: 4f05a2ed7452e096ad8a9033c6842deaafefdb121f56bb446decaaffe18d5502
 
 name:           chatbot
 version:        0.1.0.0
@@ -27,6 +27,7 @@ source-repository head
 
 library
   exposed-modules:
+      Command
       Kudos
       Main
       Response.Json
@@ -54,6 +55,7 @@ library
 executable chatbot-exe
   main-is: Main.hs
   other-modules:
+      Command
       Kudos
       Response.Json
       Response.Text

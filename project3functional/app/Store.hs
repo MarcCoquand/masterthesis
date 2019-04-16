@@ -10,11 +10,16 @@ data Store m userId kudos =
     { add          :: kudos -> m ()
     , getTenLatest :: m [kudos]
     , find         :: userId -> m [kudos]
+    , count        :: userId -> m Int
     }
 
 
-mock :: [kudos] -> (userId -> [kudos] -> [kudos]) -> IO (Store IO userId kudos)
-mock kudosList findFunction =
+mock
+    :: [kudos]
+    -> (userId -> [kudos] -> [kudos])
+    -> (userId -> [kudos] -> Int)
+    -> IO (Store IO userId kudos)
+mock kudosList findFunction countFunction =
     do  ref <- newIORef kudosList
         return (MakeStore
             { add =
@@ -27,6 +32,10 @@ mock kudosList findFunction =
                 \userId ->
                     do  list <- readIORef ref
                         return (findFunction userId list)
+            , count =
+                \userId ->
+                    do  list <- readIORef ref
+                        return (countFunction userId list)
             })
 
 
