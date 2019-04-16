@@ -1,130 +1,17 @@
 {-
- - Game logic, turns e.t.c.
- - Future developers should replace String Data.Text to gain extra performance.
+ - In the future one could replace String with Data.Text to gain extra
+ - performance.
  -}
 module Game where
 
 
-import qualified Board
-import           Model     (Model)
+import           Data.Function ((&))
+import           Model         (Model)
 import qualified Model
-import qualified Piece
-import           Square    (Square)
-import qualified Square
-import           Text.Read (readMaybe)
+import           Text.Read     (readMaybe)
 
 
-data Error
-    = InvalidStart
-    | InvalidDestination
-    | BadParse
-    | NotOwnedByPlayer
-    | IllegalMove
-    | BlankSpace
-
-
-instance Show Error where
-    show InvalidStart =
-        "Invalid start square."
-    show InvalidDestination =
-        "Invalid destination square."
-    show BadParse =
-        "Parse error. Format must be ((start x, start y), (end x, end y))"
-    show NotOwnedByPlayer =
-        "Piece is not owned by you."
-    show IllegalMove =
-        "Move is not allowed."
-    show BlankSpace =
-        "Position is a blank space."
-
-
--- Start -> Destination
-type Move = ((Int,Int),(Int,Int))
-
-
-type Message = String
-
-
-type State = (Message, Model)
-
-
-getPiece
-    :: Model
-    -> Board.Coord
-    -> Either Error Square
-getPiece mdl coord =
-    case Board.get (Model.board mdl) coord of
-        Square.IsPiece pieceOwner piece ->
-            if (pieceOwner == Model.currentPlayer mdl) then
-                Right (Square.IsPiece pieceOwner piece)
-            else
-                Left NotOwnedByPlayer
-
-        Square.Blank ->
-            Left BlankSpace
-
-
-move
-    :: Model
-    -> Board.Coord
-    -> Board.Coord
-    -> Either Error [(Board.Coord, Square)]
-move mdl start destination =
-    do  (Square.IsPiece player piece) <- getPiece mdl start
-
-        if Model.isLegalMove moveSet destination then
-            Right
-                [ (startCoord, Square.Blank)
-                , (destination, Square.IsPiece player (Piece.update piece))
-                ]
-        else
-            Left IllegalMove
-
-
-getAt :: Model -> Error -> (Int,Int) -> Either Error Board.Coord
-getAt mdl throwError maybeCoord =
-    case Board.makeCoord (Model.board mdl) maybeCoord of
-        Just coord ->
-            Right coord
-        Nothing ->
-            Left throwError
-
-
-getStart :: Model -> (Int,Int) -> Either Error Board.Coord
-getStart mdl maybeCoord =
-    getAt mdl InvalidStart maybeCoord
-
-
-getDestination :: Model -> (Int,Int) -> Either Error Board.Coord
-getDestination mdl maybeCoord =
-    getAt mdl InvalidDestination maybeCoord
-
-
-parseInput :: String -> Either Error Move
-parseInput str =
-    let
-        input =
-            readMaybe str
-    in
-        case input of
-            Just correctInput ->
-                Right correctInput
-
-            Nothing ->
-                Left BadParse
-
-
-update :: State -> Either Error Model
-update (command, mdl) =
-    do  (requestedStart, requestedDestination) <-
-            parseInput command
-        start <-
-            getStart mdl requestedStart
-        destination <-
-            getDestination mdl requestedDestination
-        updatedCoordinates <-
-            move mdl start destination
-        return (Model.update mdl updatedCoordinates)
+type State = (String, Model)
 
 
 data Result
@@ -132,64 +19,92 @@ data Result
     | Next State
 
 
-step :: State -> Result
-step state@(_, mdl) =
-    case update state of
-        -- TODO: Add win condition
-        Right newMdl ->
-            Next ("Move successful", newMdl)
-
-        Left invalid ->
-            Next (show invalid, mdl)
-
-
--- | Evaluate the result of interact.
---  [@(State -> m ()@] A monadic loop with the new state
---  [@m ()@]           Function to run when game ends
-evaluate :: Result -> (State -> m ()) -> m () -> m ()
-evaluate result next end =
-    case result of
-        Next state ->
-            next state
-
-        Finished ->
-            end
-
-
-prompt :: State -> String
-prompt (message, mdl) =
-    unlines
-        [ show (Model.board mdl)
-        , ""
-        , message
-        , ""
-        , "Current player is: " ++ show (Model.currentPlayer mdl)
-        ]
-
-
-interact :: State -> IO Result
-interact state@(_, mdl) =
-    do  putStrLn (prompt state)
-        input <- getLine
-        return (step (input, mdl))
-
-
 loop :: State -> IO ()
-loop current =
-    let
-        end =
-            putStrLn "Game ended"
-    in
-        do  result <- Game.interact current
-            evaluate result loop end
+loop (message, model) =
+    do  result <-
+            step model message
+        case result of
+            Next state ->
+                loop state
+            Finished ->
+                finish
 
 
-run :: IO ()
-run =
-    let
-        welcome =
-            "Welcome to chess! Make a move by typing \
-            \\"((startX, startY),(endX,endY))\""
-    in
-        loop (welcome, Model.init)
+finish :: IO ()
+finish =
+    putStrLn "Game ended"
+
+
+step :: Model -> String -> IO Result
+step model message =
+    do  putStrLn (Model.prompt model message)
+        command <- getLine
+        return (update model command)
+
+
+update :: Model -> String -> Result
+update model command =
+    case runCommand model command of
+        -- TODO: Add win condition
+        Right newModel ->
+            Next ("Move successful", newModel)
+
+        Left invalidInput ->
+            Next (showMistake invalidInput, model)
+
+
+data InvalidInput
+    = Start
+    | Destination
+    | Format
+    | PieceChoice
+    | MoveRange
+
+
+-- TODO: parse input a...h as 1...8
+runCommand :: Model -> String -> Either InvalidInput Model
+runCommand model input =
+    do  (requestedStart, requestedDestination) <-
+            readMaybe input
+                & catchInvalid Format
+        start <-
+            Model.getCoordinate model requestedStart
+                & catchInvalid Start
+        destination <-
+            Model.getCoordinate model requestedDestination
+                & catchInvalid Destination
+        piece <-
+            Model.getOwnedPiece model start
+                & catchInvalid PieceChoice
+        changedSquares <-
+            Model.move model piece destination
+                & catchInvalid MoveRange
+
+        return (Model.update model changedSquares)
+
+
+-- We do not instance Invalid with Show because an instance of Show should follow
+-- the law (read . show) x == x.
+showMistake :: InvalidInput -> String
+showMistake mistake =
+    case mistake of
+        Start ->
+            "Invalid start square."
+        Destination ->
+            "Invalid destination square."
+        Format ->
+            "Parse error. Format must be ((start x, start y), (end x, end y))"
+        PieceChoice ->
+            "Square does not contain a piece owned by you."
+        MoveRange ->
+            "The piece is not allowed to move to the given coordinate."
+
+
+catchInvalid :: InvalidInput -> Maybe a -> Either InvalidInput a
+catchInvalid invalid result =
+    case result of
+        Just value ->
+            Right value
+        Nothing ->
+            Left invalid
 

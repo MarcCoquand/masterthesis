@@ -1,0 +1,15 @@
+Configuring attoparsec-iso8601-1.0.1.0...
+Preprocessing library for attoparsec-iso8601-1.0.1.0..
+Building library for attoparsec-iso8601-1.0.1.0..
+[1 of 2] Compiling Data.Attoparsec.Time.Internal ( Data/Attoparsec/Time/Internal.hs, .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/Data/Attoparsec/Time/Internal.o )
+
+Data/Attoparsec/Time/Internal.hs:24:1: warning: [-Wunused-imports]
+    The import of ‘Unsafe.Coerce’ is redundant
+      except perhaps to import instances from ‘Unsafe.Coerce’
+    To import instances alone, use: import Unsafe.Coerce()
+   |
+24 | import Unsafe.Coerce (unsafeCoerce)
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2 of 2] Compiling Data.Attoparsec.Time ( Data/Attoparsec/Time.hs, .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/Data/Attoparsec/Time.o )
+Installing library in /home/marccoquand/.stack/snapshots/x86_64-linux-tinfo6/lts-13.15/8.6.4/lib/x86_64-linux-ghc-8.6.4/attoparsec-iso8601-1.0.1.0-7kOxjy5nn434kkQnsS41qY
+Registering library for attoparsec-iso8601-1.0.1.0..

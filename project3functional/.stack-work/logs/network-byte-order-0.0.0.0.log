@@ -1,0 +1,6 @@
+Configuring network-byte-order-0.0.0.0...
+Preprocessing library for network-byte-order-0.0.0.0..
+Building library for network-byte-order-0.0.0.0..
+[1 of 1] Compiling Network.ByteOrder ( Network/ByteOrder.hs, .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/Network/ByteOrder.o )
+Installing library in /home/marccoquand/.stack/snapshots/x86_64-linux-tinfo6/lts-13.15/8.6.4/lib/x86_64-linux-ghc-8.6.4/network-byte-order-0.0.0.0-FYkGGM9m2cE2yftojvXtap
+Registering library for network-byte-order-0.0.0.0..

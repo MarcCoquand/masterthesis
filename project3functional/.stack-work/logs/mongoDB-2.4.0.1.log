@@ -1,0 +1,293 @@
+Configuring mongoDB-2.4.0.1...
+Preprocessing library for mongoDB-2.4.0.1..
+Building library for mongoDB-2.4.0.1..
+[1 of 9] Compiling Database.MongoDB.Internal.Util ( Database/MongoDB/Internal/Util.hs, .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/Database/MongoDB/Internal/Util.o )
+
+Database/MongoDB/Internal/Util.hs:17:1: warning: [-Wdeprecations]
+    Module ‘Network’ is deprecated:
+      The high level Network interface is no longer supported. Please use Network.Socket.
+   |
+17 | import Network (PortID(..))
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Database/MongoDB/Internal/Util.hs:24:1: warning: [-Wdeprecations]
+    Module ‘Control.Monad.Error’ is deprecated:
+      Use "Control.Monad.Except" instead
+   |
+24 | import Control.Monad.Error (MonadError(..), Error(..))
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Database/MongoDB/Internal/Util.hs:35:23: warning: [-Wdeprecations]
+    In the use of type constructor or class ‘PortID’
+    (imported from Network):
+    Deprecated: "The high level Network interface is no longer supported. Please use Network.Socket."
+   |
+35 | deriving instance Ord PortID
+   |                       ^^^^^^
+
+Database/MongoDB/Internal/Util.hs:72:34: warning: [-Wdeprecations]
+    In the use of type constructor or class ‘Error’
+    (imported from Control.Monad.Error, but defined in Control.Monad.Trans.Error):
+    Deprecated: "Use Control.Monad.Trans.Except instead"
+   |
+72 | untilSuccess :: (MonadError e m, Error e) => (a -> m b) -> [a] -> m b
+   |                                  ^^^^^
+
+Database/MongoDB/Internal/Util.hs:74:31: warning: [-Wdeprecations]
+    In the use of ‘strMsg’
+    (imported from Control.Monad.Error, but defined in Control.Monad.Trans.Error):
+    Deprecated: "Use Control.Monad.Trans.Except instead"
+   |
+74 | untilSuccess = untilSuccess' (strMsg "empty untilSuccess")
+   |                               ^^^^^^
+[2 of 9] Compiling Database.MongoDB.Transport ( Database/MongoDB/Transport.hs, .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/Database/MongoDB/Transport.o )
+[3 of 9] Compiling Database.MongoDB.Internal.Protocol ( Database/MongoDB/Internal/Protocol.hs, .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/Database/MongoDB/Internal/Protocol.o )
+[4 of 9] Compiling Database.MongoDB.Query ( Database/MongoDB/Query.hs, .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/Database/MongoDB/Query.o )
+
+Database/MongoDB/Query.hs:75:1: warning: [-Wdeprecations]
+    Module ‘Control.Monad.Error’ is deprecated:
+      Use "Control.Monad.Except" instead
+   |
+75 | import Control.Monad.Error (Error(..))
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Database/MongoDB/Query.hs:141:10: warning: [-Wdeprecations]
+    In the use of type constructor or class ‘Error’
+    (imported from Control.Monad.Error, but defined in Control.Monad.Trans.Error):
+    Deprecated: "Use Control.Monad.Trans.Except instead"
+    |
+141 | instance Error Failure where strMsg = error
+    |          ^^^^^
+
+Database/MongoDB/Query.hs:141:10: warning: [-Wdeprecations]
+    In the use of type constructor or class ‘Error’
+    (imported from Control.Monad.Error, but defined in Control.Monad.Trans.Error):
+    Deprecated: "Use Control.Monad.Trans.Except instead"
+    |
+141 | instance Error Failure where strMsg = error
+    |          ^^^^^
+[5 of 9] Compiling Database.MongoDB.Connection ( Database/MongoDB/Connection.hs, .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/Database/MongoDB/Connection.o )
+
+Database/MongoDB/Connection.hs:33:1: warning: [-Wdeprecations]
+    Module ‘Network’ is deprecated:
+      The high level Network interface is no longer supported. Please use Network.Socket.
+   |
+33 | import Network (HostName, PortID(..), connectTo)
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Database/MongoDB/Connection.hs:42:1: warning: [-Wdeprecations]
+    Module ‘Control.Monad.Error’ is deprecated:
+      Use "Control.Monad.Except" instead
+   |
+42 | import Control.Monad.Error (throwError)
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Database/MongoDB/Connection.hs:67:27: warning: [-Wdeprecations]
+    In the use of type constructor or class ‘PortID’
+    (imported from Network):
+    Deprecated: "The high level Network interface is no longer supported. Please use Network.Socket."
+   |
+67 | data Host = Host HostName PortID  deriving (Show, Eq, Ord)
+   |                           ^^^^^^
+
+Database/MongoDB/Connection.hs:69:16: warning: [-Wdeprecations]
+    In the use of type constructor or class ‘PortID’
+    (imported from Network):
+    Deprecated: "The high level Network interface is no longer supported. Please use Network.Socket."
+   |
+69 | defaultPort :: PortID
+   |                ^^^^^^
+
+Database/MongoDB/Connection.hs:71:15: warning: [-Wdeprecations]
+    In the use of data constructor ‘PortNumber’
+    (imported from Network):
+    Deprecated: "The high level Network interface is no longer supported. Please use Network.Socket."
+   |
+71 | defaultPort = PortNumber 27017
+   |               ^^^^^^^^^^
+
+Database/MongoDB/Connection.hs:82:9: warning: [-Wdeprecations]
+    In the use of data constructor ‘Service’ (imported from Network):
+    Deprecated: "The high level Network interface is no longer supported. Please use Network.Socket."
+   |
+82 |         Service s -> s
+   |         ^^^^^^^
+
+Database/MongoDB/Connection.hs:83:9: warning: [-Wdeprecations]
+    In the use of data constructor ‘PortNumber’
+    (imported from Network):
+    Deprecated: "The high level Network interface is no longer supported. Please use Network.Socket."
+   |
+83 |         PortNumber p -> show p
+   |         ^^^^^^^^^^
+
+Database/MongoDB/Connection.hs:85:9: warning: [-Wdeprecations]
+    In the use of data constructor ‘UnixSocket’
+    (imported from Network):
+    Deprecated: "The high level Network interface is no longer supported. Please use Network.Socket."
+   |
+85 |         UnixSocket s -> s
+   |         ^^^^^^^^^^
+
+Database/MongoDB/Connection.hs:100:30: warning: [-Wdeprecations]
+    In the use of data constructor ‘PortNumber’
+    (imported from Network):
+    Deprecated: "The high level Network interface is no longer supported. Please use Network.Socket."
+    |
+100 |             return $ Host h (PortNumber $ fromIntegral port)
+    |                              ^^^^^^^^^^
+
+Database/MongoDB/Connection.hs:120:52: warning: [-Wdeprecations]
+    In the use of ‘connectTo’ (imported from Network):
+    Deprecated: "The high level Network interface is no longer supported. Please use Network.Socket."
+    |
+120 |     mh <- timeout (round $ timeoutSecs * 1000000) (connectTo hostname port)
+    |                                                    ^^^^^^^^^
+[6 of 9] Compiling Database.MongoDB.Admin ( Database/MongoDB/Admin.hs, .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/Database/MongoDB/Admin.o )
+[7 of 9] Compiling Database.MongoDB ( Database/MongoDB.hs, .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/Database/MongoDB.o )
+[8 of 9] Compiling Database.MongoDB.GridFS ( Database/MongoDB/GridFS.hs, .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/Database/MongoDB/GridFS.o )
+
+Database/MongoDB/GridFS.hs:30:1: warning: [-Wunused-imports]
+    The import of ‘MonadTrans’
+    from module ‘Control.Monad.Trans’ is redundant
+   |
+30 | import Control.Monad.Trans(MonadTrans, lift)
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Database/MongoDB/GridFS.hs:113:47: warning: [-Wdeprecations]
+    In the use of type constructor or class ‘Producer’
+    (imported from Data.Conduit, but defined in conduit-1.3.1.1:Data.Conduit.Internal.Conduit):
+    Deprecated: "Use ConduitT directly"
+    |
+113 | sourceFile :: (Monad m, MonadIO m) => File -> Producer (Action m) S.ByteString
+    |                                               ^^^^^^^^
+
+Database/MongoDB/GridFS.hs:124:5: warning: [-Wunused-top-binds]
+    Defined but not used: ‘fwChunkSize’
+    |
+124 |   { fwChunkSize :: Int64
+    |     ^^^^^^^^^^^
+
+Database/MongoDB/GridFS.hs:125:5: warning: [-Wunused-top-binds]
+    Defined but not used: ‘fwBucket’
+    |
+125 |   , fwBucket :: Bucket
+    |     ^^^^^^^^
+
+Database/MongoDB/GridFS.hs:126:5: warning: [-Wunused-top-binds]
+    Defined but not used: ‘fwFilesId’
+    |
+126 |   , fwFilesId :: ObjectId
+    |     ^^^^^^^^^
+
+Database/MongoDB/GridFS.hs:127:5: warning: [-Wunused-top-binds]
+    Defined but not used: ‘fwChunkIndex’
+    |
+127 |   , fwChunkIndex :: Int
+    |     ^^^^^^^^^^^^
+
+Database/MongoDB/GridFS.hs:128:5: warning: [-Wunused-top-binds]
+    Defined but not used: ‘fwSize’
+    |
+128 |   , fwSize :: Int64
+    |     ^^^^^^
+
+Database/MongoDB/GridFS.hs:129:5: warning: [-Wunused-top-binds]
+    Defined but not used: ‘fwAcc’
+    |
+129 |   , fwAcc :: L.ByteString
+    |     ^^^^^
+
+Database/MongoDB/GridFS.hs:130:5: warning: [-Wunused-top-binds]
+    Defined but not used: ‘fwMd5Context’
+    |
+130 |   , fwMd5Context :: MD5Context
+    |     ^^^^^^^^^^^^
+
+Database/MongoDB/GridFS.hs:131:5: warning: [-Wunused-top-binds]
+    Defined but not used: ‘fwMd5acc’
+    |
+131 |   , fwMd5acc :: L.ByteString
+    |     ^^^^^^^^
+
+Database/MongoDB/GridFS.hs:139:3: warning: [-Wname-shadowing]
+    This binding for ‘timestamp’ shadows the existing binding
+      imported from ‘Database.MongoDB’ at Database/MongoDB/GridFS.hs:38:1-23
+      (and originally defined in ‘Data.Bson’)
+    |
+139 |   timestamp <- liftIO $ getCurrentTime
+    |   ^^^^^^^^^
+
+Database/MongoDB/GridFS.hs:152:17: warning: [-Wname-shadowing]
+    This binding for ‘rest’ shadows the existing binding
+      imported from ‘Database.MongoDB’ at Database/MongoDB/GridFS.hs:38:1-23
+      (and originally defined in ‘Database.MongoDB.Query’
+         at Database/MongoDB/Query.hs:1288:1-4)
+    |
+152 | finalizeMD5 ctx rest =
+    |                 ^^^^
+
+Database/MongoDB/GridFS.hs:170:28: warning: [-Wname-shadowing]
+    This binding for ‘rest’ shadows the existing binding
+      imported from ‘Database.MongoDB’ at Database/MongoDB/GridFS.hs:38:1-23
+      (and originally defined in ‘Database.MongoDB.Query’
+         at Database/MongoDB/Query.hs:1288:1-4)
+    |
+170 |                  (current, rest) = L.splitAt (md5BlockLength * numBlocks) md5acc_temp
+    |                            ^^^^
+
+Database/MongoDB/GridFS.hs:178:12: warning: [-Wname-shadowing]
+    This binding for ‘chunk’ shadows the existing binding
+      bound at Database/MongoDB/GridFS.hs:162:81
+    |
+178 |       let (chunk, acc') = L.splitAt chunkSize acc_temp
+    |            ^^^^^
+
+Database/MongoDB/GridFS.hs:182:55: warning: [-Wdeprecations]
+    In the use of type constructor or class ‘Consumer’
+    (imported from Data.Conduit, but defined in conduit-1.3.1.1:Data.Conduit.Internal.Conduit):
+    Deprecated: "Use ConduitT directly"
+    |
+182 | sinkFile :: (Monad m, MonadIO m) => Bucket -> Text -> Consumer S.ByteString (Action m) File
+    |                                                       ^^^^^^^^
+[9 of 9] Compiling Database.MongoDB.Transport.Tls ( Database/MongoDB/Transport/Tls.hs, .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/Database/MongoDB/Transport/Tls.o )
+
+Database/MongoDB/Transport/Tls.hs:29:1: warning: [-Wunused-imports]
+    The import of ‘Data.Monoid’ is redundant
+      except perhaps to import instances from ‘Data.Monoid’
+    To import instances alone, use: import Data.Monoid()
+   |
+29 | import Data.Monoid
+   | ^^^^^^^^^^^^^^^^^^
+
+Database/MongoDB/Transport/Tls.hs:42:1: warning: [-Wdeprecations]
+    Module ‘Network’ is deprecated:
+      The high level Network interface is no longer supported. Please use Network.Socket.
+   |
+42 | import Network (connectTo, HostName, PortID)
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Database/MongoDB/Transport/Tls.hs:48:24: warning: [-Wdeprecations]
+    In the use of type constructor or class ‘PortID’
+    (imported from Network):
+    Deprecated: "The high level Network interface is no longer supported. Please use Network.Socket."
+   |
+48 | connect :: HostName -> PortID -> IO Pipe
+   |                        ^^^^^^
+
+Database/MongoDB/Transport/Tls.hs:49:37: warning: [-Wdeprecations]
+    In the use of ‘connectTo’ (imported from Network):
+    Deprecated: "The high level Network interface is no longer supported. Please use Network.Socket."
+   |
+49 | connect host port = bracketOnError (connectTo host port) hClose $ \handle -> do
+   |                                     ^^^^^^^^^
+
+Database/MongoDB/Transport/Tls.hs:53:38: warning: [-Wdeprecations]
+    In the use of ‘ciphersuite_all’
+    (imported from Network.TLS.Extra.Cipher):
+    "This ciphersuite list contains RC4. Use ciphersuite_strong or ciphersuite_default instead."
+   |
+53 |             { TLS.supportedCiphers = TLS.ciphersuite_all}
+   |                                      ^^^^^^^^^^^^^^^^^^^
+Installing library in /home/marccoquand/.stack/snapshots/x86_64-linux-tinfo6/lts-13.15/8.6.4/lib/x86_64-linux-ghc-8.6.4/mongoDB-2.4.0.1-DAy3LfGGFqq9GnT7do98yE
+Registering library for mongoDB-2.4.0.1..

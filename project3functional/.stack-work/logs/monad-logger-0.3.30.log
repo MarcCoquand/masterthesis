@@ -1,0 +1,70 @@
+Configuring monad-logger-0.3.30...
+Preprocessing library for monad-logger-0.3.30..
+Building library for monad-logger-0.3.30..
+[1 of 3] Compiling Control.Monad.Logger ( Control/Monad/Logger.hs, .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/Control/Monad/Logger.o )
+
+Control/Monad/Logger.hs:136:1: warning: [-Wdeprecations]
+    Module ‘Control.Monad.Trans.List’ is deprecated:
+      This transformer is invalid on most monads
+    |
+136 | import Control.Monad.Trans.List     ( ListT    )
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Control/Monad/Logger.hs:138:1: warning: [-Wdeprecations]
+    Module ‘Control.Monad.Trans.Error’ is deprecated:
+      Use Control.Monad.Trans.Except instead
+    |
+138 | import Control.Monad.Trans.Error    ( ErrorT, Error)
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Control/Monad/Logger.hs:234:40: warning: [-Wdeprecations]
+    In the use of type constructor or class ‘ListT’
+    (imported from Control.Monad.Trans.List):
+    Deprecated: "This transformer is invalid on most monads"
+    |
+234 | instance MonadLogger m => MonadLogger (ListT m) where DEF
+    |                                        ^^^^^
+
+Control/Monad/Logger.hs:236:26: warning: [-Wdeprecations]
+    In the use of type constructor or class ‘Error’
+    (imported from Control.Monad.Trans.Error):
+    Deprecated: "Use Control.Monad.Trans.Except instead"
+    |
+236 | instance (MonadLogger m, Error e) => MonadLogger (ErrorT e m) where DEF
+    |                          ^^^^^
+
+Control/Monad/Logger.hs:236:51: warning: [-Wdeprecations]
+    In the use of type constructor or class ‘ErrorT’
+    (imported from Control.Monad.Trans.Error):
+    Deprecated: "Use Control.Monad.Trans.Except instead"
+    |
+236 | instance (MonadLogger m, Error e) => MonadLogger (ErrorT e m) where DEF
+    |                                                   ^^^^^^
+
+Control/Monad/Logger.hs:252:44: warning: [-Wdeprecations]
+    In the use of type constructor or class ‘ListT’
+    (imported from Control.Monad.Trans.List):
+    Deprecated: "This transformer is invalid on most monads"
+    |
+252 | instance MonadLoggerIO m => MonadLoggerIO (ListT m)
+    |                                            ^^^^^
+
+Control/Monad/Logger.hs:254:28: warning: [-Wdeprecations]
+    In the use of type constructor or class ‘Error’
+    (imported from Control.Monad.Trans.Error):
+    Deprecated: "Use Control.Monad.Trans.Except instead"
+    |
+254 | instance (MonadLoggerIO m, Error e) => MonadLoggerIO (ErrorT e m)
+    |                            ^^^^^
+
+Control/Monad/Logger.hs:254:55: warning: [-Wdeprecations]
+    In the use of type constructor or class ‘ErrorT’
+    (imported from Control.Monad.Trans.Error):
+    Deprecated: "Use Control.Monad.Trans.Except instead"
+    |
+254 | instance (MonadLoggerIO m, Error e) => MonadLoggerIO (ErrorT e m)
+    |                                                       ^^^^^^
+[2 of 3] Compiling Control.Monad.Logger.CallStack ( Control/Monad/Logger/CallStack.hs, .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/Control/Monad/Logger/CallStack.o )
+[3 of 3] Compiling Paths_monad_logger ( .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/autogen/Paths_monad_logger.hs, .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/Paths_monad_logger.o )
+Installing library in /home/marccoquand/.stack/snapshots/x86_64-linux-tinfo6/lts-13.15/8.6.4/lib/x86_64-linux-ghc-8.6.4/monad-logger-0.3.30-HGYW6AibITM4l4NMBe6WoZ
+Registering library for monad-logger-0.3.30..

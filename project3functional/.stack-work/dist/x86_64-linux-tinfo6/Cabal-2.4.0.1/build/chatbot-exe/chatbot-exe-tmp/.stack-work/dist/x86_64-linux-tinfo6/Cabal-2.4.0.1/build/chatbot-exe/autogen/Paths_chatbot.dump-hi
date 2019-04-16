@@ -1,0 +1,70 @@
+
+==================== FINAL INTERFACE ====================
+2019-04-16 06:50:15.122709144 UTC
+
+interface main:Paths_chatbot 8064
+  interface hash: a18608f8f61aae2339b79ee248152e87
+  ABI hash: 8757883246f7c18a6fb5e693a1dcff22
+  export-list hash: b652b4b06304650d24af95cd299cc284
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: f67e999c8e7b3ed7343a4c847123c075
+  opt_hash: d0a78e7b344f95c7406be35c9b75e196
+  hpc_hash: 93b885adfe0da089cdf634904fd59f71
+  plugin_hash: ad164012d6b1e14942349d58b1132007
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Paths_chatbot.getBinDir
+  Paths_chatbot.getDataDir
+  Paths_chatbot.getDataFileName
+  Paths_chatbot.getDynLibDir
+  Paths_chatbot.getLibDir
+  Paths_chatbot.getLibexecDir
+  Paths_chatbot.getSysconfDir
+  Paths_chatbot.version
+module dependencies:
+package dependencies: base-4.12.0.0* ghc-prim-0.5.3
+                      integer-gmp-1.0.2.0
+orphans: base-4.12.0.0:GHC.Float base-4.12.0.0:GHC.Base
+family instance modules: base-4.12.0.0:Control.Applicative
+                         base-4.12.0.0:Data.Functor.Const
+                         base-4.12.0.0:Data.Functor.Identity base-4.12.0.0:Data.Monoid
+                         base-4.12.0.0:Data.Semigroup.Internal base-4.12.0.0:Data.Version
+                         base-4.12.0.0:GHC.Generics base-4.12.0.0:GHC.IO.Exception
+import  -/  base-4.12.0.0:Control.Exception 041da5b6267cf6b639ff5716d5b299a9
+import  -/  base-4.12.0.0:Data.Version cc00ee64eb7c4a47da3643a9fa19a88c
+import  -/  base-4.12.0.0:GHC.Base c00b75f0b052d05c55ba6a4dd1c63b26
+import  -/  base-4.12.0.0:GHC.IO 898d4ddbf00eb4732e5f462760aa42ae
+import  -/  base-4.12.0.0:GHC.IO.Exception 450806ae9fed7fcace0a23ab62a9d604
+import  -/  base-4.12.0.0:Prelude 3c779dfd6448bdd8e234c336802c2acb
+import  -/  base-4.12.0.0:System.Environment c54e0d0308e729fdace6bc37aa74bb52
+import  -/  ghc-prim-0.5.3:GHC.Types 57064c9f957b09bc2e360061ad5cae0b
+addDependentFile "/home/marccoquand/.stack/programs/x86_64-linux/ghc-tinfo6-8.6.4/lib/ghc-8.6.4/include/ghcversion.h" a0ce8aeb7f525f4d70decd6c1d3ca2dd
+addDependentFile ".stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/chatbot-exe/autogen/cabal_macros.h" b8b86822bfdf6384a32b2fedc33c0c15
+addDependentFile "/usr/include/stdc-predef.h" 6b894370e916ba2f6079d6d62453af6b
+e789959b08067b508c7763850f7ad19e
+  $trModule :: GHC.Types.Module
+411244e411792ae08bdef31560a0ec5a
+  getBinDir :: GHC.Types.IO GHC.IO.FilePath
+4e39e807b32a73af4327abe8ce38a137
+  getDataDir :: GHC.Types.IO GHC.IO.FilePath
+fda90482fc31c6a25ac36af0c3db816a
+  getDataFileName :: GHC.IO.FilePath -> GHC.Types.IO GHC.IO.FilePath
+ffeb7c711a5a75bd198ee5df135b8d3f
+  getDynLibDir :: GHC.Types.IO GHC.IO.FilePath
+7a52400c0fa29723688ee58ab067e5ff
+  getLibDir :: GHC.Types.IO GHC.IO.FilePath
+532c5cedfcdb09229e4c8ce6e1fea9b9
+  getLibexecDir :: GHC.Types.IO GHC.IO.FilePath
+06cc722e0934d9269c5e90d373bdea6e
+  getSysconfDir :: GHC.Types.IO GHC.IO.FilePath
+3d7dc9db1b60fac7b176e1d82969844a
+  version :: Data.Version.Version
+trusted: safe
+require own pkg trusted: False
+module header:
+  Nothing
+declaration docs:
+arg docs:
+

@@ -1,0 +1,6 @@
+Configuring pureMD5-2.1.3...
+Preprocessing library for pureMD5-2.1.3..
+Building library for pureMD5-2.1.3..
+[1 of 1] Compiling Data.Digest.Pure.MD5 ( Data/Digest/Pure/MD5.hs, .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/Data/Digest/Pure/MD5.o )
+Installing library in /home/marccoquand/.stack/snapshots/x86_64-linux-tinfo6/lts-13.15/8.6.4/lib/x86_64-linux-ghc-8.6.4/pureMD5-2.1.3-8zDiKRAA8zkDSoueFgLLEI
+Registering library for pureMD5-2.1.3..

@@ -1,71 +1,86 @@
 module Square where
 
-import           Board      (Board)
+import           Board         (Board)
 import qualified Board
-import           Data.Maybe (fromJust)
-import           Data.Set   (Set)
-import qualified Data.Set   as Set
+import           Data.Function ((&))
+import           Data.Maybe    (fromJust)
 import qualified MoveSet
-import           Piece      (Piece)
+import           Piece         (Piece)
 import qualified Piece
-import           Player     (Player)
+import           Player        (Player)
 import qualified Player
 
 
 data Square
     = Blank
     | IsPiece Player Piece
+    deriving (Eq)
 
 
 instance Show Square where
-    show Blank = "  "
+    show Blank =
+        "  "
     show (IsPiece Player.White piece) =
         "w" ++ show piece
     show (IsPiece Player.Black piece) =
         "b" ++ show piece
 
 
-isCollision :: Square -> Bool
-isCollision Blank =
-    False
-isCollision (IsPiece _ _) =
-    True
+
+-- * MOVE VALIDATION
 
 
-isIndomitable :: Player -> Square -> Bool
-isIndomitable _ Blank =
-    True
-isIndomitable player (IsPiece pieceOwner _) =
-    player == pieceOwner
+handler :: Player -> Board Square -> MoveSet.Handle
+handler player board =
+    MoveSet.MakeHandle
+        { MoveSet.isCollision =
+            \coord ->
+                check board isCollision coord
+        , MoveSet.isIndomitable =
+            \coord ->
+                check board (isIndomitable player) coord
+        }
+
 
 
 check :: Board Square -> (Square -> Bool) -> (Int, Int) -> Bool
-check board checkSquare coord =
+check board checkSquare toCheck =
   let
       maybeCoord =
-          Board.makeCoord board coord
+          Board.makeCoord board toCheck
   in
       case maybeCoord of
-        Just success ->
-            checkSquare $ Board.get board success
+        Just inboundCoord ->
+            checkSquare (Board.get board inboundCoord)
 
         Nothing ->
             True
 
 
-handler :: Player -> Board Square -> MoveSet.Handle
-handler player board =
-        MoveSet.MakeHandle
-            { MoveSet.isCollision = \coord ->
-                check board isCollision coord
-            , MoveSet.isIndomitable = \coord ->
-                check board (isIndomitable player) coord
-            }
+isCollision :: Square -> Bool
+isCollision square =
+    square /= Blank
+
+
+-- Can the user NOT attack this board
+isIndomitable :: Player -> Square -> Bool
+isIndomitable player square =
+    case square of
+        IsPiece pieceOwner _ ->
+            player == pieceOwner
+
+        Blank ->
+            True
+
+
+
+-- * BOARD
 
 
 initialBoard :: Board Square
 initialBoard =
-  let wP = Square.IsPiece Player.White (Piece.Pawn False)
+  let
+      wP = Square.IsPiece Player.White (Piece.Pawn False)
       bP = Square.IsPiece Player.Black (Piece.Pawn False)
       wK = Square.IsPiece Player.White Piece.Knight
       bK = Square.IsPiece Player.Black Piece.Knight
@@ -73,7 +88,6 @@ initialBoard =
   in
       -- fromJust is ok here as we want the program to crash if the board is
       -- not constructed correctly.
-      fromJust . Board.construct $
       [ wP, wP, wK, wP, wP, wK, wP, wP
       , wP, wP, wP, wP, wP, wP, wP, wP
       , bl, bl, bl, bl, bl, bl, bl, bl
@@ -83,4 +97,5 @@ initialBoard =
       , bP, bP, bP, bP, bP, bP, bP, bP
       , bP, bP, bK, bP, bP, bK, bP, bP
       ]
-
+          & Board.construct
+          & fromJust

@@ -1,9 +1,14 @@
 module Piece where
 
 
+type HasMoved =
+    Bool
+
+
 data Piece
-    = Pawn Bool -- ^ Has the pawn moved or not
+    = Pawn HasMoved
     | Knight
+    deriving (Eq)
 
 
 instance Show Piece where
@@ -12,9 +17,11 @@ instance Show Piece where
 
 
 update :: Piece -> Piece
-update Knight =
-    Knight
-update (Pawn _) =
-    -- Pawn has moved once
-    Pawn True
+update piece =
+    case piece of
+        Knight ->
+            Knight
+
+        Pawn _ ->
+            Pawn True
 

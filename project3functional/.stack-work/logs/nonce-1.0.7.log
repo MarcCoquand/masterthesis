@@ -1,0 +1,6 @@
+Configuring nonce-1.0.7...
+Preprocessing library for nonce-1.0.7..
+Building library for nonce-1.0.7..
+[1 of 1] Compiling Crypto.Nonce     ( src/Crypto/Nonce.hs, .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/Crypto/Nonce.o )
+Installing library in /home/marccoquand/.stack/snapshots/x86_64-linux-tinfo6/lts-13.15/8.6.4/lib/x86_64-linux-ghc-8.6.4/nonce-1.0.7-2wdhN3Z6xSwDOEMfTSC8Vy
+Registering library for nonce-1.0.7..

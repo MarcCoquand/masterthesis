@@ -1,0 +1,14 @@
+Configuring byteable-0.1.1...
+Preprocessing library for byteable-0.1.1..
+Building library for byteable-0.1.1..
+[1 of 1] Compiling Data.Byteable    ( Data/Byteable.hs, .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/Data/Byteable.o )
+
+Data/Byteable.hs:48:11: warning: [-Winline-rule-shadowing]
+    Rule "constEqBytes/ByteString" may never fire
+      because ‘constEqBytes’ might inline first
+    Probable fix: add an INLINE[n] or NOINLINE[n] pragma for ‘constEqBytes’
+   |
+48 | {-# RULES "constEqBytes/ByteString" constEqBytes = constEqByteString #-}
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Installing library in /home/marccoquand/.stack/snapshots/x86_64-linux-tinfo6/lts-13.15/8.6.4/lib/x86_64-linux-ghc-8.6.4/byteable-0.1.1-9guyEXUUK503mzSnI32g2S
+Registering library for byteable-0.1.1..

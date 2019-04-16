@@ -25,9 +25,10 @@ import qualified Data.Set.Extra  as Set
 import           Test.QuickCheck (Arbitrary)
 import qualified Test.QuickCheck as Quickcheck
 
+
 -- | By hiding the constructor all coords must be created through makeCoord
--- and catCoords, both check that the Coordinate is a valid one. Thus
--- no unsafe coordinates can be introduced.
+-- and catCoords. Both functions check that the Coordinate is a valid one. Thus
+-- no out of bounds coordinates can be created.
 newtype Coord = UnCoord (Int,Int)
     deriving (Ord, Eq, Show, Array.Ix)
 
@@ -36,12 +37,10 @@ newtype Board element = CreateBoard (Array Coord element)
     deriving (Eq, Ord)
 
 
+-- For use with Quickcheck, generate arbitrary board.
 instance Arbitrary e => Arbitrary (Board e) where
     arbitrary =
         do  pieces <- Quickcheck.vector (boardSize * boardSize)
-            -- fromJust is discouraged but in this case
-            -- we save a lot of complexity and construct will always return Just
-            -- in this case
             pieces
                 & construct
                 & fromJust
@@ -72,21 +71,21 @@ isLegalMove moveSet destination =
 makeNumberList :: Int -> Int -> String
 makeNumberList amount startNumber =
     let
-        formattedNumberList =
-            unfoldr (\i -> Just (format i, i+1)) startNumber
-
         format i =
             show i ++ "."
+
+        formattedNumberList =
+            unfoldr (\i -> Just (format i, i+1)) startNumber
     in
         formattedNumberList
             & take amount
-            & unwords -- ["1.","2.","3."] -> "1. 2. 3."
+            & unwords -- Turns ["1.","2.","3."] into "1. 2. 3."
 
 
 makeIndex :: [String] -> [String]
 makeIndex boardString =
     ["   " ++ makeNumberList (length boardString) 1] ++
-    -- Prefer foldl' over foldl for efficiency
+    -- Prefer foldl' over foldl for efficiency and avoiding space leaks.
     foldl'
         (\board next ->
             board ++ [addNumberToString (length board + 1) next])
@@ -138,8 +137,9 @@ isWithinRange (c1,c2) (c3,c4) =
 
 get :: Board square -> Coord -> square
 get (CreateBoard arr) coord =
-    -- (!) is unsafe but since Coords can only be created if
-    -- they're in the bounds of the unexposed array it becomes safe.
+    -- (!) will crash if given out of bounds coordinates.
+    -- However since Coords can only be created if they're in the bounds this
+    -- function becomes safe.
     arr ! coord
 
 
@@ -156,13 +156,11 @@ update (CreateBoard arr) changeList =
         & updateArray arr
         & CreateBoard
     where
-        -- When libraries introduce unclear operators, replace them with a
-        -- documenting name. More maintainable than comments which might go out
-        -- of date.
         updateArray = (//)
 
 
--- | Eliminates all out of bounds coordinates
+-- | Given a set of coordinates, return a set of coordinates that are in bounds
+-- of the board.
 coordSet ::  Board e -> Set (Int,Int) -> Set Coord
 coordSet board set =
     set

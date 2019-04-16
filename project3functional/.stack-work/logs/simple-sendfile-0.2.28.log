@@ -1,0 +1,25 @@
+Configuring simple-sendfile-0.2.28...
+Preprocessing library for simple-sendfile-0.2.28..
+Building library for simple-sendfile-0.2.28..
+[1 of 4] Compiling Network.Sendfile.Types ( Network/Sendfile/Types.hs, .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/Network/Sendfile/Types.o )
+[2 of 4] Compiling Network.Sendfile.Linux ( .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/Network/Sendfile/Linux.hs, .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/Network/Sendfile/Linux.o )
+
+Network/Sendfile/Linux.hsc:13:1: warning: [-Wunused-imports]
+    The import of ‘Control.Applicative’ is redundant
+      except perhaps to import instances from ‘Control.Applicative’
+    To import instances alone, use: import Control.Applicative()
+   |
+13 | import Control.Applicative
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Network/Sendfile/Linux.hsc:18:1: warning: [-Wunused-imports]
+    The import of ‘Data.Int’ is redundant
+      except perhaps to import instances from ‘Data.Int’
+    To import instances alone, use: import Data.Int()
+   |
+18 | import Data.Int
+   | ^^^^^^^^^^^^^^^
+[3 of 4] Compiling Network.Sendfile ( Network/Sendfile.hs, .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/Network/Sendfile.o )
+[4 of 4] Compiling System.Linux.Sendfile ( System/Linux/Sendfile.hs, .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/System/Linux/Sendfile.o )
+Installing library in /home/marccoquand/.stack/snapshots/x86_64-linux-tinfo6/lts-13.15/8.6.4/lib/x86_64-linux-ghc-8.6.4/simple-sendfile-0.2.28-2P82OYeTg9t6odwY9NQQX0
+Registering library for simple-sendfile-0.2.28..

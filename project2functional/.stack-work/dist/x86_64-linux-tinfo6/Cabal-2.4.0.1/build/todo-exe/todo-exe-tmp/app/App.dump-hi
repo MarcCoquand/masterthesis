@@ -1,11 +1,11 @@
 
 ==================== FINAL INTERFACE ====================
-2019-04-02 08:56:28.196998841 UTC
+2019-04-03 04:53:29.766364006 UTC
 
 interface main:App 8064
-  interface hash: cfc09cd16d5fd038a07e8d7afd92877f
-  ABI hash: 2591cc9cd77b673e67493742e63538a2
-  export-list hash: 426ecedb7f9867a30d2998fd9c301bdf
+  interface hash: 1594a58ba0d2b0b38af3aa57953b9d67
+  ABI hash: 26d435beeef172fa5dbe2c1d368af199
+  export-list hash: e642af2fb16acf57021f0c77ccd80fcc
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 35329018480d0374a1e8004a139a6e4e
   opt_hash: d0a78e7b344f95c7406be35c9b75e196
@@ -15,12 +15,14 @@ interface main:App 8064
   used TH splices: False
   where
 exports:
+  App.clearScreen
   App.init
+  App.loop
   App.makeTodo
   App.prompt
-  App.repl
   App.start
   App.update
+  App.withBuffer
   App.Model{App.Empty App.Is}
   App.Msg{App.Add App.Delete App.GotData App.GotEmpty App.MoveDown App.MoveUp App.Toggle App.Update}
   App.OutputMessage
@@ -52,7 +54,6 @@ family instance modules: base-4.12.0.0:Control.Applicative
 import  -/  base-4.12.0.0:Data.Maybe 9b76a39e833465c3c5b3c078b431417f
 import  -/  base-4.12.0.0:Data.OldList e931cf456dc87f11ee6e6fb153bca23e
 import  -/  base-4.12.0.0:GHC.Base c00b75f0b052d05c55ba6a4dd1c63b26
-import  -/  base-4.12.0.0:GHC.Err ea5e313ef4146b40b5d8b27aa168e736
 import  -/  base-4.12.0.0:GHC.IO.Handle fe51659cf05ea3ecd36fe5e2d515d89a
 import  -/  base-4.12.0.0:GHC.IO.Handle.FD 57dd508e0260edfe7dfb9592eb9a6e63
 import  -/  base-4.12.0.0:GHC.IO.Handle.Types 8909e00409cd23d4e66395a7e93f216d
@@ -122,18 +123,22 @@ de9c293354da1afb28d6ed5088f44055
   type OutputMessage = GHC.Maybe.Maybe GHC.Base.String
 892baa6884da04cd5453f7d2789f86c3
   type TodoList = Navigator.Navigator Todo.Todo
+6bbbb74666ddb362a3e143b9ac55c511
+  clearScreen :: GHC.Types.IO ()
 4c3a6e8ee15355c361a4cdebe671abf9
   init :: App.Model
+8dd9400ccc5fd783b637a6455837aa14
+  loop :: GHC.Types.Bool -> App.Model -> GHC.Types.IO ()
 ca868b454826ff3f25cb44aaf5bd2e78
   makeTodo :: GHC.Types.IO Todo.Todo
 5118c863585062a03f43fdea80ed7cd2
   prompt :: App.Model -> GHC.Types.Bool -> GHC.Base.String
-67924ab443c45a6d253aa94a66465da6
-  repl :: GHC.Types.Bool -> App.Model -> GHC.Types.IO ()
 fcfe6dee41bcaf4b791cc752c9a51324
   start :: GHC.Types.IO ()
 e78f3f86f4f795943a59d5868b83a8d5
   update :: App.Msg -> App.Model -> App.Model
+63da275db9e75ce99bfaf658ddb55510
+  withBuffer :: GHC.Types.Bool -> GHC.Types.IO ()
 trusted: safe
 require own pkg trusted: False
 module header:

@@ -1,0 +1,41 @@
+
+==================== FINAL INTERFACE ====================
+2019-04-16 06:54:42.377378344 UTC
+
+interface chatbot-0.1.0.0-KBzJPM1w73ULhXPO6HMS3o:Main 8064
+  interface hash: 2e5d468a24015ef85d692b148a7e91e0
+  ABI hash: 9f17bd7eef789e69c05bc4cf3eefcd38
+  export-list hash: 24fd63ec08222c38e5be826cf394c5db
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: 2a9101b7e6c45fb297dec1e2ea3c107c
+  opt_hash: d0a78e7b344f95c7406be35c9b75e196
+  hpc_hash: 93b885adfe0da089cdf634904fd59f71
+  plugin_hash: ad164012d6b1e14942349d58b1132007
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Main.main
+module dependencies:
+package dependencies: base-4.12.0.0* ghc-prim-0.5.3
+                      integer-gmp-1.0.2.0
+orphans: base-4.12.0.0:GHC.Float base-4.12.0.0:GHC.Base
+family instance modules: base-4.12.0.0:Control.Applicative
+                         base-4.12.0.0:Data.Functor.Const
+                         base-4.12.0.0:Data.Functor.Identity base-4.12.0.0:Data.Monoid
+                         base-4.12.0.0:Data.Semigroup.Internal base-4.12.0.0:GHC.Generics
+                         base-4.12.0.0:GHC.IO.Exception
+import  -/  base-4.12.0.0:Prelude 3c779dfd6448bdd8e234c336802c2acb
+import  -/  base-4.12.0.0:System.IO dd4f3cfe73b94b7cae46a4ca98a3f09f
+import  -/  ghc-prim-0.5.3:GHC.Types 57064c9f957b09bc2e360061ad5cae0b
+ded2e318be2c9e58a5f26adbdaecb9c4
+  $trModule :: GHC.Types.Module
+17f350212a0079e69159dcd3af8c0e92
+  main :: GHC.Types.IO ()
+trusted: safe
+require own pkg trusted: False
+module header:
+  Nothing
+declaration docs:
+arg docs:
+

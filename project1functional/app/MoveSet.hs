@@ -21,6 +21,8 @@ type Coord = (Int,Int)
 type MoveSet = Set Coord
 
 
+-- | Handle contain functions that allow checking for collisions and
+-- attackable squares on the board.
 data Handle = MakeHandle
     { isCollision   :: Coord -> Bool
     -- | Coords that can not be attacked
@@ -39,7 +41,7 @@ instance Arbitrary Direction where
 
 
 
--- * RULES
+-- * PAWN
 
 
 southRule :: Coord -> MoveSet
@@ -69,10 +71,6 @@ directionRule direction position =
             northRule position
 
 
-
--- * PAWN
-
-
 attackablePawnRule :: Handle -> Coord -> MoveSet
 attackablePawnRule handle (x,y) =
     let
@@ -94,7 +92,7 @@ collisionPawnRule handle (x,y) =
 -- | Set of illegal moves
 pawnRuleSet :: Handle -> Bool -> Direction -> Coord -> MoveSet
 pawnRuleSet handle hasMoved direction pos =
-    Set.unions $
+    Set.unions
         [ doubleMoveRule hasMoved pos
         , directionRule direction pos
         , attackablePawnRule handle pos
@@ -117,6 +115,7 @@ pawnAll (x,y) =
         ]
 
 
+-- | The allowed moves for a pawn on the given coordinate
 pawn :: Handle -> Bool -> Direction -> Coord -> MoveSet
 pawn handle hasMoved direction pos =
     let
@@ -136,8 +135,7 @@ pawn handle hasMoved direction pos =
 
 collisionKnightRule :: Handle -> Coord -> MoveSet
 collisionKnightRule handle coord =
-    coord
-        & knightAll
+    knightAll coord
         & Set.filter (isCollision handle)
 
 
@@ -156,6 +154,7 @@ knightRuleSet =
     collisionKnightRule
 
 
+-- | Allowed moves for a knight on the given coordinates
 knight :: Handle -> Coord -> MoveSet
 knight handle pos =
     let

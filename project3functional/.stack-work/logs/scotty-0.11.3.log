@@ -1,0 +1,19 @@
+Configuring scotty-0.11.3...
+Preprocessing library for scotty-0.11.3..
+Building library for scotty-0.11.3..
+[1 of 6] Compiling Web.Scotty.Internal.Types ( Web/Scotty/Internal/Types.hs, .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/Web/Scotty/Internal/Types.o )
+[2 of 6] Compiling Web.Scotty.Util  ( Web/Scotty/Util.hs, .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/Web/Scotty/Util.o )
+[3 of 6] Compiling Web.Scotty.Action ( Web/Scotty/Action.hs, .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/Web/Scotty/Action.o )
+[4 of 6] Compiling Web.Scotty.Route ( Web/Scotty/Route.hs, .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/Web/Scotty/Route.o )
+
+[;1mWeb/Scotty/Route.hs:148:17: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wdeprecations[0m[0m[;1m][0m[0m[;1m
+    In the use of ‘requestBody’
+    (imported from Network.Wai, but defined in Network.Wai.Internal):
+    Deprecated: "requestBody's name is misleading because it only gets a partial chunk of the body. Use getRequestBodyChunk instead."[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m148 |[0m[0m     let rbody = [;1m[35mrequestBody[0m[0m req
+[;1m[34m    |[0m[0m[;1m[35m                 ^^^^^^^^^^^[0m[0m
+[0m[0m[0m[5 of 6] Compiling Web.Scotty.Trans ( Web/Scotty/Trans.hs, .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/Web/Scotty/Trans.o )
+[6 of 6] Compiling Web.Scotty       ( Web/Scotty.hs, .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/Web/Scotty.o )
+Installing library in /home/marccoquand/.stack/snapshots/x86_64-linux-tinfo6/lts-13.15/8.6.4/lib/x86_64-linux-ghc-8.6.4/scotty-0.11.3-T0HTieVa7mTAIgLDXMID
+Registering library for scotty-0.11.3..

@@ -1,0 +1,6 @@
+Configuring path-pieces-0.2.1...
+Preprocessing library for path-pieces-0.2.1..
+Building library for path-pieces-0.2.1..
+[1 of 1] Compiling Web.PathPieces   ( Web/PathPieces.hs, .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/Web/PathPieces.o )
+Installing library in /home/marccoquand/.stack/snapshots/x86_64-linux-tinfo6/lts-13.15/8.6.4/lib/x86_64-linux-ghc-8.6.4/path-pieces-0.2.1-7jseLTOU0PkHMQiwNvt0jG
+Registering library for path-pieces-0.2.1..

@@ -89,15 +89,19 @@ The interface to this program will be a text interface, displaying each item in
 the todo list. To navigate and mark an item in the list the user presses up and
 down and presses \texttt{x} to mark it.
 
-\subsubsection*{Chat-bot engine}
+\subsubsection*{Kudos bot}
 
-Oftentimes when developing applications we have to deal with complex information
-input. One of those cases is when we have chat-bots. Chat-bots are interactive
-programs that respond with a text answer to the users input. For this
-application we will implement the following:
+When working in big teams we need to automate common tasks. A common application
+for communication is Slack\footnote{See more: \url{www.slack.com}}. The task
+here is to create an bot that allows people to send kudos to collegues when they
+have done a good job
 
 \begin{itemize}
-    \item Interpretor that can handle semi-complex inputs and deal with errors.
-    \item Give answers to those inputs in form of text messages.
+    \item The user should be able to type ``/kudos Username `msg''' where
+        username is the name of the person they want to thank and msg is the
+        message.
+    \item The receiving user should be notified
+    \item By typing ``/kudos all'' the user should be able to see the score of
+        all kudos that have been given.
 \end{itemize}
 

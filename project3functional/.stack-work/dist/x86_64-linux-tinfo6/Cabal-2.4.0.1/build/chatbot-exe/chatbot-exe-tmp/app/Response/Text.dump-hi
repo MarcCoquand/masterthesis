@@ -1,0 +1,143 @@
+
+==================== FINAL INTERFACE ====================
+2019-04-15 10:24:06.863349017 UTC
+
+interface main:Response.Text [family instance module] 8064
+  interface hash: 10d7ec512585ca362fd4acc87d24185d
+  ABI hash: 483256f21c2b2d05f65483f3c2ed5ae8
+  export-list hash: 0e8de001212fb4c248e10fd3e806ed0b
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: fd59599f0b683828742cc55a2390d8ff
+  opt_hash: d0a78e7b344f95c7406be35c9b75e196
+  hpc_hash: 93b885adfe0da089cdf634904fd59f71
+  plugin_hash: ad164012d6b1e14942349d58b1132007
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Response.Text.Text{Response.Text.MakeText text}
+module dependencies:
+package dependencies: aeson-1.4.2.0 array-0.5.3.0
+                      attoparsec-0.13.2.2 base-4.12.0.0 base-compat-0.10.5 binary-0.8.6.0
+                      bytestring-0.10.8.2 containers-0.6.0.1 deepseq-1.4.4.0
+                      dlist-0.8.0.6 ghc-boot-th-8.6.4 ghc-prim-0.5.3 hashable-1.2.7.0
+                      integer-gmp-1.0.2.0 integer-logarithms-1.0.2.2 primitive-0.6.4.0
+                      random-1.1 scientific-0.3.6.2 tagged-0.8.6
+                      template-haskell-2.14.0.0 text-1.2.3.1 time-1.8.0.2
+                      time-locale-compat-0.1.1.5 transformers-0.5.6.2
+                      unordered-containers-0.2.9.0 uuid-types-1.0.3 vector-0.12.0.2
+orphans: attoparsec-0.13.2.2:Data.Attoparsec.Text.Internal
+         attoparsec-0.13.2.2:Data.Attoparsec.ByteString.Char8
+         vector-0.12.0.2:Data.Vector.Unboxed
+         time-1.8.0.2:Data.Time.Format.Parse
+         time-1.8.0.2:Data.Time.LocalTime.Internal.ZonedTime
+         time-1.8.0.2:Data.Time.LocalTime.Internal.LocalTime
+         time-1.8.0.2:Data.Time.Calendar.Gregorian
+         hashable-1.2.7.0:Data.Hashable.Generic text-1.2.3.1:Data.Text.Lazy
+         vector-0.12.0.2:Data.Vector.Fusion.Bundle
+         transformers-0.5.6.2:Control.Monad.Trans.Error
+         text-1.2.3.1:Data.Text binary-0.8.6.0:Data.Binary.Generic
+         bytestring-0.10.8.2:Data.ByteString.Builder
+         text-1.2.3.1:Data.Text.Show base-4.12.0.0:GHC.Float
+         base-4.12.0.0:GHC.Base
+family instance modules: aeson-1.4.2.0:Data.Aeson.Types.Internal
+                         attoparsec-0.13.2.2:Data.Attoparsec.Internal.Types
+                         base-4.12.0.0:Control.Applicative base-4.12.0.0:Data.Complex
+                         base-4.12.0.0:Data.Functor.Compose base-4.12.0.0:Data.Functor.Const
+                         base-4.12.0.0:Data.Functor.Identity
+                         base-4.12.0.0:Data.Functor.Product base-4.12.0.0:Data.Functor.Sum
+                         base-4.12.0.0:Data.Monoid base-4.12.0.0:Data.Semigroup
+                         base-4.12.0.0:Data.Semigroup.Internal base-4.12.0.0:Data.Version
+                         base-4.12.0.0:Data.Void base-4.12.0.0:GHC.Exts
+                         base-4.12.0.0:GHC.Generics base-4.12.0.0:GHC.IO.Exception
+                         containers-0.6.0.1:Data.IntMap.Internal
+                         containers-0.6.0.1:Data.IntSet.Internal
+                         containers-0.6.0.1:Data.Map.Internal
+                         containers-0.6.0.1:Data.Sequence.Internal
+                         containers-0.6.0.1:Data.Set.Internal containers-0.6.0.1:Data.Tree
+                         dlist-0.8.0.6:Data.DList ghc-boot-th-8.6.4:GHC.ForeignSrcLang.Type
+                         ghc-boot-th-8.6.4:GHC.LanguageExtensions.Type
+                         primitive-0.6.4.0:Control.Monad.Primitive
+                         primitive-0.6.4.0:Data.Primitive.Array
+                         primitive-0.6.4.0:Data.Primitive.ByteArray
+                         primitive-0.6.4.0:Data.Primitive.PrimArray
+                         primitive-0.6.4.0:Data.Primitive.SmallArray
+                         primitive-0.6.4.0:Data.Primitive.UnliftedArray
+                         tagged-0.8.6:Data.Tagged
+                         template-haskell-2.14.0.0:Language.Haskell.TH.Syntax
+                         text-1.2.3.1:Data.Text text-1.2.3.1:Data.Text.Lazy
+                         unordered-containers-0.2.9.0:Data.HashMap.Base
+                         unordered-containers-0.2.9.0:Data.HashSet
+                         uuid-types-1.0.3:Data.UUID.Types.Internal
+                         uuid-types-1.0.3:Data.UUID.Types.Internal.Builder
+                         vector-0.12.0.2:Data.Vector vector-0.12.0.2:Data.Vector.Primitive
+                         vector-0.12.0.2:Data.Vector.Storable
+                         vector-0.12.0.2:Data.Vector.Unboxed
+                         vector-0.12.0.2:Data.Vector.Unboxed.Base
+import  -/  aeson-1.4.2.0:Data.Aeson 7ec18050df94dd51d2f69af3944967ff
+import  -/  aeson-1.4.2.0:Data.Aeson.Types.FromJSON 3e7f1c9a3edc88087cacef084e8d2ce3
+import  -/  aeson-1.4.2.0:Data.Aeson.Types.ToJSON 0651cc315621e0dbfdc7948709397d41
+import  -/  base-4.12.0.0:GHC.Base c00b75f0b052d05c55ba6a4dd1c63b26
+import  -/  base-4.12.0.0:GHC.Generics 4de68d952daf417059d0523dece232ea
+import  -/  base-4.12.0.0:GHC.Show 838a5d039379d82d9626aae53dfce276
+import  -/  base-4.12.0.0:Prelude 3c779dfd6448bdd8e234c336802c2acb
+import  -/  ghc-prim-0.5.3:GHC.Classes 0f6fd7d7db53fc48f6e1f01803cc6c9d
+import  -/  text-1.2.3.1:Data.Text 1e51a010d8f8a6fa41d8ea82d69faf13
+import  -/  text-1.2.3.1:Data.Text.Internal 537e168590e8068f673f691833f78483
+3f8acbef4abb98c791183137e4074200
+  $fFromJSONText ::
+    Data.Aeson.Types.FromJSON.FromJSON Response.Text.Text
+  DFunId
+3f8acbef4abb98c791183137e4074200
+  $fGenericText :: GHC.Generics.Generic Response.Text.Text
+  DFunId
+3f8acbef4abb98c791183137e4074200
+  $fShowText :: GHC.Show.Show Response.Text.Text
+  DFunId
+3f8acbef4abb98c791183137e4074200
+  $fToJSONText :: Data.Aeson.Types.ToJSON.ToJSON Response.Text.Text
+  DFunId
+75e13b4e91d74f558faee7ba72691f0a
+  $tc'MakeText :: GHC.Types.TyCon
+0b6af607b3d91baa75dbfb66f1e3bacf
+  $tcText :: GHC.Types.TyCon
+bf4a8c3cd9075ed8c65d6dc14df05bdf
+  $trModule :: GHC.Types.Module
+3f8acbef4abb98c791183137e4074200
+  axiom Response.Text.Rep_Text::
+      GHC.Generics.Rep Response.Text.Text
+        = GHC.Generics.D1
+            ('GHC.Generics.MetaData
+               "Text" "Response.Text" "main" 'GHC.Types.False)
+            (GHC.Generics.C1
+               ('GHC.Generics.MetaCons
+                  "MakeText" 'GHC.Generics.PrefixI 'GHC.Types.True)
+               (GHC.Generics.S1
+                  ('GHC.Generics.MetaSel
+                     ('GHC.Maybe.Just "text")
+                     'GHC.Generics.NoSourceUnpackedness
+                     'GHC.Generics.NoSourceStrictness
+                     'GHC.Generics.DecidedLazy)
+                  (GHC.Generics.Rec0 Data.Text.Internal.Text)))
+3f8acbef4abb98c791183137e4074200
+  data Text = MakeText {text :: Data.Text.Internal.Text}
+3f8acbef4abb98c791183137e4074200
+  text :: Response.Text.Text -> Data.Text.Internal.Text
+  RecSel Left Response.Text.Text
+instance Data.Aeson.Types.FromJSON.FromJSON [Response.Text.Text]
+  = Response.Text.$fFromJSONText
+instance GHC.Generics.Generic [Response.Text.Text]
+  = Response.Text.$fGenericText
+instance GHC.Show.Show [Response.Text.Text]
+  = Response.Text.$fShowText
+instance Data.Aeson.Types.ToJSON.ToJSON [Response.Text.Text]
+  = Response.Text.$fToJSONText
+family instance GHC.Generics.Rep [Response.Text.Text]
+  = Response.Text.Rep_Text
+trusted: none
+require own pkg trusted: False
+module header:
+  Nothing
+declaration docs:
+arg docs:
+

@@ -30,11 +30,15 @@ data Msg
     | Delete
     | Update String
     | Toggle
+    | None
 
 
 update :: Msg -> Model -> Model
 update msg mdl =
     case (msg, mdl) of
+        (_, None) ->
+            mdl
+
         (GotData todoList, _) ->
             Is (Just "Loaded data") todoList
 
@@ -79,12 +83,12 @@ update msg mdl =
             Empty (Just "You need to add an item to do that")
 
 
-
-
 makeTodo :: IO Todo
 makeTodo =
     do  putStrLn "Enter description:"
+        withBuffer True
         description <- getLine
+        withBuffer False
         return (Todo.new description)
 
 
@@ -108,31 +112,58 @@ prompt (Is message todoList) colorPrint =
             ]
 
 
-repl :: Bool -> Model -> IO ()
-repl withPretty model =
-    do  putStr "\ESC[2J"
+withBuffer :: Bool -> IO ()
+withBuffer shouldBuffer =
+    if shouldBuffer then
+        do  IO.hSetBuffering IO.stdin IO.LineBuffering
+            IO.hSetEcho IO.stdin True
+    else
+        do  IO.hSetBuffering IO.stdin IO.NoBuffering
+            IO.hSetEcho IO.stdin False
+
+
+clearScreen :: IO ()
+clearScreen =
+    putStr "\ESC[2J"
+
+
+data Action
+    = Pure (Model -> Model)
+    | UsingTodo (IO Todo) (Todo -> Model -> Model)
+
+
+interpret :: Char -> Action
+interpret input =
+    case input of
+        'a' ->
+            UsingTodo makeTodo (\todo -> update (Add todo) )
+        'x' ->
+            Pure (update Toggle)
+        'k' ->
+            Pure (update MoveUp)
+        'j' ->
+            Pure (update MoveDown)
+        'd' ->
+            Pure (update Delete)
+        _ ->
+            Pure (update None)
+
+
+loop :: Bool -> Model -> IO ()
+loop withPretty model =
+    do  clearScreen
         putStrLn (prompt model withPretty)
         input <- getChar
-        case input of
-            'a' ->
-                do  IO.hSetBuffering IO.stdin IO.LineBuffering
-                    IO.hSetEcho IO.stdin True
-                    todo <- makeTodo
-                    IO.hSetBuffering IO.stdin IO.NoBuffering
-                    IO.hSetEcho IO.stdin False
-                    repl withPretty (update (Add todo) model)
-            'x' ->
-                repl withPretty (update Toggle model)
-            'k' ->
-                repl withPretty (update MoveUp model)
-            'j' ->
-                repl withPretty (update MoveDown model)
-            'd' ->
-                repl withPretty (update Delete model)
-            _ ->
-                repl withPretty model
+        let action =
+                interpret input
 
+        case action of
+            Pure updater ->
+                loop withPretty (updater model)
 
+            UsingTodo getTodo updater ->
+                do  arg <- getTodo
+                    loop withPretty (updater arg model)
 
 
 init :: Model
@@ -142,11 +173,7 @@ init =
 
 start :: IO ()
 start =
-    do  -- Read input right away
-        IO.hSetBuffering IO.stdin IO.NoBuffering
-        -- Hide input character
-        IO.hSetEcho IO.stdin False
+    do  withBuffer False
         hasColoredOutput <- Pretty.supportsPretty
-        repl hasColoredOutput App.init
-        undefined
+        loop hasColoredOutput App.init
 

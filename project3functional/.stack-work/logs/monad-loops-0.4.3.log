@@ -1,0 +1,6 @@
+Configuring monad-loops-0.4.3...
+Preprocessing library for monad-loops-0.4.3..
+Building library for monad-loops-0.4.3..
+[1 of 1] Compiling Control.Monad.Loops ( src/Control/Monad/Loops.hs, .stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/Control/Monad/Loops.o )
+Installing library in /home/marccoquand/.stack/snapshots/x86_64-linux-tinfo6/lts-13.15/8.6.4/lib/x86_64-linux-ghc-8.6.4/monad-loops-0.4.3-1JmYXd2DuhL32x6L8Quh7l
+Registering library for monad-loops-0.4.3..
