@@ -1,11 +1,11 @@
 
 ==================== FINAL INTERFACE ====================
-2019-04-16 08:52:43.485921282 UTC
+2019-04-18 07:12:09.761824961 UTC
 
 interface main:Kudos 8064
-  interface hash: 8cbbd43d2363c000086d19b2e7e4a0d5
-  ABI hash: 583cb8b5179174db2fce8c53fb83b132
-  export-list hash: 417ac356d7b81087643c034d47f7beb9
+  interface hash: 22afffeaa0e28d482fe543396b10c7b0
+  ABI hash: 59019f6f5717a7aba4c7af8044701d2b
+  export-list hash: 4bab36da584a29afc13b3180cd081c1b
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: c1635af5af472d90c2bcddddbea2e9d4
   opt_hash: d0a78e7b344f95c7406be35c9b75e196
@@ -16,66 +16,61 @@ interface main:Kudos 8064
   where
 exports:
   Kudos.addQuery
-  Kudos.count
+  Kudos.addToList
   Kudos.countQuery
+  Kudos.countSymbolic
   Kudos.effectful
-  Kudos.findQuery
   Kudos.fromBson
   Kudos.fromBsonList
   Kudos.isOwner
+  Kudos.make
   Kudos.mock
   Kudos.runDatabase
+  Kudos.show
   Kudos.sortByTimestamp
+  Kudos.specificQuery
   Kudos.takeTenOwned
   Kudos.tenLatestQuery
   Kudos.toBson
-  Kudos.update
   Kudos.withTimestamp
   Kudos.Kudos{Kudos.MakeKudos message owner}
+  Kudos.Load{Kudos.MakeLoad count getTenLatest specific}
   Kudos.Message
   Kudos.Owner
-module dependencies: Store
-package dependencies: MonadRandom-0.5.1.1 aeson-1.4.2.0
-                      array-0.5.3.0 attoparsec-0.13.2.2 attoparsec-iso8601-1.0.1.0
-                      base-4.12.0.0 base-compat-0.10.5 base16-bytestring-0.1.1.6
+  Kudos.Write{Kudos.MakeWrite add}
+module dependencies:
+package dependencies: MonadRandom-0.5.1.1 QuickCheck-2.12.6.1
+                      array-0.5.3.0 base-4.12.0.0 base16-bytestring-0.1.1.6
                       base64-bytestring-1.0.0.2 basement-0.0.10 binary-0.8.6.0
-                      blaze-html-0.9.1.1 blaze-markup-0.8.2.2 bson-0.3.2.7
-                      bytestring-0.10.8.2 case-insensitive-1.2.0.11 conduit-1.3.1.1
-                      containers-0.6.0.1 cookie-0.4.4 cryptohash-0.11.9 cryptonite-0.25
-                      data-binary-ieee754-0.4.4 data-default-class-0.1.2.0
-                      deepseq-1.4.4.0 dlist-0.8.0.6 entropy-0.4.1.4 exceptions-0.10.1
-                      ghc-boot-th-8.6.4 ghc-prim-0.5.3 hashable-1.2.7.0
-                      hashtables-1.2.3.1 http-api-data-0.4 http-types-0.12.3
-                      integer-gmp-1.0.2.0 integer-logarithms-1.0.2.2 lifted-base-0.2.3.12
+                      bson-0.3.2.7 bytestring-0.10.8.2 containers-0.6.0.1
+                      cryptohash-0.11.9 cryptonite-0.25 data-binary-ieee754-0.4.4
+                      data-default-class-0.1.2.0 deepseq-1.4.4.0 entropy-0.4.1.4
+                      erf-2.0.0.0 ghc-boot-th-8.6.4 ghc-prim-0.5.3 hashable-1.2.7.0
+                      hashtables-1.2.3.1 integer-gmp-1.0.2.0 lifted-base-0.2.3.12
                       memory-0.14.18 monad-control-1.0.2.3 mongoDB-2.4.0.1 mtl-2.2.2
-                      network-2.8.0.0 nonce-1.0.7 parsec-3.1.13.0 path-pieces-0.2.1
-                      persistent-2.9.1 primitive-0.6.4.0 random-1.1 random-shuffle-0.0.4
-                      resourcet-1.2.2 scientific-0.3.6.2 stm-2.5.0.0 tagged-0.8.6
-                      template-haskell-2.14.0.0 text-1.2.3.1 time-1.8.0.2
-                      time-locale-compat-0.1.1.5 transformers-0.5.6.2
-                      transformers-base-0.4.5.2 unix-2.7.2.2 unliftio-0.2.10
-                      unliftio-core-0.1.2.0 unordered-containers-0.2.9.0 uuid-types-1.0.3
-                      vault-0.3.1.2 vector-0.12.0.2
-orphans: mongoDB-2.4.0.1:Database.MongoDB.Internal.Util
-         network-2.8.0.0:Network.Socket basement-0.0.10:Basement.UArray.Base
-         basement-0.0.10:Basement.Block stm-2.5.0.0:Control.Monad.STM
-         attoparsec-0.13.2.2:Data.Attoparsec.Text.Internal
-         attoparsec-0.13.2.2:Data.Attoparsec.ByteString.Char8
-         vector-0.12.0.2:Data.Vector.Unboxed
+                      network-2.8.0.0 nonce-1.0.7 parsec-3.1.13.0 pretty-1.1.3.6
+                      primitive-0.6.4.0 random-1.1 random-shuffle-0.0.4 stm-2.5.0.0
+                      template-haskell-2.14.0.0 text-1.2.3.1 tf-random-0.5 time-1.8.0.2
+                      transformers-0.5.6.2 transformers-base-0.4.5.2 unix-2.7.2.2
+                      unliftio-0.2.10 unliftio-core-0.1.2.0 unordered-containers-0.2.9.0
+                      vector-0.12.0.2
+orphans: vector-0.12.0.2:Data.Vector.Unboxed
+         hashable-1.2.7.0:Data.Hashable.Generic
+         vector-0.12.0.2:Data.Vector.Fusion.Bundle
+         text-1.2.3.1:Data.Text.Lazy
+         mongoDB-2.4.0.1:Database.MongoDB.Internal.Util
+         network-2.8.0.0:Network.Socket stm-2.5.0.0:Control.Monad.STM
+         text-1.2.3.1:Data.Text binary-0.8.6.0:Data.Binary.Generic
+         text-1.2.3.1:Data.Text.Show
+         bytestring-0.10.8.2:Data.ByteString.Builder
+         basement-0.0.10:Basement.UArray.Base basement-0.0.10:Basement.Block
          time-1.8.0.2:Data.Time.Format.Parse
          time-1.8.0.2:Data.Time.LocalTime.Internal.ZonedTime
          time-1.8.0.2:Data.Time.LocalTime.Internal.LocalTime
          time-1.8.0.2:Data.Time.Calendar.Gregorian
-         vector-0.12.0.2:Data.Vector.Fusion.Bundle
          transformers-0.5.6.2:Control.Monad.Trans.Error
-         hashable-1.2.7.0:Data.Hashable.Generic text-1.2.3.1:Data.Text.Lazy
-         text-1.2.3.1:Data.Text binary-0.8.6.0:Data.Binary.Generic
-         bytestring-0.10.8.2:Data.ByteString.Builder
-         text-1.2.3.1:Data.Text.Show base-4.12.0.0:GHC.Float
-         base-4.12.0.0:GHC.Base
+         base-4.12.0.0:GHC.Float base-4.12.0.0:GHC.Base
 family instance modules: MonadRandom-0.5.1.1:Control.Monad.Trans.Random.Lazy
-                         aeson-1.4.2.0:Data.Aeson.Types.Internal
-                         attoparsec-0.13.2.2:Data.Attoparsec.Internal.Types
                          base-4.12.0.0:Control.Applicative base-4.12.0.0:Data.Complex
                          base-4.12.0.0:Data.Functor.Compose base-4.12.0.0:Data.Functor.Const
                          base-4.12.0.0:Data.Functor.Identity
@@ -97,8 +92,6 @@ family instance modules: MonadRandom-0.5.1.1:Control.Monad.Trans.Random.Lazy
                          basement-0.0.10:Basement.Types.OffsetSize
                          basement-0.0.10:Basement.UArray.Base
                          basement-0.0.10:Basement.UTF8.Base
-                         conduit-1.3.1.1:Data.Conduit.Internal.Conduit
-                         conduit-1.3.1.1:Data.Conduit.Internal.Pipe
                          containers-0.6.0.1:Data.IntMap.Internal
                          containers-0.6.0.1:Data.IntSet.Internal
                          containers-0.6.0.1:Data.Map.Internal
@@ -121,127 +114,148 @@ family instance modules: MonadRandom-0.5.1.1:Control.Monad.Trans.Random.Lazy
                          cryptonite-0.25:Crypto.Hash.Skein256
                          cryptonite-0.25:Crypto.Hash.Skein512
                          cryptonite-0.25:Crypto.Hash.Tiger
-                         cryptonite-0.25:Crypto.Hash.Whirlpool dlist-0.8.0.6:Data.DList
+                         cryptonite-0.25:Crypto.Hash.Whirlpool
                          ghc-boot-th-8.6.4:GHC.ForeignSrcLang.Type
                          ghc-boot-th-8.6.4:GHC.LanguageExtensions.Type
                          monad-control-1.0.2.3:Control.Monad.Trans.Control
-                         persistent-2.9.1:Database.Persist.Class.PersistConfig
-                         persistent-2.9.1:Database.Persist.Class.PersistEntity
+                         pretty-1.1.3.6:Text.PrettyPrint.Annotated.HughesPJ
+                         pretty-1.1.3.6:Text.PrettyPrint.HughesPJ
                          primitive-0.6.4.0:Control.Monad.Primitive
                          primitive-0.6.4.0:Data.Primitive.Array
                          primitive-0.6.4.0:Data.Primitive.ByteArray
                          primitive-0.6.4.0:Data.Primitive.PrimArray
                          primitive-0.6.4.0:Data.Primitive.SmallArray
                          primitive-0.6.4.0:Data.Primitive.UnliftedArray
-                         resourcet-1.2.2:Control.Monad.Trans.Resource.Internal
-                         tagged-0.8.6:Data.Tagged
                          template-haskell-2.14.0.0:Language.Haskell.TH.Syntax
                          text-1.2.3.1:Data.Text text-1.2.3.1:Data.Text.Lazy
                          unordered-containers-0.2.9.0:Data.HashMap.Base
-                         unordered-containers-0.2.9.0:Data.HashSet
-                         uuid-types-1.0.3:Data.UUID.Types.Internal
-                         uuid-types-1.0.3:Data.UUID.Types.Internal.Builder
                          vector-0.12.0.2:Data.Vector vector-0.12.0.2:Data.Vector.Primitive
-                         vector-0.12.0.2:Data.Vector.Storable
                          vector-0.12.0.2:Data.Vector.Unboxed
                          vector-0.12.0.2:Data.Vector.Unboxed.Base
+import  -/  QuickCheck-2.12.6.1:Test.QuickCheck bf660067406c963dce88c329bd67a222
+import  -/  QuickCheck-2.12.6.1:Test.QuickCheck.Arbitrary 680b75ef360c6dbef86f3fa8d1a92bdb
+import  -/  QuickCheck-2.12.6.1:Test.QuickCheck.Gen 1596ac1833f07059d8cd2b8f802ebc36
 import  -/  base-4.12.0.0:Data.Foldable 5f70351366640f007be66681d2212df8
 import  -/  base-4.12.0.0:Data.Function 739684530bf19978a9a47e63c494ac7b
+import  -/  base-4.12.0.0:Data.IORef e8e1ce7d64831ebb3853a1cd9fb4e228
 import  -/  base-4.12.0.0:Data.Maybe 9b76a39e833465c3c5b3c078b431417f
 import  -/  base-4.12.0.0:GHC.Base c00b75f0b052d05c55ba6a4dd1c63b26
+import  -/  base-4.12.0.0:GHC.IORef c4811a8ca9fa1f2f983a2e196af9a59c
 import  -/  base-4.12.0.0:GHC.List 4014a3c8a3b7c31c8325f6bcf1feea4a
 import  -/  base-4.12.0.0:Prelude 3c779dfd6448bdd8e234c336802c2acb
 import  -/  bson-0.3.2.7:Data.Bson 0774d2853c6ccf94b43a4d0abf594a97
 import  -/  ghc-prim-0.5.3:GHC.Classes 0f6fd7d7db53fc48f6e1f01803cc6c9d
 import  -/  ghc-prim-0.5.3:GHC.Types 57064c9f957b09bc2e360061ad5cae0b
 import  -/  integer-gmp-1.0.2.0:GHC.Integer.Type 6d87087aea24143d2650f78480d954a3
-import  -/  Store ddcf31b9bce6aa89557722a3ebda93bb
-  exports: c1ba713feb7f4aa37f80da15dd6e1bc6
-  MakeStore 7d1b156bf5155dcec5e7fc04db13d39a
-  Store a581750c5fdf5ba291b05cd6bc90e33e
-  add a581750c5fdf5ba291b05cd6bc90e33e
-  count a581750c5fdf5ba291b05cd6bc90e33e
-  find a581750c5fdf5ba291b05cd6bc90e33e
-  getTenLatest a581750c5fdf5ba291b05cd6bc90e33e
-  mock 86bb4ea75c0995c05ed77e1db81cf7eb
 import  -/  mongoDB-2.4.0.1:Database.MongoDB eb3d996c27aae389808b9f4bd34bd7e5
 import  -/  mongoDB-2.4.0.1:Database.MongoDB.Connection 2e3fd8ce8d867e6d7a3459ac5ace9006
 import  -/  mongoDB-2.4.0.1:Database.MongoDB.Internal.Protocol 5f9b7eec8bb1c71016067cc501b91a37
 import  -/  mongoDB-2.4.0.1:Database.MongoDB.Query 1f9cfaf9729707c7efa9f6c5ee5ee4f6
-import  -/  persistent-2.9.1:Database.Persist fb63adf129d08bffc579e3d66b168cf4
 import  -/  text-1.2.3.1:Data.Text 1e51a010d8f8a6fa41d8ea82d69faf13
 import  -/  text-1.2.3.1:Data.Text.Internal 537e168590e8068f673f691833f78483
 import  -/  time-1.8.0.2:Data.Time.Clock b20c609b8af758424779328000ddeba3
 import  -/  time-1.8.0.2:Data.Time.Clock.Internal.POSIXTime fb102ec1d341e8e801c114e0ffe819a2
 import  -/  time-1.8.0.2:Data.Time.Clock.POSIX b8687e4e688ce1f6fbe77476528b2edf
 import  -/  unordered-containers-0.2.9.0:Data.HashMap.Lazy c25ecd77099277a24540c27f2183dcb3
+005995c15ba10090d1c76d709e4595e7
+  $fArbitraryKudos :: Test.QuickCheck.Arbitrary.Arbitrary Kudos.Kudos
+  DFunId
 9a68cd4c34466b0d8e3163437849bd86
   $tc'MakeKudos :: GHC.Types.TyCon
+6ed495d81fc95cd4c3fdebba7c041803
+  $tc'MakeLoad :: GHC.Types.TyCon
+d918379fec84d6d04a5351da0dfe26b0
+  $tc'MakeWrite :: GHC.Types.TyCon
 c068d81348abc4a516e818b065981eda
   $tcKudos :: GHC.Types.TyCon
+23b4f9e9e1fdeef8d6eade1843ed4507
+  $tcLoad :: GHC.Types.TyCon
+7d6317deddba78a9b843cabdefc4a2ff
+  $tcWrite :: GHC.Types.TyCon
 0b3292c5696575a570b7ec6380051869
   $trModule :: GHC.Types.Module
-e95f47d47860bc02db12b36742b57d01
+005995c15ba10090d1c76d709e4595e7
   data Kudos
     = MakeKudos {message :: Kudos.Message, owner :: Kudos.Owner}
+652c60d1d3293894df6c9440c12798f8
+  data Load
+    = MakeLoad {getTenLatest :: GHC.Types.IO [Kudos.Kudos],
+                specific :: Kudos.Owner -> GHC.Types.IO [Kudos.Kudos],
+                count :: Kudos.Owner -> GHC.Types.IO GHC.Types.Int}
 61d38c3a24ea62af1e94fb5a03db2bf6
   type Message = Data.Text.Internal.Text
 5460d44ca3116d93a39593e299027d63
   type Owner = Data.Text.Internal.Text
-bf30959f2d662f0f5b7d9cc15aedd590
+34042c82c175e930c93f7cfa193d2caf
+  data Write = MakeWrite {add :: Kudos.Kudos -> GHC.Types.IO ()}
+34042c82c175e930c93f7cfa193d2caf
+  add :: Kudos.Write -> Kudos.Kudos -> GHC.Types.IO ()
+  RecSel Left Kudos.Write
+def6ed929d83d8d70a29f21e07fc768d
   addQuery ::
     Data.Time.Clock.Internal.POSIXTime.POSIXTime
     -> Kudos.Kudos -> Database.MongoDB.Query.Action GHC.Types.IO ()
-1fd196da4697f22801fef4addf69638c
-  count :: Kudos.Owner -> [Kudos.Kudos] -> GHC.Types.Int
+b37cbac3b3ebd0713c1f1f30eeb0dc11
+  addToList :: Kudos.Kudos -> [Kudos.Kudos] -> [Kudos.Kudos]
+652c60d1d3293894df6c9440c12798f8
+  count :: Kudos.Load -> Kudos.Owner -> GHC.Types.IO GHC.Types.Int
+  RecSel Left Kudos.Load
 8f4744ebf07ba223d773581ba77669c2
   countQuery ::
     Kudos.Owner
     -> Database.MongoDB.Query.Action GHC.Types.IO GHC.Types.Int
-3c573c46b53d025c844b80efe175c374
+11aecde553b3ece95b8a3e434d2732db
+  countSymbolic :: Kudos.Owner -> [Kudos.Kudos] -> GHC.Types.Int
+4c00967b27286efc726dd52cf1db3916
   effectful ::
-    GHC.Base.String
-    -> GHC.Types.IO (Store.Store GHC.Types.IO Kudos.Owner Kudos.Kudos)
-3915de669e31cd85e798ce928f154fdd
-  findQuery ::
-    Kudos.Owner
-    -> Database.MongoDB.Query.Action GHC.Types.IO [Kudos.Kudos]
-4c2181e89b4246c07b262724ea7fed52
+    GHC.Base.String -> GHC.Types.IO (Kudos.Write, Kudos.Load)
+6f50f8d7310ebed79054e790a0578204
   fromBson :: Data.Bson.Document -> GHC.Maybe.Maybe Kudos.Kudos
-d3d1d04211c9a0e188f6054f16bbfa63
+5f0009d966d5877a0bcd3035513aeff1
   fromBsonList :: [Data.Bson.Document] -> [Kudos.Kudos]
-401fd8b286d75532a95293794a425bff
+652c60d1d3293894df6c9440c12798f8
+  getTenLatest :: Kudos.Load -> GHC.Types.IO [Kudos.Kudos]
+  RecSel Left Kudos.Load
+aeb8b303f826c7ccb85e8ceceaa0e4f1
   isOwner :: Kudos.Owner -> Kudos.Kudos -> GHC.Types.Bool
-e95f47d47860bc02db12b36742b57d01
+08929b4bf289821ee4ad2e5ffc1e8acd
+  make :: Kudos.Message -> Kudos.Owner -> Kudos.Kudos
+005995c15ba10090d1c76d709e4595e7
   message :: Kudos.Kudos -> Kudos.Message
   RecSel Left Kudos.Kudos
-f3d024fdbdb0bc0cbb56daf05b13882c
-  mock ::
-    [Kudos.Kudos]
-    -> GHC.Types.IO (Store.Store GHC.Types.IO Kudos.Owner Kudos.Kudos)
-e95f47d47860bc02db12b36742b57d01
+2b13c8ea0c327def91da6b4bfe9904a7
+  mock :: [Kudos.Kudos] -> GHC.Types.IO (Kudos.Load, Kudos.Write)
+005995c15ba10090d1c76d709e4595e7
   owner :: Kudos.Kudos -> Kudos.Owner
   RecSel Left Kudos.Kudos
 bf23112f22e6ccf568af75d8e0d87be8
   runDatabase ::
     Database.MongoDB.Internal.Protocol.Pipe
     -> Database.MongoDB.Query.Action GHC.Types.IO a -> GHC.Types.IO a
+5ba265c8447922536f499ca5e04dd1b6
+  show :: Kudos.Kudos -> Data.Text.Internal.Text
 359a42b24a54f14024094c6975e0b604
   sortByTimestamp :: Data.Bson.Document
-0f2ff966dd0d999e4104a427f40e5b66
+652c60d1d3293894df6c9440c12798f8
+  specific :: Kudos.Load -> Kudos.Owner -> GHC.Types.IO [Kudos.Kudos]
+  RecSel Left Kudos.Load
+7bdffc288b21f67d692aa447325a7398
+  specificQuery ::
+    Kudos.Owner
+    -> Database.MongoDB.Query.Action GHC.Types.IO [Kudos.Kudos]
+49bddf9f392ebd6126b5cb01d12509bb
   takeTenOwned :: Kudos.Owner -> [Kudos.Kudos] -> [Kudos.Kudos]
-bc58c5a0bdb2bc8bbbfe8089bcd40b4d
+aac30e1527de08a026d2aceeb7437d13
   tenLatestQuery ::
     Database.MongoDB.Query.Action GHC.Types.IO [Kudos.Kudos]
-72222431faf97bc75af177b09773be79
+3efdd2cbf763c89fe7d246ae70133c15
   toBson :: Kudos.Kudos -> Data.Bson.Document
-a4bf07ea630585d39f64e4cbe39e45a0
-  update ::
-    Kudos.Kudos -> GHC.Maybe.Maybe Kudos.Message -> Kudos.Kudos
 c03b1b6a65411dd5bc42a57f126dfd80
   withTimestamp ::
     Data.Time.Clock.Internal.POSIXTime.POSIXTime
     -> Data.Bson.Document -> Data.Bson.Document
+instance Test.QuickCheck.Arbitrary.Arbitrary [Kudos.Kudos]
+  = Kudos.$fArbitraryKudos
 trusted: none
 require own pkg trusted: False
 module header:

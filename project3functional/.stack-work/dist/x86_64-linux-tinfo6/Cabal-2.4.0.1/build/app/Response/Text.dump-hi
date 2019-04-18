@@ -1,14 +1,14 @@
 
 ==================== FINAL INTERFACE ====================
-2019-04-16 08:39:18.142964349 UTC
+2019-04-16 09:43:59.124727015 UTC
 
 interface chatbot-0.1.0.0-KBzJPM1w73ULhXPO6HMS3o:Response.Text [family instance module] 8064
-  interface hash: 9f8b305500891c8bb71d278a19c92953
-  ABI hash: 48de0f7783566e3d8f0694917bcbf882
-  export-list hash: 89e50d3037269ba7d65d99df241c78e1
-  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  interface hash: b57e46782e735f3891cbc48ad80325c3
+  ABI hash: 538094e287ac2069cfb8cdac435054ea
+  export-list hash: aff8d78eedac970be0123e7df86de6b1
+  orphan hash: 5c96bd0f5a305b8f5dbcdc3aad5299c7
   flag hash: de35c81e1ffca7df74c00a9a7159dcf1
-  opt_hash: d0a78e7b344f95c7406be35c9b75e196
+  opt_hash: 6faf2de08de32d19db9870899d88e59a
   hpc_hash: 93b885adfe0da089cdf634904fd59f71
   plugin_hash: ad164012d6b1e14942349d58b1132007
   sig of: Nothing
@@ -84,26 +84,1235 @@ import  -/  base-4.12.0.0:Prelude 3c779dfd6448bdd8e234c336802c2acb
 import  -/  ghc-prim-0.5.3:GHC.Classes 0f6fd7d7db53fc48f6e1f01803cc6c9d
 import  -/  text-1.2.3.1:Data.Text 1e51a010d8f8a6fa41d8ea82d69faf13
 import  -/  text-1.2.3.1:Data.Text.Internal 537e168590e8068f673f691833f78483
-c9a59f2ebf569d20072ba2056bdea87c
+0ff1ffd9157cc5f8b4f6fe6e47c73ffe
   $fFromJSONText ::
     Data.Aeson.Types.FromJSON.FromJSON Response.Text.Text
   DFunId
-c9a59f2ebf569d20072ba2056bdea87c
+  {- Strictness: m, Inline: CONLIKE,
+     Unfolding: DFun:.
+                  @ Response.Text.Text
+                  Response.Text.$fFromJSONText_$cparseJSON
+                  Response.Text.$fFromJSONText_$cparseJSONList -}
+9ff563aebf9bc4b275cbc500a26699c3
+  $fFromJSONText1 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: (", encountered "#) -}
+a9613a4d5c67d22a0cd5cef8329edc8d
+  $fFromJSONText10 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("text"#) -}
+94e451851594fa16e3d9e091e231413a
+  $fFromJSONText2 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("[a]"#) -}
+1acbe4a8acb7abc1593956051b123a9f
+  $fFromJSONText3 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("expected "#) -}
+8ac65a7978dbab435ce71fa4a29d7675
+  $fFromJSONText4 :: Data.Aeson.Types.Internal.Options
+  {- Strictness: m,
+     Unfolding: (Data.Aeson.Types.Internal.Options
+                   (GHC.Base.id @ GHC.Base.String)
+                   (GHC.Base.id @ GHC.Base.String)
+                   GHC.Types.True
+                   GHC.Types.False
+                   Data.Aeson.Types.Internal.defaultTaggedObject
+                   GHC.Types.False
+                   GHC.Types.False) -}
+4e5ed13cf330e088c375855b00ca3e87
+  $fFromJSONText5 ::
+    Data.Aeson.Types.Internal.Options
+    -> Data.Aeson.Types.FromJSON.FromArgs
+         Data.Aeson.Types.Generic.Zero a
+    -> Data.Aeson.Types.Internal.Value
+    -> Data.Aeson.Types.Internal.Parser
+         (GHC.Generics.M1
+            GHC.Generics.S
+            ('GHC.Generics.MetaSel
+               ('GHC.Maybe.Just "text")
+               'GHC.Generics.NoSourceUnpackedness
+               'GHC.Generics.NoSourceStrictness
+               'GHC.Generics.DecidedLazy)
+            (GHC.Generics.Rec0 Data.Text.Internal.Text)
+            a)
+  {- Arity: 2, Strictness: <L,1*U(U,U,U,U,U,1*U,U)><L,U>,
+     Unfolding: (\ @ a
+                   (opts :: Data.Aeson.Types.Internal.Options)
+                   (fargs :: Data.Aeson.Types.FromJSON.FromArgs
+                               Data.Aeson.Types.Generic.Zero a) ->
+                 let {
+                   g :: Data.Aeson.Types.Internal.Value
+                        -> Data.Tagged.Tagged
+                             Data.Aeson.Types.Generic.True
+                             (Data.Aeson.Types.Internal.Parser
+                                (GHC.Generics.M1
+                                   GHC.Generics.S
+                                   ('GHC.Generics.MetaSel
+                                      ('GHC.Maybe.Just "text")
+                                      'GHC.Generics.NoSourceUnpackedness
+                                      'GHC.Generics.NoSourceStrictness
+                                      'GHC.Generics.DecidedLazy)
+                                   (GHC.Generics.Rec0 Data.Text.Internal.Text)
+                                   a))
+                   = case opts of ww { Data.Aeson.Types.Internal.Options ww1 ww2 ww3 ww4 ww5 ww6 ww7 ->
+                     case ww6 of wild {
+                       GHC.Types.False
+                       -> let {
+                            g1 :: Data.Aeson.Types.Internal.Object
+                                  -> Data.Aeson.Types.Internal.Parser
+                                       (GHC.Generics.M1
+                                          GHC.Generics.S
+                                          ('GHC.Generics.MetaSel
+                                             ('GHC.Maybe.Just "text")
+                                             'GHC.Generics.NoSourceUnpackedness
+                                             'GHC.Generics.NoSourceStrictness
+                                             'GHC.Generics.DecidedLazy)
+                                          (GHC.Generics.K1 GHC.Generics.R Data.Text.Internal.Text)
+                                          a)
+                            = Data.Aeson.Types.FromJSON.$fFromRecordarityM11_$cparseRecord
+                                @ ('GHC.Generics.MetaSel
+                                     ('GHC.Maybe.Just "text")
+                                     'GHC.Generics.NoSourceUnpackedness
+                                     'GHC.Generics.NoSourceStrictness
+                                     'GHC.Generics.DecidedLazy)
+                                @ Data.Aeson.Types.Generic.Zero
+                                @ (GHC.Generics.K1 GHC.Generics.R Data.Text.Internal.Text)
+                                Response.Text.$fFromJSONText_$s$fSelectorMetaMetaSel
+                                Response.Text.$fFromJSONText8
+                                  `cast`
+                                (Sym (Data.Aeson.Types.FromJSON.N:GFromJSON[0]
+                                          <Data.Aeson.Types.Generic.Zero>_N
+                                          <GHC.Generics.K1
+                                             GHC.Generics.R Data.Text.Internal.Text>_N))
+                                @ a
+                                (Data.Aeson.Types.Internal.Options
+                                   ww1
+                                   ww2
+                                   ww3
+                                   ww4
+                                   ww5
+                                   GHC.Types.False
+                                   ww7)
+                                fargs
+                          } in
+                          (\ (x :: Data.Aeson.Types.Internal.Value) ->
+                           case x of wild1 {
+                             DEFAULT
+                             -> Data.Aeson.Types.FromJSON.typeMismatch
+                                  @ (GHC.Generics.M1
+                                       GHC.Generics.S
+                                       ('GHC.Generics.MetaSel
+                                          ('GHC.Maybe.Just "text")
+                                          'GHC.Generics.NoSourceUnpackedness
+                                          'GHC.Generics.NoSourceStrictness
+                                          'GHC.Generics.DecidedLazy)
+                                       (GHC.Generics.K1 GHC.Generics.R Data.Text.Internal.Text)
+                                       a)
+                                  Data.Aeson.Types.FromJSON.$fConsFromJSON'TYPEarityM1True1
+                                  wild1
+                             Data.Aeson.Types.Internal.Object obj -> g1 obj })
+                            `cast`
+                          (<Data.Aeson.Types.Internal.Value>_R
+                           ->_R Sym (Data.Tagged.N:Tagged[0]
+                                         <*>_N
+                                         <Data.Aeson.Types.Generic.True>_P
+                                         <Data.Aeson.Types.Internal.Parser
+                                            (GHC.Generics.M1
+                                               GHC.Generics.S
+                                               ('GHC.Generics.MetaSel
+                                                  ('GHC.Maybe.Just "text")
+                                                  'GHC.Generics.NoSourceUnpackedness
+                                                  'GHC.Generics.NoSourceStrictness
+                                                  'GHC.Generics.DecidedLazy)
+                                               (GHC.Generics.K1
+                                                  GHC.Generics.R Data.Text.Internal.Text)
+                                               a)>_R))
+                       GHC.Types.True
+                       -> (Response.Text.$fFromJSONText6 @ a)
+                            `cast`
+                          (<Data.Aeson.Types.Internal.Value>_R
+                           ->_R Sym (Data.Tagged.N:Tagged[0]
+                                         <*>_N
+                                         <Data.Aeson.Types.Generic.True>_P
+                                         <Data.Aeson.Types.Internal.Parser
+                                            (GHC.Generics.M1
+                                               GHC.Generics.S
+                                               ('GHC.Generics.MetaSel
+                                                  ('GHC.Maybe.Just "text")
+                                                  'GHC.Generics.NoSourceUnpackedness
+                                                  'GHC.Generics.NoSourceStrictness
+                                                  'GHC.Generics.DecidedLazy)
+                                               (GHC.Generics.K1
+                                                  GHC.Generics.R Data.Text.Internal.Text)
+                                               a)>_R)) } }
+                 } in
+                 (\ (x :: Data.Aeson.Types.Internal.Value) -> g x)
+                   `cast`
+                 (<Data.Aeson.Types.Internal.Value>_R
+                  ->_R Data.Tagged.N:Tagged[0]
+                           <*>_N
+                           <Data.Aeson.Types.Generic.True>_P
+                           <Data.Aeson.Types.Internal.Parser
+                              (GHC.Generics.M1
+                                 GHC.Generics.S
+                                 ('GHC.Generics.MetaSel
+                                    ('GHC.Maybe.Just "text")
+                                    'GHC.Generics.NoSourceUnpackedness
+                                    'GHC.Generics.NoSourceStrictness
+                                    'GHC.Generics.DecidedLazy)
+                                 (GHC.Generics.Rec0 Data.Text.Internal.Text)
+                                 a)>_R)) -}
+b43121e68fb3ddd14e62609e72df9df6
+  $fFromJSONText6 ::
+    Data.Aeson.Types.Internal.Value
+    -> Data.Aeson.Types.Internal.Parser
+         (GHC.Generics.M1
+            GHC.Generics.S
+            ('GHC.Generics.MetaSel
+               ('GHC.Maybe.Just "text")
+               'GHC.Generics.NoSourceUnpackedness
+               'GHC.Generics.NoSourceStrictness
+               'GHC.Generics.DecidedLazy)
+            (GHC.Generics.K1 GHC.Generics.R Data.Text.Internal.Text)
+            a)
+  {- Arity: 1, Strictness: <L,1*U>,
+     Unfolding: (\ @ a (x :: Data.Aeson.Types.Internal.Value) ->
+                 let {
+                   m :: Data.Aeson.Types.Internal.Parser Data.Text.Internal.Text
+                   = case x of wild {
+                       DEFAULT
+                       -> let {
+                            msg20 :: GHC.Base.String
+                            = GHC.CString.unpackAppendCString#
+                                Data.Aeson.Types.FromJSON.typeMismatch4
+                                (GHC.CString.unpackAppendCString#
+                                   Response.Text.$fFromJSONText7
+                                   (GHC.CString.unpackAppendCString#
+                                      Data.Aeson.Types.FromJSON.typeMismatch3
+                                      (case wild of wild1 {
+                                         Data.Aeson.Types.Internal.Object ds
+                                         -> Data.Aeson.Types.FromJSON.$dmliftParseJSONList10
+                                         Data.Aeson.Types.Internal.Array ds
+                                         -> Data.Aeson.Types.FromJSON.typeMismatch1
+                                         Data.Aeson.Types.Internal.Number ds
+                                         -> Data.Aeson.Types.FromJSON.$dmliftParseJSONList6
+                                         Data.Aeson.Types.Internal.Bool ds
+                                         -> Data.Aeson.Types.FromJSON.$dmliftParseJSONList4
+                                         Data.Aeson.Types.Internal.Null
+                                         -> Data.Aeson.Types.FromJSON.$dmliftParseJSONList1 })))
+                          } in
+                          (\ @ f4 :: * -> *
+                             @ r
+                             (path :: Data.Aeson.Types.Internal.JSONPath)
+                             (kf :: Data.Aeson.Types.Internal.Failure f4 r)[OneShot]
+                             (_ks :: Data.Aeson.Types.Internal.Success
+                                       Data.Text.Internal.Text f4 r)[OneShot] ->
+                           kf
+                             (GHC.List.reverse @ Data.Aeson.Types.Internal.JSONPathElement path)
+                             msg20)
+                            `cast`
+                          (Sym (Data.Aeson.Types.Internal.N:Parser[0]
+                                    <Data.Text.Internal.Text>_R))
+                       Data.Aeson.Types.Internal.String txt
+                       -> (\ @ f4 :: * -> *
+                             @ r
+                             (_path :: Data.Aeson.Types.Internal.JSONPath)
+                             (_kf :: Data.Aeson.Types.Internal.Failure f4 r)[OneShot]
+                             (ks :: Data.Aeson.Types.Internal.Success
+                                      Data.Text.Internal.Text f4 r)[OneShot] ->
+                           ks txt)
+                            `cast`
+                          (Sym (Data.Aeson.Types.Internal.N:Parser[0]
+                                    <Data.Text.Internal.Text>_R)) }
+                 } in
+                 (\ @ f5 :: * -> *
+                    @ r
+                    (path :: Data.Aeson.Types.Internal.JSONPath)
+                    (kf :: Data.Aeson.Types.Internal.Failure f5 r)
+                    (ks :: Data.Aeson.Types.Internal.Success
+                             (GHC.Generics.M1
+                                GHC.Generics.S
+                                ('GHC.Generics.MetaSel
+                                   ('GHC.Maybe.Just "text")
+                                   'GHC.Generics.NoSourceUnpackedness
+                                   'GHC.Generics.NoSourceStrictness
+                                   'GHC.Generics.DecidedLazy)
+                                (GHC.Generics.K1 GHC.Generics.R Data.Text.Internal.Text)
+                                a)
+                             f5
+                             r) ->
+                  m `cast`
+                  (Data.Aeson.Types.Internal.N:Parser[0] <Data.Text.Internal.Text>_R)
+                    @ f5
+                    @ r
+                    path
+                    kf
+                    (\ (a2 :: Data.Text.Internal.Text) ->
+                     ks
+                       a2
+                         `cast`
+                       (Sym (GHC.Generics.N:K1[0]
+                                 <*>_N
+                                 <GHC.Generics.R>_P
+                                 <Data.Text.Internal.Text>_R
+                                 <a>_P) ; Sym (GHC.Generics.N:M1[0]
+                                                   <*>_N
+                                                   <GHC.Generics.S>_P
+                                                   <'GHC.Generics.MetaSel
+                                                      ('GHC.Maybe.Just "text")
+                                                      'GHC.Generics.NoSourceUnpackedness
+                                                      'GHC.Generics.NoSourceStrictness
+                                                      'GHC.Generics.DecidedLazy>_P
+                                                   <GHC.Generics.K1
+                                                      GHC.Generics.R
+                                                      Data.Text.Internal.Text>_R) <a>_N)))
+                   `cast`
+                 (Sym (Data.Aeson.Types.Internal.N:Parser[0]
+                           <GHC.Generics.M1
+                              GHC.Generics.S
+                              ('GHC.Generics.MetaSel
+                                 ('GHC.Maybe.Just "text")
+                                 'GHC.Generics.NoSourceUnpackedness
+                                 'GHC.Generics.NoSourceStrictness
+                                 'GHC.Generics.DecidedLazy)
+                              (GHC.Generics.K1 GHC.Generics.R Data.Text.Internal.Text)
+                              a>_R))) -}
+6670306b0da731be1bdf2a81e7e875f8
+  $fFromJSONText7 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("Text"#) -}
+eb9ee3d8df8d0d11d5e0dc927b1b3997
+  $fFromJSONText8 ::
+    Data.Aeson.Types.Internal.Options
+    -> Data.Aeson.Types.FromJSON.FromArgs
+         Data.Aeson.Types.Generic.Zero a1
+    -> Data.Aeson.Types.Internal.Value
+    -> Data.Aeson.Types.Internal.Parser
+         (GHC.Generics.K1 GHC.Generics.R Data.Text.Internal.Text a1)
+  {- Arity: 3, Strictness: <L,A><L,A><L,U>,
+     Unfolding: InlineRule (3, True, True)
+                (\ @ a1
+                   (w1 :: Data.Aeson.Types.Internal.Options)
+                   (w2 :: Data.Aeson.Types.FromJSON.FromArgs
+                            Data.Aeson.Types.Generic.Zero a1)
+                   (w3 :: Data.Aeson.Types.Internal.Value) ->
+                 Data.Aeson.Types.FromJSON.$w$cgParseJSON2
+                   @ Data.Text.Internal.Text
+                   @ Data.Aeson.Types.Generic.Zero
+                   @ GHC.Generics.R
+                   Data.Aeson.Types.FromJSON.$fFromJSONText0
+                   @ a1
+                   w3) -}
+d45e63b93212ab3e412d2c0dd6e9af80
+  $fFromJSONText9 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString#
+                   Response.Text.$fFromJSONText10) -}
+0ff1ffd9157cc5f8b4f6fe6e47c73ffe
+  $fFromJSONText_$cparseJSON ::
+    Data.Aeson.Types.Internal.Value
+    -> Data.Aeson.Types.Internal.Parser Response.Text.Text
+  {- Arity: 1, Strictness: <L,U>,
+     Unfolding: (\ (x :: Data.Aeson.Types.Internal.Value) ->
+                 let {
+                   m :: Data.Aeson.Types.Internal.Parser
+                          (GHC.Generics.M1
+                             GHC.Generics.S
+                             ('GHC.Generics.MetaSel
+                                ('GHC.Maybe.Just "text")
+                                'GHC.Generics.NoSourceUnpackedness
+                                'GHC.Generics.NoSourceStrictness
+                                'GHC.Generics.DecidedLazy)
+                             (GHC.Generics.Rec0 Data.Text.Internal.Text)
+                             GHC.Types.Any)
+                   = Response.Text.$fFromJSONText_g x
+                 } in
+                 (\ @ f5 :: * -> *
+                    @ r
+                    (path :: Data.Aeson.Types.Internal.JSONPath)
+                    (kf :: Data.Aeson.Types.Internal.Failure f5 r)
+                    (ks :: Data.Aeson.Types.Internal.Success
+                             Response.Text.Text f5 r) ->
+                  m `cast`
+                  (Data.Aeson.Types.Internal.N:Parser[0]
+                       <GHC.Generics.M1
+                          GHC.Generics.S
+                          ('GHC.Generics.MetaSel
+                             ('GHC.Maybe.Just "text")
+                             'GHC.Generics.NoSourceUnpackedness
+                             'GHC.Generics.NoSourceStrictness
+                             'GHC.Generics.DecidedLazy)
+                          (GHC.Generics.Rec0 Data.Text.Internal.Text)
+                          GHC.Types.Any>_R)
+                    @ f5
+                    @ r
+                    path
+                    kf
+                    (\ (a2 :: GHC.Generics.M1
+                                GHC.Generics.S
+                                ('GHC.Generics.MetaSel
+                                   ('GHC.Maybe.Just "text")
+                                   'GHC.Generics.NoSourceUnpackedness
+                                   'GHC.Generics.NoSourceStrictness
+                                   'GHC.Generics.DecidedLazy)
+                                (GHC.Generics.Rec0 Data.Text.Internal.Text)
+                                GHC.Types.Any) ->
+                     ks
+                       (Response.Text.MakeText
+                          a2
+                            `cast`
+                          ((Sym (GHC.Generics.N:M1[0]
+                                     <*>_N
+                                     <GHC.Generics.C>_P
+                                     <'GHC.Generics.MetaCons
+                                        "MakeText" 'GHC.Generics.PrefixI 'GHC.Types.True>_P
+                                     <GHC.Generics.M1
+                                        GHC.Generics.S
+                                        ('GHC.Generics.MetaSel
+                                           ('GHC.Maybe.Just "text")
+                                           'GHC.Generics.NoSourceUnpackedness
+                                           'GHC.Generics.NoSourceStrictness
+                                           'GHC.Generics.DecidedLazy)
+                                        (GHC.Generics.Rec0
+                                           Data.Text.Internal.Text)>_R) ; Sym (GHC.Generics.N:M1[0]
+                                                                                   <*>_N
+                                                                                   <GHC.Generics.D>_P
+                                                                                   <'GHC.Generics.MetaData
+                                                                                      "Text"
+                                                                                      "Response.Text"
+                                                                                      "chatbot-0.1.0.0-KBzJPM1w73ULhXPO6HMS3o"
+                                                                                      'GHC.Types.False>_P
+                                                                                   <GHC.Generics.M1
+                                                                                      GHC.Generics.C
+                                                                                      ('GHC.Generics.MetaCons
+                                                                                         "MakeText"
+                                                                                         'GHC.Generics.PrefixI
+                                                                                         'GHC.Types.True)
+                                                                                      (GHC.Generics.M1
+                                                                                         GHC.Generics.S
+                                                                                         ('GHC.Generics.MetaSel
+                                                                                            ('GHC.Maybe.Just
+                                                                                               "text")
+                                                                                            'GHC.Generics.NoSourceUnpackedness
+                                                                                            'GHC.Generics.NoSourceStrictness
+                                                                                            'GHC.Generics.DecidedLazy)
+                                                                                         (GHC.Generics.Rec0
+                                                                                            Data.Text.Internal.Text))>_R)) <GHC.Types.Any>_N ; (Nth:2
+                                                                                                                                                    (Nth:2
+                                                                                                                                                         (Nth:3
+                                                                                                                                                              (Nth:3
+                                                                                                                                                                   (Inst (Inst (Sym (Data.Aeson.Types.Internal.N:Parser[0]
+                                                                                                                                                                                         <GHC.Generics.M1
+                                                                                                                                                                                            GHC.Generics.D
+                                                                                                                                                                                            ('GHC.Generics.MetaData
+                                                                                                                                                                                               "Text"
+                                                                                                                                                                                               "Response.Text"
+                                                                                                                                                                                               "chatbot-0.1.0.0-KBzJPM1w73ULhXPO6HMS3o"
+                                                                                                                                                                                               'GHC.Types.False)
+                                                                                                                                                                                            (GHC.Generics.M1
+                                                                                                                                                                                               GHC.Generics.C
+                                                                                                                                                                                               ('GHC.Generics.MetaCons
+                                                                                                                                                                                                  "MakeText"
+                                                                                                                                                                                                  'GHC.Generics.PrefixI
+                                                                                                                                                                                                  'GHC.Types.True)
+                                                                                                                                                                                               (GHC.Generics.M1
+                                                                                                                                                                                                  GHC.Generics.S
+                                                                                                                                                                                                  ('GHC.Generics.MetaSel
+                                                                                                                                                                                                     ('GHC.Maybe.Just
+                                                                                                                                                                                                        "text")
+                                                                                                                                                                                                     'GHC.Generics.NoSourceUnpackedness
+                                                                                                                                                                                                     'GHC.Generics.NoSourceStrictness
+                                                                                                                                                                                                     'GHC.Generics.DecidedLazy)
+                                                                                                                                                                                                  (GHC.Generics.Rec0
+                                                                                                                                                                                                     Data.Text.Internal.Text)))
+                                                                                                                                                                                            GHC.Types.Any>_R) ; (Nth:3
+                                                                                                                                                                                                                     (Nth:3
+                                                                                                                                                                                                                          (Nth:3
+                                                                                                                                                                                                                               (<Data.Aeson.Types.Internal.Options>_R
+                                                                                                                                                                                                                                ->_R <Data.Aeson.Types.FromJSON.FromArgs
+                                                                                                                                                                                                                                        Data.Aeson.Types.Generic.Zero
+                                                                                                                                                                                                                                        GHC.Types.Any>_R
+                                                                                                                                                                                                                                ->_R <Data.Aeson.Types.Internal.Value>_R
+                                                                                                                                                                                                                                ->_R (Data.Aeson.Types.Internal.Parser
+                                                                                                                                                                                                                                        (Sub (Sym (Response.Text.Rep_Text[0])) <GHC.Types.Any>_N))_R))) ; Data.Aeson.Types.Internal.N:Parser[0]
+                                                                                                                                                                                                                                                                                                              <GHC.Generics.Rep
+                                                                                                                                                                                                                                                                                                                 Response.Text.Text
+                                                                                                                                                                                                                                                                                                                 GHC.Types.Any>_R)) (Coh <f5>_N
+                                                                                                                                                                                                                                                                                                                                         (Nth:0
+                                                                                                                                                                                                                                                                                                                                              (Sym (Data.Aeson.Types.Internal.N:Parser[0]
+                                                                                                                                                                                                                                                                                                                                                        <GHC.Generics.Rep
+                                                                                                                                                                                                                                                                                                                                                           Response.Text.Text
+                                                                                                                                                                                                                                                                                                                                                           GHC.Types.Any>_R) ; (Nth:3
+                                                                                                                                                                                                                                                                                                                                                                                    (Nth:3
+                                                                                                                                                                                                                                                                                                                                                                                         (Nth:3
+                                                                                                                                                                                                                                                                                                                                                                                              (<Data.Aeson.Types.Internal.Options>_R
+                                                                                                                                                                                                                                                                                                                                                                                               ->_R <Data.Aeson.Types.FromJSON.FromArgs
+                                                                                                                                                                                                                                                                                                                                                                                                       Data.Aeson.Types.Generic.Zero
+                                                                                                                                                                                                                                                                                                                                                                                                       GHC.Types.Any>_R
+                                                                                                                                                                                                                                                                                                                                                                                               ->_R <Data.Aeson.Types.Internal.Value>_R
+                                                                                                                                                                                                                                                                                                                                                                                               ->_R (Data.Aeson.Types.Internal.Parser
+                                                                                                                                                                                                                                                                                                                                                                                                       (Sub (Response.Text.Rep_Text[0]) <GHC.Types.Any>_N))_R))) ; Data.Aeson.Types.Internal.N:Parser[0]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                       <GHC.Generics.M1
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                          GHC.Generics.D
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ('GHC.Generics.MetaData
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                             "Text"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                             "Response.Text"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                             "chatbot-0.1.0.0-KBzJPM1w73ULhXPO6HMS3o"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                             'GHC.Types.False)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                          (GHC.Generics.M1
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                             GHC.Generics.C
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ('GHC.Generics.MetaCons
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                "MakeText"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                'GHC.Generics.PrefixI
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                'GHC.Types.True)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                             (GHC.Generics.M1
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                GHC.Generics.S
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ('GHC.Generics.MetaSel
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ('GHC.Maybe.Just
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      "text")
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   'GHC.Generics.NoSourceUnpackedness
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   'GHC.Generics.NoSourceStrictness
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   'GHC.Generics.DecidedLazy)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                (GHC.Generics.Rec0
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   Data.Text.Internal.Text)))
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                          GHC.Types.Any>_R))))) (Coh <r>_N
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     (Nth:0
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          (Inst (Sym (Data.Aeson.Types.Internal.N:Parser[0]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <GHC.Generics.Rep
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             Response.Text.Text
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             GHC.Types.Any>_R) ; (Nth:3
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      (Nth:3
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           (Nth:3
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                (<Data.Aeson.Types.Internal.Options>_R
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ->_R <Data.Aeson.Types.FromJSON.FromArgs
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         Data.Aeson.Types.Generic.Zero
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         GHC.Types.Any>_R
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ->_R <Data.Aeson.Types.Internal.Value>_R
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ->_R (Data.Aeson.Types.Internal.Parser
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         (Sub (Response.Text.Rep_Text[0]) <GHC.Types.Any>_N))_R))) ; Data.Aeson.Types.Internal.N:Parser[0]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         <GHC.Generics.M1
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            GHC.Generics.D
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ('GHC.Generics.MetaData
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               "Text"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               "Response.Text"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               "chatbot-0.1.0.0-KBzJPM1w73ULhXPO6HMS3o"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               'GHC.Types.False)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            (GHC.Generics.M1
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               GHC.Generics.C
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ('GHC.Generics.MetaCons
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  "MakeText"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  'GHC.Generics.PrefixI
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  'GHC.Types.True)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               (GHC.Generics.M1
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  GHC.Generics.S
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ('GHC.Generics.MetaSel
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ('GHC.Maybe.Just
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        "text")
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     'GHC.Generics.NoSourceUnpackedness
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     'GHC.Generics.NoSourceStrictness
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     'GHC.Generics.DecidedLazy)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  (GHC.Generics.Rec0
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     Data.Text.Internal.Text)))
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            GHC.Types.Any>_R)) (Sym (Coh <f5>_N
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         (Nth:0
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              (Sym (Data.Aeson.Types.Internal.N:Parser[0]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <GHC.Generics.Rep
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           Response.Text.Text
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           GHC.Types.Any>_R) ; (Nth:3
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    (Nth:3
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         (Nth:3
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              (<Data.Aeson.Types.Internal.Options>_R
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ->_R <Data.Aeson.Types.FromJSON.FromArgs
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       Data.Aeson.Types.Generic.Zero
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       GHC.Types.Any>_R
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ->_R <Data.Aeson.Types.Internal.Value>_R
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ->_R (Data.Aeson.Types.Internal.Parser
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       (Sub (Response.Text.Rep_Text[0]) <GHC.Types.Any>_N))_R))) ; Data.Aeson.Types.Internal.N:Parser[0]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       <GHC.Generics.M1
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          GHC.Generics.D
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ('GHC.Generics.MetaData
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             "Text"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             "Response.Text"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             "chatbot-0.1.0.0-KBzJPM1w73ULhXPO6HMS3o"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             'GHC.Types.False)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          (GHC.Generics.M1
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             GHC.Generics.C
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ('GHC.Generics.MetaCons
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                "MakeText"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                'GHC.Generics.PrefixI
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                'GHC.Types.True)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             (GHC.Generics.M1
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                GHC.Generics.S
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ('GHC.Generics.MetaSel
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ('GHC.Maybe.Just
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      "text")
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   'GHC.Generics.NoSourceUnpackedness
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   'GHC.Generics.NoSourceStrictness
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   'GHC.Generics.DecidedLazy)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                (GHC.Generics.Rec0
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   Data.Text.Internal.Text)))
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          GHC.Types.Any>_R)))))))))))) ; ((Sub (Response.Text.Rep_Text[0]) ; (GHC.Generics.N:M1[0]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <*>_N
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <GHC.Generics.D>_P
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <'GHC.Generics.MetaData
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     "Text"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     "Response.Text"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     "chatbot-0.1.0.0-KBzJPM1w73ULhXPO6HMS3o"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     'GHC.Types.False>_P
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <GHC.Generics.M1
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     GHC.Generics.C
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ('GHC.Generics.MetaCons
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        "MakeText"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        'GHC.Generics.PrefixI
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        'GHC.Types.True)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     (GHC.Generics.M1
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        GHC.Generics.S
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ('GHC.Generics.MetaSel
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ('GHC.Maybe.Just
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              "text")
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           'GHC.Generics.NoSourceUnpackedness
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           'GHC.Generics.NoSourceStrictness
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           'GHC.Generics.DecidedLazy)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        (GHC.Generics.K1
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           GHC.Generics.R
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           Data.Text.Internal.Text))>_R ; (GHC.Generics.N:M1[0]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               <*>_N
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               <GHC.Generics.C>_P
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               <'GHC.Generics.MetaCons
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  "MakeText"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  'GHC.Generics.PrefixI
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  'GHC.Types.True>_P
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               <GHC.Generics.M1
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  GHC.Generics.S
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ('GHC.Generics.MetaSel
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ('GHC.Maybe.Just
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        "text")
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     'GHC.Generics.NoSourceUnpackedness
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     'GHC.Generics.NoSourceStrictness
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     'GHC.Generics.DecidedLazy)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  (GHC.Generics.K1
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     GHC.Generics.R
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     Data.Text.Internal.Text)>_R ; GHC.Generics.N:M1[0]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       <*>_N
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       <GHC.Generics.S>_P
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       <'GHC.Generics.MetaSel
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ('GHC.Maybe.Just
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             "text")
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          'GHC.Generics.NoSourceUnpackedness
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          'GHC.Generics.NoSourceStrictness
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          'GHC.Generics.DecidedLazy>_P
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       <GHC.Generics.K1
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          GHC.Generics.R
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          Data.Text.Internal.Text>_R))) <GHC.Types.Any>_N ; GHC.Generics.N:K1[0]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <*>_N
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <GHC.Generics.R>_P
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <Data.Text.Internal.Text>_R
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <GHC.Types.Any>_P))))))
+                   `cast`
+                 (Sym (Data.Aeson.Types.Internal.N:Parser[0]
+                           <Response.Text.Text>_R))) -}
+0ff1ffd9157cc5f8b4f6fe6e47c73ffe
+  $fFromJSONText_$cparseJSONList ::
+    Data.Aeson.Types.Internal.Value
+    -> Data.Aeson.Types.Internal.Parser [Response.Text.Text]
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: (\ (ds :: Data.Aeson.Types.Internal.Value) ->
+                 case ds of wild {
+                   DEFAULT
+                   -> let {
+                        msg20 :: GHC.Base.String
+                        = GHC.CString.unpackAppendCString#
+                            Response.Text.$fFromJSONText3
+                            (GHC.CString.unpackAppendCString#
+                               Response.Text.$fFromJSONText2
+                               (GHC.CString.unpackAppendCString#
+                                  Response.Text.$fFromJSONText1
+                                  (case wild of wild1 {
+                                     Data.Aeson.Types.Internal.Object ds1
+                                     -> Data.Aeson.Types.FromJSON.$dmliftParseJSONList10
+                                     Data.Aeson.Types.Internal.String ds1
+                                     -> Data.Aeson.Types.FromJSON.$dmliftParseJSONList8
+                                     Data.Aeson.Types.Internal.Number ds1
+                                     -> Data.Aeson.Types.FromJSON.$dmliftParseJSONList6
+                                     Data.Aeson.Types.Internal.Bool ds1
+                                     -> Data.Aeson.Types.FromJSON.$dmliftParseJSONList4
+                                     Data.Aeson.Types.Internal.Null
+                                     -> Data.Aeson.Types.FromJSON.$dmliftParseJSONList1 })))
+                      } in
+                      (\ @ f4 :: * -> *
+                         @ r
+                         (path :: Data.Aeson.Types.Internal.JSONPath)
+                         (kf :: Data.Aeson.Types.Internal.Failure f4 r)
+                         (_ks :: Data.Aeson.Types.Internal.Success
+                                   [Response.Text.Text] f4 r) ->
+                       kf
+                         (GHC.List.reverse @ Data.Aeson.Types.Internal.JSONPathElement path)
+                         msg20)
+                        `cast`
+                      (Sym (Data.Aeson.Types.Internal.N:Parser[0]
+                                <[Response.Text.Text]>_R))
+                   Data.Aeson.Types.Internal.Array a1
+                   -> case a1 of wild1 { Data.Vector.Vector dt dt1 dt2 ->
+                      letrec {
+                        $wgo :: GHC.Prim.Int# -> [Data.Aeson.Types.Internal.Value]
+                          {- Arity: 1, Strictness: <S,U>, Inline: [2] -}
+                        = \ (ww :: GHC.Prim.Int#) ->
+                          case GHC.Prim.>=# ww dt1 of lwild {
+                            DEFAULT
+                            -> case GHC.Prim.indexArray#
+                                      @ Data.Aeson.Types.Internal.Value
+                                      dt2
+                                      (GHC.Prim.+# dt ww) of ds2 { Unit# ipv ->
+                               GHC.Types.:
+                                 @ Data.Aeson.Types.Internal.Value
+                                 ipv
+                                 ($wgo (GHC.Prim.+# ww 1#)) }
+                            1# -> GHC.Types.[] @ Data.Aeson.Types.Internal.Value }
+                      } in
+                      Response.Text.$fFromJSONText_go 0# ($wgo 0#) } }) -}
+439878faccf3122716c7a0530508c5f9
+  $fFromJSONText_$s$fSelectorMetaMetaSel ::
+    GHC.Generics.Selector
+      ('GHC.Generics.MetaSel
+         ('GHC.Maybe.Just "text")
+         'GHC.Generics.NoSourceUnpackedness
+         'GHC.Generics.NoSourceStrictness
+         'GHC.Generics.DecidedLazy)
+  {- Strictness: m, Inline: CONLIKE,
+     Unfolding: DFun:.
+                  @ GHC.Generics.Meta
+                  @ ('GHC.Generics.MetaSel
+                       ('GHC.Maybe.Just "text")
+                       'GHC.Generics.NoSourceUnpackedness
+                       'GHC.Generics.NoSourceStrictness
+                       'GHC.Generics.DecidedLazy)
+                  (\ @ k
+                     @ t :: GHC.Generics.Meta -> (k -> *) -> k -> *
+                     @ f :: k -> *
+                     @ a :: k
+                     (eta :: t ('GHC.Generics.MetaSel
+                                  ('GHC.Maybe.Just "text")
+                                  'GHC.Generics.NoSourceUnpackedness
+                                  'GHC.Generics.NoSourceStrictness
+                                  'GHC.Generics.DecidedLazy) f a) ->
+                   Response.Text.$fFromJSONText9)
+                  (\ @ k
+                     @ t :: GHC.Generics.Meta -> (k -> *) -> k -> *
+                     @ f :: k -> *
+                     @ a :: k
+                     (ds1 :: t ('GHC.Generics.MetaSel
+                                  ('GHC.Maybe.Just "text")
+                                  'GHC.Generics.NoSourceUnpackedness
+                                  'GHC.Generics.NoSourceStrictness
+                                  'GHC.Generics.DecidedLazy) f a) ->
+                   case GHC.Generics.$WSNoSourceUnpackedness
+                          `cast`
+                        (GHC.Generics.D:R:SingSourceUnpackednessa0[0] <'GHC.Generics.NoSourceUnpackedness>_N) of wild { GHC.Generics.SNoSourceUnpackedness co ->
+                   GHC.Generics.NoSourceUnpackedness
+                     `cast`
+                   (Sub (Sym (GHC.Generics.D:R:DemoteRepSourceUnpackedness[0]))) })
+                    `cast`
+                  (forall (k :: <*>_N) (t :: <GHC.Generics.Meta
+                                              -> (k -> *) -> k -> *>_N) (f :: <k
+                                                                               -> *>_N) (a :: <k>_N).
+                   <t ('GHC.Generics.MetaSel
+                         ('GHC.Maybe.Just "text")
+                         'GHC.Generics.NoSourceUnpackedness
+                         'GHC.Generics.NoSourceStrictness
+                         'GHC.Generics.DecidedLazy) f a>_R
+                   ->_R Sub (GHC.Generics.D:R:DemoteRepSourceUnpackedness[0]))
+                  (\ @ k
+                     @ t :: GHC.Generics.Meta -> (k -> *) -> k -> *
+                     @ f :: k -> *
+                     @ a :: k
+                     (ds1 :: t ('GHC.Generics.MetaSel
+                                  ('GHC.Maybe.Just "text")
+                                  'GHC.Generics.NoSourceUnpackedness
+                                  'GHC.Generics.NoSourceStrictness
+                                  'GHC.Generics.DecidedLazy) f a) ->
+                   case GHC.Generics.$WSNoSourceStrictness
+                          `cast`
+                        (GHC.Generics.D:R:SingSourceStrictnessa0[0] <'GHC.Generics.NoSourceStrictness>_N) of wild { GHC.Generics.SNoSourceStrictness co ->
+                   GHC.Generics.NoSourceStrictness
+                     `cast`
+                   (Sub (Sym (GHC.Generics.D:R:DemoteRepSourceStrictness[0]))) })
+                    `cast`
+                  (forall (k :: <*>_N) (t :: <GHC.Generics.Meta
+                                              -> (k -> *) -> k -> *>_N) (f :: <k
+                                                                               -> *>_N) (a :: <k>_N).
+                   <t ('GHC.Generics.MetaSel
+                         ('GHC.Maybe.Just "text")
+                         'GHC.Generics.NoSourceUnpackedness
+                         'GHC.Generics.NoSourceStrictness
+                         'GHC.Generics.DecidedLazy) f a>_R
+                   ->_R Sub (GHC.Generics.D:R:DemoteRepSourceStrictness[0]))
+                  (\ @ k
+                     @ t :: GHC.Generics.Meta -> (k -> *) -> k -> *
+                     @ f :: k -> *
+                     @ a :: k
+                     (ds1 :: t ('GHC.Generics.MetaSel
+                                  ('GHC.Maybe.Just "text")
+                                  'GHC.Generics.NoSourceUnpackedness
+                                  'GHC.Generics.NoSourceStrictness
+                                  'GHC.Generics.DecidedLazy) f a) ->
+                   case GHC.Generics.$WSDecidedLazy
+                          `cast`
+                        (GHC.Generics.D:R:SingDecidedStrictnessa0[0] <'GHC.Generics.DecidedLazy>_N) of wild { GHC.Generics.SDecidedLazy co ->
+                   GHC.Generics.DecidedLazy
+                     `cast`
+                   (Sub (Sym (GHC.Generics.D:R:DemoteRepDecidedStrictness[0]))) })
+                    `cast`
+                  (forall (k :: <*>_N) (t :: <GHC.Generics.Meta
+                                              -> (k -> *) -> k -> *>_N) (f :: <k
+                                                                               -> *>_N) (a :: <k>_N).
+                   <t ('GHC.Generics.MetaSel
+                         ('GHC.Maybe.Just "text")
+                         'GHC.Generics.NoSourceUnpackedness
+                         'GHC.Generics.NoSourceStrictness
+                         'GHC.Generics.DecidedLazy) f a>_R
+                   ->_R Sub (GHC.Generics.D:R:DemoteRepDecidedStrictness[0])) -}
+7135461045cdd3a813c2b78e04fc4f9f
+  $fFromJSONText_g ::
+    Data.Aeson.Types.Internal.Value
+    -> Data.Aeson.Types.Internal.Parser
+         (GHC.Generics.M1
+            GHC.Generics.S
+            ('GHC.Generics.MetaSel
+               ('GHC.Maybe.Just "text")
+               'GHC.Generics.NoSourceUnpackedness
+               'GHC.Generics.NoSourceStrictness
+               'GHC.Generics.DecidedLazy)
+            (GHC.Generics.Rec0 Data.Text.Internal.Text)
+            GHC.Types.Any)
+  {- Unfolding: (Response.Text.$fFromJSONText5
+                   @ GHC.Types.Any
+                   Response.Text.$fFromJSONText4
+                   (Data.Aeson.Types.FromJSON.$WNoFromArgs @ GHC.Types.Any)) -}
+0ff1ffd9157cc5f8b4f6fe6e47c73ffe
+  $fFromJSONText_go ::
+    GHC.Prim.Int#
+    -> [Data.Aeson.Types.Internal.Value]
+    -> Data.Aeson.Types.Internal.Parser [Response.Text.Text]
+  {- Arity: 2, Strictness: <L,U><S,1*U> -}
+0ff1ffd9157cc5f8b4f6fe6e47c73ffe
   $fGenericText :: GHC.Generics.Generic Response.Text.Text
   DFunId
-c9a59f2ebf569d20072ba2056bdea87c
+  {- HasNoCafRefs, Strictness: m, Inline: CONLIKE,
+     Unfolding: DFun:.
+                  @ Response.Text.Text
+                  Response.Text.$fGenericText1
+                    `cast`
+                  (forall (x :: <*>_N).
+                   <Response.Text.Text>_R
+                   ->_R (Sym (GHC.Generics.N:M1[0]
+                                  <*>_N
+                                  <GHC.Generics.D>_P
+                                  <'GHC.Generics.MetaData
+                                     "Text"
+                                     "Response.Text"
+                                     "chatbot-0.1.0.0-KBzJPM1w73ULhXPO6HMS3o"
+                                     'GHC.Types.False>_P
+                                  <GHC.Generics.M1
+                                     GHC.Generics.C
+                                     ('GHC.Generics.MetaCons
+                                        "MakeText" 'GHC.Generics.PrefixI 'GHC.Types.True)
+                                     (GHC.Generics.M1
+                                        GHC.Generics.S
+                                        ('GHC.Generics.MetaSel
+                                           ('GHC.Maybe.Just "text")
+                                           'GHC.Generics.NoSourceUnpackedness
+                                           'GHC.Generics.NoSourceStrictness
+                                           'GHC.Generics.DecidedLazy)
+                                        (GHC.Generics.K1
+                                           GHC.Generics.R
+                                           Data.Text.Internal.Text))>_R) ; Sub (Sym (Response.Text.Rep_Text[0]))) <x>_N)
+                  Response.Text.$fGenericText_$cto -}
+0ff1ffd9157cc5f8b4f6fe6e47c73ffe
+  $fGenericText1 ::
+    Response.Text.Text
+    -> GHC.Generics.M1
+         GHC.Generics.C
+         ('GHC.Generics.MetaCons
+            "MakeText" 'GHC.Generics.PrefixI 'GHC.Types.True)
+         (GHC.Generics.M1
+            GHC.Generics.S
+            ('GHC.Generics.MetaSel
+               ('GHC.Maybe.Just "text")
+               'GHC.Generics.NoSourceUnpackedness
+               'GHC.Generics.NoSourceStrictness
+               'GHC.Generics.DecidedLazy)
+            (GHC.Generics.K1 GHC.Generics.R Data.Text.Internal.Text))
+         x
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(S),1*U(1*U(U,U,U))>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ @ x (x1 :: Response.Text.Text) ->
+                 case x1 of wild { Response.Text.MakeText g1 ->
+                 g1
+                   `cast`
+                 (Sym (GHC.Generics.N:K1[0]
+                           <*>_N
+                           <GHC.Generics.R>_P
+                           <Data.Text.Internal.Text>_R
+                           <x>_P) ; (Sym (GHC.Generics.N:M1[0]
+                                              <*>_N
+                                              <GHC.Generics.S>_P
+                                              <'GHC.Generics.MetaSel
+                                                 ('GHC.Maybe.Just "text")
+                                                 'GHC.Generics.NoSourceUnpackedness
+                                                 'GHC.Generics.NoSourceStrictness
+                                                 'GHC.Generics.DecidedLazy>_P
+                                              <GHC.Generics.K1
+                                                 GHC.Generics.R
+                                                 Data.Text.Internal.Text>_R) ; Sym (GHC.Generics.N:M1[0]
+                                                                                        <*>_N
+                                                                                        <GHC.Generics.C>_P
+                                                                                        <'GHC.Generics.MetaCons
+                                                                                           "MakeText"
+                                                                                           'GHC.Generics.PrefixI
+                                                                                           'GHC.Types.True>_P
+                                                                                        <GHC.Generics.M1
+                                                                                           GHC.Generics.S
+                                                                                           ('GHC.Generics.MetaSel
+                                                                                              ('GHC.Maybe.Just
+                                                                                                 "text")
+                                                                                              'GHC.Generics.NoSourceUnpackedness
+                                                                                              'GHC.Generics.NoSourceStrictness
+                                                                                              'GHC.Generics.DecidedLazy)
+                                                                                           (GHC.Generics.K1
+                                                                                              GHC.Generics.R
+                                                                                              Data.Text.Internal.Text)>_R)) <x>_N) }) -}
+0ff1ffd9157cc5f8b4f6fe6e47c73ffe
+  $fGenericText_$cto ::
+    GHC.Generics.Rep Response.Text.Text x -> Response.Text.Text
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,U>m,
+     Unfolding: InlineRule (1, True, True)
+                (\ @ x (ds :: GHC.Generics.Rep Response.Text.Text x) ->
+                 Response.Text.MakeText
+                   ds
+                     `cast`
+                   ((Sub (Response.Text.Rep_Text[0]) ; (GHC.Generics.N:M1[0]
+                                                            <*>_N
+                                                            <GHC.Generics.D>_P
+                                                            <'GHC.Generics.MetaData
+                                                               "Text"
+                                                               "Response.Text"
+                                                               "chatbot-0.1.0.0-KBzJPM1w73ULhXPO6HMS3o"
+                                                               'GHC.Types.False>_P
+                                                            <GHC.Generics.M1
+                                                               GHC.Generics.C
+                                                               ('GHC.Generics.MetaCons
+                                                                  "MakeText"
+                                                                  'GHC.Generics.PrefixI
+                                                                  'GHC.Types.True)
+                                                               (GHC.Generics.M1
+                                                                  GHC.Generics.S
+                                                                  ('GHC.Generics.MetaSel
+                                                                     ('GHC.Maybe.Just "text")
+                                                                     'GHC.Generics.NoSourceUnpackedness
+                                                                     'GHC.Generics.NoSourceStrictness
+                                                                     'GHC.Generics.DecidedLazy)
+                                                                  (GHC.Generics.K1
+                                                                     GHC.Generics.R
+                                                                     Data.Text.Internal.Text))>_R ; (GHC.Generics.N:M1[0]
+                                                                                                         <*>_N
+                                                                                                         <GHC.Generics.C>_P
+                                                                                                         <'GHC.Generics.MetaCons
+                                                                                                            "MakeText"
+                                                                                                            'GHC.Generics.PrefixI
+                                                                                                            'GHC.Types.True>_P
+                                                                                                         <GHC.Generics.M1
+                                                                                                            GHC.Generics.S
+                                                                                                            ('GHC.Generics.MetaSel
+                                                                                                               ('GHC.Maybe.Just
+                                                                                                                  "text")
+                                                                                                               'GHC.Generics.NoSourceUnpackedness
+                                                                                                               'GHC.Generics.NoSourceStrictness
+                                                                                                               'GHC.Generics.DecidedLazy)
+                                                                                                            (GHC.Generics.K1
+                                                                                                               GHC.Generics.R
+                                                                                                               Data.Text.Internal.Text)>_R ; GHC.Generics.N:M1[0]
+                                                                                                                                                 <*>_N
+                                                                                                                                                 <GHC.Generics.S>_P
+                                                                                                                                                 <'GHC.Generics.MetaSel
+                                                                                                                                                    ('GHC.Maybe.Just
+                                                                                                                                                       "text")
+                                                                                                                                                    'GHC.Generics.NoSourceUnpackedness
+                                                                                                                                                    'GHC.Generics.NoSourceStrictness
+                                                                                                                                                    'GHC.Generics.DecidedLazy>_P
+                                                                                                                                                 <GHC.Generics.K1
+                                                                                                                                                    GHC.Generics.R
+                                                                                                                                                    Data.Text.Internal.Text>_R))) <x>_N ; GHC.Generics.N:K1[0]
+                                                                                                                                                                                              <*>_N
+                                                                                                                                                                                              <GHC.Generics.R>_P
+                                                                                                                                                                                              <Data.Text.Internal.Text>_R
+                                                                                                                                                                                              <x>_P)) -}
+0ff1ffd9157cc5f8b4f6fe6e47c73ffe
   $fShowText :: GHC.Show.Show Response.Text.Text
   DFunId
-c9a59f2ebf569d20072ba2056bdea87c
+  {- Strictness: m, Inline: CONLIKE,
+     Unfolding: DFun:.
+                  @ Response.Text.Text
+                  Response.Text.$fShowText_$cshowsPrec
+                  Response.Text.$fShowText_$cshow
+                  Response.Text.$fShowText_$cshowList -}
+0ff1ffd9157cc5f8b4f6fe6e47c73ffe
+  $fShowText1 :: Response.Text.Text -> GHC.Show.ShowS
+  {- Arity: 2, Strictness: <S,1*U(1*U(U,U,U))><L,U>,
+     Unfolding: (\ (w :: Response.Text.Text) (w1 :: GHC.Base.String) ->
+                 case w of ww { Response.Text.MakeText ww1 ->
+                 Response.Text.$w$cshowsPrec 0# ww1 w1 }) -}
+63419f3730c7ed66b80abfafa3718000
+  $fShowText2 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("}"#) -}
+1ba065e88fce5225191cdb8c5af5d70a
+  $fShowText3 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("text = "#) -}
+f9135b49f5ceff9a3b60bd6b8af46e4b
+  $fShowText4 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("MakeText {"#) -}
+4c9ef9acaa49c9830e8b9e370fc67512
+  $fShowText5 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString#
+                   Response.Text.$fShowText2) -}
+0ff1ffd9157cc5f8b4f6fe6e47c73ffe
+  $fShowText_$cshow :: Response.Text.Text -> GHC.Base.String
+  {- Arity: 1, Strictness: <S,1*U(1*U(U,U,U))>, Inline: [2],
+     Unfolding: InlineRule (1, True, False)
+                (\ (w :: Response.Text.Text) ->
+                 case w of ww { Response.Text.MakeText ww1 ->
+                 Response.Text.$w$cshow ww1 }) -}
+0ff1ffd9157cc5f8b4f6fe6e47c73ffe
+  $fShowText_$cshowList :: [Response.Text.Text] -> GHC.Show.ShowS
+  {- Arity: 2, Strictness: <S,1*U><L,U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (ls :: [Response.Text.Text]) (s :: GHC.Base.String) ->
+                 GHC.Show.showList__
+                   @ Response.Text.Text
+                   Response.Text.$fShowText1
+                   ls
+                   s) -}
+0ff1ffd9157cc5f8b4f6fe6e47c73ffe
+  $fShowText_$cshowsPrec ::
+    GHC.Types.Int -> Response.Text.Text -> GHC.Show.ShowS
+  {- Arity: 3, Strictness: <S(S),1*U(U)><S,1*U(1*U(U,U,U))><L,U>,
+     Inline: [2],
+     Unfolding: InlineRule (3, True, False)
+                (\ (w :: GHC.Types.Int)
+                   (w1 :: Response.Text.Text)
+                   (w2 :: GHC.Base.String) ->
+                 case w of ww { GHC.Types.I# ww1 ->
+                 case w1 of ww2 { Response.Text.MakeText ww3 ->
+                 Response.Text.$w$cshowsPrec ww1 ww3 w2 } }) -}
+0ff1ffd9157cc5f8b4f6fe6e47c73ffe
   $fToJSONText :: Data.Aeson.Types.ToJSON.ToJSON Response.Text.Text
   DFunId
-ede193e74e693104f9bb0256be884f09
+  {- Strictness: m, Inline: CONLIKE,
+     Unfolding: DFun:.
+                  @ Response.Text.Text
+                  Response.Text.$fToJSONText_$ctoJSON
+                  Response.Text.$fToJSONText_$ctoEncoding
+                  Response.Text.$fToJSONText_$ctoJSONList
+                  Response.Text.$fToJSONText_$ctoEncodingList -}
+8d27e04d8d51f348f940969b5c5bbe51
+  $fToJSONText1 :: Data.Text.Internal.Text
+  {- Unfolding: (case GHC.Magic.runRW#
+                        @ ('GHC.Types.TupleRep
+                             '[ 'GHC.Types.TupleRep '[], 'GHC.Types.LiftedRep])
+                        @ (# GHC.Prim.State# GHC.Prim.RealWorld, Data.Text.Internal.Text #)
+                        Response.Text.$fToJSONText2 of ds1 { (#,#) ipv1 ipv2 ->
+                 ipv2 }) -}
+6a6821ede1aaf4672a8c6b8a739ed9e9
+  $fToJSONText2 ::
+    GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+          Data.Text.Internal.Text #)
+  {- Arity: 1, Strictness: <S,U>,
+     Unfolding: (\ (s1 :: GHC.Prim.State#
+                            GHC.Prim.RealWorld)[OneShot] ->
+                 case GHC.Prim.newByteArray#
+                        @ GHC.Prim.RealWorld
+                        10#
+                        s1 of ds1 { (#,#) ipv1 ipv2 ->
+                 Data.Aeson.Types.ToJSON.$wouter1
+                   ipv2
+                   4#
+                   Response.Text.$fFromJSONText9
+                   0#
+                   ipv1 }) -}
+0ff1ffd9157cc5f8b4f6fe6e47c73ffe
+  $fToJSONText_$ctoEncoding ::
+    Response.Text.Text -> Data.Aeson.Encoding.Internal.Encoding
+  {- Arity: 1, Strictness: <L,1*U(1*U(U,U,U))>, Inline: (sat-args=0),
+     Unfolding: InlineRule (0, False, False)
+                (\ (x :: Response.Text.Text) ->
+                 Data.Aeson.Encoding.Builder.encodeToBuilder
+                   (Response.Text.$fToJSONText_$ctoJSON x))
+                  `cast`
+                (<Response.Text.Text>_R
+                 ->_R Sym (Data.Aeson.Encoding.Internal.N:Encoding'[0]
+                               <Data.Aeson.Types.Internal.Value>_P)) -}
+0ff1ffd9157cc5f8b4f6fe6e47c73ffe
+  $fToJSONText_$ctoEncodingList ::
+    [Response.Text.Text] -> Data.Aeson.Encoding.Internal.Encoding
+  {- Arity: 1, Inline: (sat-args=0),
+     Unfolding: InlineRule (0, False, False)
+                (Data.Aeson.Encoding.Internal.list
+                   @ Response.Text.Text
+                   Response.Text.$fToJSONText_$ctoEncoding) -}
+0ff1ffd9157cc5f8b4f6fe6e47c73ffe
+  $fToJSONText_$ctoJSON ::
+    Response.Text.Text -> Data.Aeson.Types.Internal.Value
+  {- Arity: 1, Strictness: <L,1*U(1*U(U,U,U))>m1, Inline: [2],
+     Unfolding: InlineRule (1, True, False)
+                (\ (w :: Response.Text.Text) ->
+                 Data.Aeson.Types.ToJSON.$fFromPairsValueDList_go
+                   (GHC.Types.:
+                      @ Data.Aeson.Types.Internal.Pair
+                      (Response.Text.$fToJSONText1,
+                       case w of wild { Response.Text.MakeText g1 ->
+                       case g1 of dt { Data.Text.Internal.Text ipv ipv1 ipv2 ->
+                       Data.Aeson.Types.Internal.String dt } })
+                      (GHC.Types.[] @ Data.Aeson.Types.Internal.Pair))
+                   (Data.HashMap.Base.Empty
+                      @ Data.Text.Internal.Text
+                      @ Data.Aeson.Types.Internal.Value)) -}
+0ff1ffd9157cc5f8b4f6fe6e47c73ffe
+  $fToJSONText_$ctoJSONList ::
+    [Response.Text.Text] -> Data.Aeson.Types.Internal.Value
+  {- Arity: 1, Strictness: <S,1*U>m2, Inline: (sat-args=0),
+     Unfolding: InlineRule (0, False, False)
+                (\ (x :: [Response.Text.Text]) ->
+                 Data.Aeson.Types.Internal.$WArray
+                   (Data.Vector.Generic.new
+                      @ Data.Vector.Vector
+                      @ Data.Aeson.Types.Internal.Value
+                      (Data.Vector.$fVectorVectora @ Data.Aeson.Types.Internal.Value)
+                      (Data.Vector.Generic.New.unstream
+                         @ Data.Vector.Vector
+                         @ Data.Aeson.Types.Internal.Value
+                         (Data.Vector.$fVectorVectora @ Data.Aeson.Types.Internal.Value)
+                         (Data.Vector.Fusion.Bundle.Monadic.unsafeFromList
+                            @ Data.Vector.Fusion.Util.Id
+                            @ Data.Aeson.Types.Internal.Value
+                            @ Data.Vector.Vector
+                            Data.Vector.Fusion.Util.$fMonadId
+                            Data.Vector.Fusion.Bundle.Size.Unknown
+                            (GHC.Base.build
+                               @ Data.Aeson.Types.Internal.Value
+                               (\ @ b1
+                                  (c :: Data.Aeson.Types.Internal.Value -> b1 -> b1)[OneShot]
+                                  (n1 :: b1)[OneShot] ->
+                                GHC.Base.foldr
+                                  @ Response.Text.Text
+                                  @ b1
+                                  (GHC.Base.mapFB
+                                     @ Data.Aeson.Types.Internal.Value
+                                     @ b1
+                                     @ Response.Text.Text
+                                     c
+                                     Response.Text.$fToJSONText_$ctoJSON)
+                                  n1
+                                  x)))))) -}
+0747de753d64527edb00752988f6d679
   $tc'MakeText :: GHC.Types.TyCon
-7977a726c0a297c9bd8c287736ec694f
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   3919918526854141359##
+                   13751936061526412496##
+                   Response.Text.$trModule
+                   Response.Text.$tc'MakeText2
+                   0#
+                   Response.Text.$tc'MakeText1) -}
+8aaa302fc29b42537f67b1d07c8f9f02
+  $tc'MakeText1 :: GHC.Types.KindRep
+  {- HasNoCafRefs, Strictness: m4, Inline: [~] -}
+bcb72f438c4b19af2a52655e97ea1f2d
+  $tc'MakeText2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Response.Text.$tc'MakeText3) -}
+1f7ee2f7bbdab2b1683b484386b88803
+  $tc'MakeText3 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("'MakeText"#) -}
+cb3ac8c0f7edc3831c8222e017ea6b08
   $tcText :: GHC.Types.TyCon
-835933298a617baffd13e13a7c78ca66
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   8925987678914125379##
+                   7127867866228917635##
+                   Response.Text.$trModule
+                   Response.Text.$tcText1
+                   0#
+                   GHC.Types.krep$*) -}
+efa16de3f921f2394a636316c09d355d
+  $tcText1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Response.Text.$fFromJSONText7) -}
+31601ea4eb5c166888372a6707392ef1
   $trModule :: GHC.Types.Module
-c9a59f2ebf569d20072ba2056bdea87c
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module
+                   Response.Text.$trModule3
+                   Response.Text.$trModule1) -}
+ad8221d8a3cd5d9c2bf61759f1f73966
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Response.Text.$trModule2) -}
+a57baea8c1126ac4b6045b96a5099d70
+  $trModule2 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("Response.Text"#) -}
+8f20f9b53b14abba46f34bcb52547e94
+  $trModule3 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Response.Text.$trModule4) -}
+9b1ab50ed89f2641d194c7178d44b697
+  $trModule4 :: GHC.Prim.Addr#
+  {- HasNoCafRefs,
+     Unfolding: ("chatbot-0.1.0.0-KBzJPM1w73ULhXPO6HMS3o"#) -}
+7d73ed0f5144dda7662ec0d27490bac7
+  $w$cshow :: Data.Text.Internal.Text -> GHC.Base.String
+  {- Arity: 1, Strictness: <L,1*U(U,U,U)>, Inline: [2],
+     Unfolding: (\ (ww :: Data.Text.Internal.Text) ->
+                 GHC.CString.unpackAppendCString#
+                   Response.Text.$fShowText4
+                   (GHC.CString.unpackAppendCString#
+                      Response.Text.$fShowText3
+                      (case Data.Text.Show.$w$cshowsPrec
+                              ww
+                              Response.Text.$fShowText5 of ww1 { (#,#) ww2 ww3 ->
+                       GHC.Types.: @ GHC.Types.Char ww2 ww3 }))) -}
+52361d7ab743dd10dd1df200684424a3
+  $w$cshowsPrec ::
+    GHC.Prim.Int#
+    -> Data.Text.Internal.Text -> GHC.Base.String -> GHC.Base.String
+  {- Arity: 3, Strictness: <S,U><L,1*U(U,U,U)><L,U>, Inline: [2],
+     Unfolding: (\ (ww :: GHC.Prim.Int#)
+                   (ww1 :: Data.Text.Internal.Text)
+                   (w :: GHC.Base.String) ->
+                 case GHC.Prim.>=# ww 11# of lwild {
+                   DEFAULT
+                   -> GHC.CString.unpackAppendCString#
+                        Response.Text.$fShowText4
+                        (GHC.CString.unpackAppendCString#
+                           Response.Text.$fShowText3
+                           (case Data.Text.Show.$w$cshowsPrec
+                                   ww1
+                                   (GHC.CString.unpackAppendCString#
+                                      Response.Text.$fShowText2
+                                      w) of ww2 { (#,#) ww3 ww4 ->
+                            GHC.Types.: @ GHC.Types.Char ww3 ww4 }))
+                   1#
+                   -> GHC.Types.:
+                        @ GHC.Types.Char
+                        GHC.Show.$fShow(,)4
+                        (GHC.CString.unpackAppendCString#
+                           Response.Text.$fShowText4
+                           (GHC.CString.unpackAppendCString#
+                              Response.Text.$fShowText3
+                              (case Data.Text.Show.$w$cshowsPrec
+                                      ww1
+                                      (GHC.CString.unpackAppendCString#
+                                         Response.Text.$fShowText2
+                                         (GHC.Types.:
+                                            @ GHC.Types.Char
+                                            GHC.Show.$fShow(,)2
+                                            w)) of ww2 { (#,#) ww3 ww4 ->
+                               GHC.Types.: @ GHC.Types.Char ww3 ww4 }))) }) -}
+0ff1ffd9157cc5f8b4f6fe6e47c73ffe
   axiom Response.Text.Rep_Text::
       GHC.Generics.Rep Response.Text.Text
         = GHC.Generics.D1
@@ -122,11 +1331,15 @@ c9a59f2ebf569d20072ba2056bdea87c
                      'GHC.Generics.NoSourceStrictness
                      'GHC.Generics.DecidedLazy)
                   (GHC.Generics.Rec0 Data.Text.Internal.Text)))
-c9a59f2ebf569d20072ba2056bdea87c
+0ff1ffd9157cc5f8b4f6fe6e47c73ffe
   data Text = MakeText {text :: Data.Text.Internal.Text}
-c9a59f2ebf569d20072ba2056bdea87c
+0ff1ffd9157cc5f8b4f6fe6e47c73ffe
   text :: Response.Text.Text -> Data.Text.Internal.Text
   RecSel Left Response.Text.Text
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(S),1*U(1*U(U,U,U))>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Response.Text.Text) ->
+                 case ds of wild { Response.Text.MakeText ds1 -> ds1 }) -}
 instance Data.Aeson.Types.FromJSON.FromJSON [Response.Text.Text]
   = Response.Text.$fFromJSONText
 instance GHC.Generics.Generic [Response.Text.Text]
@@ -137,6 +1350,25 @@ instance Data.Aeson.Types.ToJSON.ToJSON [Response.Text.Text]
   = Response.Text.$fToJSONText
 family instance GHC.Generics.Rep [Response.Text.Text]
   = Response.Text.Rep_Text
+"SPEC/Response.Text $fSelectorMetaMetaSel @ ('Just
+                                              "text") @ 'NoSourceUnpackedness @ 'NoSourceStrictness @ 'DecidedLazy" [orphan] forall (v3 :: GHC.Generics.SingI
+                                                                                                                                                                                                'GHC.Generics.DecidedLazy)
+                                                                                                                                                                                       (v2 :: GHC.Generics.SingI
+                                                                                                                                                                                                'GHC.Generics.NoSourceStrictness)
+                                                                                                                                                                                       (v1 :: GHC.Generics.SingI
+                                                                                                                                                                                                'GHC.Generics.NoSourceUnpackedness)
+                                                                                                                                                                                       (v :: GHC.Generics.SingI
+                                                                                                                                                                                               ('GHC.Maybe.Just
+                                                                                                                                                                                                  "text"))
+  GHC.Generics.$fSelectorMetaMetaSel @ ('GHC.Maybe.Just "text")
+                                     @ 'GHC.Generics.NoSourceUnpackedness
+                                     @ 'GHC.Generics.NoSourceStrictness
+                                     @ 'GHC.Generics.DecidedLazy
+                                     v
+                                     v1
+                                     v2
+                                     v3
+  = Response.Text.$fFromJSONText_$s$fSelectorMetaMetaSel
 trusted: none
 require own pkg trusted: False
 module header:

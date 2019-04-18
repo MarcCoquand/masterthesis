@@ -1,0 +1,66 @@
+
+==================== FINAL INTERFACE ====================
+2019-04-18 06:51:43.759750836 UTC
+
+interface main:Owner 8064
+  interface hash: 53e346930912b84fd219f417e36f2aa9
+  ABI hash: 7208a55a21452dfe951a34348956cfe8
+  export-list hash: 1e111bf3ca0fd16069e828cd39d152b6
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: c1635af5af472d90c2bcddddbea2e9d4
+  opt_hash: d0a78e7b344f95c7406be35c9b75e196
+  hpc_hash: 93b885adfe0da089cdf634904fd59f71
+  plugin_hash: ad164012d6b1e14942349d58b1132007
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Owner.parse
+  Owner.Owner{Owner.UnsafeOwner unOwner}
+module dependencies:
+package dependencies: array-0.5.3.0 base-4.12.0.0* binary-0.8.6.0
+                      bytestring-0.10.8.2 containers-0.6.0.1 deepseq-1.4.4.0
+                      ghc-prim-0.5.3 integer-gmp-1.0.2.0 text-1.2.3.1*
+orphans: text-1.2.3.1:Data.Text binary-0.8.6.0:Data.Binary.Generic
+         bytestring-0.10.8.2:Data.ByteString.Builder
+         text-1.2.3.1:Data.Text.Show base-4.12.0.0:GHC.Float
+         base-4.12.0.0:GHC.Base
+family instance modules: base-4.12.0.0:Control.Applicative
+                         base-4.12.0.0:Data.Complex base-4.12.0.0:Data.Functor.Compose
+                         base-4.12.0.0:Data.Functor.Const
+                         base-4.12.0.0:Data.Functor.Identity
+                         base-4.12.0.0:Data.Functor.Product base-4.12.0.0:Data.Functor.Sum
+                         base-4.12.0.0:Data.Monoid base-4.12.0.0:Data.Semigroup
+                         base-4.12.0.0:Data.Semigroup.Internal base-4.12.0.0:Data.Version
+                         base-4.12.0.0:Data.Void base-4.12.0.0:GHC.Exts
+                         base-4.12.0.0:GHC.Generics base-4.12.0.0:GHC.IO.Exception
+                         containers-0.6.0.1:Data.IntMap.Internal
+                         containers-0.6.0.1:Data.IntSet.Internal
+                         containers-0.6.0.1:Data.Map.Internal
+                         containers-0.6.0.1:Data.Sequence.Internal
+                         containers-0.6.0.1:Data.Set.Internal containers-0.6.0.1:Data.Tree
+                         text-1.2.3.1:Data.Text
+import  -/  base-4.12.0.0:GHC.Err ea5e313ef4146b40b5d8b27aa168e736
+import  -/  base-4.12.0.0:Prelude 3c779dfd6448bdd8e234c336802c2acb
+import  -/  text-1.2.3.1:Data.Text 1e51a010d8f8a6fa41d8ea82d69faf13
+import  -/  text-1.2.3.1:Data.Text.Internal 537e168590e8068f673f691833f78483
+fc1904f4ffb805e8a1fdb61db2ff62b3
+  $tc'UnsafeOwner :: GHC.Types.TyCon
+144b20f837bd1b5795c600b2e0fefcf0
+  $tcOwner :: GHC.Types.TyCon
+3dc9c53a226fd3b6bcc9d62fe092ce7b
+  $trModule :: GHC.Types.Module
+fea5340bfb34c948c93ca86470c09290
+  newtype Owner = UnsafeOwner {unOwner :: Data.Text.Internal.Text}
+d48525ce2c33b3858d614c8dd0f05e87
+  parse :: Data.Text.Internal.Text -> Owner.Owner
+fea5340bfb34c948c93ca86470c09290
+  unOwner :: Owner.Owner -> Data.Text.Internal.Text
+  RecSel Left Owner.Owner
+trusted: safe
+require own pkg trusted: False
+module header:
+  Nothing
+declaration docs:
+arg docs:
+

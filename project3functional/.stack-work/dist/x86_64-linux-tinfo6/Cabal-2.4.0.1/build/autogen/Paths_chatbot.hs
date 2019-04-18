@@ -30,7 +30,7 @@ version = Version [0,1,0,0] []
 bindir, libdir, dynlibdir, datadir, libexecdir, sysconfdir :: FilePath
 
 bindir     = "/home/marccoquand/School/thesis/project3functional/.stack-work/install/x86_64-linux-tinfo6/lts-13.15/8.6.4/bin"
-libdir     = "/home/marccoquand/School/thesis/project3functional/.stack-work/install/x86_64-linux-tinfo6/lts-13.15/8.6.4/lib/x86_64-linux-ghc-8.6.4/chatbot-0.1.0.0-KBzJPM1w73ULhXPO6HMS3o"
+libdir     = "/home/marccoquand/School/thesis/project3functional/.stack-work/install/x86_64-linux-tinfo6/lts-13.15/8.6.4/lib/x86_64-linux-ghc-8.6.4/chatbot-0.1.0.0-67bWLjpjAuUrBADJYEaEy"
 dynlibdir  = "/home/marccoquand/School/thesis/project3functional/.stack-work/install/x86_64-linux-tinfo6/lts-13.15/8.6.4/lib/x86_64-linux-ghc-8.6.4"
 datadir    = "/home/marccoquand/School/thesis/project3functional/.stack-work/install/x86_64-linux-tinfo6/lts-13.15/8.6.4/share/x86_64-linux-ghc-8.6.4/chatbot-0.1.0.0"
 libexecdir = "/home/marccoquand/School/thesis/project3functional/.stack-work/install/x86_64-linux-tinfo6/lts-13.15/8.6.4/libexec/x86_64-linux-ghc-8.6.4/chatbot-0.1.0.0"

@@ -1,0 +1,106 @@
+
+==================== FINAL INTERFACE ====================
+2019-04-17 08:25:22.095244726 UTC
+
+interface chatbot-0.1.0.0-KBzJPM1w73ULhXPO6HMS3o:Route 8064
+  interface hash: 6305dd683b6bb460a03b439f7fd4373f
+  ABI hash: bcf33115f2029f97e2c499e5e36cccef
+  export-list hash: 327d75f5839849785e2b651aaf2b3e54
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: 2a9101b7e6c45fb297dec1e2ea3c107c
+  opt_hash: d0a78e7b344f95c7406be35c9b75e196
+  hpc_hash: 93b885adfe0da089cdf634904fd59f71
+  plugin_hash: ad164012d6b1e14942349d58b1132007
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+module dependencies:
+package dependencies: aeson-1.4.2.0 appar-0.1.7 array-0.5.3.0
+                      async-2.2.1 attoparsec-0.13.2.2 auto-update-0.1.4.1 base-4.12.0.0
+                      base-compat-0.10.5 binary-0.8.6.0 blaze-builder-0.4.1.0
+                      bsb-http-chunked-0.0.0.4 byteorder-1.0.4 bytestring-0.10.8.2
+                      case-insensitive-1.2.0.11 containers-0.6.0.1
+                      data-default-class-0.1.2.0 deepseq-1.4.4.0 directory-1.3.3.0
+                      dlist-0.8.0.6 exceptions-0.10.1 filepath-1.4.2.1 ghc-boot-th-8.6.4
+                      ghc-prim-0.5.3 hashable-1.2.7.0 http-date-0.0.8 http-types-0.12.3
+                      http2-1.6.4 integer-gmp-1.0.2.0 integer-logarithms-1.0.2.2
+                      iproute-1.7.7 monad-control-1.0.2.3 mtl-2.2.2 network-2.8.0.0
+                      network-byte-order-0.0.0.0 primitive-0.6.4.0 psqueues-0.2.7.1
+                      random-1.1 regex-base-0.93.2 regex-compat-0.95.1 regex-posix-0.95.2
+                      resourcet-1.2.2 scientific-0.3.6.2 scotty-0.11.3
+                      simple-sendfile-0.2.28 stm-2.5.0.0 streaming-commons-0.2.1.0
+                      tagged-0.8.6 template-haskell-2.14.0.0 text-1.2.3.1 time-1.8.0.2
+                      time-locale-compat-0.1.1.5 transformers-0.5.6.2
+                      transformers-base-0.4.5.2 unix-2.7.2.2 unix-compat-0.5.1
+                      unliftio-core-0.1.2.0 unordered-containers-0.2.9.0 uuid-types-1.0.3
+                      vault-0.3.1.2 vector-0.12.0.2 wai-3.2.2 wai-extra-3.0.25
+                      warp-3.2.26 word8-0.1.3
+orphans: regex-posix-0.95.2:Text.Regex.Posix.String
+         regex-posix-0.95.2:Text.Regex.Posix.Sequence
+         regex-posix-0.95.2:Text.Regex.Posix.ByteString.Lazy
+         regex-posix-0.95.2:Text.Regex.Posix.ByteString
+         regex-base-0.93.2:Text.Regex.Base.Context
+         attoparsec-0.13.2.2:Data.Attoparsec.Text.Internal
+         vector-0.12.0.2:Data.Vector.Unboxed
+         vector-0.12.0.2:Data.Vector.Fusion.Bundle
+         attoparsec-0.13.2.2:Data.Attoparsec.ByteString.Char8
+         time-1.8.0.2:Data.Time.Format.Parse
+         time-1.8.0.2:Data.Time.LocalTime.Internal.ZonedTime
+         time-1.8.0.2:Data.Time.LocalTime.Internal.LocalTime
+         time-1.8.0.2:Data.Time.Calendar.Gregorian
+         network-2.8.0.0:Network.Socket stm-2.5.0.0:Control.Monad.STM
+         transformers-0.5.6.2:Control.Monad.Trans.Error
+         hashable-1.2.7.0:Data.Hashable.Generic text-1.2.3.1:Data.Text.Lazy
+         text-1.2.3.1:Data.Text binary-0.8.6.0:Data.Binary.Generic
+         bytestring-0.10.8.2:Data.ByteString.Builder
+         text-1.2.3.1:Data.Text.Show base-4.12.0.0:GHC.Float
+         base-4.12.0.0:GHC.Base
+family instance modules: aeson-1.4.2.0:Data.Aeson.Types.Internal
+                         attoparsec-0.13.2.2:Data.Attoparsec.Internal.Types
+                         base-4.12.0.0:Control.Applicative base-4.12.0.0:Data.Complex
+                         base-4.12.0.0:Data.Functor.Compose base-4.12.0.0:Data.Functor.Const
+                         base-4.12.0.0:Data.Functor.Identity
+                         base-4.12.0.0:Data.Functor.Product base-4.12.0.0:Data.Functor.Sum
+                         base-4.12.0.0:Data.Monoid base-4.12.0.0:Data.Semigroup
+                         base-4.12.0.0:Data.Semigroup.Internal base-4.12.0.0:Data.Version
+                         base-4.12.0.0:Data.Void base-4.12.0.0:GHC.Exts
+                         base-4.12.0.0:GHC.Generics base-4.12.0.0:GHC.IO.Exception
+                         containers-0.6.0.1:Data.IntMap.Internal
+                         containers-0.6.0.1:Data.IntSet.Internal
+                         containers-0.6.0.1:Data.Map.Internal
+                         containers-0.6.0.1:Data.Sequence.Internal
+                         containers-0.6.0.1:Data.Set.Internal containers-0.6.0.1:Data.Tree
+                         dlist-0.8.0.6:Data.DList ghc-boot-th-8.6.4:GHC.ForeignSrcLang.Type
+                         ghc-boot-th-8.6.4:GHC.LanguageExtensions.Type
+                         iproute-1.7.7:Data.IP.Addr iproute-1.7.7:Data.IP.Range
+                         monad-control-1.0.2.3:Control.Monad.Trans.Control
+                         primitive-0.6.4.0:Control.Monad.Primitive
+                         primitive-0.6.4.0:Data.Primitive.Array
+                         primitive-0.6.4.0:Data.Primitive.ByteArray
+                         primitive-0.6.4.0:Data.Primitive.PrimArray
+                         primitive-0.6.4.0:Data.Primitive.SmallArray
+                         primitive-0.6.4.0:Data.Primitive.UnliftedArray
+                         resourcet-1.2.2:Control.Monad.Trans.Resource.Internal
+                         scotty-0.11.3:Web.Scotty.Internal.Types tagged-0.8.6:Data.Tagged
+                         template-haskell-2.14.0.0:Language.Haskell.TH.Syntax
+                         text-1.2.3.1:Data.Text text-1.2.3.1:Data.Text.Lazy
+                         unordered-containers-0.2.9.0:Data.HashMap.Base
+                         unordered-containers-0.2.9.0:Data.HashSet
+                         uuid-types-1.0.3:Data.UUID.Types.Internal
+                         uuid-types-1.0.3:Data.UUID.Types.Internal.Builder
+                         vector-0.12.0.2:Data.Vector vector-0.12.0.2:Data.Vector.Primitive
+                         vector-0.12.0.2:Data.Vector.Storable
+                         vector-0.12.0.2:Data.Vector.Unboxed
+                         vector-0.12.0.2:Data.Vector.Unboxed.Base
+import  -/  base-4.12.0.0:Prelude 3c779dfd6448bdd8e234c336802c2acb
+import  -/  scotty-0.11.3:Web.Scotty ed07ac22ef60cd4361588bd92761df47
+ebd299de07e05a9f2fe6bfd943536172
+  $trModule :: GHC.Types.Module
+trusted: none
+require own pkg trusted: False
+module header:
+  Nothing
+declaration docs:
+arg docs:
+

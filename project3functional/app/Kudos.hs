@@ -1,21 +1,36 @@
 module Kudos where
 
-import           Data.Bson              ((!?), (=:))
+import           Data.Bson                 ((!?), (=:))
 import qualified Data.Bson
-import           Data.Function          ((&))
-import           Data.HashMap.Lazy      (HashMap)
-import qualified Data.HashMap.Lazy      as HashMap
-import           Data.Maybe             (catMaybes)
-import           Data.Text              (Text)
-import           Data.Time.Clock        (UTCTime)
-import qualified Data.Time.Clock        as Time
-import           Data.Time.Clock.POSIX  (POSIXTime, utcTimeToPOSIXSeconds)
-import qualified Database.MongoDB       as Database
-import qualified Database.MongoDB.Query as Query
-import           Database.Persist       (Key)
-import           Store                  (Store)
-import qualified Store
+import           Data.Function             ((&))
+import           Data.HashMap.Lazy         (HashMap)
+import qualified Data.HashMap.Lazy         as HashMap
+import           Data.IORef                (modifyIORef', newIORef, readIORef)
+import           Data.Maybe                (catMaybes)
+import           Data.Text                 (Text)
+import qualified Data.Text                 as Text
+import           Data.Time.Clock           (UTCTime)
+import qualified Data.Time.Clock           as Time
+import           Data.Time.Clock.POSIX     (POSIXTime, utcTimeToPOSIXSeconds)
+import qualified Database.MongoDB          as Database
+import qualified Database.MongoDB.Query    as Query
+import           Test.QuickCheck           (Gen)
+import           Test.QuickCheck.Arbitrary (Arbitrary, arbitrary)
 
+
+
+data Write  =
+    MakeWrite
+    { add :: Kudos -> IO ()
+    }
+
+
+data Load =
+    MakeLoad
+    { getTenLatest :: IO [Kudos]
+    , specific     :: Owner -> IO [Kudos]
+    , count        :: Owner -> IO Int
+    }
 
 
 type Message =
@@ -28,25 +43,30 @@ type Owner =
 
 data Kudos =
     MakeKudos
-    {  message :: Message
-    , owner    :: Owner
+    { message :: Message
+    , owner   :: Owner
     }
 
 
-update ::  Kudos -> Maybe Message -> Kudos
-update kudos maybeMessage  =
-    case maybeMessage of
-        Just msg ->
-            MakeKudos
-                {  message = msg
-                , owner = (owner kudos)
-                }
-        Nothing ->
-            MakeKudos
-                { message = ""
-                , owner = (owner kudos)
-                }
+instance Arbitrary Kudos where
+    arbitrary =
+        do  msg <- (arbitrary :: Gen String)
+            own <- (arbitrary :: Gen String)
+            return (MakeKudos (Text.pack msg) (Text.pack own))
 
+
+make :: Message -> Owner -> Kudos
+make =
+    MakeKudos
+
+
+show :: Kudos -> Text
+show kudos =
+    "* Kudos to: " <> (owner kudos) <> ", message: " <> (message kudos)
+
+
+
+-- * SYMBOLIC
 
 
 isOwner :: Owner -> Kudos -> Bool
@@ -59,14 +79,41 @@ takeTenOwned user list =
     take 10 (filter (isOwner user) list)
 
 
-count :: Owner -> [Kudos] -> Int
-count user list =
+countSymbolic :: Owner -> [Kudos] -> Int
+countSymbolic user list =
     length (filter (isOwner user) list)
 
 
-mock :: [Kudos] -> IO (Store IO Owner Kudos)
+addToList ::  Kudos -> [Kudos] -> [Kudos]
+addToList kudos list =
+    list ++ [kudos]
+
+
+mock :: [Kudos] -> IO (Load, Write)
 mock kudosList =
-    Store.mock kudosList takeTenOwned count
+    do  ref <- newIORef kudosList
+        return (MakeLoad
+            {  getTenLatest =
+                do  list <- readIORef ref
+                    return (take 10 list)
+            , specific =
+                \userId ->
+                    do  list <- readIORef ref
+                        return (takeTenOwned userId list)
+            , count =
+                \userId ->
+                    do  list <- readIORef ref
+                        return (countSymbolic userId list)
+            },
+            MakeWrite
+                {add =
+                    \kudos ->
+                        modifyIORef' ref (addToList kudos)
+                })
+
+
+
+-- * SERIALIZATION
 
 
 toBson :: Kudos -> Database.Document
@@ -85,42 +132,9 @@ fromBsonList :: [Database.Document] -> [Kudos]
 fromBsonList documents =
     catMaybes (map fromBson documents)
 
-withTimestamp :: POSIXTime -> Database.Document -> Database.Document
-withTimestamp timestamp value =
-        value ++ [ "timestamp" =: timestamp]
 
 
-addQuery :: POSIXTime -> Kudos -> Query.Action IO ()
-addQuery timestamp kudos =
-        do  withTimestamp timestamp (toBson kudos)
-                & Database.insert "kudos"
-            return ()
-
-sortByTimestamp :: Database.Document
-sortByTimestamp =
-    [("timestamp" :: Text) =: (1 :: Integer)]
-
-
-tenLatestQuery :: Database.Action IO [Kudos]
-tenLatestQuery =
-    do  ref <- Database.find
-            (Database.select [] "kudos")
-            { Database.limit = 10
-            , Database.sort = sortByTimestamp
-            }
-        documents <- Database.rest ref
-        return (fromBsonList documents)
-
-
-findQuery :: Owner -> Database.Action IO [Kudos]
-findQuery userId =
-    do  ref <- Database.find
-            (Database.select ["owner" =: userId ] "kudos")
-            { Database.limit = 10
-            , Database.sort = sortByTimestamp
-            }
-        documents <- Database.rest ref
-        return (fromBsonList documents)
+-- * EFFECTFUL USING MONGODB
 
 
 countQuery :: Owner -> Database.Action IO Int
@@ -134,6 +148,66 @@ countQuery userId =
         return (length documents)
 
 
+specificQuery :: Owner -> Database.Action IO [Kudos]
+specificQuery userId =
+    do  ref <- Database.find
+            (Database.select ["owner" =: userId ] "kudos")
+            { Database.limit = 10
+            , Database.sort = sortByTimestamp
+            }
+        documents <- Database.rest ref
+        return (fromBsonList documents)
+
+
+addQuery :: POSIXTime -> Kudos -> Query.Action IO ()
+addQuery timestamp kudos =
+        do  withTimestamp timestamp (toBson kudos)
+                & Database.insert "kudos"
+            return ()
+
+
+tenLatestQuery :: Database.Action IO [Kudos]
+tenLatestQuery =
+    do  ref <- Database.find
+            (Database.select [] "kudos")
+            { Database.limit = 10
+            , Database.sort = sortByTimestamp
+            }
+        documents <- Database.rest ref
+        return (fromBsonList documents)
+
+
+withTimestamp :: POSIXTime -> Database.Document -> Database.Document
+withTimestamp timestamp value =
+        value ++ [ "timestamp" =: timestamp]
+
+
+sortByTimestamp :: Database.Document
+sortByTimestamp =
+    [("timestamp" :: Text) =: (1 :: Integer)]
+
+
+effectful :: String -> IO (Write, Load)
+effectful connection =
+    do  pipe <- Database.connect (Database.host connection)
+        return (MakeWrite
+            { add =
+                \kudos ->
+                    do  utcTime <- Time.getCurrentTime
+                        let timestamp =
+                                utcTimeToPOSIXSeconds utcTime
+                        runDatabase pipe
+                            (addQuery timestamp kudos)
+            }, MakeLoad
+                { getTenLatest =
+                    runDatabase pipe tenLatestQuery
+                , specific =
+                    runDatabase pipe . specificQuery
+                , count =
+                    runDatabase pipe . countQuery
+                })
+
+
 runDatabase :: Database.Pipe -> Query.Action IO a -> IO a
 runDatabase pipe action =
     Database.access
@@ -141,24 +215,4 @@ runDatabase pipe action =
         Query.master
         "kudos"
         action
-
-
-effectful :: String -> IO (Store IO Owner Kudos)
-effectful connection =
-    do  pipe <- Database.connect (Database.host "127.0.0.1")
-        return (Store.MakeStore
-            { Store.add =
-                \kudos ->
-                    do  utcTime <- Time.getCurrentTime
-                        let timestamp =
-                                utcTimeToPOSIXSeconds utcTime
-                        runDatabase pipe
-                            (addQuery timestamp kudos)
-            , Store.getTenLatest =
-                runDatabase pipe tenLatestQuery
-            , Store.find =
-                runDatabase pipe . findQuery
-            , Store.count =
-                runDatabase pipe . countQuery
-            })
 

@@ -1,0 +1,172 @@
+
+==================== FINAL INTERFACE ====================
+2019-04-18 07:11:51.375094976 UTC
+
+interface main:Input 8064
+  interface hash: 345744713d4acf503be685d2a6a27029
+  ABI hash: 3a484add994b8a217035c9239075c445
+  export-list hash: a3036a11f45b2fa5b18893677ebd762e
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: 0c60033632ba669c8e84e70cb26d8f29
+  opt_hash: d0a78e7b344f95c7406be35c9b75e196
+  hpc_hash: 93b885adfe0da089cdf634904fd59f71
+  plugin_hash: ad164012d6b1e14942349d58b1132007
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Input.make
+  Input.parse
+  Input.showMistake
+  Input.Input{Input.UnsafeInput unInput}
+  Input.Invalid{Input.Format Input.UserDoesNotExist}
+  Input.Valid{Input.GiveKudos Input.WantRanking Input.WantSpecificKudos}
+module dependencies: Kudos
+package dependencies: MonadRandom-0.5.1.1 QuickCheck-2.12.6.1
+                      array-0.5.3.0 base-4.12.0.0 base16-bytestring-0.1.1.6
+                      base64-bytestring-1.0.0.2 basement-0.0.10 binary-0.8.6.0
+                      bson-0.3.2.7 bytestring-0.10.8.2 containers-0.6.0.1
+                      cryptohash-0.11.9 cryptonite-0.25 data-binary-ieee754-0.4.4
+                      data-default-class-0.1.2.0 deepseq-1.4.4.0 entropy-0.4.1.4
+                      erf-2.0.0.0 ghc-boot-th-8.6.4 ghc-prim-0.5.3 hashable-1.2.7.0
+                      hashtables-1.2.3.1 integer-gmp-1.0.2.0 lifted-base-0.2.3.12
+                      memory-0.14.18 monad-control-1.0.2.3 mongoDB-2.4.0.1 mtl-2.2.2
+                      network-2.8.0.0 nonce-1.0.7 parsec-3.1.13.0 pretty-1.1.3.6
+                      primitive-0.6.4.0 random-1.1 random-shuffle-0.0.4 stm-2.5.0.0
+                      template-haskell-2.14.0.0 text-1.2.3.1 tf-random-0.5 time-1.8.0.2
+                      transformers-0.5.6.2 transformers-base-0.4.5.2 unix-2.7.2.2
+                      unliftio-0.2.10 unliftio-core-0.1.2.0 unordered-containers-0.2.9.0
+                      vector-0.12.0.2
+orphans: vector-0.12.0.2:Data.Vector.Unboxed
+         hashable-1.2.7.0:Data.Hashable.Generic
+         vector-0.12.0.2:Data.Vector.Fusion.Bundle
+         text-1.2.3.1:Data.Text.Lazy
+         mongoDB-2.4.0.1:Database.MongoDB.Internal.Util
+         network-2.8.0.0:Network.Socket stm-2.5.0.0:Control.Monad.STM
+         text-1.2.3.1:Data.Text binary-0.8.6.0:Data.Binary.Generic
+         text-1.2.3.1:Data.Text.Show
+         bytestring-0.10.8.2:Data.ByteString.Builder
+         basement-0.0.10:Basement.UArray.Base basement-0.0.10:Basement.Block
+         time-1.8.0.2:Data.Time.Format.Parse
+         time-1.8.0.2:Data.Time.LocalTime.Internal.ZonedTime
+         time-1.8.0.2:Data.Time.LocalTime.Internal.LocalTime
+         time-1.8.0.2:Data.Time.Calendar.Gregorian
+         transformers-0.5.6.2:Control.Monad.Trans.Error
+         base-4.12.0.0:GHC.Float base-4.12.0.0:GHC.Base
+family instance modules: MonadRandom-0.5.1.1:Control.Monad.Trans.Random.Lazy
+                         base-4.12.0.0:Control.Applicative base-4.12.0.0:Data.Complex
+                         base-4.12.0.0:Data.Functor.Compose base-4.12.0.0:Data.Functor.Const
+                         base-4.12.0.0:Data.Functor.Identity
+                         base-4.12.0.0:Data.Functor.Product base-4.12.0.0:Data.Functor.Sum
+                         base-4.12.0.0:Data.Monoid base-4.12.0.0:Data.Semigroup
+                         base-4.12.0.0:Data.Semigroup.Internal base-4.12.0.0:Data.Version
+                         base-4.12.0.0:Data.Void base-4.12.0.0:GHC.Exts
+                         base-4.12.0.0:GHC.Generics base-4.12.0.0:GHC.IO.Exception
+                         basement-0.0.10:Basement.Block.Base
+                         basement-0.0.10:Basement.Bounded basement-0.0.10:Basement.Monad
+                         basement-0.0.10:Basement.MutableBuilder
+                         basement-0.0.10:Basement.Nat basement-0.0.10:Basement.NonEmpty
+                         basement-0.0.10:Basement.Numerical.Subtractive
+                         basement-0.0.10:Basement.PrimType basement-0.0.10:Basement.String
+                         basement-0.0.10:Basement.String.Encoding.ASCII7
+                         basement-0.0.10:Basement.String.Encoding.ISO_8859_1
+                         basement-0.0.10:Basement.String.Encoding.UTF16
+                         basement-0.0.10:Basement.String.Encoding.UTF32
+                         basement-0.0.10:Basement.Types.OffsetSize
+                         basement-0.0.10:Basement.UArray.Base
+                         basement-0.0.10:Basement.UTF8.Base
+                         containers-0.6.0.1:Data.IntMap.Internal
+                         containers-0.6.0.1:Data.IntSet.Internal
+                         containers-0.6.0.1:Data.Map.Internal
+                         containers-0.6.0.1:Data.Sequence.Internal
+                         containers-0.6.0.1:Data.Set.Internal containers-0.6.0.1:Data.Tree
+                         cryptonite-0.25:Crypto.Hash.Blake2
+                         cryptonite-0.25:Crypto.Hash.Blake2b
+                         cryptonite-0.25:Crypto.Hash.Blake2bp
+                         cryptonite-0.25:Crypto.Hash.Blake2s
+                         cryptonite-0.25:Crypto.Hash.Blake2sp
+                         cryptonite-0.25:Crypto.Hash.Keccak cryptonite-0.25:Crypto.Hash.MD2
+                         cryptonite-0.25:Crypto.Hash.MD4 cryptonite-0.25:Crypto.Hash.MD5
+                         cryptonite-0.25:Crypto.Hash.RIPEMD160
+                         cryptonite-0.25:Crypto.Hash.SHA1 cryptonite-0.25:Crypto.Hash.SHA224
+                         cryptonite-0.25:Crypto.Hash.SHA256 cryptonite-0.25:Crypto.Hash.SHA3
+                         cryptonite-0.25:Crypto.Hash.SHA384
+                         cryptonite-0.25:Crypto.Hash.SHA512
+                         cryptonite-0.25:Crypto.Hash.SHA512t
+                         cryptonite-0.25:Crypto.Hash.SHAKE
+                         cryptonite-0.25:Crypto.Hash.Skein256
+                         cryptonite-0.25:Crypto.Hash.Skein512
+                         cryptonite-0.25:Crypto.Hash.Tiger
+                         cryptonite-0.25:Crypto.Hash.Whirlpool
+                         ghc-boot-th-8.6.4:GHC.ForeignSrcLang.Type
+                         ghc-boot-th-8.6.4:GHC.LanguageExtensions.Type
+                         monad-control-1.0.2.3:Control.Monad.Trans.Control
+                         pretty-1.1.3.6:Text.PrettyPrint.Annotated.HughesPJ
+                         pretty-1.1.3.6:Text.PrettyPrint.HughesPJ
+                         primitive-0.6.4.0:Control.Monad.Primitive
+                         primitive-0.6.4.0:Data.Primitive.Array
+                         primitive-0.6.4.0:Data.Primitive.ByteArray
+                         primitive-0.6.4.0:Data.Primitive.PrimArray
+                         primitive-0.6.4.0:Data.Primitive.SmallArray
+                         primitive-0.6.4.0:Data.Primitive.UnliftedArray
+                         template-haskell-2.14.0.0:Language.Haskell.TH.Syntax
+                         text-1.2.3.1:Data.Text text-1.2.3.1:Data.Text.Lazy
+                         unordered-containers-0.2.9.0:Data.HashMap.Base
+                         vector-0.12.0.2:Data.Vector vector-0.12.0.2:Data.Vector.Primitive
+                         vector-0.12.0.2:Data.Vector.Unboxed
+                         vector-0.12.0.2:Data.Vector.Unboxed.Base
+import  -/  base-4.12.0.0:Data.Either 423bee738f25e5ee983d072216009be8
+import  -/  base-4.12.0.0:GHC.Err ea5e313ef4146b40b5d8b27aa168e736
+import  -/  base-4.12.0.0:Prelude 3c779dfd6448bdd8e234c336802c2acb
+import  -/  Kudos 59019f6f5717a7aba4c7af8044701d2b
+  exports: 4bab36da584a29afc13b3180cd081c1b
+  Kudos 005995c15ba10090d1c76d709e4595e7
+  Owner 5460d44ca3116d93a39593e299027d63
+import  -/  text-1.2.3.1:Data.Text 1e51a010d8f8a6fa41d8ea82d69faf13
+import  -/  text-1.2.3.1:Data.Text.Internal 537e168590e8068f673f691833f78483
+49b7496be01556f70c457afa3d016030
+  $tc'Format :: GHC.Types.TyCon
+0d501ab83b169dfe19a0d2dadcd5f025
+  $tc'GiveKudos :: GHC.Types.TyCon
+71d5d90ff7b47c3c2e4eac9be2b613e4
+  $tc'UnsafeInput :: GHC.Types.TyCon
+f36b88e8aa4894ac8c424ba8e03d842b
+  $tc'UserDoesNotExist :: GHC.Types.TyCon
+e179bfc06cc47527037e095b00b8ce6c
+  $tc'WantRanking :: GHC.Types.TyCon
+1074abdbf2b80f2eb4967a0d12b1c787
+  $tc'WantSpecificKudos :: GHC.Types.TyCon
+5f04400449c555906f4894ee76223fe2
+  $tcInput :: GHC.Types.TyCon
+626a981858bb5c355ac4113aaedded7d
+  $tcInvalid :: GHC.Types.TyCon
+f2eaebc397e7ce8edc8a881ce8529455
+  $tcValid :: GHC.Types.TyCon
+d416c22187601bd9e1ded3c993b06fea
+  $trModule :: GHC.Types.Module
+e9b70248e814df438beab48a1a336164
+  newtype Input = UnsafeInput {unInput :: Data.Text.Internal.Text}
+8c2f3c14234f8e89b4bf3dd35d8b6e7f
+  data Invalid = UserDoesNotExist | Format
+7a5c60bfb04c8e2a83cb498b21d2be93
+  data Valid
+    = GiveKudos Kudos.Kudos
+    | WantSpecificKudos Kudos.Owner
+    | WantRanking
+4484b505f0648bae66bab075aeadfdc6
+  make :: Data.Text.Internal.Text -> Input.Input
+baec3e60e610fd524dd90d5ffa9bb0c8
+  parse ::
+    Input.Input -> Data.Either.Either Input.Invalid Input.Valid
+599f4d4b2b9c2f2d02d4cd693ab9ce36
+  showMistake :: Input.Invalid -> Data.Text.Internal.Text
+e9b70248e814df438beab48a1a336164
+  unInput :: Input.Input -> Data.Text.Internal.Text
+  RecSel Left Input.Input
+trusted: none
+require own pkg trusted: False
+module header:
+  Nothing
+declaration docs:
+arg docs:
+

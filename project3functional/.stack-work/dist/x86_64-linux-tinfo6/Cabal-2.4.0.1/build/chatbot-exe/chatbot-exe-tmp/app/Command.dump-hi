@@ -1,11 +1,11 @@
 
 ==================== FINAL INTERFACE ====================
-2019-04-16 08:52:43.536076667 UTC
+2019-04-17 05:46:31.84234332 UTC
 
 interface main:Command 8064
-  interface hash: 408c6330e0bec020ac72c56094bac9e9
-  ABI hash: 716b568df1f8b2eb574b0db420f666ea
-  export-list hash: b2352bb03179751731c35d8df76ea06f
+  interface hash: 2c10596750f97ecc51bef10022c3c9b6
+  ABI hash: e5c91c84abc9200233bf0a28336fc821
+  export-list hash: aa3d95f706aeb814373d69eb7a2e80e8
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: c1635af5af472d90c2bcddddbea2e9d4
   opt_hash: d0a78e7b344f95c7406be35c9b75e196
@@ -15,7 +15,13 @@ interface main:Command 8064
   used TH splices: False
   where
 exports:
-module dependencies: Kudos Store
+  Command.give
+  Command.list
+  Command.parseKudos
+  Command.showMistake
+  Command.Input
+  Command.InvalidInput{Command.Format Command.UserDoesNotExist}
+module dependencies: Kudos Result Result.ContentList Result.Slack
 package dependencies: MonadRandom-0.5.1.1 aeson-1.4.2.0
                       array-0.5.3.0 attoparsec-0.13.2.2 attoparsec-iso8601-1.0.1.0
                       base-4.12.0.0 base-compat-0.10.5 base16-bytestring-0.1.1.6
@@ -36,7 +42,7 @@ package dependencies: MonadRandom-0.5.1.1 aeson-1.4.2.0
                       time-locale-compat-0.1.1.5 transformers-0.5.6.2
                       transformers-base-0.4.5.2 unix-2.7.2.2 unliftio-0.2.10
                       unliftio-core-0.1.2.0 unordered-containers-0.2.9.0 uuid-types-1.0.3
-                      vault-0.3.1.2 vector-0.12.0.2
+                      vector-0.12.0.2
 orphans: mongoDB-2.4.0.1:Database.MongoDB.Internal.Util
          network-2.8.0.0:Network.Socket basement-0.0.10:Basement.UArray.Base
          basement-0.0.10:Basement.Block stm-2.5.0.0:Control.Monad.STM
@@ -47,9 +53,9 @@ orphans: mongoDB-2.4.0.1:Database.MongoDB.Internal.Util
          time-1.8.0.2:Data.Time.LocalTime.Internal.ZonedTime
          time-1.8.0.2:Data.Time.LocalTime.Internal.LocalTime
          time-1.8.0.2:Data.Time.Calendar.Gregorian
+         hashable-1.2.7.0:Data.Hashable.Generic text-1.2.3.1:Data.Text.Lazy
          vector-0.12.0.2:Data.Vector.Fusion.Bundle
          transformers-0.5.6.2:Control.Monad.Trans.Error
-         hashable-1.2.7.0:Data.Hashable.Generic text-1.2.3.1:Data.Text.Lazy
          text-1.2.3.1:Data.Text binary-0.8.6.0:Data.Binary.Generic
          bytestring-0.10.8.2:Data.ByteString.Builder
          text-1.2.3.1:Data.Text.Show base-4.12.0.0:GHC.Float
@@ -105,6 +111,7 @@ family instance modules: MonadRandom-0.5.1.1:Control.Monad.Trans.Random.Lazy
                          cryptonite-0.25:Crypto.Hash.Whirlpool dlist-0.8.0.6:Data.DList
                          ghc-boot-th-8.6.4:GHC.ForeignSrcLang.Type
                          ghc-boot-th-8.6.4:GHC.LanguageExtensions.Type
+                         main:Result.ContentList main:Result.Slack
                          monad-control-1.0.2.3:Control.Monad.Trans.Control
                          persistent-2.9.1:Database.Persist.Class.PersistConfig
                          persistent-2.9.1:Database.Persist.Class.PersistEntity
@@ -126,13 +133,53 @@ family instance modules: MonadRandom-0.5.1.1:Control.Monad.Trans.Random.Lazy
                          vector-0.12.0.2:Data.Vector.Storable
                          vector-0.12.0.2:Data.Vector.Unboxed
                          vector-0.12.0.2:Data.Vector.Unboxed.Base
+import  -/  base-4.12.0.0:Data.Either 423bee738f25e5ee983d072216009be8
+import  -/  base-4.12.0.0:GHC.Base c00b75f0b052d05c55ba6a4dd1c63b26
+import  -/  base-4.12.0.0:GHC.Err ea5e313ef4146b40b5d8b27aa168e736
 import  -/  base-4.12.0.0:Prelude 3c779dfd6448bdd8e234c336802c2acb
-import  -/  Kudos 583cb8b5179174db2fce8c53fb83b132
-  exports: 417ac356d7b81087643c034d47f7beb9
-import  -/  Store ddcf31b9bce6aa89557722a3ebda93bb
-  exports: c1ba713feb7f4aa37f80da15dd6e1bc6
+import  -/  ghc-prim-0.5.3:GHC.Types 57064c9f957b09bc2e360061ad5cae0b
+import  -/  Kudos 3a9ec88e2dab7610d6fb68f616454ddb
+  exports: fb799f3e6be195355e205c0ae0c1ec8b
+  Message 61d38c3a24ea62af1e94fb5a03db2bf6
+  Owner 5460d44ca3116d93a39593e299027d63
+  Store 0e22affd449e6983732404ca8c18f4d7
+  add 0e22affd449e6983732404ca8c18f4d7
+  make 88446fcf4fb816ea7fd993a154c37ab6
+import  -/  Result 84fcd3e0d8d6e9210ed9876cb66fcc2a
+  exports: 74988e8de878ed76f9098bee87d3b34d
+  Error 3dfbac8a62e08644faa83a22dbb56bf9
+  Ok c4fdb2b4cfac688996b6908575a42fe9
+  Result 1491d163d4dc72427c2cc5023748b91a
+import  -/  text-1.2.3.1:Data.Text 1e51a010d8f8a6fa41d8ea82d69faf13
+import  -/  text-1.2.3.1:Data.Text.Internal 537e168590e8068f673f691833f78483
+bfc468c6af62311b5b5039ace47e75b4
+  $tc'Format :: GHC.Types.TyCon
+f154b33e664f86809a2ef5a0782135ed
+  $tc'UserDoesNotExist :: GHC.Types.TyCon
+a3dcba35877cd13bc6ab6e562050104b
+  $tcInvalidInput :: GHC.Types.TyCon
 1a143bdc238b149f3e08d22092323734
   $trModule :: GHC.Types.Module
+48f5883629683a129f944f4535a5daf9
+  type Input = Data.Text.Internal.Text
+8ca6b5a310427b2417111938634e70f6
+  data InvalidInput = UserDoesNotExist | Format
+8178261379bf4cf47e5b560ec5814126
+  give ::
+    Kudos.Store GHC.Types.IO
+    -> Command.Input -> GHC.Types.IO Result.Result
+f4f333729ba2e4c588feb0d527d21e21
+  list ::
+    Kudos.Store GHC.Types.IO
+    -> Command.Input
+    -> Data.Either.Either Command.InvalidInput Result.Result
+2c4cfcf8ef828b4486f3bdf924876a48
+  parseKudos ::
+    Command.Input
+    -> Data.Either.Either
+         Command.InvalidInput (Kudos.Owner, Kudos.Message)
+9ec40fb50bb304422918b78dc76ad779
+  showMistake :: Command.InvalidInput -> Data.Text.Internal.Text
 trusted: none
 require own pkg trusted: False
 module header:

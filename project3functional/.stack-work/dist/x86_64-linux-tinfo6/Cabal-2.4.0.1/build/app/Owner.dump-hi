@@ -1,0 +1,87 @@
+
+==================== FINAL INTERFACE ====================
+2019-04-18 09:38:07.516449608 UTC
+
+interface chatbot-0.1.0.0-67bWLjpjAuUrBADJYEaEy:Owner 8064
+  interface hash: b1eca673529f7c000104d7bb0e8e7424
+  ABI hash: ae3bd1a71c1787ae5c6010b4c0b25184
+  export-list hash: cf9f091c8c1fcf6c68ab4da747dc44a3
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: 2a9101b7e6c45fb297dec1e2ea3c107c
+  opt_hash: d0a78e7b344f95c7406be35c9b75e196
+  hpc_hash: 93b885adfe0da089cdf634904fd59f71
+  plugin_hash: ad164012d6b1e14942349d58b1132007
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Owner.containsSep
+  Owner.isNumberOrCharacter
+  Owner.parse
+  Owner.reader
+  Owner.Owner{Owner.UnsafeOwner unOwner}
+module dependencies:
+package dependencies: array-0.5.3.0 base-4.12.0.0* binary-0.8.6.0
+                      bytestring-0.10.8.2 containers-0.6.0.1 deepseq-1.4.4.0
+                      ghc-prim-0.5.3 integer-gmp-1.0.2.0 text-1.2.3.1*
+orphans: text-1.2.3.1:Data.Text binary-0.8.6.0:Data.Binary.Generic
+         bytestring-0.10.8.2:Data.ByteString.Builder
+         text-1.2.3.1:Data.Text.Show base-4.12.0.0:GHC.Float
+         base-4.12.0.0:GHC.Base
+family instance modules: base-4.12.0.0:Control.Applicative
+                         base-4.12.0.0:Data.Complex base-4.12.0.0:Data.Functor.Compose
+                         base-4.12.0.0:Data.Functor.Const
+                         base-4.12.0.0:Data.Functor.Identity
+                         base-4.12.0.0:Data.Functor.Product base-4.12.0.0:Data.Functor.Sum
+                         base-4.12.0.0:Data.Monoid base-4.12.0.0:Data.Semigroup
+                         base-4.12.0.0:Data.Semigroup.Internal base-4.12.0.0:Data.Version
+                         base-4.12.0.0:Data.Void base-4.12.0.0:GHC.Exts
+                         base-4.12.0.0:GHC.Generics base-4.12.0.0:GHC.IO.Exception
+                         containers-0.6.0.1:Data.IntMap.Internal
+                         containers-0.6.0.1:Data.IntSet.Internal
+                         containers-0.6.0.1:Data.Map.Internal
+                         containers-0.6.0.1:Data.Sequence.Internal
+                         containers-0.6.0.1:Data.Set.Internal containers-0.6.0.1:Data.Tree
+                         text-1.2.3.1:Data.Text
+import  -/  base-4.12.0.0:Data.Foldable 5f70351366640f007be66681d2212df8
+import  -/  base-4.12.0.0:Data.Maybe 9b76a39e833465c3c5b3c078b431417f
+import  -/  base-4.12.0.0:GHC.Base c00b75f0b052d05c55ba6a4dd1c63b26
+import  -/  base-4.12.0.0:GHC.Read 0604f4258fedea7e033ea68c6d7b40f2
+import  -/  base-4.12.0.0:Prelude 3c779dfd6448bdd8e234c336802c2acb
+import  -/  base-4.12.0.0:Text.ParserCombinators.ReadP dc25426797970ed7b2e4ed7ab98385d0
+import  -/  base-4.12.0.0:Text.ParserCombinators.ReadPrec 9773f55573a0fca144b6966b06590c4e
+import  -/  base-4.12.0.0:Text.Read 87f80fc2538a174aea915dd98f74fc0a
+import  -/  text-1.2.3.1:Data.Text 1e51a010d8f8a6fa41d8ea82d69faf13
+import  -/  text-1.2.3.1:Data.Text.Internal 537e168590e8068f673f691833f78483
+import  -/  text-1.2.3.1:Data.Text.Read c128f6ab02b82cc7b641b89039d32d68
+import  -/  text-1.2.3.1:Data.Text.Show b788b7edd0f190b1a7c4f4aba0e35f18
+114e6da1f42f70d563cdb6058394cba1
+  $fReadOwner :: GHC.Read.Read Owner.Owner
+  DFunId
+68fcae695468b4cd71f4a82284668335
+  $tc'UnsafeOwner :: GHC.Types.TyCon
+97f4292c3ec97e3735c0887b1deecdbf
+  $tcOwner :: GHC.Types.TyCon
+2b4ba9c17074631edbb395c2940a752f
+  $trModule :: GHC.Types.Module
+114e6da1f42f70d563cdb6058394cba1
+  newtype Owner = UnsafeOwner {unOwner :: Data.Text.Internal.Text}
+c1385eae8ac6aa4217686703ebd95a51
+  containsSep :: Text.ParserCombinators.ReadP.ReadP GHC.Base.String
+0718c47790a505d26572177909cbf27b
+  isNumberOrCharacter :: GHC.Types.Char -> GHC.Types.Bool
+e3f6af76e20b419b7206b6ef4797aa2a
+  parse :: Data.Text.Internal.Text -> GHC.Maybe.Maybe Owner.Owner
+12720fa646c55b4ebd2a00bc873104f6
+  reader :: Text.ParserCombinators.ReadP.ReadP Owner.Owner
+114e6da1f42f70d563cdb6058394cba1
+  unOwner :: Owner.Owner -> Data.Text.Internal.Text
+  RecSel Left Owner.Owner
+instance [safe] GHC.Read.Read [Owner.Owner] = Owner.$fReadOwner
+trusted: safe
+require own pkg trusted: False
+module header:
+  Nothing
+declaration docs:
+arg docs:
+

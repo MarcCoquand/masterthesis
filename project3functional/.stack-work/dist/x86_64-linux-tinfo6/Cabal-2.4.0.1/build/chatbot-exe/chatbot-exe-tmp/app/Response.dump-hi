@@ -1,0 +1,229 @@
+
+==================== FINAL INTERFACE ====================
+2019-04-18 07:11:51.659674997 UTC
+
+interface main:Response 8064
+  interface hash: 36b10bd02d78517f9a5920b01553dbfc
+  ABI hash: 4b25435911a91463bb3bd9dfdf31dd71
+  export-list hash: f7524c84f0424a076463b62d0e7ab8a9
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: c1635af5af472d90c2bcddddbea2e9d4
+  opt_hash: d0a78e7b344f95c7406be35c9b75e196
+  hpc_hash: 93b885adfe0da089cdf634904fd59f71
+  plugin_hash: ad164012d6b1e14942349d58b1132007
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Response.handler
+  Response.interpret
+  Response.mockRequest
+  Response.responseHandler
+  Response.server
+  Response.slackResponse
+  Response.Request{Response.Request getBody}
+  Response.Response{Response.Response send}
+module dependencies: Input Kudos Result Result.ContentList
+                     Result.Slack
+package dependencies: MonadRandom-0.5.1.1 QuickCheck-2.12.6.1
+                      aeson-1.4.2.0 appar-0.1.7 array-0.5.3.0 async-2.2.1
+                      attoparsec-0.13.2.2 auto-update-0.1.4.1 base-4.12.0.0
+                      base-compat-0.10.5 base16-bytestring-0.1.1.6
+                      base64-bytestring-1.0.0.2 basement-0.0.10 binary-0.8.6.0
+                      blaze-builder-0.4.1.0 bsb-http-chunked-0.0.0.4 bson-0.3.2.7
+                      byteorder-1.0.4 bytestring-0.10.8.2 case-insensitive-1.2.0.11
+                      containers-0.6.0.1 cryptohash-0.11.9 cryptonite-0.25
+                      data-binary-ieee754-0.4.4 data-default-class-0.1.2.0
+                      deepseq-1.4.4.0 directory-1.3.3.0 dlist-0.8.0.6 entropy-0.4.1.4
+                      erf-2.0.0.0 exceptions-0.10.1 filepath-1.4.2.1 ghc-boot-th-8.6.4
+                      ghc-prim-0.5.3 hashable-1.2.7.0 hashtables-1.2.3.1 http-date-0.0.8
+                      http-types-0.12.3 http2-1.6.4 integer-gmp-1.0.2.0
+                      integer-logarithms-1.0.2.2 iproute-1.7.7 lifted-base-0.2.3.12
+                      memory-0.14.18 monad-control-1.0.2.3 mongoDB-2.4.0.1 mtl-2.2.2
+                      network-2.8.0.0 network-byte-order-0.0.0.0 nonce-1.0.7
+                      parsec-3.1.13.0 pretty-1.1.3.6 primitive-0.6.4.0 psqueues-0.2.7.1
+                      random-1.1 random-shuffle-0.0.4 regex-base-0.93.2
+                      regex-compat-0.95.1 regex-posix-0.95.2 resourcet-1.2.2
+                      scientific-0.3.6.2 scotty-0.11.3 simple-sendfile-0.2.28 stm-2.5.0.0
+                      streaming-commons-0.2.1.0 tagged-0.8.6 template-haskell-2.14.0.0
+                      text-1.2.3.1 tf-random-0.5 time-1.8.0.2 time-locale-compat-0.1.1.5
+                      transformers-0.5.6.2 transformers-base-0.4.5.2 unix-2.7.2.2
+                      unix-compat-0.5.1 unliftio-0.2.10 unliftio-core-0.1.2.0
+                      unordered-containers-0.2.9.0 uuid-types-1.0.3 vault-0.3.1.2
+                      vector-0.12.0.2 wai-3.2.2 wai-extra-3.0.25 warp-3.2.26 word8-0.1.3
+orphans: mongoDB-2.4.0.1:Database.MongoDB.Internal.Util
+         basement-0.0.10:Basement.UArray.Base basement-0.0.10:Basement.Block
+         regex-posix-0.95.2:Text.Regex.Posix.String
+         regex-posix-0.95.2:Text.Regex.Posix.Sequence
+         regex-posix-0.95.2:Text.Regex.Posix.ByteString.Lazy
+         regex-posix-0.95.2:Text.Regex.Posix.ByteString
+         regex-base-0.93.2:Text.Regex.Base.Context
+         attoparsec-0.13.2.2:Data.Attoparsec.Text.Internal
+         vector-0.12.0.2:Data.Vector.Unboxed
+         vector-0.12.0.2:Data.Vector.Fusion.Bundle
+         attoparsec-0.13.2.2:Data.Attoparsec.ByteString.Char8
+         time-1.8.0.2:Data.Time.Format.Parse
+         time-1.8.0.2:Data.Time.LocalTime.Internal.ZonedTime
+         time-1.8.0.2:Data.Time.LocalTime.Internal.LocalTime
+         time-1.8.0.2:Data.Time.Calendar.Gregorian
+         network-2.8.0.0:Network.Socket stm-2.5.0.0:Control.Monad.STM
+         transformers-0.5.6.2:Control.Monad.Trans.Error
+         hashable-1.2.7.0:Data.Hashable.Generic text-1.2.3.1:Data.Text.Lazy
+         text-1.2.3.1:Data.Text binary-0.8.6.0:Data.Binary.Generic
+         bytestring-0.10.8.2:Data.ByteString.Builder
+         text-1.2.3.1:Data.Text.Show base-4.12.0.0:GHC.Float
+         base-4.12.0.0:GHC.Base
+family instance modules: MonadRandom-0.5.1.1:Control.Monad.Trans.Random.Lazy
+                         aeson-1.4.2.0:Data.Aeson.Types.Internal
+                         attoparsec-0.13.2.2:Data.Attoparsec.Internal.Types
+                         base-4.12.0.0:Control.Applicative base-4.12.0.0:Data.Complex
+                         base-4.12.0.0:Data.Functor.Compose base-4.12.0.0:Data.Functor.Const
+                         base-4.12.0.0:Data.Functor.Identity
+                         base-4.12.0.0:Data.Functor.Product base-4.12.0.0:Data.Functor.Sum
+                         base-4.12.0.0:Data.Monoid base-4.12.0.0:Data.Semigroup
+                         base-4.12.0.0:Data.Semigroup.Internal base-4.12.0.0:Data.Version
+                         base-4.12.0.0:Data.Void base-4.12.0.0:GHC.Exts
+                         base-4.12.0.0:GHC.Generics base-4.12.0.0:GHC.IO.Exception
+                         basement-0.0.10:Basement.Block.Base
+                         basement-0.0.10:Basement.Bounded basement-0.0.10:Basement.Monad
+                         basement-0.0.10:Basement.MutableBuilder
+                         basement-0.0.10:Basement.Nat basement-0.0.10:Basement.NonEmpty
+                         basement-0.0.10:Basement.Numerical.Subtractive
+                         basement-0.0.10:Basement.PrimType basement-0.0.10:Basement.String
+                         basement-0.0.10:Basement.String.Encoding.ASCII7
+                         basement-0.0.10:Basement.String.Encoding.ISO_8859_1
+                         basement-0.0.10:Basement.String.Encoding.UTF16
+                         basement-0.0.10:Basement.String.Encoding.UTF32
+                         basement-0.0.10:Basement.Types.OffsetSize
+                         basement-0.0.10:Basement.UArray.Base
+                         basement-0.0.10:Basement.UTF8.Base
+                         containers-0.6.0.1:Data.IntMap.Internal
+                         containers-0.6.0.1:Data.IntSet.Internal
+                         containers-0.6.0.1:Data.Map.Internal
+                         containers-0.6.0.1:Data.Sequence.Internal
+                         containers-0.6.0.1:Data.Set.Internal containers-0.6.0.1:Data.Tree
+                         cryptonite-0.25:Crypto.Hash.Blake2
+                         cryptonite-0.25:Crypto.Hash.Blake2b
+                         cryptonite-0.25:Crypto.Hash.Blake2bp
+                         cryptonite-0.25:Crypto.Hash.Blake2s
+                         cryptonite-0.25:Crypto.Hash.Blake2sp
+                         cryptonite-0.25:Crypto.Hash.Keccak cryptonite-0.25:Crypto.Hash.MD2
+                         cryptonite-0.25:Crypto.Hash.MD4 cryptonite-0.25:Crypto.Hash.MD5
+                         cryptonite-0.25:Crypto.Hash.RIPEMD160
+                         cryptonite-0.25:Crypto.Hash.SHA1 cryptonite-0.25:Crypto.Hash.SHA224
+                         cryptonite-0.25:Crypto.Hash.SHA256 cryptonite-0.25:Crypto.Hash.SHA3
+                         cryptonite-0.25:Crypto.Hash.SHA384
+                         cryptonite-0.25:Crypto.Hash.SHA512
+                         cryptonite-0.25:Crypto.Hash.SHA512t
+                         cryptonite-0.25:Crypto.Hash.SHAKE
+                         cryptonite-0.25:Crypto.Hash.Skein256
+                         cryptonite-0.25:Crypto.Hash.Skein512
+                         cryptonite-0.25:Crypto.Hash.Tiger
+                         cryptonite-0.25:Crypto.Hash.Whirlpool dlist-0.8.0.6:Data.DList
+                         ghc-boot-th-8.6.4:GHC.ForeignSrcLang.Type
+                         ghc-boot-th-8.6.4:GHC.LanguageExtensions.Type
+                         iproute-1.7.7:Data.IP.Addr iproute-1.7.7:Data.IP.Range main:Result
+                         main:Result.ContentList main:Result.Slack
+                         monad-control-1.0.2.3:Control.Monad.Trans.Control
+                         pretty-1.1.3.6:Text.PrettyPrint.Annotated.HughesPJ
+                         pretty-1.1.3.6:Text.PrettyPrint.HughesPJ
+                         primitive-0.6.4.0:Control.Monad.Primitive
+                         primitive-0.6.4.0:Data.Primitive.Array
+                         primitive-0.6.4.0:Data.Primitive.ByteArray
+                         primitive-0.6.4.0:Data.Primitive.PrimArray
+                         primitive-0.6.4.0:Data.Primitive.SmallArray
+                         primitive-0.6.4.0:Data.Primitive.UnliftedArray
+                         resourcet-1.2.2:Control.Monad.Trans.Resource.Internal
+                         scotty-0.11.3:Web.Scotty.Internal.Types tagged-0.8.6:Data.Tagged
+                         template-haskell-2.14.0.0:Language.Haskell.TH.Syntax
+                         text-1.2.3.1:Data.Text text-1.2.3.1:Data.Text.Lazy
+                         unordered-containers-0.2.9.0:Data.HashMap.Base
+                         unordered-containers-0.2.9.0:Data.HashSet
+                         uuid-types-1.0.3:Data.UUID.Types.Internal
+                         uuid-types-1.0.3:Data.UUID.Types.Internal.Builder
+                         vector-0.12.0.2:Data.Vector vector-0.12.0.2:Data.Vector.Primitive
+                         vector-0.12.0.2:Data.Vector.Storable
+                         vector-0.12.0.2:Data.Vector.Unboxed
+                         vector-0.12.0.2:Data.Vector.Unboxed.Base
+import  -/  aeson-1.4.2.0:Data.Aeson 7ec18050df94dd51d2f69af3944967ff
+import  -/  aeson-1.4.2.0:Data.Aeson.Types.Internal 7f9a1a56dd2f406c72f987f53fafa4f6
+import  -/  aeson-1.4.2.0:Data.Aeson.Types.ToJSON 0651cc315621e0dbfdc7948709397d41
+import  -/  base-4.12.0.0:Control.Monad 728c9526f38369d3ad3bf7824b06e87e
+import  -/  base-4.12.0.0:Data.Either 423bee738f25e5ee983d072216009be8
+import  -/  base-4.12.0.0:GHC.Base c00b75f0b052d05c55ba6a4dd1c63b26
+import  -/  base-4.12.0.0:Prelude 3c779dfd6448bdd8e234c336802c2acb
+import  -/  ghc-prim-0.5.3:GHC.Types 57064c9f957b09bc2e360061ad5cae0b
+import  -/  Input 3a484add994b8a217035c9239075c445
+  exports: a3036a11f45b2fa5b18893677ebd762e
+  GiveKudos fe2f7a6910989ea1175959c8df77713d
+  Input e9b70248e814df438beab48a1a336164
+  Valid 7a5c60bfb04c8e2a83cb498b21d2be93
+  WantRanking 5a35ca99c056fa7feec5d2f5abf2ddea
+  WantSpecificKudos 380aabd42948f14b524bb6234f8467d9
+  make 4484b505f0648bae66bab075aeadfdc6
+  parse baec3e60e610fd524dd90d5ffa9bb0c8
+  showMistake 599f4d4b2b9c2f2d02d4cd693ab9ce36
+import  -/  Kudos 59019f6f5717a7aba4c7af8044701d2b
+  exports: 4bab36da584a29afc13b3180cd081c1b
+  Load 652c60d1d3293894df6c9440c12798f8
+  Write 34042c82c175e930c93f7cfa193d2caf
+  add 34042c82c175e930c93f7cfa193d2caf
+  getTenLatest 652c60d1d3293894df6c9440c12798f8
+  show 5ba265c8447922536f499ca5e04dd1b6
+  specific 652c60d1d3293894df6c9440c12798f8
+import  -/  Result d4bf00dacecea1c631d7ec96e63dad4c
+  exports: fb38b4582c6ac014f9c5ffebb324556f
+  Error e83ff97b740cbb3c6676bc8fd88c46c0
+  Ok adbc804a865126be0884745faff50dc0
+  Result 09fdf8b9bea833af2a9aba0bcdee8f63
+  toSlackResponse 2192b73b6ee0a6673a64b6b3784e4d66
+import  -/  scotty-0.11.3:Web.Scotty ed07ac22ef60cd4361588bd92761df47
+import  -/  text-1.2.3.1:Data.Text 1e51a010d8f8a6fa41d8ea82d69faf13
+import  -/  text-1.2.3.1:Data.Text.IO 04a90de6b55e7446693a989e9de89740
+c2dc54298a90b0f9853dfd149c82bd9d
+  $tc'Request :: GHC.Types.TyCon
+9a12fb05ebc5a565cae5ef1efb54609a
+  $tc'Response :: GHC.Types.TyCon
+619a93d5dcaec1264b11f51636eca434
+  $tcRequest :: GHC.Types.TyCon
+728d06b92da29edbd38b072c6e7c9bd9
+  $tcResponse :: GHC.Types.TyCon
+835a2c1ff247119307be0ae491697d9b
+  $trModule :: GHC.Types.Module
+784185bd2c0384b871b977d5efdc970f
+  data Request = Request {getBody :: Input.Input}
+4727032e243be5c2221b375337fb0617
+  data Response
+    = Response {send :: Result.Result
+                        -> GHC.Types.IO Data.Aeson.Types.Internal.Value}
+784185bd2c0384b871b977d5efdc970f
+  getBody :: Response.Request -> Input.Input
+  RecSel Left Response.Request
+3a0ed8cce36f4cdecf6c923229f09f66
+  handler :: (Kudos.Write, Kudos.Load) -> Web.Scotty.ActionM ()
+f9072d689adc5b4aaa7391140c20bb73
+  interpret ::
+    (Kudos.Load, Kudos.Write)
+    -> Input.Valid -> GHC.Types.IO Result.Result
+196c6d5d3aef37c8f9f7f4ea6e296919
+  mockRequest :: Input.Input -> Response.Request
+d2d13b5d27970804cce212c4f313fc14
+  responseHandler :: Response.Response
+4727032e243be5c2221b375337fb0617
+  send ::
+    Response.Response
+    -> Result.Result -> GHC.Types.IO Data.Aeson.Types.Internal.Value
+  RecSel Left Response.Response
+6fc3c65d53bcf4dc47bacd91ff3c5034
+  server ::
+    (Kudos.Load, Kudos.Write, Response.Request, Response.Response)
+    -> GHC.Types.IO Data.Aeson.Types.Internal.Value
+26037620ae29138ea2bd771ea6dee7ce
+  slackResponse :: Response.Response
+trusted: none
+require own pkg trusted: False
+module header:
+  Nothing
+declaration docs:
+arg docs:
+

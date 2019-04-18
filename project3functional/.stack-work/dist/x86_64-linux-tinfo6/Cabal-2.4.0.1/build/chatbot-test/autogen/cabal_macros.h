@@ -11,6 +11,17 @@
   (major1) == 0 && (major2) == 1 && (minor) <= 0)
 #endif /* MIN_VERSION_chatbot */
 
+/* package QuickCheck-2.12.6.1 */
+#ifndef VERSION_QuickCheck
+#define VERSION_QuickCheck "2.12.6.1"
+#endif /* VERSION_QuickCheck */
+#ifndef MIN_VERSION_QuickCheck
+#define MIN_VERSION_QuickCheck(major1,major2,minor) (\
+  (major1) <  2 || \
+  (major1) == 2 && (major2) <  12 || \
+  (major1) == 2 && (major2) == 12 && (minor) <= 6)
+#endif /* MIN_VERSION_QuickCheck */
+
 /* package aeson-1.4.2.0 */
 #ifndef VERSION_aeson
 #define VERSION_aeson "1.4.2.0"
@@ -32,6 +43,17 @@
   (major1) == 4 && (major2) <  12 || \
   (major1) == 4 && (major2) == 12 && (minor) <= 0)
 #endif /* MIN_VERSION_base */
+
+/* package bson-0.3.2.7 */
+#ifndef VERSION_bson
+#define VERSION_bson "0.3.2.7"
+#endif /* VERSION_bson */
+#ifndef MIN_VERSION_bson
+#define MIN_VERSION_bson(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  3 || \
+  (major1) == 0 && (major2) == 3 && (minor) <= 2)
+#endif /* MIN_VERSION_bson */
 
 /* package chatbot-0.1.0.0 */
 #ifndef VERSION_chatbot
@@ -98,6 +120,17 @@
   (major1) == 1 && (major2) <  2 || \
   (major1) == 1 && (major2) == 2 && (minor) <= 3)
 #endif /* MIN_VERSION_text */
+
+/* package time-1.8.0.2 */
+#ifndef VERSION_time
+#define VERSION_time "1.8.0.2"
+#endif /* VERSION_time */
+#ifndef MIN_VERSION_time
+#define MIN_VERSION_time(major1,major2,minor) (\
+  (major1) <  1 || \
+  (major1) == 1 && (major2) <  8 || \
+  (major1) == 1 && (major2) == 8 && (minor) <= 0)
+#endif /* MIN_VERSION_time */
 
 /* package unordered-containers-0.2.9.0 */
 #ifndef VERSION_unordered_containers
@@ -221,7 +254,7 @@
 #endif /* MIN_TOOL_VERSION_strip */
 
 #ifndef CURRENT_COMPONENT_ID
-#define CURRENT_COMPONENT_ID "chatbot-0.1.0.0-Aal8xSUQAE4aYCvUzBCcJ-chatbot-test"
+#define CURRENT_COMPONENT_ID "chatbot-0.1.0.0-7UMSnwpXvZz2FiL3UARvHi-chatbot-test"
 #endif /* CURRENT_COMPONENT_ID */
 #ifndef CURRENT_PACKAGE_VERSION
 #define CURRENT_PACKAGE_VERSION "0.1.0.0"

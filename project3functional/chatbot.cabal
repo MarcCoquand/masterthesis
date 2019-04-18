@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 4f05a2ed7452e096ad8a9033c6842deaafefdb121f56bb446decaaffe18d5502
+-- hash: 274b5dbb2b6758f101c5f56cd90ca8e28969e2aff032451fea35b24da7f963d4
 
 name:           chatbot
 version:        0.1.0.0
@@ -27,19 +27,22 @@ source-repository head
 
 library
   exposed-modules:
-      Command
+      Input
       Kudos
       Main
-      Response.Json
-      Response.Text
-      Store
+      Owner
+      Response
+      Result
+      Result.ContentList
+      Result.Slack
   other-modules:
       Paths_chatbot
   hs-source-dirs:
       app
   default-extensions: OverloadedStrings DeriveGeneric
   build-depends:
-      aeson
+      QuickCheck
+    , aeson
     , base >=4.7 && <5
     , bson
     , containers
@@ -55,18 +58,21 @@ library
 executable chatbot-exe
   main-is: Main.hs
   other-modules:
-      Command
+      Input
       Kudos
-      Response.Json
-      Response.Text
-      Store
+      Owner
+      Response
+      Result
+      Result.ContentList
+      Result.Slack
       Paths_chatbot
   hs-source-dirs:
       app
   default-extensions: OverloadedStrings DeriveGeneric
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      aeson
+      QuickCheck
+    , aeson
     , base >=4.7 && <5
     , bson
     , chatbot
@@ -90,7 +96,8 @@ test-suite chatbot-test
   default-extensions: OverloadedStrings DeriveGeneric
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      aeson
+      QuickCheck
+    , aeson
     , base >=4.7 && <5
     , bson
     , chatbot

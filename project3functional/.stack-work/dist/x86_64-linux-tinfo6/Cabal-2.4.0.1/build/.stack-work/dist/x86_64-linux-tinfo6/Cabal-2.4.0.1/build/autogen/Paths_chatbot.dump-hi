@@ -1,11 +1,11 @@
 
 ==================== FINAL INTERFACE ====================
-2019-04-16 08:39:17.821732078 UTC
+2019-04-18 06:41:55.832212044 UTC
 
-interface chatbot-0.1.0.0-KBzJPM1w73ULhXPO6HMS3o:Paths_chatbot 8064
-  interface hash: d1f50b19794a9b2eadf2b3cabde2026e
-  ABI hash: be869f0abc74ad11552b0ae2069e7579
-  export-list hash: dc8158794468c4d0a2c7249a094db439
+interface chatbot-0.1.0.0-67bWLjpjAuUrBADJYEaEy:Paths_chatbot 8064
+  interface hash: f6e521a24cabf5da5dd3ee06fb6ccea9
+  ABI hash: 74e93147faf58ef5061018e80fe25da2
+  export-list hash: f6c238ba7d650ed889ebe8ad944674cc
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: fd685d5b4245ba88e070d5d4bb3e26d7
   opt_hash: d0a78e7b344f95c7406be35c9b75e196
@@ -41,25 +41,25 @@ import  -/  base-4.12.0.0:Prelude 3c779dfd6448bdd8e234c336802c2acb
 import  -/  base-4.12.0.0:System.Environment c54e0d0308e729fdace6bc37aa74bb52
 import  -/  ghc-prim-0.5.3:GHC.Types 57064c9f957b09bc2e360061ad5cae0b
 addDependentFile "/home/marccoquand/.stack/programs/x86_64-linux/ghc-tinfo6-8.6.4/lib/ghc-8.6.4/include/ghcversion.h" a0ce8aeb7f525f4d70decd6c1d3ca2dd
-addDependentFile ".stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/autogen/cabal_macros.h" 313679b9fa5d2c5fbbe051c3d9d755ad
+addDependentFile ".stack-work/dist/x86_64-linux-tinfo6/Cabal-2.4.0.1/build/autogen/cabal_macros.h" 243b136191b798110fb105a008b6591a
 addDependentFile "/usr/include/stdc-predef.h" 6b894370e916ba2f6079d6d62453af6b
-1c19e9f2a73617e4a9d7662c3bd13241
+e9e3d618eebee53f79b434342111af24
   $trModule :: GHC.Types.Module
-766984dd2dcccbe5cbe3628277cfe9bc
+a53c214408c1d5be8b3054e9db6f77b0
   getBinDir :: GHC.Types.IO GHC.IO.FilePath
-361d916d76bc42d2badcf0deb752fbaf
+085f3671e3e2ab000dffc70cd430fcf9
   getDataDir :: GHC.Types.IO GHC.IO.FilePath
-bfb864b4505e124d3bee71c1571488ee
+18a7ffb1b124554346e1c87fac6741ee
   getDataFileName :: GHC.IO.FilePath -> GHC.Types.IO GHC.IO.FilePath
-02d560aad6512aed2ec7a52769c275c1
+45d1dfc425985b4378322262318e3198
   getDynLibDir :: GHC.Types.IO GHC.IO.FilePath
-184752c0faaa426fa9d2e3852bde1c03
+8bcb864156be1b6cbb8dfccfded26aca
   getLibDir :: GHC.Types.IO GHC.IO.FilePath
-fc585aa85361a9ce0823003a3036e3c2
+07f4573df033741ace53ad8000d5ada7
   getLibexecDir :: GHC.Types.IO GHC.IO.FilePath
-bd88c9dd7e9956bea6f1e4f08c8dfc08
+3a235d47bc805dab38b1060dcee0ab78
   getSysconfDir :: GHC.Types.IO GHC.IO.FilePath
-0544fda2db19355b5ffe6df239defe07
+e09a09327cb7c8cf4b473909b5a74c46
   version :: Data.Version.Version
 trusted: safe
 require own pkg trusted: False

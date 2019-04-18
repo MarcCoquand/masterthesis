@@ -11,6 +11,17 @@
   (major1) == 0 && (major2) == 1 && (minor) <= 0)
 #endif /* MIN_VERSION_chatbot */
 
+/* package QuickCheck-2.12.6.1 */
+#ifndef VERSION_QuickCheck
+#define VERSION_QuickCheck "2.12.6.1"
+#endif /* VERSION_QuickCheck */
+#ifndef MIN_VERSION_QuickCheck
+#define MIN_VERSION_QuickCheck(major1,major2,minor) (\
+  (major1) <  2 || \
+  (major1) == 2 && (major2) <  12 || \
+  (major1) == 2 && (major2) == 12 && (minor) <= 6)
+#endif /* MIN_VERSION_QuickCheck */
+
 /* package aeson-1.4.2.0 */
 #ifndef VERSION_aeson
 #define VERSION_aeson "1.4.2.0"
@@ -243,7 +254,7 @@
 #endif /* MIN_TOOL_VERSION_strip */
 
 #ifndef CURRENT_COMPONENT_ID
-#define CURRENT_COMPONENT_ID "chatbot-0.1.0.0-6d3nPwEnuwqCnU7kogrCuq-chatbot-exe"
+#define CURRENT_COMPONENT_ID "chatbot-0.1.0.0-2W453ScuuBvAGN9jieGwCE-chatbot-exe"
 #endif /* CURRENT_COMPONENT_ID */
 #ifndef CURRENT_PACKAGE_VERSION
 #define CURRENT_PACKAGE_VERSION "0.1.0.0"
