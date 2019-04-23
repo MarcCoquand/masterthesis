@@ -9,9 +9,7 @@ import qualified Web.Scotty         as Web
 
 router :: (Write, Load) -> Web.ScottyM ()
 router handlers =
-    do  Web.post "/slack/addkudo" (Response.handler handlers)
-        Web.post "/slack/listall" (Response.handler handlers)
-        Web.post "/slack/listspecific" (Response.handler handlers)
+    do  Web.post "/slack" (Response.handler handlers)
 
 
 main :: IO ()

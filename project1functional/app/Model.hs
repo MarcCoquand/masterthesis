@@ -1,5 +1,7 @@
+{-# LANGUAGE PatternSynonyms #-}
 module Model
     ( Model
+    , pattern Model
     , currentPlayer
     , handler
     , moveSet
@@ -36,6 +38,10 @@ data Model = UnsafeMakeModel
     , handler       :: MoveSet.Handle
     }
 
+
+-- Pattern synonyms allow us to expose a way to pattern match constructors
+-- without exposing a way to unsafely construct values
+pattern Model <- UnsafeMakeModel
 
 
 -- * CREATION

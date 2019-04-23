@@ -1,11 +1,11 @@
 
 ==================== FINAL INTERFACE ====================
-2019-04-18 07:11:51.375094976 UTC
+2019-04-23 05:34:43.414397652 UTC
 
 interface main:Input 8064
-  interface hash: 345744713d4acf503be685d2a6a27029
-  ABI hash: 3a484add994b8a217035c9239075c445
-  export-list hash: a3036a11f45b2fa5b18893677ebd762e
+  interface hash: 5a5780a21e2ea685c4c993b6389a296e
+  ABI hash: 6293cbfb0d588f928f802103267a1bd9
+  export-list hash: 9a73854dc6bb9a483579e2c73bb77252
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 0c60033632ba669c8e84e70cb26d8f29
   opt_hash: d0a78e7b344f95c7406be35c9b75e196
@@ -17,11 +17,15 @@ interface main:Input 8064
 exports:
   Input.make
   Input.parse
+  Input.parseGiveKudos
+  Input.parseWantRanking
+  Input.parseWantSpecificKudos
+  Input.reader
   Input.showMistake
   Input.Input{Input.UnsafeInput unInput}
   Input.Invalid{Input.Format Input.UserDoesNotExist}
   Input.Valid{Input.GiveKudos Input.WantRanking Input.WantSpecificKudos}
-module dependencies: Kudos
+module dependencies: Kudos Owner
 package dependencies: MonadRandom-0.5.1.1 QuickCheck-2.12.6.1
                       array-0.5.3.0 base-4.12.0.0 base16-bytestring-0.1.1.6
                       base64-bytestring-1.0.0.2 basement-0.0.10 binary-0.8.6.0
@@ -115,15 +119,34 @@ family instance modules: MonadRandom-0.5.1.1:Control.Monad.Trans.Random.Lazy
                          vector-0.12.0.2:Data.Vector vector-0.12.0.2:Data.Vector.Primitive
                          vector-0.12.0.2:Data.Vector.Unboxed
                          vector-0.12.0.2:Data.Vector.Unboxed.Base
+import  -/  QuickCheck-2.12.6.1:Test.QuickCheck bf660067406c963dce88c329bd67a222
+import  -/  QuickCheck-2.12.6.1:Test.QuickCheck.Arbitrary 680b75ef360c6dbef86f3fa8d1a92bdb
+import  -/  QuickCheck-2.12.6.1:Test.QuickCheck.Gen 1596ac1833f07059d8cd2b8f802ebc36
 import  -/  base-4.12.0.0:Data.Either 423bee738f25e5ee983d072216009be8
-import  -/  base-4.12.0.0:GHC.Err ea5e313ef4146b40b5d8b27aa168e736
+import  -/  base-4.12.0.0:GHC.Base c00b75f0b052d05c55ba6a4dd1c63b26
+import  -/  base-4.12.0.0:GHC.Read 0604f4258fedea7e033ea68c6d7b40f2
 import  -/  base-4.12.0.0:Prelude 3c779dfd6448bdd8e234c336802c2acb
-import  -/  Kudos 59019f6f5717a7aba4c7af8044701d2b
-  exports: 4bab36da584a29afc13b3180cd081c1b
-  Kudos 005995c15ba10090d1c76d709e4595e7
-  Owner 5460d44ca3116d93a39593e299027d63
+import  -/  base-4.12.0.0:Text.ParserCombinators.ReadP dc25426797970ed7b2e4ed7ab98385d0
+import  -/  base-4.12.0.0:Text.ParserCombinators.ReadPrec 9773f55573a0fca144b6966b06590c4e
+import  -/  base-4.12.0.0:Text.Read 87f80fc2538a174aea915dd98f74fc0a
+import  -/  Kudos ffbe63128c146aea1ee38d13f8877794
+  exports: c6b74ac78f3b48a3e9a69335b5e8206c
+  Kudos e5d3eba371a2c4e7157a28ebe37a2a2c
+  make 9cd2c9b28bca3794c73368ee8eead5c1
+import  -/  Owner ae33b3cb6fa422dd9707f3c4d29bf450
+  exports: 904e5a3b8edb607866e29b45db1bcec3
+  Owner 7e1ca8fbfdf5f1e4d36c5cb6cc90a4d3
+  reader 16e52cc7ea421ebfab6407220b8310ea
+  toText e424dad3d400e4d50a86bc0634890607
 import  -/  text-1.2.3.1:Data.Text 1e51a010d8f8a6fa41d8ea82d69faf13
 import  -/  text-1.2.3.1:Data.Text.Internal 537e168590e8068f673f691833f78483
+import  -/  text-1.2.3.1:Data.Text.Show b788b7edd0f190b1a7c4f4aba0e35f18
+536f47a3a6b0961fe9c6bd0c504aeed3
+  $fArbitraryInput :: Test.QuickCheck.Arbitrary.Arbitrary Input.Input
+  DFunId
+a83dedf075e4a57782a9ceaef025de42
+  $fReadValid :: GHC.Read.Read Input.Valid
+  DFunId
 49b7496be01556f70c457afa3d016030
   $tc'Format :: GHC.Types.TyCon
 0d501ab83b169dfe19a0d2dadcd5f025
@@ -144,25 +167,37 @@ f2eaebc397e7ce8edc8a881ce8529455
   $tcValid :: GHC.Types.TyCon
 d416c22187601bd9e1ded3c993b06fea
   $trModule :: GHC.Types.Module
-e9b70248e814df438beab48a1a336164
+536f47a3a6b0961fe9c6bd0c504aeed3
   newtype Input = UnsafeInput {unInput :: Data.Text.Internal.Text}
 8c2f3c14234f8e89b4bf3dd35d8b6e7f
   data Invalid = UserDoesNotExist | Format
-7a5c60bfb04c8e2a83cb498b21d2be93
+a83dedf075e4a57782a9ceaef025de42
   data Valid
     = GiveKudos Kudos.Kudos
-    | WantSpecificKudos Kudos.Owner
+    | WantSpecificKudos Owner.Owner
     | WantRanking
-4484b505f0648bae66bab075aeadfdc6
+4414fca62988798d2687a03528253053
   make :: Data.Text.Internal.Text -> Input.Input
-baec3e60e610fd524dd90d5ffa9bb0c8
+c2022ca992e29df787b4021356d2e584
   parse ::
     Input.Input -> Data.Either.Either Input.Invalid Input.Valid
+964f0c163cd57d85babe2f102dafb736
+  parseGiveKudos :: Text.ParserCombinators.ReadP.ReadP Input.Valid
+21000b4303ba85fa7a26cf257ae39a24
+  parseWantRanking :: Text.ParserCombinators.ReadP.ReadP Input.Valid
+87bfe0261b699d08211d2116a66e9e5e
+  parseWantSpecificKudos ::
+    Text.ParserCombinators.ReadP.ReadP Input.Valid
+0b76ead626b1760a8c1a15c15275668c
+  reader :: Text.ParserCombinators.ReadP.ReadP Input.Valid
 599f4d4b2b9c2f2d02d4cd693ab9ce36
   showMistake :: Input.Invalid -> Data.Text.Internal.Text
-e9b70248e814df438beab48a1a336164
+536f47a3a6b0961fe9c6bd0c504aeed3
   unInput :: Input.Input -> Data.Text.Internal.Text
   RecSel Left Input.Input
+instance Test.QuickCheck.Arbitrary.Arbitrary [Input.Input]
+  = Input.$fArbitraryInput
+instance GHC.Read.Read [Input.Valid] = Input.$fReadValid
 trusted: none
 require own pkg trusted: False
 module header:

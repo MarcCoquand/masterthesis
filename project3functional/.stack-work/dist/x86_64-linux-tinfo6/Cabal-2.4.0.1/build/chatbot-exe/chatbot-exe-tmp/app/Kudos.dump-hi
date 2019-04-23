@@ -1,11 +1,11 @@
 
 ==================== FINAL INTERFACE ====================
-2019-04-18 07:12:09.761824961 UTC
+2019-04-23 07:03:18.605958735 UTC
 
 interface main:Kudos 8064
-  interface hash: 22afffeaa0e28d482fe543396b10c7b0
-  ABI hash: 59019f6f5717a7aba4c7af8044701d2b
-  export-list hash: 4bab36da584a29afc13b3180cd081c1b
+  interface hash: 9e5f4fe69086157efc3a8d0edf22b322
+  ABI hash: ffbe63128c146aea1ee38d13f8877794
+  export-list hash: c6b74ac78f3b48a3e9a69335b5e8206c
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: c1635af5af472d90c2bcddddbea2e9d4
   opt_hash: d0a78e7b344f95c7406be35c9b75e196
@@ -36,9 +36,8 @@ exports:
   Kudos.Kudos{Kudos.MakeKudos message owner}
   Kudos.Load{Kudos.MakeLoad count getTenLatest specific}
   Kudos.Message
-  Kudos.Owner
   Kudos.Write{Kudos.MakeWrite add}
-module dependencies:
+module dependencies: Owner
 package dependencies: MonadRandom-0.5.1.1 QuickCheck-2.12.6.1
                       array-0.5.3.0 base-4.12.0.0 base16-bytestring-0.1.1.6
                       base64-bytestring-1.0.0.2 basement-0.0.10 binary-0.8.6.0
@@ -147,6 +146,11 @@ import  -/  bson-0.3.2.7:Data.Bson 0774d2853c6ccf94b43a4d0abf594a97
 import  -/  ghc-prim-0.5.3:GHC.Classes 0f6fd7d7db53fc48f6e1f01803cc6c9d
 import  -/  ghc-prim-0.5.3:GHC.Types 57064c9f957b09bc2e360061ad5cae0b
 import  -/  integer-gmp-1.0.2.0:GHC.Integer.Type 6d87087aea24143d2650f78480d954a3
+import  -/  Owner ae33b3cb6fa422dd9707f3c4d29bf450
+  exports: 904e5a3b8edb607866e29b45db1bcec3
+  Owner 7e1ca8fbfdf5f1e4d36c5cb6cc90a4d3
+  parse 1ffd56f994724152184cb2f2b8d4ca91
+  toText e424dad3d400e4d50a86bc0634890607
 import  -/  mongoDB-2.4.0.1:Database.MongoDB eb3d996c27aae389808b9f4bd34bd7e5
 import  -/  mongoDB-2.4.0.1:Database.MongoDB.Connection 2e3fd8ce8d867e6d7a3459ac5ace9006
 import  -/  mongoDB-2.4.0.1:Database.MongoDB.Internal.Protocol 5f9b7eec8bb1c71016067cc501b91a37
@@ -157,7 +161,7 @@ import  -/  time-1.8.0.2:Data.Time.Clock b20c609b8af758424779328000ddeba3
 import  -/  time-1.8.0.2:Data.Time.Clock.Internal.POSIXTime fb102ec1d341e8e801c114e0ffe819a2
 import  -/  time-1.8.0.2:Data.Time.Clock.POSIX b8687e4e688ce1f6fbe77476528b2edf
 import  -/  unordered-containers-0.2.9.0:Data.HashMap.Lazy c25ecd77099277a24540c27f2183dcb3
-005995c15ba10090d1c76d709e4595e7
+e5d3eba371a2c4e7157a28ebe37a2a2c
   $fArbitraryKudos :: Test.QuickCheck.Arbitrary.Arbitrary Kudos.Kudos
   DFunId
 9a68cd4c34466b0d8e3163437849bd86
@@ -174,81 +178,79 @@ c068d81348abc4a516e818b065981eda
   $tcWrite :: GHC.Types.TyCon
 0b3292c5696575a570b7ec6380051869
   $trModule :: GHC.Types.Module
-005995c15ba10090d1c76d709e4595e7
+e5d3eba371a2c4e7157a28ebe37a2a2c
   data Kudos
-    = MakeKudos {message :: Kudos.Message, owner :: Kudos.Owner}
-652c60d1d3293894df6c9440c12798f8
+    = MakeKudos {message :: Kudos.Message, owner :: Owner.Owner}
+413317c3717c064a1a96d41776744956
   data Load
     = MakeLoad {getTenLatest :: GHC.Types.IO [Kudos.Kudos],
-                specific :: Kudos.Owner -> GHC.Types.IO [Kudos.Kudos],
-                count :: Kudos.Owner -> GHC.Types.IO GHC.Types.Int}
+                specific :: Owner.Owner -> GHC.Types.IO [Kudos.Kudos],
+                count :: Owner.Owner -> GHC.Types.IO GHC.Types.Int}
 61d38c3a24ea62af1e94fb5a03db2bf6
   type Message = Data.Text.Internal.Text
-5460d44ca3116d93a39593e299027d63
-  type Owner = Data.Text.Internal.Text
-34042c82c175e930c93f7cfa193d2caf
+7ae17ac1a56ccf9bd996ff22f5000610
   data Write = MakeWrite {add :: Kudos.Kudos -> GHC.Types.IO ()}
-34042c82c175e930c93f7cfa193d2caf
+7ae17ac1a56ccf9bd996ff22f5000610
   add :: Kudos.Write -> Kudos.Kudos -> GHC.Types.IO ()
   RecSel Left Kudos.Write
-def6ed929d83d8d70a29f21e07fc768d
+5911d330aafedfdd002192964bacb10a
   addQuery ::
     Data.Time.Clock.Internal.POSIXTime.POSIXTime
     -> Kudos.Kudos -> Database.MongoDB.Query.Action GHC.Types.IO ()
-b37cbac3b3ebd0713c1f1f30eeb0dc11
+94a4f13b8b4af83528b30252c1d6c1ca
   addToList :: Kudos.Kudos -> [Kudos.Kudos] -> [Kudos.Kudos]
-652c60d1d3293894df6c9440c12798f8
-  count :: Kudos.Load -> Kudos.Owner -> GHC.Types.IO GHC.Types.Int
+413317c3717c064a1a96d41776744956
+  count :: Kudos.Load -> Owner.Owner -> GHC.Types.IO GHC.Types.Int
   RecSel Left Kudos.Load
-8f4744ebf07ba223d773581ba77669c2
+19e7bd4ec6a909842a5f02c66cafad39
   countQuery ::
-    Kudos.Owner
+    Owner.Owner
     -> Database.MongoDB.Query.Action GHC.Types.IO GHC.Types.Int
-11aecde553b3ece95b8a3e434d2732db
-  countSymbolic :: Kudos.Owner -> [Kudos.Kudos] -> GHC.Types.Int
-4c00967b27286efc726dd52cf1db3916
+b1360bb309f035a59cbfed33dd47cb0a
+  countSymbolic :: Owner.Owner -> [Kudos.Kudos] -> GHC.Types.Int
+8b385d7b9c6460ab3972256034ea6c01
   effectful ::
     GHC.Base.String -> GHC.Types.IO (Kudos.Write, Kudos.Load)
-6f50f8d7310ebed79054e790a0578204
+2650739b02b641c00a15ff6ca36d5674
   fromBson :: Data.Bson.Document -> GHC.Maybe.Maybe Kudos.Kudos
-5f0009d966d5877a0bcd3035513aeff1
+23e29b145485c85e3bc1fce71018cdbe
   fromBsonList :: [Data.Bson.Document] -> [Kudos.Kudos]
-652c60d1d3293894df6c9440c12798f8
+413317c3717c064a1a96d41776744956
   getTenLatest :: Kudos.Load -> GHC.Types.IO [Kudos.Kudos]
   RecSel Left Kudos.Load
-aeb8b303f826c7ccb85e8ceceaa0e4f1
-  isOwner :: Kudos.Owner -> Kudos.Kudos -> GHC.Types.Bool
-08929b4bf289821ee4ad2e5ffc1e8acd
-  make :: Kudos.Message -> Kudos.Owner -> Kudos.Kudos
-005995c15ba10090d1c76d709e4595e7
+db4ef6bdef8d1edb2c98cc0f11c76ff8
+  isOwner :: Owner.Owner -> Kudos.Kudos -> GHC.Types.Bool
+9cd2c9b28bca3794c73368ee8eead5c1
+  make :: Kudos.Message -> Owner.Owner -> Kudos.Kudos
+e5d3eba371a2c4e7157a28ebe37a2a2c
   message :: Kudos.Kudos -> Kudos.Message
   RecSel Left Kudos.Kudos
-2b13c8ea0c327def91da6b4bfe9904a7
+e9d283cc50d3c4b93d20001d2f8ef1ae
   mock :: [Kudos.Kudos] -> GHC.Types.IO (Kudos.Load, Kudos.Write)
-005995c15ba10090d1c76d709e4595e7
-  owner :: Kudos.Kudos -> Kudos.Owner
+e5d3eba371a2c4e7157a28ebe37a2a2c
+  owner :: Kudos.Kudos -> Owner.Owner
   RecSel Left Kudos.Kudos
 bf23112f22e6ccf568af75d8e0d87be8
   runDatabase ::
     Database.MongoDB.Internal.Protocol.Pipe
     -> Database.MongoDB.Query.Action GHC.Types.IO a -> GHC.Types.IO a
-5ba265c8447922536f499ca5e04dd1b6
+160cb23ba96850a650acad3766c88ec0
   show :: Kudos.Kudos -> Data.Text.Internal.Text
 359a42b24a54f14024094c6975e0b604
   sortByTimestamp :: Data.Bson.Document
-652c60d1d3293894df6c9440c12798f8
-  specific :: Kudos.Load -> Kudos.Owner -> GHC.Types.IO [Kudos.Kudos]
+413317c3717c064a1a96d41776744956
+  specific :: Kudos.Load -> Owner.Owner -> GHC.Types.IO [Kudos.Kudos]
   RecSel Left Kudos.Load
-7bdffc288b21f67d692aa447325a7398
+f01ffd9d59d6557a8003c9c3240f04da
   specificQuery ::
-    Kudos.Owner
+    Owner.Owner
     -> Database.MongoDB.Query.Action GHC.Types.IO [Kudos.Kudos]
-49bddf9f392ebd6126b5cb01d12509bb
-  takeTenOwned :: Kudos.Owner -> [Kudos.Kudos] -> [Kudos.Kudos]
-aac30e1527de08a026d2aceeb7437d13
+591205b8c13658c84f08f2dd97df0340
+  takeTenOwned :: Owner.Owner -> [Kudos.Kudos] -> [Kudos.Kudos]
+61ad757c6ed800746848016dd1d83bb6
   tenLatestQuery ::
     Database.MongoDB.Query.Action GHC.Types.IO [Kudos.Kudos]
-3efdd2cbf763c89fe7d246ae70133c15
+6953e3f930d9db66436444a6fa2f3ef5
   toBson :: Kudos.Kudos -> Data.Bson.Document
 c03b1b6a65411dd5bc42a57f126dfd80
   withTimestamp ::

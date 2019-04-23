@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2019-04-18 07:11:51.697174599 UTC
+2019-04-23 05:31:36.060593776 UTC
 
 interface main:Main 8064
-  interface hash: 9ce6c31e1bd7baae05939eb591b6e9e4
-  ABI hash: 4c212815fcd32859b8b2b04d1d77030c
+  interface hash: a6dbbdf980798e4bc8a9a87d5dfbb367
+  ABI hash: 1768653e5c1baaffcf970ffae12015f3
   export-list hash: a0cb6cfb27135d3003e2bd5267365c82
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 31a79952622c6763e6acd447339be3e8
@@ -17,8 +17,8 @@ interface main:Main 8064
 exports:
   Main.main
   Main.router
-module dependencies: Input Kudos Response Result Result.ContentList
-                     Result.Slack
+module dependencies: Input Kudos Owner Response Result
+                     Result.ContentList Result.Slack
 package dependencies: MonadRandom-0.5.1.1 QuickCheck-2.12.6.1
                       aeson-1.4.2.0 appar-0.1.7 array-0.5.3.0 async-2.2.1
                       attoparsec-0.13.2.2 auto-update-0.1.4.1 base-4.12.0.0
@@ -143,20 +143,20 @@ import  -/  base-4.12.0.0:Prelude 3c779dfd6448bdd8e234c336802c2acb
 import  -/  base-4.12.0.0:System.Environment c54e0d0308e729fdace6bc37aa74bb52
 import  -/  base-4.12.0.0:Text.Read 87f80fc2538a174aea915dd98f74fc0a
 import  -/  ghc-prim-0.5.3:GHC.Types 57064c9f957b09bc2e360061ad5cae0b
-import  -/  Kudos 59019f6f5717a7aba4c7af8044701d2b
-  exports: 4bab36da584a29afc13b3180cd081c1b
-  Load 652c60d1d3293894df6c9440c12798f8
-  Write 34042c82c175e930c93f7cfa193d2caf
-  effectful 4c00967b27286efc726dd52cf1db3916
-import  -/  Response 4b25435911a91463bb3bd9dfdf31dd71
+import  -/  Kudos ffbe63128c146aea1ee38d13f8877794
+  exports: c6b74ac78f3b48a3e9a69335b5e8206c
+  Load 413317c3717c064a1a96d41776744956
+  Write 7ae17ac1a56ccf9bd996ff22f5000610
+  effectful 8b385d7b9c6460ab3972256034ea6c01
+import  -/  Response ac23c3dab64583fd34e5bd7580d5692e
   exports: f7524c84f0424a076463b62d0e7ab8a9
-  handler 3a0ed8cce36f4cdecf6c923229f09f66
+  handler 8b1ce6e992823cf56f9efb1caabbf02d
 import  -/  scotty-0.11.3:Web.Scotty ed07ac22ef60cd4361588bd92761df47
 1ca40dc83a9c879effdb760462cc9a2d
   $trModule :: GHC.Types.Module
 8a003a8627e6dbfb4e082e8733b2589f
   main :: GHC.Types.IO ()
-e715f5bf49da42cdb83fcb740fcac348
+ccfd332d48aacb8faa52843d30e6015f
   router :: (Kudos.Write, Kudos.Load) -> Web.Scotty.ScottyM ()
 trusted: none
 require own pkg trusted: False

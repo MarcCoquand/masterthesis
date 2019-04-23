@@ -1,13 +1,13 @@
 
 ==================== FINAL INTERFACE ====================
-2019-04-18 09:38:07.516449608 UTC
+2019-04-23 05:25:39.780808773 UTC
 
 interface chatbot-0.1.0.0-67bWLjpjAuUrBADJYEaEy:Owner 8064
-  interface hash: b1eca673529f7c000104d7bb0e8e7424
-  ABI hash: ae3bd1a71c1787ae5c6010b4c0b25184
-  export-list hash: cf9f091c8c1fcf6c68ab4da747dc44a3
+  interface hash: 739b71fc1d159d11148ea49f0780f746
+  ABI hash: d44f8f964b62c089e3ee9465922d2e91
+  export-list hash: 78e16b2ad074695c355c63b0ff367a5d
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
-  flag hash: 2a9101b7e6c45fb297dec1e2ea3c107c
+  flag hash: 0fa15133df985b10807db413b81c4f6d
   opt_hash: d0a78e7b344f95c7406be35c9b75e196
   hpc_hash: 93b885adfe0da089cdf634904fd59f71
   plugin_hash: ad164012d6b1e14942349d58b1132007
@@ -19,44 +19,136 @@ exports:
   Owner.isNumberOrCharacter
   Owner.parse
   Owner.reader
+  Owner.toText
   Owner.Owner{Owner.UnsafeOwner unOwner}
 module dependencies:
-package dependencies: array-0.5.3.0 base-4.12.0.0* binary-0.8.6.0
-                      bytestring-0.10.8.2 containers-0.6.0.1 deepseq-1.4.4.0
-                      ghc-prim-0.5.3 integer-gmp-1.0.2.0 text-1.2.3.1*
-orphans: text-1.2.3.1:Data.Text binary-0.8.6.0:Data.Binary.Generic
+package dependencies: MonadRandom-0.5.1.1 QuickCheck-2.12.6.1
+                      array-0.5.3.0 base-4.12.0.0 base16-bytestring-0.1.1.6
+                      base64-bytestring-1.0.0.2 basement-0.0.10 binary-0.8.6.0
+                      bson-0.3.2.7 bytestring-0.10.8.2 containers-0.6.0.1
+                      cryptohash-0.11.9 cryptonite-0.25 data-binary-ieee754-0.4.4
+                      data-default-class-0.1.2.0 deepseq-1.4.4.0 entropy-0.4.1.4
+                      erf-2.0.0.0 ghc-boot-th-8.6.4 ghc-prim-0.5.3 hashable-1.2.7.0
+                      hashtables-1.2.3.1 integer-gmp-1.0.2.0 lifted-base-0.2.3.12
+                      memory-0.14.18 monad-control-1.0.2.3 mongoDB-2.4.0.1 mtl-2.2.2
+                      network-2.8.0.0 nonce-1.0.7 parsec-3.1.13.0 pretty-1.1.3.6
+                      primitive-0.6.4.0 random-1.1 random-shuffle-0.0.4 stm-2.5.0.0
+                      template-haskell-2.14.0.0 text-1.2.3.1 tf-random-0.5 time-1.8.0.2
+                      transformers-0.5.6.2 transformers-base-0.4.5.2 unix-2.7.2.2
+                      unliftio-0.2.10 unliftio-core-0.1.2.0 vector-0.12.0.2
+orphans: vector-0.12.0.2:Data.Vector.Unboxed
+         hashable-1.2.7.0:Data.Hashable.Generic
+         vector-0.12.0.2:Data.Vector.Fusion.Bundle
+         text-1.2.3.1:Data.Text.Lazy
+         mongoDB-2.4.0.1:Database.MongoDB.Internal.Util
+         network-2.8.0.0:Network.Socket stm-2.5.0.0:Control.Monad.STM
+         text-1.2.3.1:Data.Text binary-0.8.6.0:Data.Binary.Generic
+         text-1.2.3.1:Data.Text.Show
          bytestring-0.10.8.2:Data.ByteString.Builder
-         text-1.2.3.1:Data.Text.Show base-4.12.0.0:GHC.Float
-         base-4.12.0.0:GHC.Base
-family instance modules: base-4.12.0.0:Control.Applicative
-                         base-4.12.0.0:Data.Complex base-4.12.0.0:Data.Functor.Compose
-                         base-4.12.0.0:Data.Functor.Const
+         basement-0.0.10:Basement.UArray.Base basement-0.0.10:Basement.Block
+         time-1.8.0.2:Data.Time.Format.Parse
+         time-1.8.0.2:Data.Time.LocalTime.Internal.ZonedTime
+         time-1.8.0.2:Data.Time.LocalTime.Internal.LocalTime
+         time-1.8.0.2:Data.Time.Calendar.Gregorian
+         transformers-0.5.6.2:Control.Monad.Trans.Error
+         base-4.12.0.0:GHC.Float base-4.12.0.0:GHC.Base
+family instance modules: MonadRandom-0.5.1.1:Control.Monad.Trans.Random.Lazy
+                         base-4.12.0.0:Control.Applicative base-4.12.0.0:Data.Complex
+                         base-4.12.0.0:Data.Functor.Compose base-4.12.0.0:Data.Functor.Const
                          base-4.12.0.0:Data.Functor.Identity
                          base-4.12.0.0:Data.Functor.Product base-4.12.0.0:Data.Functor.Sum
                          base-4.12.0.0:Data.Monoid base-4.12.0.0:Data.Semigroup
                          base-4.12.0.0:Data.Semigroup.Internal base-4.12.0.0:Data.Version
                          base-4.12.0.0:Data.Void base-4.12.0.0:GHC.Exts
                          base-4.12.0.0:GHC.Generics base-4.12.0.0:GHC.IO.Exception
+                         basement-0.0.10:Basement.Block.Base
+                         basement-0.0.10:Basement.Bounded basement-0.0.10:Basement.Monad
+                         basement-0.0.10:Basement.MutableBuilder
+                         basement-0.0.10:Basement.Nat basement-0.0.10:Basement.NonEmpty
+                         basement-0.0.10:Basement.Numerical.Subtractive
+                         basement-0.0.10:Basement.PrimType basement-0.0.10:Basement.String
+                         basement-0.0.10:Basement.String.Encoding.ASCII7
+                         basement-0.0.10:Basement.String.Encoding.ISO_8859_1
+                         basement-0.0.10:Basement.String.Encoding.UTF16
+                         basement-0.0.10:Basement.String.Encoding.UTF32
+                         basement-0.0.10:Basement.Types.OffsetSize
+                         basement-0.0.10:Basement.UArray.Base
+                         basement-0.0.10:Basement.UTF8.Base
                          containers-0.6.0.1:Data.IntMap.Internal
                          containers-0.6.0.1:Data.IntSet.Internal
                          containers-0.6.0.1:Data.Map.Internal
                          containers-0.6.0.1:Data.Sequence.Internal
                          containers-0.6.0.1:Data.Set.Internal containers-0.6.0.1:Data.Tree
-                         text-1.2.3.1:Data.Text
+                         cryptonite-0.25:Crypto.Hash.Blake2
+                         cryptonite-0.25:Crypto.Hash.Blake2b
+                         cryptonite-0.25:Crypto.Hash.Blake2bp
+                         cryptonite-0.25:Crypto.Hash.Blake2s
+                         cryptonite-0.25:Crypto.Hash.Blake2sp
+                         cryptonite-0.25:Crypto.Hash.Keccak cryptonite-0.25:Crypto.Hash.MD2
+                         cryptonite-0.25:Crypto.Hash.MD4 cryptonite-0.25:Crypto.Hash.MD5
+                         cryptonite-0.25:Crypto.Hash.RIPEMD160
+                         cryptonite-0.25:Crypto.Hash.SHA1 cryptonite-0.25:Crypto.Hash.SHA224
+                         cryptonite-0.25:Crypto.Hash.SHA256 cryptonite-0.25:Crypto.Hash.SHA3
+                         cryptonite-0.25:Crypto.Hash.SHA384
+                         cryptonite-0.25:Crypto.Hash.SHA512
+                         cryptonite-0.25:Crypto.Hash.SHA512t
+                         cryptonite-0.25:Crypto.Hash.SHAKE
+                         cryptonite-0.25:Crypto.Hash.Skein256
+                         cryptonite-0.25:Crypto.Hash.Skein512
+                         cryptonite-0.25:Crypto.Hash.Tiger
+                         cryptonite-0.25:Crypto.Hash.Whirlpool
+                         ghc-boot-th-8.6.4:GHC.ForeignSrcLang.Type
+                         ghc-boot-th-8.6.4:GHC.LanguageExtensions.Type
+                         monad-control-1.0.2.3:Control.Monad.Trans.Control
+                         pretty-1.1.3.6:Text.PrettyPrint.Annotated.HughesPJ
+                         pretty-1.1.3.6:Text.PrettyPrint.HughesPJ
+                         primitive-0.6.4.0:Control.Monad.Primitive
+                         primitive-0.6.4.0:Data.Primitive.Array
+                         primitive-0.6.4.0:Data.Primitive.ByteArray
+                         primitive-0.6.4.0:Data.Primitive.PrimArray
+                         primitive-0.6.4.0:Data.Primitive.SmallArray
+                         primitive-0.6.4.0:Data.Primitive.UnliftedArray
+                         template-haskell-2.14.0.0:Language.Haskell.TH.Syntax
+                         text-1.2.3.1:Data.Text text-1.2.3.1:Data.Text.Lazy
+                         vector-0.12.0.2:Data.Vector vector-0.12.0.2:Data.Vector.Primitive
+                         vector-0.12.0.2:Data.Vector.Unboxed
+                         vector-0.12.0.2:Data.Vector.Unboxed.Base
+import  -/  QuickCheck-2.12.6.1:Test.QuickCheck bf660067406c963dce88c329bd67a222
+import  -/  QuickCheck-2.12.6.1:Test.QuickCheck.Arbitrary 680b75ef360c6dbef86f3fa8d1a92bdb
+import  -/  QuickCheck-2.12.6.1:Test.QuickCheck.Gen 1596ac1833f07059d8cd2b8f802ebc36
 import  -/  base-4.12.0.0:Data.Foldable 5f70351366640f007be66681d2212df8
 import  -/  base-4.12.0.0:Data.Maybe 9b76a39e833465c3c5b3c078b431417f
+import  -/  base-4.12.0.0:Data.Typeable 1095be85dd9009a6503a3981a259490e
+import  -/  base-4.12.0.0:Data.Typeable.Internal e1cb15df401654131814917774d4d7ed
 import  -/  base-4.12.0.0:GHC.Base c00b75f0b052d05c55ba6a4dd1c63b26
+import  -/  base-4.12.0.0:GHC.List 4014a3c8a3b7c31c8325f6bcf1feea4a
 import  -/  base-4.12.0.0:GHC.Read 0604f4258fedea7e033ea68c6d7b40f2
+import  -/  base-4.12.0.0:GHC.Show 838a5d039379d82d9626aae53dfce276
 import  -/  base-4.12.0.0:Prelude 3c779dfd6448bdd8e234c336802c2acb
 import  -/  base-4.12.0.0:Text.ParserCombinators.ReadP dc25426797970ed7b2e4ed7ab98385d0
 import  -/  base-4.12.0.0:Text.ParserCombinators.ReadPrec 9773f55573a0fca144b6966b06590c4e
 import  -/  base-4.12.0.0:Text.Read 87f80fc2538a174aea915dd98f74fc0a
+import  -/  bson-0.3.2.7:Data.Bson 0774d2853c6ccf94b43a4d0abf594a97
+import  -/  ghc-prim-0.5.3:GHC.Classes 0f6fd7d7db53fc48f6e1f01803cc6c9d
+import  -/  mongoDB-2.4.0.1:Database.MongoDB eb3d996c27aae389808b9f4bd34bd7e5
 import  -/  text-1.2.3.1:Data.Text 1e51a010d8f8a6fa41d8ea82d69faf13
 import  -/  text-1.2.3.1:Data.Text.Internal 537e168590e8068f673f691833f78483
 import  -/  text-1.2.3.1:Data.Text.Read c128f6ab02b82cc7b641b89039d32d68
 import  -/  text-1.2.3.1:Data.Text.Show b788b7edd0f190b1a7c4f4aba0e35f18
-114e6da1f42f70d563cdb6058394cba1
+b395c484cef830ee23be358fcbe2bf56
+  $fArbitraryOwner :: Test.QuickCheck.Arbitrary.Arbitrary Owner.Owner
+  DFunId
+b395c484cef830ee23be358fcbe2bf56
+  $fEqOwner :: GHC.Classes.Eq Owner.Owner
+  DFunId
+b395c484cef830ee23be358fcbe2bf56
   $fReadOwner :: GHC.Read.Read Owner.Owner
+  DFunId
+b395c484cef830ee23be358fcbe2bf56
+  $fShowOwner :: GHC.Show.Show Owner.Owner
+  DFunId
+b395c484cef830ee23be358fcbe2bf56
+  $fValOwner :: Data.Bson.Val Owner.Owner
   DFunId
 68fcae695468b4cd71f4a82284668335
   $tc'UnsafeOwner :: GHC.Types.TyCon
@@ -64,21 +156,28 @@ import  -/  text-1.2.3.1:Data.Text.Show b788b7edd0f190b1a7c4f4aba0e35f18
   $tcOwner :: GHC.Types.TyCon
 2b4ba9c17074631edbb395c2940a752f
   $trModule :: GHC.Types.Module
-114e6da1f42f70d563cdb6058394cba1
+b395c484cef830ee23be358fcbe2bf56
   newtype Owner = UnsafeOwner {unOwner :: Data.Text.Internal.Text}
 c1385eae8ac6aa4217686703ebd95a51
   containsSep :: Text.ParserCombinators.ReadP.ReadP GHC.Base.String
 0718c47790a505d26572177909cbf27b
   isNumberOrCharacter :: GHC.Types.Char -> GHC.Types.Bool
-e3f6af76e20b419b7206b6ef4797aa2a
+66715f2e3e9b8bf76be9846fc1d66866
   parse :: Data.Text.Internal.Text -> GHC.Maybe.Maybe Owner.Owner
-12720fa646c55b4ebd2a00bc873104f6
+a7c9f6369958affd45b6896c76e455f3
   reader :: Text.ParserCombinators.ReadP.ReadP Owner.Owner
-114e6da1f42f70d563cdb6058394cba1
+0741b55106d542da0f16f409b099df4e
+  toText :: Owner.Owner -> Data.Text.Internal.Text
+b395c484cef830ee23be358fcbe2bf56
   unOwner :: Owner.Owner -> Data.Text.Internal.Text
   RecSel Left Owner.Owner
-instance [safe] GHC.Read.Read [Owner.Owner] = Owner.$fReadOwner
-trusted: safe
+instance Test.QuickCheck.Arbitrary.Arbitrary [Owner.Owner]
+  = Owner.$fArbitraryOwner
+instance GHC.Classes.Eq [Owner.Owner] = Owner.$fEqOwner
+instance GHC.Read.Read [Owner.Owner] = Owner.$fReadOwner
+instance GHC.Show.Show [Owner.Owner] = Owner.$fShowOwner
+instance Data.Bson.Val [Owner.Owner] = Owner.$fValOwner
+trusted: none
 require own pkg trusted: False
 module header:
   Nothing

@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2019-04-18 07:11:50.210582692 UTC
+2019-04-23 05:34:42.506387525 UTC
 
 interface chatbot-0.1.0.0-67bWLjpjAuUrBADJYEaEy:Response 8064
-  interface hash: f2299f0308a4d7944fdbab6828b72097
-  ABI hash: 4643cc8a38af8899dd2955301ad74b16
+  interface hash: adfcfb6e2a96a3bbb4ccccb60b2c97cc
+  ABI hash: 75a762233852674f93bede9f635608f7
   export-list hash: 438a41986cebfbe56cba2f3823b6eabd
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 2a9101b7e6c45fb297dec1e2ea3c107c
@@ -23,7 +23,7 @@ exports:
   Response.slackResponse
   Response.Request{Response.Request getBody}
   Response.Response{Response.Response send}
-module dependencies: Input Kudos Result Result.ContentList
+module dependencies: Input Kudos Owner Result Result.ContentList
                      Result.Slack
 package dependencies: MonadRandom-0.5.1.1 QuickCheck-2.12.6.1
                       aeson-1.4.2.0 appar-0.1.7 array-0.5.3.0 async-2.2.1
@@ -154,24 +154,24 @@ import  -/  base-4.12.0.0:Control.Monad 728c9526f38369d3ad3bf7824b06e87e
 import  -/  base-4.12.0.0:Data.Either 423bee738f25e5ee983d072216009be8
 import  -/  base-4.12.0.0:GHC.Base c00b75f0b052d05c55ba6a4dd1c63b26
 import  -/  base-4.12.0.0:Prelude 3c779dfd6448bdd8e234c336802c2acb
-import  -/  Input 3828c3d0a9cc55a7d5c09b74868a2821
-  exports: f7e327571f9cda7d9c2f9419c86586c3
-  GiveKudos e0c55ce84076f0046ecb8f0b297b7c83
-  Input 3ebf08f4329aea12e4714516ae8b6583
-  Valid 83ffddef551552532948c937844ae4fc
-  WantRanking 597d081f6d796cf7165a86563cca0ea8
-  WantSpecificKudos 641da5a115069926d09f0020fb6f3a03
-  make 41e949556d78ca290bec2d25c6d29a03
-  parse e1def34913bcceb6b562a21e72033784
+import  -/  Input 39f5fa283bd8f50979761a22a5c31d05
+  exports: 79a9d2fb0fd39e252569752031a86e9c
+  GiveKudos bbc4b5555a20d2a4a3b35493d658830a
+  Input 39251e9a71d0090578e100b53660ef3a
+  Valid b4c3687f07bac266f13cc2861c2f5f00
+  WantRanking 66b1820d2294d7c3dfeb8d8e9cf46710
+  WantSpecificKudos 3d90a8a9e5803c4252fb1bae87a74fd1
+  make 3519f1448d0a4188eecf778aaf987081
+  parse bc664835f36c69eef7e2fe23fe323cba
   showMistake fb9679bd54efb33471d4199eed89556b
-import  -/  Kudos 0275c73fcc1b18771384bbdd28c22778
-  exports: 60a7edd03822dc2ec634b15b765e9755
-  Load 85efda7690fae7045ca123e6bb4e4f70
-  Write b6f743e0f2ec287b9877f2d4cac5366c
-  add b6f743e0f2ec287b9877f2d4cac5366c
-  getTenLatest 85efda7690fae7045ca123e6bb4e4f70
-  show d369f1a5dcc5f18ae5882a7f2091f852
-  specific 85efda7690fae7045ca123e6bb4e4f70
+import  -/  Kudos 4a0054f08e81a7a01ccc8a67ab10b873
+  exports: 8dc6e379799bed61722581b702de361e
+  Load 907772e260140264684bb2ea215ce2a5
+  Write 9cdb3769d7605adc90a28a40ce07a843
+  add 9cdb3769d7605adc90a28a40ce07a843
+  getTenLatest 907772e260140264684bb2ea215ce2a5
+  show a780ec32ecbaabfa56e010a865b9a73e
+  specific 907772e260140264684bb2ea215ce2a5
 import  -/  Result 1cde7f06a5106bd802c3bb83e2441494
   exports: cb27d009c00ab27b737a3c60bf6879b3
   Error e80700ce9b6cc9630fe1a17d40d87cc9
@@ -192,22 +192,22 @@ cd28f9a4e06a8d967abf523265a3a5cc
   $tcResponse :: GHC.Types.TyCon
 08293972997706b457b72636e2427ece
   $trModule :: GHC.Types.Module
-f1f65090023817ddc1524efcac4ae5db
+c924660d2b18a557b11dde9a42e017af
   data Request = Request {getBody :: Input.Input}
 707e4785b872b8bc3c14219af6f4eeee
   data Response
     = Response {send :: Result.Result
                         -> GHC.Types.IO Data.Aeson.Types.Internal.Value}
-f1f65090023817ddc1524efcac4ae5db
+c924660d2b18a557b11dde9a42e017af
   getBody :: Response.Request -> Input.Input
   RecSel Left Response.Request
-37937a57ef3f66ef11717d0aadcecafd
+4dbc8216f909dcbc6c185fb8583fc6fa
   handler :: (Kudos.Write, Kudos.Load) -> Web.Scotty.ActionM ()
-bb3c0848ace2bafddde2aec9d9e2706f
+622a918822ffea61850d93f2c702c0cc
   interpret ::
     (Kudos.Load, Kudos.Write)
     -> Input.Valid -> GHC.Types.IO Result.Result
-bf88f1346b0e369a3a2fdc97c087acbb
+2d9a5565adc2173fb1bbafefe28549c9
   mockRequest :: Input.Input -> Response.Request
 de7d16fe3fb7b113c1648daee472d276
   responseHandler :: Response.Response
@@ -216,7 +216,7 @@ de7d16fe3fb7b113c1648daee472d276
     Response.Response
     -> Result.Result -> GHC.Types.IO Data.Aeson.Types.Internal.Value
   RecSel Left Response.Response
-698f165ff251dc04a435fbfb449281ff
+e314c2649e32360cf810c35e60639923
   server ::
     (Kudos.Load, Kudos.Write, Response.Request, Response.Response)
     -> GHC.Types.IO Data.Aeson.Types.Internal.Value

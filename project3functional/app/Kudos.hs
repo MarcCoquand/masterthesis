@@ -10,10 +10,12 @@ import           Data.Maybe                (catMaybes)
 import           Data.Text                 (Text)
 import qualified Data.Text                 as Text
 import           Data.Time.Clock           (UTCTime)
-import qualified Data.Time.Clock           as Time
+import qualified Data.Time.Clock           as Clock
 import           Data.Time.Clock.POSIX     (POSIXTime, utcTimeToPOSIXSeconds)
 import qualified Database.MongoDB          as Database
 import qualified Database.MongoDB.Query    as Query
+import           Owner                     (Owner)
+import qualified Owner
 import           Test.QuickCheck           (Gen)
 import           Test.QuickCheck.Arbitrary (Arbitrary, arbitrary)
 
@@ -37,10 +39,6 @@ type Message =
     Text
 
 
-type Owner =
-    Text
-
-
 data Kudos =
     MakeKudos
     { message :: Message
@@ -51,8 +49,8 @@ data Kudos =
 instance Arbitrary Kudos where
     arbitrary =
         do  msg <- (arbitrary :: Gen String)
-            own <- (arbitrary :: Gen String)
-            return (MakeKudos (Text.pack msg) (Text.pack own))
+            own <- (arbitrary :: Gen Owner)
+            return (MakeKudos (Text.pack msg) own)
 
 
 make :: Message -> Owner -> Kudos
@@ -62,7 +60,7 @@ make =
 
 show :: Kudos -> Text
 show kudos =
-    "* Kudos to: " <> (owner kudos) <> ", message: " <> (message kudos)
+    "* Kudos to: " <> (Owner.toText . owner $ kudos) <> ", message: " <> (message kudos)
 
 
 
@@ -119,14 +117,16 @@ mock kudosList =
 toBson :: Kudos -> Database.Document
 toBson kudos =
     [ "message" =: (message kudos)
-    , "owner" =: (owner kudos)
+    , "owner" =: (Owner.toText . owner $ kudos)
     ]
 
 fromBson :: Database.Document -> Maybe Kudos
 fromBson document =
     do  m <- document !? "message" :: Maybe Text
-        o <- document !? "owner" :: Maybe Text
-        return (MakeKudos {owner = m, message = m})
+        mo <- document !? "owner" :: Maybe Text
+        o <- Owner.parse mo
+        return (MakeKudos {owner = o, message = m})
+
 
 fromBsonList :: [Database.Document] -> [Kudos]
 fromBsonList documents =
@@ -193,7 +193,7 @@ effectful connection =
         return (MakeWrite
             { add =
                 \kudos ->
-                    do  utcTime <- Time.getCurrentTime
+                    do  utcTime <- Clock.getCurrentTime
                         let timestamp =
                                 utcTimeToPOSIXSeconds utcTime
                         runDatabase pipe

@@ -1,9 +1,9 @@
 
 ==================== FINAL INTERFACE ====================
-2019-04-18 07:11:51.562874174 UTC
+2019-04-23 05:31:35.936463043 UTC
 
 interface main:Result [family instance module] 8064
-  interface hash: f63482c488281a3f34db0ceab7fc6c55
+  interface hash: f1153dc705ca680f946fa71cf06a8feb
   ABI hash: d4bf00dacecea1c631d7ec96e63dad4c
   export-list hash: fb38b4582c6ac014f9c5ffebb324556f
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
@@ -20,7 +20,7 @@ exports:
   Result.Content
   Result.Header
   Result.Result{Result.Error Result.Ok}
-module dependencies: Kudos Result.ContentList Result.Slack
+module dependencies: Kudos Owner Result.ContentList Result.Slack
 package dependencies: MonadRandom-0.5.1.1 QuickCheck-2.12.6.1
                       aeson-1.4.2.0 array-0.5.3.0 attoparsec-0.13.2.2 base-4.12.0.0
                       base-compat-0.10.5 base16-bytestring-0.1.1.6
@@ -138,8 +138,8 @@ import  -/  base-4.12.0.0:GHC.Generics 4de68d952daf417059d0523dece232ea
 import  -/  base-4.12.0.0:GHC.Show 838a5d039379d82d9626aae53dfce276
 import  -/  base-4.12.0.0:Prelude 3c779dfd6448bdd8e234c336802c2acb
 import  -/  ghc-prim-0.5.3:GHC.Classes 0f6fd7d7db53fc48f6e1f01803cc6c9d
-import  -/  Kudos 59019f6f5717a7aba4c7af8044701d2b
-  exports: 4bab36da584a29afc13b3180cd081c1b
+import  -/  Kudos ffbe63128c146aea1ee38d13f8877794
+  exports: c6b74ac78f3b48a3e9a69335b5e8206c
 import  -/  Result.Slack c1598891393914c26062cb4cbd050c2f
   exports: 84b676a8eb747848f52e241e077e2857
   channelResponse 3020ca1c572e6b6a8eeaf7ea07f57b89
