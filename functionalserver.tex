@@ -1,0 +1,117 @@
+\section{Functional servers}
+
+\subsection{RESTful servers}
+
+
+Servers are applications that provide functionality for other programs or
+devices, called clients. Services are servers that allow sharing data or
+resources among clients or to perform a computation.
+
+REST (Representational State Transfer) is a software architecture style that is
+used to construct web services. A so called RESTful web service allow requesting
+systems to access and manipulate textual representations of web services by
+using a set of stateless operations. The architectual constraints of REST are as
+follows:
+
+\begin{description}
+\item[ Client - Server Architecture ] Separate the concerns between user
+interface concerns and data storage concerns.
+\item[Statelessness] Each request contains all the information neccessary to
+perform a request. State can be handled by cookies on the user side or by using
+databases. The server itself contains no state.
+\item[Cacheability] As on the World Wide Web, clients and intermediaries can
+cache responses. Responses must therefore, implicitly or explicitly, define
+themselves as cacheable or not to prevent clients from getting stale or
+inappropriate data in response to further requests. Well-managed caching
+partially or completely eliminates some client–server interactions, further
+improving scalability and performance. 
+\item[Layered system] A client can not tell if it is connected to an end server
+or some intermeditary server. 
+\item[Code on demand] Servers can send functionality of a client via exectuable
+code such as javascript. This can be used to send the frontend for example.
+\item[Uniform interface] The interface of a RESTful server consists of four
+components. The request must specify how it would like the resource to be
+represented; that can for example be as JSON, XML or HTTP which are not the
+servers internal representation. Servers internal representation is therefore
+separated. When the client holds a representation of the resource and metadata
+it has enough information to manipulate or delete the resource. Also the REST
+server has to, in it's response, specify how the representation for the
+resource. This is done using Media type. Some common media types are JSON, HTML
+and XML.
+\end{description}
+
+A typical HTTP request on a restful server consists of one of the  verbs: GET,
+POST, DELETE, PATCH and PUT. They are used as follows:
+
+\begin{description}
+\item[GET] Fetches a resource from the server. Does not perform any mutation. 
+\item[POST] Update or modify a resource.
+\item[PUT] Modify or create a resource.
+\item[DELETE] Remove a resource from the server.
+\item[PATCH] Changes a resource.
+\end{description}
+
+A request will specify a header ``Content-Type'' which contains the media
+representation of the request content. For example if the new resource is
+represented as Json then content-type will be ``application/json''. It also
+specifies a header ``Accept'' which informs which type of representation it
+would like to have, for example Html or Json. 
+
+A request will also contain a route for the resource it is requesting. These
+requests can also have optional parameters called query parameters. In the
+request route:
+
+\begin{lstlisting}
+/api/books?author=Mary&published=1995
+\end{lstlisting}
+
+the $?$ informs that the request contains query parameters which are optional.
+In the example above it specfies that the request wants to access the books
+resource with the parameters author as Mary and published as 1995.
+
+
+When a request has been done the server responds with a status code that
+explains the result of the request. The full list of status codes and their
+descriptions can be found here:
+\url{https://en.wikipedia.org/wiki/List_of_HTTP_status_codes}
+
+\subsection{Implementation concerns for REST apis}
+
+A REST api has to concern themselves with the following:
+
+\begin{itemize}
+\item Ensure that the response has the correct status code.
+\item Ensure that the correct representation is sent to the client.
+\item Parse the route and extract it's parameters. 
+\item Parse the query and extract it's parameters.
+\item Handle errors if the route or query are badly formatted.
+\item Generate the correct response body containing all the resources needed.
+\end{itemize}
+
+Every type of error has a specific status code, these need to be set correctly.
+
+\section{Formal implementation of a server in functional programs}
+
+A server is a function that takes a request of parameter a and transforms it
+into a response of parameter a. I.E.  $Server : Request\ a\rightarrow\ Response\
+a$. The parameter $a$ is the resource requested by the client.
+
+A $Response$ is a record consisting a status code, a set of headers, a
+content type, a function $body: a\rightarrow encoded$, encoding.
+
+\begin{lstlisting}
+  type Response a = {
+    code: StatusCode,
+    headers: Header ,
+    contentType: MediaType,
+    body: a -> encoded,
+    encoding: Encoding.t,
+  };
+\end{lstlisting}
+
+The body of a response is a function that transforms the resource into it's
+requested representation. If the request specifies accept as
+\lstinline{application/json} then the body function turns the body into a json
+format. 
+
+A $Request$ is 

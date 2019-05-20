@@ -101,7 +101,7 @@ So while no exact definition of Functional programming exist, this thesis
 defines it as making functions pure and inheritance being based around
 functionality rather than attributes.
 
-\subsection{Sum types and product types}\label{types}
+\subsection{ADTs: Sum types and product types}\label{types}
 
 A type is in Haskell a \textit{set} of possible values that a given data can
 have. This can be $int$, $char$ and custom defined types. A \textit{sum type} or
@@ -121,6 +121,41 @@ if x > 0 then Just (sqrt x) else Nothing}, the program can force the developer t
 handle the special case of negative numbers. Sum types are useful for
 implementing the Interpreter pattern, explained in
 Section~\ref{interpreterpattern}.
+
+\subsection{GADT}\label{gadt}
+
+a GADT is a \textit{generalized abstract data type}.  They specify, depending on
+the input, what the output should be of that type. A GADT are good for
+implementing \it{domain-specific languages} (DSL).A DSL is a language with a
+limited scope for specific applications. For example a parsing library.
+
+
+\begin{figure}[H]
+    \begin{lstlisting}
+        data Calculator = Number Int         
+          | Add Calculator Calculator 
+          | Multiply Calculator Calculator 
+    \end{lstlisting}
+    \caption{A Calculator GADT with two operations add and multiply.}
+    \label{gadtcalculator}
+\end{figure}
+
+Figure~\ref{gadtcalculator} defines a GADT for a calculator. The calculator can
+do two operations, add and multiply. This allows us to construct mathematical
+expressions, for example \lstinline{(Number 5 `Add` Number 3) `Multiply`
+(Number 4 `Add` Number 3)}. This expression can translates to $(5+3)*(4+3)$.
+Lastly we need to define a way to evaluate the expression.
+Figure~\ref{calculator} defines an evaluation for the program.
+
+\begin{figure}[H]
+    \begin{lstlisting}
+        evaluate :: Calculator -> Int
+        evaluate (Add expr1 expr2) = evaluate expr1 + evaluate expr2
+        evaluate (Multiply expr1 expr2) = evaluate expr1 + evaluate expr2
+    \end{lstlisting}
+    \caption{Evaluator for the calculator}
+    \label{calculator}
+\end{figure}
 
 \subsection{Type classes}\label{typeclass}
 

@@ -21,9 +21,13 @@
 \contentsline {subsection}{\numberline {3.3.1}Measuring testability: Cyclomatic Complexity}{19}
 \contentsline {subsection}{\numberline {3.3.2}Cyclomatic Complexity in Functional Programming}{21}
 \contentsline {subsection}{\numberline {3.3.3}Mental complexity: Cognitive Dimensions}{23}
-\contentsline {chapter}{\numberline {4}Method: Case studies}{26}
-\contentsline {chapter}{\numberline {5}Results}{29}
-\contentsline {section}{\numberline {5.1}Limitations}{29}
-\contentsline {subsection}{\numberline {5.1.1}Improvements to implementation}{29}
-\contentsline {section}{\numberline {5.2}future work}{29}
-\contentsline {subsection}{\numberline {5.2.1}Relations to cardinality}{29}
+\contentsline {section}{\numberline {3.4}Functional servers}{25}
+\contentsline {subsection}{\numberline {3.4.1}RESTful servers}{25}
+\contentsline {subsection}{\numberline {3.4.2}Implementation concerns for REST apis}{27}
+\contentsline {section}{\numberline {3.5}Implementing RESTful apis for functional programs}{27}
+\contentsline {chapter}{\numberline {4}Method: Case studies}{28}
+\contentsline {chapter}{\numberline {5}Results}{31}
+\contentsline {section}{\numberline {5.1}Limitations}{31}
+\contentsline {subsection}{\numberline {5.1.1}Improvements to implementation}{31}
+\contentsline {section}{\numberline {5.2}future work}{31}
+\contentsline {subsection}{\numberline {5.2.1}Relations to cardinality}{31}
