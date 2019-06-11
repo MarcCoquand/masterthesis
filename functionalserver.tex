@@ -1,5 +1,7 @@
 \section{Functional servers}
 
+\theoremstyle{definition}
+\newtheorem{exmp}{Example}[section]
 \subsection{RESTful servers}
 
 
@@ -93,8 +95,9 @@ Every type of error has a specific status code, these need to be set correctly.
 \section{Formal implementation of a server in functional programs}
 
 A server is a function that takes a request of parameter a and transforms it
-into a response of parameter a. I.E.  $Server : Request\ a\rightarrow\ Response\
-a$. The parameter $a$ is the resource requested by the client.
+into a response of parameter a. I.E.  $Server : Request\
+a\rightarrow Response\
+b$. The parameter $a$ is the resource requested by the client.
 
 A $Response$ is a record consisting a status code, a set of headers, a
 content type, a function $body: a\rightarrow encoded$, encoding.
@@ -114,4 +117,75 @@ requested representation. If the request specifies accept as
 \lstinline{application/json} then the body function turns the body into a json
 format. 
 
-A $Request$ is 
+A $Request$ is a monad that parses the incoming request. It transforms that
+into a request handler that then feeds the result into a response. A handle is a
+function $a\rightarrow Response b$. The extended definition of the server
+is then $Server : Request a \rightarrow (a \rightarrow Response b) \rightarrow
+Response b$.
+
+\section{Cause, a functional REST framework}
+
+Cause is a high-level web framework that allows writing composable REST
+frameworks in Reasonml. In Cause, a REST api is a \textit{specification}, where
+the user specifies endpoints. An endpoint in a spec contains the following:
+
+\begin{itemize}
+\item An ordered set of required parameters to execute a handler.
+\item An ordered set of optional query parameters to execute a handler.
+\item A set of accepted representations for a resource as well as an
+accompanying function that encodes the resource to the represenation.
+\item A handler to execute, where a handler must take the correct parameters and
+return the correct resource.
+\item A set of http request methods supported by the endpoint.
+\end{itemize}
+
+An endpoint is composable, meaning that you can create a \textit{connector
+endpoint} which consists of two \textit{subendpoints}. The following operations
+exist for endpoints
+
+\begin{description}
+\item [oneOf $: list(endpoint)$] Creates a connector endpoint out of a list of
+subendpoints.
+\item [is $: string \rightarrow endpoint$] Checks that the request contains a
+given string in it's path.
+\item [int $: endpoint$] Extracts an integer from the request path and feeds it
+into the handler.
+\item [text $: endpoint$] Extracts a text from the request path and feeds it into
+the handler.
+\item [contentType $: list(MediaType,a \rightarrow encoded)$] Checks that the
+request contains one of the supported media types and sets the appropriate
+encoder.
+\item [accept $: list(MediaType,encoded \rightarrow a)$] Takes a set of
+supported mediatypes and a way to transform the encoded value into the value.
+\item [($\rightarrowtail$) $: endpoint \rightarrow endpoint \rightarrow endpoint$] 
+An operator for composing endpoints.
+\item [get $: handler \rightarrow endpoint \rightarrow endpoint$] Connects an
+endpoint to a handler and ensures that endpoint accepts only GET.
+\item [delete $: handler \rightarrow endpoint \rightarrow endpoint$] Connects an
+endpoint to a handler and ensures that endpoint accepts only DELETE.
+\item [put $: handler \rightarrow endpoint \rightarrow endpoint$] Connects an
+endpoint to a handler and ensures that endpoint accepts only PUT.
+\item [post $: handler \rightarrow endpoint \rightarrow endpoint$] Connects an
+endpoint to a handler and ensures that endpoint accepts only POST.
+\end{description}
+
+\begin{exmp}
+A RESTful api User manages user data for a server at the path \lstinline{/user}.
+It has the handlers $getUser: id \rightarrow list(User)$, $postUser : User
+\rightarrow result$, $deleteUser : id \rightarrow result$. The user endpoint
+then becomes
+
+
+\begin{lstlisting}[escapeinside={((*}{*))}]
+userSpec = is("user") ((*$\rightarrowtail$*)) oneOf(
+    [int ((*$\rightarrowtail$*)) contentType([(Json,encodeJson)]) ((*$\rightarrowtail$*)) get(getHandler),
+    ,accept([(Json,decodeJson)]) ((*$\rightarrowtail$*)) post(postHandler),
+    ,int ((*$\rightarrowtail$*)) delete(deleteHandler),
+    ])
+\end{lstlisting}
+\end{exmp}
+
+
+
+
+

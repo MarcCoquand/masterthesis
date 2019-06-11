@@ -125,10 +125,9 @@ Section~\ref{interpreterpattern}.
 \subsection{GADT}\label{gadt}
 
 a GADT is a \textit{generalized abstract data type}.  They specify, depending on
-the input, what the output should be of that type. A GADT are good for
-implementing \it{domain-specific languages} (DSL).A DSL is a language with a
-limited scope for specific applications. For example a parsing library.
-
+the input, what the output should be of that type. GADT enables implementing
+\textit{domain-specific languages} (DSL). A DSL is a language with a limited
+scope for specific applications. For example a parsing library or a calculator.
 
 \begin{figure}[H]
     \begin{lstlisting}
@@ -140,11 +139,20 @@ limited scope for specific applications. For example a parsing library.
     \label{gadtcalculator}
 \end{figure}
 
+\begin{figure}[H]
+    \begin{lstlisting}
+        mathExpression = (Number 5 `Add` Number 3) `Multiply` (Number 4 `Add` Number 3)
+    \end{lstlisting}
+    \caption{A mathematical expression constructed using the GADT in
+    figure~\ref{gadtcalculator}}
+    \label{mathexpressiongadt}
+\end{figure}
+
+
 Figure~\ref{gadtcalculator} defines a GADT for a calculator. The calculator can
 do two operations, add and multiply. This allows us to construct mathematical
-expressions, for example \lstinline{(Number 5 `Add` Number 3) `Multiply`
-(Number 4 `Add` Number 3)}. This expression can translates to $(5+3)*(4+3)$.
-Lastly we need to define a way to evaluate the expression.
+expressions. The expression in Figure~\ref{mathexpressiongadt} can translates to
+$(5+3)*(4+3)$ by defining a way to evaluate the expression.
 Figure~\ref{calculator} defines an evaluation for the program.
 
 \begin{figure}[H]
