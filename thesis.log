@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.20)  20 MAY 2019 17:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.20)  11 JUN 2019 11:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -694,41 +694,41 @@ File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 178.
 
-[13] [14] [15] [16]
-Overfull \hbox (7.14787pt too wide) in paragraph at lines 325--332
+[13] [14] [15] [16] [17]
+Overfull \hbox (7.14787pt too wide) in paragraph at lines 368--375
 \T1/cmr/m/n/12 pen-den-cies. In Fig-ure 3.8[] the ef-fect-ful code is the func-
 tion \T1/cmtt/m/n/12 Time.Posix.getPOSIXTime\T1/cmr/m/n/12 ,
  []
 
-[17] [18]
-Overfull \hbox (12.71443pt too wide) in paragraph at lines 410--413
+[18] [19]
+Overfull \hbox (12.71443pt too wide) in paragraph at lines 453--456
 []\T1/cmr/m/n/12 Here, re-spon-si-bil-ity means ``rea-son to change''. Mod-
  []
 
-[19] [20]
+[20] [21]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
- [21] [22]
+ [22] [23]
 Missing character: There is no ; in font nullfont!
 
-Underfull \hbox (badness 2990) in paragraph at lines 615--615
+Underfull \hbox (badness 2990) in paragraph at lines 658--658
  [][][][]\T1/cmtt/m/n/12 []
  []
 
-[23] [24] [25]) (./functionalserver.tex
+[24] [25] [26]) (./functionalserver.tex
 \c@exmp=\count138
- [26] [27] [28]
+ [27] [28] [29]
 Overfull \hbox (2.34186pt too wide) in paragraph at lines 155--158
 []\T1/cmr/m/n/12 Checks that the re-quest con-tains one
  []
 
-[29]) (./method.tex [30]
+[30]) (./method.tex [31]
 Chapter 4.
-[31
+[32
 
-] [32]) [33]
+] [33]) [34]
 Chapter 5.
-(./thesis.bbl [34
+(./thesis.bbl [35
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 36--40
@@ -736,7 +736,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 36--40
 d-[]to-[]end-[]tests . html$\T1/cmr/m/n/12 ,
  []
 
-[35
+[36
 
 ]
 Underfull \hbox (badness 5490) in paragraph at lines 64--66
@@ -756,12 +756,12 @@ Underfull \hbox (badness 6396) in paragraph at lines 84--88
 Septem-ber
  []
 
-) [36] (./thesis.aux) ) 
+) [37] (./thesis.aux) ) 
 Here is how much of TeX's memory you used:
- 17626 strings out of 492701
- 328126 string characters out of 6134504
- 451702 words of memory out of 5000000
- 21148 multiletter control sequences out of 15000+600000
+ 17627 strings out of 492701
+ 328139 string characters out of 6134504
+ 451715 words of memory out of 5000000
+ 21149 multiletter control sequences out of 15000+600000
  22895 words of font info for 59 fonts, out of 8000000 for 9000
  1137 hyphenation exceptions out of 8191
  55i,8n,60p,831b,1692s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -785,10 +785,10 @@ sr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/cm-super/sfti1728.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on thesis.pdf (38 pages, 441278 bytes).
+Output written on thesis.pdf (39 pages, 445373 bytes).
 PDF statistics:
- 213 PDF objects out of 1000 (max. 8388607)
- 151 compressed objects within 2 object streams
+ 216 PDF objects out of 1000 (max. 8388607)
+ 153 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -206,6 +206,30 @@ will be described in the following sections.
 \end{figure}
 
 
+
+\subsection{Functors and Contravariant Functors}
+
+A useful type class is the Functor type class. It defines a function 
+$map : (a\rightarrow b) \rightarrow m\ a \rightarrow m\ b$. So every type that
+can be mapped over is a Functor. Examples of this are lists, where map morphs
+every value in the list from a to b. Another example is for Maybe, defined
+in~\ref{types}. A Functor for Maybe checks if the value is $Just\ a$, if so it
+morphs that value to $Just\ b$, otherwise it returns $Nothing$. 
+
+Not every polymorphic type is a Functor. For example the type $Predicate = a
+\rightarrow Boolean$, is a function that when given some value $a$ returns a
+boolean. This type can not be a functor due to the type parameter being the
+\textit{input} of the function. When the polymorphic value of the type is the
+input it is in negative position and the type is \textit{contravariant}. Similarity when the
+type parameter is the output of a function, it is in positive position and
+the type is covariant. A type can be a Functor if covariant.
+
+Contravariant Functors are type classes that define a function $contramap :
+(a\rightarrow b) \rightarrow m\ b \rightarrow m\ a$. These are useful for
+defining how the value should be \textit{consumed}. So for example a type
+$encoder : a\rightarrow encoded$, defines an encoder. The contravariant functor
+would allow transforming the encoder into intermediate value.
+
 \subsection{Brief introduction to Monads for side effects}\label{monads}
 
 Monads\footnote{\url{en.wikipedia.org/wiki/Monad_(functional_programming)}} are
@@ -241,6 +265,25 @@ explicitly writing this check, so composing \texttt{safeSqrt} and
 \texttt{safeLog} using bind becomes \texttt{safeSqrtLog n = safeSqrt n >>=
 safeLog}. The same idea applies for effectful computations such as fetching data
 from a database.
+
+\subsection{Strong Profunctors}\label{profunctor}
+
+Some types are both contravariant and covariant, such as the type $computation\
+a\ b = a\rightarrow p\ b$, since computation has a type parameter in positive
+and negative position. A Profunctor is a type class that contains the function
+$dimap : (a\rightarrow b)\rightarrow (c\rightarrow d) \rightarrow p\ b\
+c\rightarrow p\ a\ d$. $dimap$ both contramaps and maps the type at the same
+time. So since $computation$ is both covariant and contravariant it is also a
+profunctor. 
+
+A Strong Profunctor defines two functions, $first : p\ a\ b\rightarrow p\ (a,c)\
+(b,c)$, $second : p\ a\ b\rightarrow p\ (c,a)\ (c,b)$. This reveals the core
+strength of Profunctors, to compute two separate values and then merge those
+together. By defining a function $merge : Strong\ p\ \Rightarrow p\ a\ (b
+\rightarrow c) \rightarrow p\ (a,b) \rightarrow c$, a Strong Profunctor gives a
+``memory'' to the function, so that values can be computed both on the input and
+the output of the function. How this is useful will be demonstrated in the
+functional REST server chapter.
 
 \subsection{Interpreter pattern for testability}\label{interpreterpattern}
 
