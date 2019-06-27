@@ -5,9 +5,100 @@ maintainability and testability. It aims to establish what are the current
 methods of developing applications and how software engineers today approach
 testing. 
 
+
+\section{Introduction to REST servers}
+
+Servers are applications that provide functionality for other programs or
+devices, called clients. Services are servers that allow sharing data or
+resources among clients or to perform a computation.
+
+REST (Representational State Transfer) is a software architecture style that is
+used to construct web services. A so called RESTful web service allow requesting
+systems to access and manipulate textual representations of web services by
+using a set of stateless operations. The architectual constraints of REST are as
+follows:
+
+\begin{description}
+\item[ Client - Server Architecture ] Separate the concerns between user
+interface concerns and data storage concerns.
+\item[Statelessness] Each request contains all the information neccessary to
+perform a request. State can be handled by cookies on the user side or by using
+databases. The server itself contains no state.
+\item[Cacheability] As on the World Wide Web, clients and intermediaries can
+cache responses. Responses must therefore, implicitly or explicitly, define
+themselves as cacheable or not to prevent clients from getting stale or
+inappropriate data in response to further requests. Well-managed caching
+partially or completely eliminates some client–server interactions, further
+improving scalability and performance. 
+\item[Layered system] A client can not tell if it is connected to an end server
+or some intermeditary server. 
+\item[Code on demand] Servers can send functionality of a client via exectuable
+code such as javascript. This can be used to send the frontend for example.
+\item[Uniform interface] The interface of a RESTful server consists of four
+components. The request must specify how it would like the resource to be
+represented; that can for example be as JSON, XML or HTTP which are not the
+servers internal representation. Servers internal representation is therefore
+separated. When the client holds a representation of the resource and metadata
+it has enough information to manipulate or delete the resource. Also the REST
+server has to, in it's response, specify how the representation for the
+resource. This is done using Media type. Some common media types are JSON, HTML
+and XML.
+\end{description}
+
+A typical HTTP request on a restful server consists of one of the  verbs: GET,
+POST, DELETE, PATCH and PUT. They are used as follows:
+
+\begin{description}
+\item[GET] Fetches a resource from the server. Does not perform any mutation. 
+\item[POST] Update or modify a resource.
+\item[PUT] Modify or create a resource.
+\item[DELETE] Remove a resource from the server.
+\item[PATCH] Changes a resource.
+\end{description}
+
+A request will specify a header ``Content-Type'' which contains the media
+representation of the request content. For example if the new resource is
+represented as Json then content-type will be ``application/json''. It also
+specifies a header ``Accept'' which informs which type of representation it
+would like to have, for example Html or Json. 
+
+A request will also contain a route for the resource it is requesting. These
+requests can also have optional parameters called query parameters. In the
+request route:
+
+\begin{lstlisting}
+/api/books?author=Mary&published=1995
+\end{lstlisting}
+
+the $?$ informs that the request contains query parameters which are optional.
+In the example above it specfies that the request wants to access the books
+resource with the parameters author as Mary and published as 1995.
+
+
+When a request has been done the server responds with a status code that
+explains the result of the request. The full list of status codes and their
+descriptions can be found here:
+\url{https://en.wikipedia.org/wiki/List_of_HTTP_status_codes}
+
+\subsection{Implementation concerns for REST apis}
+
+A REST api has to concern themselves with the following:
+
+\begin{itemize}
+\item Ensure that the response has the correct status code.
+\item Ensure that the correct representation is sent to the client.
+\item Parse the route and extract it's parameters. 
+\item Parse the query and extract it's parameters.
+\item Handle errors if the route or query are badly formatted.
+\item Generate the correct response body containing all the resources needed.
+\end{itemize}
+
+Every type of error has a specific status code, these need to be set correctly.
+
 \section{Architecture} 
 
-When developing large scale applications, often the requirements are as follows:
+When developing large scale server applications, often the requirements are as
+follows:
 
 \begin{itemize}
     \item There is a team of developers
@@ -32,13 +123,13 @@ redeploying requires the entire application to be replaced and tests becomes
 slower; the developer becomes less productive as a result. Since all code is
 written in the same environment introducing new technology becomes harder.
 
-Enter microservices, in a microservice architecture the program comprises of
-small entities that each have their own responsibility. There can be one service
-for metrics, one that interacts with the database and one that takes care of
-frontend. This decomposition allows the developers to easier understand parts of
-the system, scale into autonomous teams, IDE becomes faster since codebases are
-smaller, faults become easier to understand as they each break in isolation.
-Also long-term commitment to one stack becomes less and it becomes easier to
+In a microservice architecture the program comprises of small entities that each
+have their own responsibility. There can be one service for metrics, one that
+interacts with the database and one that takes care of frontend. This
+decomposition allows the developers to easier understand parts of the system,
+scale into autonomous teams, IDE becomes faster since codebases are smaller,
+faults become easier to understand as they each break in isolation.  Also
+long-term commitment to one stack becomes less and it becomes easier to
 introduce a new stack. 
 
 The issue with microservices is that when scaling the complexity becomes harder
@@ -87,12 +178,6 @@ variables.
 
 \subsection{Challenges}
 
-No clear guidelines exists on how many tests should be written. Google
-advocates for a 10\% E2E-tests, 20\% integration tests and the rest to be unit
-tests.~\cite{googleontests} Spotify advocates instead to have a low amount of
-unit tests and instead focus on integration tests and having 80\% integration
-tests, 10\% E2E-tests, 10\% unit tests.~\cite{spotifyontests}
-
 When writing unit tests that depend on some environment, for example fetching a
 user from some database, it can be difficult to test without simulating the
 environment itself. In such cases one can use dependency injections and mock the
@@ -109,46 +194,108 @@ up the environment. Thus it ends up being costly. Also the bigger the space
 that is being tested the less close the test is to actually finding the error,
 thus the test ends up finding some error but it can be hard to track it down.
 
-\subsubsection{Readability}
+Thus to mitigate these issues the correct architecture needs to be created to
+make it easier to test. However if there is nothing forcing the programmer to
+develop software in this way it creates the possibility for the programmer to
+``cheat'' and create software that is not maintainable. 
 
-The hypothesis of this thesis is that after designing a system to be testable
-the code becomes much harder to understand and more complex. The thesis
-investigates if the different language paradigms then end up having vastly
-different complexity and being much less readable after creating testable
-systems and if paradigms factor into that complexity. 
+To mitigate the programmer from making mistakes, some languages feature a type
+system. The type system is a compiler check that ensures that the allowed values
+are entered. Different strengths exist between various programming languages
+with some featuring higher-kinded types (types of types) and other constructs.
 
-\section{Complexity and relation to testability}
+It is possible to combine the type system with design patterns to force the
+developer to create the right thing. Such constructs that exists are monads,
+which can be used to force the separation between pure and impure functionality.
+Later chapters will introduce a REST framework named Cause, which has been
+created to force the developer to create REST compliant servers. 
 
-To establish how to look at complexity and readability, there exists different
-metrics for measuring software quality. Lines of Code (LOC) can be used as a
-measure in the software to find defects.~\cite{defectloc} As this study will
-measure different programming languages and software paradigms where syntax is
-vastly different, it follows that using LOC to measure fault is flawed. Thus,
-here are some other ways to measure complexity:
+However these patterns make heavy use of functional programming. Functional
+programming as a software paradigm is not popular, with the preferred software
+paradigm being Object-oriented programming. Thus this thesis aims to investigate
+the effects of introducing functional constructions to programmers with little
+familiarity with functional programming when it comes to understandability.
+Understandability is important to reduce the learning time for programmers and
+cut down learning costs.
+
+\section{SOLID principles}\label{oop}
+
+
+A poorly written  system can lead to rotten design. Martin Robert, a software
+engineer, claims that there are four big indicators of rotten design. Rotten
+design also leads to problems that were established in Chapter~\ref{background},
+such as making easy unit tests. Thus a system should avoid the following.
+
 
 \begin{description}
 
-    \item [Cyclomatic Complexity] Described further in Chapter~\ref{theory}
+\item[ Rigidity ] is the tendency for software to be difficult to
+change. This makes it difficult to change non-critical parts of the software and
+what can seem like a quick change takes a long time.
 
-    \item [Halsteads metric] A metric that relates to the difficulty of writing
-    or understanding code related to operators and operands.~\cite{bergklaas}
+\item[ Fragility ] is when the software tends to break when doing
+simple changes. It makes the software difficult to maintain, with each fix
+introducing new errors.
 
-    \item [Chidamber and Kemerer Metrics~\cite{chidamber}] A complexity measure
-    for Object-oriented programs. Since this study compares functional to
-    object-oriented progams this metric is ill suited as it does not allow for
-    comparative analysis.
+\item[ Immobility ] is when it is impossible to reuse software from
+other projects in the new project. So engineers discover that, even though they
+need the same module that was in another project, too much work is required to
+decouple and separate the desirable parts.
+
+\item[ Viscosity ] comes in two forms: the viscosity of the environment and the
+    viscosity of the design. When making changes to code there are often
+        multiple solutions. Some solutions preserve the design of the system and
+        some are ``hacks''. The engineer can therefore easily implement an
+        unmaintainable solution. The long compile times affect engineers and
+        makes them attempt to make changes that do not cause long compile times.
+        This leads to viscosity in the environment.
 
 \end{description}
 
-Berg Van Der Klaas explored Halsteads metric and compared OOP and functional
-programming. The study notes that the psychological complexity needs to be taken
-into account and noted that the use higher order functions may affect results
-for functional programs for the Halstead metric. To measure complexity of
-software, a program could instead be measured at a lexical level. No
-quantitative measure was found for measuring the linguistic structures of the
-program and the comprehension. However a qualitative measure called Cognitive
-Dimensions was found will be used instead.  Cognitive Dimensions inspects
-fourteen different aspects and they are not always applicable for all projects.
-Prior research suggests omitting some which has been taken into account and is
-explained further in Chapter~\ref{theory}.~\cite{euguenkiss}
+To avoid creating rotten designs, Martin Robert proposes the SOLID guideline.
+SOLID mnemonic for five design principles to make software more maintainable,
+flexible and understandable. The SOLID guidelines are:
+
+\begin{description}
+    \item [Single responsibility principle] Here, responsibility means ``reason
+        to change''. Modules and classes should have one reason to change and no
+        more.
+    \item [Open/Closed principle] States we should write our modules to be
+        extended without modification of the original source code.
+    \item [Liskov substitution principle] Given a base class and an derived
+        class derive, the user of a base class should be able to use the derived
+        class and the program should function properly.
+    \item [Interface segregation principle] No client should be forced to depend
+        on methods it does not use. The general idea is that you want to split
+        big interfaces to smaller, specific ones.
+    \item [Dependency inversion principle] A strategy to avoid making our source
+        code dependent on specific implementations is by using this principle.
+        This allows us, if we depend on one third-party module, to swap that
+        module for another one should we need to. This can be done by creating
+        an abstract interface and then instance that interface with a class that
+        calls the third-party operations.~\cite{martinrobert}
+\end{description}
+
+Using a SOLID architecture helps make programs that are not as dependent on the
+environments, making them easier to test (swapping the production environment to
+a test environment becomes trivial). When investigating the testability, it is
+important to look at programs that are written in such a way that all parts are
+easy to test. Thus choosing a SOLID architecture for  programs will allow making
+more testable software. These concepts were designed for Object-oriented
+programming but can be translated to functional programming which will be
+demonstrated after introducing the functional concepts needed.
+
+
+\section{Readability in code}
+
+When evaluating the readability of code, companies can use Code reviews. A code
+review is an activity in which humans check how well the code can be understood
+by reading it. Thus similarity it can be used to evaluate how well users without
+experience with functional code understand functional programs. 
+
+By creating an semi-structured interview, where the programmers is asked open
+questions about how the code works it can give insights about the defects of the
+software and if there is something fundamental about functional programming that
+makes it harder to understand.
+
 

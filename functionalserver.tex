@@ -92,15 +92,40 @@ A REST api has to concern themselves with the following:
 
 Every type of error has a specific status code, these need to be set correctly.
 
-\section{Formal implementation of a server in functional programs}
+\section{Architect of a sustainable server} 
 
-A server is a function that takes a request of parameter a and transforms it
-into a response of parameter a. I.E.  $Server : Request\
-a\rightarrow Response\
-b$. The parameter $a$ is the resource requested by the client.
+\section{Modeling a server in functional programming}
 
-A $Response$ is a record consisting a status code, a set of headers, a
-content type, a function $body: a\rightarrow encoded$, encoding.
+\subsection{Constraints for good architecture}
+
+\subsection{Look}
+
+\subsection{Implementation}
+
+\subsection{Definitions}
+
+\subsubsection{Verbs and Media types}
+
+A verb is either get, post, put, patch or delete, represented as a sum type $type Verb = Get\ |\ Post\ |\ Put\ |\ Patch\ |\
+Delete$. Content types are harder to represent as a sum type due to there being
+so many and are thus represented as a string instead.
+
+\subsubsection{Request and Response}
+
+A Request is a product type consisting of a url, queries, accept header (Media),
+headers (a list of string tuples), accept media, verb, encodded body and an
+encoding. The correct encoder can be deduced from the accept header.
+
+A Response is a product type consisting of a body, status code, content type
+Media, headers (a list of string tuples) and an \textit{encoder for the body}.
+An encoded response instead contains an encoded body. These are separated
+because the body will be constructed separately from the encoder.
+
+A server of parameter b is a type that takes a request and transforms it into a
+response of parameter b. I.E.  $server : Request\rightarrow Response\ encoded$.
+A $Response\ b$ is a contravariant product type consisting a status code, a set
+of headers, a content type, a function $body: a\rightarrow encoded$ and
+encoding.
 
 \begin{lstlisting}
   type Response a = {
@@ -112,22 +137,50 @@ content type, a function $body: a\rightarrow encoded$, encoding.
   };
 \end{lstlisting}
 
-The body of a response is a function that transforms the resource into it's
-requested representation. If the request specifies accept as
-\lstinline{application/json} then the body function turns the body into a json
-format. 
+When constructing a Response a series of computations need to be done. If one of
+these fails, due to internal implementation errors or invalid requests there
+needs to be an error handling system in place. To account for this, a type
+$computation\ a\ b = a \rightarrow Result\ b$, where result is a sum type
+$Result\ a = Ok\ a\ |\ Fail\ Code\ Media\ Message$, is introduced. Computation
+is also a Monad, meaning that computations can be composed together, where if
+one computation should fail it skips executing the rest and returns a failure
+containing the correct status code. 
 
-A $Request$ is a monad that parses the incoming request. It transforms that
-into a request handler that then feeds the result into a response. A handle is a
-function $a\rightarrow Response b$. The extended definition of the server
-is then $Server : Request a \rightarrow (a \rightarrow Response b) \rightarrow
-Response b$.
 
-\section{Cause, a functional REST framework}
+An endpoint is a computation of a $Request$ to a tuple of function handler $h$
+and a $Response\ body$. An endpoint $e\ a\ b$ is complete if $e\sim computation\
+Request\ (Result\ b, Response\ b)$. For all complete endpoints, there exists a
+function $\forall b. part\ b \ b\sim Request \rightarrow (Result\ b, Response\
+b)\Rightarrow part\ b\ b \rightarrow server$. This function applies the result
+of the handler to the Response encoder to create $Response\ encoded$. Thus to
+construct a server from an endpoint, the endpoint must be complete and for all
+complete endpoints, handler is $Result\ a$.
 
-Cause is a high-level web framework that allows writing composable REST
-frameworks in Reasonml. In Cause, a REST api is a \textit{specification}, where
-the user specifies endpoints. An endpoint in a spec contains the following:
+Since a computation is a strong profunctor and a monad, non-complete endpoints
+can be composed together to produce a complete endpoint. Thus we introduce
+combinators as follows.
+
+Extract the encoder from the request and contramap that encoder to the
+response: 
+\begin{equation}
+\begin{split}
+    accept & : [Media,a\rightarrow encoded] \\
+           & \rightarrow endpoint\ h\ encoded \\ 
+           & \rightarrow endpoint\ h\ a \\
+\end{split}
+\end{equation}
+
+Extract a query parameter and apply that to the handler: 
+\begin{equation}
+\begin{split}
+    query &: parameter\\
+          &\rightarrow (value\rightarrow Maybe(a))\\
+          & \rightarrow endpoint\ (Maybe(a)\rightarrow h)\ b \\
+          &\rightarrow endpoint\ h\ b \\ 
+\end{split}
+\end{equation}
+
+Depending on the URI of the request, a different endpoint should be 
 
 \begin{itemize}
 \item An ordered set of required parameters to execute a handler.
@@ -139,6 +192,33 @@ return the correct resource.
 \item A set of http request methods supported by the endpoint.
 \end{itemize}
 
+
+Each computation in an endpoint will morph the handler or the Response. An
+endpoint consists of a composition of parts, where $part\ h\ b = computation\
+Request\ (h,Response\ b)$ and $h$ is a handler. A $part$ is \textit{complete} if
+$part\sim Request \rightarrow (Result\ b, Response\ b)$.  When a part is
+complete it means that all parameters from the request have been extracted and
+appended to the handler and the Response has a way to encode the result of the
+handler. Thus a function $\forall b. part\ b \ b\sim Request \rightarrow (Result\
+b, Response\ b)\Rightarrow part\ b\ b \rightarrow server$ exists.
+
+
+The body of a response is a function that transforms the resource into it's
+requested representation. If the request specifies accept as
+\lstinline{application/json} then the body function turns the body into a json
+format. 
+
+A $Request$ is a monad that parses the incoming request. It transforms that
+into a request handler that then feeds the result into a response. A handle is a
+function $a\rightarrow Response\ b$. The extended definition of the server
+is then $Server : Request\ a \rightarrow (a \rightarrow Response\ b) \rightarrow
+Response\ b$.
+
+\section{Cause, a functional REST framework}
+
+Cause is a high-level web framework that allows writing composable REST
+frameworks in Reasonml. In Cause, a REST api is a \textit{specification}, where
+the user specifies endpoints. An endpoint in a spec contains the following:
 An endpoint is composable, meaning that you can create a \textit{connector
 endpoint} which consists of two \textit{subendpoints}. The following operations
 exist for endpoints

@@ -5,12 +5,8 @@ import qualified Model
 
 main :: IO ()
 main =
-    start
-
-
-start :: IO ()
-start =
     Game.loop (welcomeMessage, Model.init)
+
 
 
 welcomeMessage :: String

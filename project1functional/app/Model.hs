@@ -47,6 +47,7 @@ pattern Model <- UnsafeMakeModel
 -- * CREATION
 
 
+-- Initial player, initial boad
 make :: Player -> Board Square -> Model
 make player newBoard =
     UnsafeMakeModel

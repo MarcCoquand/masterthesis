@@ -1,37 +1,51 @@
 \babel@toc {english}{}
 \contentsline {chapter}{\numberline {1}Introduction: Software paradigms and complexity}{4}
 \contentsline {chapter}{\numberline {2}Background}{6}
-\contentsline {section}{\numberline {2.1}Architecture}{6}
-\contentsline {subsection}{\numberline {2.1.1}Unit testing}{7}
-\contentsline {subsection}{\numberline {2.1.2}Property-based testing}{7}
-\contentsline {subsection}{\numberline {2.1.3}Integration testing}{8}
-\contentsline {subsection}{\numberline {2.1.4}End-2-End Tests}{8}
-\contentsline {subsection}{\numberline {2.1.5}Challenges}{8}
-\contentsline {subsubsection}{Readability}{8}
-\contentsline {section}{\numberline {2.2}Complexity and relation to testability}{9}
-\contentsline {chapter}{\numberline {3}Theory}{10}
-\contentsline {section}{\numberline {3.1}Characteristics of Functional Programming}{11}
-\contentsline {subsection}{\numberline {3.1.1}ADTs: Sum types and product types}{12}
-\contentsline {subsection}{\numberline {3.1.2}GADT}{13}
-\contentsline {subsection}{\numberline {3.1.3}Type classes}{13}
-\contentsline {subsection}{\numberline {3.1.4}Functors and Contravariant Functors}{14}
-\contentsline {subsection}{\numberline {3.1.5}Brief introduction to Monads for side effects}{15}
-\contentsline {subsection}{\numberline {3.1.6}Strong Profunctors}{16}
-\contentsline {subsection}{\numberline {3.1.7}Interpreter pattern for testability}{16}
-\contentsline {subsection}{\numberline {3.1.8}Using MTL for the interpreter pattern}{17}
-\contentsline {section}{\numberline {3.2}SOLID principles}{19}
-\contentsline {section}{\numberline {3.3}Measuring testability and complexity}{21}
-\contentsline {subsection}{\numberline {3.3.1}Measuring testability: Cyclomatic Complexity}{21}
-\contentsline {subsection}{\numberline {3.3.2}Cyclomatic Complexity in Functional Programming}{23}
-\contentsline {subsection}{\numberline {3.3.3}Mental complexity: Cognitive Dimensions}{25}
-\contentsline {section}{\numberline {3.4}Functional servers}{27}
-\contentsline {subsection}{\numberline {3.4.1}RESTful servers}{27}
-\contentsline {subsection}{\numberline {3.4.2}Implementation concerns for REST apis}{29}
-\contentsline {section}{\numberline {3.5}Formal implementation of a server in functional programs}{29}
-\contentsline {section}{\numberline {3.6}Cause, a functional REST framework}{30}
-\contentsline {chapter}{\numberline {4}Method: Case studies}{32}
-\contentsline {chapter}{\numberline {5}Results}{35}
-\contentsline {section}{\numberline {5.1}Limitations}{35}
-\contentsline {subsection}{\numberline {5.1.1}Improvements to implementation}{35}
-\contentsline {section}{\numberline {5.2}future work}{35}
-\contentsline {subsection}{\numberline {5.2.1}Relations to cardinality}{35}
+\contentsline {section}{\numberline {2.1}Introduction to REST servers}{6}
+\contentsline {subsection}{\numberline {2.1.1}Implementation concerns for REST apis}{8}
+\contentsline {section}{\numberline {2.2}Architecture}{8}
+\contentsline {subsection}{\numberline {2.2.1}Unit testing}{9}
+\contentsline {subsection}{\numberline {2.2.2}Property-based testing}{10}
+\contentsline {subsection}{\numberline {2.2.3}Integration testing}{10}
+\contentsline {subsection}{\numberline {2.2.4}End-2-End Tests}{10}
+\contentsline {subsection}{\numberline {2.2.5}Challenges}{10}
+\contentsline {section}{\numberline {2.3}SOLID principles}{11}
+\contentsline {section}{\numberline {2.4}Readability in code}{13}
+\contentsline {chapter}{\numberline {3}Theory}{14}
+\contentsline {section}{\numberline {3.1}Concepts from Functional Programming}{14}
+\contentsline {subsection}{\numberline {3.1.1}ADTs: Sum types and product types}{16}
+\contentsline {subsection}{\numberline {3.1.2}GADT}{16}
+\contentsline {subsection}{\numberline {3.1.3}Type classes}{17}
+\contentsline {subsection}{\numberline {3.1.4}Functors and Contravariant Functors}{18}
+\contentsline {subsection}{\numberline {3.1.5}Brief introduction to Monads for side effects}{18}
+\contentsline {subsection}{\numberline {3.1.6}Strong Profunctors}{19}
+\contentsline {section}{\numberline {3.2}SOLID principles with functional programming}{20}
+\contentsline {subsection}{\numberline {3.2.1}Single Responsibility Principle}{20}
+\contentsline {subsection}{\numberline {3.2.2}Liskov Substitution Principle}{20}
+\contentsline {subsection}{\numberline {3.2.3}Dependency Inversion Principle}{21}
+\contentsline {subsection}{\numberline {3.2.4}Interface Segregation Principle}{21}
+\contentsline {section}{\numberline {3.3}Functional servers}{22}
+\contentsline {subsection}{\numberline {3.3.1}RESTful servers}{22}
+\contentsline {subsection}{\numberline {3.3.2}Implementation concerns for REST apis}{23}
+\contentsline {section}{\numberline {3.4}Architect of a sustainable server}{24}
+\contentsline {section}{\numberline {3.5}Modeling a server in functional programming}{24}
+\contentsline {subsection}{\numberline {3.5.1}Constraints for good architecture}{24}
+\contentsline {subsection}{\numberline {3.5.2}Look}{24}
+\contentsline {subsection}{\numberline {3.5.3}Implementation}{24}
+\contentsline {subsection}{\numberline {3.5.4}Definitions}{24}
+\contentsline {subsubsection}{Verbs and Media types}{24}
+\contentsline {subsubsection}{Request and Response}{24}
+\contentsline {section}{\numberline {3.6}Cause, a functional REST framework}{26}
+\contentsline {chapter}{\numberline {4}Method}{28}
+\contentsline {section}{\numberline {4.1}Constructing the server in Express and Cause}{28}
+\contentsline {section}{\numberline {4.2}Evaluating maintainability}{29}
+\contentsline {subsection}{\numberline {4.2.1}Evaluating testability}{29}
+\contentsline {subsection}{\numberline {4.2.2}Evaluating error-proneness and extendability}{29}
+\contentsline {subsection}{\numberline {4.2.3}Evaluating readability through code reviews}{31}
+\contentsline {subsubsection}{Semi-structured interviews}{31}
+\contentsline {subsection}{\numberline {4.2.4}Evaluating the answers}{32}
+\contentsline {chapter}{\numberline {5}Results}{33}
+\contentsline {section}{\numberline {5.1}Limitations}{33}
+\contentsline {subsection}{\numberline {5.1.1}Improvements to implementation}{33}
+\contentsline {section}{\numberline {5.2}future work}{33}
+\contentsline {subsection}{\numberline {5.2.1}Relations to cardinality}{33}

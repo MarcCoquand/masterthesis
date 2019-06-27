@@ -29,18 +29,23 @@ quality can be divided into two different subparts: software functional quality
 and software structural quality. Software functional quality reflects how well
 our system conforms to given functional requirements or specification and the
 degree of which we produce correct software.  To check that the software is
-correct, software engineers create tests.~\cite{Pressman:2004:SEP:994110} If a
-software engineer has to write more tests it could potentially lead to affecting
-software quality.  By looking at cyclomatic complexity, described in
-Section~\ref{cyclomaticcomplexity}, one can find out how the different software
-paradigms affect the amount of tests we need to write.  
+correct, software engineers create tests.~\cite{Pressman:2004:SEP:994110} In
+order to create tests, the engineer employs various patterns in the code to make
+the code easier to test. One approach is functional programming. However
+Functional programming is not the most popular approach.
 
 Software structural quality refers to how well the software adheres to
 non-functional requirements such as robustness and
 maintainability.~\cite{Pressman:2004:SEP:994110} Some of the maintainability
-aspects, such as usability, is hard to measure quantitatively. By looking at the
-cognitive dimensions, described in Section~\ref{cognitivedimensions}, one can
-use an expert analysis to find how the two approaches affect the usability for
-the developer. So by looking at different case studies this study aims to find
-if the different software paradigms affect software quality. 
+aspects, such as readability, is hard to measure quantitatively. By performing
+semi-structured interviews, it is possible to investigate how well the code is
+understood. Since functional programming is not the most popular approach to
+software engineering today, it is worth taking into consideration how employing
+functional programming might affect the readability and maintainability of
+the software. If no one understands the code, how can they be expected to
+maintain the software?
+
+The goal of this thesis is therefore to investigate how readability with
+Functional programming in a common area of software development, servers. Or
+more specifically, REST servers.
 

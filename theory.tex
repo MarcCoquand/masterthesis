@@ -1,37 +1,17 @@
 \chapter{Theory}\label{theory} 
 
-This chapter will cover how the system architectures are implemented in practice
-for Object-oriented systems and functional systems to address the concerns
-established in Chapter~\ref{background}. This chapter also aims to
-introduce different ways we can compare these software paradigms on complexity,
-both in testability and mental complexity. This way 
+Based on the challenges outlined in Chapter~\ref{background}, the goal now
+becomes to construct a maintainable library for REST apis. The approach in this
+thesis is by using constructs from Functional programming. This chapter will
+introduce the fundamentals of functional programming to then move on and use
+that to construct a server library with automatic error handling and type
+safety.
 
-Exact definitions exist of OOP but not for Functional programming, however
-both's stated goal is creating maintainable programs.  The way OOP aims to make
-maintainable software is by emphasising encapsulation of state into
-\textit{objects} and message passing. Functional programs emphasise moving state
-to the edges of the program, making the core logic of the program pure and using
-immutable data (defined in Section~\ref{functionalprogramming}). Data that is
-immutable can not be changed after initialization. This is explained further in
-Section~\ref{functionalprogramming} and Section~\ref{oop}. To prevent defects,
-tests need to be written to check that the behavior works as expected, thus
-testability is of concern when creating maintainable software.
-
-While paradigms define how we build our applications, we still need design
-patterns for structuring the source code. A design pattern is a template for the
-developer when structuring their code to solve certain problems. For instance,
-without design patterns, one could couple dependencies with logic which affects
-maintainability. Coupling logic and dependencies causes problems later when
-changing the dependency since that means that logic needs to be changed as well.
-This study will present the patterns for OOP and functional programming in their
-respective section. 
-
-\section{Characteristics of Functional Programming}\label{functionalprogramming}
+\section{Concepts from Functional Programming}\label{functionalprogramming}
 
  While different definitions exist of what Functional programming means, we
  define functional programming as a paradigm that uses of pure functions,
- decoupling state from logic, using trait-based polymorphism and
- immutable data.
+ decoupling state from logic, using trait-based polymorphism and immutable data.
 
 \begin{description}
 \item[ Purity ]
@@ -63,8 +43,17 @@ or traits in Scala\footnote{\url{https://docs.scala-lang.org/tour/traits.html}}.
 
 Immutable data is data that after initialization can not change. This means if
 we initialize a record, \texttt{abc = \{a: 1, b: 2, c: 3\}} then \texttt{abc.a
-= 4} is an illegal operation. Immutable data, along with purity, ensures that
+:= 4} is an illegal operation. Immutable data, along with purity, ensures that
 no data can be mutated unless it is specifically created as mutable data.
+
+\item[Higher-order functions]
+
+    Higher-order functions are functions which either return a function or take
+    one or more functions as arguments. A function $twice :
+    (a\rightarrow a)\rightarrow (a\rightarrow a)$, $twice\ f = f \circ f$, takes
+    a function as an argument and returns a new function which performs given
+    function twice on the argument. So for example $addOne = (+) 1$, $addTwo =
+    twice addOne$.
 
 \item[Decoupling state from logic]
 
@@ -99,7 +88,10 @@ As a strategy to further separate state and logic, one can construct a
 
 So while no exact definition of Functional programming exist, this thesis
 defines it as making functions pure and inheritance being based around
-functionality rather than attributes.
+functionality rather than attributes. 
+
+More advanced constructs also exists for functional programming that need to be
+introduced in order to construct a maintainable rest api.
 
 \subsection{ADTs: Sum types and product types}\label{types}
 
@@ -216,13 +208,13 @@ every value in the list from a to b. Another example is for Maybe, defined
 in~\ref{types}. A Functor for Maybe checks if the value is $Just\ a$, if so it
 morphs that value to $Just\ b$, otherwise it returns $Nothing$. 
 
-Not every polymorphic type is a Functor. For example the type $Predicate = a
-\rightarrow Boolean$, is a function that when given some value $a$ returns a
-boolean. This type can not be a functor due to the type parameter being the
-\textit{input} of the function. When the polymorphic value of the type is the
-input it is in negative position and the type is \textit{contravariant}. Similarity when the
-type parameter is the output of a function, it is in positive position and
-the type is covariant. A type can be a Functor if covariant.
+Not every type with a type parameter is a Functor. For example the type
+$Predicate = a \rightarrow Boolean$, is a function that when given some value
+$a$ returns a boolean. This type can not be a Functor due to the type parameter
+being the \textit{input} of the function. When the type parameter of the type is
+the input, it is in negative position and the type is \textit{contravariant}.
+When the type parameter is the output of a function, it is in positive position
+and the type is covariant. A type can be a Functor only if it is covariant.
 
 Contravariant Functors are type classes that define a function $contramap :
 (a\rightarrow b) \rightarrow m\ b \rightarrow m\ a$. These are useful for
@@ -269,15 +261,15 @@ from a database.
 \subsection{Strong Profunctors}\label{profunctor}
 
 Some types are both contravariant and covariant, such as the type $computation\
-a\ b = a\rightarrow p\ b$, since computation has a type parameter in positive
+a\ b = a\rightarrow Result\ b$, since computation has a type parameter in positive
 and negative position. A Profunctor is a type class that contains the function
-$dimap : (a\rightarrow b)\rightarrow (c\rightarrow d) \rightarrow p\ b\
+$dimap : Profunctor\ p \Rightarrow (a\rightarrow b)\rightarrow (c\rightarrow d) \rightarrow p\ b\
 c\rightarrow p\ a\ d$. $dimap$ both contramaps and maps the type at the same
 time. So since $computation$ is both covariant and contravariant it is also a
 profunctor. 
 
-A Strong Profunctor defines two functions, $first : p\ a\ b\rightarrow p\ (a,c)\
-(b,c)$, $second : p\ a\ b\rightarrow p\ (c,a)\ (c,b)$. This reveals the core
+A Strong Profunctor defines two functions, $first : Profunctor\ p \Rightarrow p\ a\ b\rightarrow p\ (a,c)\
+(b,c)$, $second : Profunctor\ p \Rightarrow p\ a\ b\rightarrow p\ (c,a)\ (c,b)$. This reveals the core
 strength of Profunctors, to compute two separate values and then merge those
 together. By defining a function $merge : Strong\ p\ \Rightarrow p\ a\ (b
 \rightarrow c) \rightarrow p\ (a,b) \rightarrow c$, a Strong Profunctor gives a
@@ -285,509 +277,97 @@ together. By defining a function $merge : Strong\ p\ \Rightarrow p\ a\ (b
 the output of the function. How this is useful will be demonstrated in the
 functional REST server chapter.
 
-\subsection{Interpreter pattern for testability}\label{interpreterpattern}
+\section{SOLID principles with functional programming}\label{dependencyinjection}
 
-The beginning of this chapter briefly mentioned that design patterns are
-important to create maintainable software.  In this study a design pattern
-called the Interpreter pattern will be used to structure functional programs. An
-interpreter is something which interprets input of some format, modifies it and
-transforms it into some output.  Informally, the interpreter pattern is a way to
-create smaller composable compilers that when added together make one big
-application. A compiler is a program that takes some input, interprets the input
-and then does some output. A server, for example, would take some request,
-interpret that request and then turn it into a response. The server could
-integrate itself with the database, which would take some query, interpret that
-query and then return an object.~\cite{interpreterpattern}
+To create maintainable functional programs the concepts from SOLID architecture
+must be translated over to the functional paradigm where applicable. 
 
-To implement this pattern in Haskell, create an Abstract Syntax Tree (AST) using
-a sum type, of the program that contains all the available commands that the
-program is capable of doing. See Figure~\ref{freeunion} for an example of a
-to-do list AST. Once we have the AST we can encode the logic of the program as
-instructions. Then the final step is to implement an interpreter for the program
-that evaluates those commands. So if we have the commands in
-Figure~\ref{freeunion}, we implement a function \texttt{eval} that takes a
-command and computes some effectful code.  The command \texttt{Add Item (Item ->
-next)} could, for example, be executed as add an Item to a database.
+\subsection{Single Responsibility Principle}
 
-\begin{figure}[H]
-    \begin{lstlisting}
-       data TodoList next
-            = Add Item (Item -> next)
-            | Mark Item next
-            | Remove Item next
-            | End --^ Terminates the program
-    \end{lstlisting}
-    \caption{AST for a to-do-list. We can derive a functor instances
-    from ASTs for deriving Free instances.~\cite{commentarycompiler}}
-    \label{freeunion}
-\end{figure}
+A function takes a single input and produces a single output. If file structure
+is centered around the morphisms of a single type. The responsibility of a file
+is to morph that type into some other value. Thus it keeps the modules focused
+and simple.
 
+\subsection{Liskov Substitution Principle}
 
-Hiding the implementation behind an AST allows us to separate effectful code
-(like output a string or send a http request) with the logical instructions.
-This simplifies our testing, since we can hide the environment (for example
-database) behind an interface that we can swap out for testing. So we can
-implement two interpreter functions, one for our real environment and one for
-testing. 
-
-\subsection{Using MTL for the interpreter pattern}\label{mtl}
-
-Implementing interpreter pattern can either be done using sum types or a design
-pattern called MTL. The idea of MTL is to substitute dependencies by using a
-type class for one pure and one effectful instance. This allows for a pure
-instance that can be used for testing.
-
-For example, if one wants to implement an authentication system for a server
-where the tokens expire within one week then one could do it as shown in
-Figure~\ref{tokennaive}. Figure~\ref{tokennaive} is hard to test as it couples
-effectful code with pure code. The function \texttt{token} calls
-\texttt{Time.Posix.getPOSIXTime} which depends on the current time,
-making unit testing more difficult.
-
-\begin{figure}[H]
-    \begin{lstlisting}
-
-    addWeek :: POSIXTime -> POSIXTime
-    addWeek currentTime =
-        currentTime + oneWeek
-        where
-            oneWeek = 604800000
-
-    token :: Key User -> IO (Maybe WebToken)
-    token user =
-        do  currentTime <- Time.Posix.getPOSIXTime
-            let expirationDate = addWeek currentTime
-            let maybeToken = encode $ Token user expirationDate
-            return maybeToken
-    \end{lstlisting}
-    \caption{Example of a function that, given the ID of a user, generates a
-    unique token that can be used for authentication.}
-    \label{tokennaive}
-\end{figure}
-
-Instead, by using the MTL technique, one decouples the effectful code from it's
-dependencies. In Figure~\ref{tokennaive} the effectful code is the function
-\texttt{Time.Posix.getPOSIXTime}, which fetches the current time. So the type
-class will be a class \texttt{MonadTime} that contains one method
-\texttt{getTime}. By abstracting away the effectful code it becomes trivial to
-implement a pure and effectful instance. This is done in
-Figure~\ref{tokencorrect}. 
-
-\begin{figure}[H]
-    \begin{lstlisting}
-    class MonadTime m where
-        getTime :: m POSIXTime
-
-    instance MonadTime IO where
-        getTime = Time.Posix.getPOSIXTime
-
-    instance MonadTime ((->) POSIXTime) where
-        -- Allows us to call functions with the constraint MonadTime
-        -- with an extra argument containing a mock value.
-        getTime = id
-
-    addWeek :: POSIXTime -> POSIXTime
-    addWeek currentTime =
-        currentTime + oneWeek
-        where
-            oneWeek = 604800000
-
-    token :: MonadTime m => Key User -> m (Maybe WebToken)
-    token user =
-        do  currentTime <- getTime
-            let expirationDate = addWeek currentTime
-            let maybeToken = encode $ Token user expirationDate
-            return maybeToken
-    \end{lstlisting}
-    \caption{An implementation of the token generation following MTL and
-    interpreter pattern.}
-    \label{tokencorrect}
-\end{figure}
-
-With the implementation in Figure~\ref{tokencorrect}, testing the function
-\texttt{token} becomes trivial with the instance \texttt{MonadTime ((->)
-POSIXTime)} as it allows one to substitute \texttt{getTime} with any value. Thus
-we separate effectful code from logic and mocking becomes trivial.
-
-
-\section{SOLID principles}\label{oop}
-
-
-A poorly written Object-oriented system can lead to rotten design. Martin
-Robert, a software engineer, claims that there are four big indicators of rotten
-design. Rotten design also leads to problems that were established in
-Chapter~\ref{background}, such as making easy unit tests. Thus the
-Object-oriented system should follow the following indicators.
-
-
-\begin{description}
-
-\item[ Rigidity ] is the tendency for software to be difficult to
-change. This makes it difficult to change non-critical parts of the software and
-what can seem like a quick change takes a long time.
-
-\item[ Fragility ] is when the software tends to break when doing
-simple changes. It makes the software difficult to maintain, with each fix
-introducing new errors.
-
-\item[ Immobility ] is when it is impossible to reuse software from
-other projects in the new project. So engineers discover that, even though they
-need the same module that was in another project, too much work is required to
-decouple and separate the desirable parts.
-
-\item[ Viscosity ] comes in two forms: the viscosity of the environment and the
-    viscosity of the design. When making changes to code there are often
-        multiple solutions. Some solutions preserve the design of the system and
-        some are ``hacks''. The engineer can therefore easily implement an
-        unmaintainable solution. The long compile times affect engineers and
-        makes them attempt to make changes that do not cause long compile times.
-        This leads to viscosity in the environment.
-
-\end{description}
-
-To avoid creating rotten designs, Martin Robert proposes the SOLID guideline.
-SOLID mnemonic for five design principles to make software more maintainable,
-flexible and understandable. The SOLID guidelines are:
-
-\begin{description}
-    \item [Single responsibility principle] Here, responsibility means ``reason
-        to change''. Modules and classes should have one reason to change and no
-        more.
-    \item [Open/Closed principle] States we should write our modules to be
-        extended without modification of the original source code.
-    \item [Liskov substitution principle] Given a base class and an derived
-        class derive, the user of a base class should be able to use the derived
-        class and the program should function properly.
-    \item [Interface segregation principle] No client should be forced to depend
-        on methods it does not use. The general idea is that you want to split
-        big interfaces to smaller, specific ones.
-    \item [Dependency inversion principle] A strategy to avoid making our source
-        code dependent on specific implementations is by using this principle.
-        This allows us, if we depend on one third-party module, to swap that
-        module for another one should we need to. This can be done by creating
-        an abstract interface and then instance that interface with a class that
-        calls the third-party operations.~\cite{martinrobert}
-\end{description}
-
-Using a SOLID architecture helps make programs that are not as dependent on the
-environments, making them easier to test (swapping the production environment to
-a test environment becomes trivial). When investigating the testability, it is
-important to look at programs that are written in such a way that all parts
-are easy to test. Thus choosing a SOLID architecture for OOP based programs will
-allow making more testable software.
-
-\section{Measuring testability and complexity}\label{measuretestability}
-
-The previous sections defined the programming paradigms and how to write
-software in a testable and maintainable manner. Since the aim of the study is to
-find which of the two paradigms allows us to write the most maintainable
-software, looking at the \textit{Cyclomatic complexity} of software aloows
-finding the amount of tests needed to test every possible outcome of the
-software. It follows then that if one of the paradigms have a lower complexity,
-it would require less tests. If less tests need to be written, the amount of
-lines of code (LOC) needed for the software should be lower. Although further
-research would be needed to prove this, lower LOC correlates with less defects
-in software.~\cite{defectloc} Note that LOC is a bad measurment for comparing
-two languages it is a good measure for comparing source code written in the same
-language.
-
-Looking at the testability of code for maintenance is not enough. While
-testability is an important metric, it can also be important to look at other
-factors like how cognitive complexity affects the maintenance. For instance, a
-program written in the language Whitespace, an esoteric language consisting only
-of whitespace\footnote{Description of Whitespace:
-\url{https://en.wikipedia.org/wiki/Whitespace_(programming_language)}}, could
-have a low LOC and cyclomatic complexity. But for humans knowing only the
-English language, a text consisting of whitespace would be illegible. By using a
-framework called Cognitive dimensions to do a qualitative evaluation of
-software one can qualitatively the structural software quality. This is described
-further in Section~\ref{cognitivedimensions}.
-
-
-\subsection{Measuring testability: Cyclomatic Complexity}\label{cyclomaticcomplexity}
-
-Cyclomatic complexity is a complexity measure to measure the amount of paths
-through a program. The Cyclomatic complexity number is an upper bound for the
-number of test cases required for full branch coverage of the code. 
-
-\theoremstyle{definition}
-\begin{definition}
-The cyclomatic number $v(G)$ of a graph G with $n$ vertices, $e$ edges and $p$
-connected components is $v(G) = e - n + p$.
-\end{definition}
-
-\begin{theorem}
-In a strongly connected graph $G$, the cyclomatic number is equal to the
-maximum number of linearly independent circuits.~\cite{McCabe}
-\end{theorem}
-
-Informally, cyclomatic complexity is a way to measure the amount tests a program
-needs to reach full branch coverage by constructing a graph that branches out
-based on the control flow. For example, given \texttt{f(bool) = if bool then
-``hello''; else ``hola''} the function \texttt{f} will either evaluate to
-``hello'' or ``hola''. To get full branch coverage for \texttt{f} two tests are
-needed. The cyclomatic complexity therefore becomes 2. The nodes of a cyclomatic
-graph represents processing tasks and edges represent control flow between
-the nodes. 
-
-Given the code found in example figure~\ref{c1excode}. To calculate the
-complexity of this function, first construct a graph as seen in
-figure~\ref{fig:c1exgraph}. From the graph we find $n=4, e=5, p=2\Rightarrow
-v(G)=e-n+p=5-4+2=3$ is the cyclomatic number.
-
-\begin{figure}[H]
-    \begin{lstlisting}
-        void foo(void)
-        {
-          if (a)
-            if (b) 
-              x=1;
-          else
-              x=2;
-         }
-    \end{lstlisting}
-    \caption{Multi if function foo.}
-    \label{c1excode}
-\end{figure}
-
-
-\begin{figure}[H]
-    \centering
-    \begin{tikzpicture}
-        \tikzset{vertex/.style = {shape=circle,draw,minimum size=2.5em}};
-        \tikzset{edge/.style = {->,> = latex'}};
-        \node[vertex] (a) at (2,8) {\texttt{if (a)}};
-        \node[vertex] (b) at (0,6) {\texttt{if (b)}};
-        \node[vertex] (c) at (4,6) {\texttt{x=2}};
-        \node[vertex] (d) at (2,4) {\texttt{end}};
-        \draw[edge] (a)  to (b);
-        \draw[edge] (a)  to (c);
-        \draw[edge] (b)  to (c);
-        \draw[edge] (b)  to (d);
-        \draw[edge] (c)  to (d);
-    \end{tikzpicture}
-    \caption{Cyclomatic complexity graph for Figure~\ref{c1excode}}
-    \label{fig:c1exgraph}
-\end{figure}
-
-\subsection{Cyclomatic Complexity in Functional
-Programming}
-
-The definition of cyclomatic complexity in Section~\ref{cyclomaticcomplexity} is
-not ideal for functional programming. Cyclomatic complexity is calculated by
-creating graphs based on control flow operations such as while loops and if
-statements. In functional programming everything is a function, thus the
-cyclomatic complexity will always tend to 0 using this definition. So we define
-a different method of calculating the cyclomatic complexity for functional
-programs. 
-
-\theoremstyle{definition} 
-    \begin{definition} 
-    The cyclomatic complexity number, in functional programming, is equal to
-    1 plus the sum of the left hand side, called LHS, plus the sum of the
-    right hand side, called RHS. RHS is the sum of the number of guards,
-    logical operators, filters in a list comprehension and the pattern
-    complexity in a list comprehension. LHS is equal to the pattern
-    complexity.  The pattern complexity is equal to the number of
-    identifiers in the pattern, minus the number of unique identifiers in
-    the pattern plus the number of arguments that are not identifiers. In
-    summary:
-
-    \begin{lstlisting}
-    Cyclomatic complexity = 1 + LHS + RHS
-
-    LHS = Pattern complexity 
-
-    Pattern complexity   
-        = Pattern identifiers 
-        - Unique pattern identifiers 
-        + Number of arguments that are non identifiers
-
-    RHS = Number of guards 
-        + Number of Logical operators 
-        + Number of filters in list comprehension 
-        + Pattern complexity in list comprehension
-    \end{lstlisting}
-\end{definition}
-
-Instead of cyclomatic graphs in functional programs one constructs flowgraphs,
-such as the one seen in Figure~\ref{fig:cyclomaticfunctional}, to model the
-functions.
-
-\begin{figure}[H]
-    \begin{lstlisting}
-    split :: (a -> Bool) -> [a] -> ([a], [a])
-    split onCondition [] = ([], [])
-    split onCondition (x:xs) =
-        let 
-            (ys, zs) = split onCondition xs
-        in 
-            if (onCondition x) then 
-                (x:ys, zs)
-            else 
-                (ys, x:zs)
-    \end{lstlisting}
-    \caption{Recursively split a list into two based on a given condition in
-    Haskell. For example \texttt{split (>3) [1,2,3,4,5] =
-    ([4,5],[1,2,3])}.}
-    \label{split}
-\end{figure}
-
-In Haskell $(x:xs)$ denotes an item $x$ at head of a list of items $xs$. Given
-the Haskell code in Figure~\ref{split}. To calculate LHS we find two
-pattern identifiers which are $onCondition$ and $(x:xs)$. there is one unique
-pattern identifiers which is $(x:xs)$. There is also one non identifier
-which is $[]$. There is also one guard, an if statement, and no
-list comprehensions on RHS. Thus the cyclomatic complexity is $1+(2-1+1)+1=4$.
-
-In this method to calculate cyclomatic complexity, do not count the $otherwise$
-and $else$ clauses.~\cite{bergklaas}
-
-
-\begin{figure}[H]
-    \centering
-    \begin{tikzpicture}
-        \tikzset{vertex/.style = {shape=circle,fill=black,scale=0.5}};
-        \draw[dashed] (0,0) -- (0,-5) (2,0) -- (2,-5) (4, 0) -- (4, -5) (6, 0)
-        -- (6, -5);
-        \node at (0,.3) {\small{Patterns}};
-        \node at (2,.3) {\small{Guards}};
-        \node at (4,.3) {\small{Expressions}};
-        \node at (6,.3) {\small{Stop}};
-        \node[vertex] (a) at (0,-0.3) {};
-        \node[align=right, text width=3cm] at (-2,-0.3) {\texttt{[]}};
-        \node[vertex] (b) at (4,-1.2) {};
-        \draw[->, very thick] (a) to node [above] (TextNode) {T} (b) ;
-        \node[vertex] (c) at (0,-1.5) {};
-        \node[align=right, text width=3cm] at (-2,-1.5) {\texttt{(x:xs)}};
-        \draw[->, very thick] (a) to node [left] (TextNode) {F} (c) ;
-        \node[align=left, text width=3cm] at (8,-1.2) {\texttt{e1=([],[])}};
-        \node[vertex] (d) at (2,-2.1) {};
-        \draw[->, very thick] (c) to node [above] (TextNode) {T} (d) ;
-        \node[align=right, text width=3cm] at (-2,-2.1) {\texttt{onCondition x}};
-        \node[vertex] (e) at (4,-2.8) {};
-        \draw[->, very thick] (d) to node [above] (TextNode) {T} (e) ;
-        \node[align=left, text width=3cm] at (8,-2.8) {\texttt{e2=(x:yz, zs)}};
-        \node[vertex] (f) at (4,-3.8) {};
-        \draw[->, very thick] (d) to node [below] (TextNode) {F} (f) ;
-        \node[align=left, text width=3cm] at (8,-3.8) {\texttt{e3=(yz, x:zs)}};
-        \node[vertex] (g) at (6,-4.8) {};
-        \draw[->, very thick] (e) to (g) ;
-        \draw[->, very thick] (b) to (g) ;
-        \draw[->, very thick] (f) to (g) ;
-        \draw[very thick] (c) to (2, -4.0) to (g) ;
-    \end{tikzpicture}
-    \caption{Flowgraph for split function, defined in Figure~\ref{split}.}
-    \label{fig:cyclomaticfunctional}
-\end{figure}
-
-Cyclomatic complexity finds how many tests are needed to get full branch
-coverage of source code. A low complexity for a program means that less tests
-have to be written.  Note that if a program has a low cyclomatic complexity it
-does not imply that the program is easier to test. If a program is written in
-such a way that it depends heavily on the environment it can also lead to
-difficulty testing. So to make cyclomatic complexity a better metric this study
-will use design patterns to make testable code.
-
-\subsection{Mental complexity: Cognitive Dimensions}\label{cognitivedimensions}
-
-Cognitive Dimensions is a framework for evaluating the usability of programming
-languages and to find areas of improvements.~\cite{GREEN1996131} It allows us to
-evaluate the quality of a design and explore what future improvements could be
-made. As part of the Cognitive Dimensions, 14 different Cognitive Dimensions of
-Notation exist. A notation depends on the specific context, in this case the
-notation is the languages themselves and their architecture. The author of the
-framework recommends omitting the dimensions that are not applicable to the
-notation. We give a brief description of the dimensions.
-
-\begin{description}
-
-\item[ Viscosity ]
-
-How much work does it take to make small changes? How easy is the code to
-refactor? If small changes requires consequent adjustments then that is a
-problem. As a viscous system cause a lot more work for the user and break the
-line of thought.
-
-\item[ Visibility ]
-
-How easy is it to navigate the source code to find the parts that you want?
-
-\item[ Hidden dependencies ]
-
-Are there hidden dependencies in the source code. Does a change in one part of
-the source code lead to unexpected consequences in another part of the code.
-Every dependency that matters to the user should be accessible in both
-directions. 
-
-\item[ Role-expressiveness ]
-
-How obvious is each sub-component of the source code to the solution as a whole?
-
-\item[ Abstraction ]
-
-What are the levels of abstraction in the source code? Can the details be
-encapsulated?
-
-\item[ Secondary notation ]
-
-Are there any extra information being conveyed to the user in the source code?
-
-\item[ Closeness of mapping ]
-
-By looking at the source code, how close do we find it to be to the case
-we are solving?
-
-\item[ Consistency ]
-
-Once Object-oriented procedural programming and Functional programming has been
-learned. How much of the rest can the user guess successfully? 
-
-\item[ Diffuseness or terseness ]
-
-How much space and symbols does the source code need to produce a certain result
-or express a meaning?
-
-\item[ Hard mental operations ]
-
-Where does the hard mental processing lie? Is it more when writing the source
-code itself rather than solving the case, I.E. the semantic level? Does one
-sometimes need to resort to pen and paper to keep track of what is happening?
-
-\item[ Provisionality ]
-
-How easy is it to get feedback of something before you have completed the entire
-system?
-
-\item[ Progressive evaluation ]
-
-How obvious the role of each component of the source code in the solution as a
-whole?
-
-\item[ Error proneness ]
-
-To what extent does the programming paradigm and language help minimise errors? Are
-there any structures or complexities that lead to it being easier to make
-errors?
-\end{description}
-
-\noindent For this study we will investigate the following dimensions: 
+Liskov's Substitution Principle are used for reasoning about subtyping among
+objects. Since objects do not exist for functional programs some translating is
+needed of those concepts. The formal requirements of Liskov's Substitution
+Principle are as follows:
 
 \begin{itemize}
-    \item Diffuseness or terseness
-    \item Progressive evaluation
-    \item Closeness of mapping
-    \item Hard Mental Operations
-    \item Visibility
-    \item Hidden dependencies
-    \item Abstraction
-    \item Error-proneness 
+    \item Contravariance of method arguments should be in the subtype.
+    \item Covariance of method arguments in the subtype.
+    \item No new exceptions should be thrown by each subtype, except where
+        those exceptions are themselves subtypes of exceptions thrown by the
+        supertype.
 \end{itemize}
 
-\noindent We omit the other dimensions as related work concluded that the other
-dimensions did not bring much weight when evaluating the different
-paradigms.~\cite{euguenkiss}
+Let's break each of these down to see how they translate in functional
+programming:
 
-In summary, cognitive dimensions allow us to look at different aspects of a
-programming language to evaluate how complex they are cognitively. 
+\begin{description}
+    \item [Contravariance of method arguments should be in the subtype.] In
+        functional programming, given a type which is contravariant. In order to
+        morph that into a subtype the function contramap must be used. Recall
+        that $contramap : (a\rightarrow b)\rightarrow t\ b\rightarrow t\ a$. For
+        a function $from\rightarrow to$ to exist $from$ must be a
+        subtype of $to$! Thus this is guaranteed.
+    \item [Covariance of method arguments in the subtype.] Same logic as for
+        contravariance applies for covariance. In order to morph a subtype using
+        map there must be a function $subtype\rightarrow type$.
+    \item [No new exceptions should be thrown by each subtype, except where
+        those exceptions are themselves subtypes of exceptions thrown by the
+        supertype.] Since exceptions are represented by a sum type $Result$,
+        described in previous chapters, it is impossible for subtypes to throw
+        new exceptions.
+\end{description}
+
+\subsection{Dependency Inversion Principle} 
+
+Dependency Inversion Principle states that the logic should not depend on it's
+environment. To achieve that in functional programming the environment can
+be abstracted and taken as parameters of the program. For instance given the
+program readNPrint in Figure~\ref{diexample}, this program depends on the
+computer IO, making it difficult to extend it to different environments, such as
+databases. 
+
+\begin{figure}[H]
+    \begin{lstlisting}
+        readNPrint : IO () 
+        readNPrint = readLine >>= putStrLn
+    \end{lstlisting}
+    \caption{A program that reads input from the computer and then prints it.}
+    \label{diexample}
+\end{figure}
+
+Instead, Figure~\ref{withdiexample} shows how the parameters are abstracted and
+readNPrint is a higher order function instead that takes some function that
+can generate a string and some function that can print a string.
+
+
+\begin{figure}[H]
+    \begin{lstlisting}
+        readNPrint : (IO String) -> (String -> IO ()) -> IO ()
+        readNPrint reader printer = reader >>= printer
+
+        -- and then later
+        consoleIO : IO ()
+        consoleIO = readNPrint readLine putStrLn
+    \end{lstlisting}
+    \caption{A program that reads input from the computer and then prints it,
+    where the logic is separated from it's environment.}
+    \label{withdiexample}
+\end{figure}
+
+\subsection{Interface Segregation Principle} 
+
+Interface Segragation Principle states that no client should be forced to depend
+on methods it does not use. 
+
+This can be enforced by the use of GADTs
+
+
+
 
