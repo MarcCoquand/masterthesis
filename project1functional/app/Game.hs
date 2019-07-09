@@ -5,6 +5,7 @@
 module Game where
 
 
+-- (&) works as a reverse ($)
 import           Data.Function ((&))
 import           Model         (Model)
 import qualified Model
@@ -39,18 +40,23 @@ step :: Model -> String -> IO Result
 step model message =
     do  putStrLn (Model.prompt model message)
         command <- getLine
-        return (update model command)
+        update model command
+            & return
 
 
 update :: Model -> String -> Result
 update model command =
-    case runCommand model command of
-        -- TODO: Add win condition
-        Right newModel ->
-            Next ("Move successful", newModel)
+    let
+        result =
+            runCommand model command
+    in
+        case result of
+            -- TODO: Add win condition
+            Right newModel ->
+                Next ("Move successful", newModel)
 
-        Left invalidInput ->
-            Next (showMistake invalidInput, model)
+            Left invalidInput ->
+                Next (showMistake invalidInput, model)
 
 
 data InvalidInput
@@ -76,11 +82,12 @@ runCommand model input =
         piece <-
             Model.getOwnedPiece model start
                 & catchInvalid PieceChoice
-        changedSquares <-
+        changes <-
             Model.move model piece destination
                 & catchInvalid MoveRange
 
-        return (Model.update model changedSquares)
+        Model.update model changes
+            & return
 
 
 -- We do not instance Invalid with Show because an instance of Show should follow

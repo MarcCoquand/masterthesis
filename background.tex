@@ -1,10 +1,7 @@
 \chapter{Background}\label{background}
 
-This chapter will look at how concerns and requirements made impact the
-maintainability and testability. It aims to establish what are the current
-methods of developing applications and how software engineers today approach
-testing. 
-
+This chapter will introduce REST servers and how software quality is ensured
+today in the industry. It will also establish the challenges that arises.
 
 \section{Introduction to REST servers}
 
@@ -134,7 +131,8 @@ introduce a new stack.
 
 The issue with microservices is that when scaling the complexity becomes harder
 to predict. While testing one system in isolation is easier testing the entire
-system with all parts together becomes harder. 
+system with all parts together becomes harder. Thus there are different types of
+tests that are conducted: unit tests, integration tests and E2E-tests.
 
 \subsection{Unit testing}
 
@@ -150,18 +148,6 @@ of the application.
 To create effective unit tests it's important that it's easy to mock examples.
 This is usually hindered if the code is dependant on some state since previous
 states might affect future states.
-
-\subsection{Property-based testing}
-
-Property-based testing tests the properties that a function should fulfill. A
-property is some logical condition that a specification defines the function
-should fulfill.  Compared to unit testing where the programmer creates the mock
-values; property based testing generates values automatically to find a
-contradiction. For example a function $reverse\, : \; [a]\, \rightarrow\, [a]$,
-which takes a list and reverses it's items, should have the property
-$reverse\circ reverse\; x = x$. A unit test would check that $reverse [1,2,3] =
-[3,2,1]$; a property-based test would instead generate a list of values randomly
-and check it's properties hold.
 
 \subsection{Integration testing}
 
@@ -219,7 +205,6 @@ Understandability is important to reduce the learning time for programmers and
 cut down learning costs.
 
 \section{SOLID principles}\label{oop}
-
 
 A poorly written  system can lead to rotten design. Martin Robert, a software
 engineer, claims that there are four big indicators of rotten design. Rotten
@@ -285,7 +270,6 @@ more testable software. These concepts were designed for Object-oriented
 programming but can be translated to functional programming which will be
 demonstrated after introducing the functional concepts needed.
 
-
 \section{Readability in code}
 
 When evaluating the readability of code, companies can use Code reviews. A code
@@ -298,4 +282,8 @@ questions about how the code works it can give insights about the defects of the
 software and if there is something fundamental about functional programming that
 makes it harder to understand.
 
+So in summary: adherence to SOLID principles can be used to avoid rotten design
+and in order to evaluate the readability a code review can be conducted. Thus a
+good REST framework should be understood by other programmers and follow SOLID
+principles.
 

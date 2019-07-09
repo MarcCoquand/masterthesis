@@ -47,15 +47,13 @@ instance Arbitrary e => Arbitrary (Board e) where
                 & return
 
 
-addNumberToString :: Int -> String -> String
-addNumberToString n string =
-    show n ++ ". " ++ string
-
-
 toString :: Show e => Board e -> [String]
 toString (CreateBoard arr) =
+    -- unwords turns ["bl","bl","bl"] into "bl bl bl"
     [unwords
+        -- Show one row
         [show (arr ! UnCoord (y, x))  | x <- [1..boardSize]]
+        -- Perform for all rows
         | y <- [1..boardSize]
         ]
 
@@ -71,26 +69,37 @@ isLegalMove moveSet destination =
 makeNumberList :: Int -> Int -> String
 makeNumberList amount startNumber =
     let
-        format i =
-            show i ++ "."
+        format number =
+            show number ++ "."
 
-        formattedNumberList =
+        formattedNumberGenerator =
             unfoldr (\i -> Just (format i, i+1)) startNumber
     in
-        formattedNumberList
+        formattedNumberGenerator
             & take amount
             & unwords -- Turns ["1.","2.","3."] into "1. 2. 3."
 
 
+appendNumber :: Int -> String -> String
+appendNumber n string =
+    show n ++ ". " ++ string
+
+
 makeIndex :: [String] -> [String]
 makeIndex boardString =
-    ["   " ++ makeNumberList (length boardString) 1] ++
-    -- Prefer foldl' over foldl for efficiency and avoiding space leaks.
-    foldl'
-        (\board next ->
-            board ++ [addNumberToString (length board + 1) next])
-        []
-        boardString
+    let
+        topRow =
+            "   " ++ makeNumberList (length boardString) 1
+
+        boardRows =
+            -- Prefer foldl' over foldl for efficiency and avoiding space leaks.
+            foldl' appendRow [] boardString
+
+        appendRow board row =
+            board ++ [appendNumber (length board + 1) row]
+
+    in
+        [topRow] ++ boardRows
 
 
 instance Show e => Show (Board e) where
@@ -125,7 +134,9 @@ extractCoord (UnCoord pos) =
 makeCoord :: Board e -> (Int, Int) -> Maybe Coord
 makeCoord board coord =
     if coord `isWithinRange` upperBound board then
-        return . UnCoord $ coord
+        coord
+            & UnCoord
+            & return
     else
         Nothing
 
