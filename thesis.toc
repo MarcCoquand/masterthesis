@@ -23,16 +23,39 @@
 \contentsline {subsection}{\numberline {3.2.3}Dependency Inversion Principle}{19}
 \contentsline {subsection}{\numberline {3.2.4}Interface Segregation Principle}{20}
 \contentsline {subsection}{\numberline {3.2.5}Open/Closed principles}{21}
-\contentsline {section}{\numberline {3.3}Functional servers}{21}
-\contentsline {subsubsection}{Request and Response}{22}
-\contentsline {chapter}{\numberline {4}Method}{25}
-\contentsline {section}{\numberline {4.1}Constructing the server in Express and Cause}{25}
-\contentsline {section}{\numberline {4.2}Evaluating maintainability}{26}
-\contentsline {subsection}{\numberline {4.2.1}Evaluating readability through code reviews}{26}
-\contentsline {subsubsection}{Semi-structured interviews}{27}
-\contentsline {subsection}{\numberline {4.2.2}Evaluating the answers}{27}
-\contentsline {chapter}{\numberline {5}Results}{29}
-\contentsline {section}{\numberline {5.1}Limitations}{29}
-\contentsline {subsection}{\numberline {5.1.1}Improvements to implementation}{29}
-\contentsline {section}{\numberline {5.2}future work}{29}
-\contentsline {subsection}{\numberline {5.2.1}Relations to cardinality}{29}
+\contentsline {subsubsection}{Example: Creating a OCP compliant paint programming}{22}
+\contentsline {section}{\numberline {3.3}Functional servers}{24}
+\contentsline {subsubsection}{Request and Response}{25}
+\contentsline {chapter}{\numberline {4}Method}{28}
+\contentsline {section}{\numberline {4.1}Constructing the server in Express and Cause}{28}
+\contentsline {section}{\numberline {4.2}Evaluating maintainability}{29}
+\contentsline {subsection}{\numberline {4.2.1}Evaluating readability through code reviews}{29}
+\contentsline {subsubsection}{Semi-structured interviews}{30}
+\contentsline {subsection}{\numberline {4.2.2}Evaluating the answers}{30}
+\contentsline {chapter}{\numberline {5}Results}{32}
+\contentsline {section}{\numberline {5.1}Evaluating adherence to SOLID}{32}
+\contentsline {subsection}{\numberline {5.1.1}Functional solution}{32}
+\contentsline {subsubsection}{Single Responsibility Principle}{32}
+\contentsline {subsubsection}{Open/Closed Principle}{33}
+\contentsline {subsubsection}{Liskov Segregation Principle}{33}
+\contentsline {subsubsection}{Interface Segregation Principle}{33}
+\contentsline {subsubsection}{Dependency Inversion Principle}{33}
+\contentsline {subsection}{\numberline {5.1.2}Imperative solution}{33}
+\contentsline {subsubsection}{Single Responsibility Principle}{33}
+\contentsline {subsubsection}{Open/Closed Principle}{33}
+\contentsline {subsubsection}{Liskov Segregation Principle}{33}
+\contentsline {subsubsection}{Interface Segregation Principle}{33}
+\contentsline {subsubsection}{Dependency Inversion Principle}{33}
+\contentsline {section}{\numberline {5.2}Interviews}{33}
+\contentsline {subsection}{\numberline {5.2.1}Raw results}{33}
+\contentsline {subsubsection}{Person 1}{33}
+\contentsline {subsubsection}{Person 2}{33}
+\contentsline {subsubsection}{Person 3}{33}
+\contentsline {subsubsection}{Person 4}{33}
+\contentsline {section}{\numberline {5.3}Bias}{33}
+\contentsline {section}{\numberline {5.4}Limitations}{33}
+\contentsline {subsection}{\numberline {5.4.1}Improvements to implementation}{33}
+\contentsline {section}{\numberline {5.5}future work}{34}
+\contentsline {subsection}{\numberline {5.5.1}Relations to cardinality}{34}
+\contentsline {section}{\numberline {5.6}ReasonML REST implementation}{36}
+\contentsline {section}{\numberline {5.7}NodeJS REST implementation}{36}

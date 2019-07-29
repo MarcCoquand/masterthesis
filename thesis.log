@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.20)  29 JUL 2019 09:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.20)  29 JUL 2019 11:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -753,21 +753,22 @@ Chapter 3.
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 164.
  [16] [17] [18]
-Overfull \hbox (15.1087pt too wide) in paragraph at lines 288--294
+Overfull \hbox (15.1087pt too wide) in paragraph at lines 296--302
 []\T1/cmr/m/n/12 In func-tional
  []
 
 
-Overfull \hbox (5.74435pt too wide) in paragraph at lines 294--297
+Overfull \hbox (5.74435pt too wide) in paragraph at lines 302--305
 []\T1/cmr/m/n/12 Same logic as for con-travari-
  []
 
-
-Overfull \hbox (3.83385pt too wide) in paragraph at lines 297--300
-[]\T1/cmr/m/n/12 Since ex-cep-tions are rep-re-sented by a sum
+[19] [20] [21]
+Overfull \hbox (44.44202pt too wide) in paragraph at lines 420--421
+[]\T1/cmr/m/n/12 (ADD_REFERENCE $\T1/cmtt/m/n/12 http : / / homepages . inf . e
+d . ac . uk / wadler / papers / expression /
  []
 
-[19] [20]) (./functionalserver.tex [21] [22]) (./method.tex [23] [24]
+[22] [23]) (./functionalserver.tex [24] [25] [26]) (./method.tex [27]
 Chapter 4.
 
 Overfull \hbox (3.45898pt too wide) in paragraph at lines 30--36
@@ -782,23 +783,25 @@ tt/m/n/12 text/plain \T1/cmr/m/n/12 and \T1/cmtt/m/n/12 application/json\T1/cmr
 /m/n/12 .
  []
 
-[25
+[28
 
-] [26] [27]) [28]
+] [29] [30]) (./results.tex [31]
 Chapter 5.
-(./thesis.bbl [29
+) [32
 
-]) [30
+] (./thesis.bbl [33] [34]) (./appendix.tex [35
+
+]) [36
 
 ] (./thesis.aux) ) 
 Here is how much of TeX's memory you used:
- 17949 strings out of 492701
- 330684 string characters out of 6134504
- 461840 words of memory out of 5000000
- 21458 multiletter control sequences out of 15000+600000
+ 18005 strings out of 492701
+ 331326 string characters out of 6134504
+ 506911 words of memory out of 5000000
+ 21509 multiletter control sequences out of 15000+600000
  21125 words of font info for 56 fonts, out of 8000000 for 9000
  1137 hyphenation exceptions out of 8191
- 55i,8n,54p,831b,1654s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,8n,54p,831b,1223s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-su
 per-t1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12
 .pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></
@@ -816,10 +819,10 @@ m-super/sfrm0800.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super
 </usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfti1728.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on thesis.pdf (32 pages, 376075 bytes).
+Output written on thesis.pdf (38 pages, 388022 bytes).
 PDF statistics:
- 180 PDF objects out of 1000 (max. 8388607)
- 127 compressed objects within 2 object streams
+ 201 PDF objects out of 1000 (max. 8388607)
+ 142 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
