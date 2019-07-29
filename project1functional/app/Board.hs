@@ -49,13 +49,17 @@ instance Arbitrary e => Arbitrary (Board e) where
 
 toString :: Show e => Board e -> [String]
 toString (CreateBoard arr) =
-    -- unwords turns ["bl","bl","bl"] into "bl bl bl"
-    [unwords
-        -- Show one row
-        [show (arr ! UnCoord (y, x))  | x <- [1..boardSize]]
-        -- Perform for all rows
-        | y <- [1..boardSize]
-        ]
+    let
+        showRow y =
+            do  x <- [1..boardSize]
+                arr ! UnCoord (y,x)
+                    & show
+                    & return
+    in
+        do  y <- [1..boardSize]
+            showRow y
+                & unwords
+                & return
 
 
 isLegalMove
@@ -67,39 +71,37 @@ isLegalMove moveSet destination =
 
 
 makeNumberList :: Int -> Int -> String
-makeNumberList amount startNumber =
+makeNumberList amount startDigit =
     let
-        format number =
-            show number ++ "."
+        format digit =
+            show digit ++ "."
 
-        formattedNumberGenerator =
-            unfoldr (\i -> Just (format i, i+1)) startNumber
+        generateDigits digit =
+            format digit : generateDigits (digit+1)
+
     in
-        formattedNumberGenerator
+        generateDigits startDigit
             & take amount
             & unwords -- Turns ["1.","2.","3."] into "1. 2. 3."
-
-
-appendNumber :: Int -> String -> String
-appendNumber n string =
-    show n ++ ". " ++ string
 
 
 makeIndex :: [String] -> [String]
 makeIndex boardString =
     let
-        topRow =
+        numberedTopRow =
             "   " ++ makeNumberList (length boardString) 1
 
-        boardRows =
+        numberedBoardRows =
             -- Prefer foldl' over foldl for efficiency and avoiding space leaks.
             foldl' appendRow [] boardString
 
         appendRow board row =
-            board ++ [appendNumber (length board + 1) row]
+            board ++ [append (length board + 1) row]
 
+        append number string =
+            show number ++ ". " ++ string
     in
-        [topRow] ++ boardRows
+        numberedTopRow : numberedBoardRows
 
 
 instance Show e => Show (Board e) where
@@ -156,11 +158,11 @@ get (CreateBoard arr) coord =
 
 maybeGet :: Board square -> (Int,Int) -> Maybe square
 maybeGet board maybeCoord =
-    maybeCoord
-        & makeCoord board
-        & fmap (get board)
+    do  coord <- makeCoord board maybeCoord
+        get board coord
+            & return
 
-
+-- | Takes a board and a list of changes
 update :: Board square -> [(Coord, square)] -> Board square
 update (CreateBoard arr) changeList =
     changeList

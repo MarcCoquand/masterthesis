@@ -9,9 +9,9 @@ safety.
 
 \section{Concepts from Functional Programming}\label{functionalprogramming}
 
- While different definitions exist of what Functional programming means, we
- define functional programming as a paradigm that uses of pure functions,
- decoupling state from logic, using trait-based polymorphism and immutable data.
+ While different definitions exist of what Functional programming means, here 
+ functional programming is a paradigm that uses of pure functions,
+ decoupling state from logic and immutable data.
 
 \begin{description}
 \item[ Purity ]
@@ -26,25 +26,14 @@ When a function is pure it means that calling a function with the same arguments
         world. Or given $x=0$, $h()=x+1$. Then $h()$ will yield $x=1$ and $(h
         \circ h)()$ will yield $x=2$, making it impure.~\cite{wikipedia_pure}
 
-	\item[ Trait-based polymorphism ]
-
-		OOP inherits classes that contain methods and
-attributes.~\cite{Gamma:1995:DPE:186897} Functional programs instead
-define classes that describe the actions that are possible. For example, a
-class \texttt{Equality} could contain a function \texttt{isEqual} that checks
-if two data types are equal. Then any data type that implements the interface
-Equality, for example lists or binary trees, would be able to use the function
-isEqual.  This is known as type-classes in
-Haskell\footnote{\url{www.learnyouahaskell.com/types-and-typeclasses}}, mixins
-in Javascript\footnote{\url{www.typescriptlang.org/docs/handbook/mixins.html}}
-or traits in Scala\footnote{\url{https://docs.scala-lang.org/tour/traits.html}}.
-
 \item[ Immutable data by deafult ]
 
 Immutable data is data that after initialization can not change. This means if
 we initialize a record, \texttt{abc = \{a: 1, b: 2, c: 3\}} then \texttt{abc.a
 := 4} is an illegal operation. Immutable data, along with purity, ensures that
 no data can be mutated unless it is specifically created as mutable data.
+Mutable data is an easy source of bug because it can cause two different
+functions to modify the same value, leading to unexpected results.
 
 \item[Higher-order functions]
 
@@ -82,8 +71,7 @@ As a strategy to further separate state and logic, one can construct a
         containing no logic as a base layer. Then on a second layer one
         implements an interface that implements a pure solution and one
         effectful solution. Then on the third layer one implements the logic of
-        the program in pure code. The way the second layer is implemented is
-        explained further in Section~\ref{interpreterpattern}. 
+        the program in pure code.  
 \end{description}
 
 So while no exact definition of Functional programming exist, this thesis
@@ -91,28 +79,27 @@ defines it as making functions pure and inheritance being based around
 functionality rather than attributes. 
 
 More advanced constructs also exists for functional programming that need to be
-introduced in order to construct a maintainable rest api.
+introduced for constructing a maintainable rest library. 
 
 \subsection{ADTs: Sum types and product types}\label{types}
 
 A type is in Haskell a \textit{set} of possible values that a given data can
-have. This can be $int$, $char$ and custom defined types. A \textit{sum type} or
-\textit{union type} is a type which is the sum of types, meaning that it can be
-one of those it's given types. For example the type \texttt{type IntChar = Int |
-Char} is either an Int or a Char. A useful application for sum types are enums
-such as \texttt{type Color = Red | Green | Blue}, meaning that a value of type
-Color is either red, green or blue. A sum type can be used to model data which
-may or may not have a value, by introducing the Maybe type: \texttt{type Maybe
-value = Just value | Nothing}.A product type is a type which is the product of
-types, for example \texttt{type User = User Name Email}.  Informally, a product
-type can be likened to a record in Javascript.  This allows us to model
-computations that might fail. For example given $sqrt(x) = \sqrt{x},\, x\in
-\mathbb{Z}$ then $sqrt(-1)$ is undefined and would cause Haskell to crash.
-Instead by introducing a function \texttt{safeSqrt}, where \texttt{safeSqrt x =
-if x > 0 then Just (sqrt x) else Nothing}, the program can force the developer to
-handle the special case of negative numbers. Sum types are useful for
-implementing the Interpreter pattern, explained in
-Section~\ref{interpreterpattern}.
+have. This can be $int$, $char$ and custom defined types. A \textit{sum type},
+\textit{Algebraic data type (ADT)} or \textit{union type} is a type which is the
+sum of types, meaning that it can be one of those it's given types. For example
+the type \texttt{type IntChar = Int | Char} is either an Int or a Char. A useful
+application for sum types are enums such as \texttt{type Color = Red | Green |
+Blue}, meaning that a value of type Color is either red, green or blue. A sum
+type can be used to model data which may or may not have a value, by introducing
+the Maybe type: \texttt{type Maybe value = Just value | Nothing}.A product type
+is a type which is the product of types, for example \texttt{type User = User
+Name Email}.  Informally, a product type can be likened to a record in
+Javascript.  This allows us to model computations that might fail. For example
+given $sqrt(x) = \sqrt{x},\, x\in \mathbb{Z}$ then $sqrt(-1)$ is undefined and
+would cause Haskell to crash.  Instead by introducing a function
+\texttt{safeSqrt}, where \texttt{safeSqrt x = if x > 0 then Just (sqrt x) else
+Nothing}, the program can force the developer to handle the special case of
+negative numbers. 
 
 \subsection{GADT}\label{gadt}
 
@@ -123,9 +110,10 @@ scope for specific applications. For example a parsing library or a calculator.
 
 \begin{figure}[H]
     \begin{lstlisting}
-        data Calculator = Number Int         
-          | Add Calculator Calculator 
-          | Multiply Calculator Calculator 
+        data Calculator where 
+          Number : Int -> Calculator Int
+          Add : Calculator a -> Calculator b -> Calculator c
+          Multiply : Calculator a -> Calculator b -> Calculator c
     \end{lstlisting}
     \caption{A Calculator GADT with two operations add and multiply.}
     \label{gadtcalculator}
@@ -152,10 +140,16 @@ Figure~\ref{calculator} defines an evaluation for the program.
         evaluate :: Calculator -> Int
         evaluate (Add expr1 expr2) = evaluate expr1 + evaluate expr2
         evaluate (Multiply expr1 expr2) = evaluate expr1 + evaluate expr2
+        evaluate (Number i) = i
     \end{lstlisting}
     \caption{Evaluator for the calculator}
     \label{calculator}
 \end{figure}
+
+By separating how the expression from it's evaluation, the expression can be
+reused for different purposes. For example a calculator that should for
+different platforms just needs to implement different evaluators and can be sure
+that logic will be the same for all platforms.
 
 \subsection{Type classes}\label{typeclass}
 
@@ -197,30 +191,29 @@ will be described in the following sections.
     \label{printifequal}
 \end{figure}
 
-
-
 \subsection{Functors and Contravariant Functors}
 
-A useful type class is the Functor type class. It defines a function 
-$map : (a\rightarrow b) \rightarrow m\ a \rightarrow m\ b$. So every type that
-can be mapped over is a Functor. Examples of this are lists, where map morphs
-every value in the list from a to b. Another example is for Maybe, defined
-in~\ref{types}. A Functor for Maybe checks if the value is $Just\ a$, if so it
-morphs that value to $Just\ b$, otherwise it returns $Nothing$. 
+The Functor type class defines a function $map : (a\rightarrow b) \rightarrow m\
+a \rightarrow m\ b$. So every type that can be mapped over is a Functor.
+Examples of this are lists, where map morphs every value in the list from a to
+b. Another example is for Maybe, defined in~\ref{types}. A Functor for Maybe
+checks if the value is $Just\ a$, if so it morphs that value to $Just\ b$,
+otherwise it returns $Nothing$. 
 
 Not every type with a type parameter is a Functor. For example the type
-$Predicate = a \rightarrow Boolean$, is a function that when given some value
+$Predicate\ a = a \rightarrow Boolean$, is a function that when given some value
 $a$ returns a boolean. This type can not be a Functor due to the type parameter
 being the \textit{input} of the function. When the type parameter of the type is
-the input, it is in negative position and the type is \textit{contravariant}.
-When the type parameter is the output of a function, it is in positive position
-and the type is covariant. A type can be a Functor only if it is covariant.
+the input, it is said to be in negative position and the type is
+\textit{contravariant}.  When the type parameter is the output of a function, it
+is said to be in positive position and the type is covariant. A type can be a
+Functor only if it is covariant.
 
-Contravariant Functors are type classes that define a function $contramap :
-(a\rightarrow b) \rightarrow m\ b \rightarrow m\ a$. These are useful for
-defining how the value should be \textit{consumed}. So for example a type
-$encoder : a\rightarrow encoded$, defines an encoder. The contravariant functor
-would allow transforming the encoder into intermediate value.
+Contravariant Functor type class define a function $contramap : (a\rightarrow b)
+\rightarrow m\ b \rightarrow m\ a$. These are useful for defining how the value
+should be \textit{consumed}. So for example a $type\ encoder = a\rightarrow
+encoded$, defines an encoder. The contravariant functor would allow transforming
+the encoder into intermediate value.
 
 \subsection{Brief introduction to Monads for side effects}\label{monads}
 
@@ -258,43 +251,27 @@ explicitly writing this check, so composing \texttt{safeSqrt} and
 safeLog}. The same idea applies for effectful computations such as fetching data
 from a database.
 
-\subsection{Strong Profunctors}\label{profunctor}
-
-Some types are both contravariant and covariant, such as the type $computation\
-a\ b = a\rightarrow Result\ b$, since computation has a type parameter in positive
-and negative position. A Profunctor is a type class that contains the function
-$dimap : Profunctor\ p \Rightarrow (a\rightarrow b)\rightarrow (c\rightarrow d) \rightarrow p\ b\
-c\rightarrow p\ a\ d$. $dimap$ both contramaps and maps the type at the same
-time. So since $computation$ is both covariant and contravariant it is also a
-profunctor. 
-
-A Strong Profunctor defines two functions, $first : Profunctor\ p \Rightarrow p\ a\ b\rightarrow p\ (a,c)\
-(b,c)$, $second : Profunctor\ p \Rightarrow p\ a\ b\rightarrow p\ (c,a)\ (c,b)$. This reveals the core
-strength of Profunctors, to compute two separate values and then merge those
-together. By defining a function $merge : Strong\ p\ \Rightarrow p\ a\ (b
-\rightarrow c) \rightarrow p\ (a,b) \rightarrow c$, a Strong Profunctor gives a
-``memory'' to the function, so that values can be computed both on the input and
-the output of the function. How this is useful will be demonstrated in the
-functional REST server chapter.
-
 \section{SOLID principles with functional programming}\label{dependencyinjection}
 
-To create maintainable functional programs the concepts from SOLID architecture
-must be translated over to the functional paradigm where applicable. 
+Chapter~\ref{background} established the SOLID principles and how they can be
+used as indicators to ensure that software is maintainable. SOLID is originally
+used for Object-oriented programming and thus the concepts must be translated to
+functional programming.
 
 \subsection{Single Responsibility Principle}
 
 A function takes a single input and produces a single output. If file structure
-is centered around the morphisms of a single type. The responsibility of a file
-is to morph that type into some other value. Thus it keeps the modules focused
-and simple.
+is centered around the morphisms of a single type then the responsibility of a
+file is to morph that type into some other value. Thus it keeps the modules
+focused and simple and would ensure that the single responsibility principle is
+held. It can also be thought of as ``One function modifies one thing''.
 
 \subsection{Liskov Substitution Principle}
 
-Liskov's Substitution Principle are used for reasoning about subtyping among
-objects. Since objects do not exist for functional programs some translating is
-needed of those concepts. The formal requirements of Liskov's Substitution
-Principle are as follows:
+Liskov's Substitution Principle states how reasoning about subtyping among
+objects should be done. Since objects do not exist for functional programs some
+translating is needed of those concepts. The formal requirements of Liskov's
+Substitution Principle are as follows:
 
 \begin{itemize}
     \item Contravariance of method arguments should be in the subtype.
@@ -317,11 +294,9 @@ programming:
     \item [Covariance of method arguments in the subtype.] Same logic as for
         contravariance applies for covariance. In order to morph a subtype using
         map there must be a function $subtype\rightarrow type$.
-    \item [No new exceptions should be thrown by each subtype, except where
-        those exceptions are themselves subtypes of exceptions thrown by the
-        supertype.] Since exceptions are represented by a sum type $Result$,
-        described in previous chapters, it is impossible for subtypes to throw
-        new exceptions.
+    \item [No new exceptions should be thrown] Since exceptions are represented
+        by a sum type $Result$, described in previous chapters, it is impossible
+        for subtypes to throw new exceptions.
 \end{description}
 
 \subsection{Dependency Inversion Principle} 
@@ -361,12 +336,53 @@ can generate a string and some function that can print a string.
     \label{withdiexample}
 \end{figure}
 
+This way, the dependencies can be mocked and replaced with different ones. So if
+we later want to create a $applicationIO$ we can reuse $readNPrint$ with the
+functions for printing in the application and reading input from the
+application.
+
+Now for a REST api library, it means that the logic should not depend on it's
+environment means that the specification of the REST api should not depend on
+the server implementation. In other words, it should be trivial to port the
+server logic to another runtime if needed. To do this, GADTs can be used to
+separate the expression from it's evaluation. So the REST api is simply
+described as instructions of a GADT. This gives other advantages such as the
+ability to generate documentation for free.
+
 \subsection{Interface Segregation Principle} 
 
 Interface Segragation Principle states that no client should be forced to depend
-on methods it does not use. 
+on methods it does not use. This translates to, in Functional
+programming, that the smallest set of data should be used for each function to
+work. Recall earlier that types can be thought of as sets. Recall also that the
+cardinality of a set is the amount of possible values that set can have. If the
+cardinality of a type is higher than expected it allows introducing illegal
+states. For example, $type\ Color = Blue | Green | Red$ has a cardinality of 3
+(since it can either be Blue, Green or Red) whereas Fig.~\ref{colorcardinality}
+has a cardinality of $2\cdot 2\cdot 2 = 8$ meaning that it has 5 states that are
+impossible! By choosing the right data structure it lowers the amount of
+possible values that are possible. So Interface Segragation Principle in
+Functional programming states that a function should not be able to produce
+values it does not use.
 
-This can be enforced by the use of GADTs
+\begin{figure}[H]
+    \begin{lstlisting}
+        type Color = { Blue: Bool, Red: Bool, Green: Bool}
+    \end{lstlisting}
+    \caption{Product type Color with cardinality too high}
+    \label{colorcardinality}
+\end{figure}
+
+\subsection{Open/Closed principles}
+
+This is similar to the Dependency Injection principle in Functional programming.
+Open/Closed states that a module should be open to extension, meaning you can
+add new fields to the data structures it contains, or new elements to the set of
+functions it performs. 
+
+
+
+
 
 
 

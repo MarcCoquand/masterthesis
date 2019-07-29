@@ -1,112 +1,27 @@
 \section{Functional servers}
 
+A $server$ is a function of type $Request \rightarrow Response encoded$.
+Request is a product of the path, media type, accept header, content type header
+and a body. The path needs to be parsed to figure out which endpoint to use.
+Based on the accept header and content type header the correct encoders and
+decoders also need to be set.
+
+Based on the REST api description outlined in chapter 2, we can define a
+\textit{type specification a b} as a GADT which constructs a small DSL for a
+REST api. For $specification$ there exists a function $makeServer : \forall a\
+a.\ Specification\ a\ a \rightarrow (Request \rightarrow Response encoded)$.
+$makeServer$ works as a parser, it extracts the parameters from the request
+based on the specification and feeds them into a handler function, which is also
+constructed from the specification. Specification encodes the response based on
+the request's accept header and the included encoder in the specification.
+
+The same $specification$ value can also be used afterwards to generate
+documentation, client functions for generating correct requests.
+
 \theoremstyle{definition}
-\newtheorem{exmp}{Example}[section]
-\subsection{RESTful servers}
 
-
-Servers are applications that provide functionality for other programs or
-devices, called clients. Services are servers that allow sharing data or
-resources among clients or to perform a computation.
-
-REST (Representational State Transfer) is a software architecture style that is
-used to construct web services. A so called RESTful web service allow requesting
-systems to access and manipulate textual representations of web services by
-using a set of stateless operations. The architectual constraints of REST are as
-follows:
-
-\begin{description}
-\item[ Client - Server Architecture ] Separate the concerns between user
-interface concerns and data storage concerns.
-\item[Statelessness] Each request contains all the information neccessary to
-perform a request. State can be handled by cookies on the user side or by using
-databases. The server itself contains no state.
-\item[Cacheability] As on the World Wide Web, clients and intermediaries can
-cache responses. Responses must therefore, implicitly or explicitly, define
-themselves as cacheable or not to prevent clients from getting stale or
-inappropriate data in response to further requests. Well-managed caching
-partially or completely eliminates some client–server interactions, further
-improving scalability and performance. 
-\item[Layered system] A client can not tell if it is connected to an end server
-or some intermeditary server. 
-\item[Code on demand] Servers can send functionality of a client via exectuable
-code such as javascript. This can be used to send the frontend for example.
-\item[Uniform interface] The interface of a RESTful server consists of four
-components. The request must specify how it would like the resource to be
-represented; that can for example be as JSON, XML or HTTP which are not the
-servers internal representation. Servers internal representation is therefore
-separated. When the client holds a representation of the resource and metadata
-it has enough information to manipulate or delete the resource. Also the REST
-server has to, in it's response, specify how the representation for the
-resource. This is done using Media type. Some common media types are JSON, HTML
-and XML.
-\end{description}
-
-A typical HTTP request on a restful server consists of one of the  verbs: GET,
-POST, DELETE, PATCH and PUT. They are used as follows:
-
-\begin{description}
-\item[GET] Fetches a resource from the server. Does not perform any mutation. 
-\item[POST] Update or modify a resource.
-\item[PUT] Modify or create a resource.
-\item[DELETE] Remove a resource from the server.
-\item[PATCH] Changes a resource.
-\end{description}
-
-A request will specify a header ``Content-Type'' which contains the media
-representation of the request content. For example if the new resource is
-represented as Json then content-type will be ``application/json''. It also
-specifies a header ``Accept'' which informs which type of representation it
-would like to have, for example Html or Json. 
-
-A request will also contain a route for the resource it is requesting. These
-requests can also have optional parameters called query parameters. In the
-request route:
-
-\begin{lstlisting}
-/api/books?author=Mary&published=1995
-\end{lstlisting}
-
-the $?$ informs that the request contains query parameters which are optional.
-In the example above it specfies that the request wants to access the books
-resource with the parameters author as Mary and published as 1995.
-
-
-When a request has been done the server responds with a status code that
-explains the result of the request. The full list of status codes and their
-descriptions can be found here:
-\url{https://en.wikipedia.org/wiki/List_of_HTTP_status_codes}
-
-\subsection{Implementation concerns for REST apis}
-
-A REST api has to concern themselves with the following:
-
-\begin{itemize}
-\item Ensure that the response has the correct status code.
-\item Ensure that the correct representation is sent to the client.
-\item Parse the route and extract it's parameters. 
-\item Parse the query and extract it's parameters.
-\item Handle errors if the route or query are badly formatted.
-\item Generate the correct response body containing all the resources needed.
-\end{itemize}
-
-Every type of error has a specific status code, these need to be set correctly.
-
-\section{Architect of a sustainable server} 
-
-\section{Modeling a server in functional programming}
-
-\subsection{Constraints for good architecture}
-
-\subsection{Look}
-
-\subsection{Implementation}
-
-\subsection{Definitions}
-
-\subsubsection{Verbs and Media types}
-
-A verb is either get, post, put, patch or delete, represented as a sum type $type Verb = Get\ |\ Post\ |\ Put\ |\ Patch\ |\
+A verb is either get, post, put, patch or delete, represented as a sum type
+$type\ Verb = Get\ |\ Post\ |\ Put\ |\ Patch\ |\
 Delete$. Content types are harder to represent as a sum type due to there being
 so many and are thus represented as a string instead.
 
@@ -121,12 +36,6 @@ Media, headers (a list of string tuples) and an \textit{encoder for the body}.
 An encoded response instead contains an encoded body. These are separated
 because the body will be constructed separately from the encoder.
 
-A server of parameter b is a type that takes a request and transforms it into a
-response of parameter b. I.E.  $server : Request\rightarrow Response\ encoded$.
-A $Response\ b$ is a contravariant product type consisting a status code, a set
-of headers, a content type, a function $body: a\rightarrow encoded$ and
-encoding.
-
 \begin{lstlisting}
   type Response a = {
     code: StatusCode,
@@ -137,135 +46,82 @@ encoding.
   };
 \end{lstlisting}
 
-When constructing a Response a series of computations need to be done. If one of
-these fails, due to internal implementation errors or invalid requests there
-needs to be an error handling system in place. To account for this, a type
-$computation\ a\ b = a \rightarrow Result\ b$, where result is a sum type
-$Result\ a = Ok\ a\ |\ Fail\ Code\ Media\ Message$, is introduced. Computation
-is also a Monad, meaning that computations can be composed together, where if
-one computation should fail it skips executing the rest and returns a failure
-containing the correct status code. 
+A server of parameter b is a type that takes a request and transforms it into a
+response of parameter b. I.E.  $server : Request\rightarrow Response\ encoded$.
 
+Of course, depending on the Request a different Response should be returned. So
+we need to introduce a $Router$ that can, depending on the request, give a
+different response. 
 
-An endpoint is a computation of a $Request$ to a tuple of function handler $h$
-and a $Response\ body$. An endpoint $e\ a\ b$ is complete if $e\sim computation\
-Request\ (Result\ b, Response\ b)$. For all complete endpoints, there exists a
-function $\forall b. part\ b \ b\sim Request \rightarrow (Result\ b, Response\
-b)\Rightarrow part\ b\ b \rightarrow server$. This function applies the result
-of the handler to the Response encoder to create $Response\ encoded$. Thus to
-construct a server from an endpoint, the endpoint must be complete and for all
-complete endpoints, handler is $Result\ a$.
+A Router is a parser that checks the content of the request and then modifies
+the response and applies the parameters of the request to a handler. We separate
+how the response should be encoded from the handler to ensure inversion of
+control. By making the implementation of the handler not depend on it's
+environment, we make it possible to test effects (E.G. adding a resource to a
+database, doing system calls) separate from the implementation of the
+specification. 
 
-Since a computation is a strong profunctor and a monad, non-complete endpoints
-can be composed together to produce a complete endpoint. Thus we introduce
-combinators as follows.
+In order to do so, we need to create a small language for creating
+specifications. This is done by using GADTs. Recall that a GADT is a sum type
+where you can specify the return types. So the GADT for a specification becomes
+as follows:
 
-Extract the encoder from the request and contramap that encoder to the
-response: 
-\begin{equation}
-\begin{split}
-    accept & : [Media,a\rightarrow encoded] \\
-           & \rightarrow endpoint\ h\ encoded \\ 
-           & \rightarrow endpoint\ h\ a \\
-\end{split}
-\end{equation}
-
-Extract a query parameter and apply that to the handler: 
-\begin{equation}
-\begin{split}
-    query &: parameter\\
-          &\rightarrow (value\rightarrow Maybe(a))\\
-          & \rightarrow endpoint\ (Maybe(a)\rightarrow h)\ b \\
-          &\rightarrow endpoint\ h\ b \\ 
-\end{split}
-\end{equation}
-
-Depending on the URI of the request, a different endpoint should be 
-
-\begin{itemize}
-\item An ordered set of required parameters to execute a handler.
-\item An ordered set of optional query parameters to execute a handler.
-\item A set of accepted representations for a resource as well as an
-accompanying function that encodes the resource to the represenation.
-\item A handler to execute, where a handler must take the correct parameters and
-return the correct resource.
-\item A set of http request methods supported by the endpoint.
-\end{itemize}
-
-
-Each computation in an endpoint will morph the handler or the Response. An
-endpoint consists of a composition of parts, where $part\ h\ b = computation\
-Request\ (h,Response\ b)$ and $h$ is a handler. A $part$ is \textit{complete} if
-$part\sim Request \rightarrow (Result\ b, Response\ b)$.  When a part is
-complete it means that all parameters from the request have been extracted and
-appended to the handler and the Response has a way to encode the result of the
-handler. Thus a function $\forall b. part\ b \ b\sim Request \rightarrow (Result\
-b, Response\ b)\Rightarrow part\ b\ b \rightarrow server$ exists.
-
-
-The body of a response is a function that transforms the resource into it's
-requested representation. If the request specifies accept as
-\lstinline{application/json} then the body function turns the body into a json
-format. 
-
-A $Request$ is a monad that parses the incoming request. It transforms that
-into a request handler that then feeds the result into a response. A handle is a
-function $a\rightarrow Response\ b$. The extended definition of the server
-is then $Server : Request\ a \rightarrow (a \rightarrow Response\ b) \rightarrow
-Response\ b$.
-
-\section{Cause, a functional REST framework}
-
-Cause is a high-level web framework that allows writing composable REST
-frameworks in Reasonml. In Cause, a REST api is a \textit{specification}, where
-the user specifies endpoints. An endpoint in a spec contains the following:
-An endpoint is composable, meaning that you can create a \textit{connector
-endpoint} which consists of two \textit{subendpoints}. The following operations
-exist for endpoints
-
-\begin{description}
-\item [oneOf $: list(endpoint)$] Creates a connector endpoint out of a list of
-subendpoints.
-\item [is $: string \rightarrow endpoint$] Checks that the request contains a
-given string in it's path.
-\item [int $: endpoint$] Extracts an integer from the request path and feeds it
-into the handler.
-\item [text $: endpoint$] Extracts a text from the request path and feeds it into
-the handler.
-\item [contentType $: list(MediaType,a \rightarrow encoded)$] Checks that the
-request contains one of the supported media types and sets the appropriate
-encoder.
-\item [accept $: list(MediaType,encoded \rightarrow a)$] Takes a set of
-supported mediatypes and a way to transform the encoded value into the value.
-\item [($\rightarrowtail$) $: endpoint \rightarrow endpoint \rightarrow endpoint$] 
-An operator for composing endpoints.
-\item [get $: handler \rightarrow endpoint \rightarrow endpoint$] Connects an
-endpoint to a handler and ensures that endpoint accepts only GET.
-\item [delete $: handler \rightarrow endpoint \rightarrow endpoint$] Connects an
-endpoint to a handler and ensures that endpoint accepts only DELETE.
-\item [put $: handler \rightarrow endpoint \rightarrow endpoint$] Connects an
-endpoint to a handler and ensures that endpoint accepts only PUT.
-\item [post $: handler \rightarrow endpoint \rightarrow endpoint$] Connects an
-endpoint to a handler and ensures that endpoint accepts only POST.
-\end{description}
-
-\begin{exmp}
-A RESTful api User manages user data for a server at the path \lstinline{/user}.
-It has the handlers $getUser: id \rightarrow list(User)$, $postUser : User
-\rightarrow result$, $deleteUser : id \rightarrow result$. The user endpoint
-then becomes
-
-
-\begin{lstlisting}[escapeinside={((*}{*))}]
-userSpec = is("user") ((*$\rightarrowtail$*)) oneOf(
-    [int ((*$\rightarrowtail$*)) contentType([(Json,encodeJson)]) ((*$\rightarrowtail$*)) get(getHandler),
-    ,accept([(Json,decodeJson)]) ((*$\rightarrowtail$*)) post(postHandler),
-    ,int ((*$\rightarrowtail$*)) delete(deleteHandler),
-    ])
+\begin{lstlisting}
+  type router 'input 'output =
+    Top : router ('a, 'a) ('a, 'a)
+    Exact : string -> router ('a, 'b) ('a, 'b)
+    Custom : (string -> Maybe a) -> router ('a -> 'b, 'c) ('b, 'c)
+    Query : string 
+            -> (string -> Maybe 'a) 
+            -> router (Maybe 'a -> 'b, 'c) ('b, 'c)
+    Slash : router ('a, 'b) ('c, 'd) 
+            -> router ('c, 'd) ('e, 'f) 
+            -> router ('a, 'b) ('e, 'f) 
+    Integer : router (int -> 'a, 'b) ('a, 'b)
+    Method : HttpMethod -> router ('a, 'b) ('a, 'b)
+    Accept : [(MediaType, 'b -> string)] -> router ('a, string) ('a, 'b)
+    ContentType : [((MediaType, string -> Maybe 'a)]
+                  -> router ('a -> 'b, 'c) ('b, 'c)
+    Map : StatusCode 
+        -> 'a 
+        -> router ('a, string) (Result.t('c), 'c)
+        -> router ('(b, string) -> string) (Result (Response.content string))
+    OneOf :
+          [router ('(b, string) -> string) (Result (Response.content string))]
+          -> router ((b, string) -> string) Request;
 \end{lstlisting}
-\end{exmp}
 
 
+This looks complicated, but it essentially describes the operations of a REST
+api and routing. Top, Exact, Custom, Integer are used to match that URI is
+correct, for example an endpoint \texttt{/user/:id} is created by doing
+\texttt{Slash (Exact "user") Integer}. \texttt{Slash} connects operations
+together. Afterwards \texttt{Map} is used to map a side effect to the
+specification and \texttt{OneOf} is used to take a list of mapped routers and
+combine them into one. The infix operator for Slash is \texttt{(>-) = Slash}. So
+a valid specification can be \texttt{get = Method GET >- Exact "user" >-
+Integer}.
 
+Router is simply an \textit{instructions} for how it wants to be evaluated. That
+means it can be used to generate documentation for every endpoint, by
+constructing a function \texttt{document : router ((b, string) -> string)
+Request -> String}, the REST API library can automatically generate the
+documentation for us!
 
+So since a Router is just instructions, we can construct \texttt{evaluate :
+router((b, string) -> string) -> (Request -> Response encoded)}, I.E. the router
+specification creates a server! This thesis will omit most of the details in
+regards to how this is implemented. The only thing to note is that \texttt{Map}
+will feed the parameters from the request into a handler $a$. This means that,
+for example, a database function which fetches users will automatically not have
+to, in any way, concern itself with how that user is then encoded or what status
+message to return. This means that the server library \textit{forces} the user
+to implement inversion of control, single responsibility principle and interface
+segregation principle. It forces inversion of control, because the evaluation of
+the specification is not dependent on the handler (an evaluator can just ignore
+it). It forces interface segregation interface principle because the handler is
+only fed the exact values, nothing more, for it to work and it can not return
+more than what the specification specifies that it needs to encode the value.
+Lastly it forces single responsibility principle by forcing the user to
+construct a separate function for fetching the user.
 

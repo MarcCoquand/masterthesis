@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.20)  26 JUN 2019 16:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.20)  29 JUL 2019 09:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -729,141 +729,97 @@ Chapter 2.
 [6
 
 ]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 69.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 66.
  (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 ) [7]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 88.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 85.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 88.
- [8] [9] [10] [11]
-Overfull \hbox (12.71443pt too wide) in paragraph at lines 260--263
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 85.
+ [8] [9] [10]
+Overfull \hbox (12.71443pt too wide) in paragraph at lines 245--248
 []\T1/cmr/m/n/12 Here, re-spon-si-bil-ity means ``rea-son to change''. Mod-
  []
 
-[12]) (./theory.tex [13]
+[11]) (./theory.tex [12]
 Chapter 3.
-[14
+[13
 
-]
-
-LaTeX Warning: Reference `interpreterpattern' on page 15 undefined on input lin
-e 86.
-
-[15]
-
-LaTeX Warning: Reference `interpreterpattern' on page 16 undefined on input lin
-e 115.
-
-[16]
+] [14] [15]
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 170.
- [17] [18] [19]
-Overfull \hbox (15.1087pt too wide) in paragraph at lines 311--317
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 164.
+ [16] [17] [18]
+Overfull \hbox (15.1087pt too wide) in paragraph at lines 288--294
 []\T1/cmr/m/n/12 In func-tional
  []
 
 
-Overfull \hbox (5.74435pt too wide) in paragraph at lines 317--322
+Overfull \hbox (5.74435pt too wide) in paragraph at lines 294--297
 []\T1/cmr/m/n/12 Same logic as for con-travari-
  []
 
 
-Overfull \hbox (465.77617pt too wide) in paragraph at lines 322--325
-[]
+Overfull \hbox (3.83385pt too wide) in paragraph at lines 297--300
+[]\T1/cmr/m/n/12 Since ex-cep-tions are rep-re-sented by a sum
  []
 
-[20]) (./functionalserver.tex
-\c@exmp=\count150
- [21] [22] [23] [24]
-Overfull \hbox (62.17218pt too wide) in paragraph at lines 150--158
-\OML/cmm/m/it/12 Response body$\T1/cmr/m/n/12 . An end-point $\OML/cmm/m/it/12 
-e a b$ \T1/cmr/m/n/12 is com-plete if $\OML/cmm/m/it/12 e \OMS/cmsy/m/n/12 ^^X 
-\OML/cmm/m/it/12 computation Request \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 Result b
-; Response b\OT1/cmr/m/n/12 )$\T1/cmr/m/n/12 .
- []
-
-
-Overfull \hbox (79.87376pt too wide) in paragraph at lines 150--158
-\T1/cmr/m/n/12 For all com-plete end-points, there ex-ists a func-tion $\OMS/cm
-sy/m/n/12 8\OML/cmm/m/it/12 b:part b b \OMS/cmsy/m/n/12 ^^X \OML/cmm/m/it/12 Re
-quest \OMS/cmsy/m/n/12 ! \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 Result b; Response b
-\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 )
- []
-
-[25]
-Overfull \hbox (66.71806pt too wide) in paragraph at lines 196--204
-\T1/cmr/m/n/12 end-point con-sists of a com-po-si-tion of parts, where $\OML/cm
-m/m/it/12 part h b \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 computation Request \OT1/
-cmr/m/n/12 (\OML/cmm/m/it/12 h; Response b\OT1/cmr/m/n/12 )$
- []
-
-
-Overfull \hbox (2.34186pt too wide) in paragraph at lines 235--238
-[]\T1/cmr/m/n/12 Checks that the re-quest con-tains one
- []
-
-[26]) (./method.tex [27]
+[19] [20]) (./functionalserver.tex [21] [22]) (./method.tex [23] [24]
 Chapter 4.
-[28
 
-] [29] [30] [31]) [32]
+Overfull \hbox (3.45898pt too wide) in paragraph at lines 30--36
+[]\T1/cmr/m/n/12 The ac-cepted con-tent types will be \T1/cmtt/m/n/12 applicati
+on/json \T1/cmr/m/n/12 and \T1/cmtt/m/n/12 www-url-formencoded
+ []
+
+
+Overfull \hbox (31.23276pt too wide) in paragraph at lines 30--36
+\T1/cmr/m/n/12 for all end-points and the dis-playable content-types are \T1/cm
+tt/m/n/12 text/plain \T1/cmr/m/n/12 and \T1/cmtt/m/n/12 application/json\T1/cmr
+/m/n/12 .
+ []
+
+[25
+
+] [26] [27]) [28]
 Chapter 5.
-(./thesis.bbl [33
+(./thesis.bbl [29
 
-]
-Underfull \hbox (badness 6396) in paragraph at lines 36--40
-[]\T1/cmr/m/n/12 M. C. Robert, ``De-sign prin-ci-ples and de-sign pat-terns,'' 
-Septem-ber
- []
+]) [30
 
-
-Underfull \hbox (badness 5490) in paragraph at lines 42--44
-[]\T1/cmr/m/n/12 ``Pure func-tion,'' Aug 2018.  $\T1/cmtt/m/n/12 https : / / en
- . wikipedia . org / wiki / Pure _
- []
-
-[34
-
-]) [35] (./thesis.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+] (./thesis.aux) ) 
 Here is how much of TeX's memory you used:
- 17959 strings out of 492701
- 330822 string characters out of 6134504
- 436856 words of memory out of 5000000
- 21468 multiletter control sequences out of 15000+600000
+ 17949 strings out of 492701
+ 330684 string characters out of 6134504
+ 461840 words of memory out of 5000000
+ 21458 multiletter control sequences out of 15000+600000
  21125 words of font info for 56 fonts, out of 8000000 for 9000
  1137 hyphenation exceptions out of 8191
- 55i,15n,54p,831b,1624s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/cm-super/sfbx1440.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/cm-super/sfbx1728.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/cm-super/sfbx2488.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-s
-uper/sfcc1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sf
-rm0700.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm0800.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/cm-super/sfti1728.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on thesis.pdf (37 pages, 397422 bytes).
+ 55i,8n,54p,831b,1654s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-su
+per-t1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/cm-super/sfcc1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/cm-super/sfrm0700.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/c
+m-super/sfrm0800.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super
+/sfrm1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm12
+00.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfti1728.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
+Output written on thesis.pdf (32 pages, 376075 bytes).
 PDF statistics:
- 202 PDF objects out of 1000 (max. 8388607)
- 143 compressed objects within 2 object streams
+ 180 PDF objects out of 1000 (max. 8388607)
+ 127 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

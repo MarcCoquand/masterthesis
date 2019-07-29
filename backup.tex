@@ -1,0 +1,131 @@
+
+
+%% OLD
+
+\subsection{Evaluating testability}
+
+OLD
+
+The testability of the code is determined by it's aherence to SOLID principles,
+in particular of it's use of inversion of control. If a solution has less
+dependencies, it becomes easier to use unit tests to test the code and less
+resources are needed to create integration tests and E2E-tests.
+
+Evaluation can be done then by counting the amount of mocked dependencies in the
+imperative solution and the functional solution.
+
+\subsection{Evaluating error-proneness and extendability}
+
+OLD
+
+To evaluate error-proneness and extendability an expert analysis will be used.
+Cognitive Dimensions is a framework for evaluating the usability of programming
+languages and to find areas of improvements.~\cite{GREEN1996131} It allows us to
+evaluate the quality of a design and explore what future improvements could be
+made. As part of the Cognitive Dimensions, 14 different Cognitive Dimensions of
+Notation exist. A notation depends on the specific context, in this case the
+notation is the languages themselves and their architecture. The author of the
+framework recommends omitting the dimensions that are not applicable to the
+notation. This framework is used to evaluate the safety, error-proneness and
+extendability of both the Express and Cause solution.
+
+\begin{description}
+
+\item[ Viscosity ]
+    OLD
+
+How much work does it take to make small changes? How easy is the code to
+refactor? If small changes requires consequent adjustments then that is a
+problem. As a viscous system cause a lot more work for the user and break the
+line of thought.
+
+\item[ Visibility ]
+
+    OLD
+How easy is it to navigate the source code to find the parts that you want?
+
+\item[ Hidden dependencies ]
+
+    OLD
+Are there hidden dependencies in the source code. Does a change in one part of
+the source code lead to unexpected consequences in another part of the code.
+Every dependency that matters to the user should be accessible in both
+directions. 
+
+\item[ Role-expressiveness ]
+
+    OLD
+How obvious is each sub-component of the source code to the solution as a whole?
+
+\item[ Abstraction ]
+
+    OLD
+What are the levels of abstraction in the source code? Can the details be
+encapsulated?
+
+\item[ Secondary notation ]
+
+    OLD
+Are there any extra information being conveyed to the user in the source code?
+
+\item[ Closeness of mapping ]
+
+    OLD
+By looking at the source code, how close do we find it to be to the case
+we are solving?
+
+\item[ Consistency ]
+
+    OLD
+How much of the rest can the user guess 
+
+
+\item[ Diffuseness or terseness ]
+
+    OLD
+How much space and symbols does the source code need to produce a certain result
+or express a meaning?
+
+\item[ Hard mental operations ]
+
+    OLD
+Where does the hard mental processing lie? Is it more when writing the source
+code itself rather than solving the case, I.E. the semantic level? Does one
+sometimes need to resort to pen and paper to keep track of what is happening?
+
+\item[ Provisionality ]
+
+    OLD
+How easy is it to get feedback of something before you have completed the entire
+system?
+
+\item[ Progressive evaluation ]
+
+How obvious the role of each component of the source code in the solution as a
+whole?
+
+\item[ Error proneness ]
+
+To what extent does the programming paradigm and language help minimise errors? Are
+there any structures or complexities that lead to it being easier to make
+errors?
+\end{description}
+
+\noindent For this study we will investigate the following dimensions: 
+
+\begin{itemize}
+    \item Diffuseness or terseness
+    \item Closeness of mapping
+    \item Hard Mental Operations
+    \item Visibility
+    \item Hidden dependencies
+    \item Abstraction
+    \item Error-proneness 
+\end{itemize}
+
+\noindent We omit the other dimensions as related work concluded that the other
+dimensions did not bring much weight when evaluating the different
+paradigms.~\cite{euguenkiss}
+
+These aspects can also give us insights in the other aspects of mainatainability
+and will be used for discussion and evaluation.

@@ -5,47 +5,34 @@
 \contentsline {subsection}{\numberline {2.1.1}Implementation concerns for REST apis}{8}
 \contentsline {section}{\numberline {2.2}Architecture}{8}
 \contentsline {subsection}{\numberline {2.2.1}Unit testing}{9}
-\contentsline {subsection}{\numberline {2.2.2}Property-based testing}{10}
-\contentsline {subsection}{\numberline {2.2.3}Integration testing}{10}
-\contentsline {subsection}{\numberline {2.2.4}End-2-End Tests}{10}
-\contentsline {subsection}{\numberline {2.2.5}Challenges}{10}
+\contentsline {subsection}{\numberline {2.2.2}Integration testing}{9}
+\contentsline {subsection}{\numberline {2.2.3}End-2-End Tests}{9}
+\contentsline {subsection}{\numberline {2.2.4}Challenges}{10}
 \contentsline {section}{\numberline {2.3}SOLID principles}{11}
-\contentsline {section}{\numberline {2.4}Readability in code}{13}
-\contentsline {chapter}{\numberline {3}Theory}{14}
-\contentsline {section}{\numberline {3.1}Concepts from Functional Programming}{14}
-\contentsline {subsection}{\numberline {3.1.1}ADTs: Sum types and product types}{16}
-\contentsline {subsection}{\numberline {3.1.2}GADT}{16}
-\contentsline {subsection}{\numberline {3.1.3}Type classes}{17}
-\contentsline {subsection}{\numberline {3.1.4}Functors and Contravariant Functors}{18}
-\contentsline {subsection}{\numberline {3.1.5}Brief introduction to Monads for side effects}{18}
-\contentsline {subsection}{\numberline {3.1.6}Strong Profunctors}{19}
-\contentsline {section}{\numberline {3.2}SOLID principles with functional programming}{20}
-\contentsline {subsection}{\numberline {3.2.1}Single Responsibility Principle}{20}
-\contentsline {subsection}{\numberline {3.2.2}Liskov Substitution Principle}{20}
-\contentsline {subsection}{\numberline {3.2.3}Dependency Inversion Principle}{21}
-\contentsline {subsection}{\numberline {3.2.4}Interface Segregation Principle}{21}
-\contentsline {section}{\numberline {3.3}Functional servers}{22}
-\contentsline {subsection}{\numberline {3.3.1}RESTful servers}{22}
-\contentsline {subsection}{\numberline {3.3.2}Implementation concerns for REST apis}{23}
-\contentsline {section}{\numberline {3.4}Architect of a sustainable server}{24}
-\contentsline {section}{\numberline {3.5}Modeling a server in functional programming}{24}
-\contentsline {subsection}{\numberline {3.5.1}Constraints for good architecture}{24}
-\contentsline {subsection}{\numberline {3.5.2}Look}{24}
-\contentsline {subsection}{\numberline {3.5.3}Implementation}{24}
-\contentsline {subsection}{\numberline {3.5.4}Definitions}{24}
-\contentsline {subsubsection}{Verbs and Media types}{24}
-\contentsline {subsubsection}{Request and Response}{24}
-\contentsline {section}{\numberline {3.6}Cause, a functional REST framework}{26}
-\contentsline {chapter}{\numberline {4}Method}{28}
-\contentsline {section}{\numberline {4.1}Constructing the server in Express and Cause}{28}
-\contentsline {section}{\numberline {4.2}Evaluating maintainability}{29}
-\contentsline {subsection}{\numberline {4.2.1}Evaluating testability}{29}
-\contentsline {subsection}{\numberline {4.2.2}Evaluating error-proneness and extendability}{29}
-\contentsline {subsection}{\numberline {4.2.3}Evaluating readability through code reviews}{31}
-\contentsline {subsubsection}{Semi-structured interviews}{31}
-\contentsline {subsection}{\numberline {4.2.4}Evaluating the answers}{32}
-\contentsline {chapter}{\numberline {5}Results}{33}
-\contentsline {section}{\numberline {5.1}Limitations}{33}
-\contentsline {subsection}{\numberline {5.1.1}Improvements to implementation}{33}
-\contentsline {section}{\numberline {5.2}future work}{33}
-\contentsline {subsection}{\numberline {5.2.1}Relations to cardinality}{33}
+\contentsline {section}{\numberline {2.4}Readability in code}{12}
+\contentsline {chapter}{\numberline {3}Theory}{13}
+\contentsline {section}{\numberline {3.1}Concepts from Functional Programming}{13}
+\contentsline {subsection}{\numberline {3.1.1}ADTs: Sum types and product types}{14}
+\contentsline {subsection}{\numberline {3.1.2}GADT}{15}
+\contentsline {subsection}{\numberline {3.1.3}Type classes}{16}
+\contentsline {subsection}{\numberline {3.1.4}Functors and Contravariant Functors}{17}
+\contentsline {subsection}{\numberline {3.1.5}Brief introduction to Monads for side effects}{17}
+\contentsline {section}{\numberline {3.2}SOLID principles with functional programming}{18}
+\contentsline {subsection}{\numberline {3.2.1}Single Responsibility Principle}{18}
+\contentsline {subsection}{\numberline {3.2.2}Liskov Substitution Principle}{19}
+\contentsline {subsection}{\numberline {3.2.3}Dependency Inversion Principle}{19}
+\contentsline {subsection}{\numberline {3.2.4}Interface Segregation Principle}{20}
+\contentsline {subsection}{\numberline {3.2.5}Open/Closed principles}{21}
+\contentsline {section}{\numberline {3.3}Functional servers}{21}
+\contentsline {subsubsection}{Request and Response}{22}
+\contentsline {chapter}{\numberline {4}Method}{25}
+\contentsline {section}{\numberline {4.1}Constructing the server in Express and Cause}{25}
+\contentsline {section}{\numberline {4.2}Evaluating maintainability}{26}
+\contentsline {subsection}{\numberline {4.2.1}Evaluating readability through code reviews}{26}
+\contentsline {subsubsection}{Semi-structured interviews}{27}
+\contentsline {subsection}{\numberline {4.2.2}Evaluating the answers}{27}
+\contentsline {chapter}{\numberline {5}Results}{29}
+\contentsline {section}{\numberline {5.1}Limitations}{29}
+\contentsline {subsection}{\numberline {5.1.1}Improvements to implementation}{29}
+\contentsline {section}{\numberline {5.2}future work}{29}
+\contentsline {subsection}{\numberline {5.2.1}Relations to cardinality}{29}
