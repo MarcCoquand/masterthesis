@@ -11,36 +11,204 @@ five people due to difficulty finding enough users
 \subsubsection{Single Responsibility Principle}
 
 Recall that the Single Responsibility Principle for functional programming
-states that all modules should revolve around one type. 
+states that all modules should revolve around one type.  The file BookApi.re
+contains one product type Book. The modules Encoders and Decoders both use this
+type except for one helper function \texttt{int}.  Afterwards we find that all
+the functions in the module make use of the book type with Lastly we find that
+the module Endpoint all revolve around the type \texttt{route (a)} and that they
+all make use book except the handler \texttt{delete}, which is a helper
+function for the function \texttt{router}.
 
 \subsubsection{Open/Closed Principle}
 
+OCP, as stated in Chapter~\ref{method}, that the data structures should be open
+for extensions without modifying the previous code. Since the library operates
+arount the $specification$ GADT it should be possible to add new cases to 
+that $specification$.
+
+GADTs are polymorphic, that means it is possible to declare a new type
+$omegaSpecification = MyNewCase(args): omegaSpecification$ and then sum it with
+specfication, $omegaSpecification += specification$. This allows us to add new
+cases to the data structure without recompiling existing code, thus adhereing to 
+the Open/Closed Principle.
+
+Since $Response$ is contravariant, it is also possible to extend it with new
+functionality.
+
+As for the router functionality, the router can be extended with new endpoints
+without modifying any of the original code.
+
 \subsubsection{Liskov Segregation Principle}
+
+For this solution Liskov Segregation Principle is not applicable as no
+extensions are done.
 
 \subsubsection{Interface Segregation Principle}
 
+Interface segregation principle states that the cardinality should be as low as
+possible.  While it is impossible to force the user to have the lowest
+cardinality possible the library encourages usage of the lowest possible
+cardinality by feeding the arguments into the handler and stating the return
+type. So in the BookApi.re that every $specification$ forces a contract on the
+function and states that to work they must take the specified arguments which
+it will extract from the request with the parser function. So it means that the
+cardinality of the handler must be according to the $specification$.
+
 \subsubsection{Dependency Inversion Principle}
+
+Dependency Inversion Principle is about separating the logic from it's
+environment.  Since the $specification$ GADT separates the handler from the
+specification, it means that should the developer want to change the handler
+they can change the argument at one spot. If the developer should want to
+change the REST api library, handlers are separated from the
+$specfication$. Thus the developer would not need to change any of the logic of
+the handlers. Therefore the code follows the dependency inversion principle.
+
+Also due to it's separation it also means that testing the logic of the api 
+is easier. In order to test it you 
 
 \subsection{Imperative solution}
-\subsubsection{Single Responsibility Principle}
 
-\subsubsection{Open/Closed Principle}
+Since the solution was developed in a untyped language with no force of
+structure it makes sense that the SOLID principles will not be followed. But
+for the sake of the argument below we go through them as well.
 
-\subsubsection{Liskov Segregation Principle}
-
-\subsubsection{Interface Segregation Principle}
-
-\subsubsection{Dependency Inversion Principle}
-
+\begin{description}
+	\item[Single Responsibility Principle] The imperative solution breaks SRP
+in all handlers by having functions that both parse the requests and performs
+the side effects. Demonstrated in the first handler App.get
+	\item[Open/Closed Principle] N/A
+	\item[Interface Segregation Principle] N/A
+	\item[Dependency Inversion Principle] In the imperative solution, it is 
+impossible to test the handler in isolation. All systems need to be emulated
+such as database and the router.
+	\item[Liskov Segregation Principle] N/A
+\end{description}
 
 \section{Interviews}
 
-\subsection{Raw results}
+\begin{table}[]
+\begin{tabular}{lll}
+\hline
+\textbf{}                         & \textbf{Person 1}
+& \textbf{Person 2}
+\\ \hline
+\multicolumn{1}{l|}{\textbf{Q1}}  &
+\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Implemented API that should\\
+follow REST. I assumet it's\\ related to CRUD?\end{tabular}}
+& \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}A little bit, REST is an API
+with\\ endpoints containing method\\ and headers ensuring you\\ get the right
+data.\end{tabular}}
+\\ \hline
+\multicolumn{1}{l|}{\textbf{Q2}}  &
+\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Little bit, it should be \\
+Javascript and Ocaml \\ combined.\end{tabular}}
+& \multicolumn{1}{l|}{No experience}
+\\ \hline
+\multicolumn{1}{l|}{\textbf{Q3}}  &
+\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}I've implemented an API in\\
+Express\end{tabular}}
+& \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}I had a course where I used\\
+Express three years ago.\end{tabular}}
+\\ \hline
+\multicolumn{1}{l|}{\textbf{Q4}}  &
+\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}The title is BookApi.re which\\
+describes it quite well. It is\\ a Book api that follows\\ RESTful. It also
+manages \\ encoding and decoding.\\ It also checks that the \\ requests are
+correctly \\ formatted.\end{tabular}} &
+\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Encoders and Decoders extract\\
+data from the json and\\ I understand the handler\\ functions. \\
+However the module Endpoint is unclear.\\ Especially $type\ a.\ route(a)$.\end{tabular}}
+\\ \hline
+\multicolumn{1}{l|}{\textbf{Q5}}  & \multicolumn{1}{l|}{application json}
+& \multicolumn{1}{l|}{Maybe string?}
+\\ \hline
+\multicolumn{1}{l|}{\textbf{Q6}}  & \multicolumn{1}{l|}{$api/books/:int$}
+& \multicolumn{1}{l|}{No clue}
+\\ \hline
+\multicolumn{1}{l|}{\textbf{Q7}}  & \multicolumn{1}{l|}{application/json}
+& \multicolumn{1}{l|}{Content type? Json?}
+\\ \hline
+\multicolumn{1}{l|}{\textbf{Q8}}  & \multicolumn{1}{l|}{See
+Appendix~\ref{putperson1}}
+& \multicolumn{1}{l|}{See Appendix~\ref{putperson2}}
+\\ \hline
+\multicolumn{1}{l|}{\textbf{Q9}}  & \multicolumn{1}{l|}{A book api}
+& \multicolumn{1}{l|}{A Book REST api}
+\\ \hline
+\multicolumn{1}{l|}{\textbf{Q10}} & \multicolumn{1}{l|}{text/plain and
+application/json}
+& \multicolumn{1}{l|}{text/plain and application/json}
+\\ \hline
+\multicolumn{1}{l|}{\textbf{Q11}} &
+\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Content type is json and\\ Accept
+might be json?\end{tabular}}
+& \multicolumn{1}{l|}{Unsure}
+\\ \hline
+\end{tabular}
+\caption{Raw results interview one and two}
+\label{interviewonetwo}
+\end{table}
 
-\subsubsection{Person 1}
-\subsubsection{Person 2}
-\subsubsection{Person 3}
-\subsubsection{Person 4}
+\begin{table}[]
+\begin{tabular}{lll}
+\hline
+\textbf{}                         & \textbf{Person 3}
+& \textbf{Person 4}
+\\ \hline
+\multicolumn{1}{l|}{\textbf{Q1}}  &
+\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}I know what it is. It specifies
+\\ how to receive and send \\ information to the client.\end{tabular}}
+& \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}It is used for making HTTP \\
+requests and setting up a \\ server using simple methods\\ for
+changes.\end{tabular}}
+\\ \hline
+\multicolumn{1}{l|}{\textbf{Q2}}  & \multicolumn{1}{l|}{I have seen it.}
+& \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}I have no experience but
+heard\\ about it\end{tabular}}
+\\ \hline
+\multicolumn{1}{l|}{\textbf{Q3}}  &
+\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}It is my go to library for\\
+writing servers.\end{tabular}}
+& \multicolumn{1}{l|}{I have worked with it}
+\\ \hline
+\multicolumn{1}{l|}{\textbf{Q4}}  &
+\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Code to encode and decode\\ so
+that people can not read the\\ content of the books.\\ \\ Not sure what plain
+means in\\ content type.\end{tabular}} &
+\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}First modules define encoding\\
+and decoding json data. \\ \\ Afterwards some helper \\ functions. \\ \\ Lastly
+there are endpoints with\\ router defined with different\\ paths and query
+parameters.\\ \\ It is a REST api for adding, \\ deleting and modifying
+books.\end{tabular}} \\ \hline
+\multicolumn{1}{l|}{\textbf{Q5}}  & \multicolumn{1}{l|}{N / A}
+& \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}responds with json and \\
+accepts plain.\end{tabular}}
+\\ \hline
+\multicolumn{1}{l|}{\textbf{Q6}}  & \multicolumn{1}{l|}{$/delete$}
+& \multicolumn{1}{l|}{$/api/books$.}
+\\ \hline
+\multicolumn{1}{l|}{\textbf{Q7}}  & \multicolumn{1}{l|}{application/json}
+& \multicolumn{1}{l|}{N/A}
+\\ \hline
+\multicolumn{1}{l|}{\textbf{Q8}}  & \multicolumn{1}{l|}{See
+Appendix~\ref{putperson3}}
+& \multicolumn{1}{l|}{See Appendix~\ref{putperson4}}
+\\ \hline
+\multicolumn{1}{l|}{\textbf{Q9}}  & \multicolumn{1}{l|}{A book api to fetch
+books}
+& \multicolumn{1}{l|}{A Book REST api}
+\\ \hline
+\multicolumn{1}{l|}{\textbf{Q10}} & \multicolumn{1}{l|}{string}
+& \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}It can recieve text/plain and
+\\ application/json but unsure \\ what it can send\end{tabular}}
+\\ \hline
+\multicolumn{1}{l|}{\textbf{Q11}} & \multicolumn{1}{l|}{Application/json}
+& \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Application/json but not
+specified\\ what it accepts, assume plain/text.\end{tabular}}
+\\ \hline
+\end{tabular}
+\caption{Raw results interview three and four}
+\label{interviewthreefour}
+\end{table}
 
-
-\section{Bias}

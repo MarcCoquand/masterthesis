@@ -5,57 +5,53 @@
 \contentsline {subsection}{\numberline {2.1.1}Implementation concerns for REST apis}{8}
 \contentsline {section}{\numberline {2.2}Architecture}{8}
 \contentsline {subsection}{\numberline {2.2.1}Unit testing}{9}
-\contentsline {subsection}{\numberline {2.2.2}Integration testing}{9}
-\contentsline {subsection}{\numberline {2.2.3}End-2-End Tests}{9}
+\contentsline {subsection}{\numberline {2.2.2}Integration testing}{10}
+\contentsline {subsection}{\numberline {2.2.3}End-2-End Tests}{10}
 \contentsline {subsection}{\numberline {2.2.4}Challenges}{10}
 \contentsline {section}{\numberline {2.3}SOLID principles}{11}
-\contentsline {section}{\numberline {2.4}Readability in code}{12}
-\contentsline {chapter}{\numberline {3}Theory}{13}
-\contentsline {section}{\numberline {3.1}Concepts from Functional Programming}{13}
-\contentsline {subsection}{\numberline {3.1.1}ADTs: Sum types and product types}{14}
-\contentsline {subsection}{\numberline {3.1.2}GADT}{15}
-\contentsline {subsection}{\numberline {3.1.3}Type classes}{16}
-\contentsline {subsection}{\numberline {3.1.4}Functors and Contravariant Functors}{17}
-\contentsline {subsection}{\numberline {3.1.5}Brief introduction to Monads for side effects}{17}
-\contentsline {section}{\numberline {3.2}SOLID principles with functional programming}{18}
-\contentsline {subsection}{\numberline {3.2.1}Single Responsibility Principle}{18}
-\contentsline {subsection}{\numberline {3.2.2}Liskov Substitution Principle}{19}
-\contentsline {subsection}{\numberline {3.2.3}Dependency Inversion Principle}{19}
-\contentsline {subsection}{\numberline {3.2.4}Interface Segregation Principle}{20}
-\contentsline {subsection}{\numberline {3.2.5}Open/Closed principles}{21}
-\contentsline {subsubsection}{Example: Creating a OCP compliant paint programming}{22}
-\contentsline {section}{\numberline {3.3}Functional servers}{24}
-\contentsline {subsubsection}{Request and Response}{25}
-\contentsline {chapter}{\numberline {4}Method}{28}
-\contentsline {section}{\numberline {4.1}Constructing the server in Express and Cause}{28}
-\contentsline {section}{\numberline {4.2}Evaluating maintainability}{29}
-\contentsline {subsection}{\numberline {4.2.1}Evaluating readability through code reviews}{29}
+\contentsline {section}{\numberline {2.4}Functional programming for mitigating mistakes}{12}
+\contentsline {section}{\numberline {2.5}Conclusion}{13}
+\contentsline {chapter}{\numberline {3}Theory}{14}
+\contentsline {section}{\numberline {3.1}Concepts from Functional Programming}{14}
+\contentsline {subsection}{\numberline {3.1.1}ADTs: Sum types and product types}{15}
+\contentsline {subsection}{\numberline {3.1.2}GADT}{16}
+\contentsline {subsection}{\numberline {3.1.3}Type classes}{17}
+\contentsline {subsection}{\numberline {3.1.4}Functors and Contravariant Functors}{18}
+\contentsline {subsection}{\numberline {3.1.5}Brief introduction to Monads for side effects}{18}
+\contentsline {section}{\numberline {3.2}Functional servers}{19}
+\contentsline {subsection}{\numberline {3.2.1}Specification as a GADT}{20}
+\contentsline {subsection}{\numberline {3.2.2}Evaluation}{20}
+\contentsline {subsubsection}{Request and Response}{20}
+\contentsline {chapter}{\numberline {4}Method}{23}
+\contentsline {section}{\numberline {4.1}Evaluating maintainability}{24}
+\contentsline {section}{\numberline {4.2}SOLID principles in Functional programming}{24}
+\contentsline {subsection}{\numberline {4.2.1}Single Responsibility Principle}{24}
+\contentsline {subsection}{\numberline {4.2.2}Liskov Substitution Principle}{25}
+\contentsline {subsection}{\numberline {4.2.3}Dependency Inversion Principle}{25}
+\contentsline {subsection}{\numberline {4.2.4}Interface Segregation Principle}{26}
+\contentsline {subsection}{\numberline {4.2.5}Open/Closed principles}{27}
+\contentsline {subsubsection}{Example: Creating a OCP compliant paint programming}{28}
+\contentsline {subsection}{\numberline {4.2.6}Evaluating readability through code reviews}{29}
 \contentsline {subsubsection}{Semi-structured interviews}{30}
-\contentsline {subsection}{\numberline {4.2.2}Evaluating the answers}{30}
+\contentsline {subsection}{\numberline {4.2.7}Evaluating the answers}{31}
 \contentsline {chapter}{\numberline {5}Results}{32}
 \contentsline {section}{\numberline {5.1}Evaluating adherence to SOLID}{32}
 \contentsline {subsection}{\numberline {5.1.1}Functional solution}{32}
 \contentsline {subsubsection}{Single Responsibility Principle}{32}
-\contentsline {subsubsection}{Open/Closed Principle}{33}
+\contentsline {subsubsection}{Open/Closed Principle}{32}
 \contentsline {subsubsection}{Liskov Segregation Principle}{33}
 \contentsline {subsubsection}{Interface Segregation Principle}{33}
 \contentsline {subsubsection}{Dependency Inversion Principle}{33}
 \contentsline {subsection}{\numberline {5.1.2}Imperative solution}{33}
-\contentsline {subsubsection}{Single Responsibility Principle}{33}
-\contentsline {subsubsection}{Open/Closed Principle}{33}
-\contentsline {subsubsection}{Liskov Segregation Principle}{33}
-\contentsline {subsubsection}{Interface Segregation Principle}{33}
-\contentsline {subsubsection}{Dependency Inversion Principle}{33}
-\contentsline {section}{\numberline {5.2}Interviews}{33}
-\contentsline {subsection}{\numberline {5.2.1}Raw results}{33}
-\contentsline {subsubsection}{Person 1}{33}
-\contentsline {subsubsection}{Person 2}{33}
-\contentsline {subsubsection}{Person 3}{33}
-\contentsline {subsubsection}{Person 4}{33}
-\contentsline {section}{\numberline {5.3}Bias}{33}
-\contentsline {section}{\numberline {5.4}Limitations}{33}
-\contentsline {subsection}{\numberline {5.4.1}Improvements to implementation}{33}
-\contentsline {section}{\numberline {5.5}future work}{34}
-\contentsline {subsection}{\numberline {5.5.1}Relations to cardinality}{34}
-\contentsline {section}{\numberline {5.6}ReasonML REST implementation}{36}
-\contentsline {section}{\numberline {5.7}NodeJS REST implementation}{36}
+\contentsline {section}{\numberline {5.2}Interviews}{34}
+\contentsline {chapter}{\numberline {6}Conclusion}{37}
+\contentsline {section}{\numberline {6.1}Limitations}{37}
+\contentsline {subsection}{\numberline {6.1.1}Improvements to implementation}{37}
+\contentsline {section}{\numberline {6.2}future work}{37}
+\contentsline {subsection}{\numberline {6.2.1}Relations to cardinality}{37}
+\contentsline {section}{\numberline {6.3}ReasonML REST implementation}{39}
+\contentsline {section}{\numberline {6.4}NodeJS REST implementation}{39}
+\contentsline {subsection}{\numberline {6.4.1}Person 1}{39}
+\contentsline {subsection}{\numberline {6.4.2}Person 2}{39}
+\contentsline {subsection}{\numberline {6.4.3}Person 3}{39}
+\contentsline {subsection}{\numberline {6.4.4}Person 4}{40}

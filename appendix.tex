@@ -3,3 +3,60 @@
 \section{ReasonML REST implementation}\label{reasonmlrest}
 \section{NodeJS REST implementation}\label{nodejsrest}
 
+\section*{Interview Put request}
+
+\subsection{Person 1}\label{putperson1}
+\begin{lstlisting}
+let put: type a. route(a) = endpoint(
+	~handler=putInDatabase, 
+    ~success=Status.Created201, 
+    ~spec= 
+	 Method.put 
+	 >- Path.is("api")
+	 >- Path.is("books") 
+	 >- contenttype([Spec.Accept.json(Decoders.jsonWithKey)]) 
+	 >- accept([Spec.Contenttype.plain(s => s)]), ); 
+\end{lstlisting}
+
+\subsection{Person 2}\label{putperson2}
+\begin{lstlisting}
+let put: type a. route(a) =
+  endpoint(
+	~handler=putInDatabase,
+	~success=Status.Created201,
+	~spec=
+		Method.post
+		>- Path.is("api")
+		>- Path.is("books")
+		>- accept([Spec.Contenttype.plain(s => s)]));
+\end{lstlisting}
+
+\subsection{Person 3}\label{putperson3}
+\begin{lstlisting}
+let put: type a. route(a) =
+    endpoint(
+	~handler=put,
+	~success=Status.Created201,
+	~spec=
+	Method.put
+	>- Path.is("api")
+	>- Path.is("books")
+	>- contenttype([Spec.Accept.json(Decoders.json)])
+	>- accept([Spec.Contenttype.plain(s => s)]) );
+\end{lstlisting}
+
+\subsection{Person 4}\label{putperson4}
+\begin{lstlisting}
+  let put: type a. route(a) = 
+     endpoint( 
+	 ~handler=putInDatabase, 
+	 ~success=Status.Created201, 
+   	 ~spec=
+     Method.put 
+	 >- Path.is("api") 
+	 >- Path.is("books") 
+	 >- contenttype([Spec.Accept.json(Decoders.json)]) 
+	 >- accept([Spec.Contenttype.plain(s => s)]), );
+\end{lstlisting}
+
+

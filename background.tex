@@ -1,7 +1,9 @@
 \chapter{Background}\label{background}
 
-This chapter will introduce REST servers and how software quality is ensured
-today in the industry. It will also establish the challenges that arises.
+Servers need some protocol to communicate with the clients. One such protocol
+is REST. This chapter will introduce REST servers. Afterwards it will
+transition into software quality and how software quality is ensured today in
+the industry. It will also establish the challenges that arises and pitfalls.
 
 \section{Introduction to REST servers}
 
@@ -70,7 +72,6 @@ request route:
 the $?$ informs that the request contains query parameters which are optional.
 In the example above it specfies that the request wants to access the books
 resource with the parameters author as Mary and published as 1995.
-
 
 When a request has been done the server responds with a status code that
 explains the result of the request. The full list of status codes and their
@@ -162,7 +163,7 @@ passage through the program, testing multiple components on the way. This
 sometimes requires setting up an emulated environment mock environment with fake
 variables.
 
-\subsection{Challenges}
+\subsection{Challenges}\label{challenges}
 
 When writing unit tests that depend on some environment, for example fetching a
 user from some database, it can be difficult to test without simulating the
@@ -170,7 +171,9 @@ environment itself. In such cases one can use dependency injections and mock the
 environment with fake data. Dependency injection is a method that substitutes
 environment calls and returns data instead. The issue with unit tests is that
 even if a feature works well in isolation it does not imply that it will work
-well when composed with other functions.
+well when composed with other functions. It also requires the diligence of the 
+developer to enforce that code is written in units and that separation of logic and
+environment is done as otherwise E2E-tests and integration-tests need to be used.
 
 The challenge in integration and E2E-tests comes with simulating the entire
 environments. Given a server connected to some file storage and a database it
@@ -185,32 +188,13 @@ make it easier to test. However if there is nothing forcing the programmer to
 develop software in this way it creates the possibility for the programmer to
 ``cheat'' and create software that is not maintainable. 
 
-To mitigate the programmer from making mistakes, some languages feature a type
-system. The type system is a compiler check that ensures that the allowed values
-are entered. Different strengths exist between various programming languages
-with some featuring higher-kinded types (types of types) and other constructs.
-
-It is possible to combine the type system with design patterns to force the
-developer to create the right thing. Such constructs that exists are monads,
-which can be used to force the separation between pure and impure functionality.
-Later chapters will introduce a REST framework named Cause, which has been
-created to force the developer to create REST compliant servers. 
-
-However these patterns make heavy use of functional programming. Functional
-programming as a software paradigm is not popular, with the preferred software
-paradigm being Object-oriented programming. Thus this thesis aims to investigate
-the effects of introducing functional constructions to programmers with little
-familiarity with functional programming when it comes to understandability.
-Understandability is important to reduce the learning time for programmers and
-cut down learning costs.
-
 \section{SOLID principles}\label{oop}
 
-A poorly written  system can lead to rotten design. Martin Robert, a software
+A poorly written system can lead to rotten design. Martin Robert, a software
 engineer, claims that there are four big indicators of rotten design. Rotten
-design also leads to problems that were established in Chapter~\ref{background},
-such as making easy unit tests. Thus a system should avoid the following.
-
+design also leads to problems that were established in
+Section~\ref{challenges}, such as making it hard to conduct unit tests. Thus
+Martin Robert states that a system should avoid the following.
 
 \begin{description}
 
@@ -261,29 +245,63 @@ flexible and understandable. The SOLID guidelines are:
         calls the third-party operations.~\cite{martinrobert}
 \end{description}
 
-Using a SOLID architecture helps make programs that are not as dependent on the
-environments, making them easier to test (swapping the production environment to
-a test environment becomes trivial). When investigating the testability, it is
-important to look at programs that are written in such a way that all parts are
-easy to test. Thus choosing a SOLID architecture for  programs will allow making
-more testable software. These concepts were designed for Object-oriented
-programming but can be translated to functional programming which will be
-demonstrated after introducing the functional concepts needed.
+Using a SOLID architecture helps making programs that are not as dependent on
+the environments which makes them easier to test (swapping the production
+environment to a test environment becomes trivial). When investigating the
+testability, it is important to look at programs that are written in such a way
+that all parts are easy to test. SOLID principles also helps ensuring that
+programs are extendable with Interface segregation principle, Open/Closed
+principle and Liskov substitution principle. Thus choosing a SOLID architecture
+for programs will allow making more testable software. These concepts were
+however designed for Object-oriented programming. In Chapter~\ref{method},
+these principles will be translated for Functional programming. 
 
-\section{Readability in code}
+\section{Functional programming for mitigating mistakes}
 
-When evaluating the readability of code, companies can use Code reviews. A code
-review is an activity in which humans check how well the code can be understood
-by reading it. Thus similarity it can be used to evaluate how well users without
-experience with functional code understand functional programs. 
+To mitigate the programmer from making mistakes, some languages feature a type
+system. The type system is a compiler check that ensures that the allowed values
+are entered. Different strengths exist between various programming languages
+with some featuring higher-kinded types (types of types) and other constructs.
+
+It is possible to combine the type system with design patterns to force the
+developer to create the right thing. Chapter~\ref{theory} will introduce a REST
+framework named Cause, which has been created to force the developer to create
+REST compliant servers using Functional programming.
+
+However as Cause makes heavy use of functional programming,  a software
+paradigm that is not popular, the hypothesis of this thesis is that readability
+might be affected. Thus this thesis aims to investigate the effects of
+introducing functional constructions to programmers with little familiarity
+with functional programming when it comes to understandability.
+Understandability is important to reduce the learning time for programmers and
+cut down learning costs. Thus readability of software is an important criteria for 
+maintainable software.
+
+Since functional programming is not popular, it seems plausible that
+readability would be impacted. When evaluating the readability of code,
+companies can use Code reviews. A code review is an activity in which humans
+check how well the code can be understood by reading it. Thus similarity it can
+be used to evaluate how well users without experience with functional code
+understand functional programs. 
+
+\section{Conclusion}
+
+In summary there are four pillars of concern in maintainable software this
+thesis aims to address.
+
+\begin{description}
+    \item[Testability] Due to rotten design.
+    \item[Extendability] Due to rotten design.
+    \item[Readability] Multiple factors, this thesis will specifically look at 
+		inexperience as a factor of readability.
+    \item[Error-proneness] Due to rotten design.
+\end{description}
 
 By creating an semi-structured interview, where the programmers is asked open
-questions about how the code works it can give insights about the defects of the
-software and if there is something fundamental about functional programming that
-makes it harder to understand.
-
-So in summary: adherence to SOLID principles can be used to avoid rotten design
-and in order to evaluate the readability a code review can be conducted. Thus a
-good REST framework should be understood by other programmers and follow SOLID
-principles.
-
+questions about how the code works it can give insights about the defects of
+the software and if there is something fundamental about functional programming
+that makes it harder to understand. Adherence to SOLID principles can be used
+to avoid rotten design. Thus a good REST library should be understood by
+other programmers and follow SOLID principles. Also if the functional software
+can enforce that SOLID principles through the type system, it would mean that a
+maintainable architecture would be forced by construction.

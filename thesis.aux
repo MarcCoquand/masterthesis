@@ -19,72 +19,75 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1.1}Implementation concerns for REST apis}{8}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.2}Architecture}{8}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2.1}Unit testing}{9}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.2}Integration testing}{9}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.3}End-2-End Tests}{9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.2}Integration testing}{10}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.3}End-2-End Tests}{10}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2.4}Challenges}{10}}
-\citation{martinrobert}
+\newlabel{challenges}{{2.2.4}{10}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.3}SOLID principles}{11}}
 \newlabel{oop}{{2.3}{11}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.4}Readability in code}{12}}
+\citation{martinrobert}
+\@writefile{toc}{\contentsline {section}{\numberline {2.4}Functional programming for mitigating mistakes}{12}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.5}Conclusion}{13}}
 \citation{wikipedia_pure}
-\@writefile{toc}{\contentsline {chapter}{\numberline {3}Theory}{13}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}Theory}{14}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{theory}{{3}{13}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.1}Concepts from Functional Programming}{13}}
-\newlabel{functionalprogramming}{{3.1}{13}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.1}ADTs: Sum types and product types}{14}}
-\newlabel{types}{{3.1.1}{14}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.2}GADT}{15}}
-\newlabel{gadt}{{3.1.2}{15}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces A Calculator GADT with two operations add and multiply.\relax }}{15}}
+\newlabel{theory}{{3}{14}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Concepts from Functional Programming}{14}}
+\newlabel{functionalprogramming}{{3.1}{14}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.1}ADTs: Sum types and product types}{15}}
+\newlabel{types}{{3.1.1}{15}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.2}GADT}{16}}
+\newlabel{gadt}{{3.1.2}{16}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces A Calculator GADT with two operations add and multiply.\relax }}{16}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{gadtcalculator}{{3.1}{15}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces A mathematical expression constructed using the GADT in figure~\ref  {gadtcalculator}\relax }}{15}}
-\newlabel{mathexpressiongadt}{{3.2}{15}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Evaluator for the calculator\relax }}{16}}
-\newlabel{calculator}{{3.3}{16}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.3}Type classes}{16}}
-\newlabel{typeclass}{{3.1.3}{16}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Equality type class in Haskell.\relax }}{16}}
-\newlabel{equalitytypeclass}{{3.4}{16}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces A function that prints a text if the two items are equal.\relax }}{17}}
-\newlabel{printifequal}{{3.5}{17}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.4}Functors and Contravariant Functors}{17}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.5}Brief introduction to Monads for side effects}{17}}
-\newlabel{monads}{{3.1.5}{17}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces Monad type class in Haskell.\relax }}{18}}
-\newlabel{monadclass}{{3.6}{18}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.2}SOLID principles with functional programming}{18}}
-\newlabel{dependencyinjection}{{3.2}{18}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}Single Responsibility Principle}{18}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}Liskov Substitution Principle}{19}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.3}Dependency Inversion Principle}{19}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces A program that reads input from the computer and then prints it.\relax }}{20}}
-\newlabel{diexample}{{3.7}{20}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces A program that reads input from the computer and then prints it, where the logic is separated from it's environment.\relax }}{20}}
-\newlabel{withdiexample}{{3.8}{20}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.4}Interface Segregation Principle}{20}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.9}{\ignorespaces Product type Color with cardinality too high\relax }}{21}}
-\newlabel{colorcardinality}{{3.9}{21}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.10}{\ignorespaces Normal interface for operations\relax }}{21}}
-\newlabel{twomanyoperations}{{3.10}{21}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.5}Open/Closed principles}{21}}
-\@writefile{toc}{\contentsline {subsubsection}{Example: Creating a OCP compliant paint programming}{22}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.11}{\ignorespaces A sum type of shapes\relax }}{23}}
-\newlabel{sumtypeshapes}{{3.11}{23}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.12}{\ignorespaces A contravariant approach to shapes\relax }}{24}}
-\newlabel{contracircle}{{3.12}{24}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.3}Functional servers}{24}}
-\@writefile{toc}{\contentsline {subsubsection}{Request and Response}{25}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Method}{28}}
+\newlabel{gadtcalculator}{{3.1}{16}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces A mathematical expression constructed using the GADT in figure~\ref  {gadtcalculator}\relax }}{16}}
+\newlabel{mathexpressiongadt}{{3.2}{16}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Evaluator for the calculator\relax }}{17}}
+\newlabel{calculator}{{3.3}{17}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.3}Type classes}{17}}
+\newlabel{typeclass}{{3.1.3}{17}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Equality type class in Haskell.\relax }}{17}}
+\newlabel{equalitytypeclass}{{3.4}{17}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces A function that prints a text if the two items are equal.\relax }}{18}}
+\newlabel{printifequal}{{3.5}{18}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.4}Functors and Contravariant Functors}{18}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.5}Brief introduction to Monads for side effects}{18}}
+\newlabel{monads}{{3.1.5}{18}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces Monad type class in Haskell.\relax }}{19}}
+\newlabel{monadclass}{{3.6}{19}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Functional servers}{19}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}Specification as a GADT}{20}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}Evaluation}{20}}
+\@writefile{toc}{\contentsline {subsubsection}{Request and Response}{20}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Method}{23}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}Constructing the server in Express and Cause}{28}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Evaluating maintainability}{29}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Evaluating readability through code reviews}{29}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Evaluating maintainability}{24}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}SOLID principles in Functional programming}{24}}
+\newlabel{dependencyinjection}{{4.2}{24}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Single Responsibility Principle}{24}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Liskov Substitution Principle}{25}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}Dependency Inversion Principle}{25}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces A program that reads input from the computer and then prints it.\relax }}{25}}
+\newlabel{diexample}{{4.1}{25}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces A program that reads input from the computer and then prints it, where the logic is separated from it's environment.\relax }}{26}}
+\newlabel{withdiexample}{{4.2}{26}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.4}Interface Segregation Principle}{26}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Product type Color with cardinality too high\relax }}{27}}
+\newlabel{colorcardinality}{{4.3}{27}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Normal interface for operations\relax }}{27}}
+\newlabel{twomanyoperations}{{4.4}{27}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.5}Open/Closed principles}{27}}
+\@writefile{toc}{\contentsline {subsubsection}{Example: Creating a OCP compliant paint programming}{28}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces A sum type of shapes\relax }}{28}}
+\newlabel{sumtypeshapes}{{4.5}{28}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces A contravariant approach to shapes\relax }}{29}}
+\newlabel{contracircle}{{4.6}{29}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.6}Evaluating readability through code reviews}{29}}
 \@writefile{toc}{\contentsline {subsubsection}{Semi-structured interviews}{30}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Evaluating the answers}{30}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.7}Evaluating the answers}{31}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {5}Results}{32}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
@@ -92,30 +95,27 @@
 \@writefile{toc}{\contentsline {section}{\numberline {5.1}Evaluating adherence to SOLID}{32}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1.1}Functional solution}{32}}
 \@writefile{toc}{\contentsline {subsubsection}{Single Responsibility Principle}{32}}
-\bibstyle{ieeetr}
-\bibdata{thesis}
-\@writefile{toc}{\contentsline {subsubsection}{Open/Closed Principle}{33}}
+\@writefile{toc}{\contentsline {subsubsection}{Open/Closed Principle}{32}}
 \@writefile{toc}{\contentsline {subsubsection}{Liskov Segregation Principle}{33}}
 \@writefile{toc}{\contentsline {subsubsection}{Interface Segregation Principle}{33}}
 \@writefile{toc}{\contentsline {subsubsection}{Dependency Inversion Principle}{33}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1.2}Imperative solution}{33}}
-\@writefile{toc}{\contentsline {subsubsection}{Single Responsibility Principle}{33}}
-\@writefile{toc}{\contentsline {subsubsection}{Open/Closed Principle}{33}}
-\@writefile{toc}{\contentsline {subsubsection}{Liskov Segregation Principle}{33}}
-\@writefile{toc}{\contentsline {subsubsection}{Interface Segregation Principle}{33}}
-\@writefile{toc}{\contentsline {subsubsection}{Dependency Inversion Principle}{33}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.2}Interviews}{33}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}Raw results}{33}}
-\@writefile{toc}{\contentsline {subsubsection}{Person 1}{33}}
-\@writefile{toc}{\contentsline {subsubsection}{Person 2}{33}}
-\@writefile{toc}{\contentsline {subsubsection}{Person 3}{33}}
-\@writefile{toc}{\contentsline {subsubsection}{Person 4}{33}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.3}Bias}{33}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.4}Limitations}{33}}
-\newlabel{limitations}{{5.4}{33}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.1}Improvements to implementation}{33}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.5}future work}{34}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.1}Relations to cardinality}{34}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Interviews}{34}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces Raw results interview one and two\relax }}{35}}
+\newlabel{interviewonetwo}{{5.1}{35}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.2}{\ignorespaces Raw results interview three and four\relax }}{36}}
+\newlabel{interviewthreefour}{{5.2}{36}}
+\bibstyle{ieeetr}
+\bibdata{thesis}
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Conclusion}{37}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{conclusion}{{6}{37}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}Limitations}{37}}
+\newlabel{limitations}{{6.1}{37}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.1}Improvements to implementation}{37}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}future work}{37}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.1}Relations to cardinality}{37}}
 \bibcite{proceduralprogramming}{1}
 \bibcite{turingmachine}{2}
 \bibcite{java}{3}
@@ -124,8 +124,16 @@
 \bibcite{Pressman:2004:SEP:994110}{6}
 \bibcite{martinrobert}{7}
 \bibcite{wikipedia_pure}{8}
-\newlabel{appendix}{{5.5.1}{36}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.6}ReasonML REST implementation}{36}}
-\newlabel{reasonmlrest}{{5.6}{36}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.7}NodeJS REST implementation}{36}}
-\newlabel{nodejsrest}{{5.7}{36}}
+\newlabel{appendix}{{6.2.1}{39}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.3}ReasonML REST implementation}{39}}
+\newlabel{reasonmlrest}{{6.3}{39}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.4}NodeJS REST implementation}{39}}
+\newlabel{nodejsrest}{{6.4}{39}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.1}Person 1}{39}}
+\newlabel{putperson1}{{6.4.1}{39}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.2}Person 2}{39}}
+\newlabel{putperson2}{{6.4.2}{39}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.3}Person 3}{39}}
+\newlabel{putperson3}{{6.4.3}{39}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.4}Person 4}{40}}
+\newlabel{putperson4}{{6.4.4}{40}}
