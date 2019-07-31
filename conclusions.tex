@@ -1,5 +1,11 @@
 \chapter{Conclusion}\label{conclusion}
 
+In Section~\ref{backgroundconclusion} we introduced the four pillars of
+maintainability that needed to be evaluted against the library. These were
+testability, extendability, readability and error-proneness. In order to do so
+we will review the results gathered in Chapter~\ref{results} and tie them
+together with the four pillars.
+
 \section{Evaluating the readability}
 
 We find that while everyone understood the Javascript version of the book api,
@@ -95,7 +101,7 @@ As Q2 got confused by the type signature $type\ a.\ route(a)$, a possible
 workaround is to existentially wrap the type signature.  By declaring a type
 $wrappedRoute = {get :\ 'a.\ route(a)}$. The user would then also not need to
 explicitely declare the types of each functions, as is currently needed (see
-line 98-133 in Appendix~\ref{reasonmlrest}). This would arguably be more what
+line 99-138 in Appendix~\ref{reasonmlrest}). This would arguably be more what
 the user is used to as currently ReasonML markets itself as being capable to
 deduce type signature (ADD\_REFERENCE
 \url{https://reasonml.github.io/docs/en/type}). However the cost of this is

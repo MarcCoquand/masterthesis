@@ -55,9 +55,9 @@
 \contentsline {chapter}{Appendices}{42}
 \contentsline {chapter}{\numberline {A}Implementation}{43}
 \contentsline {section}{\numberline {A.1}ReasonML REST implementation}{43}
-\contentsline {section}{\numberline {A.2}NodeJS REST implementation}{43}
-\contentsline {chapter}{\numberline {B}Interview answers for Q8}{44}
-\contentsline {subsection}{\numberline {B.0.1}Person 1}{44}
-\contentsline {subsection}{\numberline {B.0.2}Person 2}{44}
-\contentsline {subsection}{\numberline {B.0.3}Person 3}{44}
-\contentsline {subsection}{\numberline {B.0.4}Person 4}{45}
+\contentsline {section}{\numberline {A.2}NodeJS REST implementation}{46}
+\contentsline {chapter}{\numberline {B}Interview answers for Q8}{49}
+\contentsline {subsection}{\numberline {B.0.1}Person 1}{49}
+\contentsline {subsection}{\numberline {B.0.2}Person 2}{49}
+\contentsline {subsection}{\numberline {B.0.3}Person 3}{49}
+\contentsline {subsection}{\numberline {B.0.4}Person 4}{50}
