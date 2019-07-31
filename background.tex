@@ -1,14 +1,14 @@
 \chapter{Background}\label{background}
 
 Servers need some protocol to communicate with the clients. One such protocol
-is REST. This chapter will introduce REST servers. Afterwards it will
+is REST. (ADD\_REFERENCE REST) This chapter will introduce REST servers. Afterwards it will
 transition into software quality and how software quality is ensured today in
 the industry. It will also establish the challenges that arises and pitfalls.
 
 \section{Introduction to REST servers}
 
 Servers are applications that provide functionality for other programs or
-devices, called clients. Services are servers that allow sharing data or
+devices, called clients.(ADD\_REFERENCE REST) Services are servers that allow sharing data or
 resources among clients or to perform a computation.
 
 REST (Representational State Transfer) is a software architecture style that is
@@ -121,14 +121,14 @@ redeploying requires the entire application to be replaced and tests becomes
 slower; the developer becomes less productive as a result. Since all code is
 written in the same environment introducing new technology becomes harder.
 
-In a microservice architecture the program comprises of small entities that each
-have their own responsibility. There can be one service for metrics, one that
-interacts with the database and one that takes care of frontend. This
-decomposition allows the developers to easier understand parts of the system,
-scale into autonomous teams, IDE becomes faster since codebases are smaller,
-faults become easier to understand as they each break in isolation.  Also
-long-term commitment to one stack becomes less and it becomes easier to
-introduce a new stack. 
+In a microservice architecture the program comprises of small entities that
+each have their own responsibility.(ADD\_REFERENCE MICROSERVICE) There can be
+one service for metrics, one that interacts with the database and one that
+takes care of frontend. This decomposition allows the developers to easier
+understand parts of the system, scale into autonomous teams, IDE becomes faster
+since codebases are smaller, faults become easier to understand as they each
+break in isolation.  Also long-term commitment to one stack becomes less and it
+becomes easier to introduce a new stack. 
 
 The issue with microservices is that when scaling the complexity becomes harder
 to predict. While testing one system in isolation is easier testing the entire
@@ -138,13 +138,13 @@ tests that are conducted: unit tests, integration tests and E2E-tests.
 \subsection{Unit testing}
 
 Unit testing is a testing method where the individual units of code and
-operating procedures are tested to see if they are fit for use. A unit is
-informally the smallest testable part of the application. To deal with units
-dependence one can use method stubs, mock objects and fakes to test in
-isolation. The goal of unit testing is to isolate each part of the programs and
-ensure that the individual parts are correct. It also allows for easier
-refactoring since it ensures that the individual parts still satisfy their part
-of the application.
+operating procedures are tested to see if they are fit for use. (ADD\_REFERENCE
+UNIT TEST) A unit is informally the smallest testable part of the application.
+To deal with units dependence one can use method stubs, mock objects and fakes
+to test in isolation. The goal of unit testing is to isolate each part of the
+programs and ensure that the individual parts are correct. It also allows for
+easier refactoring since it ensures that the individual parts still satisfy
+their part of the application.
 
 To create effective unit tests it's important that it's easy to mock examples.
 This is usually hindered if the code is dependant on some state since previous
@@ -212,12 +212,11 @@ need the same module that was in another project, too much work is required to
 decouple and separate the desirable parts.
 
 \item[ Viscosity ] comes in two forms: the viscosity of the environment and the
-    viscosity of the design. When making changes to code there are often
-        multiple solutions. Some solutions preserve the design of the system and
-        some are ``hacks''. The engineer can therefore easily implement an
-        unmaintainable solution. The long compile times affect engineers and
-        makes them attempt to make changes that do not cause long compile times.
-        This leads to viscosity in the environment.
+viscosity of the design. When making changes to code there are often multiple
+solutions. Some solutions preserve the design of the system and some are
+``hacks''. The engineer can therefore implement an unmaintainable solution. The
+long compile times affect engineers and makes them attempt to make changes that
+do not cause long compile times.  This leads to viscosity in the environment.
 
 \end{description}
 
@@ -248,7 +247,7 @@ flexible and understandable. The SOLID guidelines are:
 Using a SOLID architecture helps making programs that are not as dependent on
 the environments which makes them easier to test (swapping the production
 environment to a test environment becomes trivial). When investigating the
-testability, it is important to look at programs that are written in such a way
+testability, an important factor is that programs are written in such a way
 that all parts are easy to test. SOLID principles also helps ensuring that
 programs are extendable with Interface segregation principle, Open/Closed
 principle and Liskov substitution principle. Thus choosing a SOLID architecture

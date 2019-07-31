@@ -1,1 +1,123 @@
 \chapter{Conclusion}\label{conclusion}
+
+\section{Evaluating the readability}
+
+We find that while everyone understood the Javascript version of the book api,
+two (P2 and P3) out of four faced difficulties with the ReasonML version.
+Encoders and decoders seemed to have confused P3, as they assumed it related to
+cryptography. P2 got confused by the type signature $type\ a.\ route(a)$, which
+is necessary for Ocaml to deduce the type signature as it otherwise can not
+generalize.  It also seems that P4 was incapable of understanding the ReasonML
+version and assumed that endpoints were not functions but objects.
+
+3 out of 4 users (P1, P2, P4) were able to extend the code with a new endpoint
+PUT and P3 was almost able to except that they used the wrong function for
+handlers.
+
+Further research is needed to find how long it would take for the users to
+understand.  We find that half of the users could understand the new code base
+without any form of introduction (P1 and P4). In production it might be
+valuable to find a more exact number how long it would. A future test could
+investigate if users understood the code after a short introduction. As even
+without introduction three out of four were still able to extend the code and
+two out of four were able to understand it.
+
+The study indicates that there are costs in readability to the code for
+inexperienced users. It can be argued that these costs seem to be minor and that
+after a brief introduction the code would be understood. It can further be
+argued that some of those costs can be mitigated by adding comments and making
+the changes in Section~\ref{futurework}, but more research is needed to prove
+this. For the manager, this becomes a question of costs vs benefits were they
+have to factor the increased cost in readability and possibly extension against
+the gains in ensured increases in testability.
+
+\section{Functional programming and SOLID}
+
+In this study we found that functional programming was capable of creating a
+library that was able aid in creating Single Responsibility principle, by
+encouraging the user to separate the REST specification from how the handler
+fetches the data. It also manages to enforce Interface Segregation Principle and
+Dependency Inversion Principle. This aids in reducing immobility, fragility and
+viscosity.
+
+It was inconclusive as to if it enforces Liskov substitution principle as
+further work is needed to create examples where this principle is properly
+test. The functional solution also breaks Open/Closed principle for situations
+where the user wants to add more details to a specification.
+
+\section{Four pillars of concern}
+
+Recall that Chapter~\ref{background} introduced the four pillars of concern:
+testability, extendability, readability and error-proneness. From these studies
+we can conclude that
+
+\begin{description}
+	\item[Testability] Software became easier to test as it managed to invert
+	the control so that unit tests can be made for testing specifications
+	which in the imperative solution would require an integration test.
+	\item[Extendability] No gains are made in extendability when using the 
+	functional solution, in fact they might be a bit damaged by not properly
+	following the OCP solution.
+	\item[Error-proneness] The functional solution marginally affects the 
+	error-proneness as we find that person 3 in Q8 was unable to extend the code without
+	making an error.
+	\item[Readability] affected negatively since P3 and P2 were
+unable to comprehend the code.
+\end{description}
+
+Even though errors were made when extending the server with a PUT request. It
+might be mitigade by the static analysis featured in ReasonML which would have
+pointed out that there was an error.
+
+\section{Future work}\label{futurework}
+
+SOLID principles places a lot of emphasis on extendability and that modifying
+original code is bad practice. It is questionable if these principles are
+relevant for strongly typed languages, as these indicate if there are any
+errors in the code, making it easier to refactor.
+
+A lot of the errors in readability might be possible to fix and it might be
+that they are not inherenet to the language itself. However it would be
+necessary to make the changes below and then retry the experiment with five 
+more people to find out if it is more comprehensible. 
+
+\subsection{Clarifying what is URL and what is not}
+
+Most users were uncertain what the URIs were with only Q1 correctly assuming
+that the URI for delete was $/api/books:id$. However it is possible to further
+clarify what is a URI by wrapping it in a function that takes an incomplete
+route. This might make it clearer for the user what the URL is but further
+research is needed.
+
+\subsection{Existential wrappers to hide implementation details}
+
+As Q2 got confused by the type signature $type\ a.\ route(a)$, a possible
+workaround is to existentially wrap the type signature.  By declaring a type
+$wrappedRoute = {get :\ 'a.\ route(a)}$. The user would then also not need to
+explicitely declare the types of each functions, as is currently needed (see
+line 98-133 in Appendix~\ref{reasonmlrest}). This would arguably be more what
+the user is used to as currently ReasonML markets itself as being capable to
+deduce type signature (ADD\_REFERENCE
+\url{https://reasonml.github.io/docs/en/type}). However the cost of this is
+that it could potentially make it more difficult for the API to be extended
+following the OCP principle. 
+
+\subsection{Extendability for the URIs}
+
+There are some issues still with the server not being as extendable as possible
+for it to be OCP compliant. To extend it with the functionality of adding new
+details to an existing endpoint would make it more compliant as it would allow
+the user to add new functionality to code without recompiling the original
+code.
+
+\subsection{Functional programming for documentation}
+
+When creating software, engineers tend to also document the software for future
+use to make it more maintainable. In servers this is usually done manually.
+(ADD\_REFERENCE) However if updates are made to the code, the engineer has to
+then also manually update the documentation which incurs maintenance costs. It
+is plausible that $specfication$ can also be used for documentation. This
+should be as simple as creating an evaluator for the $specification$ to
+generate the documentation. This would ensure that documentation stays in sync
+and minimizes maintenance costs of documentation by automating it.
+

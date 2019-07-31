@@ -1,5 +1,6 @@
 \documentclass[12pt]{report}
 \usepackage{booktabs}
+\usepackage[toc,page]{appendix}
 \usepackage[normalem]{ulem}
 \useunder{\uline}{\ul}{}
 \usepackage{listings}
@@ -80,11 +81,16 @@
 \thispagestyle{empty}
 
 \begin{abstract} 
-    This study's goal is to investigate the use of functional programming as a
-    measure for reducing software defects and how it affects readability. It
-    does so by looking at a specific case and introducing a REST framework
-    called Cause which is completely type safe and helps creating type safe
-    REST frameworks.
+	Defects in Software engineering are a common occurrence. To mitigate defects
+the developers must create maintainable solutions. A maintainable solution is
+readable, extendable, not error-prone and testable. In order to make them so
+developers follow a guideline called SOLID principles.  These principles are
+not enforced by the language but relies on the diligence of the developers,
+meaning there is nothing stopping them from writing unmaintainable code. In
+this study we translate these principles to Functional programming to
+investigate if Functional programming can be used to construct a library for
+servers that forces the developer to create maintainable code without 
+incurring costs in readability.
 \end{abstract}
 
 \clearpage\newpage
@@ -92,7 +98,9 @@
 
 \section*{Acknowledgements}
 
-TODO I want to thank myself for my amazing work
+I want to thank my Anders Broberg for being my supervisor and Ola Ringdahl for
+his support and being quick to respond on email. I also want to thank all those
+who participated in the interviews.
 
 \clearpage\newpage
 \thispagestyle{empty}
@@ -120,18 +128,6 @@ TODO I want to thank myself for my amazing work
 % Conclusion
 \input{conclusions.tex}
 
-
-
-\section{Limitations}\label{limitations}
-
-TODO
-
-\subsection{Improvements to implementation}
-TODO
-
-\section{future work}
-\subsection{Relations to cardinality}
-TODO
 
 \bibliographystyle{ieeetr}
 \bibliography{thesis}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.20)  30 JUL 2019 13:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.20)  31 JUL 2019 10:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -43,13 +43,19 @@ Package: booktabs 2016/04/27 v1.618033 publication quality tables
 \@lastruleclass=\count92
 \@thisrulewidth=\dimen115
 )
+(/usr/share/texlive/texmf-dist/tex/latex/appendix/appendix.sty
+Package: appendix 2009/09/02 v1.2b extra appendix facilities
+\c@@pps=\count93
+\c@@ppsavesec=\count94
+\c@@ppsaveapp=\count95
+)
 (/usr/share/texlive/texmf-dist/tex/generic/ulem/ulem.sty
 \UL@box=\box26
 \UL@hyphenbox=\box27
 \UL@skip=\skip43
 \UL@hook=\toks14
 \UL@height=\dimen116
-\UL@pe=\count93
+\UL@pe=\count96
 \UL@pixel=\dimen117
 \ULC@box=\box28
 Package: ulem 2012/05/18
@@ -60,23 +66,23 @@ Package: ulem 2012/05/18
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks15
 )
-\lst@mode=\count94
+\lst@mode=\count97
 \lst@gtempboxa=\box29
 \lst@token=\toks16
-\lst@length=\count95
+\lst@length=\count98
 \lst@currlwidth=\dimen119
-\lst@column=\count96
-\lst@pos=\count97
+\lst@column=\count99
+\lst@pos=\count100
 \lst@lostspace=\dimen120
 \lst@width=\dimen121
-\lst@newlines=\count98
-\lst@lineno=\count99
+\lst@newlines=\count101
+\lst@lineno=\count102
 \lst@maxwidth=\dimen122
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-\c@lstnumber=\count100
-\lst@skipnumbers=\count101
+\c@lstnumber=\count103
+\lst@skipnumbers=\count104
 \lst@framebox=\box30
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
@@ -116,13 +122,13 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count102
+\inf@bad=\count105
 LaTeX Info: Redefining \frac on input line 213.
-\uproot@=\count103
-\leftroot@=\count104
+\uproot@=\count106
+\leftroot@=\count107
 LaTeX Info: Redefining \overline on input line 375.
-\classnum@=\count105
-\DOTSCASE@=\count106
+\classnum@=\count108
+\DOTSCASE@=\count109
 LaTeX Info: Redefining \ldots on input line 472.
 LaTeX Info: Redefining \dots on input line 475.
 LaTeX Info: Redefining \cdots on input line 596.
@@ -131,15 +137,15 @@ LaTeX Info: Redefining \cdots on input line 596.
 \big@size=\dimen125
 LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
-\macc@depth=\count107
-\c@MaxMatrixCols=\count108
+\macc@depth=\count110
+\c@MaxMatrixCols=\count111
 \dotsspace@=\muskip10
-\c@parentequation=\count109
-\dspbrk@lvl=\count110
+\c@parentequation=\count112
+\dspbrk@lvl=\count113
 \tag@help=\toks24
-\row@=\count111
-\column@=\count112
-\maxfields@=\count113
+\row@=\count114
+\column@=\count115
+\maxfields@=\count116
 \andhelp@=\toks25
 \eqnshift@=\dimen126
 \alignsep@=\dimen127
@@ -180,11 +186,11 @@ Language: english 2017/06/06 v3.3r English support from the babel system
 
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
 File: babel.def 2018/06/05 3.22 Babel common definitions
-\babel@savecnt=\count114
+\babel@savecnt=\count117
 \U@D=\dimen132
 
 (/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
-\bbl@dirlevel=\count115
+\bbl@dirlevel=\count118
 )
 \l@canadian = a dialect from \language\l@american 
 \l@australian = a dialect from \language\l@british 
@@ -252,10 +258,10 @@ ex
 \pgf@yc=\dimen144
 \w@pgf@writea=\write3
 \r@pgf@reada=\read1
-\c@pgf@counta=\count116
-\c@pgf@countb=\count117
-\c@pgf@countc=\count118
-\c@pgf@countd=\count119
+\c@pgf@counta=\count119
+\c@pgf@countb=\count120
+\c@pgf@countc=\count121
+\c@pgf@countd=\count122
 \t@pgf@toka=\toks34
 \t@pgf@tokb=\toks35
 \t@pgf@tokc=\toks36
@@ -274,8 +280,8 @@ File: pgfsys-common-pdf.def 2013/10/10  (rcs-revision 1.13)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
 tex
 File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
-\pgfsyssoftpath@smallbuffer@items=\count120
-\pgfsyssoftpath@bigbuffer@items=\count121
+\pgfsyssoftpath@smallbuffer@items=\count123
+\pgfsyssoftpath@bigbuffer@items=\count124
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
 tex
@@ -305,7 +311,7 @@ Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
 \pgfmath@dimen=\dimen145
-\pgfmath@count=\count122
+\pgfmath@count=\count125
 \pgfmath@box=\box34
 \pgfmath@toks=\toks37
 \pgfmath@stack@operand=\toks38
@@ -329,7 +335,7 @@ tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
 thmetics.code.tex)))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count123
+\c@pgfmathroundto@lastzeros=\count126
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
 x
@@ -367,7 +373,7 @@ File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
 \pgfpic=\box35
 \pgf@hbox=\box36
 \pgf@layerbox@main=\box37
-\pgf@picture@serial@count=\count124
+\pgf@picture@serial@count=\count127
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
 ode.tex
@@ -400,7 +406,7 @@ File: pgfcorearrows.code.tex 2015/05/14  (rcs-revision 1.43)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
 \pgf@max=\dimen169
-\pgf@sys@shading@range@num=\count125
+\pgf@sys@shading@range@num=\count128
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2013/07/15  (rcs-revision 1.18)
@@ -457,7 +463,7 @@ Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
 .code.tex
 File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
-\pgf@plot@mark@count=\count126
+\pgf@plot@mark@count=\count129
 \pgfplotmarksize=\dimen174
 )
 \tikz@lastx=\dimen175
@@ -470,18 +476,18 @@ File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
 \tikz@figbox@bg=\box41
 \tikz@tempbox=\box42
 \tikz@tempbox@bg=\box43
-\tikztreelevel=\count127
-\tikznumberofchildren=\count128
-\tikznumberofcurrentchild=\count129
-\tikz@fig@count=\count130
+\tikztreelevel=\count130
+\tikznumberofchildren=\count131
+\tikznumberofcurrentchild=\count132
+\tikz@fig@count=\count133
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
-\pgfmatrixcurrentrow=\count131
-\pgfmatrixcurrentcolumn=\count132
-\pgf@matrix@numberofcolumns=\count133
+\pgfmatrixcurrentrow=\count134
+\pgfmatrixcurrentcolumn=\count135
+\pgf@matrix@numberofcolumns=\count136
 )
-\tikz@expandcount=\count134
+\tikz@expandcount=\count137
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrarytopaths.code.tex
@@ -504,7 +510,7 @@ LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count135
+\c@float@type=\count138
 \float@exts=\toks42
 \float@box=\box44
 \@float@everytoks=\toks43
@@ -527,9 +533,9 @@ Package ifvtex Info: VTeX not detected.
 (/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-\Gm@cnth=\count136
-\Gm@cntv=\count137
-\c@Gm@tempcnt=\count138
+\Gm@cnth=\count139
+\Gm@cntv=\count140
+\c@Gm@tempcnt=\count141
 \Gm@bindingoffset=\dimen182
 \Gm@wd@mp=\dimen183
 \Gm@odd@mp=\dimen184
@@ -542,21 +548,21 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 (/usr/share/texlive/texmf-dist/tex/latex/marginnote/marginnote.sty
 Package: marginnote 2018/08/09 v1.4b non floating margin notes for LaTeX
-\c@mn@abspage=\count139
+\c@mn@abspage=\count142
 )
 (/usr/share/texlive/texmf-dist/tex/latex/csquotes/csquotes.sty
 Package: csquotes 2018/04/13 v5.2d context-sensitive quotations (JAW)
 
 (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2018/02/11 v2.5e e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count140
+\etb@tempcnta=\count143
 )
-\csq@reset=\count141
-\csq@gtype=\count142
-\csq@glevel=\count143
-\csq@qlevel=\count144
-\csq@maxlvl=\count145
-\csq@tshold=\count146
+\csq@reset=\count144
+\csq@gtype=\count145
+\csq@glevel=\count146
+\csq@qlevel=\count147
+\csq@maxlvl=\count148
+\csq@tshold=\count149
 \csq@ltx@everypar=\toks45
 
 (/usr/share/texlive/texmf-dist/tex/latex/csquotes/csquotes.def
@@ -571,7 +577,7 @@ File: csquotes.cfg
 Package csquotes Info: Enabling multilingual quotes.
 )
 
-Package amsthm Warning: Unknown theoremstyle `theorem' on input line 23.
+Package amsthm Warning: Unknown theoremstyle `theorem' on input line 24.
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
@@ -590,7 +596,7 @@ Package caption3 Info: TeX engine: e-TeX on input line 64.
 \caption@parindent=\dimen195
 \caption@hangindent=\dimen196
 )
-\c@ContinuedFloat=\count147
+\c@ContinuedFloat=\count150
 Package caption Info: float package is loaded.
 Package caption Info: listings package is loaded.
 )
@@ -599,33 +605,33 @@ Package csquotes Info: ... found 'babel' package.
  (./thesis.aux)
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-\c@lstlisting=\count148
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+\c@lstlisting=\count151
 
 ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count149
+\scratchcounter=\count152
 \scratchdimen=\dimen197
 \scratchbox=\box46
-\nofMPsegments=\count150
-\nofMParguments=\count151
+\nofMPsegments=\count153
+\nofMParguments=\count154
 \everyMPshowfont=\toks46
-\MPscratchCnt=\count152
+\MPscratchCnt=\count155
 \MPscratchDim=\dimen198
-\MPnumerator=\count153
-\makeMPintoPDFobject=\count154
+\MPnumerator=\count156
+\makeMPintoPDFobject=\count157
 \everyMPtoPDFconversion=\toks47
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -722,13 +728,13 @@ Package caption Info: End \AtBeginDocument code.
 
 ]
 Package marginnote Info: Using workaround for absolute page number on input lin
-e 88.
+e 94.
 
 [1
 
 ]
 Package marginnote Info: Using workaround for absolute page number on input lin
-e 97.
+e 105.
  (./thesis.toc
 LaTeX Font Info:    Try loading font information for U+msa on input line 4.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -773,21 +779,17 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 86.
  [8] [9] [10]
-Overfull \hbox (12.71443pt too wide) in paragraph at lines 229--232
+Overfull \hbox (12.71443pt too wide) in paragraph at lines 228--231
 []\T1/cmr/m/n/12 Here, re-spon-si-bil-ity means ``rea-son to change''. Mod-
  []
 
 [11]
-
-LaTeX Warning: Reference `method' on page 12 undefined on input line 256.
-
-
-Overfull \hbox (0.31082pt too wide) in paragraph at lines 259--259
+Overfull \hbox (0.31082pt too wide) in paragraph at lines 258--258
 []\T1/cmr/bx/n/17.28 Functional pro-gram-ming for mit-i-gat-ing mis-takes 
  []
 
 
-Overfull \hbox (7.51076pt too wide) in paragraph at lines 271--279
+Overfull \hbox (7.51076pt too wide) in paragraph at lines 270--278
 []\T1/cmr/m/n/12 However as Cause makes heavy use of func-tional pro-gram-ming,
  a soft-ware paradigm
  []
@@ -824,80 +826,81 @@ d . ac . uk / wadler / papers / expression /
 
 [27] [28] [29] [30]) (./results.tex [31]
 Chapter 5.
-
-LaTeX Warning: Reference `method' on page 32 undefined on input line 24.
-
-
-Overfull \hbox (65.98601pt too wide) in paragraph at lines 29--34
-[]\T1/cmr/m/n/12 GADTs are poly-mor-phic, that means it is pos-si-ble to de-cla
-re a new type $\OML/cmm/m/it/12 omegaSpecification \OT1/cmr/m/n/12 =
- []
-
-
-Overfull \hbox (89.35071pt too wide) in paragraph at lines 29--34
-\OML/cmm/m/it/12 MyNewCase\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 args\OT1/cmr/m/n/12
- ) : \OML/cmm/m/it/12 omegaSpecification$ \T1/cmr/m/n/12 and then sum it with s
-pec-fi-ca-tion, $\OML/cmm/m/it/12 omegaSpecification\OT1/cmr/m/n/12 + =
- []
-
 [32
 
 ] [33]
+Overfull \hbox (10.27168pt too wide) in paragraph at lines 89--100
+\T1/cmtt/m/n/12 nngroup . com / articles / why-[]you-[]only-[]need-[]to-[]test-
+[]with-[]5-[]users/$\T1/cmr/m/n/12 ). It was per-
+ []
+
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 90.
+               Default added (so using `tbp') on input line 101.
 
 
-Overfull \hbox (4.51875pt too wide) in paragraph at lines 91--149
+Overfull \hbox (4.51875pt too wide) in paragraph at lines 102--160
 [][] 
  []
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 153.
+               Default added (so using `tbp') on input line 164.
 
 ) (./conclusions.tex [34] [35] [36]
 Chapter 6.
-) (./thesis.bbl [37
+[37
 
-]) (./appendix.tex [38
+] [38]
+Overfull \hbox (46.97363pt too wide) in paragraph at lines 115--123
+\T1/cmr/m/n/12 to make it more main-tain-able. In servers this is usu-ally done
+ man-u-ally. (ADD_REFERENCE)
+ []
 
-] [39
+[39]) (./thesis.bbl [40]) (./appendix.tex [41
 
-]) [40] (./thesis.aux)
+] [42
 
-LaTeX Warning: There were undefined references.
 
- ) 
+]
+Appendix A.
+[43
+
+]
+Appendix B.
+[44
+
+]) [45] (./thesis.aux) ) 
 Here is how much of TeX's memory you used:
- 18178 strings out of 492701
- 333252 string characters out of 6134504
- 499625 words of memory out of 5000000
- 21673 multiletter control sequences out of 15000+600000
+ 18275 strings out of 492701
+ 334667 string characters out of 6134504
+ 501050 words of memory out of 5000000
+ 21767 multiletter control sequences out of 15000+600000
  21231 words of font info for 57 fonts, out of 8000000 for 9000
  1137 hyphenation exceptions out of 8191
- 55i,15n,54p,831b,1628s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/cm-super/sfbx1440.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/cm-super/sfbx1728.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/cm-super/sfbx2488.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-
-super/sfcc1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/s
-frm0700.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm0800
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/cm-super/sfti1728.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on thesis.pdf (42 pages, 400568 bytes).
+ 55i,15n,54p,831b,1674s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super
+/cm-super-t1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/cm-super/sfcc1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/cm-super/sfrm0700.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm
+-super/sfrm0800.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/
+sfrm1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm120
+0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfti1728.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
+Output written on thesis.pdf (47 pages, 420090 bytes).
 PDF statistics:
- 213 PDF objects out of 1000 (max. 8388607)
- 150 compressed objects within 2 object streams
+ 233 PDF objects out of 1000 (max. 8388607)
+ 164 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

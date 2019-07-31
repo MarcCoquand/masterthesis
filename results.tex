@@ -1,13 +1,20 @@
 \chapter{Results}\label{results}
 
-With the method outlined in the previous chapter, the interview was performed on
-4 different people, which is a bit less than the recommended by Norman group of
-five people due to difficulty finding enough users
-(ADD\_REFERENCE \url{https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/}).
+The source code for the programs can be found in Appendix~\ref{reasonmlrest}
+for the ReasonML implementation and in Appendix~\ref{nodejsrest}
+implementation.
 
 \section{Evaluating adherence to SOLID}
 
-\subsection{Functional solution}
+We can through an expert analysis analyze the adherence to SOLID guidelines in
+Section~\ref{evaluatingmaintainability} of the solution in ReasonML. It is the
+resulting code of using the library that is analyzed and not the library itself
+as the goal is to find if Functional programming constructs can be used to
+enforce an idiomatic solution.  The solution was written by the author in a
+``as naive'' approach as possible.  That means that the author did not take any
+design guidelines into consideration but created the software in such a way
+that it would compile.
+
 \subsubsection{Single Responsibility Principle}
 
 Recall that the Single Responsibility Principle for functional programming
@@ -21,22 +28,14 @@ function for the function \texttt{router}.
 
 \subsubsection{Open/Closed Principle}
 
-OCP, as stated in Chapter~\ref{method}, that the data structures should be open
-for extensions without modifying the previous code. Since the library operates
-arount the $specification$ GADT it should be possible to add new cases to 
-that $specification$.
-
-GADTs are polymorphic, that means it is possible to declare a new type
-$omegaSpecification = MyNewCase(args): omegaSpecification$ and then sum it with
-specfication, $omegaSpecification += specification$. This allows us to add new
-cases to the data structure without recompiling existing code, thus adhereing to 
-the Open/Closed Principle.
-
-Since $Response$ is contravariant, it is also possible to extend it with new
-functionality.
-
-As for the router functionality, the router can be extended with new endpoints
-without modifying any of the original code.
+OCP, as defined in Section~\ref{openclosed}, that the data structures should be
+open for extensions without modifying the previous code.  The book api
+functionality can be extended with new endpoints without modifying any of the
+original code. The router is implemented as a list of endpoints, thus if the
+user wants to add a new endpoint it can append new endpoints to the list.
+However it is not possible to extend existing endpoints without modifying the
+code.  For example should the user want to prepend so that each uri starts with
+\url{/new} then that is not possible, the existing code has to be modified.
 
 \subsubsection{Liskov Segregation Principle}
 
@@ -86,6 +85,18 @@ such as database and the router.
 \end{description}
 
 \section{Interviews}
+
+With the method outlined in the previous chapter, the interview was performed
+on 4 different people, which is a bit less than the recommended by Norman group
+of five people due to difficulty finding enough users (ADD\_REFERENCE
+\url{https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/}).
+It was performed through the use of Skype, a communication
+tool\footnote{Skype's website: \url{https://www.skype.com}}. The four respondents were
+graduated students of the Engineering Interaction Technology and Design
+programme at Umeå university. The programme is a five year degree that combines
+education in software engineering with studies in design. The questions were originally
+asked in swedish but translated to English by the author. The answers can be found in 
+Table~\ref{interviewonetwo} and Table~\ref{interviewthreefour}.
 
 \begin{table}[]
 \begin{tabular}{lll}
@@ -175,7 +186,7 @@ writing servers.\end{tabular}}
 \multicolumn{1}{l|}{\textbf{Q4}}  &
 \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Code to encode and decode\\ so
 that people can not read the\\ content of the books.\\ \\ Not sure what plain
-means in\\ content type.\end{tabular}} &
+means in\\ content type.\\ Are modules objects?\end{tabular}} &
 \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}First modules define encoding\\
 and decoding json data. \\ \\ Afterwards some helper \\ functions. \\ \\ Lastly
 there are endpoints with\\ router defined with different\\ paths and query
@@ -211,4 +222,11 @@ specified\\ what it accepts, assume plain/text.\end{tabular}}
 \caption{Raw results interview three and four}
 \label{interviewthreefour}
 \end{table}
+
+Person 1 and Person 4 understood correctly what the library does. However all
+four subjects where slightly confused as to what encoders and decoders were
+used for. Not one of the subjects could correctly guess what the accept and
+content types in the Javascript solutions. In Q5 for person 3 the question was
+omitted as the user could not correctly guess at all what the code was supposed
+to do and assumed that it a system for encrypting books.
 

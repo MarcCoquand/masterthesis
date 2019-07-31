@@ -1,4 +1,4 @@
-\chapter{Method}
+\chapter{Method}\label{method}
 
 To evaluate if the functional approach to creating servers is more maintainable
 than existing solutions, a comparative study will be done. A popular library
@@ -33,7 +33,7 @@ consideration; the only requirement is that they compile.
 The two solutions are in the appendix, with the ReasonML implementation in
 section~\ref{reasonmlrest} and the Node solution in section~\ref{nodejsrest}.
 
-\section{Evaluating maintainability}
+\section{Evaluating maintainability}\label{evaluatingmaintainability}
 
 The aspects that to be evaluated when measuring maintainability were discussed
 in Chapter~\ref{background}. To recap the important aspects were:
@@ -57,9 +57,9 @@ the testability, extendability and error-proneness.
 
 To evaluate the testability, error-proneness and extendability  Deductive
 reasoning can be used to find if the solution follows each criteria.  The SOLID
-guidelines were however written for Object-oriented programming and thus we define 
-a new definition for SOLID Functional programming, based on the object-oriented
-principles.
+guidelines were written for Object-oriented programming. The principles are
+however general and can be redefined for Functional programming as presented
+below. 
 
 \subsection{Single Responsibility Principle}
 
@@ -200,7 +200,7 @@ getUserEndpoint : IUserRepo -> Request -> Response
 So in summary, adherence to interface segregation principle means that the
 cardinality of the types are minimized.
 
-\subsection{Open/Closed principles}
+\subsection{Open/Closed principles}\label{openclosed}
 
 Open/Closed principle states that software entities (classes, modules,
 functions, etc.) should be open for extension, but closed for modification.
@@ -346,6 +346,10 @@ The questions that will be asked are presented below.
     \item[Q10] Which media types does the endpoint get accept?
     \item[Q11] Which content type and accept does post have?
 \end{description}
+
+The interviewer will also be informed that the name of the file off the code is
+BookApi.re, re being the file extension of ReasonML, and BookApi.js, js being
+the file extension of javascript, respectively. 
 
 \subsection{Evaluating the answers}
 
