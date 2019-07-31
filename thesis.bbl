@@ -1,32 +1,10 @@
 \begin{thebibliography}{1}
 
-\bibitem{proceduralprogramming}
-T.~{Ishida}, Y.~{Sasaki}, and Y.~{Fukuhara}, ``Use of procedural programming
-  languages for controlling production systems,'' in {\em [1991] Proceedings.
-  The Seventh IEEE Conference on Artificial Intelligence Application}, vol.~i,
-  pp.~71--75, Feb 1991.
-
-\bibitem{turingmachine}
-A.~M. Turing, ``On computable numbers, with an application to the
-  entscheidungsproblem,'' {\em Proceedings of the London Mathematical Society},
-  vol.~s2-42, no.~1, pp.~230--265, 1937.
-
-\bibitem{java}
-G.~S. G. B. A.~B. James~Gosling, Bill~Joy, ``The java language specification,''
-  Febuary 2015.
-\newblock \url{https://docs.oracle.com/javase/specs/jls/se8/jls8.pdf}, accessed
-  Feb 2018.
-
 \bibitem{Turner}
 D.~A. Turner, ``Some history of functional programming languages,'' in {\em
   Proceedings of the 2012 Conference on Trends in Functional Programming -
   Volume 7829}, TFP 2012, (New York, NY, USA), pp.~1--20, Springer-Verlag New
   York, Inc., 2013.
-
-\bibitem{sep-church-turing}
-B.~J. Copeland, ``The church-turing thesis,'' in {\em The Stanford Encyclopedia
-  of Philosophy} (E.~N. Zalta, ed.), Metaphysics Research Lab, Stanford
-  University, winter 2017~ed., 2017.
 
 \bibitem{Pressman:2004:SEP:994110}
 R.~S. Pressman, {\em Software Engineering: A Practitioner's Approach}.

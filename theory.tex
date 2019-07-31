@@ -101,6 +101,13 @@ would cause Haskell to crash.  Instead by introducing a function
 Nothing}, the program can force the developer to handle the special case of
 negative numbers. 
 
+
+\section{Universal quantification and Existential types}
+
+Recall that types can have parameters. Universal quantifiers allows
+us to ``hide'' these parameters and make the types more general. For example
+
+
 \subsection{GADT}\label{gadt}
 
 a GADT is a \textit{generalized abstract data type}.  They specify, depending on
@@ -250,6 +257,7 @@ explicitly writing this check, so composing \texttt{safeSqrt} and
 \texttt{safeLog} using bind becomes \texttt{safeSqrtLog n = safeSqrt n >>=
 safeLog}. The same idea applies for effectful computations such as fetching data
 from a database.
+
 
 \section{Functional servers}
 
