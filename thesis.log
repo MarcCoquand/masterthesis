@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.20)  31 JUL 2019 13:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.20)  3 AUG 2019 13:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -755,7 +755,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (./introduction.tex
 Chapter 1.
 
-Overfull \hbox (6.53601pt too wide) in paragraph at lines 26--32
+Overfull \hbox (6.53601pt too wide) in paragraph at lines 27--33
 []\T1/cmr/m/n/12 Software struc-tural qual-ity refers to how well the soft-ware
  ad-heres to non-functional
  []
@@ -767,68 +767,113 @@ Chapter 2.
 [6
 
 ]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 68.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 70.
  (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 ) [7]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 86.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 88.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 86.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 88.
  [8] [9] [10]
-Overfull \hbox (12.71443pt too wide) in paragraph at lines 228--231
+Overfull \hbox (12.71443pt too wide) in paragraph at lines 235--238
 []\T1/cmr/m/n/12 Here, re-spon-si-bil-ity means ``rea-son to change''. Mod-
  []
 
 [11]
-Overfull \hbox (0.31082pt too wide) in paragraph at lines 258--258
-[]\T1/cmr/bx/n/17.28 Functional pro-gram-ming for mit-i-gat-ing mis-takes 
- []
-
-
-Overfull \hbox (7.51076pt too wide) in paragraph at lines 270--278
-[]\T1/cmr/m/n/12 However as Cause makes heavy use of func-tional pro-gram-ming,
- a soft-ware paradigm
+Overfull \hbox (27.83438pt too wide) in paragraph at lines 267--272
+\T1/cmr/m/n/12 fea-tur-ing higher-kinded types (types of types) and other con-s
+tructs. (ADD_REFERENCE
  []
 
 [12]) (./theory.tex [13]
 Chapter 3.
 [14
 
-] [15] [16]
-LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 171.
- [17] [18] [19] [20] [21]) (./method.tex [22]
-Chapter 4.
-
-Overfull \hbox (3.45898pt too wide) in paragraph at lines 26--32
-[]\T1/cmr/m/n/12 The ac-cepted con-tent types will be \T1/cmtt/m/n/12 applicati
-on/json \T1/cmr/m/n/12 and \T1/cmtt/m/n/12 www-url-formencoded
+] [15] [16] [17]
+Overfull \hbox (63.08606pt too wide) in paragraph at lines 206--216
+\T1/cmr/m/n/12 Using GADTs, we can con-struct a stat-i-cally cor-rect eDSL for 
+server routers.(ADD_REFERENCE
  []
 
 
-Overfull \hbox (31.23276pt too wide) in paragraph at lines 26--32
+Overfull \hbox (91.53308pt too wide) in paragraph at lines 206--216
+\T1/cmr/m/n/12 code from https://github.com/elm/package.elm-lang.org/blob/maste
+r/src/backend/Server/Router.hs)
+ []
+
+[18] [19] [20]
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 437.
+ [21]
+Overfull \hbox (103.17947pt too wide) in paragraph at lines 465--471
+[]\T1/cmr/m/n/12 From the $\OML/cmm/m/it/12 Specification$ \T1/cmr/m/n/12 GADT 
+we can pro-duce a func-tion $\OML/cmm/m/it/12 make \OT1/cmr/m/n/12 : \OML/cmm/m
+/it/12 Specification Request Response \OMS/cmsy/m/n/12 !
+ []
+
+[22]
+Underfull \hbox (badness 10000) in paragraph at lines 506--509
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 510--515
+
+ []
+
+
+Overfull \hbox (1.73589pt too wide) in paragraph at lines 524--533
+\T1/cmr/m/n/12 The verb of the end-point is set by us-ing one of the func-tions
+ \T1/cmtt/m/n/12 GET,POST,DELETE,PATCH\T1/cmr/m/n/12 .
+ []
+
+
+Overfull \hbox (2.24768pt too wide) in paragraph at lines 524--533
+\T1/cmr/m/n/12 verb as spec-i-fied. Three op-er-a-tions ex-ist for pars-ing URI
+s which are $\OML/cmm/m/it/12 Uri:is \OT1/cmr/m/n/12 : \OML/cmm/m/it/12 String 
+\OMS/cmsy/m/n/12 !
+ []
+
+
+Overfull \hbox (5.77892pt too wide) in paragraph at lines 524--533
+\OML/cmm/m/it/12 Specification$\T1/cmr/m/n/12 , $\OML/cmm/m/it/12 Uri:takeText 
+\OT1/cmr/m/n/12 : \OML/cmm/m/it/12 Specification$ \T1/cmr/m/n/12 and $\OML/cmm/
+m/it/12 Uri:takeInt \OT1/cmr/m/n/12 : \OML/cmm/m/it/12 Specification$\T1/cmr/m/
+n/12 . $\OML/cmm/m/it/12 Uri:is$
+ []
+
+[23]) [24] (./method.tex [25]
+Chapter 4.
+
+Overfull \hbox (40.32782pt too wide) in paragraph at lines 26--33
+\T1/cmr/m/n/12 men-ta-tion The ac-cepted con-tent types will be \T1/cmtt/m/n/12
+ application/json \T1/cmr/m/n/12 and \T1/cmtt/m/n/12 www-url-formencoded
+ []
+
+
+Overfull \hbox (31.23276pt too wide) in paragraph at lines 26--33
 \T1/cmr/m/n/12 for all end-points and the dis-playable content-types are \T1/cm
 tt/m/n/12 text/plain \T1/cmr/m/n/12 and \T1/cmtt/m/n/12 application/json\T1/cmr
 /m/n/12 .
  []
 
-[23
+[26
 
-] [24] [25] [26]
-Overfull \hbox (44.44202pt too wide) in paragraph at lines 220--221
+] [27] [28] [29]
+Overfull \hbox (44.44202pt too wide) in paragraph at lines 218--219
 []\T1/cmr/m/n/12 (ADD_REFERENCE $\T1/cmtt/m/n/12 http : / / homepages . inf . e
 d . ac . uk / wadler / papers / expression /
  []
 
-[27] [28] [29] [30]) (./results.tex [31]
+[30] [31] [32] [33]) (./results.tex [34]
 Chapter 5.
-[32
+[35
 
-] [33]
+] [36]
 Overfull \hbox (10.27168pt too wide) in paragraph at lines 90--101
 \T1/cmtt/m/n/12 nngroup . com / articles / why-[]you-[]only-[]need-[]to-[]test-
 []with-[]5-[]users/$\T1/cmr/m/n/12 ). It was per-
@@ -847,35 +892,35 @@ Overfull \hbox (4.51875pt too wide) in paragraph at lines 103--161
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 165.
 
-) (./conclusions.tex [34] [35] [36]
+) (./conclusions.tex [37] [38] [39]
 Chapter 6.
-[37
+[40
 
-] [38] [39]
-Overfull \hbox (46.97363pt too wide) in paragraph at lines 125--133
+] [41]
+Overfull \hbox (46.97363pt too wide) in paragraph at lines 117--125
 \T1/cmr/m/n/12 to make it more main-tain-able. In servers this is usu-ally done
  man-u-ally. (ADD_REFERENCE)
  []
 
-) (./thesis.bbl [40]) (./appendix.tex [41
+[42]) (./thesis.bbl [43]) (./appendix.tex [44
 
-] [42
+] [45
 
 
 ]
 Appendix A.
-(./reasonServer.re [43
+(./reasonServer.re [46
 
-] [44] [45]) (./nodeServer.js [46] [47]) [48]
+] [47] [48]) (./nodeServer.js [49] [50]) [51]
 Appendix B.
-[49
+[52
 
-]) [50] (./thesis.aux) ) 
+]) [53] (./thesis.aux) ) 
 Here is how much of TeX's memory you used:
- 18369 strings out of 492701
- 335776 string characters out of 6134504
- 508056 words of memory out of 5000000
- 21852 multiletter control sequences out of 15000+600000
+ 18387 strings out of 492701
+ 336031 string characters out of 6134504
+ 492053 words of memory out of 5000000
+ 21870 multiletter control sequences out of 15000+600000
  21546 words of font info for 58 fonts, out of 8000000 for 9000
  1137 hyphenation exceptions out of 8191
  55i,15n,54p,831b,1677s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -883,25 +928,24 @@ Here is how much of TeX's memory you used:
 /cm-super-t1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/cm-super/sfcc1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/cm-super/sfit1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm
--super/sfrm0700.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/
-sfrm0800.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm100
-0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/cm-super/sfti1728.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on thesis.pdf (52 pages, 444300 bytes).
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/cm-super/sfcc1200.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/cm-super/sfit1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/cm-super/sfrm0700.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm
+-super/sfrm0800.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/
+sfrm1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm120
+0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfti1728.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
+Output written on thesis.pdf (55 pages, 444368 bytes).
 PDF statistics:
- 253 PDF objects out of 1000 (max. 8388607)
- 178 compressed objects within 2 object streams
+ 259 PDF objects out of 1000 (max. 8388607)
+ 182 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

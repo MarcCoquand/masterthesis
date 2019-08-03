@@ -35,7 +35,7 @@ argued that some of those costs can be mitigated by adding comments and making
 the changes in Section~\ref{futurework}, but more research is needed to prove
 this. For the manager, this becomes a question of costs vs benefits were they
 have to factor the increased cost in readability and possibly extension against
-the gains in ensured increases in testability.
+the gains in ensured increases in testability. 
 
 \section{Functional programming and SOLID}
 
@@ -75,6 +75,11 @@ Even though errors were made when extending the server with a PUT request. It
 might be mitigade by the static analysis featured in ReasonML which would have
 pointed out that there was an error.
 
+In conclusion this thesis has demonstrated how software functional quality could
+be improved by the use of Functional programming by creating a library that
+enforces REST compliancy. We also demonstrated how it could also aid in certain
+software structural qualities and hurt in others such as readability.
+
 \section{Future work}\label{futurework}
 
 SOLID principles places a lot of emphasis on extendability and that modifying
@@ -98,19 +103,6 @@ that the URI for delete was $/api/books:id$. However it is possible to further
 clarify what is a URI by wrapping it in a function that takes an incomplete
 route. This might make it clearer for the user what the URL is but further
 research is needed.
-
-\subsection{Existential wrappers to hide implementation details}
-
-As Q2 got confused by the type signature $type\ a.\ route(a)$, a possible
-workaround is to existentially wrap the type signature.  By declaring a type
-$wrappedRoute = {get :\ 'a.\ route(a)}$. The user would then also not need to
-explicitely declare the types of each functions, as is currently needed (see
-line 99-138 in Appendix~\ref{reasonmlrest}). This would arguably be more what
-the user is used to as currently ReasonML markets itself as being capable to
-deduce type signature (ADD\_REFERENCE
-\url{https://reasonml.github.io/docs/en/type}). However the cost of this is
-that it could potentially make it more difficult for the API to be extended
-following the OCP principle. 
 
 \subsection{Extendability for the URIs}
 

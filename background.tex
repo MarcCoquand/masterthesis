@@ -1,15 +1,17 @@
 \chapter{Background}\label{background}
 
-Servers need some protocol to communicate with the clients. One such protocol
-is REST. (ADD\_REFERENCE REST) This chapter will introduce REST servers. Afterwards it will
-transition into software quality and how software quality is ensured today in
-the industry. It will also establish the challenges that arises and pitfalls.
+This chapter aims to introduce us to REST servers and what are construction
+concerns when making them. Afterwards it will establish common practice in
+producing large scale software to ensure good software structural quality.
 
 \section{Introduction to REST servers}
 
-Servers are applications that provide functionality for other programs or
-devices, called clients.(ADD\_REFERENCE REST) Services are servers that allow sharing data or
-resources among clients or to perform a computation.
+As mentioned in Chapter~\ref{introduction}, servers need some protocol to
+communicate with the clients. One such protocol is
+REST.~\cite{Fielding:2000:ASD:932295} Servers are applications that provide
+functionality for other programs or devices, called
+clients.~\cite{Fielding:2000:ASD:932295} Services are servers that allow sharing
+data or resources among clients or to perform a computation.
 
 REST (Representational State Transfer) is a software architecture style that is
 used to construct web services. A so called RESTful web service allow requesting
@@ -122,7 +124,7 @@ slower; the developer becomes less productive as a result. Since all code is
 written in the same environment introducing new technology becomes harder.
 
 In a microservice architecture the program comprises of small entities that
-each have their own responsibility.(ADD\_REFERENCE MICROSERVICE) There can be
+each have their own responsibility.~\cite{chenlianping} There can be
 one service for metrics, one that interacts with the database and one that
 takes care of frontend. This decomposition allows the developers to easier
 understand parts of the system, scale into autonomous teams, IDE becomes faster
@@ -150,6 +152,10 @@ To create effective unit tests it's important that it's easy to mock examples.
 This is usually hindered if the code is dependant on some state since previous
 states might affect future states.
 
+Since unit tests are the easiest form of testing, the developer should attempt
+to write code in such a way that it can unit test most of the code and not need
+to resort the upcoming test methods.
+
 \subsection{Integration testing}
 
 Whereas unit testing validates that the individual parts work in isolation;
@@ -171,9 +177,10 @@ environment itself. In such cases one can use dependency injections and mock the
 environment with fake data. Dependency injection is a method that substitutes
 environment calls and returns data instead. The issue with unit tests is that
 even if a feature works well in isolation it does not imply that it will work
-well when composed with other functions. It also requires the diligence of the 
-developer to enforce that code is written in units and that separation of logic and
-environment is done as otherwise E2E-tests and integration-tests need to be used.
+well when composed with other functions. It also requires the diligence of the
+developer to enforce that code is written in units and that separation of logic
+and environment is done as otherwise E2E-tests and integration-tests need to be
+used.
 
 The challenge in integration and E2E-tests comes with simulating the entire
 environments. Given a server connected to some file storage and a database it
@@ -255,33 +262,33 @@ for programs will allow making more testable software. These concepts were
 however designed for Object-oriented programming. In Chapter~\ref{method},
 these principles will be translated for Functional programming. 
 
-\section{Functional programming for mitigating mistakes}
+\section{Functional programming for correct constructions}
 
 To mitigate the programmer from making mistakes, some languages feature a type
 system. The type system is a compiler check that ensures that the allowed values
 are entered. Different strengths exist between various programming languages
 with some featuring higher-kinded types (types of types) and other constructs.
+(ADD\_REFERENCE type systems)
 
 It is possible to combine the type system with design patterns to force the
 developer to create the right thing. Chapter~\ref{theory} will introduce a REST
 framework named Cause, which has been created to force the developer to create
 REST compliant servers using Functional programming.
 
-However as Cause makes heavy use of functional programming,  a software
-paradigm that is not popular, the hypothesis of this thesis is that readability
-might be affected. Thus this thesis aims to investigate the effects of
-introducing functional constructions to programmers with little familiarity
-with functional programming when it comes to understandability.
-Understandability is important to reduce the learning time for programmers and
-cut down learning costs. Thus readability of software is an important criteria for 
-maintainable software.
+However as the REST library we in introduce in Chapter~\ref{theory} makes heavy
+use of functional programming, a software paradigm that is not popular compared
+to paradigms such as Object-oriented programming (ADD\_REFERENCE statistics),
+the hypothesis of this thesis is that readability might be affected. Thus this
+thesis aims to investigate the effects of introducing functional constructions
+to programmers with little familiarity with functional programming when it comes
+to understandability.  Understandability is important to reduce the learning
+time for programmers and cut down learning costs. Thus readability of software
+is an important criteria for good software structural quality.
 
-Since functional programming is not popular, it seems plausible that
-readability would be impacted. When evaluating the readability of code,
-companies can use Code reviews. A code review is an activity in which humans
-check how well the code can be understood by reading it. Thus similarity it can
-be used to evaluate how well users without experience with functional code
-understand functional programs. 
+When evaluating the readability of code, companies can use Code reviews. A code
+review is an activity in which humans check how well the code can be understood
+by reading it. Thus similarity it can be used to evaluate how well users without
+experience with functional code understand functional programs. 
 
 \section{Conclusion}\label{backgroundconclusion}
 
@@ -297,10 +304,12 @@ thesis aims to address.
 \end{description}
 
 By creating an semi-structured interview, where the programmers is asked open
-questions about how the code works it can give insights about the defects of
-the software and if there is something fundamental about functional programming
-that makes it harder to understand. Adherence to SOLID principles can be used
-to avoid rotten design. Thus a good REST library should be understood by
-other programmers and follow SOLID principles. Also if the functional software
-can enforce that SOLID principles through the type system, it would mean that a
+questions about how the code works it can give insights about the defects of the
+software and if there is something fundamental about functional programming that
+makes it harder to understand. Adherence to SOLID principles can be used to
+avoid rotten design. Thus a good REST library should be understood by other
+programmers and follow SOLID principles to good software structural quality. The
+REST library should also force coherence with REST protocol to have a good
+software functional quality. If the functional software can enforce that SOLID
+principles are followed through the type system, it would mean that a
 maintainable architecture would be forced by construction.

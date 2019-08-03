@@ -1,15 +1,17 @@
 \chapter{Method}\label{method}
 
-To evaluate if the functional approach to creating servers is more maintainable
-than existing solutions, a comparative study will be done. A popular library
-for developing server applications is by using an unopiniated solution using
-Express, which is a good candidate to compare to Cause. Express is an
-unopiniated server framework written for Node.js for Javascript.  That a
+Armed with the new library constructed in Chapter~\ref{theory}, which increases
+software functional quality, the aim now is to see how software structural
+quality is impacted.  To evaluate if the functional approach to creating servers
+is more maintainable than existing solutions, a comparative study will be done.
+A popular library for developing server applications is by using an unopiniated
+solution using Express, which is a good candidate to compare to Cause. Express
+is an unopiniated server framework written for Node.js for Javascript.  That a
 framework is unopiniated means that it does not force you to architecture your
-code in any specific way.  
+code in any specific way.(ADD\_REFERENCE UNOPINIATED)
 
-An idiomatic server both made in Cause and the popular framework
-for Node Express. They will feature similar functionality which is a library api
+An idiomatic server will be made in both Cause and the popular framework for
+Node Express. They will feature similar functionality which is a library api
 with the endpoints:
 
 \begin{itemize}
@@ -21,17 +23,13 @@ with the endpoints:
     override a specific book
 \end{itemize}
 
-The server will also make use of a hashmap for database connection.
-
-The accepted content types will be \texttt{application/json} and
+The server will also make use of a hashmap that is abstracted away in the
+implementation The accepted content types will be \texttt{application/json} and
 \texttt{www-url-formencoded} for all endpoints and the displayable content-types
-are \texttt{text/plain} and \texttt{application/json}. Both implementations will handle
-all of the error cases. They will also be written in an idiomatic way, that is
-they will not take the challenges outlined in Chapter~\ref{background} into
-consideration; the only requirement is that they compile.
-
-The two solutions are in the appendix, with the ReasonML implementation in
-section~\ref{reasonmlrest} and the Node solution in section~\ref{nodejsrest}.
+are \texttt{text/plain} and \texttt{application/json}. Both implementations will
+handle all of the error cases. They will also be written in an idiomatic way,
+that is they will not take the challenges outlined in Chapter~\ref{background}
+into consideration; the only requirement is that they compile.
 
 \section{Evaluating maintainability}\label{evaluatingmaintainability}
 
@@ -340,8 +338,8 @@ The questions that will be asked are presented below.
     \item[Q5] Which media types does the endpoint post accept?
     \item[Q6] What is the uri of DELETE?
     \item[Q7] Which media types representations can the endpoint show?
-    \item[Q8] Can you demonstrate how you would extend the api and add a new endpoint
-    for a PUT request.
+    \item[Q8] Given a handler putInDatabase, Can you demonstrate how you would
+        extend the api and add a new endpoint for a PUT request.
     \item[Q9] Looking at the javascript api, can you explain what it does?
     \item[Q10] Which media types does the endpoint get accept?
     \item[Q11] Which content type and accept does post have?
