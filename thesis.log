@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.20)  3 AUG 2019 13:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.20)  3 AUG 2019 14:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -794,52 +794,75 @@ Chapter 3.
 [14
 
 ] [15] [16] [17]
-Overfull \hbox (63.08606pt too wide) in paragraph at lines 206--216
+Overfull \hbox (63.08606pt too wide) in paragraph at lines 233--245
 \T1/cmr/m/n/12 Using GADTs, we can con-struct a stat-i-cally cor-rect eDSL for 
 server routers.(ADD_REFERENCE
  []
 
 
-Overfull \hbox (91.53308pt too wide) in paragraph at lines 206--216
+Overfull \hbox (91.53308pt too wide) in paragraph at lines 233--245
 \T1/cmr/m/n/12 code from https://github.com/elm/package.elm-lang.org/blob/maste
 r/src/backend/Server/Router.hs)
  []
 
 [18] [19] [20]
+Overfull \hbox (48.61737pt too wide) in paragraph at lines 430--438
+\T1/cmtt/m/n/12 String -> Specification (handler, responseBuilder) (handler, re
+sponseBuilder)\T1/cmr/m/n/12 .
+ []
+
+
+Overfull \hbox (4.12965pt too wide) in paragraph at lines 430--438
+\T1/cmr/m/n/12 The con-struc-tor \T1/cmtt/m/n/12 Integer \T1/cmr/m/n/12 be-come
+s \T1/cmtt/m/n/12 Integer : Specification (int -> a, r) (a,
+ []
+
+[21]
+Overfull \hbox (2.23845pt too wide) in paragraph at lines 439--447
+\T1/cmr/m/n/12 def-i-ni-tion ex-panded it pro-duces \T1/cmtt/m/n/12 Specificati
+on (a, encoded) (a, r -> encoded)
+ []
+
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 437.
- [21]
-Overfull \hbox (103.17947pt too wide) in paragraph at lines 465--471
-[]\T1/cmr/m/n/12 From the $\OML/cmm/m/it/12 Specification$ \T1/cmr/m/n/12 GADT 
-we can pro-duce a func-tion $\OML/cmm/m/it/12 make \OT1/cmr/m/n/12 : \OML/cmm/m
-/it/12 Specification Request Response \OMS/cmsy/m/n/12 !
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 457.
+
+Overfull \hbox (40.56802pt too wide) in paragraph at lines 472--480
+[]\T1/cmr/m/n/12 The con-struc-tor han-dler now takes as a pa-ram-e-ter a \T1/c
+mtt/m/n/12 Specification (handlerFunction,
  []
 
 [22]
-Underfull \hbox (badness 10000) in paragraph at lines 506--509
+Overfull \hbox (92.41132pt too wide) in paragraph at lines 488--496
+[]\T1/cmr/m/n/12 From the $\OML/cmm/m/it/12 Specification$ \T1/cmr/m/n/12 GADT 
+we can de-fine a func-tion $\OML/cmm/m/it/12 make \OT1/cmr/m/n/12 : \OML/cmm/m/
+it/12 Specification Request Response \OMS/cmsy/m/n/12 !
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 531--534
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 510--515
+Underfull \hbox (badness 10000) in paragraph at lines 535--540
 
  []
 
 
-Overfull \hbox (1.73589pt too wide) in paragraph at lines 524--533
+Overfull \hbox (1.73589pt too wide) in paragraph at lines 550--559
 \T1/cmr/m/n/12 The verb of the end-point is set by us-ing one of the func-tions
  \T1/cmtt/m/n/12 GET,POST,DELETE,PATCH\T1/cmr/m/n/12 .
  []
 
 
-Overfull \hbox (2.24768pt too wide) in paragraph at lines 524--533
+Overfull \hbox (2.24768pt too wide) in paragraph at lines 550--559
 \T1/cmr/m/n/12 verb as spec-i-fied. Three op-er-a-tions ex-ist for pars-ing URI
 s which are $\OML/cmm/m/it/12 Uri:is \OT1/cmr/m/n/12 : \OML/cmm/m/it/12 String 
 \OMS/cmsy/m/n/12 !
  []
 
 
-Overfull \hbox (5.77892pt too wide) in paragraph at lines 524--533
+Overfull \hbox (5.77892pt too wide) in paragraph at lines 550--559
 \OML/cmm/m/it/12 Specification$\T1/cmr/m/n/12 , $\OML/cmm/m/it/12 Uri:takeText 
 \OT1/cmr/m/n/12 : \OML/cmm/m/it/12 Specification$ \T1/cmr/m/n/12 and $\OML/cmm/
 m/it/12 Uri:takeInt \OT1/cmr/m/n/12 : \OML/cmm/m/it/12 Specification$\T1/cmr/m/
@@ -917,10 +940,10 @@ Appendix B.
 
 ]) [53] (./thesis.aux) ) 
 Here is how much of TeX's memory you used:
- 18387 strings out of 492701
- 336031 string characters out of 6134504
+ 18389 strings out of 492701
+ 336058 string characters out of 6134504
  492053 words of memory out of 5000000
- 21870 multiletter control sequences out of 15000+600000
+ 21872 multiletter control sequences out of 15000+600000
  21546 words of font info for 58 fonts, out of 8000000 for 9000
  1137 hyphenation exceptions out of 8191
  55i,15n,54p,831b,1677s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -942,7 +965,7 @@ sfrm1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm120
 /usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfti1728.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on thesis.pdf (55 pages, 444368 bytes).
+Output written on thesis.pdf (55 pages, 444908 bytes).
 PDF statistics:
  259 PDF objects out of 1000 (max. 8388607)
  182 compressed objects within 2 object streams

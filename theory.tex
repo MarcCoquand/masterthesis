@@ -87,6 +87,31 @@ functionality rather than attributes.
 More advanced constructs also exists for functional programming that need to be
 introduced for constructing a maintainable rest library. 
 
+\subsection{Functors and Contravariant Functors}
+
+The Functor type class defines a function $map : (a\rightarrow b) \rightarrow m\
+a \rightarrow m\ b$. So every type that can be mapped over is a Functor.
+Examples of this are lists, where map morphs every value in the list from a to
+b. Another example is for Maybe, defined in~\ref{types}. A Functor for Maybe
+checks if the value is $Just\ a$, if so it morphs that value to $Just\ b$,
+otherwise it returns $Nothing$. 
+
+Not every type with a type parameter is a Functor. For example the type
+$Predicate\ a = a \rightarrow Boolean$, is a function that when given some value
+$a$ returns a boolean. This type can not be a Functor due to the type parameter
+being the \textit{input} of the function. When the type parameter of the type is
+the input, it is said to be in negative position and the type is
+\textit{contravariant}.  When the type parameter is the output of a function, it
+is said to be in positive position and the type is covariant. A type can be a
+Functor only if it is covariant.
+
+Contravariant Functor type class define a function $contramap : (a\rightarrow b)
+\rightarrow m\ b \rightarrow m\ a$. These are useful for defining how the value
+should be \textit{consumed}. So for example a $type\ encoder = a\rightarrow
+encoded$, defines an encoder. The contravariant functor would allow transforming
+the encoder into intermediate value.
+
+
 \subsection{ADTs: Sum types and product types}\label{types}
 
 A type is in Haskell a \textit{set} of possible values that a given data can
@@ -118,8 +143,10 @@ apis, this means we can develop an eDSL which can interpret REST apis and use
 them for different purposes. Since the logic is separated from the evaluation it
 also gives the advantage that testing is required for the evaluator and not for
 the logic itself (since testing it means just testing that it's equal to
-itself). To test evaluators it can be done with property-based testing
-(ADD\_REFERENCE testing the hard stuff John hughes). 
+itself). To test evaluators can be done in separation using property-based
+testing (ADD\_REFERENCE testing the hard stuff John hughes), thus allowing the
+developer to ensure that any program written using the GADT is correct by
+extension.
 
 \subsection{Generalized algebraic data type}\label{gadt}
 
@@ -201,7 +228,7 @@ logic for the calculators and implement them for different platforms and ensure
 statically that all platforms follow the same logic. So GADTs are useful for
 creating expressions that can later on be evaluated.
 
-\subsection{Router using GADT}
+\section{Servers using GADTs: Router}
 
 Using GADTs, we can construct a statically correct eDSL for server
 routers.(ADD\_REFERENCE code from
@@ -212,7 +239,9 @@ define a minimal example of a GADT $Router$, in Figure~\ref{routergadtminimal}.
 The two constructors $Top$ and $Exact$ describe matching \url{/} or for a given
 string $s$, \url{/s} respectively. It should also be possible to link two
 $Router$ together to allow us to match nested urls. Thus we can introduce
-$Compose$.
+$Compose$ which allows composing routers together composed of multiple parts.
+For instance \url{/hello/world} corresponds to $Compose\ (Exact\ "hello")\
+(Exact\ "world")$.
 
 \begin{figure}[H]
     \begin{lstlisting}
@@ -238,7 +267,8 @@ together, so an api for a user resource could be implemented as \texttt{Compose
 (Compose (Exact "user") String) Integer}, which could be interpreted to match on
 urls formatted as \url{/users/:string/:int} where \url{:string} is a valid
 string and \url{:int} is a valid int. These arguments get applied to the
-handler, thus the type of this value becomes $Router (String -> Int -> a) a$.
+handler, thus the type of this value becomes \texttt{Router (String -> Int -> a)
+a}.
 
 \begin{figure}[H]
     \begin{lstlisting}
@@ -277,7 +307,9 @@ type Router start result
 \end{figure}
 
 This section has demonstrated how GADTs are useful for constructing a eDSL for
-routers. Furthermore we will extend this functionality to implement all of the
+routers. What was not described is how to interpret the router which is omitted
+for brevity. However the source code for the final solution can be found in
+Appendix. Furthermore we will extend this functionality to implement all of the
 functionality of a REST server.
 
 % \subsection{Type classes}\label{typeclass}
@@ -319,30 +351,6 @@ functionality of a REST server.
     % \caption{A function that prints a text if the two items are equal.}
     % \label{printifequal}
 % \end{figure}
-
-\subsection{Functors and Contravariant Functors}
-
-The Functor type class defines a function $map : (a\rightarrow b) \rightarrow m\
-a \rightarrow m\ b$. So every type that can be mapped over is a Functor.
-Examples of this are lists, where map morphs every value in the list from a to
-b. Another example is for Maybe, defined in~\ref{types}. A Functor for Maybe
-checks if the value is $Just\ a$, if so it morphs that value to $Just\ b$,
-otherwise it returns $Nothing$. 
-
-Not every type with a type parameter is a Functor. For example the type
-$Predicate\ a = a \rightarrow Boolean$, is a function that when given some value
-$a$ returns a boolean. This type can not be a Functor due to the type parameter
-being the \textit{input} of the function. When the type parameter of the type is
-the input, it is said to be in negative position and the type is
-\textit{contravariant}.  When the type parameter is the output of a function, it
-is said to be in positive position and the type is covariant. A type can be a
-Functor only if it is covariant.
-
-Contravariant Functor type class define a function $contramap : (a\rightarrow b)
-\rightarrow m\ b \rightarrow m\ a$. These are useful for defining how the value
-should be \textit{consumed}. So for example a $type\ encoder = a\rightarrow
-encoded$, defines an encoder. The contravariant functor would allow transforming
-the encoder into intermediate value.
 
 % \subsection{Brief introduction to Monads for side effects}\label{monads}
 
@@ -419,15 +427,27 @@ into a $Response$ (output). $Specification$ works as DSL for one or more
     \item A combination of one of these endpoints.
 \end{itemize}
 
-Endpoints need to produce two intermediate values. One value which is the
-handler and another value which is how to encode the result of that handler.
+A difference from the $Router$ defined in previous section is that each Endpoint
+need to produce \textit{two} intermediate values. One value which is the handler
+and another value which is how to encode the result of the handler. We define
+the encoder as ResponseBuilder, which is a contravariant of type $a -> encoded$.
+Thus we modify the constructer \texttt{Exact : String -> Specification input
+output} to \texttt{Exact : String -> Specification (handler, responseBuilder)
+(handler, responseBuilder)}. The constructor \texttt{Integer} becomes
+\texttt{Integer : Specification (int -> a, r) (a, r)}.
 
-The translation of these requirements to a GADT becomes as follows, where $h$
-is short for handler, hr stands for $Result\ r$ and $r$ is short for encoder to the response:
+We also introduce a few new constructor, one being \texttt{Accept} which takes a
+list of encoders and their corresponding accept header (\texttt{(Mediatype, [r
+-> encoded])}) and produces a \texttt{Specification (a, encoded) (a, r)}, or
+with responsebuilder's definition expanded it produces \texttt{Specification
+(a, encoded) (a, r -> encoded)} for clarity. When parsing a request, it can
+then check what available media types the endpoint can represent and pick
+the appropriate encoder without the programming needing to write it
+manually. The final GADT for specifications become as follows:
 
 \begin{lstlisting}
   type Specification input output =
-    Exact : string -> Specification (h, r) (h,r)
+    Exact : String -> Specification (h, r) (h,r)
     QueryParam : string 
             -> (string -> Maybe a) 
             -> Specification (Maybe a -> b, r) (b, r)
@@ -441,7 +461,7 @@ is short for handler, hr stands for $Result\ r$ and $r$ is short for encoder to 
                   -> Specification (body -> b, r) (b, r)
     Handler : StatusCode 
         -> handlerFunction 
-        -> Specification (handlerFunction, encoded) (Result c, c)
+        -> Specification (handlerFunction, noEncoder) (Result resource, resource)
         -> Specification Request (Maybe Response)
     Many :
           [Specification 
@@ -449,11 +469,14 @@ is short for handler, hr stands for $Result\ r$ and $r$ is short for encoder to 
           ] -> Specification Request Response
 \end{lstlisting}
 
-Notice that some cases in $Specification$ specify how to produce tuples from
-tuples, such as $Exact : String \rightarrow Specification\ (h,r)\ (h,r)$. The
-intuition for this is that we want to produce two values, one value that can
-produce the resource and one value that can afterwards encode the resource to
-the appropriate media type.
+The constructor handler now takes as a parameter a \texttt{Specification
+(handlerFunction, noEncoder) (Result c, c)}, which describes that given a
+handler function that correctly handles the parameter values and a
+responseBuilder without an encoder, can produce a tuple of the resulting
+resource as well as an encoder of that resource to the appropriate media accept
+header. We enforce statically that the handlerFunction produces something which
+might fail ($Result\ resource$), so that we can automatically handle that error
+and throw the appropriate response. 
 
 Notice that the Many case is for transforming many endpoints into a single one.
 Also notice that Handler produces a $Specification\ Request\ (Result Response)$.
@@ -462,44 +485,46 @@ knowing if an endpoint failed to parse the request. If all endpoints fails the
 yield from applying a Request to a specification interpreter should be 404 - Not
 found.
 
-From the $Specification$ GADT we can produce a function $make : Specification\
+From the $Specification$ GADT we can define a function $make : Specification\
 Request\ Response \rightarrow Request \rightarrow Response$.  $make$ works by
 evaluating the GADT to deduce how the request should be parsed.  Since
 Functional programming is being used, then given a $Specification\ Request\
 Response$ called $s$, we can partially apply the function $make$ to produce a
-Server, since Server is \textit{type equal} to the type of $make\ s$.
+Server, since Server is \textit{type equal} to the type of $make\ s$. The full
+implementation of $make$, implemented in the functional programming language
+ReasonML, is available in the appendix.
 
-\subsection{Extracting parameters}
+% \subsection{Extracting parameters}
 
-The request contains a set of parameters that an endpoint expects in order for
-handler to yield a resource. These parameters need to therefore be extracted and
-applied to the handler in the right order. 
+% The request contains a set of parameters that an endpoint expects in order for
+% handler to yield a resource. These parameters need to therefore be extracted and
+% applied to the handler in the right order. 
 
-\subsubsection{Parsing a URI}
+% \subsubsection{Parsing a URI}
 
-Each request contains a URI to the resource it wishes to access.  For instance
-\url{/api/books?author=Rowling&published=2005} wishes to access the resource
-\url{/api/books} and passes in the query parameters $author$ and $published$.
-The challenge here for the parser is that the parser should parse $/api/book$
-sequentially and ensure each part is correct. Query parameters can appears in
-any order, thus it is necessary to parse all query parameters and extract the
-ones supported by the endpoint. Thus the algorithm works as follow, given an url
-and an endpoint.
+% Each request contains a URI to the resource it wishes to access.  For instance
+% \url{/api/books?author=Rowling&published=2005} wishes to access the resource
+% \url{/api/books} and passes in the query parameters $author$ and $published$.
+% The challenge here for the parser is that the parser should parse $/api/book$
+% sequentially and ensure each part is correct. Query parameters can appears in
+% any order, thus it is necessary to parse all query parameters and extract the
+% ones supported by the endpoint. Thus the algorithm works as follow, given an url
+% and an endpoint.
 
-\begin{enumerate}
-    \item Split the url at \url{?} into two strings to separate queries from the 
-        uri
-    \item Parse the URI by matching character by character
-    \item Parse the query parameters by first splitting the string into a list
-        where \url{&} occurs. Afterwards split the occurence of \url{=} within
-        that list into a tuple, if \url{=} does not exist, remove that entry as
-        it is malformatted.
-\end{enumerate}
+% \begin{enumerate}
+    % \item Split the url at \url{?} into two strings to separate queries from the 
+        % uri
+    % \item Parse the URI by matching character by character
+    % \item Parse the query parameters by first splitting the string into a list
+        % where \url{&} occurs. Afterwards split the occurence of \url{=} within
+        % that list into a tuple, if \url{=} does not exist, remove that entry as
+        % it is malformatted.
+% \end{enumerate}
 
-As each parameters get extracted they also get applied to the handler. A
-specification can be composed of many endpoints which all contain a parser for
-the request. Should one of them fail it can attempt with the next parser
-instead.
+% As each parameters get extracted they also get applied to the handler. A
+% specification can be composed of many endpoints which all contain a parser for
+% the request. Should one of them fail it can attempt with the next parser
+% instead.
 
 \section{Using the library}
 
@@ -517,7 +542,8 @@ $echo$ is a $Server$ which ``echoes'' back the message that is entered on the
 URL \url{/echo/}, so \url{/echo/helloworld} would yield a response with the body
 ``helloworld''. It does this by using the function endpoint, which takes the
 handler, a status code on success and a specification.  Specifications are
-combined using the $(\triangleright )$ operator.
+combined using the $(\triangleright )$ operator, which is implemented as
+$(\triangleright)\ a\ b = Compose\ a\ b$.
 
 \subsection{Defining an endpoint}
 
