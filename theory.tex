@@ -11,7 +11,7 @@ REST compliant servers.
 
  While different definitions exist of what Functional programming means, here 
  functional programming is a paradigm that uses of pure functions,
- decoupling state from logic and immutable data.
+ decoupling state from logic and immutable data.(ADD\_REFERENCE)
 
 \begin{description}
 \item[ Purity ]
@@ -82,19 +82,38 @@ As a strategy to further separate state and logic, one can construct a
 
 So while no exact definition of Functional programming exist, this thesis
 defines it as making functions pure and inheritance being based around
-functionality rather than attributes. 
+functionality rather than attributes. More advanced constructs also exists for
+functional programming that need to be introduced for constructing a
+maintainable rest library. 
 
-More advanced constructs also exists for functional programming that need to be
-introduced for constructing a maintainable rest library. 
+\subsection{ADTs: Sum types and product types}\label{types}
+
+A type is in Haskell is informally a \textit{set} of possible values that a
+given data can have.(ADD\_REFERENCE) This can be $int$, $char$ and custom
+defined types. A \textit{sum type}, \textit{Algebraic data type (ADT)} or
+\textit{union type} is a type which is the sum of types, meaning that it can be
+one of those it's given types. For example the type \texttt{type IntChar = Int |
+Char} is either an Int or a Char. A useful application for sum types are enums
+such as \texttt{type Color = Red | Green | Blue}, meaning that a value of type
+Color is either red, green or blue. A sum type can be used to model data which
+may or may not have a value, by introducing the Maybe type: \texttt{type Maybe
+value = Just value | Nothing}. A product type is a type which is the product of
+types, for example \texttt{type User = User Name Email}.  Informally, informally
+a product type is similar to an immutable record in Javascript. (ADD\_REFERENCE)
+$Maybe$ allows us to model computations that might fail. For example given
+$sqrt(x) = \sqrt{x},\, x\in \mathbb{Z}$ then $sqrt(-1)$ is undefined and would
+cause Haskell to crash.  Instead by introducing a function \texttt{safeSqrt},
+where \texttt{safeSqrt x = if x > 0 then Just (sqrt x) else Nothing}, the
+program can force the developer to handle the special case of negative numbers. 
 
 \subsection{Functors and Contravariant Functors}
 
-The Functor type class defines a function $map : (a\rightarrow b) \rightarrow m\
-a \rightarrow m\ b$. So every type that can be mapped over is a Functor.
-Examples of this are lists, where map morphs every value in the list from a to
-b. Another example is for Maybe, defined in~\ref{types}. A Functor for Maybe
-checks if the value is $Just\ a$, if so it morphs that value to $Just\ b$,
-otherwise it returns $Nothing$. 
+A Functor have a function $map : (a\rightarrow b) \rightarrow m\ a \rightarrow
+m\ b$. So every type that can be mapped over is a Functor.  Examples of this are
+lists, where map morphs every value in the list from a to b. Another example is
+for Maybe, defined in~\ref{types}. A Functor for Maybe checks if the value is
+$Just\ a$, if so it morphs that value to $Just\ b$, otherwise it returns
+$Nothing$. 
 
 Not every type with a type parameter is a Functor. For example the type
 $Predicate\ a = a \rightarrow Boolean$, is a function that when given some value
@@ -105,56 +124,29 @@ the input, it is said to be in negative position and the type is
 is said to be in positive position and the type is covariant. A type can be a
 Functor only if it is covariant.
 
-Contravariant Functor type class define a function $contramap : (a\rightarrow b)
-\rightarrow m\ b \rightarrow m\ a$. These are useful for defining how the value
-should be \textit{consumed}. So for example a $type\ encoder = a\rightarrow
-encoded$, defines an encoder. The contravariant functor would allow transforming
-the encoder into intermediate value.
-
-
-\subsection{ADTs: Sum types and product types}\label{types}
-
-A type is in Haskell a \textit{set} of possible values that a given data can
-have. This can be $int$, $char$ and custom defined types. A \textit{sum type},
-\textit{Algebraic data type (ADT)} or \textit{union type} is a type which is the
-sum of types, meaning that it can be one of those it's given types. For example
-the type \texttt{type IntChar = Int | Char} is either an Int or a Char. A useful
-application for sum types are enums such as \texttt{type Color = Red | Green |
-Blue}, meaning that a value of type Color is either red, green or blue. A sum
-type can be used to model data which may or may not have a value, by introducing
-the Maybe type: \texttt{type Maybe value = Just value | Nothing}.A product type
-is a type which is the product of types, for example \texttt{type User = User
-Name Email}.  Informally, a product type can be likened to a record in
-Javascript.  This allows us to model computations that might fail. For example
-given $sqrt(x) = \sqrt{x},\, x\in \mathbb{Z}$ then $sqrt(-1)$ is undefined and
-would cause Haskell to crash.  Instead by introducing a function
-\texttt{safeSqrt}, where \texttt{safeSqrt x = if x > 0 then Just (sqrt x) else
-Nothing}, the program can force the developer to handle the special case of
-negative numbers. 
+Contravariant Functors have a function $contramap : (a\rightarrow b) \rightarrow
+m\ b \rightarrow m\ a$. (ADD\_REFERENCE contravariacn) These are useful for
+defining how the value should be \textit{consumed}. So for example a $type\
+encoder = a\rightarrow encoded$, defines an encoder. The contravariant functor
+would allow transforming the encoder into intermediate value.
 
 \subsection{Domain-specific languages}
 
-A domain specific language (DSL) is a programming language specified for a
-specific domain. Typical examples of DSLs are HTML for designing web pages and
-SQL for making database calls. An eDSL is such a language embedded within the
-syntax of the language. EDSLs are useful due to the ability to separate the
-evaluation of the logic of the program to the logic itself. In the case of REST
-apis, this means we can develop an eDSL which can interpret REST apis and use
-them for different purposes. Since the logic is separated from the evaluation it
-also gives the advantage that testing is required for the evaluator and not for
-the logic itself (since testing it means just testing that it's equal to
-itself). To test evaluators can be done in separation using property-based
-testing (ADD\_REFERENCE testing the hard stuff John hughes), thus allowing the
-developer to ensure that any program written using the GADT is correct by
-extension.
+A domain specific language (DSL) is a programming language made for a specific
+domain.(ADD\_REFERENCE DSL) Typical examples of DSLs are HTML for designing web
+pages and SQL for making database calls. An eDSL is such a language embedded
+within the syntax of the language.(ADD\_REFERENCE edsl) EDSLs are useful due to
+the ability to separate the evaluation of the logic of the program to the logic
+itself. In the case of REST apis, this means we can develop an eDSL which can
+interpret REST apis and use them for different purposes. 
 
 \subsection{Generalized algebraic data type}\label{gadt}
 
 One method for constructing eDSLs in functional programming is through the use
 of \textit{generalized algebraic data type} (GADT).(ADD\_REFERENCE GADT)  They
 specify, depending on the input, what the output should be of that type. GADT
-enables implementing \textit{domain-specific languages} (DSL) easily and ensure
-that the DSL is statically correct. 
+enables implementing \textit{domain-specific languages} (DSL) and ensure
+that values of the DSL are statically correct. 
 
 \begin{figure}[H]
     \begin{lstlisting}
@@ -226,22 +218,25 @@ By separating how the expression from it's evaluation, the expression can be
 reused for different purposes. For instance it would be possible to use the same
 logic for the calculators and implement them for different platforms and ensure
 statically that all platforms follow the same logic. So GADTs are useful for
-creating expressions that can later on be evaluated.
+creating expressions that can later on be evaluated.  Since the logic is
+separated from the evaluation and correct by construction it means that we only
+need to test the evaluator, which can be done using property-based testing
+(ADD\_REFERENCE testing the hard stuff John hughes). Testing the logic means
+checking that it's equal to it's intended value, which requires manual review.
 
-\section{Servers using GADTs: Router}
+\section{Servers using GADTs: Router}\label{router}
 
 Using GADTs, we can construct a statically correct eDSL for server
 routers.(ADD\_REFERENCE code from
 https://github.com/elm/package.elm-lang.org/blob/master/src/backend/Server/Router.hs)
 A server router parses incoming requests and extracts query parameters and
-parameters and executes a function depending based on the result. We first
-define a minimal example of a GADT $Router$, in Figure~\ref{routergadtminimal}.
-The two constructors $Top$ and $Exact$ describe matching \url{/} or for a given
-string $s$, \url{/s} respectively. It should also be possible to link two
-$Router$ together to allow us to match nested urls. Thus we can introduce
-$Compose$ which allows composing routers together composed of multiple parts.
-For instance \url{/hello/world} corresponds to $Compose\ (Exact\ "hello")\
-(Exact\ "world")$.
+parameters and executes a function depending on the result. We first define a
+minimal example of a GADT $Router$, in Figure~\ref{routergadtminimal}.  The two
+constructors $Top$ and $Exact$ describe matching \url{/} or for a given string
+$s$, \url{/s} respectively. It should also be possible to link two $Router$
+together to allow us to match nested urls. Thus the constructor $Compose$ allows
+composing routers together composed of multiple parts.  For instance the url
+\url{/hello/world} corresponds to $Compose\ (Exact\ "hello")\ (Exact\ "world")$.
 
 \begin{figure}[H]
     \begin{lstlisting}
@@ -255,20 +250,21 @@ type Router
 \end{figure}
 
 
-Definition in Figure~\ref{routergadtminimal} is not sufficient as a route can
-also contain parameters, such as integers for id or strings.  These parameters
-need to be applied to a function which can handle them. We can use GADTs to also
-describe the transformation of the functions argument from some start parameter
-to some end parameter. In Figure~\ref{extendedrouter} we extend the router with the
-constructors Integer and String. When evaluated later, Integer and String
-describe that they transform a function which takes an argument ($String$ or
-$Int$) and returns result. $Compose$ allows us to compose these parameters
-together, so an api for a user resource could be implemented as \texttt{Compose
-(Compose (Exact "user") String) Integer}, which could be interpreted to match on
-urls formatted as \url{/users/:string/:int} where \url{:string} is a valid
-string and \url{:int} is a valid int. These arguments get applied to the
-handler, thus the type of this value becomes \texttt{Router (String -> Int -> a)
-a}.
+Definition in Figure~\ref{routergadtminimal} is not sufficient for a route
+parser as a route can also contain parameters, such as integers for id or
+strings. These parameters need to be applied to a function which can handle
+them. GADTs can also be used to also describe the transformation of the handler
+function's arguments, by extending Router with two parameters. In
+Figure~\ref{extendedrouter} we extend the router with the constructors Integer,
+String and add two parameters input and output. The Integer and String
+constructors describe the application of an argument to a function. Together
+with $Compose$, an api for a user resource could be implemented as
+\texttt{Compose (Compose (Exact "user") String) Integer}, which could be
+interpreted to match on urls formatted as \url{/users/:string/:int} where
+\url{:string} is a valid string and \url{:int} is a valid int. These parameters
+get applied to the handler, thus the type of becomes \texttt{Router (String ->
+Int -> a) a}. Informally the type can be read as give me a function which takes
+a String and an Int and I will give you $a$.
 
 \begin{figure}[H]
     \begin{lstlisting}
@@ -283,12 +279,12 @@ type Router start result
     \label{extendedrouter}
 \end{figure}
 
-So $Router$ can describe a specification for what the type signature of the
-handler must be and what it must then produce. Finally there needs to be a way
-to apply that handler to the arguments so that it can produce that value, so we
-add a constructor to $Router$, \texttt{Produce : function -> Router function
-output -> Router (output -> c) c}. So the final GADT for the router eDSL becomes
-the one in Figure~\ref{finalrouter}. \texttt{Router (output -> c) c} informally
+So $Router$ describes a specification for what the type signature of the handler
+must be and what it must then produce. Finally there needs to be a way to apply
+that handler to the arguments so that it can produce that value, so we add a
+constructor to $Router$, \texttt{Produce : function -> Router function output ->
+Router (output -> c) c}. So the final GADT for the router eDSL becomes the one
+in Figure~\ref{finalrouter}. \texttt{Router (output -> c) c} informally
 translates to ``give me something that can transform the output to c and I will
 give you c''.
 
@@ -396,24 +392,25 @@ media type, accept header, content type header and a body.  The Response is a
 product of status code, a set of headers where headers are a tuple of strings, a
 content type and an encoding. If the Response returns a successful code in the
 range of 2XX, 3XX we say it is a successful response. The goal is to ensure that
-values of $Server$ are following the REST API specifications.  Thus we define a
-function $make$ that can construct a value of $Server$ which follow REST
-specifications.
+values of $Server$ are following the REST API specifications.  Thus we want to
+define a function $make$ that can construct a value of $Server$ which follow
+REST specifications.
 
 Based on the REST api description outlined in chapter 2, we define a type
 $Specification\ input\ output$, which is a GADT for specifying how to transform
 input into output. We define $Specification\ Request\ Response$ to mean a
 \textit{server specification}, since it defines how to turn a $Request$ (input)
 into a $Response$ (output). $Specification$ works as DSL for one or more
-\textit{endpoints} within a REST api where an endpoint is one of the following:
+\textit{endpoints} within a REST api where an endpoint composed of parts, where
+each part is one or more of the following:
 
 \begin{itemize}
     \item A correct URI to access the resource, such as \url{api/user:int}.
         While the final implementations support any type, this implementation
         will only support integers and strings for brevity.
-    \item URI should also support query parameters as optional parameters for
-        the handler defined below.
-    \item A set of content types that it can represent the resource as.
+    \item Unlike the router defined in Section~\ref{router}, query parameters
+        also need to be supported.
+    \item A set of content types that it can represent the resources.
     \item A set of content type representations for the resource that request can
         submit which can be parsed by the server.
     \item A map of the query parameter name and their respective parser,
@@ -424,23 +421,25 @@ into a $Response$ (output). $Specification$ works as DSL for one or more
         either the resource or a failure message and failure code. This is used
         for side effects, for instance database access. We model the result as
         a sum type $Result\ a = Ok\ a\ |\ Fail\ Message\ Code$.
-    \item A combination of one of these endpoints.
 \end{itemize}
 
-A difference from the $Router$ defined in previous section is that each Endpoint
-need to produce \textit{two} intermediate values. One value which is the handler
-and another value which is how to encode the result of the handler. We define
-the encoder as ResponseBuilder, which is a contravariant of type $a -> encoded$.
-Thus we modify the constructer \texttt{Exact : String -> Specification input
-output} to \texttt{Exact : String -> Specification (handler, responseBuilder)
-(handler, responseBuilder)}. The constructor \texttt{Integer} becomes
-\texttt{Integer : Specification (int -> a, r) (a, r)}.
+An endpoint specification is defined as $Specification\ Request\ (Maybe\
+Response)$, as it might fail to produce a response if it fails to parse the url.
+A difference from the $Router$ in Section~\ref{router} is that parts need to
+produce \textit{two} intermediate values.  One value is the handler and another
+value is how to encode the result of the handler. We define the encoder as
+ResponseBuilder, which is a contravariant of type $a -> encoded$.  Thus we
+modify the constructors, \texttt{Exact : String -> Specification input output}
+becomes \texttt{Exact : String -> Specification (handler, responseBuilder)
+(handler, responseBuilder)}. The constructor \texttt{Integer} gets modified to
+\texttt{Integer : Specification (int -> a, r) (a, r)}. The full GADT gets shown
+below.
 
-We also introduce a few new constructor, one being \texttt{Accept} which takes a
-list of encoders and their corresponding accept header (\texttt{(Mediatype, [r
--> encoded])}) and produces a \texttt{Specification (a, encoded) (a, r)}, or
+We introduce a few new constructor, one being \texttt{Accept} which takes a list
+of encoders and their corresponding accept header (\texttt{(Mediatype, [r ->
+encoded])}) and produces a \texttt{Specification (a, encoded) (a, r)},
 with responsebuilder's definition expanded it produces \texttt{Specification
-(a, encoded) (a, r -> encoded)} for clarity. When parsing a request, it can
+(a, encoded) (a, r -> encoded)}. When parsing a request, it can
 then check what available media types the endpoint can represent and pick
 the appropriate encoder without the programming needing to write it
 manually. The final GADT for specifications become as follows:
@@ -457,6 +456,7 @@ manually. The final GADT for specifications become as follows:
     IntegerParam : Specification (int -> a, r) (a, r)
     Verb : HttpMethod -> Specification (h, r) (h, r)
     Accept : [(MediaType, r -> encoded)] -> Specification (a, encoded) (a, r)
+    -- Attempt to extract body and apply it to the handler.
     ContentType : [((MediaType, string -> Maybe body)]
                   -> Specification (body -> b, r) (b, r)
     Handler : StatusCode 
@@ -469,7 +469,7 @@ manually. The final GADT for specifications become as follows:
           ] -> Specification Request Response
 \end{lstlisting}
 
-The constructor handler now takes as a parameter a \texttt{Specification
+The constructor $handler$ now takes as a parameter a \texttt{Specification
 (handlerFunction, noEncoder) (Result c, c)}, which describes that given a
 handler function that correctly handles the parameter values and a
 responseBuilder without an encoder, can produce a tuple of the resulting
@@ -478,21 +478,20 @@ header. We enforce statically that the handlerFunction produces something which
 might fail ($Result\ resource$), so that we can automatically handle that error
 and throw the appropriate response. 
 
-Notice that the Many case is for transforming many endpoints into a single one.
+The $Many$ constructor is for transforming multiple endpoints into a single one.
 Also notice that Handler produces a $Specification\ Request\ (Result Response)$.
 If the parsing fails we want it to return Nothing so that $Many$ has a way of
-knowing if an endpoint failed to parse the request. If all endpoints fails the
-yield from applying a Request to a specification interpreter should be 404 - Not
-found.
+knowing if an endpoint failed to parse the request. If all endpoints return
+$Nothing$ then the specification interpreter should return a response with  404
+- Not found.
 
-From the $Specification$ GADT we can define a function $make : Specification\
-Request\ Response \rightarrow Request \rightarrow Response$.  $make$ works by
-evaluating the GADT to deduce how the request should be parsed.  Since
-Functional programming is being used, then given a $Specification\ Request\
-Response$ called $s$, we can partially apply the function $make$ to produce a
-Server, since Server is \textit{type equal} to the type of $make\ s$. The full
-implementation of $make$, implemented in the functional programming language
-ReasonML, is available in the appendix.
+From the $Specification$ GADT we can define a function\\ $make : Specification\
+Request\ Response \rightarrow (Request \rightarrow Response) \sim\\
+Specification\ Request\ Response \rightarrow Server$ ($a\sim b$ means $a$ is
+type equal to $b$).  $make$ works by evaluating the GADT to deduce how the
+request should be parsed and how to produce a REST compliant response from that
+request.  The full implementation of $make$, implemented in the functional
+programming language ReasonML, available in the appendix.
 
 % \subsection{Extracting parameters}
 
@@ -528,9 +527,9 @@ ReasonML, is available in the appendix.
 
 \section{Using the library}
 
-The library exposes the GADT specification and a set of functions that can be
-used to create specifications. Following is a minimalistic example of an
-endpoint:\\
+The library exposes a set of functions that can be used to create
+specifications, which all make use of $specification$. Following is a
+minimalistic example of an endpoint:\\
 
 \noindent
 \begin{math}
@@ -596,16 +595,15 @@ get = endpoint getFromDatabase Ok200 spec
 
 In this example, \texttt{getFromDatabase}, is deduced from the specification to
 be a function with the signature \texttt{Maybe string -> Maybe int -> Result
-[book]}. Encoders are functions of type \texttt{book -> encoded}. We notice how
-the handler does not need to work anything with how to encode/decode books and
-only needs to handle the error of failure to fetch the resource, thus separating
-concerns.
-
+[book]} and if successful returns a status code 200. Encoders are functions of
+type \texttt{book -> encoded}. 
 
 \section{Conclusion}
 
 In this chapter we have introduced the concepts of functional programming and
-then from those concepts created a library that can be used to construct REST
-specifications as a GADT. We have then demonstrated how a value of specification
-can be used to construct REST compliant server application, I.E. we constructed
-a function $make : Specification\ Request\ Response \rightarrow Request\rightarrow Response$.
+then from those concepts created a GADT that can be used to construct REST
+specifications. The implementation afterwards to make it REST compliant can then
+after be found in Appendix (ADD\_REFERENCE). We have then demonstrated how a
+value of specification can be used to construct REST compliant server
+application, I.E. we constructed a higher order function $make : Specification\
+Request\ Response \rightarrow (Request\rightarrow Response)$.

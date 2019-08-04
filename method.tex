@@ -1,18 +1,18 @@
 \chapter{Method}\label{method}
 
-Armed with the new library constructed in Chapter~\ref{theory}, which increases
-software functional quality, the aim now is to see how software structural
-quality is impacted.  To evaluate if the functional approach to creating servers
-is more maintainable than existing solutions, a comparative study will be done.
-A popular library for developing server applications is by using an unopiniated
+Armed with the new library constructed in Chapter~\ref{theory}, which creates
+correct REST servers, the aim now is to see how software structural quality is
+impacted.  To evaluate if the functional approach to creating servers is more
+maintainable than existing solutions, a comparative study will be done.  A
+popular library for developing server applications is by using an unopiniated
 solution using Express, which is a good candidate to compare to Cause. Express
 is an unopiniated server framework written for Node.js for Javascript.  That a
 framework is unopiniated means that it does not force you to architecture your
 code in any specific way.(ADD\_REFERENCE UNOPINIATED)
 
-An idiomatic server will be made in both Cause and the popular framework for
-Node Express. They will feature similar functionality which is a library api
-with the endpoints:
+An idiomatic server was made using the library in Chapter~\ref{theory} and the
+popular framework for Node Express. They feature similar functionality which is
+a REST api with the endpoints:
 
 \begin{itemize}
     \item \texttt{GET ``api/books?released=int\&author=string''} Get a list of

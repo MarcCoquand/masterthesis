@@ -123,6 +123,15 @@ should be as simple as creating an evaluator for the $specification$ to
 generate the documentation. This would ensure that documentation stays in sync
 and minimizes maintenance costs of documentation by automating it.
 
+\subsection{Limitations}
+
+There is no way for the REST library to enforce that modification and verbs are
+linked. So if a specification specifies that it only works for GET requests,
+there is no way to statically enforce that no mutation is done. There might be a
+way to statically enforce that handlers with GET requests must use coeffects and
+that instead the handler describe what it requires from the
+database.(ADD\_REFERENCE http://tomasp.net/coeffects/)
+
 \section{Concluding remarks}
 
 I hope this thesis serves to underline the challenges in the software industry
