@@ -1,26 +1,36 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.20)  30 JUL 2019 13:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.20)  4 AUG 2019 12:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **appendix.tex
 (./appendix.tex
 LaTeX2e <2018-04-01> patch level 5
-! Undefined control sequence.
-l.1 \chapter
-            *{Appendix}\label{appendix}
+
+! LaTeX Error: Environment appendices undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 \begin{appendices}
+                      
 ? 
 ! Emergency stop.
-l.1 \chapter
-            *{Appendix}\label{appendix}
-End of file on the terminal!
+ ...                                              
+                                                  
+l.1 \begin{appendices}
+                      
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
  
 Here is how much of TeX's memory you used:
- 5 strings out of 492701
- 131 string characters out of 6134504
- 56074 words of memory out of 5000000
+ 6 strings out of 492701
+ 272 string characters out of 6134504
+ 56126 words of memory out of 5000000
  3980 multiletter control sequences out of 15000+600000
  3640 words of font info for 14 fonts, out of 8000000 for 9000
  1137 hyphenation exceptions out of 8191
- 5i,0n,1p,50b,8s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 5i,0n,4p,44b,16s stack positions out of 5000i,500n,10000p,200000b,80000s
 !  ==> Fatal error occurred, no output PDF file produced!

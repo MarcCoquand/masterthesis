@@ -34,7 +34,7 @@
 	keywordstyle=\bfseries\color{green!40!black},
 	commentstyle=\itshape\color{purple!40!black},
 	identifierstyle=\color{black},
-	stringstyle=\color{orange},
+	stringstyle=\color{black},
 }
 \lstdefinestyle{customasm}{
 	belowcaptionskip=1\baselineskip,
@@ -55,8 +55,8 @@
 	\centering
     \null
     \vfill
-    {\Large\itshape Evaluating Functional Programming for Quality
-    REST APIs    \par}
+    {\Large\itshape Evaluating Functional Programming for Software Quality in
+    REST Apis    \par}
     \vspace{3.0cm}
 	{\scshape 
     A thesis presented \par 
@@ -82,15 +82,16 @@
 
 \begin{abstract} 
     Defects in Software engineering are a common occurrence. To mitigate defects
-    the developers must create maintainable solutions. A maintainable solution
-    is readable, extendable, not error-prone and testable. In order to make them
-    so developers follow a guideline called SOLID principles.  These principles
-    are not enforced by the language but relies on the diligence of the
-    developers, meaning there is nothing stopping them from writing
-    unmaintainable code. In this study we translate these principles to
-    Functional programming to investigate if Functional programming can be used
-    to construct a library for servers that forces the developer to create
-    correct code without incurring costs in maintainable and readability.
+    the developers must create maintainable solutions and strive for good
+    software quality. A maintainable solution is readable, extensible, not
+    error-prone and testable. In order to make them so developers follow a
+    guideline called SOLID principles. These principles are not enforced by the
+    language but relies on the diligence of the developers, meaning there is
+    nothing stopping them from writing unmaintainable code. In this study we
+    translate these principles to Functional programming to investigate if
+    Functional programming can be used to construct a library for servers that
+    forces the developer to create correct code without incurring costs in
+    maintainable and readability.
 \end{abstract}
 
 \clearpage\newpage
@@ -98,9 +99,9 @@
 
 \section*{Acknowledgements}
 
-I want to thank my Anders Broberg for being my supervisor and Ola Ringdahl for
-his support and being quick to respond on email. I also want to thank all those
-who participated in the interviews.
+I want to thank my Anders Broberg for being my supervisor, my parents for their
+support and Michelle Neysa for listening to my non-stop ramblings about software
+quality and functional programming. I also want to thank all those who participated in the interviews.
 
 \clearpage\newpage
 \thispagestyle{empty}
@@ -114,20 +115,20 @@ who participated in the interviews.
 % Related work 
 \input{background.tex}
 
-% Theory 
-\input{theory.tex}
-
-
 % Method 
 \input{method.tex}
+
+% Theory 
+\input{theory.tex}
 
 % Results
 \input{results.tex}
 
-
 % Conclusion
 \input{conclusions.tex}
 
+% Reflections
+\input{reflections.tex}
 
 \bibliographystyle{ieeetr}
 \bibliography{thesis}

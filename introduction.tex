@@ -5,15 +5,15 @@ building applications. There is one that is the traditional, object oriented,
 procedural way of doing it. Then there is a contender, a functional approach, as
 an alternative way to build applications. Functional programming originates from
 1936 from Lambda calculus~\cite{Turner} and even though functional programming
-is old, the industry most commonly use Object-oriented, imperative, languages
-such as Java. (ADD\_REFERENCE usage statistics) As of today, defects in software
-are still common place with the average defect rate being 15- 50 per 10000 lines
-of code.~\cite{McConnell:2004:CCS:1096143} This indicates that the tools used
-might be inefficient and improvements can be made. Also with defects being so
-common engineers partly not only need new tools that decrease defects but also
-need to ensure that for future developers the code is easy to modify so that
-when defects show up they can easily be fixed. The software needs to be
-maintainble to be of good quality.
+is old, the industry most commonly use Object-oriented, imperative, languages.
+(ADD\_REFERENCE usage statistics) As of today, defects in software are still
+common place with the average defect rate being 15- 50 per 10000 lines of
+code.~\cite{McConnell:2004:CCS:1096143} This indicates that the tools used might
+be inefficient and improvements can be made. Also with defects being so common
+engineers partly not only need new tools that decrease defects but also need to
+ensure that for future developers the code is easy to modify so that when
+defects show up they can easily be fixed. The software needs to be maintainble
+to be of good quality.
 
 Software quality can be divided into two different subparts: software functional
 quality and software structural quality.~\cite{Pressman:2004:SEP:994110}
@@ -21,9 +21,10 @@ Software functional quality reflects how well our system conforms to given
 functional requirements or specification and the degree of which we produce
 correct software.  To check that the software is correct, software engineers
 create tests. In order to create tests, the engineer employs various patterns
-and tools in the code to make the code easier to test, such as Object-oriented
-programming. They can also use static analysis and logical proofs to ensure
-correctness. 
+and tools in the code to make the code easier to test. These range from
+Test-driven development, Object oriented programming and unit
+testing.(ADD\_REFERENCE TDD) They can also use static analysis and logical
+proofs to ensure correctness. 
 
 Software structural quality refers to how well the software adheres to
 non-functional requirements such as robustness and
@@ -32,27 +33,47 @@ aspects, such as readability, is hard to measure quantitatively. By performing
 semi-structured interviews, it is possible to investigate how well the code is
 understood. 
 
-In this thesis, the focus will be on Functional programming as a potential
-solution to increase software quality. The aim is to investigate what makes
-software maintainable and can those criterias that make software maintainable be
-enforced and with Functional programming.Since functional programming is not the
-most popular approach to software engineering today, it is worth taking into
-consideration how employing functional programming might affect the readability
-and maintainability of the software. If no one understands the code, how can
-they maintain the software?  Since software engineering is so general the focus
-will be specifically on servers. In servers, it is common to use a protocol
-called REST to establish communication between servers and
-clients.(ADD\_REFERENCE REST)  These servers are called RESTful APIs and will be
-explained further in Chapter~\ref{background}.  As of today, it is up to the
-developer to manually ensure that this protocol is followed. Nothing enforces
-the developer to do it correctly unless the library implementation enforces it.
-Popular frameworks, such as Express, however do not enforce this protocol.
+\section{Objectives}
 
-This thesis will show that it is possible using Functional programming to
-implement a server library that forces the user to make REST compliant servers.
-By enforcing that compliancy, it would aid developers in improving the software
-functional quality. By establishing the rules in Object-oriented programming
-for maintainable software and translating those to functional programming and by
-evaluating the readability of code written using the library, the study aims to
-find how software structural quality is affected through the use of functional
-programming.
+The aim of this thesis is to investigate how functional programming affects
+software quality when compared to imperative programming in server development.
+It will establish what constitudes good functional and structural quality in
+servers and then demonstrate how functional programming can be used to construct
+a library that forces good software functional quality. 
+
+Since software quality has two aspects, it will investigate afterwards the
+impacts this functional solution has in software structural quality, which
+revolves around maintainability, testability, error-proneness and readability.
+To do so it will construct two identical servers, one written in an imperative
+language and one in a functional language.  These will then be compared using
+guidelines and interviews to find the impact in structural quality.
+
+In servers, it is common to use a protocol called REST to establish
+communication between servers and clients.(ADD\_REFERENCE REST) These servers
+are called RESTful APIs. In popular solutions, such as Express, developers are
+not forced to ensure that the server follows REST, which can potentially lead to
+errors and maintainability problems. This thesis is outlined as follows:
+
+\begin{description}
+    \item[Chapter~\ref{background}] explains RESTful APIs and establishes the
+    challenges as well as current guidelines for ensuring good software
+    structural quality in RESTful apis. 
+    \item[Chapter~\ref{method}] explains how we can quantitatively evaluate the
+    software structural quality of REST apis by using interviews and analysing
+    how well they follow guidelines. 
+    \item[Chapter~\ref{theory}] introduces a library for creating REST servers
+    that adhere to the REST protocol by construction, ensuring increased
+    software functional quality. The chapter also establishes the guidelines for
+    evaluating software structural quality in Functional programming, using
+    design patterns from Chapter~\ref{background} as a baseline.   
+    \item[Chapter~\ref{results}] explains the results from using the created
+    REST library for constructing server and comparing that to another
+    imperative solution to compare the differences in software structural
+    quality by performing the tests described in Method.
+    \item[Chapter~\ref{conclusion}] analyses the impacts of software quality of
+    the two solutions and concludes the pros and cons of functional programming
+    as a solution for better software quality.
+    \item[Chapter~\ref{reflection}] Presents the future work and reflections
+    about the thesis.
+\end{description}
+

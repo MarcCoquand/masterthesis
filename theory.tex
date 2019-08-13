@@ -1,11 +1,13 @@
 \chapter{Theory}\label{theory} 
 
-Based on the challenges outlined in Chapter~\ref{background}, the goal now
-becomes to construct a library for REST apis that is compliant by construction
-to ensure software structural quality, introduced in Chapter~\ref{introduction}.
-This chapter will introduce the fundamentals of functional programming to then
-move on and use that to construct a server library which can be used to produce
-REST compliant servers.
+With our research question now defined, the goal is to construct a library for
+REST apis that is compliant by construction to ensure software functional
+quality. This chapter will introduce the fundamentals of functional programming
+to then move on and use that to construct a server library which can be used to
+produce REST compliant servers. The SOLID guidelines that
+Chapter~\ref{background} introduced were originally written for Object-oriented
+programming, so this chapter will also introduce guidelines for SOLID principles
+but for functional programming. 
 
 \section{Concepts from Functional Programming}\label{functionalprogramming}
 
@@ -598,12 +600,192 @@ be a function with the signature \texttt{Maybe string -> Maybe int -> Result
 [book]} and if successful returns a status code 200. Encoders are functions of
 type \texttt{book -> encoded}. 
 
-\section{Conclusion}
+\section{SOLID principles in Functional programming}\label{dependencyinjection}
+
+To evaluate the library from a standpoint of testability, error-proneness and
+extendability using SOLID principles we first need to introduce how SOLID
+principles work for functional programming. In the following sections, the five
+parts of SOLID principles have been translated to an equivalent for functional
+programming.
+
+\subsection{Single Responsibility Principle}
+
+A function takes a single input and produces a single output. If file structure
+is centered around the morphisms of a single type then the responsibility of a
+file is to morph that type into some other value. Thus it keeps the modules
+focused and simple. It can also be thought of as ``One function modifies one
+thing''. So in summary, a program follows the Single Responsibility Principle if 
+
+\begin{enumerate}
+    \item Each functions performs only a morphism, which is guaranteed if the
+        function is pure.
+    \item The file does not contain functions that do not have a type signature
+        using any of the types declared within that file. This rule has
+        an exception for functions that are only used by the other functions
+        within that module (called a helper functions). Helper functions can be
+        merged into the function that uses it but we choose to split them up for
+        readability purposes.
+\end{enumerate}
+
+\subsection{Liskov Substitution Principle}
+
+Liskov's Substitution Principle states how reasoning about subtyping among
+objects should be done. If S is a subtype of T, then the subtype relation mean
+that any term S can be safely used in a context where type T is expected. Since
+subtypes do not exist in classic functional programming some translation is
+needed. The formal requirements of Liskov's Substitution Principle are as
+follows:
+
+\begin{itemize}
+    \item Contravariance of method arguments should be in the subtype.
+    \item Covariance of method arguments in the subtype.
+    \item No new exceptions should be thrown by each subtype, except where
+        those exceptions are themselves subtypes of exceptions thrown by the
+        supertype.
+\end{itemize}
+
+In functional programming, Liskov Substitution Principle is simply
+Contravariant Functors.  In order to comply with the principle, argument types
+overriding a method must be contravariant and the reverse should be true for
+the return type, it should be covariant.  A contravariant type can only be
+overridden by using $contramap$. And it's result is naturally in positive
+position hence it's covariant. This principle is not applicable to the
+application we will evaluate later however.
+
+\subsection{Dependency Inversion Principle} 
+
+Dependency Inversion Principle states that the logic should not depend on it's
+environment. To achieve that in functional programming the environment can
+be abstracted and taken as parameters of the program. For instance given the
+program readNPrint in Figure~\ref{diexample}, this program depends on the
+computer IO, making it difficult to extend it to different environments, such as
+databases. 
+
+\begin{figure}[H]
+    \begin{lstlisting}
+readNPrint : IO () 
+readNPrint = readLine >>= putStrLn
+    \end{lstlisting}
+    \caption{A program that reads input from the computer and then prints it.}
+    \label{diexample}
+\end{figure}
+
+Instead, Figure~\ref{withdiexample} shows how the parameters are abstracted and
+readNPrint is a higher order function instead that takes some function that
+can generate a string and some function that can print a string.
+
+
+\begin{figure}[H]
+    \begin{lstlisting}
+readNPrint : (IO String) -> (String -> IO ()) -> IO ()
+readNPrint reader printer = reader >>= printer
+
+-- and then later
+consoleIO : IO ()
+consoleIO = readNPrint readLine putStrLn
+    \end{lstlisting}
+    \caption{A program that reads input from the computer and then prints it,
+    where the logic is separated from it's environment.}
+    \label{withdiexample}
+\end{figure}
+
+This way, the dependencies can be mocked and replaced with different ones. So if
+we later want to create a $applicationIO$ we can reuse $readNPrint$ with the
+functions for printing in the application and reading input from the
+application.  For a REST api library, it means that the logic should not depend
+on it's environment means that the specification of the REST api should not
+depend on the server implementation. In other words, it should be trivial to
+port the server logic to another runtime if needed. To do this, GADTs can be
+used to separate the expression from it's evaluation. So the REST api is simply
+described as instructions of a GADT. 
+
+\subsection{Interface Segregation Principle} 
+
+Interface Segragation Principle states that no client should be forced to depend
+on methods it does not use. This translates to, in Functional programming, that
+the smallest set of data should be used for each function to work. Recall
+earlier that types can be thought of as sets. Recall also that the cardinality
+of a set is the amount of possible values that set can have. If the cardinality
+of a type is higher than expected it allows introducing illegal states. 
+
+\begin{figure}[H]
+    \begin{lstlisting}
+type Color = { Blue: Bool, Red: Bool, Green: Bool}
+    \end{lstlisting}
+    \caption{Product type Color with cardinality too high}
+    \label{colorcardinality}
+\end{figure}
+
+
+For example, $type\ Color = Blue | Green | Red$ has a cardinality of 3 (since it
+can either be Blue, Green or Red) whereas Fig.~\ref{colorcardinality} has a
+cardinality of $2\cdot 2\cdot 2 = 8$ meaning that it has fives states that are
+impossible. By choosing the right data structure it lowers the amount of
+possible values that are possible. So Interface Segragation Principle in
+Functional programming states that a function should not be able to produce
+values it does not use.
+
+\begin{figure}[H]
+    \begin{lstlisting}
+data IUserRepo =  {
+	getUser : Id -> IO User,
+	storeUser : User -> Id -> IO ()
+}
+
+-- Later on
+getUserEndpoint : IUserRepo -> Request -> Response
+-- ...
+    \end{lstlisting}
+    \caption{Normal interface for operations}
+    \label{twomanyoperations}
+\end{figure}
+
+
+Another example, observe that in Fig~\ref{twomanyoperations}, the type
+\texttt{IUserRepo} has two operations. \texttt{getUserEndpoint} is a a function
+meant to get a user from a database, thus it does not need to store anything.
+However as it takes $IUserRepo$ as an argument, the function is capable of
+producing more values than it should. This breaks the Interface segregation
+principle. So in summary, adherence to interface segregation principle means
+that the cardinality of the types are minimized.
+
+\subsection{Open/Closed principles}\label{openclosed}
+
+Open/Closed principle states that software entities (classes, modules,
+functions, etc.) should be open for extension, but closed for modification. OCP
+is an advice on how to write modules in such a way that we have backwards
+compatibility and so that if extra functionality is needed, the modifier does
+not need to look at the class in order to make modifications. So if a class has
+some new requirements you do not need to modify the source code but can instead
+extend the superclass.
+
+When this principle is applied into Functional programming, it can roughly be
+seen as the same as the expression problem. The expression problem states that
+\textit{``The goal is to define a datatype by cases, where one can add new cases
+    to the datatype and new functions over the datatype, without recompiling
+existing code and while retaining static type safety (e.g., no casts).''}
+
+(ADD\_REFERENCE \url{http://homepages.inf.ed.ac.uk/wadler/papers/expression/expression.txt})
+
+The similarity with expression problem and OCP is that you want to be able to
+extend the program (add new cases to the datatype) without recompiling existing
+code.  Object-oriented programming uses classes that should be open for
+extension and closed for modification. In functional programming, new cases to
+datatype should be possible and new functions. OCP exists because modifying
+battle tested code might cause regressions. Thus a preferable solution is to
+extend the previous code instead.
+
+
+\section{Summary}
 
 In this chapter we have introduced the concepts of functional programming and
 then from those concepts created a GADT that can be used to construct REST
-specifications. The implementation afterwards to make it REST compliant can then
-after be found in Appendix (ADD\_REFERENCE). We have then demonstrated how a
-value of specification can be used to construct REST compliant server
-application, I.E. we constructed a higher order function $make : Specification\
-Request\ Response \rightarrow (Request\rightarrow Response)$.
+specifications.  We have then demonstrated how a value of specification can be
+used to construct REST compliant server application, I.E. we constructed a
+higher order function $make : Specification\ Request\ Response \rightarrow
+(Request\rightarrow Response)$. The interpreter can be found in
+Appendix~\ref{cause}. We also established in this chapter guidelines for
+evaluating functional programs adherence to SOLID principles, which were
+originally introduced for Object-oriented programs. Using the library we
+created, we can construct a functionally correct server and evaluate it's
+software structural quality by comparing it to an imperative version. 

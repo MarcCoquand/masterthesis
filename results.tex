@@ -1,10 +1,12 @@
 \chapter{Results}\label{results}
 
-
 Based on the specifications outlined in the introduction of Chapter~\ref{method}
 two server programs were constructed.  The source code for the programs can be
 found in Appendix~\ref{reasonmlrest} for the ReasonML implementation and in
-Appendix~\ref{nodejsrest} implementation.
+Appendix~\ref{nodejsrest} for the imperative implementation, written in Express.
+The servers will in this Chapter be evaluated to their adherence of SOLID
+principles and an interview will be conducted so that the readability of the
+server's source code can be evaluated in Chapter~\ref{conclusions}.
 
 \section{Evaluating adherence to SOLID}
 
@@ -87,17 +89,34 @@ such as database and the router.
 
 \section{Interviews}\label{interviews}
 
-With the method outlined in the previous chapter, the interview was performed
-on 4 different people, which is a bit less than the recommended by Norman group
-of five people due to difficulty finding enough users (ADD\_REFERENCE
+With the method outlined in the previous chapter, the interview was performed on
+4 subjects, which is a bit less than the recommended by Norman group of
+five subjects due to difficulty finding enough users (ADD\_REFERENCE
 \url{https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/}).
-It was performed through the use of Skype, a communication
-tool\footnote{Skype's website: \url{https://www.skype.com}}. The four respondents were
-graduated students of the Engineering Interaction Technology and Design
-programme at Umeå university. The programme is a five year degree that combines
-education in software engineering with studies in design. The questions were originally
-asked in swedish but translated to English by the author. The answers can be found in 
-Table~\ref{interviewonetwo} and Table~\ref{interviewthreefour}.
+It was performed through the use of Skype, a communication tool\footnote{Skype's
+website: \url{https://www.skype.com}}. The four respondents were graduated
+students of the Engineering Interaction Technology and Design programme at Umeå
+university. The programme is a five year degree that combines education in
+software engineering with studies in design. The questions were originally asked
+in Swedish but translated to English by the author. The answers can be found in
+Table~\ref{interviewonetwo} and Table~\ref{interviewthreefour}. We also show
+once more below the questions that were asked.
+
+\begin{description}
+    \item[Q1] What is your experience with RESTful APIs?
+    \item[Q2] What is your experience with Express?
+    \item[Q3] What is your experience with ReasonML?
+    \item[Q4] After being presented the code api, can you explain what it does?
+    \item[Q5] Which media types does the endpoint post accept?
+    \item[Q6] What is the uri of DELETE?
+    \item[Q7] Which media types representations can the endpoint show?
+    \item[Q8] Given a handler putInDatabase, Can you demonstrate how you would
+        extend the api and add a new endpoint for a PUT request.
+    \item[Q9] Looking at the javascript api, can you explain what it does?
+    \item[Q10] Which media types does the endpoint get accept?
+    \item[Q11] Which content type and accept does post have?
+\end{description}
+
 
 \begin{table}[]
 \begin{tabular}{lll}
@@ -224,10 +243,17 @@ specified\\ what it accepts, assume plain/text.\end{tabular}}
 \label{interviewthreefour}
 \end{table}
 
+\newpage
 Person 1 and Person 4 understood correctly what the library does. However all
-four subjects where slightly confused as to what encoders and decoders were
-used for. Not one of the subjects could correctly guess what the accept and
-content types in the Javascript solutions. In Q5 for person 3 the question was
-omitted as the user could not correctly guess at all what the code was supposed
-to do and assumed that it a system for encrypting books.
+four subjects where slightly confused as to what encoders and decoders were used
+for. Not one of the subjects could correctly guess what the accept and content
+types in the Javascript solutions. Q5 for person 3 the question was omitted as
+the user could not guess what the code was supposed to do and assumed that it a
+system for encrypting books, rendering the question useless.
 
+\section{Summary}\label{resultsummary}
+
+In this chapter we have compared the two servers, one created using imperative
+programming, one using functional and evaluated their's adherence to SOLID
+principles. We also conducted interviews on four people to establish the
+readability of the two solutions. 

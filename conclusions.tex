@@ -1,10 +1,21 @@
 \chapter{Conclusion}\label{conclusion}
 
-In Section~\ref{backgroundconclusion} we introduced the four pillars of
-maintainability that needed to be evaluted against the library. These were
-testability, extendability, readability and error-proneness. In order to do so
-we will review the results gathered in Chapter~\ref{results} and tie them
-together with the four pillars.
+ The objective of this study is to evaluate how the functional solution impacts
+ the software quality. In Chapter~\ref{theory} we showed how functional
+ programming can be used to enforce protocols and then using that created a
+ library which enables developers to construct correct RESTful apis. Since the
+ imperative solution does not enforce that a server is necessarily RESTful, it
+ follows that for a user who would typically not create incorrect RESTful apis
+ the functional solution can enforce a better software functional quality for
+ RESTful apis. However as established in the start of Chapter~\ref{background}
+ and~\ref{introduction}, software quality also encompasses the structural
+ quality or maintainability. In Section~\ref{backgroundconclusion} we introduced
+ the four points of maintainability that needed to be evaluted against the
+ library. These were testability, extendability, readability and
+ error-proneness. In order to do so we will review the results gathered in
+ Chapter~\ref{results} and tie them together with the four points. These four
+ points are what determine the software structural quality, which this chapter
+ aims to do.
 
 \section{Evaluating the readability}
 
@@ -13,29 +24,21 @@ two (P2 and P3) out of four faced difficulties with the ReasonML version.
 Encoders and decoders seemed to have confused P3, as they assumed it related to
 cryptography. P2 got confused by the type signature $type\ a.\ route(a)$, which
 is necessary for Ocaml to deduce the type signature as it otherwise can not
-generalize.  It also seems that P4 was incapable of understanding the ReasonML
-version and assumed that endpoints were not functions but objects.
-
-3 out of 4 users (P1, P2, P4) were able to extend the code with a new endpoint
-PUT and P3 was almost able to except that they used the wrong function for
-handlers.
+generalize. It also seems that P4 was incapable of understanding the ReasonML
+version and assumed that endpoints were not functions but objects.  3 out of 4
+users (P1, P2, P4) were able to extend the code with a new endpoint PUT and P3
+was almost able to except that they used the wrong function for handlers.
 
 Further research is needed to find how long it would take for the users to
-understand.  We find that half of the users could understand the new code base
-without any form of introduction (P1 and P4). In production it might be
-valuable to find a more exact number how long it would. A future test could
-investigate if users understood the code after a short introduction. As even
-without introduction three out of four were still able to extend the code and
-two out of four were able to understand it.
-
-The study indicates that there are costs in readability to the code for
-inexperienced users. It can be argued that these costs seem to be minor and that
-after a brief introduction the code would be understood. It can further be
-argued that some of those costs can be mitigated by adding comments and making
-the changes in Section~\ref{futurework}, but more research is needed to prove
-this. For the manager, this becomes a question of costs vs benefits were they
-have to factor the increased cost in readability and possibly extension against
-the gains in ensured increases in testability. 
+understand the code. We find that half of the users could understand the new
+code base without any form of introduction (P1 and P4). In production it might
+be valuable to find a more exact number how long it would take for users to
+understand it.  The study indicates that there are costs in readability to the
+code for inexperienced users. Arguably these costs seem to be minor and that
+after a brief introduction the code would be understood. However more research
+is needed to confirm that. It can also be argued that some of those costs can be
+mitigated by adding comments and making the changes in Section~\ref{futurework},
+but more research is needed to prove this.
 
 \section{Functional programming and SOLID}
 
@@ -44,101 +47,33 @@ library that was able aid in creating Single Responsibility principle, by
 encouraging the user to separate the REST specification from how the handler
 fetches the data. It also manages to enforce Interface Segregation Principle and
 Dependency Inversion Principle. This aids in reducing immobility, fragility and
-viscosity.
+viscosity. It was inconclusive as to if it enforces Liskov substitution
+principle as further work is needed to create examples where this principle is
+properly tested. The functional solution also breaks Open/Closed principle for
+situations where the user wants to add more details to a specification.
 
-It was inconclusive as to if it enforces Liskov substitution principle as
-further work is needed to create examples where this principle is properly
-test. The functional solution also breaks Open/Closed principle for situations
-where the user wants to add more details to a specification.
-
-\section{Four pillars of concern}
+\section{Summary}
 
 Recall that Chapter~\ref{background} introduced the four pillars of concern:
 testability, extendability, readability and error-proneness. From these studies
 we can conclude that
 
 \begin{description}
-	\item[Testability] Software became easier to test as it managed to invert
-	the control so that unit tests can be made for testing specifications
-	which in the imperative solution would require an integration test.
-	\item[Extendability] No gains are made in extendability when using the 
-	functional solution, in fact they might be a bit damaged by not properly
-	following the OCP solution.
-	\item[Error-proneness] The functional solution marginally affects the 
-	error-proneness as we find that person 3 in Q8 was unable to extend the code without
-	making an error.
-	\item[Readability] affected negatively since P3 and P2 were
-unable to comprehend the code.
+    \item[Testability] Software became easier to test compared to an unopiniated
+        solution as it managed to invert the control so that unit tests can be
+        made for testing specifications which in the imperative solution would
+        require an integration test.
+	\item[Extendability] No gains were made in extendability when using the 
+	functional solution, in fact it has a negative impact due to breaking OCP.
+    \item[Error-proneness] The functional solution marginally affects the
+        error-proneness as we find that person 3 in Q8 was unable to extend the
+        code without making an error.
+    \item[Readability] affected negatively since P3 and P2 were unable to
+        comprehend the code.
 \end{description}
 
-Even though errors were made when extending the server with a PUT request. It
-might be mitigade by the static analysis featured in ReasonML which would have
-pointed out that there was an error.
+In conclusion, this thesis has demonstrated how functional programming can
+enforce good software functional quality but that it seems that in doing so,
+software structural quality was negatively impacted in terms of readability and
+extendability but positively impacted in testability and error-proneness. 
 
-In conclusion this thesis has demonstrated how software functional quality could
-be improved by the use of Functional programming by creating a library that
-enforces REST compliancy. We also demonstrated how it could also aid in certain
-software structural qualities and hurt in others such as readability.
-
-\section{Future work}\label{futurework}
-
-SOLID principles places a lot of emphasis on extendability and that modifying
-original code is bad practice. It is questionable if these principles are
-relevant for strongly typed languages, as these indicate if there are any
-errors in the code, making it easier to refactor.
-
-A lot of the errors in readability might be possible to fix and it might be
-that they are not inherenet to the language itself. However it would be
-necessary to make the changes below and then retry the experiment with five 
-more people to find out if it is more comprehensible. 
-
-There is also more work to be done if Cause is to become useful for the
-industry. The inclusion streaming types would need to be implemented in the
-future.
-
-\subsection{Clarifying what is URL and what is not}
-
-Most users were uncertain what the URIs were with only Q1 correctly assuming
-that the URI for delete was $/api/books:id$. However it is possible to further
-clarify what is a URI by wrapping it in a function that takes an incomplete
-route. This might make it clearer for the user what the URL is but further
-research is needed.
-
-\subsection{Extendability for the URIs}
-
-There are some issues still with the server not being as extendable as possible
-for it to be OCP compliant. To extend it with the functionality of adding new
-details to an existing endpoint would make it more compliant as it would allow
-the user to add new functionality to code without recompiling the original
-code.
-
-\subsection{Functional programming for documentation}
-
-When creating software, engineers tend to also document the software for future
-use to make it more maintainable. In servers this is usually done manually.
-(ADD\_REFERENCE) However if updates are made to the code, the engineer has to
-then also manually update the documentation which incurs maintenance costs. It
-is plausible that $specfication$ can also be used for documentation. This
-should be as simple as creating an evaluator for the $specification$ to
-generate the documentation. This would ensure that documentation stays in sync
-and minimizes maintenance costs of documentation by automating it.
-
-\subsection{Limitations}
-
-There is no way for the REST library to enforce that modification and verbs are
-linked. So if a specification specifies that it only works for GET requests,
-there is no way to statically enforce that no mutation is done. There might be a
-way to statically enforce that handlers with GET requests must use coeffects and
-that instead the handler describe what it requires from the
-database.(ADD\_REFERENCE http://tomasp.net/coeffects/)
-
-\section{Concluding remarks}
-
-I hope this thesis serves to underline the challenges in the software industry
-and demonstrate how the software industry can make use of functional programming
-to aid creating software that is maintainable in ways that are not possible in
-other paradigms. The techniques outlined in this thesis here can be applied to
-other protocols in other domains to ensure that certain restraints are held. My
-hope is in the future the software industry aims to write software as and
-specification combined rather than first writing the specification and then the
-software. 

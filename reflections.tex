@@ -1,0 +1,107 @@
+\chapter{Reflections}\label{reflection}
+
+From Chapter~\ref{conclusion} we found that that the functional solutions had
+negative impacts in software structural quality. This chapter aims
+in Section~\ref{futurework} establish how these results can be improved. It also
+aims to conclude this thesis and give suggestions for future research and how it
+can be conducted.
+
+\section{Future work}\label{futurework}
+
+SOLID principles places a lot of emphasis on extendability and that modifying
+original code is bad practice. It is questionable if these principles are
+relevant for strongly typed languages, as the types indicate if there are any
+errors in the code, making it easier to refactor.
+
+A lot of the errors in readability might be possible to fix and it might be that
+they are not inherent to the language itself. Some were fixed afterwards, the
+version of the code in Appendix~\ref{cause} does not feature the problem with
+needing to write \texttt{type a. Route(a)}. It would be necessary  retry the
+experiment with five more people to find out if the changes made the code more
+comprehensible. 
+
+Creating the REST library went through a lot of iterations and a lot of work was
+put into making it more readable. GADTs were suprisingly difficult to grok and
+the applications were not clear but I hope with this thesis I demonstrated how
+they can be useful. I hope using GADTs as a way of constructing inputs to
+outputs proves useful for others.
+
+\subsection{Clarifying what is URL and what is not}
+
+Most users were uncertain what the URLs were with only person 1 correctly
+assuming that the URI for delete was $/api/books:id$. It might possible to
+further clarify what is a URI by wrapping it in a function that takes an
+incomplete route, making it clearer for the user what the URL and what is not.
+There is also a disconnect since for all other parts of the specification order
+does not matter while for the URI it does, this may confuse the user.
+
+\subsection{Extendability for the URIs}
+
+There are some issues still with the server not being as extensible as possible
+for it to be OCP compliant. To extend it with the functionality of adding new
+details to an existing endpoint would make it more compliant as it would allow
+the user to add new functionality to code without recompiling the original
+code. 
+
+\subsection{Functional programming for documentation}
+
+When creating software, engineers tend to also document the software for future
+use to make it more maintainable. In servers this is usually done manually.
+(ADD\_REFERENCE) However if updates are made to the code, the engineer has to
+then also manually update the documentation which incurs maintenance costs. It
+is plausible that $specfication$ can also be used for documentation. This
+should be as simple as creating an evaluator for the $specification$ to
+generate the documentation. This would ensure that documentation stays in sync
+and minimizes maintenance costs of documentation by automating it.
+
+\subsection{Evaluating effectiveness of SOLID}
+
+The effectiveness of SOLID has not been researched and it would be good to
+establish a correlation between software structural quality, defects and SOLID
+principles. However due to the expensive nature of software development, this
+proves to be difficult as you have to create the same software using different
+methods for comparison over multiple years which can lead to biases.
+
+\subsection{Limitations}
+
+There is no way for the REST library to enforce that modification and verbs are
+linked. So if a specification specifies that it only works for GET requests,
+there is no way to statically enforce that no mutation is done. There might be a
+way to statically enforce that handlers with GET requests must use coeffects and
+that instead the handler describe what it requires from the
+database.(ADD\_REFERENCE \url{http://tomasp.net/coeffects/})
+
+
+\section{Improvements}
+
+While interviews worked for finding defects in readability, the results could
+have been improved by doing the interviews in batches. For those wishing to use
+this method, I recommend trying three or four iterations of interviews and
+attempt to fix the errors that come up at each set before doing the next set. By
+improving the library and server after the interviews, errors that are related
+to syntax and semantics which are not inherent to functional programming could
+have been eliminated.
+
+It is unclear if SOLID principles are the best principles for maintainable
+software in functional programming. For instance it might be worth asking if the
+expression problem is truely that big of a problem in practice for software
+developers.
+
+I was surprised to find that the readability was impacted negatively and that
+despite this most subjects were still capable of extending the code properly
+without errors.
+
+\section{Concluding remarks}
+
+I hope this thesis serves to underline the challenges in the software industry
+and demonstrate how the software industry can make use of functional programming
+to aid creating software that is maintainable in ways that are not possible in
+other paradigms. The techniques outlined in this thesis here can be applied to
+other protocols in other domains to ensure that certain restraints are held. I
+hope also that it demonstrates that will it gives benefits in functional
+quality, structural quality might be affected which can potentially lead to
+other maintainability problems as the software evolves. My hope is in the future
+the software industry aims to write software as a specification and then an
+evaluator for that specification rather than first writing a specification on
+paper and then implement it as software and manually ensure that the software
+follows the specification. 

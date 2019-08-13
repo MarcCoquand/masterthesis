@@ -1,8 +1,20 @@
 \chapter{Background}\label{background}
 
-This chapter aims to introduce us to REST servers and what are construction
-concerns when making them. Afterwards it will establish common practice in
-producing large scale software to ensure good software structural quality.
+Software structural quality encompasses the maintainability aspects of software,
+which includes aspects such as readability, error-proneness, extendability and
+testability. Software usually evolves over time as new requirements come in, so
+even though it might be \textit{functionally} good at a time, the developer will
+have to modify the code. Thus in the industry it is not enough that software is
+only functionally correct, it also has to be structurally of good quality. There
+is also an importance in Q\&A processes to be able to test that the software
+works correctly in order to check that the software also is functionally correct
+after modification. This chapter aims to introduce us to REST servers and what
+are construction concerns when making them, I.E. what is good software
+functional quality in REST servers. Then once we have established good
+functional quality, we introduce requirements in large scale software and the
+challenges that arise in the maintainability of the software so that we can
+establish guidelines of practices that allows for good software structural
+quality.
 
 \section{Introduction to REST servers}
 
@@ -89,7 +101,7 @@ A REST api has to concern themselves with the following:
 
 Every type of error has a specific status code, these need to be set correctly.
 
-\section{Architecture} 
+\section{Development concerns} 
 
 When developing large scale server applications, often the requirements are as
 follows:
@@ -117,19 +129,24 @@ redeploying requires the entire application to be replaced and tests becomes
 slower; the developer becomes less productive as a result. Since all code is
 written in the same environment introducing new technology becomes harder.
 
-In a microservice architecture the program comprises of small entities that
-each have their own responsibility.~\cite{chenlianping} There can be
-one service for metrics, one that interacts with the database and one that
-takes care of frontend. This decomposition allows the developers to easier
-understand parts of the system, scale into autonomous teams, IDE becomes faster
-since codebases are smaller, faults become easier to understand as they each
-break in isolation.  Also long-term commitment to one stack becomes less and it
-becomes easier to introduce a new stack. 
+In a microservice architecture the program comprises of small entities that each
+have their own responsibility.~\cite{chenlianping} There can be one service for
+metrics, one that interacts with the database and one that takes care of
+frontend. This decomposition allows the developers to easier understand parts of
+the system, scale into autonomous teams, IDE becomes faster since codebases are
+smaller, faults become easier to understand as they each break in isolation.
+Also long-term commitment to one stack becomes less and it becomes easier to
+introduce a new stack.  The issue with microservices is that when scaling the
+complexity becomes harder to predict. While testing one system in isolation is
+easier testing the entire system with all parts together becomes harder.
 
-The issue with microservices is that when scaling the complexity becomes harder
-to predict. While testing one system in isolation is easier testing the entire
-system with all parts together becomes harder. Thus there are different types of
-tests that are conducted: unit tests, integration tests and E2E-tests.
+\section{Testing}
+
+As challenges arise in development and as the software grows in scope,
+developers need to be able to verify that the software is correct. This helps
+ensuring that after modification the software works as expected and helps
+catching defects.(ADD\_REFERENCE test for bugs). In servers there are three main
+types of tests that are conducted: unit tests, integration tests and E2E-tests.
 
 \subsection{Unit testing}
 
@@ -137,10 +154,10 @@ Unit testing is a testing method where the individual units of code and
 operating procedures are tested to see if they are fit for use. (ADD\_REFERENCE
 UNIT TEST) A unit is informally the smallest testable part of the application.
 To deal with units dependence one can use method stubs, mock objects and fakes
-to test in isolation. The goal of unit testing is to isolate each part of the
-programs and ensure that the individual parts are correct. It also allows for
-easier refactoring since it ensures that the individual parts still satisfy
-their part of the application.
+to test in isolation.(ADD\_REFERENCE) The goal of unit testing is to isolate
+each part of the programs and ensure that the individual parts are correct. It
+also allows for easier refactoring since it ensures that the individual parts
+still satisfy their part of the application.
 
 To create effective unit tests it's important that it's easy to mock examples.
 This is usually hindered if the code is dependant on some state since previous
@@ -250,7 +267,7 @@ the environments which makes them easier to test (swapping the production
 environment to a test environment becomes trivial). When investigating the
 testability, an important factor is that programs are written in such a way
 that all parts are easy to test. SOLID principles also helps ensuring that
-programs are extendable with Interface segregation principle, Open/Closed
+programs are extensible with Interface segregation principle, Open/Closed
 principle and Liskov substitution principle. Thus choosing a SOLID architecture
 for programs will allow making more testable software. These concepts were
 however designed for Object-oriented programming. In Chapter~\ref{method},
@@ -267,20 +284,20 @@ types) and other constructs.  (ADD\_REFERENCE higher kinded types)
 It is possible to combine the type system with design patterns to force the
 developer to create the right thing. Chapter~\ref{theory} will introduce a REST
 library, which has been created to force the developer to create REST compliant
-servers using Functional programming.
+servers using Functional programming. However as the REST library we in
+introduce in Chapter~\ref{theory} makes heavy use of functional programming it
+might not be as understandable.  Functional programming is not as popular
+software paradigm when compared to Object-oriented programming (ADD\_REFERENCE
+statistics), thus readability might be affected.  Understandability is important
+to reduce the learning time for programmers and cut down learning costs. Thus
+readability of software is an important criteria for good software structural
+quality.
 
-However the REST library we in introduce in Chapter~\ref{theory} makes heavy use
-of functional programming. Functional programming is not as popular  software
-paradigm that is not compared to paradigms such as Object-oriented programming
-(ADD\_REFERENCE statistics), the hypothesis of this thesis is that readability
-might be affected. Understandability is important to reduce the learning time
-for programmers and cut down learning costs. Thus readability of software is an
-important criteria for good software structural quality.
+\section{Summary}\label{backgroundconclusion}
 
-\section{Conclusion}\label{backgroundconclusion}
-
-In summary there are four pillars of concern in maintainable software this
-thesis aims to address.
+This chapter introduced REST APIs and their requirements.  We also established
+development concerns during the production of servers, which can be be
+summarised with these four points:
 
 \begin{description}
     \item[Testability] Due to rotten design.
@@ -291,13 +308,17 @@ thesis aims to address.
         enforce the right structure.
 \end{description}
 
-By creating an semi-structured interview, where the programmers is asked open
-questions about how the code works it can give insights about the defects of the
-software and if there is something fundamental about functional programming that
-makes it harder to understand. Adherence to SOLID principles can be used to
-avoid rotten design. Thus a good REST library should be understood by other
-programmers and follow SOLID principles to good software structural quality. The
-REST library should also force coherence with REST protocol to have a good
-software functional quality. If the functional software can enforce that SOLID
-principles are followed through the type system, it would mean that a
-maintainable architecture would be forced by construction.
+We went over the concerns of what happens when scaling software and that to
+ensure quality then developers employ tests. We established that some of the
+quality can also be ensured by the type system, which aids in catching bugs and
+as will be demonstrated in Chapter~\ref{theory}, enables us to ensure that
+servers are RESTful by construction. 
+
+In order to do unit tests, a good architecture should also make it easier to
+create mocks. Thus we introduced SOLID principles, which works as a guideline
+for creating extensible software which can be modified over time and where
+dependencies are inverted making it easier to mock. However SOLID does not
+address readability of code. Even if the code is extensible it might not be
+understandable, meaning the developer will be incapable of extending it anyway.
+Thus when evaluating software structural quality it is important to both look at
+rotten design and readability.
