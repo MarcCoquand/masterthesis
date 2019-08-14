@@ -1,19 +1,19 @@
 \chapter{Background}\label{background}
 
-Software structural quality encompasses the maintainability aspects of software,
-which includes aspects such as readability, error-proneness, extendability and
-testability. Software usually evolves over time as new requirements come in, so
-even though it might be \textit{functionally} good at a time, the developer will
-have to modify the code. Thus in the industry it is not enough that software is
-only functionally correct, it also has to be structurally of good quality. There
-is also an importance in Q\&A processes to be able to test that the software
-works correctly in order to check that the software also is functionally correct
-after modification. This chapter aims to introduce us to REST servers and what
-are construction concerns when making them, I.E. what is good software
-functional quality in REST servers. Then once we have established good
-functional quality, we introduce requirements in large scale software and the
-challenges that arise in the maintainability of the software so that we can
-establish guidelines of practices that allows for good software structural
+Software structural quality encompasses the maintainability aspects of the
+software, which includes aspects such as readability, error-proneness,
+extendability, and testability. The software usually evolves as new requirements
+come in, so even though it might be \textit{functionally} good at a time, the
+developer will have to modify the code. Thus in the industry, it is not enough
+that software is only functionally correct, it also has to be structurally of
+good quality. There is also an importance in Q\&A processes to be able to test
+that the software works correctly to check that the software also is
+functionally correct after modification. This chapter aims to introduce us to
+REST servers and what are construction concerns when making them, I.E. what is
+good software functional quality in REST servers. Then once we have established
+good functional quality, we introduce requirements in large scale software and
+the challenges that arise in the maintainability of the software so that we can
+establish guidelines of practices that allow for good software structural
 quality.
 
 \section{Introduction to REST servers}
@@ -26,33 +26,33 @@ clients.~\cite{Fielding:2000:ASD:932295} Services are servers that allow sharing
 data or resources among clients or to perform a computation.
 
 REST (Representational State Transfer) is a protocol that is used to construct
-web services. A so called RESTful web service allow requesting systems to access
+web services. A RESTful web service allows requesting systems to access
 and manipulate different representations of web services by using a set of
-stateless operations. The architectual constraints of REST are as follows:
+stateless operations. The architectural constraints of REST are as follows:
 
 \begin{description}
 \item[ Client - Server Architecture ] Separate the concerns between user
 interface concerns and data storage concerns. The server handles the management
 of resources and the client manages the display of those resources.
 \item[Statelessness] Each request contains all the information necessary to
-perform a request. State can be handled by cookies on the user side or by using
+perform a request. The state can be handled by cookies on the user side or by using
 databases. The server itself contains no state.
 \item[Cacheability] As on the World Wide Web, clients and intermediaries can
 cache responses. Responses must therefore, implicitly or explicitly, define
 themselves as cacheable or not to prevent clients from getting stale or
 inappropriate data in response to further requests. 
 \item[Layered system] A client can not tell if it is connected to an end server
-or some intermeditary server. 
-\item[Code on demand] Servers can send functionality of a client via exectuable
-code such as javascript. This can be used to send the frontend for example.
+or some intermediary server. 
+\item[Code on demand] Servers can send functionality of a client via executable
+code such as JavaScript. This can be used to send the frontend for example.
 \item[Uniform interface] The interface of a RESTful server consists of four
 components. The request must specify how it would like the resource to be
-represented; that can for example be as JSON, XML or HTTP which are not the
+represented; that can, for example, be as JSON, XML or HTTP which are not the
 servers internal representation. Servers internal representation is therefore
 separated. When the client holds a representation of the resource and metadata
-it has enough information to manipulate or delete the resource. Also the REST
-server has to, in it's response, specify how the representation for the
-resource. This is done using Media type. Some common media types are JSON, HTML
+it has enough information to manipulate or delete the resource. The REST
+server has to, in its response, specify how the representation for the
+resource. This is done using Media type. Some common media types are JSON, HTML,
 and XML.
 \end{description}
 
@@ -68,14 +68,14 @@ POST, DELETE, PATCH and PUT. They are used as follows:
 \end{description}
 
 A request will specify a header ``Content-Type'' which contains the media
-representation of the request content. For example if the new resource is
-represented as Json then content-type will be ``application/json''. It also
+representation of the request content. For example, if the new resource is
+represented as JSON then content-type will be ``application/json''. It also
 specifies a header ``Accept'' which informs which type of representation it
-would like to have, for example Html or Json.  A request will also contain a
+would like to have, for example, Html or JSON.  A request will also contain a
 route for the resource it is requesting. These requests can also have optional
 parameters called query parameters. In the request route
 \url{/api/books?author=Mary&published=1995}, the $?$ informs that the request
-contains query parameters which are optional.  It also specifies that the
+contains optional query parameters.  It also specifies that the
 request wants to access the books resource with the parameters author as Mary
 and published as 1995.
 
@@ -88,14 +88,14 @@ formatted request.
 
 \subsection{Implementation concerns for REST apis}
 
-A REST api has to concern themselves with the following:
+A REST API has to concern themselves with the following:
 
 \begin{itemize}
 \item Ensure that the response has the correct status code.
 \item Ensure that the correct representation is sent to the client.
-\item Parse the route and extract it's parameters. 
-\item Parse the query and extract it's parameters.
-\item Handle errors if the route or query are badly formatted.
+\item Parse the route and extract its parameters. 
+\item Parse the query and extract its parameters.
+\item Handle errors if the route or query is badly formatted.
 \item Generate the correct response body containing all the resources needed.
 \end{itemize}
 
@@ -125,28 +125,28 @@ As the system starts to grow the large monolithic system becomes harder to
 understand as the size doubles. As a result, development typically slows down.
 Since there are no boundaries, modularity tends to break down and the IDE
 becomes slower over time, making it harder to replace parts as needed. Since
-redeploying requires the entire application to be replaced and tests becomes
+redeploying requires the entire application to be replaced and tests become
 slower; the developer becomes less productive as a result. Since all code is
 written in the same environment introducing new technology becomes harder.
 
-In a microservice architecture the program comprises of small entities that each
-have their own responsibility.~\cite{chenlianping} There can be one service for
+In a microservice architecture, the program comprises of small entities that each
+have their responsibility.~\cite{chenlianping} There can be one service for
 metrics, one that interacts with the database and one that takes care of
 frontend. This decomposition allows the developers to easier understand parts of
 the system, scale into autonomous teams, IDE becomes faster since codebases are
 smaller, faults become easier to understand as they each break in isolation.
-Also long-term commitment to one stack becomes less and it becomes easier to
+Also, long-term commitment to one stack becomes less and it becomes easier to
 introduce a new stack.  The issue with microservices is that when scaling the
 complexity becomes harder to predict. While testing one system in isolation is
 easier testing the entire system with all parts together becomes harder.
 
 \section{Testing}
 
-As challenges arise in development and as the software grows in scope,
-developers need to be able to verify that the software is correct. This helps
-ensuring that after modification the software works as expected and helps
-catching defects.(ADD\_REFERENCE test for bugs). In servers there are three main
-types of tests that are conducted: unit tests, integration tests and E2E-tests.
+As challenges arise in the development and as the software grows in scope,
+developers need to be able to verify that the software is correct. This helps to
+ensure that after modification the software works as expected and helps to catch
+defects.(ADD\_REFERENCE test for bugs). In servers, three main types of tests
+are conducted: unit tests, integration tests, and E2E-tests.
 
 \subsection{Unit testing}
 
@@ -170,8 +170,8 @@ to resort the upcoming test methods.
 \subsection{Integration testing}
 
 Whereas unit testing validates that the individual parts work in isolation;
-integration tests make sure that the modules work when combined. The purpose is
-to expose faults that occurs when the modules interact with each other.
+integration-tests make sure that the modules work when combined. The purpose is
+to expose faults that occur when the modules interact with each other.
 
 \subsection{End-2-End Tests}
 
@@ -184,7 +184,7 @@ variables.
 
 When writing unit tests that depend on some environment, for example fetching a
 user from some database, it can be difficult to test without simulating the
-environment itself. In such cases one can use dependency injections and mock the
+environment itself. In such cases, one can use dependency injections and mock the
 environment with fake data. Dependency injection is a method that substitutes
 environment calls and returns data instead. The issue with unit tests is that
 even if a feature works well in isolation it does not imply that it will work
@@ -198,11 +198,11 @@ environments. Given a server connected to some file storage and a database it
 requires setting up a local simulation of that environment to run the tests.
 This results in slower execution time for tests and also requires work setting
 up the environment. Thus it ends up being costly. Also the bigger the space
-that is being tested the less close the test is to actually finding the error,
+that is being tested the less close the test is to find the error,
 thus the test ends up finding some error but it can be hard to track it down.
 
 Thus to mitigate these issues the correct architecture needs to be created to
-make it easier to test. However if there is nothing forcing the programmer to
+make it easier to test. However, if nothing is forcing the programmer to
 develop software in this way it creates the possibility for the programmer to
 ``cheat'' and create software that is not maintainable. 
 
@@ -230,16 +230,17 @@ need the same module that was in another project, too much work is required to
 decouple and separate the desirable parts.
 
 \item[ Viscosity ] comes in two forms: the viscosity of the environment and the
-viscosity of the design. When making changes to code there are often multiple
-solutions. Some solutions preserve the design of the system and some are
-``hacks''. The engineer can therefore implement an unmaintainable solution. The
-long compile times affect engineers and makes them attempt to make changes that
-do not cause long compile times.  This leads to viscosity in the environment.
+    viscosity of the design. When making changes to code there are often
+    multiple solutions. Some solutions preserve the design of the system and
+    some are ``hacks''. The engineer can, therefore, implement an unmaintainable
+    solution. The long compile times affect engineers and make them attempt to
+    make changes that do not cause long compile times.  This leads to viscosity
+    in the environment.
 
 \end{description}
 
-To avoid creating rotten designs, Martin Robert proposes the SOLID guideline.
-SOLID mnemonic for five design principles to make software more maintainable,
+To avoid creating rotten designs, Martin Robert proposes SOLID guideline.  SOLID
+is a mnemonic for five design principles to make the software more maintainable,
 flexible and understandable. The SOLID guidelines are:
 
 \begin{description}
@@ -247,9 +248,9 @@ flexible and understandable. The SOLID guidelines are:
         to change''. Modules and classes should have one reason to change and no
         more.
     \item [Open/Closed principle] States we should write our modules to be
-        extended without modification of the original source code.
-    \item [Liskov substitution principle] Given a base class and an derived
-        class derive, the user of a base class should be able to use the derived
+        extended without modification of the source code.
+    \item [Liskov substitution principle] Given a base class and a derived
+        class, the user of a base class should be able to use the derived
         class and the program should function properly.
     \item [Interface segregation principle] No client should be forced to depend
         on methods it does not use. The general idea is that you want to split
@@ -262,11 +263,11 @@ flexible and understandable. The SOLID guidelines are:
         calls the third-party operations.
 \end{description}
 
-Using a SOLID architecture helps making programs that are not as dependent on
+Using a SOLID architecture helps to make programs that are not as dependent on
 the environments which makes them easier to test (swapping the production
 environment to a test environment becomes trivial). When investigating the
 testability, an important factor is that programs are written in such a way
-that all parts are easy to test. SOLID principles also helps ensuring that
+that all parts are easy to test. SOLID principles also help to ensure that
 programs are extensible with Interface segregation principle, Open/Closed
 principle and Liskov substitution principle. Thus choosing a SOLID architecture
 for programs will allow making more testable software. These concepts were
@@ -284,13 +285,13 @@ types) and other constructs.  (ADD\_REFERENCE higher kinded types)
 It is possible to combine the type system with design patterns to force the
 developer to create the right thing. Chapter~\ref{theory} will introduce a REST
 library, which has been created to force the developer to create REST compliant
-servers using Functional programming. However as the REST library we in
+servers using Functional programming. However, as the REST library we in
 introduce in Chapter~\ref{theory} makes heavy use of functional programming it
-might not be as understandable.  Functional programming is not as popular
+might not be as understandable.  Functional programming is not a popular
 software paradigm when compared to Object-oriented programming (ADD\_REFERENCE
 statistics), thus readability might be affected.  Understandability is important
 to reduce the learning time for programmers and cut down learning costs. Thus
-readability of software is an important criteria for good software structural
+readability of software is an important criterion for good software structural
 quality.
 
 \section{Summary}\label{backgroundconclusion}
@@ -309,16 +310,16 @@ summarised with these four points:
 \end{description}
 
 We went over the concerns of what happens when scaling software and that to
-ensure quality then developers employ tests. We established that some of the
+ensure the quality then developers employ tests. We established that some of the
 quality can also be ensured by the type system, which aids in catching bugs and
 as will be demonstrated in Chapter~\ref{theory}, enables us to ensure that
 servers are RESTful by construction. 
 
-In order to do unit tests, a good architecture should also make it easier to
-create mocks. Thus we introduced SOLID principles, which works as a guideline
-for creating extensible software which can be modified over time and where
-dependencies are inverted making it easier to mock. However SOLID does not
-address readability of code. Even if the code is extensible it might not be
-understandable, meaning the developer will be incapable of extending it anyway.
-Thus when evaluating software structural quality it is important to both look at
-rotten design and readability.
+To do unit tests, good architecture should also make it easier to create mocks.
+Thus we introduced SOLID principles, which works as a guideline for creating
+extensible software which can be modified over time and where dependencies are
+inverted making it easier to mock. However SOLID does not address readability of
+code. Even if the code is extensible it might not be understandable, meaning the
+developer will be incapable of extending it anyway.  Thus when evaluating
+software structural quality it is important to both look at rotten design and
+readability.

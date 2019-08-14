@@ -1,19 +1,19 @@
 \chapter{Theory}\label{theory} 
 
 With our research question now defined, the goal is to construct a library for
-REST apis that is compliant by construction to ensure software functional
+REST APIs that is compliant by construction to ensure software functional
 quality. This chapter will introduce the fundamentals of functional programming
 to then move on and use that to construct a server library which can be used to
 produce REST compliant servers. The SOLID guidelines that
 Chapter~\ref{background} introduced were originally written for Object-oriented
-programming, so this chapter will also introduce guidelines for SOLID principles
-but for functional programming. 
+programming, so this chapter will also introduce SOLID principles but for
+functional programming. 
 
 \section{Concepts from Functional Programming}\label{functionalprogramming}
 
  While different definitions exist of what Functional programming means, here 
  functional programming is a paradigm that uses of pure functions,
- decoupling state from logic and immutable data.(ADD\_REFERENCE)
+ decoupling the state from logic and immutable data.(ADD\_REFERENCE)
 
 \begin{description}
 \item[ Purity ]
@@ -28,13 +28,13 @@ When a function is pure it means that calling a function with the same arguments
         world. Or given $x=0$, $h()=x+1$. Then $h()$ will yield $x=1$ and $(h
         \circ h)()$ will yield $x=2$, making it impure.~\cite{wikipedia_pure}
 
-\item[ Immutable data by deafult ]
+\item[ Immutable data by default ]
 
-Immutable data is data that after initialization can not change. This means if
-we initialize a record, \texttt{abc = \{a: 1, b: 2, c: 3\}} then \texttt{abc.a
-:= 4} is an illegal operation. Immutable data, along with purity, ensures that
-no data can be mutated unless it is specifically created as mutable data.
-Mutable data is an easy source of bug because it can cause two different
+Immutable data is data that after initialization can not change. This means that
+an initialized record, for example, \texttt{abc = \{a: 1, b: 2, c: 3\}} then
+\texttt{abc.a := 4} is an illegal operation. Immutable data, along with purity,
+ensures that no data can be mutated unless it is specifically created as mutable
+data.  Mutable data is an easy source of bug because it can cause two different
 functions to modify the same value, leading to unexpected results.
 
 \item[Higher-order functions]
@@ -47,15 +47,14 @@ argument.
 
 \item[Partial Application] 
     It is possible in functional languages to \textit{partially apply} a
-    function, meaning that we only supply some of the functions arguments, which
-    yields a function instead of a value. For example, given a function $sum a b
-    = a + b$, we can partially apply this function to create a function $add3 a
-    = sum 3 a$. 
+    function, meaning that only some of the function's arguments are supplied,
+    which yields a function instead of a value. For example, given a function
+    $sum a b = a + b$, a partially applied function is $add3 a = sum 3 a$. 
 
 \item[Decoupling state from logic]
 
-Even if functional programs emphasise purity applications still need to deal
-        with state somehow. For example a server would need to interact with a
+Even if functional programs emphasize purity applications still need to deal
+        with state somehow. For example, a server would need to interact with a
         database. Functional programs solve this by separating pure functions
         and effectful functions. Effects are observable interactions with the
         environment, such as database access or printing a message.  While
@@ -71,42 +70,41 @@ Even if functional programs emphasise purity applications still need to deal
         as a way to note which functions are pure and which are effectful and
         managing the way they intermingle. It enables handling errors
         and state.\footnote{This is simplified as Monads are notoriously
-        difficult to explain.}. 
-
-As a strategy to further separate state and logic, one can construct a
-        three-layered architecture, called the three layer Haskell cake. Here,
+        difficult to explain.}.  As a strategy to further separate state and logic, one can construct a
+three-layered architecture called the three-layer Haskell cake.
+(ADD\_REFERENCE) Here,
         the strategy is that one implements simple effectful functions,
-        containing no logic as a base layer. Then on a second layer one
+        containing no logic as a base layer. Then on a second layer, one
         implements an interface that implements a pure solution and one
-        effectful solution. Then on the third layer one implements the logic of
+        effectful solution. Then on the third layer, one implements the logic of
         the program in pure code.  
 \end{description}
 
-So while no exact definition of Functional programming exist, this thesis
+So while no exact definition of Functional programming exists, this thesis
 defines it as making functions pure and inheritance being based around
-functionality rather than attributes. More advanced constructs also exists for
-functional programming that need to be introduced for constructing a
+functionality rather than attributes. More advanced constructs also exist for
+functional programming that needs to be introduced for constructing a
 maintainable rest library. 
 
 \subsection{ADTs: Sum types and product types}\label{types}
 
 A type is in Haskell is informally a \textit{set} of possible values that a
-given data can have.(ADD\_REFERENCE) This can be $int$, $char$ and custom
-defined types. A \textit{sum type}, \textit{Algebraic data type (ADT)} or
+given data can have.(ADD\_REFERENCE) This can be $int$, $char$ and
+custom-defined types. A \textit{sum type}, \textit{Algebraic data type (ADT)} or
 \textit{union type} is a type which is the sum of types, meaning that it can be
-one of those it's given types. For example the type \texttt{type IntChar = Int |
+one of those its given types. For example the type \texttt{type IntChar = Int |
 Char} is either an Int or a Char. A useful application for sum types are enums
 such as \texttt{type Color = Red | Green | Blue}, meaning that a value of type
 Color is either red, green or blue. A sum type can be used to model data which
 may or may not have a value, by introducing the Maybe type: \texttt{type Maybe
 value = Just value | Nothing}. A product type is a type which is the product of
-types, for example \texttt{type User = User Name Email}.  Informally, informally
-a product type is similar to an immutable record in Javascript. (ADD\_REFERENCE)
-$Maybe$ allows us to model computations that might fail. For example given
-$sqrt(x) = \sqrt{x},\, x\in \mathbb{Z}$ then $sqrt(-1)$ is undefined and would
-cause Haskell to crash.  Instead by introducing a function \texttt{safeSqrt},
-where \texttt{safeSqrt x = if x > 0 then Just (sqrt x) else Nothing}, the
-program can force the developer to handle the special case of negative numbers. 
+types, for example, \texttt{type User = User Name Email}.  Informally, a product
+type is similar to an immutable record in Javascript. (ADD\_REFERENCE) $Maybe$
+allows us to model computations that might fail. For example given $sqrt(x) =
+\sqrt{x},\, x\in \mathbb{Z}$ then $sqrt(-1)$ is undefined and would cause
+Haskell to crash.  Instead by introducing a function \texttt{safeSqrt}, where
+\texttt{safeSqrt x = if x > 0 then Just (sqrt x) else Nothing}, the program can
+force the developer to handle the special case of negative numbers. 
 
 \subsection{Functors and Contravariant Functors}
 
@@ -128,23 +126,23 @@ Functor only if it is covariant.
 
 Contravariant Functors have a function $contramap : (a\rightarrow b) \rightarrow
 m\ b \rightarrow m\ a$. (ADD\_REFERENCE contravariacn) These are useful for
-defining how the value should be \textit{consumed}. So for example a $type\
+defining how the value should be \textit{consumed}. For example, a $type\
 encoder = a\rightarrow encoded$, defines an encoder. The contravariant functor
 would allow transforming the encoder into intermediate value.
 
 \subsection{Domain-specific languages}
 
-A domain specific language (DSL) is a programming language made for a specific
+A domain-specific language (DSL) is a programming language made for a specific
 domain.(ADD\_REFERENCE DSL) Typical examples of DSLs are HTML for designing web
-pages and SQL for making database calls. An eDSL is such a language embedded
+pages and SQL for making database calls. An EDSL is such a language embedded
 within the syntax of the language.(ADD\_REFERENCE edsl) EDSLs are useful due to
 the ability to separate the evaluation of the logic of the program to the logic
-itself. In the case of REST apis, this means we can develop an eDSL which can
-interpret REST apis and use them for different purposes. 
+itself. In the case of REST APIs, an EDSL can be developed which can
+interpret REST APIs and use them for different purposes. 
 
 \subsection{Generalized algebraic data type}\label{gadt}
 
-One method for constructing eDSLs in functional programming is through the use
+One method for constructing EDSLs in functional programming is through the use
 of \textit{generalized algebraic data type} (GADT).(ADD\_REFERENCE GADT)  They
 specify, depending on the input, what the output should be of that type. GADT
 enables implementing \textit{domain-specific languages} (DSL) and ensure
@@ -173,15 +171,15 @@ mathExpression = (Number 5 `Add` Number 3) `Multiply` (Number 4 `Add` Number 3)
 \end{figure}
 
 
-Figure~\ref{gadtcalculator} demonstrates a minimal example GADT for a
+Figure~\ref{gadtcalculator} demonstrates a minimal example of GADT for a
 calculator. The calculator has five constructors: $Number$, $Bool$, $Equal$
-$Add$ and $Multiply$. From this we can construct mathematical expressions and
+$Add$ and $Multiply$. This can be used to construct mathematical expressions and
 ensure that they are correct by constructions, or else they will not compile.
-If we attempt to construct an expression $Add\ (Bool\ False)\ (Number\ 5)$ the
-compilation will fail as $Multiply$ expects a number or an expression. However
-only having the expression is not very useful without some way of evaluating it.
-In Figure~\ref{calculator} we demonstrate how we can evaluate the expression
-using pattern matching.
+Attempting to construct an expression $Add\ (Bool\ False)\ (Number\ 5)$ will
+lead to the compilation failing as $Multiply$ expects a number or an expression.
+However, only having the expression is not very useful without some way of
+evaluating it.  Figure~\ref{calculator} demonstrates how evaluating the
+expression using pattern matching is done.
 
 \begin{figure}[H]
     \begin{lstlisting}
@@ -196,8 +194,8 @@ evaluate (Bool b) = b
     \label{calculator}
 \end{figure}
 
-Another example of GADTs is the creation of type safe lists, where we can be
-sure statically that performing $head$ will yield an answer. This is
+Another example of GADTs is the creation of type-safe lists, where the list can
+be proved statically that performing $head$ will yield an answer. This is
 demonstrated in Figure~\ref{safelist}
 
 \begin{figure}[H]
@@ -216,19 +214,19 @@ safeHead (Cons x _) = x
     \label{safelist}
 \end{figure}
 
-By separating how the expression from it's evaluation, the expression can be
-reused for different purposes. For instance it would be possible to use the same
-logic for the calculators and implement them for different platforms and ensure
-statically that all platforms follow the same logic. So GADTs are useful for
-creating expressions that can later on be evaluated.  Since the logic is
-separated from the evaluation and correct by construction it means that we only
-need to test the evaluator, which can be done using property-based testing
+By separating how the expression from its evaluation, the expression can be
+reused for different purposes. For instance, it would be possible to use the
+same logic for the calculators and implement them for different platforms and
+ensure statically that all platforms follow the same logic. So GADTs are useful
+for creating expressions that can, later on, be evaluated.  Since the logic is
+separated from the evaluation and correct by construction it means that only the
+evaluator needs to be tested, which can be done using property-based testing
 (ADD\_REFERENCE testing the hard stuff John hughes). Testing the logic means
-checking that it's equal to it's intended value, which requires manual review.
+checking that its equal to its intended value, which requires manual review.
 
 \section{Servers using GADTs: Router}\label{router}
 
-Using GADTs, we can construct a statically correct eDSL for server
+GADTs can be used to construct a statically correct EDSL for server
 routers.(ADD\_REFERENCE code from
 https://github.com/elm/package.elm-lang.org/blob/master/src/backend/Server/Router.hs)
 A server router parses incoming requests and extracts query parameters and
@@ -236,8 +234,8 @@ parameters and executes a function depending on the result. We first define a
 minimal example of a GADT $Router$, in Figure~\ref{routergadtminimal}.  The two
 constructors $Top$ and $Exact$ describe matching \url{/} or for a given string
 $s$, \url{/s} respectively. It should also be possible to link two $Router$
-together to allow us to match nested urls. Thus the constructor $Compose$ allows
-composing routers together composed of multiple parts.  For instance the url
+together to allow us to match nested URLs. Thus the constructor $Compose$ allows
+composing routers together composed of multiple parts.  For instance the URL
 \url{/hello/world} corresponds to $Compose\ (Exact\ "hello")\ (Exact\ "world")$.
 
 \begin{figure}[H]
@@ -256,17 +254,17 @@ Definition in Figure~\ref{routergadtminimal} is not sufficient for a route
 parser as a route can also contain parameters, such as integers for id or
 strings. These parameters need to be applied to a function which can handle
 them. GADTs can also be used to also describe the transformation of the handler
-function's arguments, by extending Router with two parameters. In
-Figure~\ref{extendedrouter} we extend the router with the constructors Integer,
+function's arguments, by extending Router with two parameters.
+Figure~\ref{extendedrouter} extends the router with the constructors Integer,
 String and add two parameters input and output. The Integer and String
 constructors describe the application of an argument to a function. Together
-with $Compose$, an api for a user resource could be implemented as
+with $Compose$, an API for a user resource could be implemented as
 \texttt{Compose (Compose (Exact "user") String) Integer}, which could be
-interpreted to match on urls formatted as \url{/users/:string/:int} where
+interpreted to match on URLs formatted as \url{/users/:string/:int} where
 \url{:string} is a valid string and \url{:int} is a valid int. These parameters
 get applied to the handler, thus the type of becomes \texttt{Router (String ->
-Int -> a) a}. Informally the type can be read as give me a function which takes
-a String and an Int and I will give you $a$.
+Int -> a) a}. Informally the type can be read as to give me a function which
+takes a String and an Int and I will give you $a$.
 
 \begin{figure}[H]
     \begin{lstlisting}
@@ -282,13 +280,13 @@ type Router start result
 \end{figure}
 
 So $Router$ describes a specification for what the type signature of the handler
-must be and what it must then produce. Finally there needs to be a way to apply
-that handler to the arguments so that it can produce that value, so we add a
-constructor to $Router$, \texttt{Produce : function -> Router function output ->
-Router (output -> c) c}. So the final GADT for the router eDSL becomes the one
-in Figure~\ref{finalrouter}. \texttt{Router (output -> c) c} informally
-translates to ``give me something that can transform the output to c and I will
-give you c''.
+must be and what it must then produce. Finally, there needs to be a way to apply
+that handler to the arguments so that it can produce that value, which is done
+by adding a constructor to $Router$, \texttt{Produce : function -> Router
+function output -> Router (output -> c) c}. So the final GADT for the router
+eDSL becomes the one in Figure~\ref{finalrouter}. \texttt{Router (output -> c)
+c} informally translates to ``give me something that can transform the output to
+c and I will give you c''.
 
 \begin{figure}[H]
     \begin{lstlisting}
@@ -304,106 +302,30 @@ type Router start result
     \label{finalrouter}
 \end{figure}
 
-This section has demonstrated how GADTs are useful for constructing a eDSL for
+This section has demonstrated how GADTs are useful for constructing an EDSL for
 routers. What was not described is how to interpret the router which is omitted
-for brevity. However the source code for the final solution can be found in
-Appendix. Furthermore we will extend this functionality to implement all of the
+for brevity. The source code for the final solution can be found in Appendix.
+Next section will extend this functionality to implement all of the
 functionality of a REST server.
-
-% \subsection{Type classes}\label{typeclass}
-
-% A type class is a construct that allows for ad hoc polymorphism. This allows to
-% create constraints to type variables in parametrically polymorphic types. In
-% English, that means that it allows creating interfaces that must be implemented
-% for the types. For example the equality type class, defined in
-% Figure~\ref{equalitytypeclass}
-
-% \begin{figure}[H]
-    % \begin{lstlisting}
-% class Eq a where
-  % (==) :: a -> a -> Bool
-  % (/=) :: a -> a -> Bool
-    % \end{lstlisting}
-    % \caption{Equality type class in Haskell.}
-    % \label{equalitytypeclass}
-% \end{figure}
-
-% By defining an Equality type class one can create general functions that can be
-% used for anything that is ``equalable''. For example Figure~\ref{printifequal}
-% is a function that prints a text if two items are equal. This function can be
-% used for floats, ints, tuples and everything else that implements the
-% \texttt{Eq} type class. Other uses for type classes is Num which implements
-% numeric operations for floats and integers. This is useful for implementing the
-% MTL technique which will allow us to implement the Interpreter pattern which
-% will be described in the following sections.
-
-% \begin{figure}[H]
-    % \begin{lstlisting}
-% printIfEqual :: Eq a => a -> a -> IO ()
-% printIfEqual a b =
-	% if a == b then
-		% putStrLn "They are equal"
-	% else
-		% putStrLn "They are not equal"
-    % \end{lstlisting}
-    % \caption{A function that prints a text if the two items are equal.}
-    % \label{printifequal}
-% \end{figure}
-
-% \subsection{Brief introduction to Monads for side effects}\label{monads}
-
-% Monads\footnote{\url{en.wikipedia.org/wiki/Monad_(functional_programming)}} are
-% a way to sequence computations that might fail while automating away boilerplate
-% code. Figure~\ref{monadclass} shows how Monads are implemented as a typeclass in
-% Haskell. It implements the function \texttt{return}, the function bind
-% \texttt{(>>=)}, the function sequence \texttt{(>>)} which is bind whilst
-% ignoring the prior argument and \texttt{fail} which handles crashes.
-
-% \begin{figure}[H]
-    % \begin{lstlisting}
-        % class Monad m where  
-            % return :: a -> m a  
-            % (>>=) :: m a -> (a -> m b) -> m b  
-            % (>>) :: m a -> m b -> m b  
-            % fail :: String -> m a  
-            % fail msg = error msg 
-    % \end{lstlisting}
-    % \caption{Monad type class in Haskell.}
-    % \label{monadclass}
-% \end{figure}
-
-% Informally, Monads are as a design pattern that allows us to sequence different
-% computations. Without them the developer would have to explicitly check if a
-% computation has failed. For example, given the function $unsafeSqrtLog =
-% sqrt\,\circ\,log$, then $unsafeSqrtLog(-1)$ would throw an error since $log$ and
-% $sqrt$ are undefined for $-1$.  Section~\ref{types} showed how the \texttt{Maybe
-% value} type could be used to create a safe computation \texttt{safeSqrt}.  To
-% sequence that computation with a function \texttt{safeLog}, the user would have
-% to manually check that \texttt{safeSqrt} returned a value \texttt{Just result}
-% and not \texttt{Nothing}. Monads allows sequencing these computations without
-% explicitly writing this check, so composing \texttt{safeSqrt} and
-% \texttt{safeLog} using bind becomes \texttt{safeSqrtLog n = safeSqrt n >>=
-% safeLog}. The same idea applies for effectful computations such as fetching data
-% from a database.
 
 \section{Functional servers}
 
 A $Server$ is a type function $Request \rightarrow Response$. Simply, given some
-Request it should produce some Response where Request is a product of the url,
-media type, accept header, content type header and a body.  The Response is a
+Request it should produce some Response where Request is a product of the URL,
+media type, accept header, content-type header and a body.  The Response is a
 product of status code, a set of headers where headers are a tuple of strings, a
-content type and an encoding. If the Response returns a successful code in the
-range of 2XX, 3XX we say it is a successful response. The goal is to ensure that
-values of $Server$ are following the REST API specifications.  Thus we want to
-define a function $make$ that can construct a value of $Server$ which follow
-REST specifications.
+content-type, and an encoding. If the Response returns a successful code in the
+range of 2XX, 3XX it is a successful response. The goal is to ensure that values
+of $Server$ are following the REST API specifications.  This is done by defining
+a function $make$ that can construct a value of $Server$ which follow REST
+specifications.
 
-Based on the REST api description outlined in chapter 2, we define a type
-$Specification\ input\ output$, which is a GADT for specifying how to transform
-input into output. We define $Specification\ Request\ Response$ to mean a
-\textit{server specification}, since it defines how to turn a $Request$ (input)
-into a $Response$ (output). $Specification$ works as DSL for one or more
-\textit{endpoints} within a REST api where an endpoint composed of parts, where
+Let $Specification\ input\ output$, be defined as a GADT for specifying how to
+transform input into output, based on the REST API description outlined in
+chapter 2.  $Specification\ Request\ Response$ informally is a \textit{server
+specification}, since it defines how to turn a $Request$ (input) into a
+$Response$ (output). $Specification$ works as DSL for one or more
+\textit{endpoints} within a REST API where an endpoint composed of parts, where
 each part is one or more of the following:
 
 \begin{itemize}
@@ -419,9 +341,9 @@ each part is one or more of the following:
         where parser is a function of type $string \rightarrow Maybe\ a$)
     \item An HTTP verb
     \item Status code on success
-    \item A function, called a handler, which takes some parameters and returns
+    \item A function called a handler, which takes some parameters and returns
         either the resource or a failure message and failure code. This is used
-        for side effects, for instance database access. We model the result as
+        for side effects, for instance, database access. We model the result as
         a sum type $Result\ a = Ok\ a\ |\ Fail\ Message\ Code$.
 \end{itemize}
 
@@ -429,22 +351,22 @@ An endpoint specification is defined as $Specification\ Request\ (Maybe\
 Response)$, as it might fail to produce a response if it fails to parse the url.
 A difference from the $Router$ in Section~\ref{router} is that parts need to
 produce \textit{two} intermediate values.  One value is the handler and another
-value is how to encode the result of the handler. We define the encoder as
-ResponseBuilder, which is a contravariant of type $a -> encoded$.  Thus we
-modify the constructors, \texttt{Exact : String -> Specification input output}
-becomes \texttt{Exact : String -> Specification (handler, responseBuilder)
-(handler, responseBuilder)}. The constructor \texttt{Integer} gets modified to
-\texttt{Integer : Specification (int -> a, r) (a, r)}. The full GADT gets shown
-below.
+value is how to encode the result of the handler. The encoder is defined as
+ResponseBuilder , which is a contravariant of type $a -> encoded$.  With this
+new change, the constructor \texttt{Exact : String -> Specification input
+output} now becomes \texttt{Exact : String -> Specification (handler,
+responseBuilder) (handler, responseBuilder)}. The constructor \texttt{Integer}
+gets modified to \texttt{Integer : Specification (int -> a, r) (a, r)}. The full
+GADT gets shown below.
 
-We introduce a few new constructor, one being \texttt{Accept} which takes a list
-of encoders and their corresponding accept header (\texttt{(Mediatype, [r ->
-encoded])}) and produces a \texttt{Specification (a, encoded) (a, r)},
-with responsebuilder's definition expanded it produces \texttt{Specification
-(a, encoded) (a, r -> encoded)}. When parsing a request, it can
-then check what available media types the endpoint can represent and pick
-the appropriate encoder without the programming needing to write it
-manually. The final GADT for specifications become as follows:
+A few other new constructors are introduced, one being \texttt{Accept} which
+takes a list of encoders and their corresponding accept header
+(\texttt{(Mediatype, [r -> encoded])}) and produces a \texttt{Specification (a,
+    encoded) (a, r)}, with responsebuilder's definition expanded it produces
+    \texttt{Specification (a, encoded) (a, r -> encoded)}. When parsing a
+    request, it can then check what available media types the endpoint can
+    represent and pick the appropriate encoder without the programming needing
+    to write it manually. The final GADT for specifications become as follows:
 
 \begin{lstlisting}
   type Specification input output =
@@ -474,58 +396,25 @@ manually. The final GADT for specifications become as follows:
 The constructor $handler$ now takes as a parameter a \texttt{Specification
 (handlerFunction, noEncoder) (Result c, c)}, which describes that given a
 handler function that correctly handles the parameter values and a
-responseBuilder without an encoder, can produce a tuple of the resulting
-resource as well as an encoder of that resource to the appropriate media accept
-header. We enforce statically that the handlerFunction produces something which
-might fail ($Result\ resource$), so that we can automatically handle that error
-and throw the appropriate response. 
+responseBuilder without an encoder can produce a tuple of the resulting
+resource, as well as an encoder of that resource to the appropriate media,
+accept header. We enforce statically that the handlerFunction produces something
+which might fail ($Result\ resource$), so that the library can automatically
+handle that error and throw the appropriate response. 
 
 The $Many$ constructor is for transforming multiple endpoints into a single one.
 Also notice that Handler produces a $Specification\ Request\ (Result Response)$.
-If the parsing fails we want it to return Nothing so that $Many$ has a way of
-knowing if an endpoint failed to parse the request. If all endpoints return
-$Nothing$ then the specification interpreter should return a response with  404
-- Not found.
+If the parsing fails it returns Nothing so that $Many$ has a way of knowing if
+an endpoint failed to parse the request. If all endpoints return $Nothing$ then
+the specification interpreter should return a response with  404 - Not found.
 
-From the $Specification$ GADT we can define a function\\ $make : Specification\
+The $Specification$ GADT allows defining a function\\ $make : Specification\
 Request\ Response \rightarrow (Request \rightarrow Response) \sim\\
 Specification\ Request\ Response \rightarrow Server$ ($a\sim b$ means $a$ is
 type equal to $b$).  $make$ works by evaluating the GADT to deduce how the
 request should be parsed and how to produce a REST compliant response from that
 request.  The full implementation of $make$, implemented in the functional
 programming language ReasonML, available in the appendix.
-
-% \subsection{Extracting parameters}
-
-% The request contains a set of parameters that an endpoint expects in order for
-% handler to yield a resource. These parameters need to therefore be extracted and
-% applied to the handler in the right order. 
-
-% \subsubsection{Parsing a URI}
-
-% Each request contains a URI to the resource it wishes to access.  For instance
-% \url{/api/books?author=Rowling&published=2005} wishes to access the resource
-% \url{/api/books} and passes in the query parameters $author$ and $published$.
-% The challenge here for the parser is that the parser should parse $/api/book$
-% sequentially and ensure each part is correct. Query parameters can appears in
-% any order, thus it is necessary to parse all query parameters and extract the
-% ones supported by the endpoint. Thus the algorithm works as follow, given an url
-% and an endpoint.
-
-% \begin{enumerate}
-    % \item Split the url at \url{?} into two strings to separate queries from the 
-        % uri
-    % \item Parse the URI by matching character by character
-    % \item Parse the query parameters by first splitting the string into a list
-        % where \url{&} occurs. Afterwards split the occurence of \url{=} within
-        % that list into a tuple, if \url{=} does not exist, remove that entry as
-        % it is malformatted.
-% \end{enumerate}
-
-% As each parameters get extracted they also get applied to the handler. A
-% specification can be composed of many endpoints which all contain a parser for
-% the request. Should one of them fail it can attempt with the next parser
-% instead.
 
 \section{Using the library}
 
@@ -559,27 +448,27 @@ path.  These can be combined so $e = Uri.is\ "api" \triangleright\ Uri.is\
 as a parameter which it applies to the handler.
 
 Accept headers can be set using the $accept$ function, which takes a list of
-tuples with the first element being an encoder and the second being it's
+tuples with the first element being an encoder and the second being its
 associated content media representation. So the specification can use different
 encoders depending on the accept header of the request.
 
-Content type headers can be set using the $contentType$ function, which takes a
+Content-type headers can be set using the $contentType$ function, which takes a
 list of tuples with the first element being a \textit{decoder} and the second
-being it's associated content media representation. This way it can check what
-media representation the request content has and decode it and afterwards apply
+being its associated content media representation. This way it can check what
+media representation the request's content has and decode it and afterward apply
 that to the handler. 
 
 Query parameters can be set using the $query$ function. Query takes the name of
 the parameter and a decoder to use. The result of the decoder will be applied in
 the handler.
 
-\subsubsection{A get endpoint to a book API}
+\subsubsection{Example: A get endpoint to a book API}
 
-Using these combinator functions defined earlier, we can define a server to
-access books. In this example we demonstrate how to create an endpoint that also
-uses the query parameters author, specifying the name of the author of the books
-we want to access; released, specifying the year we want the books to be
-published; as well as how to accept multiple accept headers (json and plain):
+Using these combinator functions defined earlier, it is possible to define a
+server to access books. This example demonstrates how to create an endpoint that
+uses the query parameters author, specifying the name of the author of the
+books to access; released, specifying the year the fetched books should be
+published; as well as how to accept multiple accept headers (JSON and plain):
 
 
 \begin{lstlisting}
@@ -603,10 +492,9 @@ type \texttt{book -> encoded}.
 \section{SOLID principles in Functional programming}\label{dependencyinjection}
 
 To evaluate the library from a standpoint of testability, error-proneness and
-extendability using SOLID principles we first need to introduce how SOLID
-principles work for functional programming. In the following sections, the five
-parts of SOLID principles have been translated to an equivalent for functional
-programming.
+extendability using SOLID principles are introduced work for functional
+programming. In the following sections, the five parts of SOLID principles have
+been translated to an equivalent for functional programming.
 
 \subsection{Single Responsibility Principle}
 
@@ -617,20 +505,20 @@ focused and simple. It can also be thought of as ``One function modifies one
 thing''. So in summary, a program follows the Single Responsibility Principle if 
 
 \begin{enumerate}
-    \item Each functions performs only a morphism, which is guaranteed if the
+    \item Each function performs only a morphism, which is guaranteed if the
         function is pure.
     \item The file does not contain functions that do not have a type signature
         using any of the types declared within that file. This rule has
         an exception for functions that are only used by the other functions
         within that module (called a helper functions). Helper functions can be
-        merged into the function that uses it but we choose to split them up for
+        merged into the function that uses it but they are split for
         readability purposes.
 \end{enumerate}
 
 \subsection{Liskov Substitution Principle}
 
 Liskov's Substitution Principle states how reasoning about subtyping among
-objects should be done. If S is a subtype of T, then the subtype relation mean
+objects should be done. If S is a subtype of T, then the subtype relation means
 that any term S can be safely used in a context where type T is expected. Since
 subtypes do not exist in classic functional programming some translation is
 needed. The formal requirements of Liskov's Substitution Principle are as
@@ -644,19 +532,18 @@ follows:
         supertype.
 \end{itemize}
 
-In functional programming, Liskov Substitution Principle is simply
-Contravariant Functors.  In order to comply with the principle, argument types
-overriding a method must be contravariant and the reverse should be true for
-the return type, it should be covariant.  A contravariant type can only be
-overridden by using $contramap$. And it's result is naturally in positive
-position hence it's covariant. This principle is not applicable to the
-application we will evaluate later however.
+In functional programming, the Liskov Substitution Principle is simply
+Contravariant Functors.  To comply with the principle, argument types overriding
+a method must be contravariant and the reverse should be true for the return
+type, it should be covariant.  A contravariant type can only be overridden by
+using $contramap$ and its result is in positive position hence its covariant.
+This principle does not apply to the application evaluated later.
 
 \subsection{Dependency Inversion Principle} 
 
-Dependency Inversion Principle states that the logic should not depend on it's
+Dependency Inversion Principle states that the logic should not depend on its
 environment. To achieve that in functional programming the environment can
-be abstracted and taken as parameters of the program. For instance given the
+be abstracted and taken as parameters of the program. For instance, given the
 program readNPrint in Figure~\ref{diexample}, this program depends on the
 computer IO, making it difficult to extend it to different environments, such as
 databases. 
@@ -671,7 +558,7 @@ readNPrint = readLine >>= putStrLn
 \end{figure}
 
 Instead, Figure~\ref{withdiexample} shows how the parameters are abstracted and
-readNPrint is a higher order function instead that takes some function that
+readNPrint is a higher-order function instead that takes some function that
 can generate a string and some function that can print a string.
 
 
@@ -685,18 +572,18 @@ consoleIO : IO ()
 consoleIO = readNPrint readLine putStrLn
     \end{lstlisting}
     \caption{A program that reads input from the computer and then prints it,
-    where the logic is separated from it's environment.}
+    where the logic is separated from its environment.}
     \label{withdiexample}
 \end{figure}
 
-This way, the dependencies can be mocked and replaced with different ones. So if
-we later want to create a $applicationIO$ we can reuse $readNPrint$ with the
+This way, the dependencies can be mocked and replaced with different ones. So 
+ to create an $applicationIO$,  $readNPrint$ can be reused with the
 functions for printing in the application and reading input from the
-application.  For a REST api library, it means that the logic should not depend
-on it's environment means that the specification of the REST api should not
+application.  For a REST API library, it means that the logic should not depend
+on its environment means that the specification of the REST API should not
 depend on the server implementation. In other words, it should be trivial to
 port the server logic to another runtime if needed. To do this, GADTs can be
-used to separate the expression from it's evaluation. So the REST api is simply
+used to separate the expression from its evaluation. So the REST API is simply
 described as instructions of a GADT. 
 
 \subsection{Interface Segregation Principle} 
@@ -742,24 +629,24 @@ getUserEndpoint : IUserRepo -> Request -> Response
 
 
 Another example, observe that in Fig~\ref{twomanyoperations}, the type
-\texttt{IUserRepo} has two operations. \texttt{getUserEndpoint} is a a function
+\texttt{IUserRepo} has two operations. \texttt{getUserEndpoint} is a function
 meant to get a user from a database, thus it does not need to store anything.
 However as it takes $IUserRepo$ as an argument, the function is capable of
 producing more values than it should. This breaks the Interface segregation
-principle. So in summary, adherence to interface segregation principle means
-that the cardinality of the types are minimized.
+principle. So in summary, adherence to the interface segregation principle means
+that the cardinality of the types is minimized.
 
 \subsection{Open/Closed principles}\label{openclosed}
 
 Open/Closed principle states that software entities (classes, modules,
 functions, etc.) should be open for extension, but closed for modification. OCP
-is an advice on how to write modules in such a way that we have backwards
+is advice on how to write modules in a way that encourages backward
 compatibility and so that if extra functionality is needed, the modifier does
-not need to look at the class in order to make modifications. So if a class has
-some new requirements you do not need to modify the source code but can instead
-extend the superclass.
+not need to look at the class to make modifications. So if a class has some new
+requirements you do not need to modify the source code but can instead extend
+the superclass.
 
-When this principle is applied into Functional programming, it can roughly be
+When this principle is applied to Functional programming, it can roughly be
 seen as the same as the expression problem. The expression problem states that
 \textit{``The goal is to define a datatype by cases, where one can add new cases
     to the datatype and new functions over the datatype, without recompiling
@@ -771,21 +658,21 @@ The similarity with expression problem and OCP is that you want to be able to
 extend the program (add new cases to the datatype) without recompiling existing
 code.  Object-oriented programming uses classes that should be open for
 extension and closed for modification. In functional programming, new cases to
-datatype should be possible and new functions. OCP exists because modifying
-battle tested code might cause regressions. Thus a preferable solution is to
-extend the previous code instead.
+datatype should be possible and new functions. OCP exists because modifying code
+in production might cause regressions. Thus a preferable solution is to extend
+the previous code instead.
 
 
 \section{Summary}
 
-In this chapter we have introduced the concepts of functional programming and
-then from those concepts created a GADT that can be used to construct REST
-specifications.  We have then demonstrated how a value of specification can be
-used to construct REST compliant server application, I.E. we constructed a
-higher order function $make : Specification\ Request\ Response \rightarrow
-(Request\rightarrow Response)$. The interpreter can be found in
-Appendix~\ref{cause}. We also established in this chapter guidelines for
-evaluating functional programs adherence to SOLID principles, which were
-originally introduced for Object-oriented programs. Using the library we
-created, we can construct a functionally correct server and evaluate it's
-software structural quality by comparing it to an imperative version. 
+This chapter introduced the concepts of functional programming and then from
+those concepts created a GADT that can be used to construct REST specifications.
+We have then demonstrated how a value of specification can be used to construct
+REST compliant server application, I.E. a higher-order function $make :
+Specification\ Request\ Response \rightarrow (Request\rightarrow Response)$ was
+constructed. The interpreter can be found in Appendix~\ref{cause}. This chapter
+also established the guidelines for evaluating functional programs adherence to
+SOLID principles, which were originally introduced for Object-oriented programs.
+The library created can construct a functionally correct server which can be
+used to evaluate the software structural quality of functional programming by
+comparing it to an imperative version. 

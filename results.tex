@@ -1,12 +1,11 @@
 \chapter{Results}\label{results}
 
-Based on the specifications outlined in the introduction of Chapter~\ref{method}
-two server programs were constructed.  The source code for the programs can be
-found in Appendix~\ref{reasonmlrest} for the ReasonML implementation and in
-Appendix~\ref{nodejsrest} for the imperative implementation, written in Express.
-The servers will in this Chapter be evaluated to their adherence of SOLID
-principles and an interview will be conducted so that the readability of the
-server's source code can be evaluated in Chapter~\ref{conclusions}.
+Four interviews were performed and two servers were implemented and analyzed.
+The source code for the programs can be found in Appendix~\ref{reasonmlrest} for
+the ReasonML implementation and in Appendix~\ref{nodejsrest} for the imperative
+implementation, written in Express.  This chapter will present the results of
+those interviews and also present an analysis of the server's adherence to SOLID
+principles.
 
 \section{Evaluating adherence to SOLID}
 
@@ -15,8 +14,8 @@ Section~\ref{evaluatingmaintainability} of the solution in ReasonML. It is the
 resulting code of using the library that is analyzed and not the library itself
 as the goal is to find if Functional programming constructs can be used to
 enforce an idiomatic solution.  The solution was written by the author in a
-``as naive'' approach as possible.  That means that the author did not take any
-design guidelines into consideration but created the software in such a way
+``as naive'' approach as possible.  That means that the author did not consider
+any design guidelines but created the software in such a way
 that it would compile.
 
 \subsubsection{Single Responsibility Principle}
@@ -24,26 +23,25 @@ that it would compile.
 Recall that the Single Responsibility Principle for functional programming
 states that all modules should revolve around one type.  The file BookApi.re
 contains one product type Book. The modules Encoders and Decoders both use this
-type except for one helper function \texttt{int}.  Afterwards we find that all
-the functions in the module make use of the book type with Lastly we find that
-the module Endpoint all revolve around the type \texttt{route (a)} and that they
-all make use book except the handler \texttt{delete}, which is a helper
-function for the function \texttt{router}.
+type except for one helper function \texttt{int}.  The module Endpoint's
+functions all revolve around the type \texttt{route (a)}, which all use book
+except the handler \texttt{delete}, which is a helper function for the function
+\texttt{router}. Thus the solution follows Single Responsibility Principle.
 
 \subsubsection{Open/Closed Principle}
 
 OCP, as defined in Section~\ref{openclosed}, that the data structures should be
-open for extensions without modifying the previous code.  The book api
+open for extensions without modifying the previous code.  The book API
 functionality can be extended with new endpoints without modifying any of the
 original code. The router is implemented as a list of endpoints, thus if the
 user wants to add a new endpoint it can append new endpoints to the list.
-However it is not possible to extend existing endpoints without modifying the
-code.  For example should the user want to prepend so that each uri starts with
+However, it is not possible to extend existing endpoints without modifying the
+code.  For example, should the user want to prepend so that each URI starts with
 \url{/new} then that is not possible, the existing code has to be modified.
 
 \subsubsection{Liskov Segregation Principle}
 
-Liskov Segregation Principle is not applicable to this solution.
+Liskov Segregation Principle does not apply to this solution.
 
 \subsubsection{Interface Segregation Principle}
 
@@ -58,22 +56,20 @@ cardinality of the handler must be according to the $specification$.
 
 \subsubsection{Dependency Inversion Principle}
 
-Dependency Inversion Principle is about separating the logic from it's
+Dependency Inversion Principle is about separating the logic from its
 environment.  Since the $specification$ GADT separates the handler from the
 specification, it means that should the developer want to change the handler
-they can change the argument at one spot. If the developer should want to
-change the REST api library, handlers are separated from the
-$specfication$. Thus the developer would not need to change any of the logic of
-the handlers. Therefore the code follows the dependency inversion principle.
-
-Also due to it's separation it also means that testing the logic of the api 
-is easier. In order to test it you 
+they can change the argument at one spot. If the developer should want to change
+the REST API library, handlers are separated from the $specfication$. Thus the
+developer would not need to change any of the logic of the handlers. Therefore
+the code follows the dependency inversion principle.  Also due to its
+separation, it means that testing the logic of the API is easier.  
 
 \subsection{Imperative solution}
 
-Since the solution was developed in a untyped language with no force of
-structure it makes sense that the SOLID principles will not be followed. But
-for the sake of the argument below we go through them as well.
+Since the solution was developed in an untyped language with no force of
+structure it makes sense that the SOLID principles will not be followed. However
+it is presented below:
 
 \begin{description}
 	\item[Single Responsibility Principle] The imperative solution breaks SRP
@@ -90,13 +86,13 @@ such as database and the router.
 \section{Interviews}\label{interviews}
 
 With the method outlined in the previous chapter, the interview was performed on
-4 subjects, which is a bit less than the recommended by Norman group of
-five subjects due to difficulty finding enough users (ADD\_REFERENCE
+4 subjects, which is a bit less than the recommended by Norman group of five
+subjects due to difficulty finding enough users (ADD\_REFERENCE
 \url{https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/}).
 It was performed through the use of Skype, a communication tool\footnote{Skype's
-website: \url{https://www.skype.com}}. The four respondents were graduated
-students of the Engineering Interaction Technology and Design programme at Umeå
-university. The programme is a five year degree that combines education in
+website: \url{https://www.skype.com}}. The four respondents have graduated
+students of the Engineering Interaction Technology and Design program at Umeå
+University. The program is a five-year degree that combines education in
 software engineering with studies in design. The questions were originally asked
 in Swedish but translated to English by the author. The answers can be found in
 Table~\ref{interviewonetwo} and Table~\ref{interviewthreefour}. We also show
@@ -106,13 +102,13 @@ once more below the questions that were asked.
     \item[Q1] What is your experience with RESTful APIs?
     \item[Q2] What is your experience with Express?
     \item[Q3] What is your experience with ReasonML?
-    \item[Q4] After being presented the code api, can you explain what it does?
+    \item[Q4] After being presented the code API, can you explain what it does?
     \item[Q5] Which media types does the endpoint post accept?
-    \item[Q6] What is the uri of DELETE?
+    \item[Q6] What is the URI of DELETE?
     \item[Q7] Which media types representations can the endpoint show?
     \item[Q8] Given a handler putInDatabase, Can you demonstrate how you would
-        extend the api and add a new endpoint for a PUT request.
-    \item[Q9] Looking at the javascript api, can you explain what it does?
+        extend the API and add a new endpoint for a PUT request.
+    \item[Q9] Looking at the JavaScript API, can you explain what it does?
     \item[Q10] Which media types does the endpoint get accept?
     \item[Q11] Which content type and accept does post have?
 \end{description}
@@ -126,7 +122,7 @@ once more below the questions that were asked.
 \\ \hline
 \multicolumn{1}{l|}{\textbf{Q1}}  &
 \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Implemented API that should\\
-follow REST. I assumet it's\\ related to CRUD?\end{tabular}}
+follow REST. I assume its\\ related to CRUD?\end{tabular}}
 & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}A little bit, REST is an API
 with\\ endpoints containing method\\ and headers ensuring you\\ get the right
 data.\end{tabular}}
@@ -144,7 +140,7 @@ Express three years ago.\end{tabular}}
 \\ \hline
 \multicolumn{1}{l|}{\textbf{Q4}}  &
 \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}The title is BookApi.re which\\
-describes it quite well. It is\\ a Book api that follows\\ RESTful. It also
+describes it quite well. It is\\ a Book API that follows\\ RESTful. It also
 manages \\ encoding and decoding.\\ It also checks that the \\ requests are
 correctly \\ formatted.\end{tabular}} &
 \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Encoders and Decoders extract\\
@@ -164,8 +160,8 @@ However the module Endpoint is unclear.\\ Especially $type\ a.\ route(a)$.\end{t
 Appendix~\ref{putperson1}}
 & \multicolumn{1}{l|}{See Appendix~\ref{putperson2}}
 \\ \hline
-\multicolumn{1}{l|}{\textbf{Q9}}  & \multicolumn{1}{l|}{A book api}
-& \multicolumn{1}{l|}{A Book REST api}
+\multicolumn{1}{l|}{\textbf{Q9}}  & \multicolumn{1}{l|}{A book API}
+& \multicolumn{1}{l|}{A Book REST API}
 \\ \hline
 \multicolumn{1}{l|}{\textbf{Q10}} & \multicolumn{1}{l|}{text/plain and
 application/json}
@@ -210,7 +206,7 @@ means in\\ content type.\\ Are modules objects?\end{tabular}} &
 \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}First modules define encoding\\
 and decoding json data. \\ \\ Afterwards some helper \\ functions. \\ \\ Lastly
 there are endpoints with\\ router defined with different\\ paths and query
-parameters.\\ \\ It is a REST api for adding, \\ deleting and modifying
+parameters.\\ \\ It is a REST API for adding, \\ deleting and modifying
 books.\end{tabular}} \\ \hline
 \multicolumn{1}{l|}{\textbf{Q5}}  & \multicolumn{1}{l|}{N / A}
 & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}responds with json and \\
@@ -226,9 +222,9 @@ accepts plain.\end{tabular}}
 Appendix~\ref{putperson3}}
 & \multicolumn{1}{l|}{See Appendix~\ref{putperson4}}
 \\ \hline
-\multicolumn{1}{l|}{\textbf{Q9}}  & \multicolumn{1}{l|}{A book api to fetch
+\multicolumn{1}{l|}{\textbf{Q9}}  & \multicolumn{1}{l|}{A book API to fetch
 books}
-& \multicolumn{1}{l|}{A Book REST api}
+& \multicolumn{1}{l|}{A Book REST API}
 \\ \hline
 \multicolumn{1}{l|}{\textbf{Q10}} & \multicolumn{1}{l|}{string}
 & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}It can recieve text/plain and
@@ -255,5 +251,5 @@ system for encrypting books, rendering the question useless.
 
 In this chapter we have compared the two servers, one created using imperative
 programming, one using functional and evaluated their's adherence to SOLID
-principles. We also conducted interviews on four people to establish the
+principles. We also conducted interviews on four subjects to establish the
 readability of the two solutions. 

@@ -2,17 +2,17 @@
 
 Now that we have established what RESTful servers are and what the development
 challenges arise when creating them, the goal is to evaluate the potential of
-functional programming for better software quality. We established that there
-are two things that need to be addressed for software structural quality: the
-avoidance of rotten design and good readability. By creating an semi-structured
-interview, where the subjects are asked open questions about how the code works
-then it can give insights about the readability of the source code. Adherence to
-SOLID principles can be used to avoid rotten design, thus we also need to
-evaluate the servers adherence to those principles. If the library can enforce
-that SOLID principles are followed through the type system, that the source code
-is readable and that the library forces the developers to follow the REST api
-then the servers produced by the library would have good software quality. In
-this chapter we therefore describe how we can evaluate the software structural
+functional programming for better software quality. We established that two
+things need to be addressed for software structural quality: the avoidance of
+rotten design and good readability. By creating a semi-structured interview,
+where the subjects are asked open questions about how the code works then it can
+give insights about the readability of the source code. Adherence to SOLID
+principles can be used to avoid rotten design, thus we also need to evaluate the
+servers adherence to those principles. If the library can enforce that SOLID
+principles are followed through the type system, that the source code is
+readable and that the library forces the developers to follow the REST API then
+the servers produced by the library would have good software quality. In this
+chapter, we, therefore, describe how we can evaluate the software structural
 quality through interviews and using SOLID principles so that we can evaluate
 our solution's software quality. We then also describe how we can compare it to
 another solution written in imperative programming to see if it gives
@@ -22,14 +22,14 @@ improvement over existing solutions.
 
 To evaluate if the functional approach to creating servers is more maintainable
 than existing solutions, a comparative study will be done.  A popular library
-for developing server applications is by using an unopiniated solution using
+for developing server applications is by using an unopinionated solution using
 Express, which is a good candidate to compare to a functional library which will
-be explained further in Chapter~\ref{theory}.  Express is an unopiniated server
-framework written for Node.js for Javascript.  That a framework is unopiniated
+be explained further in Chapter~\ref{theory}.  Express is an unopinionated server
+framework written for Node.js for JavaScript.  That a framework is unopinionated
 means that it does not force you to architecture your code in any specific
 way.(ADD\_REFERENCE UNOPINIATED) An idiomatic server was made using the library
 in Chapter~\ref{theory} and the popular framework for Node Express. They feature
-similar functionality which is a REST api with the endpoints:
+similar functionality which is a REST API with the endpoints:
 
 \begin{itemize}
     \item \texttt{GET ``api/books?released=int\&author=string''} Get a list of
@@ -40,7 +40,7 @@ similar functionality which is a REST api with the endpoints:
     override a specific book
 \end{itemize}
 
-The server will makes use of a database that is abstracted away in the
+The server will make use of a database that is abstracted away in the
 implementation. The supported content types will be \texttt{application/json}
 and for all endpoints and the displayable content-types are \texttt{text/plain}
 and \texttt{application/json}.  They were written in an idiomatic way, that is
@@ -59,89 +59,12 @@ in Chapter~\ref{background}. To recap the important aspects were:
     \item Error-proneness
 \end{itemize}
 
-Chapter~\ref{background} established that the SOLID principles can be used to
-as guidelines for creating maintainable software. Those principles will
-therefore be used as criteria that Cause should be evaulated against.  However
-these guidelines do not state anything about the readability of the software.
-Thus two different methods will be used to measure readability and to measure
-the testability, extendability and error-proneness.
-
-% \subsubsection{Example: Creating a OCP compliant paint programming}
-
-% In a paint program, various shapes should be possible to paint: circles,
-% squares, stars and custom shapes. It should also have a custom menu depending on
-% the shape, a circle should be able to set the radius, a square the area and
-% stars the diameter.
-
-% A functional approach is to create a sum type of the shape, seen in
-% Fig~\ref{sumtypeshapes}.  To add more shapes, the original source code would
-% need to be modified.  This means that Open/Closed principle is not being
-% followed. It can cause a lot of trouble down the line, one function is
-% acceptable but what if we had thousands of functions that depended on shape.
-% Adding one shape would mean changing thousands of lines of code scattered all
-% over the place.
-
-% \begin{figure}[H]
-    % \begin{lstlisting}
-% type Shape 
-  % = Star size
-  % | Custom [vector]
-  % | Circle radius curvature
-  % | Square size
-
-% render : Shape -> IO ()
-% render shape =
-	% case shape of
-		% Star size = Star.render(size)
-		% ...
-
-% -- Do the same thing
-% renderMenu : Shape -> IO ()
-% renderMenu = ...
-    % \end{lstlisting}
-    % \caption{A sum type of shapes}
-    % \label{sumtypeshapes}
-% \end{figure}
-
-% A different approach is by using type classes and contravariance.  In order to
-% render shapes, there needs some general format which we can use to render them.
-% Let's assume we have some function $render : Set\ Vector \rightarrow IO\ ()$ for
-% rendering. This is great because we know that any shape can be represented as a
-% set of vectors in the end. Let us define $type\ Renderable\ a = Renderable\ (a \rightarrow
-% Set\ Vector)$. Now it becomes possible to define a render function $render :
-% Renderable\ a \rightarrow a \rightarrow IO\ ()$, that works for all shapes.  Shapes can be made in
-% separation now by contramapping properties, seen in fig~\ref{contracircle}.
-
-% \begin{figure}[H]
-    % \begin{lstlisting}
-% type Renderable a = Renderable (a -> Set Vector)
-% instance Contravariant a => Renderable a where
-	% contramap cf b = \a -> b $ cf a
-
-% type Circle = {radius: Int}
-% circle : Renderable Circle
-% circle = circleToVector . radius -- circleToVector turns it to vector
-
-% setRadiusFactor :  Int -> Renderable Circle -> Renderable Circle
-% setRadiusFactor factor = contramap ({radius = factor})
-
-% type Custom = {scale : Int, shape : Set Vector}
-% custom : Renderable Custom
-% custom = scale * shape
-
-% addVertex : Vector -> Renderable Custom -> Renderable Custom
-% addVertex vertex = contramap (Set.union vertex)
-    % \end{lstlisting}
-    % \caption{A contravariant approach to shapes}
-    % \label{contracircle}
-% \end{figure}
-
-% Contravariance forces adherence to a certain interface but leaves it open to
-% extension, in spirit to the Open/Closed Principle. A separate part of the
-% code can contain Renderable Square, Renderable Star without modifying the
-% original code. Thus, in Functional programming, contravariance and type classes
-% can enable OCP compliant code that solves the expression problem. 
-% So OCP compliant code is code that does not run into the expression problem.
+Chapter~\ref{background} established that the SOLID principles can be used as
+guidelines for creating maintainable software. Those principles will be used as
+criteria that Cause should be evaluated against.  However these guidelines do
+not state anything about the readability of the software.  Thus two different
+methods will be used to measure readability and to measure the testability,
+extendability, and error-proneness.
 
 \subsection{Evaluating readability through code reviews}
 
@@ -150,19 +73,19 @@ the program to check for defects, finding better solutions and find readability
 aspects. (ADD\_REFERENCE Code reviews)
 
 To measure the readability of the REST library, a semi-structured code review is
-conducted on five different people with varying knowledge of REST apis and
+conducted on five different people with varying knowledge of REST APIs and
 functional programming.
 
 \subsubsection{Semi-structured interviews}
 
-Semi-structured interviews diverges from a structured interview which has a set
-amount of questions. In a semi-structured interview the interview is open and
+Semi-structured interviews diverge from a structured interview which has a set
+amount of questions. In a semi-structured interview, the interview is open and
 allows for new ideas to enter the discussion. (ADD\_REFERENCE semi structured
-interievws) Semi-structured interviews are used to gather focused qualitative
+interviews) Semi-structured interviews are used to gather focused qualitative
 data. It is useful for finding insights about the readability of the code and if
-the code can actually be understood by others.
+the code can be understood by others.
 
-To conduct an semi-structured interview, the interview should avoid leading
+To conduct a semi-structured interview, the interview should avoid leading
 questions and use open-ended questions to get descriptive answers rather than
 yes or no answers. The questions that will be asked are presented below.
 
@@ -170,20 +93,20 @@ yes or no answers. The questions that will be asked are presented below.
     \item[Q1] What is your experience with RESTful APIs?
     \item[Q2] What is your experience with Express?
     \item[Q3] What is your experience with ReasonML?
-    \item[Q4] After being presented the code api, can you explain what it does?
+    \item[Q4] After being presented the code API, can you explain what it does?
     \item[Q5] Which media types does the endpoint post accept?
-    \item[Q6] What is the uri of DELETE?
+    \item[Q6] What is the URI of DELETE?
     \item[Q7] Which media types representations can the endpoint show?
     \item[Q8] Given a handler putInDatabase, Can you demonstrate how you would
-        extend the api and add a new endpoint for a PUT request.
-    \item[Q9] Looking at the javascript api, can you explain what it does?
+        extend the API and add a new endpoint for a PUT request.
+    \item[Q9] Looking at the JavaScript API, can you explain what it does?
     \item[Q10] Which media types does the endpoint get accept?
     \item[Q11] Which content type and accept does post have?
 \end{description}
 
-The interviewer will also be informed that the name of the file off the code is
-BookApi.re, re being the file extension of ReasonML, and BookApi.js, js being
-the file extension of javascript, respectively. 
+The interviewer will also be informed that the name of the file of the code is
+BookApi.re, re is the file extension of ReasonML, and BookApi.js, js is the file
+extension of javascript, respectively. 
 
 \subsection{Evaluating the answers}
 
@@ -196,7 +119,7 @@ So in summary, the way each aspect of maintainability will be evaluated in both
 solutions by the following:
 
 \begin{description}
-    \item [Testability] Evaulated by comparing the number of dependencies that
+    \item [Testability] Evaluated by comparing the number of dependencies that
     need to be mocked. 
     \item [Extendability] Evaluated by comparing to SOLID principles.
     \item [Readability] Evaluated by comparing to SOLID principles.

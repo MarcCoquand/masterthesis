@@ -1,27 +1,26 @@
 \chapter{Reflections}\label{reflection}
 
-From Chapter~\ref{conclusion} we found that that the functional solutions had
-negative impacts in software structural quality. This chapter aims
-in Section~\ref{futurework} establish how these results can be improved. It also
-aims to conclude this thesis and give suggestions for future research and how it
-can be conducted.
+Chapter~\ref{conclusion} found that that the functional solutions had
+negative impacts in software structural quality.  Section~\ref{futurework}
+describes how these results can be improved. This chapter concludes this thesis
+and give suggestions for future research and how it can be conducted.
 
 \section{Future work}\label{futurework}
 
-SOLID principles places a lot of emphasis on extendability and that modifying
-original code is bad practice. It is questionable if these principles are
-relevant for strongly typed languages, as the types indicate if there are any
-errors in the code, making it easier to refactor.
+SOLID principles emphasis extendability and that modifying original code is bad
+practice. It is questionable if these principles are relevant for strongly typed
+languages, as the types indicate if there are any errors in the code, making it
+easier to refactor.
 
 A lot of the errors in readability might be possible to fix and it might be that
-they are not inherent to the language itself. Some were fixed afterwards, the
+they are not inherent to the language itself. Some were fixed afterward, the
 version of the code in Appendix~\ref{cause} does not feature the problem with
-needing to write \texttt{type a. Route(a)}. It would be necessary  retry the
+needing to write \texttt{type a. Route(a)}. It would be necessary to retry the
 experiment with five more people to find out if the changes made the code more
 comprehensible. 
 
 Creating the REST library went through a lot of iterations and a lot of work was
-put into making it more readable. GADTs were suprisingly difficult to grok and
+put into making it more readable. GADTs were surprisingly difficult to grok and
 the applications were not clear but I hope with this thesis I demonstrated how
 they can be useful. I hope using GADTs as a way of constructing inputs to
 outputs proves useful for others.
@@ -46,8 +45,8 @@ code.
 \subsection{Functional programming for documentation}
 
 When creating software, engineers tend to also document the software for future
-use to make it more maintainable. In servers this is usually done manually.
-(ADD\_REFERENCE) However if updates are made to the code, the engineer has to
+use to make it more maintainable. In servers, this is usually done manually.
+(ADD\_REFERENCE) However, if updates are made to the code, the engineer has to
 then also manually update the documentation which incurs maintenance costs. It
 is plausible that $specfication$ can also be used for documentation. This
 should be as simple as creating an evaluator for the $specification$ to
@@ -58,7 +57,7 @@ and minimizes maintenance costs of documentation by automating it.
 
 The effectiveness of SOLID has not been researched and it would be good to
 establish a correlation between software structural quality, defects and SOLID
-principles. However due to the expensive nature of software development, this
+principles. However, due to the expensive nature of software development, this
 proves to be difficult as you have to create the same software using different
 methods for comparison over multiple years which can lead to biases.
 
@@ -68,7 +67,7 @@ There is no way for the REST library to enforce that modification and verbs are
 linked. So if a specification specifies that it only works for GET requests,
 there is no way to statically enforce that no mutation is done. There might be a
 way to statically enforce that handlers with GET requests must use coeffects and
-that instead the handler describe what it requires from the
+that instead, the handler describes what it requires from the
 database.(ADD\_REFERENCE \url{http://tomasp.net/coeffects/})
 
 
@@ -83,8 +82,8 @@ to syntax and semantics which are not inherent to functional programming could
 have been eliminated.
 
 It is unclear if SOLID principles are the best principles for maintainable
-software in functional programming. For instance it might be worth asking if the
-expression problem is truely that big of a problem in practice for software
+software in functional programming. For instance, it might be worth asking if
+the expression problem is truly that big of a problem in practice for software
 developers.
 
 I was surprised to find that the readability was impacted negatively and that

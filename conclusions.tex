@@ -1,26 +1,25 @@
 \chapter{Conclusion}\label{conclusion}
 
  The objective of this study is to evaluate how the functional solution impacts
- the software quality. In Chapter~\ref{theory} we showed how functional
- programming can be used to enforce protocols and then using that created a
- library which enables developers to construct correct RESTful apis. Since the
- imperative solution does not enforce that a server is necessarily RESTful, it
- follows that for a user who would typically not create incorrect RESTful apis
- the functional solution can enforce a better software functional quality for
- RESTful apis. However as established in the start of Chapter~\ref{background}
- and~\ref{introduction}, software quality also encompasses the structural
- quality or maintainability. In Section~\ref{backgroundconclusion} we introduced
- the four points of maintainability that needed to be evaluted against the
- library. These were testability, extendability, readability and
- error-proneness. In order to do so we will review the results gathered in
- Chapter~\ref{results} and tie them together with the four points. These four
- points are what determine the software structural quality, which this chapter
- aims to do.
+ the software quality. Chapter~\ref{theory} showed how functional programming
+ can be used to enforce protocols and then using that created a library which
+ enables developers to construct correct RESTful APIs. Since the imperative
+ solution does not enforce that a server is necessarily RESTful, it follows that
+ for a user who would typically not create incorrect RESTful APIs the functional
+ solution can enforce a better software functional quality for RESTful APIs.
+ However, as established at the start of Chapter~\ref{background}
+ and~\ref{introduction}, software quality also encompasses structural quality or
+ maintainability. Section~\ref{backgroundconclusion} introduced the four points
+ of maintainability that needed to be evaluated against the library.  These were
+ testability, extendability, readability, and error-proneness.  Evaluation is
+ done by reviewing the results gathered in Chapter~\ref{results} and tie them
+ together with the four points. These four points are what determine the
+ software structural quality, which this chapter aims to do.
 
 \section{Evaluating the readability}
 
 We find that while everyone understood the Javascript version of the book api,
-two (P2 and P3) out of four faced difficulties with the ReasonML version.
+two (P2 and P3) out of four had difficulties with the ReasonML version.
 Encoders and decoders seemed to have confused P3, as they assumed it related to
 cryptography. P2 got confused by the type signature $type\ a.\ route(a)$, which
 is necessary for Ocaml to deduce the type signature as it otherwise can not
@@ -31,44 +30,44 @@ was almost able to except that they used the wrong function for handlers.
 
 Further research is needed to find how long it would take for the users to
 understand the code. We find that half of the users could understand the new
-code base without any form of introduction (P1 and P4). In production it might
-be valuable to find a more exact number how long it would take for users to
+code base without any form of introduction (P1 and P4). In production, it might
+be valuable to find a more exact number of how long it would take for users to
 understand it.  The study indicates that there are costs in readability to the
 code for inexperienced users. Arguably these costs seem to be minor and that
-after a brief introduction the code would be understood. However more research
+after a brief introduction the code would be understood. However, more research
 is needed to confirm that. It can also be argued that some of those costs can be
 mitigated by adding comments and making the changes in Section~\ref{futurework},
 but more research is needed to prove this.
 
 \section{Functional programming and SOLID}
 
-In this study we found that functional programming was capable of creating a
-library that was able aid in creating Single Responsibility principle, by
-encouraging the user to separate the REST specification from how the handler
-fetches the data. It also manages to enforce Interface Segregation Principle and
-Dependency Inversion Principle. This aids in reducing immobility, fragility and
-viscosity. It was inconclusive as to if it enforces Liskov substitution
-principle as further work is needed to create examples where this principle is
-properly tested. The functional solution also breaks Open/Closed principle for
+This study found that functional programming was capable of creating a library
+that could aid in creating Single Responsibility principle, by encouraging the
+user to separate the REST specification from how the handler fetches the data.
+It also manages to enforce the Interface Segregation Principle and Dependency
+Inversion Principle. This aids in reducing immobility, fragility, and viscosity.
+It was inconclusive as to if it enforces the Liskov substitution principle as
+further work is needed to create examples where this principle is properly
+tested. The functional solution also breaks the Open/Closed principle for
 situations where the user wants to add more details to a specification.
 
 \section{Summary}
 
 Recall that Chapter~\ref{background} introduced the four pillars of concern:
-testability, extendability, readability and error-proneness. From these studies
-we can conclude that
+testability, extendability, readability, and error-proneness. These studies
+conclude that
 
 \begin{description}
-    \item[Testability] Software became easier to test compared to an unopiniated
+    \item[Testability] Software became easier to test compared to an unopinionated
         solution as it managed to invert the control so that unit tests can be
         made for testing specifications which in the imperative solution would
         require an integration test.
 	\item[Extendability] No gains were made in extendability when using the 
-	functional solution, in fact it has a negative impact due to breaking OCP.
+	functional solution, it had a negative impact due to breaking OCP.
     \item[Error-proneness] The functional solution marginally affects the
-        error-proneness as we find that person 3 in Q8 was unable to extend the
+        error-proneness as person 3 in Q8 was unable to extend the
         code without making an error.
-    \item[Readability] affected negatively since P3 and P2 were unable to
+    \item[Readability] Affected negatively since P3 and P2 were unable to
         comprehend the code.
 \end{description}
 
