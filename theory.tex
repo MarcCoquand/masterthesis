@@ -227,15 +227,15 @@ checking that its equal to its intended value, which requires manual review.
 \section{Servers using GADTs: Router}\label{router}
 
 GADTs can be used to construct a statically correct EDSL for server
-routers.~\cite{evanrouter}
-A server router parses incoming requests and extracts query parameters and
-parameters and executes a function depending on the result. We first define a
-minimal example of a GADT $Router$, in Figure~\ref{routergadtminimal}.  The two
-constructors $Top$ and $Exact$ describe matching \url{/} or for a given string
-$s$, \url{/s} respectively. It should also be possible to link two $Router$
-together to allow us to match nested URLs. Thus the constructor $Compose$ allows
-composing routers together composed of multiple parts.  For instance the URL
-\url{/hello/world} corresponds to $Compose\ (Exact\ "hello")\ (Exact\ "world")$.
+routers.~\cite{evanrouter} A server router parses incoming requests and
+extracts query parameters and parameters and executes a function depending on
+the result. Figure~\ref{routergadtminimal} defines a minimal example of a GADT
+$Router$.  The two constructors $Top$ and $Exact$ describe matching \url{/} or
+for a given string $s$, \url{/s} respectively. It should also be possible to
+link two $Router$ together to allow us to match nested URLs. Thus the
+constructor $Compose$ allows composing routers together composed of multiple
+parts.  For instance the URL \url{/hello/world} corresponds to $Compose\
+(Exact\ "hello")\ (Exact\ "world")$.
 
 \begin{figure}[H]
     \begin{lstlisting}
@@ -342,7 +342,7 @@ each part is one or more of the following:
     \item Status code on success
     \item A function called a handler, which takes some parameters and returns
         either the resource or a failure message and failure code. This is used
-        for side effects, for instance, database access. We model the result as
+        for side effects, for instance, database access. The result is modeled as
         a sum type $Result\ a = Ok\ a\ |\ Fail\ Message\ Code$.
 \end{itemize}
 
@@ -397,9 +397,9 @@ The constructor $handler$ now takes as a parameter a \texttt{Specification
 handler function that correctly handles the parameter values and a
 responseBuilder without an encoder can produce a tuple of the resulting
 resource, as well as an encoder of that resource to the appropriate media,
-accept header. We enforce statically that the handlerFunction produces something
-which might fail ($Result\ resource$), so that the library can automatically
-handle that error and throw the appropriate response. 
+accept header. $Specification$ enforce statically that the handlerFunction
+produces something which might fail ($Result\ resource$), so that the library
+can automatically handle that error and throw the appropriate response. 
 
 The $Many$ constructor is for transforming multiple endpoints into a single one.
 Also notice that Handler produces a $Specification\ Request\ (Result Response)$.
@@ -664,13 +664,14 @@ the previous code instead.
 \section{Summary}
 
 This chapter introduced the concepts of functional programming and then from
-those concepts created a GADT that can be used to construct REST specifications.
-We have then demonstrated how a value of specification can be used to construct
-REST compliant server application, I.E. a higher-order function $make :
-Specification\ Request\ Response \rightarrow (Request\rightarrow Response)$ was
-constructed. The interpreter can be found in Appendix~\ref{cause}. This chapter
-also established the guidelines for evaluating functional programs adherence to
-SOLID principles, which were originally introduced for Object-oriented programs.
-The library created can construct a functionally correct server which can be
-used to evaluate the software structural quality of functional programming by
-comparing it to an imperative version. 
+those concepts created a GADT that can be used to construct REST
+specifications.  This chapter then demonstrated how a value of specification
+can be used to construct REST compliant server application, I.E. a higher-order
+function $make : Specification\ Request\ Response \rightarrow
+(Request\rightarrow Response)$ was constructed. The interpreter can be found in
+Appendix~\ref{cause}. This chapter also established the guidelines for
+evaluating functional programs adherence to SOLID principles, which were
+originally introduced for Object-oriented programs.  The library created can
+construct a functionally correct server which can be used to evaluate the
+software structural quality of functional programming by comparing it to an
+imperative version. 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.20)  15 AUG 2019 10:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.20)  15 AUG 2019 11:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -794,15 +794,15 @@ Overfull \hbox (12.71443pt too wide) in paragraph at lines 247--250
 []\T1/cmr/m/n/12 Here, re-spon-si-bil-ity means ``rea-son to change''. Mod-
  []
 
-[13]) (./method.tex [14] [15]
+[13]) (./method.tex [14]
 Chapter 3.
-[16
+[15
 
-] [17] [18]) (./theory.tex [19]
+] [16] [17]) (./theory.tex [18]
 Chapter 4.
-[20
+[19
 
-] [21] [22] [23] [24] [25] [26]
+] [20] [21] [22] [23] [24] [25]
 Overfull \hbox (0.41774pt too wide) in paragraph at lines 349--360
 []\T1/cmr/m/n/12 An end-point spec-i-fi-ca-tion is de-fined as $\OML/cmm/m/it/1
 2 Specification Request \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 Maybe Response\OT1/cm
@@ -815,7 +815,7 @@ Overfull \hbox (32.05428pt too wide) in paragraph at lines 349--360
 n/12 . The con-struc-tor \T1/cmtt/m/n/12 Integer
  []
 
-[27]
+[26]
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 379.
 
@@ -824,7 +824,7 @@ Overfull \hbox (42.94579pt too wide) in paragraph at lines 395--403
 w takes as a pa-ram-e-ter a \T1/cmtt/m/n/12 Specification (handlerFunction,
  []
 
-[28]
+[27]
 Underfull \hbox (badness 10000) in paragraph at lines 420--423
 
  []
@@ -855,11 +855,11 @@ m/it/12 Uri:takeInt \OT1/cmr/m/n/12 : \OML/cmm/m/it/12 Specification$\T1/cmr/m/
 n/12 . $\OML/cmm/m/it/12 Uri:is$
  []
 
-[29] [30] [31] [32] [33]) (./results.tex [34]
+[28] [29] [30] [31] [32]) (./results.tex [33]
 Chapter 5.
-[35
+[34
 
-] [36] [37]
+] [35] [36]
 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 116.
@@ -873,15 +873,15 @@ Overfull \hbox (4.51875pt too wide) in paragraph at lines 117--175
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 179.
 
-[38] [39] [40]) (./conclusions.tex [41]
+[37] [38] [39]) (./conclusions.tex [40]
 Chapter 6.
-[42
+[41
 
-] [43]) (./reflections.tex [44]
+] [42]) (./reflections.tex [43]
 Chapter 7.
-[45
+[44
 
-] [46]) (./thesis.bbl [47] [48
+] [45]) (./thesis.bbl [46] [47
 
 ]
 Underfull \hbox (badness 6396) in paragraph at lines 53--57
@@ -889,7 +889,7 @@ Underfull \hbox (badness 6396) in paragraph at lines 53--57
 Septem-ber
  []
 
-[49]
+[48]
 Underfull \hbox (badness 3168) in paragraph at lines 116--119
 []\T1/cmr/m/n/12 E. Czaplicki, ``package.elm-lang.org,'' 2019.  $\T1/cmtt/m/n/1
 2 https : / / github . com / elm /
@@ -901,28 +901,28 @@ Underfull \hbox (badness 10000) in paragraph at lines 125--129
 ]test-[]with-[]5-[]users/$
  []
 
-) (./appendix.tex [50] [51
+) (./appendix.tex [49] [50
 
 
 ]
 Appendix A.
-(./reasonServer.re [52
+(./reasonServer.re [51
 
-] [53] [54]) (./nodeServer.js [55] [56]) [57]
+] [52] [53]) (./nodeServer.js [54] [55]) [56]
 Appendix B.
-[58
+[57
 
 ] (./reasonmlspec.re
 Overfull \hbox (98.90498pt too wide) in paragraph at lines 2--3
 [][][][] 
  []
 
-[59] [60] [61] [62]
+[58] [59] [60] [61]
 Overfull \hbox (91.50203pt too wide) in paragraph at lines 179--180
 [][][][][][] 
  []
 
-[63] [64] [65])) [66] (./thesis.aux)
+[62] [63] [64])) [65] (./thesis.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -953,10 +953,10 @@ ive/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/cm-super/sfti1728.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/cm-super/sftt1000.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/cm-super/sftt1200.pfb>
-Output written on thesis.pdf (68 pages, 485715 bytes).
+Output written on thesis.pdf (67 pages, 485012 bytes).
 PDF statistics:
- 301 PDF objects out of 1000 (max. 8388607)
- 210 compressed objects within 3 object streams
+ 298 PDF objects out of 1000 (max. 8388607)
+ 208 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

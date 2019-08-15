@@ -2,19 +2,19 @@
 
 Software structural quality encompasses the maintainability aspects of the
 software, which includes aspects such as readability, error-proneness,
-extendability, and testability. The software usually evolves as new requirements
-come in, so even though it might be \textit{functionally} good at a time, the
-developer will have to modify the code. Thus in the industry, it is not enough
-that software is only functionally correct, it also has to be structurally of
-good quality. There is also an importance in Q\&A processes to be able to test
-that the software works correctly to check that the software also is
-functionally correct after modification. This chapter aims to introduce us to
-REST servers and what are construction concerns when making them, I.E. what is
-good software functional quality in REST servers. Then once we have established
-good functional quality, we introduce requirements in large scale software and
-the challenges that arise in the maintainability of the software so that we can
-establish guidelines of practices that allow for good software structural
-quality.
+extendability, and testability. The software usually evolves as new
+requirements come in, so even though it might be \textit{functionally} good at
+a time, the developer will have to modify the code. Thus in the industry, it is
+not enough that software is only functionally correct, it also has to be
+structurally of good quality. There is also an importance in Q\&A processes to
+be able to test that the software works correctly to check that the software
+also is functionally correct after modification. This chapter aims to introduce
+us to REST servers and what are construction concerns when making them, I.E.
+what is good software functional quality in REST servers. Then once good
+functional quality has been established, requirements in large scale software
+is introduced and the challenges that arise in the maintainability of the
+software. From that guidelines of practices that allow for good software
+structural quality can be established.
 
 \section{Introduction to REST servers}
 
@@ -247,20 +247,19 @@ flexible and understandable. The SOLID guidelines are:
     \item [Single responsibility principle] Here, responsibility means ``reason
         to change''. Modules and classes should have one reason to change and no
         more.
-    \item [Open/Closed principle] States we should write our modules to be
-        extended without modification of the source code.
+    \item [Open/Closed principle] states that modules should be
+        extensible without modification of the source code.
     \item [Liskov substitution principle] Given a base class and a derived
         class, the user of a base class should be able to use the derived
         class and the program should function properly.
     \item [Interface segregation principle] No client should be forced to depend
         on methods it does not use. The general idea is that you want to split
         big interfaces to smaller, specific ones.
-    \item [Dependency inversion principle] A strategy to avoid making our source
-        code dependent on specific implementations is by using this principle.
-        This allows us, if we depend on one third-party module, to swap that
-        module for another one should we need to. This can be done by creating
-        an abstract interface and then instance that interface with a class that
-        calls the third-party operations.
+	\item [Dependency inversion principle] A strategy to avoid source code
+being dependent on specific implementations.  This allow, to swap a dependency
+for another without modifying the logic using that dependency. This can be done
+by creating an abstract interface and then instance that interface with a class
+that calls the third-party operations.
 \end{description}
 
 Using a SOLID architecture helps to make programs that are not as dependent on
@@ -285,18 +284,17 @@ types) and other constructs.~\cite{moors2007towards}
 It is possible to combine the type system with design patterns to force the
 developer to create the right thing. Chapter~\ref{theory} will introduce a REST
 library, which has been created to force the developer to create REST compliant
-servers using Functional programming. However, as the REST library we in
-introduce in Chapter~\ref{theory} makes heavy use of functional programming it
-might not be as understandable.  Functional programming is not a popular
-software paradigm when compared to Object-oriented
-programming~\cite{tiobe2013tiobe}, thus readability might be affected.
-Understandability is important to reduce the learning time for programmers and
-cut down learning costs. Thus readability of software is an important criterion
-for good software structural quality.
+servers using Functional programming. However, as the REST library introduced
+in Chapter~\ref{theory} makes heavy use of functional programming it might not
+be as understandable.  Functional programming is not a popular software
+paradigm when compared to Object-oriented programming~\cite{tiobe2013tiobe},
+thus readability might be affected.  Understandability is important to reduce
+the learning time for programmers and cut down learning costs. Thus readability
+of software is an important criterion for good software structural quality.
 
 \section{Summary}\label{backgroundconclusion}
 
-This chapter introduced REST APIs and their requirements.  We also established
+This chapter introduced REST APIs and their requirements.  It also established
 development concerns during the production of servers, which can be be
 summarised with these four points:
 
@@ -309,17 +307,17 @@ summarised with these four points:
         enforce the right structure.
 \end{description}
 
-We went over the concerns of what happens when scaling software and that to
-ensure the quality then developers employ tests. We established that some of the
-quality can also be ensured by the type system, which aids in catching bugs and
-as will be demonstrated in Chapter~\ref{theory}, enables us to ensure that
-servers are RESTful by construction. 
+This chapter went over the concerns of what happens when scaling software and
+that to ensure the quality then developers employ tests. It also established
+that some of the quality can also be ensured by the type system, which aids in
+catching bugs and as will be demonstrated in Chapter~\ref{theory}, enables us
+to ensure that servers are RESTful by construction. 
 
 To do unit tests, good architecture should also make it easier to create mocks.
-Thus we introduced SOLID principles, which works as a guideline for creating
-extensible software which can be modified over time and where dependencies are
-inverted making it easier to mock. However SOLID does not address readability of
-code. Even if the code is extensible it might not be understandable, meaning the
-developer will be incapable of extending it anyway.  Thus when evaluating
-software structural quality it is important to both look at rotten design and
-readability.
+Thus this chapter introduced SOLID principles, which works as a guideline for
+creating extensible software which can be modified over time and where
+dependencies are inverted making it easier to mock. However SOLID does not
+address readability of code. Even if the code is extensible it might not be
+understandable, meaning the developer will be incapable of extending it anyway.
+Thus when evaluating software structural quality it is important to both look
+at rotten design and readability.
