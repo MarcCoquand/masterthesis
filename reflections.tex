@@ -46,12 +46,12 @@ code.
 
 When creating software, engineers tend to also document the software for future
 use to make it more maintainable. In servers, this is usually done manually.
-(ADD\_REFERENCE) However, if updates are made to the code, the engineer has to
-then also manually update the documentation which incurs maintenance costs. It
-is plausible that $specfication$ can also be used for documentation. This
-should be as simple as creating an evaluator for the $specification$ to
-generate the documentation. This would ensure that documentation stays in sync
-and minimizes maintenance costs of documentation by automating it.
+However, if updates are made to the code, the engineer has to then also
+manually update the documentation which incurs maintenance costs. It is
+plausible that $specfication$ can also be used for documentation. This should
+be as simple as creating an evaluator for the $specification$ to generate the
+documentation. This would ensure that documentation stays in sync and minimizes
+maintenance costs of documentation by automating it.
 
 \subsection{Evaluating effectiveness of SOLID}
 
@@ -68,7 +68,7 @@ linked. So if a specification specifies that it only works for GET requests,
 there is no way to statically enforce that no mutation is done. There might be a
 way to statically enforce that handlers with GET requests must use coeffects and
 that instead, the handler describes what it requires from the
-database.(ADD\_REFERENCE \url{http://tomasp.net/coeffects/})
+database.~\cite{gaboardi2016combining}
 
 
 \section{Improvements}

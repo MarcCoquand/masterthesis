@@ -6,7 +6,7 @@ procedural way of doing it. Then there is a contender, a functional approach, as
 an alternative way to build applications. Functional programming originates from
 1936 from Lambda calculus~\cite{Turner} and even though functional programming
 is old, the industry most commonly uses Object-oriented, imperative, languages.
-(ADD\_REFERENCE usage statistics) As of today, defects in software are still
+~\cite{tiobe2013tiobe} As of today, defects in software are still
 commonplace with the average defect rate being 15- 50 per 10000 lines of
 code.~\cite{McConnell:2004:CCS:1096143} This indicates that the tools used might
 be inefficient and improvements can be made. Also with defects being so common
@@ -23,7 +23,7 @@ software is produced.  To check that the software is correct, software engineers
 create tests. To create tests, the engineer employs various patterns
 and tools in the code to make the code easier to test. These range from
 Test-driven development, Object-oriented programming, unit
-testing(ADD\_REFERENCE TDD) to the use of static analysis and logical
+testing~\cite{beck2003test} to the use of static analysis and logical
 proofs. 
 
 Software structural quality refers to how well the software adheres to
@@ -49,10 +49,11 @@ language and one in a functional language.  These will then be compared using
 guidelines and interviews to find the impact in structural quality.
 
 In servers, it is common to use a protocol called REST to establish
-communication between servers and clients.(ADD\_REFERENCE REST) These servers
-are called RESTful APIs. In popular solutions, such as Express, developers are
-not forced to ensure that the server follows REST, which can potentially lead to
-errors and maintainability problems. This thesis is outlined as follows:
+communication between servers and clients.~\cite{battle2008bridging} These
+servers are called RESTful APIs. In popular solutions, such as Express,
+developers are not forced to ensure that the server follows REST, which can
+potentially lead to errors and maintainability problems. This thesis is outlined
+s follows:
 
 \begin{description}
     \item[Chapter~\ref{background}] explains RESTful APIs and establishes the

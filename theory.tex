@@ -13,7 +13,7 @@ functional programming.
 
  While different definitions exist of what Functional programming means, here 
  functional programming is a paradigm that uses of pure functions,
- decoupling the state from logic and immutable data.(ADD\_REFERENCE)
+ decoupling the state from logic and immutable data.~\cite{hughes1989functional}
 
 \begin{description}
 \item[ Purity ]
@@ -26,7 +26,7 @@ When a function is pure it means that calling a function with the same arguments
         currenttime \cdot x$, $g(5)$ will yield a different value depending on
         what time it is called. This makes it dependant on some state of the
         world. Or given $x=0$, $h()=x+1$. Then $h()$ will yield $x=1$ and $(h
-        \circ h)()$ will yield $x=2$, making it impure.~\cite{wikipedia_pure}
+        \circ h)()$ will yield $x=2$, making it impure.~\cite{hughes1989functional}
 
 \item[ Immutable data by default ]
 
@@ -71,8 +71,8 @@ Even if functional programs emphasize purity applications still need to deal
         managing the way they intermingle. It enables handling errors
         and state.\footnote{This is simplified as Monads are notoriously
         difficult to explain.}.  As a strategy to further separate state and logic, one can construct a
-three-layered architecture called the three-layer Haskell cake.
-(ADD\_REFERENCE) Here,
+three-layered architecture called the three-layer Haskell
+cake.~\cite{parsonsmatt} Here,
         the strategy is that one implements simple effectful functions,
         containing no logic as a base layer. Then on a second layer, one
         implements an interface that implements a pure solution and one
@@ -89,22 +89,22 @@ maintainable rest library.
 \subsection{ADTs: Sum types and product types}\label{types}
 
 A type is in Haskell is informally a \textit{set} of possible values that a
-given data can have.(ADD\_REFERENCE) This can be $int$, $char$ and
-custom-defined types. A \textit{sum type}, \textit{Algebraic data type (ADT)} or
-\textit{union type} is a type which is the sum of types, meaning that it can be
-one of those its given types. For example the type \texttt{type IntChar = Int |
-Char} is either an Int or a Char. A useful application for sum types are enums
-such as \texttt{type Color = Red | Green | Blue}, meaning that a value of type
-Color is either red, green or blue. A sum type can be used to model data which
-may or may not have a value, by introducing the Maybe type: \texttt{type Maybe
-value = Just value | Nothing}. A product type is a type which is the product of
-types, for example, \texttt{type User = User Name Email}.  Informally, a product
-type is similar to an immutable record in Javascript. (ADD\_REFERENCE) $Maybe$
-allows us to model computations that might fail. For example given $sqrt(x) =
-\sqrt{x},\, x\in \mathbb{Z}$ then $sqrt(-1)$ is undefined and would cause
-Haskell to crash.  Instead by introducing a function \texttt{safeSqrt}, where
-\texttt{safeSqrt x = if x > 0 then Just (sqrt x) else Nothing}, the program can
-force the developer to handle the special case of negative numbers. 
+given data can have.~\cite{evantypesassets} This can be $int$, $char$ and
+custom-defined types. A \textit{sum type}, \textit{Algebraic data type (ADT)}
+or \textit{union type} is a type which is the sum of types, meaning that it can
+be one of those its given types. For example the type \texttt{type IntChar =
+Int | Char} is either an Int or a Char. A useful application for sum types are
+enums such as \texttt{type Color = Red | Green | Blue}, meaning that a value of
+type Color is either red, green or blue. A sum type can be used to model data
+which may or may not have a value, by introducing the Maybe type: \texttt{type
+Maybe value = Just value | Nothing}. A product type is a type which is the
+product of types, for example, \texttt{type User = User Name Email}.
+Informally, a product type is similar to an immutable record in Javascript.
+$Maybe$ allows us to model computations that might fail. For example given
+$sqrt(x) = \sqrt{x},\, x\in \mathbb{Z}$ then $sqrt(-1)$ is undefined and would
+cause Haskell to crash.  Instead by introducing a function \texttt{safeSqrt},
+where \texttt{safeSqrt x = if x > 0 then Just (sqrt x) else Nothing}, the
+program can force the developer to handle the special case of negative numbers. 
 
 \subsection{Functors and Contravariant Functors}
 
@@ -125,7 +125,7 @@ is said to be in positive position and the type is covariant. A type can be a
 Functor only if it is covariant.
 
 Contravariant Functors have a function $contramap : (a\rightarrow b) \rightarrow
-m\ b \rightarrow m\ a$. (ADD\_REFERENCE contravariacn) These are useful for
+m\ b \rightarrow m\ a$.~\cite{bancerek2001miscellaneous} These are useful for
 defining how the value should be \textit{consumed}. For example, a $type\
 encoder = a\rightarrow encoded$, defines an encoder. The contravariant functor
 would allow transforming the encoder into intermediate value.
@@ -133,19 +133,19 @@ would allow transforming the encoder into intermediate value.
 \subsection{Domain-specific languages}
 
 A domain-specific language (DSL) is a programming language made for a specific
-domain.(ADD\_REFERENCE DSL) Typical examples of DSLs are HTML for designing web
-pages and SQL for making database calls. An EDSL is such a language embedded
-within the syntax of the language.(ADD\_REFERENCE edsl) EDSLs are useful due to
-the ability to separate the evaluation of the logic of the program to the logic
-itself. In the case of REST APIs, an EDSL can be developed which can
-interpret REST APIs and use them for different purposes. 
+domain.~\cite{elic2007systematic} Typical examples of DSLs are HTML for
+designing web pages and SQL for making database calls. An EDSL is such a
+language embedded within the syntax of the language.~\cite{hudak1996building}
+EDSLs are useful due to the ability to separate the evaluation of the logic of
+the program to the logic itself. In the case of REST APIs, an EDSL can be
+developed which can interpret REST APIs and use them for different purposes. 
 
 \subsection{Generalized algebraic data type}\label{gadt}
 
 One method for constructing EDSLs in functional programming is through the use
-of \textit{generalized algebraic data type} (GADT).(ADD\_REFERENCE GADT)  They
-specify, depending on the input, what the output should be of that type. GADT
-enables implementing \textit{domain-specific languages} (DSL) and ensure
+of \textit{generalized algebraic data type} (GADT).~\cite{cheney2003first}
+They specify, depending on the input, what the output should be of that type.
+GADT enables implementing \textit{domain-specific languages} (DSL) and ensure
 that values of the DSL are statically correct. 
 
 \begin{figure}[H]
@@ -221,14 +221,13 @@ ensure statically that all platforms follow the same logic. So GADTs are useful
 for creating expressions that can, later on, be evaluated.  Since the logic is
 separated from the evaluation and correct by construction it means that only the
 evaluator needs to be tested, which can be done using property-based testing
-(ADD\_REFERENCE testing the hard stuff John hughes). Testing the logic means
+.~\cite{hughes2016experiences} Testing the logic means
 checking that its equal to its intended value, which requires manual review.
 
 \section{Servers using GADTs: Router}\label{router}
 
 GADTs can be used to construct a statically correct EDSL for server
-routers.(ADD\_REFERENCE code from
-https://github.com/elm/package.elm-lang.org/blob/master/src/backend/Server/Router.hs)
+routers.~\cite{evanrouter}
 A server router parses incoming requests and extracts query parameters and
 parameters and executes a function depending on the result. We first define a
 minimal example of a GADT $Router$, in Figure~\ref{routergadtminimal}.  The two
@@ -651,8 +650,7 @@ seen as the same as the expression problem. The expression problem states that
 \textit{``The goal is to define a datatype by cases, where one can add new cases
     to the datatype and new functions over the datatype, without recompiling
 existing code and while retaining static type safety (e.g., no casts).''}
-
-(ADD\_REFERENCE \url{http://homepages.inf.ed.ac.uk/wadler/papers/expression/expression.txt})
+~\cite{torgersen2004expression}
 
 The similarity with expression problem and OCP is that you want to be able to
 extend the program (add new cases to the datatype) without recompiling existing

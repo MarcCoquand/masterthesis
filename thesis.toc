@@ -11,7 +11,7 @@
 \contentsline {subsection}{\numberline {2.3.3}End-2-End Tests}{11}
 \contentsline {subsection}{\numberline {2.3.4}Challenges}{11}
 \contentsline {section}{\numberline {2.4}SOLID principles}{12}
-\contentsline {section}{\numberline {2.5}Functional programming for correct constructions}{14}
+\contentsline {section}{\numberline {2.5}Functional programming for correct constructions}{13}
 \contentsline {section}{\numberline {2.6}Summary}{14}
 \contentsline {chapter}{\numberline {3}Method}{16}
 \contentsline {subsection}{\numberline {3.0.1}Aims}{16}
@@ -29,7 +29,7 @@
 \contentsline {section}{\numberline {4.3}Functional servers}{26}
 \contentsline {section}{\numberline {4.4}Using the library}{29}
 \contentsline {subsection}{\numberline {4.4.1}Defining an endpoint}{29}
-\contentsline {subsubsection}{A get endpoint to a book API}{30}
+\contentsline {subsubsection}{Example: A get endpoint to a book API}{30}
 \contentsline {section}{\numberline {4.5}SOLID principles in Functional programming}{30}
 \contentsline {subsection}{\numberline {4.5.1}Single Responsibility Principle}{31}
 \contentsline {subsection}{\numberline {4.5.2}Liskov Substitution Principle}{31}
@@ -60,13 +60,13 @@
 \contentsline {subsection}{\numberline {7.1.5}Limitations}{46}
 \contentsline {section}{\numberline {7.2}Improvements}{47}
 \contentsline {section}{\numberline {7.3}Concluding remarks}{47}
-\contentsline {chapter}{Appendices}{49}
-\contentsline {chapter}{\numberline {A}Implementation}{50}
-\contentsline {section}{\numberline {A.1}ReasonML REST implementation}{50}
-\contentsline {section}{\numberline {A.2}NodeJS REST implementation}{53}
-\contentsline {chapter}{\numberline {B}Interview answers for Q8}{56}
-\contentsline {subsection}{\numberline {B.0.1}Person 1}{56}
-\contentsline {subsection}{\numberline {B.0.2}Person 2}{56}
-\contentsline {subsection}{\numberline {B.0.3}Person 3}{56}
-\contentsline {subsection}{\numberline {B.0.4}Person 4}{57}
-\contentsline {section}{\numberline {B.1}ReasonML implementation of Specification}{57}
+\contentsline {chapter}{Appendices}{51}
+\contentsline {chapter}{\numberline {A}Implementation}{52}
+\contentsline {section}{\numberline {A.1}ReasonML REST implementation}{52}
+\contentsline {section}{\numberline {A.2}NodeJS REST implementation}{55}
+\contentsline {chapter}{\numberline {B}Interview answers for Q8}{58}
+\contentsline {subsection}{\numberline {B.0.1}Person 1}{58}
+\contentsline {subsection}{\numberline {B.0.2}Person 2}{58}
+\contentsline {subsection}{\numberline {B.0.3}Person 3}{58}
+\contentsline {subsection}{\numberline {B.0.4}Person 4}{59}
+\contentsline {section}{\numberline {B.1}ReasonML implementation of Specification}{59}

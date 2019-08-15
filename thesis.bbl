@@ -1,10 +1,15 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{Turner}
 D.~A. Turner, ``Some history of functional programming languages,'' in {\em
   Proceedings of the 2012 Conference on Trends in Functional Programming -
   Volume 7829}, TFP 2012, (New York, NY, USA), pp.~1--20, Springer-Verlag New
   York, Inc., 2013.
+
+\bibitem{tiobe2013tiobe}
+T.~Group {\em et~al.}, ``Tiobe index for ranking the popularity of programming
+  languages,'' 2019.
+\newblock Accessed 2019-08-15.
 
 \bibitem{McConnell:2004:CCS:1096143}
 S.~McConnell, {\em Code Complete, Second Edition}.
@@ -13,6 +18,15 @@ S.~McConnell, {\em Code Complete, Second Edition}.
 \bibitem{Pressman:2004:SEP:994110}
 R.~S. Pressman, {\em Software Engineering: A Practitioner's Approach}.
 \newblock New York, NY, USA: McGraw-Hill, Inc., 6~ed., 2005.
+
+\bibitem{beck2003test}
+K.~Beck, {\em Test-driven development: by example}.
+\newblock Addison-Wesley Professional, 2003.
+
+\bibitem{battle2008bridging}
+R.~Battle and E.~Benson, ``Bridging the semantic web and web 2.0 with
+  representational state transfer (rest),'' {\em Web Semantics: Science,
+  Services and Agents on the World Wide Web}, vol.~6, no.~1, pp.~61--69, 2008.
 
 \bibitem{Fielding:2000:ASD:932295}
 R.~T. Fielding, {\em Architectural Styles and the Design of Network-based
@@ -24,14 +38,98 @@ R.~T. Fielding, {\em Architectural Styles and the Design of Network-based
 L.~Chen, ``Microservices: Architecting for continuous delivery and devops,'' 03
   2018.
 
+\bibitem{williams2009effectiveness}
+L.~Williams, G.~Kudrjavets, and N.~Nagappan, ``On the effectiveness of unit
+  test automation at microsoft,'' in {\em 2009 20th International Symposium on
+  Software Reliability Engineering}, pp.~81--89, IEEE, 2009.
+
+\bibitem{coelho2006unit}
+R.~Coelho, U.~Kulesza, A.~von Staa, and C.~Lucena, ``Unit testing in
+  multi-agent systems using mock agents and aspects,'' in {\em Proceedings of
+  the 2006 international workshop on Software engineering for large-scale
+  multi-agent systems}, pp.~83--90, ACM, 2006.
+
 \bibitem{martinrobert}
 M.~C. Robert, ``Design principles and design patterns,'' September 2015.
 \newblock originally \url{objectmentor.com}, archived at
   \url{https://fi.ort.edu.uy/innovaportal/file/2032/1/design_principles.pdf},
-  accessed Feb 2018.
+  accessed Feb 2019.
 
-\bibitem{wikipedia_pure}
-``Pure function,'' Aug 2018.
-\newblock \url{https://en.wikipedia.org/wiki/Pure_function}, accessed Feb 2019.
+\bibitem{cardelli1996type}
+L.~Cardelli, ``Type systems,'' {\em ACM Computing Surveys}, vol.~28, no.~1,
+  pp.~263--264, 1996.
+
+\bibitem{moors2007towards}
+A.~Moors, F.~Piessens, and M.~Odersky, ``Towards equal rights for higher-kinded
+  types,'' in {\em 6th International Workshop on Multiparadigm Programming with
+  Object-Oriented Languages at the European Conference on Object-Oriented
+  Programming (ECOOP)}, Citeseer, 2007.
+
+\bibitem{bosu2015characteristics}
+A.~Bosu, M.~Greiler, and C.~Bird, ``Characteristics of useful code reviews: An
+  empirical study at microsoft,'' in {\em 2015 IEEE/ACM 12th Working Conference
+  on Mining Software Repositories}, pp.~146--156, IEEE, 2015.
+
+\bibitem{longhurst2003semi}
+R.~Longhurst, ``Semi-structured interviews and focus groups,'' {\em Key methods
+  in geography}, vol.~3, pp.~143--156, 2003.
+
+\bibitem{hughes1989functional}
+J.~Hughes, ``Why functional programming matters,'' {\em The computer journal},
+  vol.~32, no.~2, pp.~98--107, 1989.
+
+\bibitem{parsonsmatt}
+M.~Parsons, ``Three layer haskell cake,'' Mars 2018.
+\newblock
+  \url{https://www.parsonsmatt.org/2018/03/22/three_layer_haskell_cake.html}
+  ,accessed 2019-08-15.
+
+\bibitem{evantypesassets}
+E.~Czaplicki, ``Types as sets,'' 2018.
+\newblock \url{https://guide.elm-lang.org/appendix/types_as_sets.html}
+  ,accessed 2019-08-15.
+
+\bibitem{bancerek2001miscellaneous}
+G.~Bancerek, ``Miscellaneous facts about functors,'' {\em J. form. math},
+  vol.~13, 2001.
+
+\bibitem{elic2007systematic}
+B.~Selic, ``A systematic approach to domain-specific language design using
+  uml,'' in {\em 10th IEEE International Symposium on Object and
+  Component-Oriented Real-Time Distributed Computing (ISORC'07)}, pp.~2--9,
+  IEEE, 2007.
+
+\bibitem{hudak1996building}
+P.~Hudak {\em et~al.}, ``Building domain-specific embedded languages,'' {\em
+  ACM Comput. Surv.}, vol.~28, no.~4es, p.~196, 1996.
+
+\bibitem{cheney2003first}
+J.~Cheney and R.~Hinze, ``First-class phantom types,'' tech. rep., Cornell
+  University, 2003.
+
+\bibitem{hughes2016experiences}
+J.~Hughes, ``Experiences with quickcheck: testing the hard stuff and staying
+  sane,'' in {\em A List of Successes That Can Change the World}, pp.~169--186,
+  Springer, 2016.
+
+\bibitem{evanrouter}
+E.~Czaplicki, ``package.elm-lang.org,'' 2019.
+\newblock \url{https://github.com/elm/package.elm-lang.org}, accessed
+  2019-08-28.
+
+\bibitem{torgersen2004expression}
+M.~Torgersen, ``The expression problem revisited,'' in {\em European Conference
+  on Object-Oriented Programming}, pp.~123--146, Springer, 2004.
+
+\bibitem{jakobnielsen}
+J.~Nielsen, ``Why you only need to test with 5 users,'' 2000.
+\newblock
+  \url{https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/}
+  ,accessed 2019-08-15.
+
+\bibitem{gaboardi2016combining}
+M.~Gaboardi, S.-y. Katsumata, D.~Orchard, F.~Breuvart, and T.~Uustalu,
+  ``Combining effects and coeffects via grading,'' in {\em ACM SIGPLAN
+  Notices}, vol.~51, pp.~476--489, ACM, 2016.
 
 \end{thebibliography}

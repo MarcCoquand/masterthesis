@@ -116,9 +116,9 @@ follows:
 \end{itemize}
 
 Two different approaches to developing these large scale applications are
-microservice and monolithic systems.(ADD\_REFERENCE) The monolithic system
-comprises of one big ``top-down'' architecture that dictates what the program
-should do. This is simple to develop using some IDE and deploying simply
+microservice and monolithic systems.~\ref{chen2018microservices} The monolithic
+system comprises of one big ``top-down'' architecture that dictates what the
+program should do. This is simple to develop using some IDE and deploying simply
 requires deploying some files to the runtime. 
 
 As the system starts to grow the large monolithic system becomes harder to
@@ -145,19 +145,19 @@ easier testing the entire system with all parts together becomes harder.
 As challenges arise in the development and as the software grows in scope,
 developers need to be able to verify that the software is correct. This helps to
 ensure that after modification the software works as expected and helps to catch
-defects.(ADD\_REFERENCE test for bugs). In servers, three main types of tests
+defects.~\cite{williams2009effectiveness} In servers, three main types of tests
 are conducted: unit tests, integration tests, and E2E-tests.
 
 \subsection{Unit testing}
 
 Unit testing is a testing method where the individual units of code and
-operating procedures are tested to see if they are fit for use. (ADD\_REFERENCE
-UNIT TEST) A unit is informally the smallest testable part of the application.
-To deal with units dependence one can use method stubs, mock objects and fakes
-to test in isolation.(ADD\_REFERENCE) The goal of unit testing is to isolate
-each part of the programs and ensure that the individual parts are correct. It
-also allows for easier refactoring since it ensures that the individual parts
-still satisfy their part of the application.
+operating procedures are tested to see if they are fit for
+use.~\cite{beck2003test} A unit is informally the smallest testable part of the
+application.  To deal with units dependence one can use method stubs, mock
+objects and fakes to test in isolation.~\cite{coelho2006unit} The goal of unit
+testing is to isolate each part of the programs and ensure that the individual
+parts are correct. It also allows for easier refactoring since it ensures that
+the individual parts still satisfy their part of the application.
 
 To create effective unit tests it's important that it's easy to mock examples.
 This is usually hindered if the code is dependant on some state since previous
@@ -277,10 +277,10 @@ these principles will be translated for Functional programming.
 \section{Functional programming for correct constructions}
 
 To mitigate the programmer from making mistakes, some languages feature a type
-system.(ADD\_REFERENCE type systems) The type system is a compiler check that
+system.~\cite{cardelli1996type} The type system is a compiler check that
 ensures that the allowed values are entered. Different strengths exist between
 various programming languages with some featuring higher-kinded types (types of
-types) and other constructs.  (ADD\_REFERENCE higher kinded types)
+types) and other constructs.~\cite{moors2007towards}
 
 It is possible to combine the type system with design patterns to force the
 developer to create the right thing. Chapter~\ref{theory} will introduce a REST
@@ -288,11 +288,11 @@ library, which has been created to force the developer to create REST compliant
 servers using Functional programming. However, as the REST library we in
 introduce in Chapter~\ref{theory} makes heavy use of functional programming it
 might not be as understandable.  Functional programming is not a popular
-software paradigm when compared to Object-oriented programming (ADD\_REFERENCE
-statistics), thus readability might be affected.  Understandability is important
-to reduce the learning time for programmers and cut down learning costs. Thus
-readability of software is an important criterion for good software structural
-quality.
+software paradigm when compared to Object-oriented
+programming~\cite{tiobe2013tiobe}, thus readability might be affected.
+Understandability is important to reduce the learning time for programmers and
+cut down learning costs. Thus readability of software is an important criterion
+for good software structural quality.
 
 \section{Summary}\label{backgroundconclusion}
 
