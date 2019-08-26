@@ -3,48 +3,50 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: thesis.aux
 The style file: ieeetr.bst
 Database file #1: thesis.bib
+Warning--can't use both volume and number fields in rumbaugh1991object
 Warning--empty school in Fielding:2000:ASD:932295
+Warning--empty journal in fielding1996hypertext
 Warning--empty booktitle in chenlianping
 Warning--can't use both volume and number fields in gaboardi2016combining
-You've used 27 entries,
+You've used 33 entries,
             1876 wiz_defined-function locations,
-            635 strings with 7694 characters,
-and the built_in function-call counts, 6086 in all, are:
-= -- 616
-> -- 168
+            661 strings with 8736 characters,
+and the built_in function-call counts, 7480 in all, are:
+= -- 737
+> -- 238
 < -- 0
-+ -- 71
-- -- 44
-* -- 369
-:= -- 839
-add.period$ -- 38
-call.type$ -- 27
-change.case$ -- 25
++ -- 97
+- -- 64
+* -- 471
+:= -- 1046
+add.period$ -- 45
+call.type$ -- 33
+change.case$ -- 30
 chr.to.int$ -- 0
-cite$ -- 30
-duplicate$ -- 331
-empty$ -- 672
-format.name$ -- 44
-if$ -- 1514
+cite$ -- 38
+duplicate$ -- 406
+empty$ -- 815
+format.name$ -- 64
+if$ -- 1845
 int.to.chr$ -- 0
-int.to.str$ -- 27
-missing$ -- 22
-newline$ -- 95
-num.names$ -- 27
-pop$ -- 131
+int.to.str$ -- 33
+missing$ -- 29
+newline$ -- 114
+num.names$ -- 33
+pop$ -- 159
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 195
+skip$ -- 228
 stack$ -- 0
-substring$ -- 332
-swap$ -- 106
+substring$ -- 391
+swap$ -- 126
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 3
-while$ -- 64
-width$ -- 29
-write$ -- 266
-(There were 3 warnings)
+warning$ -- 5
+while$ -- 76
+width$ -- 35
+write$ -- 321
+(There were 5 warnings)

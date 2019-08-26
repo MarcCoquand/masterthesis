@@ -1,6 +1,6 @@
 \chapter{Theory}\label{theory} 
 
-With our research question now defined, the goal is to construct a library for
+With the research questions now defined, the goal is to construct a library for
 REST APIs that is compliant by construction to ensure software functional
 quality. This chapter will introduce the fundamentals of functional programming
 to then move on and use that to construct a server library which can be used to
@@ -13,7 +13,7 @@ functional programming.
 
  While different definitions exist of what Functional programming means, here 
  functional programming is a paradigm that uses of pure functions,
- decoupling the state from logic and immutable data.~\cite{hughes1989functional}
+ decoupling the state from logic and immutable data~\cite{hughes1989functional}.
 
 \begin{description}
 \item[ Purity ]
@@ -26,7 +26,7 @@ When a function is pure it means that calling a function with the same arguments
         currenttime \cdot x$, $g(5)$ will yield a different value depending on
         what time it is called. This makes it dependant on some state of the
         world. Or given $x=0$, $h()=x+1$. Then $h()$ will yield $x=1$ and $(h
-        \circ h)()$ will yield $x=2$, making it impure.~\cite{hughes1989functional}
+        \circ h)()$ will yield $x=2$, making it impure~\cite{hughes1989functional}.
 
 \item[ Immutable data by default ]
 
@@ -72,7 +72,7 @@ Even if functional programs emphasize purity applications still need to deal
         and state.\footnote{This is simplified as Monads are notoriously
         difficult to explain.}.  As a strategy to further separate state and logic, one can construct a
 three-layered architecture called the three-layer Haskell
-cake.~\cite{parsonsmatt} Here,
+cake~\cite{parsonsmatt}. Here,
         the strategy is that one implements simple effectful functions,
         containing no logic as a base layer. Then on a second layer, one
         implements an interface that implements a pure solution and one
@@ -125,7 +125,7 @@ is said to be in positive position and the type is covariant. A type can be a
 Functor only if it is covariant.
 
 Contravariant Functors have a function $contramap : (a\rightarrow b) \rightarrow
-m\ b \rightarrow m\ a$.~\cite{bancerek2001miscellaneous} These are useful for
+m\ b \rightarrow m\ a$~\cite{bancerek2001miscellaneous}. These are useful for
 defining how the value should be \textit{consumed}. For example, a $type\
 encoder = a\rightarrow encoded$, defines an encoder. The contravariant functor
 would allow transforming the encoder into intermediate value.
@@ -133,9 +133,9 @@ would allow transforming the encoder into intermediate value.
 \subsection{Domain-specific languages}
 
 A domain-specific language (DSL) is a programming language made for a specific
-domain.~\cite{elic2007systematic} Typical examples of DSLs are HTML for
+domain~\cite{elic2007systematic}. Typical examples of DSLs are HTML for
 designing web pages and SQL for making database calls. An EDSL is such a
-language embedded within the syntax of the language.~\cite{hudak1996building}
+language embedded within the syntax of the language~\cite{hudak1996building}.
 EDSLs are useful due to the ability to separate the evaluation of the logic of
 the program to the logic itself. In the case of REST APIs, an EDSL can be
 developed which can interpret REST APIs and use them for different purposes. 
@@ -143,7 +143,7 @@ developed which can interpret REST APIs and use them for different purposes.
 \subsection{Generalized algebraic data type}\label{gadt}
 
 One method for constructing EDSLs in functional programming is through the use
-of \textit{generalized algebraic data type} (GADT).~\cite{cheney2003first}
+of \textit{generalized algebraic data type} (GADT)~\cite{cheney2003first}.
 They specify, depending on the input, what the output should be of that type.
 GADT enables implementing \textit{domain-specific languages} (DSL) and ensure
 that values of the DSL are statically correct. 
@@ -221,13 +221,13 @@ ensure statically that all platforms follow the same logic. So GADTs are useful
 for creating expressions that can, later on, be evaluated.  Since the logic is
 separated from the evaluation and correct by construction it means that only the
 evaluator needs to be tested, which can be done using property-based testing
-.~\cite{hughes2016experiences} Testing the logic means
+~\cite{hughes2016experiences}. Testing the logic means
 checking that its equal to its intended value, which requires manual review.
 
 \section{Servers using GADTs: Router}\label{router}
 
 GADTs can be used to construct a statically correct EDSL for server
-routers.~\cite{evanrouter} A server router parses incoming requests and
+routers~\cite{evanrouter}. A server router parses incoming requests and
 extracts query parameters and parameters and executes a function depending on
 the result. Figure~\ref{routergadtminimal} defines a minimal example of a GADT
 $Router$.  The two constructors $Top$ and $Exact$ describe matching \url{/} or

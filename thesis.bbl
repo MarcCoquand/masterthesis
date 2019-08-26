@@ -1,5 +1,14 @@
 \begin{thebibliography}{10}
 
+\bibitem{rumbaugh1991object}
+J.~Rumbaugh, M.~Blaha, W.~Premerlani, F.~Eddy, W.~E. Lorensen, {\em et~al.},
+  {\em Object-oriented modeling and design}, vol.~199.
+\newblock Prentice-hall Englewood Cliffs, NJ, 1991.
+
+\bibitem{hughes1989functional}
+J.~Hughes, ``Why functional programming matters,'' {\em The computer journal},
+  vol.~32, no.~2, pp.~98--107, 1989.
+
 \bibitem{Turner}
 D.~A. Turner, ``Some history of functional programming languages,'' in {\em
   Proceedings of the 2012 Conference on Trends in Functional Programming -
@@ -34,6 +43,15 @@ R.~T. Fielding, {\em Architectural Styles and the Design of Network-based
 \newblock PhD thesis, 2000.
 \newblock AAI9980887.
 
+\bibitem{fielding1996hypertext}
+R.~Fielding, H.~Frystyk, T.~Berners-Lee, J.~Gettys, and J.~Mogul, ``Hypertext
+  transfer protocol-http/1.1,'' 1996.
+
+\bibitem{chen2018microservices}
+L.~Chen, ``Microservices: architecting for continuous delivery and devops,'' in
+  {\em 2018 IEEE International Conference on Software Architecture (ICSA)},
+  pp.~39--397, IEEE, 2018.
+
 \bibitem{chenlianping}
 L.~Chen, ``Microservices: Architecting for continuous delivery and devops,'' 03
   2018.
@@ -49,11 +67,25 @@ R.~Coelho, U.~Kulesza, A.~von Staa, and C.~Lucena, ``Unit testing in
   the 2006 international workshop on Software engineering for large-scale
   multi-agent systems}, pp.~83--90, ACM, 2006.
 
+\bibitem{istqb2015glossary}
+I.~ISTQB, ``Glossary of testing terms,'' {\em ISTQB Glossary http://www. istqb.
+  org/downloads/finish/20/193. html}, 2015.
+
+\bibitem{tsai2001end}
+W.-T. Tsai, X.~Bai, R.~Paul, W.~Shao, and V.~Agarwal, ``End-to-end integration
+  testing design,'' in {\em 25th Annual International Computer Software and
+  Applications Conference. COMPSAC 2001}, pp.~166--171, IEEE, 2001.
+
 \bibitem{martinrobert}
 M.~C. Robert, ``Design principles and design patterns,'' September 2015.
 \newblock originally \url{objectmentor.com}, archived at
   \url{https://fi.ort.edu.uy/innovaportal/file/2032/1/design_principles.pdf},
   accessed Feb 2019.
+
+\bibitem{singh2015effect}
+H.~Singh and S.~I. Hassan, ``Effect of solid design principles on quality of
+  software: An empirical assessment,'' {\em International Journal of Scientific
+  and Engineering Research}, vol.~6, no.~4, 2015.
 
 \bibitem{cardelli1996type}
 L.~Cardelli, ``Type systems,'' {\em ACM Computing Surveys}, vol.~28, no.~1,
@@ -73,10 +105,6 @@ A.~Bosu, M.~Greiler, and C.~Bird, ``Characteristics of useful code reviews: An
 \bibitem{longhurst2003semi}
 R.~Longhurst, ``Semi-structured interviews and focus groups,'' {\em Key methods
   in geography}, vol.~3, pp.~143--156, 2003.
-
-\bibitem{hughes1989functional}
-J.~Hughes, ``Why functional programming matters,'' {\em The computer journal},
-  vol.~32, no.~2, pp.~98--107, 1989.
 
 \bibitem{parsonsmatt}
 M.~Parsons, ``Three layer haskell cake,'' Mars 2018.

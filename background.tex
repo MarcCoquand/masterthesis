@@ -20,15 +20,16 @@ structural quality can be established.
 
 As mentioned in Chapter~\ref{introduction}, servers need some protocol to
 communicate with the clients. One such protocol is
-REST.~\cite{Fielding:2000:ASD:932295} Servers are applications that provide
+REST~\cite{Fielding:2000:ASD:932295}. Servers are applications that provide
 functionality for other programs or devices, called
-clients.~\cite{Fielding:2000:ASD:932295} Services are servers that allow sharing
+clients~\cite{Fielding:2000:ASD:932295}. Services are servers that allow sharing
 data or resources among clients or to perform a computation.
 
 REST (Representational State Transfer) is a protocol that is used to construct
-web services. A RESTful web service allows requesting systems to access
-and manipulate different representations of web services by using a set of
-stateless operations. The architectural constraints of REST are as follows:
+web services~\cite{Fielding:2000:ASD:932295}. A RESTful web service allows
+requesting systems to access and manipulate different representations of web
+services by using a set of stateless operations. The architectural constraints
+of REST are as follows:
 
 \begin{description}
 \item[ Client - Server Architecture ] Separate the concerns between user
@@ -56,8 +57,9 @@ resource. This is done using Media type. Some common media types are JSON, HTML,
 and XML.
 \end{description}
 
-A typical HTTP request on a restful server consists of one of the  verbs: GET,
-POST, DELETE, PATCH and PUT. They are used as follows:
+A typical HTTP request~\cite{fielding1996hypertext} on a restful server consists
+of one of the  verbs: GET, POST, DELETE, PATCH and PUT. They are used as
+follows:
 
 \begin{description}
 \item[GET] Fetches a resource from the server. Does not perform any mutation. 
@@ -86,7 +88,7 @@ descriptions can be found here:
 are 200, meaning successful; 404, meaning not found; 400, meaning badly
 formatted request.
 
-\subsection{Implementation concerns for REST apis}
+\subsection{Implementation concerns for REST APIs}
 
 A REST API has to concern themselves with the following:
 
@@ -116,7 +118,7 @@ follows:
 \end{itemize}
 
 Two different approaches to developing these large scale applications are
-microservice and monolithic systems.~\ref{chen2018microservices} The monolithic
+microservice and monolithic systems~\cite{chen2018microservices}. The monolithic
 system comprises of one big ``top-down'' architecture that dictates what the
 program should do. This is simple to develop using some IDE and deploying simply
 requires deploying some files to the runtime. 
@@ -130,7 +132,7 @@ slower; the developer becomes less productive as a result. Since all code is
 written in the same environment introducing new technology becomes harder.
 
 In a microservice architecture, the program comprises of small entities that each
-have their responsibility.~\cite{chenlianping} There can be one service for
+have their responsibility~\cite{chenlianping}. There can be one service for
 metrics, one that interacts with the database and one that takes care of
 frontend. This decomposition allows the developers to easier understand parts of
 the system, scale into autonomous teams, IDE becomes faster since codebases are
@@ -145,16 +147,16 @@ easier testing the entire system with all parts together becomes harder.
 As challenges arise in the development and as the software grows in scope,
 developers need to be able to verify that the software is correct. This helps to
 ensure that after modification the software works as expected and helps to catch
-defects.~\cite{williams2009effectiveness} In servers, three main types of tests
+defects~\cite{williams2009effectiveness}. In servers, three main types of tests
 are conducted: unit tests, integration tests, and E2E-tests.
 
 \subsection{Unit testing}
 
 Unit testing is a testing method where the individual units of code and
 operating procedures are tested to see if they are fit for
-use.~\cite{beck2003test} A unit is informally the smallest testable part of the
+use~\cite{beck2003test}. A unit is informally the smallest testable part of the
 application.  To deal with units dependence one can use method stubs, mock
-objects and fakes to test in isolation.~\cite{coelho2006unit} The goal of unit
+objects and fakes to test in isolation~\cite{coelho2006unit}. The goal of unit
 testing is to isolate each part of the programs and ensure that the individual
 parts are correct. It also allows for easier refactoring since it ensures that
 the individual parts still satisfy their part of the application.
@@ -171,14 +173,15 @@ to resort the upcoming test methods.
 
 Whereas unit testing validates that the individual parts work in isolation;
 integration-tests make sure that the modules work when combined. The purpose is
-to expose faults that occur when the modules interact with each other.
+to expose faults that occur when the modules interact with each
+other~\cite{istqb2015glossary}.
 
 \subsection{End-2-End Tests}
 
 An End-2-End test (also known as E2E test) is a test that tests an entire
-passage through the program, testing multiple components on the way. This
-sometimes requires setting up an emulated environment mock environment with fake
-variables.
+passage through the program, testing multiple components on the
+way~\cite{tsai2001end}. This sometimes requires setting up an emulated
+environment mock environment with fake variables.
 
 \subsection{Challenges}\label{challenges}
 
@@ -210,7 +213,7 @@ develop software in this way it creates the possibility for the programmer to
 
 A poorly written system can lead to rotten design. Martin Robert, a software
 engineer, claims that there are four big indicators of rotten
-design.~\cite{martinrobert} Rotten design also leads to problems that were
+design~\cite{martinrobert}. Rotten design also leads to problems that were
 established in Section~\ref{challenges}, such as making it hard to conduct unit
 tests. Thus Martin Robert states that a system should avoid the following.
 
@@ -239,9 +242,11 @@ decouple and separate the desirable parts.
 
 \end{description}
 
-To avoid creating rotten designs, Martin Robert proposes SOLID guideline.  SOLID
-is a mnemonic for five design principles to make the software more maintainable,
-flexible and understandable. The SOLID guidelines are:
+To avoid creating rotten designs, Martin Robert proposes SOLID guideline, which
+has been shown to correlate with increased software
+quality~\cite{singh2015effect}.  SOLID is a mnemonic for five design principles
+to make the software more maintainable, flexible and understandable.  The SOLID
+guidelines are:
 
 \begin{description}
     \item [Single responsibility principle] Here, responsibility means ``reason
@@ -276,10 +281,10 @@ these principles will be translated for Functional programming.
 \section{Functional programming for correct constructions}
 
 To mitigate the programmer from making mistakes, some languages feature a type
-system.~\cite{cardelli1996type} The type system is a compiler check that
+system~\cite{cardelli1996type}. The type system is a compiler check that
 ensures that the allowed values are entered. Different strengths exist between
 various programming languages with some featuring higher-kinded types (types of
-types) and other constructs.~\cite{moors2007towards}
+types) and other constructs~\cite{moors2007towards}.
 
 It is possible to combine the type system with design patterns to force the
 developer to create the right thing. Chapter~\ref{theory} will introduce a REST

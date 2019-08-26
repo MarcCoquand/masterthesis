@@ -3,7 +3,7 @@
 \contentsline {section}{\numberline {1.1}Objectives}{6}
 \contentsline {chapter}{\numberline {2}Background}{7}
 \contentsline {section}{\numberline {2.1}Introduction to REST servers}{7}
-\contentsline {subsection}{\numberline {2.1.1}Implementation concerns for REST apis}{9}
+\contentsline {subsection}{\numberline {2.1.1}Implementation concerns for REST APIs}{9}
 \contentsline {section}{\numberline {2.2}Development concerns}{9}
 \contentsline {section}{\numberline {2.3}Testing}{10}
 \contentsline {subsection}{\numberline {2.3.1}Unit testing}{11}
@@ -50,7 +50,8 @@
 \contentsline {chapter}{\numberline {6}Conclusion}{41}
 \contentsline {section}{\numberline {6.1}Evaluating the readability}{41}
 \contentsline {section}{\numberline {6.2}Functional programming and SOLID}{42}
-\contentsline {section}{\numberline {6.3}Summary}{42}
+\contentsline {section}{\numberline {6.3}Limitations}{42}
+\contentsline {section}{\numberline {6.4}Summary}{42}
 \contentsline {chapter}{\numberline {7}Reflections}{44}
 \contentsline {section}{\numberline {7.1}Future work}{44}
 \contentsline {subsection}{\numberline {7.1.1}Clarifying what is URL and what is not}{45}

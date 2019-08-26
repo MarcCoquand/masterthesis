@@ -18,7 +18,7 @@
 
 \section{Evaluating the readability}
 
-We find that while everyone understood the Javascript version of the book api,
+We find that while everyone understood the Javascript version of the book API,
 two (P2 and P3) out of four had difficulties with the ReasonML version.
 Encoders and decoders seemed to have confused P3, as they assumed it related to
 cryptography. P2 got confused by the type signature $type\ a.\ route(a)$, which
@@ -39,6 +39,8 @@ is needed to confirm that. It can also be argued that some of those costs can be
 mitigated by adding comments and making the changes in Section~\ref{futurework},
 but more research is needed to prove this.
 
+
+
 \section{Functional programming and SOLID}
 
 This study found that functional programming was capable of creating a library
@@ -50,6 +52,13 @@ It was inconclusive as to if it enforces the Liskov substitution principle as
 further work is needed to create examples where this principle is properly
 tested. The functional solution also breaks the Open/Closed principle for
 situations where the user wants to add more details to a specification.
+
+
+\section{Limitations}
+
+Since the code for the imperative and functional solution were written by the
+author it is possible that a different person with different experience could
+have constructed more SOLID-adherent imperative code.
 
 \section{Summary}
 
